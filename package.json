@@ -1,0 +1,13 @@
+{
+  "name": "irtc-platform",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "pnpm --filter @irtc/site dev",
+    "build": "pnpm --filter @irtc/site build",
+    "start": "pnpm --filter @irtc/site start",
+    "lint": "pnpm --filter @irtc/site lint",
+    "typecheck": "pnpm --filter @irtc/site typecheck"
+  }
+}
