@@ -108,7 +108,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     bar.position.set(-0.32 + (index % 2) * 0.15, 0.3 - index * 0.21, 0.24);
     terminal.add(bar);
   }
-  place(terminal, -3.5, 1.8, 0.2, [-0.22, 0.35, -0.2]);
+  place(terminal, -3.8, 2.45, 0.2, [-0.22, 0.35, -0.2]);
 
   const phone = new THREE.Group();
   phone.add(rounded(1.05, 2.05, 0.22, silver, 0.16));
@@ -123,7 +123,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     tile.position.set(index % 2 ? 0.2 : -0.2, index < 2 ? 0.35 : -0.1, 0.19);
     phone.add(tile);
   }
-  place(phone, 3.6, 1.65, 0.3, [0.1, -0.4, 0.25]);
+  place(phone, 3.8, 2.45, 0.3, [0.1, -0.4, 0.25]);
 
   function beam(
     from: [number, number],
@@ -144,7 +144,8 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     beam([1.25, 0], [0.7, -0.55], mint),
     beam([0.22, 0.75], [-0.22, -0.75], silver),
   );
-  place(code, -3.5, -1.55, 0.1, [0.3, 0.3, -0.2]);
+  code.scale.setScalar(0.82);
+  place(code, -4.65, -1.8, 0.1, [0.3, 0.3, -0.2]);
 
   const database = new THREE.Group();
   for (let index = 0; index < 3; index++) {
@@ -162,7 +163,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     rim.position.y = disc.position.y + 0.16;
     database.add(rim);
   }
-  place(database, 3.5, -1.7, 0.4, [0.3, 0.2, -0.3]);
+  place(database, 3.6, -1.7, 0.4, [0.3, 0.2, -0.3]);
 
   const sparkleShape = new THREE.Shape();
   for (let index = 0; index < 16; index++) {
@@ -185,7 +186,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     }),
     orange,
   );
-  place(sparkle, 0, 2.65, -0.4, [0.3, -0.4, 0.2]);
+  place(sparkle, 0, 3.4, -0.4, [0.3, -0.4, 0.2]);
 
   const server = new THREE.Group();
   for (let index = 0; index < 3; index++) {
@@ -199,7 +200,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     slot.position.set(-0.2, unit.position.y, 0.32);
     server.add(slot);
   }
-  place(server, 0, -3.1, 0, [0.35, -0.2, 0.12]);
+  place(server, 3.6, -3.6, 0, [0.35, -0.2, 0.12]);
 
   const target = new THREE.Vector2();
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

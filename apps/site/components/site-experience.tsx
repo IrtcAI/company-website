@@ -884,7 +884,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           className="footer-wordmark"
           label={copy.home}
         >
-          irtc
+          irtc<span className="footer-asterisk" aria-hidden="true">✳</span>
         </SectionLink>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>
