@@ -1,175 +1,883 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import {
+  FormEvent,
+  MouseEvent,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronLeft,
+  ChevronRight,
+  CircleCheck,
+  Cloud,
+  Code2,
+  Database,
+  ExternalLink,
+  Globe2,
+  Layers3,
+  Menu,
+  MessageCircle,
+  Monitor,
+  Network,
+  Pause,
+  Play,
+  Plus,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  SunMoon,
+  Zap,
+} from "lucide-react";
+import {
+  content,
+  Locale,
+  projectBrands,
+  recommendationAuthors,
+} from "@/lib/content";
+import { HeroWorld } from "./hero-world";
 
-const workTypes = ["SaaS que escala", "ERP que simplifica", "CRM que aproxima", "Agentes de IA úteis", "Integrações que fluem", "Automações que liberam tempo"];
-const technologies = ["Node.js", "NestJS", "Next.js", "React", "PostgreSQL", "Redis", "AWS", "GitHub", "Python", "Django", "Docker", "Terraform", "Playwright", "RAG", "MCP", "ETL / ELT"];
-const offerings = [
-  ["01", "Produtos digitais", "SaaS, portais, plataformas B2B e aplicativos que transformam uma operação em produto."],
-  ["02", "Sistemas de negócio", "ERP, CRM, financeiro, marketplace e fluxos internos com domínio, dados e experiência no centro."],
-  ["03", "IA aplicada", "Agentes, RAG, busca semântica, avaliação de respostas e automações que resolvem um trabalho específico."],
-  ["04", "Integrações e dados", "APIs, ETL, ELT, mensageria, observabilidade e uma base de dados preparada para decisões melhores."]
+const Iris = dynamic(() => import("./iris"));
+const sectionIds = ["manifesto", "projetos", "solucoes", "depoimentos"];
+const techNames = [
+  "Node.js",
+  "Next.js",
+  "React",
+  "PostgreSQL",
+  "Redis",
+  "AWS",
+  "GitHub",
+  "NestJS",
 ];
-const outcomes = [
-  ["50%", "menos carga operacional em fluxos críticos"],
-  ["40%", "mais velocidade de entrega com engenharia consistente"],
-  ["99,9%", "disponibilidade sustentada em integrações sensíveis"],
-  ["8+", "anos convertendo complexidade em produto confiável"]
+const techSlugs = [
+  "nodedotjs",
+  "nextdotjs",
+  "react",
+  "postgresql",
+  "redis",
+  "amazonwebservices",
+  "github",
+  "nestjs",
 ];
-const knowledge = ["A IRTC é uma fábrica de software de Belém do Pará.", "Criamos SaaS, ERP, CRM, automações, integrações, plataformas de dados e soluções de IA aplicada.", "Nossa forma de trabalhar une descoberta, arquitetura pragmática, desenvolvimento, qualidade, observabilidade e suporte próximo.", "Tecnologias recorrentes: Node.js, NestJS, Next.js, React, PostgreSQL, Redis, AWS, GitHub, Python, Django, RAG, bancos vetoriais, ETL e ELT.", "A cultura IRTC prioriza clareza, responsabilidade, resposta rápida, qualidade sustentável e parceria de longo prazo."];
+const serviceIcons = [Layers3, Network, Sparkles, Database];
 
-type Message = { role: "user" | "assistant"; content: string };
-
-function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+function SectionLink({
+  target,
+  children,
+  className,
+  label,
+}: {
+  target: string;
+  children: ReactNode;
+  className?: string;
+  label?: string;
+}) {
+  function navigate(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    const destination = document.getElementById(target);
+    if (!destination) return;
+    destination.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+    destination.focus({ preventScroll: true });
+    event.currentTarget.closest("details")?.removeAttribute("open");
+  }
+  return (
+    <Link href="/" prefetch={false} onClick={navigate} className={className} aria-label={label}>
+      {children}
+    </Link>
+  );
 }
 
-export function SiteExperience() {
-  const [typedIndex, setTypedIndex] = useState(0);
-  const [typedLength, setTypedLength] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const [closeConfirm, setCloseConfirm] = useState(false);
-  const [maximized, setMaximized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([{ role: "assistant", content: "Olá, sou Iris. Posso explicar a IRTC ou rascunhar seu MVP em até 250 caracteres." }]);
-  const [chatInput, setChatInput] = useState("");
-  const [chatLoading, setChatLoading] = useState(false);
-  const [scope, setScope] = useState("");
-  const [contactState, setContactState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const chatEnd = useRef<HTMLDivElement>(null);
-  const phrase = workTypes[typedIndex];
-
+function TypedHeadline({
+  paused,
+  words,
+}: {
+  paused: boolean;
+  words: string[];
+}) {
+  const [word, setWord] = useState(words[0]);
   useEffect(() => {
-    const finished = typedLength === phrase.length;
-    const empty = typedLength === 0;
-    const pause = finished && !deleting ? 1500 : empty && deleting ? 380 : deleting ? 24 : 65;
-    const timer = window.setTimeout(() => {
-      if (finished && !deleting) return setDeleting(true);
-      if (empty && deleting) {
-        setDeleting(false);
-        return setTypedIndex((current) => (current + 1) % workTypes.length);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let index = 0;
+    let length = words[0].length;
+    let deleting = true;
+    let timer: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      if (paused || reduced.matches) return;
+      const current = words[index];
+      length += deleting ? -1 : 1;
+      setWord(current.slice(0, length));
+      let delay = deleting ? 32 : 85;
+      if (length === 0) {
+        index = (index + 1) % words.length;
+        deleting = false;
+        delay = 220;
+      } else if (length === current.length) {
+        deleting = true;
+        delay = 2300;
       }
-      setTypedLength((current) => current + (deleting ? -1 : 1));
-    }, pause);
-    return () => window.clearTimeout(timer);
-  }, [deleting, phrase.length, typedLength]);
+      timer = setTimeout(tick, delay);
+    };
+    const restart = () => {
+      clearTimeout(timer);
+      timer = setTimeout(tick, 6000);
+    };
+    restart();
+    reduced.addEventListener("change", restart);
+    return () => {
+      clearTimeout(timer);
+      reduced.removeEventListener("change", restart);
+    };
+  }, [paused, words]);
+  return (
+    <span className="typed-line" aria-hidden="true">
+      {word}
+      <span className="typing-caret" />
+    </span>
+  );
+}
+
+export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
+  const copy = content[locale];
+  const router = useRouter();
+  const [paused, setPaused] = useState(false);
+  const [theme, setTheme] = useState("system");
+  const [chatOpen, setChatOpen] = useState(false);
+  const [recommendation, setRecommendation] = useState(0);
+  const [project, setProject] = useState(0);
+  const [technology, setTechnology] = useState(0);
+  const [contactState, setContactState] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const launcher = useRef<HTMLButtonElement>(null);
+  const chatTrigger = useRef<HTMLElement | null>(null);
+  const currentProject = {
+    ...projectBrands[project],
+    ...copy.projects.cases[project],
+  };
+  const author = recommendationAuthors[recommendation];
 
   useEffect(() => {
-    chatEnd.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }, [messages, chatLoading]);
+    document.documentElement.lang = locale;
+    const frame = requestAnimationFrame(() =>
+      setTheme(document.documentElement.dataset.theme || "system"),
+    );
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        }),
+      { threshold: 0.12 },
+    );
+    document
+      .querySelectorAll("[data-reveal]")
+      .forEach((element) => observer.observe(element));
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [locale]);
 
-  const structuredData = useMemo(() => JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@type": "Organization", name: "IRTC", url: "https://irtc.com.br", email: "iago@irtc.com.br", description: "Fábrica de software em Belém do Pará especializada em sistemas, dados e IA aplicada.", areaServed: "BR", address: { "@type": "PostalAddress", addressLocality: "Belém", addressRegion: "PA", addressCountry: "BR" }, founder: { "@type": "Person", name: "Iago Rodrigues Melo Rocha", sameAs: "https://www.linkedin.com/in/iago-rodrigues/" }, knowsAbout: ["Software engineering", "Artificial intelligence", "RAG", "Vector databases", "Node.js", "PostgreSQL", "AWS", "SaaS", "ERP", "CRM", "ETL", "ELT"] },
-      { "@type": "ProfessionalService", name: "IRTC", url: "https://irtc.com.br", serviceType: ["Desenvolvimento de SaaS", "Sistemas ERP e CRM", "Engenharia de IA", "Integrações e automações", "Engenharia de dados"] },
-      { "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: "O que a IRTC desenvolve?", acceptedAnswer: { "@type": "Answer", text: "A IRTC desenvolve SaaS, ERP, CRM, automações, integrações, plataformas de dados e soluções de IA aplicada." } }, { "@type": "Question", name: "Onde fica a IRTC?", acceptedAnswer: { "@type": "Answer", text: "A IRTC é uma fábrica de software de Belém do Pará que atende negócios no Brasil e internacionalmente." } }] }
-    ]
-  }), []);
-
-  async function sendChat(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const message = chatInput.trim();
-    if (!message || chatLoading) return;
-    const history = [...messages, { role: "user" as const, content: message }];
-    setMessages(history);
-    setChatInput("");
-    setChatLoading(true);
+  function changeTheme(value: string) {
+    setTheme(value);
+    document.documentElement.dataset.theme = value;
     try {
-      const response = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message, history: history.slice(-6), knowledge }) });
-      const data = await response.json() as { answer?: string; error?: string };
-      setMessages((current) => [...current, { role: "assistant", content: data.answer ?? data.error ?? "Não consegui responder agora. Tente novamente em instantes." }]);
-    } catch {
-      setMessages((current) => [...current, { role: "assistant", content: "Não consegui responder agora. Tente novamente em instantes." }]);
-    } finally {
-      setChatLoading(false);
-    }
+      localStorage.setItem("irtc-theme", value);
+    } catch {}
   }
-
+  function changeLanguage(value: string) {
+    document.cookie = `irtc-locale=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
+    router.push(value === "pt-BR" ? "/" : `/${value}`, { scroll: false });
+  }
+  function openChat(event: MouseEvent<HTMLButtonElement>) {
+    chatTrigger.current = event.currentTarget;
+    setChatOpen(true);
+  }
   async function sendContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const form = event.currentTarget;
     setContactState("sending");
     try {
-      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(form)) });
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
       if (!response.ok) throw new Error();
       setContactState("sent");
-      event.currentTarget.reset();
+      form.reset();
     } catch {
       setContactState("error");
     }
   }
 
-  async function approveScope() {
-    if (!scope.trim()) return;
-    try {
-      await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: "Lead via Iris", email: "não informado", message: `Rascunho aprovado no Iris:\n${scope}`, kind: "scope_approval" }) });
-      setMessages((current) => [...current, { role: "assistant", content: "Rascunho encaminhado à IRTC. Vamos transformar a ideia em uma próxima conversa objetiva." }]);
-      setScope("");
-    } catch {
-      setMessages((current) => [...current, { role: "assistant", content: "Não consegui encaminhar agora. Use o formulário de contato e mencione seu rascunho." }]);
-    }
-  }
-
-  function closeChat() {
-    setMessages([{ role: "assistant", content: "Olá, sou Iris. Posso explicar a IRTC ou rascunhar seu MVP em até 250 caracteres." }]);
-    setChatInput("");
-    setScope("");
-    setCloseConfirm(false);
-    setChatOpen(false);
-  }
-
-  return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
-    <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header className="site-header">
-      <a className="brand" href="#inicio" aria-label="IRTC, início"><span>IR</span><i>TC</i></a>
-      <nav aria-label="Navegação principal"><a href="#oferta">O que fazemos</a><a href="#metodo">Como fazemos</a><a href="#confianca">Confiança</a><a href="#contato">Contato</a></nav>
-      <a className="header-cta" href="#contato">Começar projeto <Arrow /></a>
-    </header>
-    <main id="conteudo">
-      <section className="hero" id="inicio" aria-labelledby="hero-title">
-        <div className="river-glow" aria-hidden="true" />
-        <p className="eyebrow reveal">Belém do Pará · Brasil · Mundo</p>
-        <h1 id="hero-title" className="reveal delay-1">Tecnologia que <em>avança</em> o seu negócio.</h1>
-        <p className="hero-copy reveal delay-2">Projetamos e entregamos <strong>{phrase.slice(0, typedLength)}<b aria-hidden="true">|</b></strong> com engenharia de verdade: clareza no plano, velocidade na execução e presença depois do lançamento.</p>
-        <div className="hero-actions reveal delay-3"><a className="button primary" href="#contato">Fale com a IRTC <Arrow /></a><a className="button text-link" href="#oferta">Explore possibilidades <span aria-hidden="true">↓</span></a></div>
-        <div className="hero-current" aria-label="Status da IRTC"><span>Engenharia</span><span>Dados</span><span>IA aplicada</span><span className="pulse">Disponível para construir</span></div>
-      </section>
-
-      <section className="statement" aria-labelledby="statement-title">
-        <p className="section-kicker">Nosso ponto de partida</p>
-        <h2 id="statement-title">A gente não entrega <em>features.</em><br />Entrega clareza, ritmo e sistemas que sustentam o próximo passo.</h2>
-        <div className="statement-detail"><span className="index">[ 01 ]</span><p>A IRTC reúne arquitetura, produto e execução para transformar operações complexas em experiências simples, estáveis e mensuráveis.</p></div>
-      </section>
-
-      <section className="offerings" id="oferta" aria-labelledby="offerings-title">
-        <div className="section-heading"><p className="section-kicker">Capacidades</p><h2 id="offerings-title">Da ideia à operação <em>inteira.</em></h2><p>Escolhemos a tecnologia pelo impacto que ela cria — e não pelo brilho da novidade.</p></div>
-        <div className="offering-grid">{offerings.map(([number, title, description]) => <article className="offering-card" key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><div aria-hidden="true">↗</div></article>)}</div>
-      </section>
-
-      <section className="tech-field" aria-labelledby="tech-title">
-        <div className="tech-copy"><p className="section-kicker">Stack com propósito</p><h2 id="tech-title">Tecnologia que aguenta a <em>correnteza.</em></h2><p>Arquiteturas bem escolhidas diminuem custo de mudança, aumentam confiança e abrem espaço para o negócio crescer.</p></div>
-        <ul className="tech-cloud" aria-label="Tecnologias de trabalho">{technologies.map((technology, index) => <li className={`tech-${(index % 5) + 1}`} key={technology}>{technology}</li>)}</ul>
-      </section>
-
-      <section className="method" id="metodo" aria-labelledby="method-title">
-        <div className="method-intro"><p className="section-kicker">Nosso jeito</p><h2 id="method-title">Ritmo de fábrica.<br /><em>Olhar de parceiro.</em></h2></div>
-        <ol><li><span>01</span><div><h3>Entender o que importa</h3><p>Descoberta objetiva para revelar restrições, oportunidades e o menor caminho até valor real.</p></div></li><li><span>02</span><div><h3>Desenhar para durar</h3><p>Produto, arquitetura e dados trabalhando juntos antes de o código virar custo futuro.</p></div></li><li><span>03</span><div><h3>Entregar em ciclos curtos</h3><p>Visibilidade contínua, validação cedo e entregas que colocam o negócio em movimento.</p></div></li><li><span>04</span><div><h3>Operar com responsabilidade</h3><p>Qualidade, observabilidade e suporte próximo para sua equipe avançar com segurança.</p></div></li></ol>
-      </section>
-
-      <section className="outcomes" id="confianca" aria-labelledby="outcomes-title">
-        <div className="outcomes-heading"><p className="section-kicker">Confiança construída</p><h2 id="outcomes-title">Resultado é o nosso <em>argumento.</em></h2><p>Indicadores de trajetórias de entrega em produtos de marketplace, finanças, saúde e operações de dados.</p></div>
-        <div className="outcome-grid">{outcomes.map(([number, label]) => <article key={number}><strong>{number}</strong><p>{label}</p></article>)}</div>
-        <p className="proof-note">Experiência reunida em projetos e times com necessidades reais de escala, segurança, dados e experiência do usuário.</p>
-      </section>
-
-      <section className="culture" aria-labelledby="culture-title"><div className="culture-orbit" aria-hidden="true"><span>claro</span><span>presente</span><span>rápido</span><span>rigoroso</span></div><div><p className="section-kicker">Cultura IRTC</p><h2 id="culture-title">Da Amazônia, aprendemos a respeitar sistemas <em>vivos.</em></h2><p>O contexto muda, as variáveis se conectam e a melhor tecnologia é aquela que melhora a vida de quem depende dela. Trabalhamos com escuta, responsabilidade e energia para fazer acontecer.</p><a className="button dark" href="#contato">Construir com a IRTC <Arrow /></a></div></section>
-
-      <section className="contact" id="contato" aria-labelledby="contact-title"><div className="contact-title"><p className="section-kicker">Próximo movimento</p><h2 id="contact-title">Existe uma ideia<br />pedindo <em>estrutura?</em></h2><p>Conte o contexto. A primeira resposta chega com clareza, não com uma proposta genérica.</p><a href="mailto:iago@irtc.com.br">iago@irtc.com.br <Arrow /></a></div><form onSubmit={sendContact} aria-describedby="contact-status"><div className="field-row"><label>Nome<input name="name" required autoComplete="name" maxLength={100} /></label><label>E-mail<input name="email" type="email" required autoComplete="email" maxLength={160} /></label></div><label>Empresa<input name="company" autoComplete="organization" maxLength={120} /></label><label>O que você quer transformar?<textarea name="message" required rows={5} maxLength={1800} /></label><input className="honeypot" name="website" aria-label="Não preencher" tabIndex={-1} autoComplete="off" /><button className="button primary" disabled={contactState === "sending"}>{contactState === "sending" ? "Enviando..." : "Enviar contexto"} <Arrow /></button><p id="contact-status" className="form-status" aria-live="polite">{contactState === "sent" ? "Recebemos seu contexto. A IRTC retorna em breve." : contactState === "error" ? "Não foi possível enviar agora. Escreva para iago@irtc.com.br." : "Seus dados são usados somente para este contato."}</p></form></section>
-    </main>
-    <footer><a className="brand" href="#inicio" aria-label="IRTC - Voltar ao início"><span>IR</span><i>TC</i></a><p>Software, dados e IA aplicada com origem em Belém do Pará.</p><a href="https://www.linkedin.com/in/iago-rodrigues/" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a><small>© {new Date().getFullYear()} IRTC. Todos os direitos reservados.</small></footer>
-    <button className="iris-launcher" onClick={() => setChatOpen(true)} aria-haspopup="dialog" aria-expanded={chatOpen}><span aria-hidden="true">✦</span><span>Falar com Iris</span></button>
-    {chatOpen ? <aside className={`iris ${maximized ? "maximized" : ""}`} role="dialog" aria-modal="true" aria-labelledby="iris-title"><header><div><p>IRTC · assistente de descoberta</p><h2 id="iris-title">Iris <span aria-hidden="true">✦</span></h2></div><div className="iris-actions"><button onClick={() => setMaximized((value) => !value)} aria-label={maximized ? "Reduzir chat" : "Expandir chat"}>{maximized ? "↙" : "↗"}</button><button onClick={() => setCloseConfirm(true)} aria-label="Fechar Iris">×</button></div></header>{closeConfirm ? <div className="close-confirm"><strong>Encerrar esta conversa?</strong><p>Ao confirmar, o histórico será limpo.</p><div><button className="button dark" onClick={() => setCloseConfirm(false)}>Continuar</button><button className="button primary" onClick={closeChat}>Sim, encerrar</button></div></div> : <><div className="iris-messages" aria-live="polite" aria-label="Mensagens do Iris">{messages.map((message, index) => <p className={message.role} key={`${message.role}-${index}`}>{message.content}</p>)}{chatLoading ? <p className="assistant loading">Iris está pensando<span>.</span><span>.</span><span>.</span></p> : null}<div ref={chatEnd} /></div><div className="scope-draft"><label>Rascunho de escopo opcional<textarea value={scope} onChange={(event) => setScope(event.target.value)} maxLength={500} placeholder="Cole ou anote o escopo para aprovar" rows={2} /></label><button onClick={approveScope} disabled={!scope.trim()}>Aprovar e enviar</button></div><form className="iris-form" onSubmit={sendChat}><label className="sr-only" htmlFor="iris-message">Pergunte à Iris</label><input id="iris-message" value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ex.: preciso de um MVP para..." maxLength={800} disabled={chatLoading} /><button aria-label="Enviar mensagem" disabled={chatLoading}>↑</button></form><p className="iris-limit">Iris responde apenas sobre a IRTC e ideias iniciais de MVP.</p></>}</aside> : null}
-  </>;
+  return (
+    <div className={paused ? "site motion-paused" : "site"}>
+      <SectionLink target="conteudo" className="skip-link">
+        {copy.skip}
+      </SectionLink>
+      <header className="site-header">
+        <SectionLink target="inicio" className="brand" label={copy.home}>
+          irtc<span aria-hidden="true">✳</span>
+        </SectionLink>
+        <nav aria-label={copy.menu}>
+          {sectionIds.map((id, index) => (
+            <SectionLink key={id} target={id}>
+              {copy.nav[index]}
+            </SectionLink>
+          ))}
+        </nav>
+        <div className="site-preferences">
+          <label className="preference">
+            <Globe2 aria-hidden="true" />
+            <span className="sr-only">{copy.language}</span>
+            <select
+              value={locale}
+              onChange={(event) => changeLanguage(event.target.value)}
+            >
+              <option value="pt-BR">PT-BR</option>
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+            </select>
+          </label>
+          <label className="preference">
+            <SunMoon aria-hidden="true" />
+            <span className="sr-only">{copy.theme}</span>
+            <select
+              value={theme}
+              onChange={(event) => changeTheme(event.target.value)}
+            >
+              {["system", "light", "dark"].map((value, index) => (
+                <option key={value} value={value}>
+                  {copy.themes[index]}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <SectionLink target="contato" className="pill-link header-cta">
+          {copy.talk}
+          <span>
+            <MessageCircle aria-hidden="true" />
+          </span>
+        </SectionLink>
+        <details className="mobile-menu">
+          <summary aria-label={copy.menu}>
+            <Menu aria-hidden="true" />
+          </summary>
+          <nav aria-label={copy.menu}>
+            {sectionIds.map((id, index) => (
+              <SectionLink key={id} target={id}>
+                {copy.nav[index]}
+              </SectionLink>
+            ))}
+            <SectionLink target="contato">{copy.talk}</SectionLink>
+          </nav>
+        </details>
+      </header>
+      <main id="conteudo" tabIndex={-1}>
+        <section
+          className="hero"
+          id="inicio"
+          tabIndex={-1}
+          aria-labelledby="hero-title"
+        >
+          <HeroWorld paused={paused} />
+          <div className="hero-content">
+            <p className="eyebrow">
+              <span />
+              {copy.hero.eyebrow}
+            </p>
+            <h1 id="hero-title">
+              <span>{copy.hero.title}</span>
+              <TypedHeadline
+                key={locale}
+                paused={paused}
+                words={copy.hero.words}
+              />
+              <span className="sr-only">{copy.hero.words.join(" ")}</span>
+            </h1>
+            <p className="hero-description">{copy.hero.description}</p>
+            <SectionLink target="contato" className="hero-start">
+              {copy.hero.cta}
+              <span>
+                <MessageCircle aria-hidden="true" />
+              </span>
+            </SectionLink>
+          </div>
+          <div className="hero-bottom">
+            <span>{copy.hero.label}</span>
+            <SectionLink
+              target="manifesto"
+              className="scroll-cue"
+              label={copy.hero.explore}
+            >
+              <ArrowDown aria-hidden="true" />
+            </SectionLink>
+            <button
+              className="motion-toggle"
+              aria-pressed={paused}
+              onClick={() => setPaused(!paused)}
+            >
+              {paused ? (
+                <Play aria-hidden="true" />
+              ) : (
+                <Pause aria-hidden="true" />
+              )}
+              {paused ? copy.hero.play : copy.hero.pause}
+            </button>
+          </div>
+        </section>
+        <section className="client-strip" aria-label={copy.clients}>
+          <p>{copy.clients}</p>
+          <div className="client-names">
+            {projectBrands.map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noreferrer"
+                className={`brand-logo ${brand.theme}`}
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  width={180}
+                  height={52}
+                />
+              </a>
+            ))}
+          </div>
+        </section>
+        <section className="manifesto section-pad" id="manifesto" tabIndex={-1}>
+          <div className="section-label">
+            <span>{copy.manifesto.label}</span>
+            <span>{copy.manifesto.aside}</span>
+          </div>
+          <div className="manifesto-grid">
+            <div className="manifesto-heading" data-reveal>
+              <h2>
+                {copy.manifesto.title}
+                <br />
+                <span>{copy.manifesto.accent}</span>
+              </h2>
+              <div className="code-sculpture" aria-hidden="true">
+                <span>⟨</span>
+                <i>/</i>
+                <span>⟩</span>
+              </div>
+              <p>{copy.manifesto.foot}</p>
+            </div>
+            <div className="manifesto-points">
+              {copy.manifesto.points.map((point, index) => {
+                const Icon = [Zap, ShieldCheck, MessageCircle][index];
+                return (
+                  <article key={point.title} data-reveal>
+                    <span className={`point-symbol symbol-${index}`}>
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <h3>{point.title}</h3>
+                    <p>{point.text}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+        <section className="projects section-pad" id="projetos" tabIndex={-1}>
+          <div className="section-label">
+            <span>{copy.projects.label}</span>
+            <span>{copy.projects.aside}</span>
+          </div>
+          <div className="section-title-row" data-reveal>
+            <h2>
+              {copy.projects.title}
+              <br />
+              <span>{copy.projects.accent}</span>
+            </h2>
+            <p>{copy.projects.intro}</p>
+          </div>
+          <div
+            className="project-selector"
+            role="group"
+            aria-label={copy.projects.choose}
+          >
+            {projectBrands.map((item, index) => (
+              <button
+                key={item.name}
+                aria-pressed={project === index}
+                onClick={() => setProject(index)}
+              >
+                <span>0{index + 1}</span>
+                {item.name}
+                <span className="selected-indicator">
+                  {project === index ? (
+                    <CircleCheck aria-hidden="true" />
+                  ) : (
+                    <Plus aria-hidden="true" />
+                  )}
+                </span>
+              </button>
+            ))}
+          </div>
+          <article className="project-feature" key={currentProject.name}>
+            <div className={`project-visual ${currentProject.theme}`}>
+              <div className="project-orb" aria-hidden="true" />
+              <a
+                className="product-window real-product"
+                href={currentProject.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${copy.projects.visit}: ${currentProject.name} (${new URL(currentProject.url).hostname})`}
+              >
+                <div className="window-bar" aria-hidden="true">
+                  <span className="window-dots">● ● ●</span>
+                  <span>{new URL(currentProject.url).hostname}</span>
+                  <ExternalLink />
+                </div>
+                <div className="real-product-content">
+                  <Image
+                    src={currentProject.image}
+                    alt={`${currentProject.name} — ${currentProject.category}`}
+                    width={900}
+                    height={620}
+                    sizes="(max-width: 760px) 90vw, 48vw"
+                  />
+                  {currentProject.theme === "dasa" ? (
+                    <Image
+                      className="product-brand-overlay"
+                      src={currentProject.logo}
+                      alt=""
+                      width={168}
+                      height={46}
+                    />
+                  ) : null}
+                </div>
+              </a>
+              <span className="visual-caption">{copy.projects.image}</span>
+            </div>
+            <div className="project-info">
+              <p className="overline">{currentProject.category}</p>
+              <h3>{currentProject.title}</h3>
+              <p>{currentProject.description}</p>
+              <div className="project-result">
+                <strong>{currentProject.metric}</strong>
+                <span>{currentProject.result}</span>
+              </div>
+              <p className="project-stack">{currentProject.stack}</p>
+              <details className="project-details">
+                <summary>
+                  {copy.projects.details}
+                  <Plus aria-hidden="true" />
+                </summary>
+                <p>{currentProject.detail}</p>
+                <a href={currentProject.url} target="_blank" rel="noreferrer">
+                  {copy.projects.visit}
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              </details>
+            </div>
+          </article>
+          <p className="project-source">{copy.projects.source}</p>
+        </section>
+        <section className="solutions section-pad" id="solucoes" tabIndex={-1}>
+          <div className="section-label">
+            <span>{copy.solutions.label}</span>
+            <span>{copy.solutions.aside}</span>
+          </div>
+          <h2 data-reveal>
+            {copy.solutions.title}
+            <br />
+            <span>{copy.solutions.accent}</span>
+          </h2>
+          <div className="solution-list">
+            {copy.solutions.items.map((item, index) => {
+              const Icon = serviceIcons[index];
+              return (
+                <details key={item.title} className="solution-item">
+                  <summary>
+                    <span
+                      className={`solution-icon ${["product", "systems", "ai", "data"][index]}`}
+                    >
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <span className="solution-text">
+                      <span className="solution-name">{item.title}</span>
+                      <span>{item.tags}</span>
+                      <span className="solution-intro">{item.intro}</span>
+                    </span>
+                    <Plus className="solution-expand" aria-hidden="true" />
+                  </summary>
+                  <div className="solution-expanded">
+                    <p>{item.text}</p>
+                    <ul>
+                      {item.deliverables.map((item) => (
+                        <li key={item}>
+                          <CircleCheck aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              );
+            })}
+          </div>
+          <div className="tech-playground">
+            <div>
+              <h3>{copy.solutions.techTitle}</h3>
+              <p>{copy.solutions.techIntro}</p>
+            </div>
+            <div
+              className="tech-tokens"
+              role="group"
+              aria-label={copy.solutions.techHint}
+            >
+              {techNames.map((name, index) => (
+                <button
+                  key={name}
+                  className={`tech-token token-${index}`}
+                  aria-pressed={technology === index}
+                  onClick={() => setTechnology(index)}
+                >
+                  <span className="tech-token-face">
+                    {index === 5 ? (
+                      <Cloud aria-hidden="true" />
+                    ) : (
+                      <Image
+                        src={`/technologies/${techSlugs[index]}.svg`}
+                        alt=""
+                        width={40}
+                        height={40}
+                      />
+                    )}
+                  </span>
+                  <span>{name}</span>
+                </button>
+              ))}
+            </div>
+            <div className="tech-explainer" aria-live="polite">
+              <Code2 aria-hidden="true" />
+              <p>
+                <strong>{techNames[technology]}</strong>
+                {copy.solutions.techDescriptions[technology]}
+              </p>
+            </div>
+            <p className="tech-extra">
+              TypeScript · Python · Django · React Native · pgvector · RAG · ETL
+              / ELT
+            </p>
+          </div>
+        </section>
+        <section
+          className="testimonials section-pad"
+          id="depoimentos"
+          tabIndex={-1}
+        >
+          <div className="section-label">
+            <span>{copy.testimonials.label}</span>
+            <a
+              href="https://www.linkedin.com/in/iago-rodrigues/details/recommendations/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.testimonials.source}
+              <ExternalLink aria-hidden="true" />
+            </a>
+          </div>
+          <div className="testimonial-layout">
+            <div>
+              <h2 data-reveal>
+                {copy.testimonials.title}
+                <br />
+                <span>{copy.testimonials.accent}</span>
+              </h2>
+              <p>{copy.testimonials.intro}</p>
+              <div className="testimonial-controls">
+                <button
+                  aria-label={copy.testimonials.previous}
+                  onClick={() =>
+                    setRecommendation(
+                      (recommendation + recommendationAuthors.length - 1) %
+                        recommendationAuthors.length,
+                    )
+                  }
+                >
+                  <ChevronLeft aria-hidden="true" />
+                </button>
+                <span>
+                  0{recommendation + 1} / 0{recommendationAuthors.length}
+                </span>
+                <button
+                  aria-label={copy.testimonials.next}
+                  onClick={() =>
+                    setRecommendation(
+                      (recommendation + 1) % recommendationAuthors.length,
+                    )
+                  }
+                >
+                  <ChevronRight aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+            <div aria-live="polite" aria-atomic="true">
+              <figure
+                className={`quote-card ${recommendation % 2 ? "peach" : "mint"}`}
+                key={author.name}
+              >
+                <MessageCircle className="quote-symbol" aria-hidden="true" />
+                <p className="recommendation-summary">
+                  {copy.testimonials.summaries[recommendation]}
+                </p>
+                <figcaption>
+                  <span className="quote-avatar" aria-hidden="true">
+                    {author.initials}
+                  </span>
+                  <span>
+                    <strong>{author.name}</strong>
+                    <span>{author.role}</span>
+                  </span>
+                  <span className="linkedin-mark" aria-hidden="true">
+                    in
+                  </span>
+                </figcaption>
+                <small>{copy.testimonials.note}</small>
+              </figure>
+            </div>
+          </div>
+        </section>
+        <section className="origin section-pad">
+          <div
+            className="origin-network"
+            role="img"
+            aria-label={copy.origin.caption}
+          >
+            <svg viewBox="0 0 600 500" aria-hidden="true">
+              <defs>
+                <pattern
+                  id="map-grid"
+                  width="36"
+                  height="36"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
+                </pattern>
+              </defs>
+              <rect width="600" height="500" fill="url(#map-grid)" />
+              <path
+                className="network-route route-one"
+                d="M180 330Q180 90 440 140"
+              />
+              <path
+                className="network-route route-two"
+                d="M180 330Q370 410 460 300"
+              />
+              <path
+                className="network-route route-three"
+                d="M180 330Q55 190 170 105"
+              />
+              <circle className="network-pulse" cx="180" cy="330" r="28" />
+              <circle className="network-hub" cx="180" cy="330" r="10" />
+              <circle cx="440" cy="140" r="7" />
+              <circle cx="460" cy="300" r="7" />
+              <circle cx="170" cy="105" r="7" />
+            </svg>
+            <span className="network-coordinates">01°27′ S · 48°30′ W</span>
+            <span className="network-belem">
+              Belém<span>Pará, Brasil</span>
+            </span>
+            <span className="network-endpoint endpoint-one">
+              <Monitor aria-hidden="true" />
+              {copy.origin.node}
+            </span>
+            <span className="network-endpoint endpoint-two">
+              <Network aria-hidden="true" />
+              API / CLOUD
+            </span>
+            <span className="network-endpoint endpoint-three">
+              <Code2 aria-hidden="true" />
+              IRTC
+            </span>
+            <span className="network-status">
+              <span />
+              {copy.origin.link}
+            </span>
+          </div>
+          <div data-reveal>
+            <p className="overline">{copy.origin.label}</p>
+            <h2>
+              {copy.origin.title}
+              <br />
+              <span>{copy.origin.accent}</span>
+            </h2>
+            <p>{copy.origin.body}</p>
+            <p>{copy.origin.vision}</p>
+            <SectionLink target="contato" className="inline-link">
+              {copy.origin.cta}
+              <MessageCircle aria-hidden="true" />
+            </SectionLink>
+          </div>
+        </section>
+        <section className="contact section-pad" id="contato" tabIndex={-1}>
+          <div>
+            <p className="overline">{copy.contact.label}</p>
+            <h2>
+              {copy.contact.title}
+              <br />
+              <span>{copy.contact.accent}</span>
+            </h2>
+            <p>{copy.contact.intro}</p>
+            <button className="iris-inline" onClick={openChat}>
+              <Sparkles aria-hidden="true" />
+              {copy.contact.iris}
+              <MessageCircle aria-hidden="true" />
+            </button>
+          </div>
+          <form onSubmit={sendContact}>
+            <div className="field-row">
+              <label>
+                {copy.contact.name}
+                <input
+                  name="name"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                  placeholder={copy.contact.nameHint}
+                />
+              </label>
+              <label>
+                {copy.contact.email}
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  maxLength={160}
+                  placeholder="voce@empresa.com"
+                />
+              </label>
+            </div>
+            <label>
+              {copy.contact.company}
+              <span className="optional"> ({copy.contact.optional})</span>
+              <input
+                name="company"
+                autoComplete="organization"
+                maxLength={120}
+                placeholder={copy.contact.companyHint}
+              />
+            </label>
+            <label>
+              {copy.contact.message}
+              <textarea
+                name="message"
+                required
+                rows={3}
+                maxLength={1800}
+                placeholder={copy.contact.messageHint}
+              />
+            </label>
+            <label hidden>
+              Website
+              <input name="website" tabIndex={-1} autoComplete="off" />
+            </label>
+            <button
+              className="pill-link form-submit"
+              disabled={contactState === "sending"}
+            >
+              {contactState === "sending"
+                ? copy.contact.sending
+                : copy.contact.submit}
+              <span>
+                <Send aria-hidden="true" />
+              </span>
+            </button>
+            <p className="form-status" role="status">
+              {contactState === "sent"
+                ? copy.contact.sent
+                : contactState === "error"
+                  ? copy.contact.error
+                  : copy.contact.privacy}
+            </p>
+          </form>
+        </section>
+      </main>
+      <footer className="site-footer">
+        <div className="footer-top">
+          <SectionLink target="contato" className="footer-invitation">
+            {copy.footer.title}
+            <br />
+            <span>{copy.footer.accent}</span>
+          </SectionLink>
+          <div>
+            <p>{copy.footer.location}</p>
+            <a href="mailto:iago@irtc.com.br">iago@irtc.com.br</a>
+            <div
+              className="social-placeholders"
+              aria-label={copy.footer.socials}
+            >
+              {["LinkedIn", "Instagram", "GitHub"].map((name) => (
+                <span role="link" aria-disabled="true" key={name}>
+                  {name}
+                  <small>{copy.footer.soon}</small>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <SectionLink
+          target="inicio"
+          className="footer-wordmark"
+          label={copy.home}
+        >
+          irtc
+          <span className="footer-asterisk" aria-hidden="true">
+            ✳
+          </span>
+        </SectionLink>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} IRTC</span>
+          <span>{copy.footer.signature}</span>
+          <SectionLink target="inicio">
+            {copy.footer.top}
+            <ArrowUp aria-hidden="true" />
+          </SectionLink>
+        </div>
+      </footer>
+      <button
+        ref={launcher}
+        className="iris-launcher"
+        onClick={openChat}
+        aria-haspopup="dialog"
+        aria-expanded={chatOpen}
+      >
+        <Sparkles className="iris-spark" aria-hidden="true" />
+        <span>{copy.iris.launcher}</span>
+        <MessageCircle aria-hidden="true" />
+      </button>
+      {chatOpen ? (
+        <Iris
+          locale={locale}
+          onClose={() => {
+            setChatOpen(false);
+            (chatTrigger.current || launcher.current)?.focus();
+          }}
+        />
+      ) : null}
+    </div>
+  );
 }

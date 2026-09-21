@@ -8,6 +8,7 @@
     "build": "pnpm --filter @irtc/site build",
     "start": "pnpm --filter @irtc/site start",
     "lint": "pnpm --filter @irtc/site lint",
-    "typecheck": "pnpm --filter @irtc/site typecheck"
+    "typecheck": "pnpm --filter @irtc/site typecheck",
+    "test": "pnpm --filter @irtc/site test"
   }
 }

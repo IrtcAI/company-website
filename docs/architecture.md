@@ -23,7 +23,7 @@ apps/site
 docs/architecture.md   fonte de verdade de decisões e limites
 ```
 
-O site usa Next.js com React, renderização estática do conteúdo institucional e JavaScript apenas para o typing do hero, formulário e Iris. CSS nativo mantém o custo de entrega baixo e respeita `prefers-reduced-motion`.
+O site usa Next.js com React, renderização estática do conteúdo institucional e JavaScript para o typing, formulário, Iris e uma cena 3D carregada depois do conteúdo do hero. CSS nativo mantém o custo de entrega baixo e respeita `prefers-reduced-motion`.
 
 ## Integrações
 
@@ -38,7 +38,7 @@ As chaves nunca entram no código ou no Git. A configuração está exemplificad
 
 Iris é uma assistente de descoberta, não uma assistente geral. Ela só pode explicar a IRTC ou produzir um esboço de MVP com até três pontos e 250 caracteres. O backend valida tamanho, aplica rate limit, recusa tentativas de mudança de papel ou execução de código e instrui o modelo a responder fora de escopo com uma recusa fixa.
 
-O conhecimento atual é um corpus pequeno e versionado no cliente, adequado ao conteúdo institucional. Quando o conteúdo crescer, a evolução aprovada é Postgres + pgvector: ingestão de fontes aprovadas, embeddings por documento, recuperação limitada aos cinco trechos mais relevantes, metadados de origem e avaliação de respostas antes da publicação. Não indexar dados de leads ou conteúdo privado no RAG.
+O conhecimento atual é um corpus pequeno, versionado no servidor e adequado ao conteúdo institucional. A rota ignora conhecimento enviado pelo navegador e limpa papéis de sistema do histórico. Quando o conteúdo crescer, a evolução aprovada é Postgres + pgvector: ingestão de fontes aprovadas, embeddings por documento, recuperação limitada aos cinco trechos mais relevantes, metadados de origem e avaliação de respostas antes da publicação. Não indexar dados de leads ou conteúdo privado no RAG.
 
 ## E-mail e lead
 
