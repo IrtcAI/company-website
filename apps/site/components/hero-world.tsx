@@ -13,7 +13,7 @@ export function HeroWorld({ paused }: { paused: boolean }) {
   useEffect(() => {
     let disposed = false;
     let cleanup: (() => void) | undefined;
-    if (window.matchMedia("(max-width: 760px), (prefers-reduced-motion: reduce)").matches)
+    if (window.matchMedia("(max-width: 1023px), (prefers-reduced-motion: reduce)").matches)
       return;
     const timer = window.setTimeout(async () => {
       try {

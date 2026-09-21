@@ -15,15 +15,19 @@ import {
 import {
   ArrowDown,
   ArrowUp,
+  BriefcaseBusiness,
+  Camera,
   ChevronLeft,
   ChevronRight,
   CircleCheck,
   Cloud,
   Code2,
+  CodeXml,
   Database,
   ExternalLink,
   Globe2,
   Layers3,
+  Mail,
   Menu,
   MessageCircle,
   Monitor,
@@ -68,6 +72,11 @@ const techSlugs = [
   "nestjs",
 ];
 const serviceIcons = [Layers3, Network, Sparkles, Database];
+const footerSocials = [
+  { name: "LinkedIn", Icon: BriefcaseBusiness },
+  { name: "Instagram", Icon: Camera },
+  { name: "GitHub", Icon: CodeXml },
+];
 
 function SectionLink({
   target,
@@ -157,6 +166,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const [recommendation, setRecommendation] = useState(0);
   const [project, setProject] = useState(0);
   const [technology, setTechnology] = useState(0);
+  const [openSolution, setOpenSolution] = useState<number | null>(null);
   const [contactState, setContactState] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
@@ -508,8 +518,20 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             {copy.solutions.items.map((item, index) => {
               const Icon = serviceIcons[index];
               return (
-                <details key={item.title} className="solution-item">
-                  <summary>
+                <article
+                  key={item.title}
+                  className="solution-item"
+                  data-open={openSolution === index}
+                >
+                  <button
+                    className="solution-trigger"
+                    aria-expanded={openSolution === index}
+                    aria-controls={`solution-panel-${index}`}
+                    id={`solution-trigger-${index}`}
+                    onClick={() =>
+                      setOpenSolution(openSolution === index ? null : index)
+                    }
+                  >
                     <span
                       className={`solution-icon ${["product", "systems", "ai", "data"][index]}`}
                     >
@@ -521,19 +543,28 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                       <span className="solution-intro">{item.intro}</span>
                     </span>
                     <Plus className="solution-expand" aria-hidden="true" />
-                  </summary>
-                  <div className="solution-expanded">
-                    <p>{item.text}</p>
-                    <ul>
-                      {item.deliverables.map((item) => (
-                        <li key={item}>
-                          <CircleCheck aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                  </button>
+                  <div
+                    className="solution-panel"
+                    data-open={openSolution === index}
+                    id={`solution-panel-${index}`}
+                    role="region"
+                    aria-labelledby={`solution-trigger-${index}`}
+                    aria-hidden={openSolution !== index}
+                  >
+                    <div className="solution-expanded">
+                      <p>{item.text}</p>
+                      <ul>
+                        {item.deliverables.map((deliverable) => (
+                          <li key={deliverable}>
+                            <CircleCheck aria-hidden="true" />
+                            {deliverable}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </details>
+                </article>
               );
             })}
           </div>
@@ -590,14 +621,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         >
           <div className="section-label">
             <span>{copy.testimonials.label}</span>
-            <a
-              href="https://www.linkedin.com/in/iago-rodrigues/details/recommendations/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.testimonials.source}
-              <ExternalLink aria-hidden="true" />
-            </a>
           </div>
           <div className="testimonial-layout">
             <div>
@@ -651,22 +674,19 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                     <strong>{author.name}</strong>
                     <span>{author.role}</span>
                   </span>
-                  <span className="linkedin-mark" aria-hidden="true">
-                    in
-                  </span>
                 </figcaption>
-                <small>{copy.testimonials.note}</small>
               </figure>
             </div>
           </div>
         </section>
         <section className="origin section-pad">
-          <div
-            className="origin-network"
-            role="img"
-            aria-label={copy.origin.caption}
+          <figure
+            className="origin-figure"
+            aria-labelledby="origin-map-title"
+            aria-describedby="origin-map-description"
           >
-            <svg viewBox="0 0 600 500" aria-hidden="true">
+            <div className="origin-network" aria-hidden="true">
+              <svg viewBox="0 0 600 500">
               <defs>
                 <pattern
                   id="map-grid"
@@ -695,28 +715,35 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               <circle cx="440" cy="140" r="7" />
               <circle cx="460" cy="300" r="7" />
               <circle cx="170" cy="105" r="7" />
-            </svg>
-            <span className="network-coordinates">01°27′ S · 48°30′ W</span>
-            <span className="network-belem">
-              Belém<span>Pará, Brasil</span>
-            </span>
-            <span className="network-endpoint endpoint-one">
-              <Monitor aria-hidden="true" />
-              {copy.origin.node}
-            </span>
-            <span className="network-endpoint endpoint-two">
-              <Network aria-hidden="true" />
-              API / CLOUD
-            </span>
-            <span className="network-endpoint endpoint-three">
-              <Code2 aria-hidden="true" />
-              IRTC
-            </span>
-            <span className="network-status">
-              <span />
-              {copy.origin.link}
-            </span>
-          </div>
+              </svg>
+              <span className="network-coordinates">01°27′ S · 48°30′ W</span>
+              <span className="network-belem">
+                Belém<span>Pará, Brasil</span>
+              </span>
+              <span className="network-endpoint endpoint-one">
+                <Monitor aria-hidden="true" />
+                {copy.origin.node}
+              </span>
+              <span className="network-endpoint endpoint-two">
+                <Network aria-hidden="true" />
+                API / CLOUD
+              </span>
+              <span className="network-endpoint endpoint-three">
+                <Code2 aria-hidden="true" />
+                IRTC
+              </span>
+              <span className="network-status">
+                <span />
+                {copy.origin.link}
+              </span>
+            </div>
+            <figcaption className="network-caption">
+              <strong id="origin-map-title">{copy.origin.mapTitle}</strong>
+              <span id="origin-map-description">
+                {copy.origin.mapDescription}
+              </span>
+            </figcaption>
+          </figure>
           <div data-reveal>
             <p className="overline">{copy.origin.label}</p>
             <h2>
@@ -823,17 +850,30 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             <br />
             <span>{copy.footer.accent}</span>
           </SectionLink>
-          <div>
+          <div className="footer-contact">
             <p>{copy.footer.location}</p>
-            <a href="mailto:iago@irtc.com.br">iago@irtc.com.br</a>
             <div
-              className="social-placeholders"
+              className="footer-channels"
               aria-label={copy.footer.socials}
             >
-              {["LinkedIn", "Instagram", "GitHub"].map((name) => (
-                <span role="link" aria-disabled="true" key={name}>
-                  {name}
-                  <small>{copy.footer.soon}</small>
+              <a className="footer-channel" href="mailto:iago@irtc.com.br">
+                <span className="footer-channel-icon">
+                  <Mail aria-hidden="true" />
+                </span>
+                <span>
+                  E-mail
+                  <small>iago@irtc.com.br</small>
+                </span>
+              </a>
+              {footerSocials.map(({ name, Icon }) => (
+                <span className="footer-channel" key={name}>
+                  <span className="footer-channel-icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  <span>
+                    {name}
+                    <small>{copy.footer.soon}</small>
+                  </span>
                 </span>
               ))}
             </div>
@@ -845,9 +885,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           label={copy.home}
         >
           irtc
-          <span className="footer-asterisk" aria-hidden="true">
-            ✳
-          </span>
         </SectionLink>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>

@@ -48,6 +48,18 @@ describe("institutional experience", () => {
     expect(within(region).getByText("Pedro Felipe")).toBeVisible();
     await userEvent.click(screen.getByRole("button", { name: "Próxima recomendação" }));
     expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
+    expect(within(region).queryByText("LinkedIn")).toBeNull();
+    expect(within(region).queryByRole("link", { name: /recomendações/i })).toBeNull();
+  });
+  it("keeps only one solution accordion open", async () => {
+    render(<SiteExperience />);
+    const products = screen.getByRole("button", { name: /Produtos & plataformas/ });
+    const systems = screen.getByRole("button", { name: /Sistemas & integrações/ });
+    await userEvent.click(products);
+    expect(products).toHaveAttribute("aria-expanded", "true");
+    await userEvent.click(systems);
+    expect(products).toHaveAttribute("aria-expanded", "false");
+    expect(systems).toHaveAttribute("aria-expanded", "true");
   });
   it("switches projects and explains a selected technology", async () => {
     render(<SiteExperience />);

@@ -191,8 +191,11 @@ export const content = {
         "Queremos que empresas de todos os tamanhos tenham acesso a software bem feito, com comunicação clara e uma parceria que continua depois do lançamento.",
       cta: "Vamos conhecer seu projeto",
       node: "Sua operação",
-      link: "Equipe conectada",
+      link: "Fluxo contínuo",
       caption: "Uma base em Belém. Colaboração de onde você estiver.",
+      mapTitle: "Belém é o ponto de partida.",
+      mapDescription:
+        "A IRTC conecta engenharia, infraestrutura e a operação do cliente em um fluxo contínuo de colaboração e entrega.",
     },
     contact: {
       label: "VAMOS ENTENDER O SEU DESAFIO.",
@@ -447,8 +450,11 @@ export const content = {
         "We want businesses of every size to have access to well-built software, clear communication and a partnership that continues beyond launch.",
       cta: "Let's explore your project",
       node: "Your business",
-      link: "Connected team",
+      link: "Continuous flow",
       caption: "A home base in Belém. Collaboration wherever you are.",
+      mapTitle: "Belém is the starting point.",
+      mapDescription:
+        "IRTC connects engineering, infrastructure and the client's operation in a continuous flow of collaboration and delivery.",
     },
     contact: {
       label: "LET'S UNDERSTAND YOUR CHALLENGE.",
@@ -703,8 +709,11 @@ export const content = {
         "Queremos que empresas de todos los tamaños accedan a software bien construido, comunicación clara y una colaboración que continúe después del lanzamiento.",
       cta: "Conozcamos tu proyecto",
       node: "Tu operación",
-      link: "Equipo conectado",
+      link: "Flujo continuo",
       caption: "Una base en Belém. Colaboración estés donde estés.",
+      mapTitle: "Belém es el punto de partida.",
+      mapDescription:
+        "IRTC conecta ingeniería, infraestructura y la operación del cliente en un flujo continuo de colaboración y entrega.",
     },
     contact: {
       label: "ENTENDAMOS TU DESAFÍO.",
