@@ -13,20 +13,46 @@ export function HeroWorld({ paused }: { paused: boolean }) {
   useEffect(() => {
     let disposed = false;
     let cleanup: (() => void) | undefined;
-    if (window.matchMedia("(max-width: 1023px), (prefers-reduced-motion: reduce)").matches)
-      return;
-    const timer = window.setTimeout(async () => {
-      try {
-        const { createWorld } = await import("@/lib/hero-world");
-        if (!disposed && mount.current)
-          cleanup = createWorld(mount.current, () => motion.current);
-      } catch {
-        mount.current?.setAttribute("data-fallback", "true");
+    let timer: ReturnType<typeof setTimeout>;
+    let visible = true;
+    let generation = 0;
+    const element = mount.current;
+    if (!element) return;
+    const capable = window.matchMedia(
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+    );
+    const configure = () => {
+      const request = ++generation;
+      clearTimeout(timer);
+      if (!capable.matches) {
+        cleanup?.();
+        cleanup = undefined;
+        delete element.dataset.ready;
+        return;
       }
-    }, 3000);
+      if (cleanup || !visible) return;
+      timer = setTimeout(async () => {
+        try {
+          const { createWorld } = await import("@/lib/hero-world");
+          if (!disposed && request === generation)
+            cleanup = createWorld(element, () => motion.current);
+        } catch {
+          element.dataset.fallback = "true";
+        }
+      }, 3000);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      configure();
+    });
+    observer.observe(element);
+    capable.addEventListener("change", configure);
+    configure();
     return () => {
       disposed = true;
-      window.clearTimeout(timer);
+      clearTimeout(timer);
+      observer.disconnect();
+      capable.removeEventListener("change", configure);
       cleanup?.();
     };
   }, []);

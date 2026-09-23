@@ -37,7 +37,7 @@ describe("institutional experience", () => {
   });
   it("renders English content and updates the document language", () => {
     render(<SiteExperience locale="en" />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Ideas, made real.");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Your idea becomes");
     expect(document.documentElement.lang).toBe("en");
   });
   it("cycles all six recommendations and wraps backwards", async () => {
@@ -50,6 +50,12 @@ describe("institutional experience", () => {
     expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
     expect(within(region).queryByText("LinkedIn")).toBeNull();
     expect(within(region).queryByRole("link", { name: /recomendações/i })).toBeNull();
+  });
+  it("renders the founder portrait and one accessible manifesto", () => {
+    render(<SiteExperience />);
+    expect(screen.getByRole("img", { name: "Retrato de Iago Rodrigues, fundador da IRTC" })).toHaveAttribute("loading", "lazy");
+    expect(screen.getAllByRole("heading", { name: /Tecnologia boa\s*resolve de verdade\./ })).toHaveLength(1);
+    expect(document.querySelectorAll("#manifesto")).toHaveLength(1);
   });
   it("keeps only one solution accordion open", async () => {
     render(<SiteExperience />);

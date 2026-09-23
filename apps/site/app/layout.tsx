@@ -69,6 +69,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={body.variable} suppressHydrationWarning>
       <head>
+        <link
+          rel="describedby"
+          href="/llms.txt"
+          type="text/plain"
+          title="IRTC company guide for AI assistants"
+        />
         <script dangerouslySetInnerHTML={{ __html: preferences }} />
       </head>
       <body>{children}</body>

@@ -36,10 +36,8 @@ import {
   Play,
   Plus,
   Send,
-  ShieldCheck,
   Sparkles,
   SunMoon,
-  Zap,
 } from "lucide-react";
 import {
   content,
@@ -48,6 +46,8 @@ import {
   recommendationAuthors,
 } from "@/lib/content";
 import { HeroWorld } from "./hero-world";
+import { ScrollStory } from "./scroll-story";
+import { Founder } from "./founder";
 
 const Iris = dynamic(() => import("./iris"));
 const sectionIds = ["manifesto", "projetos", "solucoes", "depoimentos"];
@@ -93,16 +93,30 @@ function SectionLink({
     event.preventDefault();
     const destination = document.getElementById(target);
     if (!destination) return;
-    destination.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-    });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? "instant"
+      : "smooth";
+    const story = destination.hasAttribute("data-scroll-stage")
+      ? destination.closest<HTMLElement>('.intro-story[data-enhanced="true"]')
+      : null;
+    if (story)
+      window.scrollTo({
+        top: story.offsetTop + story.offsetHeight - window.innerHeight,
+        behavior,
+      });
+    else destination.scrollIntoView({ behavior });
     destination.focus({ preventScroll: true });
     event.currentTarget.closest("details")?.removeAttribute("open");
   }
   return (
-    <Link href="/" prefetch={false} onClick={navigate} className={className} aria-label={label}>
+    <Link
+      href="/"
+      prefetch={false}
+      onClick={navigate}
+      className={className}
+      aria-label={label}
+    >
       {children}
     </Link>
   );
@@ -300,58 +314,60 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         </details>
       </header>
       <main id="conteudo" tabIndex={-1}>
-        <section
-          className="hero"
-          id="inicio"
-          tabIndex={-1}
-          aria-labelledby="hero-title"
-        >
-          <HeroWorld paused={paused} />
-          <div className="hero-content">
-            <p className="eyebrow">
-              <span />
-              {copy.hero.eyebrow}
-            </p>
-            <h1 id="hero-title">
-              <span>{copy.hero.title}</span>
-              <TypedHeadline
-                key={locale}
-                paused={paused}
-                words={copy.hero.words}
-              />
-              <span className="sr-only">{copy.hero.words.join(" ")}</span>
-            </h1>
-            <p className="hero-description">{copy.hero.description}</p>
-            <SectionLink target="contato" className="hero-start">
-              {copy.hero.cta}
-              <span>
-                <MessageCircle aria-hidden="true" />
-              </span>
-            </SectionLink>
-          </div>
-          <div className="hero-bottom">
-            <span>{copy.hero.label}</span>
-            <SectionLink
-              target="manifesto"
-              className="scroll-cue"
-              label={copy.hero.explore}
-            >
-              <ArrowDown aria-hidden="true" />
-            </SectionLink>
-            <button
-              className="motion-toggle"
-              aria-pressed={paused}
-              onClick={() => setPaused(!paused)}
-            >
-              {paused ? (
-                <Play aria-hidden="true" />
-              ) : (
-                <Pause aria-hidden="true" />
-              )}
-              {paused ? copy.hero.play : copy.hero.pause}
-            </button>
-          </div>
-        </section>
+        <ScrollStory locale={locale} paused={paused}>
+          <section
+            className="hero"
+            id="inicio"
+            tabIndex={-1}
+            aria-labelledby="hero-title"
+          >
+            <HeroWorld paused={paused} />
+            <div className="hero-content">
+              <p className="eyebrow">
+                <span />
+                {copy.hero.eyebrow}
+              </p>
+              <h1 id="hero-title">
+                <span>{copy.hero.title}</span>
+                <TypedHeadline
+                  key={locale}
+                  paused={paused}
+                  words={copy.hero.words}
+                />
+                <span className="sr-only">{copy.hero.words.join(" ")}</span>
+              </h1>
+              <p className="hero-description">{copy.hero.description}</p>
+              <SectionLink target="contato" className="hero-start">
+                {copy.hero.cta}
+                <span>
+                  <MessageCircle aria-hidden="true" />
+                </span>
+              </SectionLink>
+            </div>
+            <div className="hero-bottom">
+              <span>{copy.hero.label}</span>
+              <SectionLink
+                target="manifesto"
+                className="scroll-cue"
+                label={copy.hero.explore}
+              >
+                <ArrowDown aria-hidden="true" />
+              </SectionLink>
+              <button
+                className="motion-toggle"
+                aria-pressed={paused}
+                onClick={() => setPaused(!paused)}
+              >
+                {paused ? (
+                  <Play aria-hidden="true" />
+                ) : (
+                  <Pause aria-hidden="true" />
+                )}
+                {paused ? copy.hero.play : copy.hero.pause}
+              </button>
+            </div>
+          </section>
+        </ScrollStory>
         <section className="client-strip" aria-label={copy.clients}>
           <p>{copy.clients}</p>
           <div className="client-names">
@@ -371,41 +387,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                 />
               </a>
             ))}
-          </div>
-        </section>
-        <section className="manifesto section-pad" id="manifesto" tabIndex={-1}>
-          <div className="section-label">
-            <span>{copy.manifesto.label}</span>
-            <span>{copy.manifesto.aside}</span>
-          </div>
-          <div className="manifesto-grid">
-            <div className="manifesto-heading" data-reveal>
-              <h2>
-                {copy.manifesto.title}
-                <br />
-                <span>{copy.manifesto.accent}</span>
-              </h2>
-              <div className="code-sculpture" aria-hidden="true">
-                <span>⟨</span>
-                <i>/</i>
-                <span>⟩</span>
-              </div>
-              <p>{copy.manifesto.foot}</p>
-            </div>
-            <div className="manifesto-points">
-              {copy.manifesto.points.map((point, index) => {
-                const Icon = [Zap, ShieldCheck, MessageCircle][index];
-                return (
-                  <article key={point.title} data-reveal>
-                    <span className={`point-symbol symbol-${index}`}>
-                      <Icon aria-hidden="true" />
-                    </span>
-                    <h3>{point.title}</h3>
-                    <p>{point.text}</p>
-                  </article>
-                );
-              })}
-            </div>
           </div>
         </section>
         <section className="projects section-pad" id="projetos" tabIndex={-1}>
@@ -687,34 +668,34 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           >
             <div className="origin-network" aria-hidden="true">
               <svg viewBox="0 0 600 500">
-              <defs>
-                <pattern
-                  id="map-grid"
-                  width="36"
-                  height="36"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
-                </pattern>
-              </defs>
-              <rect width="600" height="500" fill="url(#map-grid)" />
-              <path
-                className="network-route route-one"
-                d="M180 330Q180 90 440 140"
-              />
-              <path
-                className="network-route route-two"
-                d="M180 330Q370 410 460 300"
-              />
-              <path
-                className="network-route route-three"
-                d="M180 330Q55 190 170 105"
-              />
-              <circle className="network-pulse" cx="180" cy="330" r="28" />
-              <circle className="network-hub" cx="180" cy="330" r="10" />
-              <circle cx="440" cy="140" r="7" />
-              <circle cx="460" cy="300" r="7" />
-              <circle cx="170" cy="105" r="7" />
+                <defs>
+                  <pattern
+                    id="map-grid"
+                    width="36"
+                    height="36"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
+                  </pattern>
+                </defs>
+                <rect width="600" height="500" fill="url(#map-grid)" />
+                <path
+                  className="network-route route-one"
+                  d="M180 330Q180 90 440 140"
+                />
+                <path
+                  className="network-route route-two"
+                  d="M180 330Q370 410 460 300"
+                />
+                <path
+                  className="network-route route-three"
+                  d="M180 330Q55 190 170 105"
+                />
+                <circle className="network-pulse" cx="180" cy="330" r="28" />
+                <circle className="network-hub" cx="180" cy="330" r="10" />
+                <circle cx="440" cy="140" r="7" />
+                <circle cx="460" cy="300" r="7" />
+                <circle cx="170" cy="105" r="7" />
               </svg>
               <span className="network-coordinates">01°27′ S · 48°30′ W</span>
               <span className="network-belem">
@@ -759,6 +740,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             </SectionLink>
           </div>
         </section>
+        <Founder locale={locale} />
         <section className="contact section-pad" id="contato" tabIndex={-1}>
           <div>
             <p className="overline">{copy.contact.label}</p>
@@ -852,10 +834,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           </SectionLink>
           <div className="footer-contact">
             <p>{copy.footer.location}</p>
-            <div
-              className="footer-channels"
-              aria-label={copy.footer.socials}
-            >
+            <div className="footer-channels" aria-label={copy.footer.socials}>
               <a className="footer-channel" href="mailto:iago@irtc.com.br">
                 <span className="footer-channel-icon">
                   <Mail aria-hidden="true" />
@@ -884,7 +863,10 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           className="footer-wordmark"
           label={copy.home}
         >
-          irtc<span className="footer-asterisk" aria-hidden="true">✳</span>
+          irtc
+          <span className="footer-asterisk" aria-hidden="true">
+            ✳
+          </span>
         </SectionLink>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>

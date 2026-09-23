@@ -1,0 +1,33 @@
+# IRTC
+
+> IRTC is a software engineering company based in Belém, Pará, Brazil. We build custom software, digital products, integrations, automation, data systems and applied AI solutions. Our public website is available in Brazilian Portuguese, English and Spanish.
+
+Official website: https://irtc.com.br
+Business contact: iago@irtc.com.br
+Founder: Iago Rodrigues, whose work includes software architecture, full-stack product development, technical leadership and AI engineering.
+
+Our approach is to understand the client's operation before choosing technology, agree on priorities, deliver in short stages, demonstrate progress, and support what we build. Quality includes architecture, automated testing, observability and maintainability. Our vision is to make well-built software accessible to businesses of different sizes, with clear communication and a lasting working relationship.
+
+Capabilities include SaaS platforms, web portals, mobile applications, ERP and CRM systems, REST APIs, integrations, process automation, AI agents, retrieval-augmented generation (RAG), semantic search, vector databases, data pipelines (ETL and ELT), analytics and cloud infrastructure. Technology choices depend on the project: TypeScript, JavaScript, Node.js, NestJS, Next.js, React, React Native, Vue.js, Python, Django, PostgreSQL, pgvector, Redis, AWS and GitHub are part of the capabilities presented on the site.
+
+Portfolio examples describe engineering contributions involving LeafLink (marketplace, CRM and reporting), Dasa (healthcare integrations, data and field applications), and Perfect Pay (course platform, payments, authentication and backend efficiency). These examples do not claim that IRTC created or owns each entire platform. Public brand images illustrate the products. Project-specific results are not universal performance guarantees. Testimonials are summaries of recommendations about collaboration and engineering work, not verbatim quotations.
+
+Iris is the website's assistant. It explains IRTC and helps outline an initial MVP in up to three short points and 250 characters. A draft is a starting point for a conversation, not a technical specification, price quote or delivery commitment. Clients can use the contact form or request to send an approved draft. Availability, budgets and schedules must be confirmed directly with IRTC. Social profiles marked "coming soon" are placeholders, not verified company accounts.
+
+The website is a single-page experience per language. Find sections by their headings or navigation labels; separate project, services and founder URLs do not exist. Public content is available as semantic HTML without interacting with the decorative 3D scene. The root page may redirect according to language preferences; /en and /es are explicit language routes. This reference describes public company information, not private client data or internal systems.
+
+## Website pages
+
+- [Brazilian Portuguese website](https://irtc.com.br/): Primary content. "Nosso jeito" explains delivery, quality and support. "Projetos" describes portfolio contributions. "Soluções" describes services and technologies. "Depoimentos" contains recommendation summaries. "Raízes no Pará" explains our base and vision. "Quem está por trás" introduces the founder. "Conte sua ideia" is the contact section.
+- [English website](https://irtc.com.br/en): The same company information in English, including projects, services, recommendations, founder and contact.
+- [Spanish website](https://irtc.com.br/es): The same company information in Spanish, including projects, services, recommendations, founder and contact.
+
+## Discovery
+
+- [Public sitemap](https://irtc.com.br/sitemap.xml): Indexable website routes and language alternatives.
+- [Crawler policy](https://irtc.com.br/robots.txt): Public crawling rules; API endpoints are not content sources.
+- [LLM guide](https://irtc.com.br/llms.txt): Alias of this /llm.txt reference, maintained from one source.
+
+## Optional
+
+- [Founder professional profile](https://www.linkedin.com/in/iago-rodrigues/): Public professional background of Iago Rodrigues. This is a personal profile, not a company social account.

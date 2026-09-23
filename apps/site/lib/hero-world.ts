@@ -47,10 +47,6 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     roughness: 0.25,
     clearcoat: 1,
   });
-  const screen = new THREE.MeshStandardMaterial({
-    color: 0x202627,
-    roughness: 0.7,
-  });
   const cluster = new THREE.Group();
   scene.add(cluster);
   const objects: {
@@ -83,32 +79,6 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
       material,
     );
   }
-
-  const terminal = new THREE.Group();
-  terminal.add(rounded(2.75, 1.95, 0.32, charcoal));
-  const glass = rounded(2.5, 1.7, 0.06, screen, 0.08);
-  glass.position.z = 0.18;
-  terminal.add(glass);
-  [0, 1, 2].forEach((index) => {
-    const dot = new THREE.Mesh(
-      new THREE.SphereGeometry(0.047, 12, 12),
-      index === 0 ? orange : silver,
-    );
-    dot.position.set(-1.04 + index * 0.16, 0.64, 0.24);
-    terminal.add(dot);
-  });
-  for (let index = 0; index < 5; index++) {
-    const bar = rounded(
-      0.7 + (index % 3) * 0.35,
-      0.055,
-      0.025,
-      index % 2 ? silver : mint,
-      0.01,
-    );
-    bar.position.set(-0.32 + (index % 2) * 0.15, 0.3 - index * 0.21, 0.24);
-    terminal.add(bar);
-  }
-  place(terminal, -3.8, 2.45, 0.2, [-0.22, 0.35, -0.2]);
 
   const phone = new THREE.Group();
   phone.add(rounded(1.05, 2.05, 0.22, silver, 0.16));
@@ -262,7 +232,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     scene.traverse((object) => {
       if (object instanceof THREE.Mesh) object.geometry.dispose();
     });
-    [charcoal, silver, mint, orange, screen].forEach((material) =>
+    [charcoal, silver, mint, orange].forEach((material) =>
       material.dispose(),
     );
     environment.dispose();
