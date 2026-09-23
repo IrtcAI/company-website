@@ -1,0 +1,82 @@
+.project-visual {
+  min-height: clamp(26rem, 43vw, 34rem);
+  padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(4.75rem, 8vw, 5.5rem);
+  isolation: isolate;
+}
+
+.project-visual.leaflink {
+  background:
+    radial-gradient(circle at 88% 14%, #d5c7f0 0 11%, transparent 36%),
+    linear-gradient(135deg, #d8f3f2 0%, #cae9ee 100%);
+}
+
+.project-visual.dasa {
+  background:
+    radial-gradient(circle at 8% 88%, #c8d8f0 0 13%, transparent 35%),
+    linear-gradient(135deg, #e5f0fa 0%, #cfdcf2 100%);
+}
+
+.project-visual.perfectpay {
+  background:
+    radial-gradient(circle at 90% 16%, #bde5d4 0 12%, transparent 35%),
+    linear-gradient(135deg, #dff5eb 0%, #bfe7d8 100%);
+}
+
+.project-orb {
+  z-index: -1;
+  border-color: #ffffff73;
+}
+
+.real-product {
+  border: 1px solid #ffffffa8;
+  border-radius: 0.9rem;
+  box-shadow: 0 1.5rem 3.5rem #143f4530, 0 0.3rem #ffffff80;
+}
+
+.real-product .window-bar {
+  background: #f9ffff;
+  border-bottom-color: #d7e8e7;
+  color: #426563;
+}
+
+.real-product-content {
+  overflow: hidden;
+}
+
+.real-product-content > img:first-child {
+  height: clamp(17rem, 28vw, 21.25rem);
+  object-position: center 56%;
+  transform: scale(1.2);
+  transform-origin: center 56%;
+}
+
+.perfectpay .real-product-content {
+  padding: 0;
+}
+
+.perfectpay .real-product-content > img:first-child {
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.real-product-content .product-brand-overlay {
+  background: #f8fcff;
+  box-shadow: 0 0.5rem 1.5rem #11285624;
+}
+
+.visual-caption {
+  color: #254947;
+  background: #ffffffdf;
+  box-shadow: 0 0.35rem 1.4rem #143f4520;
+}
+
+@media (max-width: 760px) {
+  .project-visual {
+    min-height: 24rem;
+  }
+
+  .real-product-content > img:first-child {
+    height: 17rem;
+    transform: scale(1.15);
+  }
+}
