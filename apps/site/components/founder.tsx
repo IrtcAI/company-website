@@ -56,6 +56,11 @@ export function Founder({ locale }: { locale: Locale }) {
         </p>
       </div>
       <figure className="founder-portrait">
+        <div className="founder-blueprint" aria-hidden="true">
+          <span className="founder-blueprint-code">&lt;/&gt;</span>
+          <span className="founder-blueprint-coordinate">01°27′ S · 48°30′ W</span>
+          <span className="founder-blueprint-node" />
+        </div>
         <div className="founder-photo">
           <Image
             src="/founder.webp"

@@ -2,7 +2,7 @@ export type Locale = "pt-BR" | "en" | "es";
 
 export const content = {
   "pt-BR": {
-    nav: ["Nosso jeito", "Projetos", "Soluções", "Depoimentos"],
+    nav: ["Nosso jeito", "Soluções", "Projetos", "Depoimentos"],
     skip: "Pular para o conteúdo",
     home: "IRTC, início",
     talk: "Vamos conversar",
@@ -49,7 +49,7 @@ export const content = {
       ],
     },
     projects: {
-      label: "02 / PROJETOS EM OPERAÇÃO",
+      label: "03 / PROJETOS EM OPERAÇÃO",
       aside: "ENGENHARIA APLICADA A NEGÓCIOS REAIS.",
       title: "Desafios diferentes.",
       accent: "O mesmo cuidado.",
@@ -93,7 +93,7 @@ export const content = {
       ],
     },
     solutions: {
-      label: "03 / O QUE CONSTRUÍMOS",
+      label: "02 / O QUE CONSTRUÍMOS",
       aside: "DA PRIMEIRA VERSÃO À EVOLUÇÃO CONTÍNUA.",
       title: "O que seu negócio",
       accent: "precisa resolver?",
@@ -259,7 +259,7 @@ export const content = {
     },
   },
   en: {
-    nav: ["Our approach", "Projects", "Solutions", "Testimonials"],
+    nav: ["Our approach", "Solutions", "Projects", "Testimonials"],
     skip: "Skip to content",
     home: "IRTC, home",
     talk: "Let's talk",
@@ -306,7 +306,7 @@ export const content = {
       ],
     },
     projects: {
-      label: "02 / SOFTWARE AT WORK",
+      label: "03 / SOFTWARE AT WORK",
       aside: "ENGINEERING FOR REAL BUSINESSES.",
       title: "Different challenges.",
       accent: "The same care.",
@@ -350,7 +350,7 @@ export const content = {
       ],
     },
     solutions: {
-      label: "03 / WHAT WE BUILD",
+      label: "02 / WHAT WE BUILD",
       aside: "FROM FIRST RELEASE TO CONTINUOUS IMPROVEMENT.",
       title: "What does your business",
       accent: "need to solve?",
@@ -516,7 +516,7 @@ export const content = {
     },
   },
   es: {
-    nav: ["Cómo trabajamos", "Proyectos", "Soluciones", "Testimonios"],
+    nav: ["Cómo trabajamos", "Soluciones", "Proyectos", "Testimonios"],
     skip: "Saltar al contenido",
     home: "IRTC, inicio",
     talk: "Conversemos",
@@ -563,7 +563,7 @@ export const content = {
       ],
     },
     projects: {
-      label: "02 / PROYECTOS EN MARCHA",
+      label: "03 / PROYECTOS EN MARCHA",
       aside: "INGENIERÍA PARA NEGOCIOS REALES.",
       title: "Desafíos diferentes.",
       accent: "El mismo compromiso.",
@@ -607,7 +607,7 @@ export const content = {
       ],
     },
     solutions: {
-      label: "03 / QUÉ CONSTRUIMOS",
+      label: "02 / QUÉ CONSTRUIMOS",
       aside: "DE LA PRIMERA VERSIÓN A LA MEJORA CONTINUA.",
       title: "¿Qué necesita resolver",
       accent: "tu negocio?",

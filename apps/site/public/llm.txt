@@ -18,7 +18,7 @@ The website is a single-page experience per language. Find sections by their hea
 
 ## Website pages
 
-- [Brazilian Portuguese website](https://irtc.com.br/): Primary content. "Nosso jeito" explains delivery, quality and support. "Projetos" describes portfolio contributions. "Soluções" describes services and technologies. "Depoimentos" contains recommendation summaries. "Raízes no Pará" explains our base and vision. "Quem está por trás" introduces the founder. "Conte sua ideia" is the contact section.
+- [Brazilian Portuguese website](https://irtc.com.br/): Primary content, in reading order. "Nosso jeito" explains delivery, quality and support. "Soluções / O que construímos" describes services and technologies. Client brands and "Projetos" describe portfolio contributions. "Depoimentos" contains recommendation summaries. "Raízes no Pará" explains our base and vision. "Quem está por trás" introduces the founder. "Conte sua ideia" is the contact section.
 - [English website](https://irtc.com.br/en): The same company information in English, including projects, services, recommendations, founder and contact.
 - [Spanish website](https://irtc.com.br/es): The same company information in Spanish, including projects, services, recommendations, founder and contact.
 

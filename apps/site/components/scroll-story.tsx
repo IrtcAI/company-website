@@ -24,6 +24,8 @@ export function ScrollStory({
     );
     let frame = 0;
     let active = false;
+    let initialScaleX = 0.2;
+    let initialScaleY = 0.4;
     const update = () => {
       frame = 0;
       if (!active) return;
@@ -31,8 +33,18 @@ export function ScrollStory({
       const distance = Math.max(1, element.offsetHeight - window.innerHeight);
       const progress = Math.max(0, Math.min(1, -bounds.top / distance));
       const eased = progress * progress * (3 - 2 * progress);
-      element.style.setProperty("--screen-scale", String(0.22 + eased * 0.78));
-      element.style.setProperty("--screen-x", `${-34 * (1 - eased)}vw`);
+      element.dataset.progress = String(progress);
+      element.style.setProperty(
+        "--screen-visibility",
+        String(Math.min(1, progress / 0.18)),
+      );
+      const scaleX = initialScaleX + eased * (1 - initialScaleX);
+      const scaleY = initialScaleY + eased * (1 - initialScaleY);
+      element.style.setProperty("--screen-scale-x", String(scaleX));
+      element.style.setProperty("--screen-scale-y", String(scaleY));
+      element.style.setProperty("--preview-ratio", String(scaleY / scaleX));
+      element.style.setProperty("--screen-rim", `${32 * (1 - eased)}px`);
+      element.style.setProperty("--screen-x", `${-25 * (1 - eased)}vw`);
       element.style.setProperty("--screen-y", `${-23 * (1 - eased)}svh`);
       element.style.setProperty("--screen-rotate", `${-14 * (1 - eased)}deg`);
       element.style.setProperty("--screen-tilt", `${18 * (1 - eased)}deg`);
@@ -56,6 +68,9 @@ export function ScrollStory({
     };
     const configure = () => {
       const screen = element.querySelector<HTMLElement>(".story-screen");
+      const terminalSize = Math.min(240, window.innerWidth * 0.18);
+      initialScaleX = terminalSize / Math.max(1, screen?.offsetWidth ?? 1);
+      initialScaleY = terminalSize / Math.max(1, screen?.offsetHeight ?? 1);
       active =
         media.matches &&
         !paused &&
@@ -76,12 +91,16 @@ export function ScrollStory({
       schedule();
     });
     visibility.observe(element);
+    const size = new ResizeObserver(configure);
+    const screen = element.querySelector<HTMLElement>(".story-screen");
+    if (screen) size.observe(screen);
     media.addEventListener("change", configure);
     window.addEventListener("resize", configure, { passive: true });
     configure();
     return () => {
       cancelAnimationFrame(frame);
       visibility.disconnect();
+      size.disconnect();
       media.removeEventListener("change", configure);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", configure);
@@ -108,9 +127,6 @@ export function ScrollStory({
           </div>
           <div className="screen-preview" aria-hidden="true">
             <span>&gt;_</span>
-            <i />
-            <i />
-            <i />
           </div>
           <div className="screen-content">
             <div className="section-label">

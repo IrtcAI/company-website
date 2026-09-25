@@ -3780,50 +3780,39 @@ a.footer-channel:hover .footer-channel-icon {
   height: 100svh;
   opacity: var(--hero-opacity, 1);
 }
-.intro-story[data-enhanced="true"] .fallback-terminal {
-  display: none;
-}
 .intro-story[data-enhanced="true"] .story-screen {
   position: absolute;
   top: 50%;
   left: 50%;
   width: calc(100% - 96px);
   margin: 0;
+  opacity: var(--screen-visibility, 0);
   transform: translate(-50%, -50%)
-    translate(var(--screen-x, -34vw), var(--screen-y, -23svh))
+    translate(var(--screen-x, -25vw), var(--screen-y, -23svh))
     rotateY(var(--screen-tilt, 18deg)) rotate(var(--screen-rotate, -14deg))
-    scale(var(--screen-scale, 0.22));
+    scale(var(--screen-scale-x, 0.2), var(--screen-scale-y, 0.4));
   transform-origin: center;
   will-change: transform;
+  box-shadow: inset 0 0 0 var(--screen-rim, 32px) #bbc8bf, 14px 20px 0 #343d39;
+}
+.intro-story[data-enhanced="true"] .screen-chrome {
+  opacity: var(--story-opacity, 0);
 }
 .intro-story[data-enhanced="true"] .screen-content {
   opacity: var(--story-opacity, 0);
 }
 .intro-story[data-enhanced="true"] .screen-preview {
   position: absolute;
-  inset: 80px 8%;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  inset: 0;
+  display: grid;
+  place-items: center;
   opacity: var(--preview-opacity, 1);
   pointer-events: none;
 }
 .screen-preview > span {
-  font: 140px monospace;
+  font: 180px monospace;
   color: #a5dec5;
-}
-.screen-preview > i {
-  width: 70%;
-  height: 18px;
-  background: #a5dec5;
-  border-radius: 12px;
-}
-.screen-preview > i:nth-of-type(2) {
-  width: 48%;
-  background: #eac285;
-}
-.screen-preview > i:last-child {
-  width: 60%;
+  transform: scaleX(var(--preview-ratio, 2));
 }
 .founder {
   display: grid;
@@ -3864,25 +3853,29 @@ a.footer-channel:hover .footer-channel-icon {
   color: var(--text);
 }
 .founder-portrait {
+  position: relative;
+  isolation: isolate;
   grid-column: 8 / 13;
   margin: 0;
 }
 .founder-photo {
   position: relative;
-  padding: 18px;
-  background: #d5e6db;
-  border-radius: 44% 44% 8px 8px;
-  transform: rotate(3deg);
+  padding: 10px;
+  background: #f5f4f0;
+  border: 1px solid #829b8e;
+  border-radius: 8px;
+  box-shadow: 12px 14px 0 #2c4e4333;
+  transform: rotate(-3deg) scale(0.88);
   transition: transform 0.5s ease;
 }
 .founder-photo:hover {
-  transform: rotate(0);
+  transform: rotate(-1deg) scale(0.9);
 }
 .founder-photo img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 44% 44% 3px 3px;
+  border-radius: 3px;
 }
 .founder-stamp {
   position: absolute;

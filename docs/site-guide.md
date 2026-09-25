@@ -34,11 +34,17 @@ Na branch experimental `codex/scroll-story-founder`, `ScrollStory` transforma um
 
 Navegação interna mantém a URL limpa e transfere foco para a seção. Há skip link, landmarks, títulos, rótulos, estados de carregamento e confirmação de encerramento da Iris. O tema padrão segue o sistema; claro e escuro ficam salvos somente no navegador.
 
+A sequência atual é hero → Nosso jeito (01) → O que construímos (02) → marcas → projetos (03) → recomendações (04) → origem → fundador → contato. `DevelopmentWorld` cria um símbolo </> com geometria extrudada e montagem/rotação ligadas ao progresso da seção 02. O canvas decorativo fica sticky no fundo; não contém informação exclusiva nem captura eventos. Só inicializa perto da seção, a partir de 1024px e sem movimento reduzido. A renderização ocorre apenas por scroll, resize ou mudança de estado, com liberação explícita de recursos. A pausa congela a pose.
+
+A barra lateral de acessibilidade abre por ponteiro, botão ou teclado, fecha com Escape e devolve o foco ao acionador. Controles fechados ficam inertes. Tamanho de texto, alto contraste e pausa usam preferências locais; a pausa é compartilhada com as cenas, e o alto contraste oculta o fundo 3D. A barra fica à esquerda, separada da Iris.
+
 PT-BR é a base. EN e ES têm rotas indexáveis em `/en` e `/es`, com `hreflang`, sitemap e metadados próprios. Na raiz, a prioridade é preferência salva, país informado pelo host confiável e `Accept-Language`. O país é aceito apenas do cabeçalho da Vercel em produção; não há GPS nem consulta de IP de terceiros.
 
 ## Ativos e portfólio
 
 Logos e imagens ficam locais para desempenho e previsibilidade. Cada cartão identifica a imagem como pública e ilustrativa, sem alegar autoria integral da plataforma.
+
+Os três projetos usam as capturas reais fornecidas em 22/09/2026, convertidas para WebP; ver `project-image-sources.md`. A apresentação recorta a interface do navegador e mantém superfícies pastel associadas a cada marca. O retrato do fundador usa uma composição de desenho técnico em camadas, sem alterar a fotografia.
 
 | Marca | Origem |
 | --- | --- |

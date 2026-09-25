@@ -14,6 +14,12 @@ User feedback dated 22 September 2026. Work only on experimental branches; never
 
 Desktop motion uses transforms and visibility-gated updates. Mobile, paused motion and reduced-motion keep the entire narrative readable without sticky choreography or WebGL. Founder art direction: a software studio's layered architectural drawing, not an isolated decorative arch.
 
+## Refinement, 25 September 2026
+
+The Superlist reference was inspected visually through the notebook-to-assembled-cube sequence. Apply its persistent scroll-driven object behavior, not a small heading ornament. Section 02 now uses real extruded Three.js geometry: three beveled pieces assemble into </> and rotate as the entire section scrolls. A sticky decorative canvas sits behind the content, with a horizontal opacity mask protecting the reading column. Rendering is event-driven, not a continuous loop. Load only near the section on desktop; release on mobile/reduced-motion or unmount. Manual pause freezes the existing pose. No text is rendered into the canvas.
+
+The hero terminal is again a square floating mesh with a thick silver frame and >_ prompt. Its opacity hands over to the expanding HTML terminal during the opening scroll. The hero and section 02 reuse the existing Three.js dependency; no new animation framework was added. Lifecycle tests cover deferred initialization, ineligible devices, pause state and cleanup.
+
 ## Ownership and parallel work
 
 ### Parent: codex/scroll-story-founder

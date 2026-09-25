@@ -48,9 +48,11 @@ import {
 import { HeroWorld } from "./hero-world";
 import { ScrollStory } from "./scroll-story";
 import { Founder } from "./founder";
+import { AccessibilityToolbar } from "./accessibility-toolbar";
+import { DevelopmentWorld } from "./development-world";
 
 const Iris = dynamic(() => import("./iris"));
-const sectionIds = ["manifesto", "projetos", "solucoes", "depoimentos"];
+const sectionIds = ["manifesto", "solucoes", "projetos", "depoimentos"];
 const techNames = [
   "Node.js",
   "Next.js",
@@ -368,133 +370,19 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             </div>
           </section>
         </ScrollStory>
-        <section className="client-strip" aria-label={copy.clients}>
-          <p>{copy.clients}</p>
-          <div className="client-names">
-            {projectBrands.map((brand) => (
-              <a
-                key={brand.name}
-                href={brand.url}
-                target="_blank"
-                rel="noreferrer"
-                className={`brand-logo ${brand.theme}`}
-              >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  width={180}
-                  height={52}
-                />
-              </a>
-            ))}
-          </div>
-        </section>
-        <section className="projects section-pad" id="projetos" tabIndex={-1}>
-          <div className="section-label">
-            <span>{copy.projects.label}</span>
-            <span>{copy.projects.aside}</span>
-          </div>
-          <div className="section-title-row" data-reveal>
-            <h2>
-              {copy.projects.title}
-              <br />
-              <span>{copy.projects.accent}</span>
-            </h2>
-            <p>{copy.projects.intro}</p>
-          </div>
-          <div
-            className="project-selector"
-            role="group"
-            aria-label={copy.projects.choose}
-          >
-            {projectBrands.map((item, index) => (
-              <button
-                key={item.name}
-                aria-pressed={project === index}
-                onClick={() => setProject(index)}
-              >
-                <span>0{index + 1}</span>
-                {item.name}
-                <span className="selected-indicator">
-                  {project === index ? (
-                    <CircleCheck aria-hidden="true" />
-                  ) : (
-                    <Plus aria-hidden="true" />
-                  )}
-                </span>
-              </button>
-            ))}
-          </div>
-          <article className="project-feature" key={currentProject.name}>
-            <div className={`project-visual ${currentProject.theme}`}>
-              <div className="project-orb" aria-hidden="true" />
-              <a
-                className="product-window real-product"
-                href={currentProject.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${copy.projects.visit}: ${currentProject.name} (${new URL(currentProject.url).hostname})`}
-              >
-                <div className="window-bar" aria-hidden="true">
-                  <span className="window-dots">● ● ●</span>
-                  <span>{new URL(currentProject.url).hostname}</span>
-                  <ExternalLink />
-                </div>
-                <div className="real-product-content">
-                  <Image
-                    src={currentProject.image}
-                    alt={`${currentProject.name} — ${currentProject.category}`}
-                    width={900}
-                    height={620}
-                    sizes="(max-width: 760px) 90vw, 48vw"
-                  />
-                  {currentProject.theme === "dasa" ? (
-                    <Image
-                      className="product-brand-overlay"
-                      src={currentProject.logo}
-                      alt=""
-                      width={168}
-                      height={46}
-                    />
-                  ) : null}
-                </div>
-              </a>
-              <span className="visual-caption">{copy.projects.image}</span>
-            </div>
-            <div className="project-info">
-              <p className="overline">{currentProject.category}</p>
-              <h3>{currentProject.title}</h3>
-              <p>{currentProject.description}</p>
-              <div className="project-result">
-                <strong>{currentProject.metric}</strong>
-                <span>{currentProject.result}</span>
-              </div>
-              <p className="project-stack">{currentProject.stack}</p>
-              <details className="project-details">
-                <summary>
-                  {copy.projects.details}
-                  <Plus aria-hidden="true" />
-                </summary>
-                <p>{currentProject.detail}</p>
-                <a href={currentProject.url} target="_blank" rel="noreferrer">
-                  {copy.projects.visit}
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              </details>
-            </div>
-          </article>
-          <p className="project-source">{copy.projects.source}</p>
-        </section>
         <section className="solutions section-pad" id="solucoes" tabIndex={-1}>
+          <DevelopmentWorld paused={paused} />
           <div className="section-label">
             <span>{copy.solutions.label}</span>
             <span>{copy.solutions.aside}</span>
           </div>
-          <h2 data-reveal>
-            {copy.solutions.title}
-            <br />
-            <span>{copy.solutions.accent}</span>
-          </h2>
+          <div className="solution-heading">
+            <h2 data-reveal>
+              {copy.solutions.title}
+              <br />
+              <span>{copy.solutions.accent}</span>
+            </h2>
+          </div>
           <div className="solution-list">
             {copy.solutions.items.map((item, index) => {
               const Icon = serviceIcons[index];
@@ -594,6 +482,114 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               / ELT
             </p>
           </div>
+        </section>
+        <section className="client-strip" aria-label={copy.clients}>
+          <p>{copy.clients}</p>
+          <div className="client-names">
+            {projectBrands.map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noreferrer"
+                className={`brand-logo ${brand.theme}`}
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  width={180}
+                  height={52}
+                />
+              </a>
+            ))}
+          </div>
+        </section>
+        <section className="projects section-pad" id="projetos" tabIndex={-1}>
+          <div className="section-label">
+            <span>{copy.projects.label}</span>
+            <span>{copy.projects.aside}</span>
+          </div>
+          <div className="section-title-row" data-reveal>
+            <h2>
+              {copy.projects.title}
+              <br />
+              <span>{copy.projects.accent}</span>
+            </h2>
+            <p>{copy.projects.intro}</p>
+          </div>
+          <div
+            className="project-selector"
+            role="group"
+            aria-label={copy.projects.choose}
+          >
+            {projectBrands.map((item, index) => (
+              <button
+                key={item.name}
+                aria-pressed={project === index}
+                onClick={() => setProject(index)}
+              >
+                <span>0{index + 1}</span>
+                {item.name}
+                <span className="selected-indicator">
+                  {project === index ? (
+                    <CircleCheck aria-hidden="true" />
+                  ) : (
+                    <Plus aria-hidden="true" />
+                  )}
+                </span>
+              </button>
+            ))}
+          </div>
+          <article className="project-feature" key={currentProject.name}>
+            <div className={`project-visual ${currentProject.theme}`}>
+              <div className="project-orb" aria-hidden="true" />
+              <a
+                className="product-window real-product"
+                href={currentProject.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${copy.projects.visit}: ${currentProject.name} (${new URL(currentProject.url).hostname})`}
+              >
+                <div className="window-bar" aria-hidden="true">
+                  <span className="window-dots">● ● ●</span>
+                  <span>{new URL(currentProject.url).hostname}</span>
+                  <ExternalLink />
+                </div>
+                <div className="real-product-content">
+                  <Image
+                    src={currentProject.image}
+                    alt={`${currentProject.name} — ${currentProject.category}`}
+                    width={900}
+                    height={620}
+                    sizes="(max-width: 760px) 90vw, 48vw"
+                  />
+                </div>
+              </a>
+              <span className="visual-caption">{copy.projects.image}</span>
+            </div>
+            <div className="project-info">
+              <p className="overline">{currentProject.category}</p>
+              <h3>{currentProject.title}</h3>
+              <p>{currentProject.description}</p>
+              <div className="project-result">
+                <strong>{currentProject.metric}</strong>
+                <span>{currentProject.result}</span>
+              </div>
+              <p className="project-stack">{currentProject.stack}</p>
+              <details className="project-details">
+                <summary>
+                  {copy.projects.details}
+                  <Plus aria-hidden="true" />
+                </summary>
+                <p>{currentProject.detail}</p>
+                <a href={currentProject.url} target="_blank" rel="noreferrer">
+                  {copy.projects.visit}
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              </details>
+            </div>
+          </article>
+          <p className="project-source">{copy.projects.source}</p>
         </section>
         <section
           className="testimonials section-pad"
@@ -877,6 +873,11 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           </SectionLink>
         </div>
       </footer>
+      <AccessibilityToolbar
+        locale={locale}
+        paused={paused}
+        onPausedChange={setPaused}
+      />
       <button
         ref={launcher}
         className="iris-launcher"

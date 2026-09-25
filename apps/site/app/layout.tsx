@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import "./development-story.css";
+import "./project-showcase.css";
+import "./accessibility-toolbar.css";
 
 const body = Manrope({
   subsets: ["latin"],

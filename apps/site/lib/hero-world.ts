@@ -107,6 +107,29 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     return shape;
   }
   const code = new THREE.Group();
+  const terminal = new THREE.Group();
+  const terminalMaterials = [charcoal.clone(), silver.clone(), mint.clone()];
+  terminalMaterials.forEach((material) => {
+    material.transparent = true;
+  });
+  terminal.add(rounded(2.35, 2.15, 0.42, terminalMaterials[0], 0.22));
+  const terminalFrame = rounded(2.28, 2.08, 0.12, terminalMaterials[1], 0.2);
+  terminalFrame.position.z = 0.23;
+  terminal.add(terminalFrame);
+  const terminalFace = rounded(1.98, 1.78, 0.1, terminalMaterials[0], 0.14);
+  terminalFace.position.z = 0.32;
+  terminal.add(terminalFace);
+  const prompt = new THREE.Group();
+  prompt.add(
+    beam([-0.48, 0.25], [-0.18, 0], terminalMaterials[2]),
+    beam([-0.18, 0], [-0.48, -0.25], terminalMaterials[2]),
+    beam([0.06, -0.27], [0.48, -0.27], terminalMaterials[2]),
+  );
+  prompt.scale.setScalar(0.75);
+  prompt.position.z = 0.42;
+  terminal.add(prompt);
+  place(terminal, -3.8, 2.45, 0.2, [-0.22, 0.35, 0.2]);
+  const story = mount.closest<HTMLElement>(".intro-story");
   code.add(
     beam([-0.7, 0.55], [-1.25, 0], mint),
     beam([-1.25, 0], [-0.7, -0.55], mint),
@@ -114,8 +137,8 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     beam([1.25, 0], [0.7, -0.55], mint),
     beam([0.22, 0.75], [-0.22, -0.75], silver),
   );
-  code.scale.setScalar(0.82);
-  place(code, -4.65, -1.8, 0.1, [0.3, 0.3, -0.2]);
+  code.scale.setScalar(0.72);
+  place(code, -3.75, -1.8, 0.1, [0.3, 0.3, -0.2]);
 
   const database = new THREE.Group();
   for (let index = 0; index < 3; index++) {
@@ -199,6 +222,14 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     const delta = Math.min((time - lastTime) / 1000, 0.04);
     lastTime = time;
     if (!visible || document.hidden) return;
+    const progress =
+      story?.dataset.enhanced === "true"
+        ? Number(story.dataset.progress || 0)
+        : 0;
+    const terminalOpacity = Math.max(0, 1 - progress / 0.18);
+    terminalMaterials.forEach((material) => {
+      material.opacity = terminalOpacity;
+    });
     const frozen = reducedMotion.matches || paused();
     if (frozen && renderedPaused) return;
     if (!frozen) {
@@ -232,7 +263,7 @@ export function createWorld(mount: HTMLElement, paused: () => boolean) {
     scene.traverse((object) => {
       if (object instanceof THREE.Mesh) object.geometry.dispose();
     });
-    [charcoal, silver, mint, orange].forEach((material) =>
+    [charcoal, silver, mint, orange, ...terminalMaterials].forEach((material) =>
       material.dispose(),
     );
     environment.dispose();
