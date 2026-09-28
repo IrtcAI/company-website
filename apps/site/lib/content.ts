@@ -243,6 +243,7 @@ export const content = {
       email: "Seu e-mail para retorno",
       sent: "Rascunho enviado. Vamos conversar em breve.",
       error: "Não foi possível enviar. Tente novamente em instantes.",
+      limit: "Muitas mensagens em pouco tempo. Tente de novo em alguns minutos.",
       disclaimer:
         "Iris usa IA e pode errar. O rascunho não é uma proposta comercial.",
       refusal:
@@ -495,6 +496,7 @@ export const content = {
       email: "Your email for a reply",
       sent: "Draft sent. We'll be in touch soon.",
       error: "We couldn't send it. Please try again shortly.",
+      limit: "Too many messages in a short time. Please try again in a few minutes.",
       disclaimer:
         "Iris uses AI and may make mistakes. This draft is not a commercial proposal.",
       refusal:
@@ -747,6 +749,7 @@ export const content = {
       email: "Tu correo para recibir respuesta",
       sent: "Borrador enviado. Pronto conversaremos.",
       error: "No pudimos enviarlo. Inténtalo de nuevo en un momento.",
+      limit: "Demasiados mensajes en poco tiempo. Inténtalo de nuevo en unos minutos.",
       disclaimer:
         "Iris usa IA y puede equivocarse. El borrador no es una propuesta comercial.",
       refusal:

@@ -12,7 +12,12 @@ import {
 } from "lucide-react";
 import { content, Locale } from "@/lib/content";
 
-type Message = { role: "user" | "assistant"; content: string };
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+  signature?: string;
+};
+
 export default function Iris({
   onClose,
   locale = "pt-BR",
@@ -70,20 +75,30 @@ export default function Iris({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: value.trim(),
-          history: messages.slice(-6),
+          history: messages
+            .filter((message) => message.role === "user" || message.signature)
+            .slice(-6),
           locale,
         }),
         signal: controller.current.signal,
       });
       const result = (await response.json()) as {
         answer?: string;
-        error?: string;
+        signature?: string;
       };
-      if (!response.ok) throw new Error();
-      const answer = result.answer ?? copy.error;
+      if (response.status === 429) {
+        setMessages((current) => [
+          ...current,
+          { role: "assistant", content: copy.limit },
+        ]);
+        return;
+      }
+      if (!response.ok || !result.answer) throw new Error();
+
+      const { answer, signature } = result;
       setMessages((current) => [
         ...current,
-        { role: "assistant", content: answer },
+        { role: "assistant", content: answer, signature },
       ]);
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") return;
