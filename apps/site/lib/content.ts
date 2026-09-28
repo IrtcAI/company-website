@@ -180,7 +180,7 @@ export const content = {
     },
     origin: {
       label: "DE BELÉM, CONECTADOS AO SEU NEGÓCIO.",
-      title: "Raízes no Pará.",
+      title: "Raízes na Amazônia.",
       accent: "Projetos sem fronteiras.",
       body: "Nossa base é Belém. Nosso dia a dia conecta pessoas, produtos e operações de diferentes lugares. Trabalhamos de perto, mesmo quando a equipe está longe.",
       vision:
@@ -435,7 +435,7 @@ export const content = {
     },
     origin: {
       label: "BASED IN BELÉM. CONNECTED TO YOUR BUSINESS.",
-      title: "Roots in Pará.",
+      title: "Roots in the Amazon.",
       accent: "Projects without borders.",
       body: "Belém is home. Our work connects people, products and operations across different places. We stay close to your team, wherever you are.",
       vision:
@@ -690,7 +690,7 @@ export const content = {
     },
     origin: {
       label: "DESDE BELÉM, CONECTADOS A TU NEGOCIO.",
-      title: "Raíces en Pará.",
+      title: "Raíces en la Amazonía.",
       accent: "Proyectos sin fronteras.",
       body: "Nuestra base está en Belém. Cada día conectamos personas, productos y operaciones de distintos lugares. Trabajamos cerca de tu equipo, estés donde estés.",
       vision:

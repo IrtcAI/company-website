@@ -181,6 +181,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const router = useRouter();
   const [paused, setPaused] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [stuck, setStuck] = useState(false);
   const [theme, setTheme] = useState("system");
   const [chatOpen, setChatOpen] = useState(false);
   const [recommendation, setRecommendation] = useState(0);
@@ -217,14 +218,26 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
     document
       .querySelectorAll("[data-reveal]")
       .forEach((element) => observer.observe(element));
-    const top = new IntersectionObserver(([entry]) =>
-      setScrolled(!entry.isIntersecting),
-    );
+    const edges = new Map<Element, boolean>();
+    const top = new IntersectionObserver((entries) => {
+      entries.forEach((entry) =>
+        edges.set(entry.target, entry.isIntersecting),
+      );
+      setScrolled(![...edges.values()].some(Boolean));
+    });
     const start = document.getElementById("inicio");
+    const footer = document.querySelector(".site-footer");
     if (start) top.observe(start);
+    if (footer) top.observe(footer);
+    const header = new IntersectionObserver(([entry]) =>
+      setStuck(!entry.isIntersecting && entry.boundingClientRect.top < 0),
+    );
+    const story = document.querySelector(".intro-story");
+    if (story) header.observe(story);
     return () => {
       observer.disconnect();
       top.disconnect();
+      header.disconnect();
     };
   }, [locale]);
 
@@ -266,7 +279,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
       <SectionLink target="conteudo" className="skip-link">
         {copy.skip}
       </SectionLink>
-      <header className="site-header">
+      <header className="site-header" data-stuck={stuck}>
         <SectionLink target="inicio" className="brand" label={copy.home}>
           irtc<span aria-hidden="true">✳</span>
         </SectionLink>

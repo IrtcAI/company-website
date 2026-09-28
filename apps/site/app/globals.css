@@ -5,13 +5,14 @@
   --secondary: light-dark(#525e54, #bfcac1);
   --surface-line: light-dark(#c7cec5, #49584f);
   --coral: #ef604f;
-  --hero-coral: light-dark(#c44437, #4a2440);
-  --footer-coral: light-dark(#ef604f, #4a2440);
-  --surface-alt: light-dark(#f8e7e0, #2a1f28);
-  --hero-chip: light-dark(#ef604f, #5e2e52);
-  --footer-ink: light-dark(#34150f, #fff4e9);
-  --footer-accent: light-dark(#fffaf4, #f6c2b6);
-  --footer-line: light-dark(#823b3260, #fff4e940);
+  --hero-coral: light-dark(#f2be7e, #ef7e6c);
+  --hero-ink: #2a1712;
+  --footer-coral: light-dark(#ef604f, #ef7e6c);
+  --surface-alt: light-dark(#f9ecdc, #2d2321);
+  --hero-chip: light-dark(#f5cc96, #f29383);
+  --footer-ink: #34150f;
+  --footer-accent: light-dark(#fffaf4, #6b2a1e);
+  --footer-line: #823b3260;
   --ink: #191b1b;
   --paper: #f5f4f0;
   --mint: #d2e8d9;
@@ -33,7 +34,7 @@ html[data-theme="dark"] {
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 30px;
+  scroll-padding-top: 96px;
 }
 body {
   margin: 0;
@@ -136,7 +137,7 @@ button:hover > .arrow {
   gap: 56px;
   align-items: center;
   padding: 25px 3.5%;
-  color: #fffaf4;
+  color: var(--hero-ink);
 }
 .brand {
   font-size: 49px;
@@ -223,7 +224,7 @@ button:hover > .arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fffaf4;
+  color: var(--hero-ink);
   isolation: isolate;
 }
 .hero-world {
@@ -280,7 +281,6 @@ button:hover > .arrow {
   letter-spacing: -0.068em;
   line-height: 1.03;
   margin: 0;
-  text-shadow: 0 1px 15px #83332712;
 }
 .hero h1 > span:first-child {
   display: block;
@@ -2245,7 +2245,6 @@ main[tabindex="-1"]:focus {
 }
 .hero h1 {
   font-size: clamp(60px, 7.5vw, 126px);
-  text-shadow: 0 2px 18px #732c2440;
 }
 .typed-line {
   font-size: 0.94em;
@@ -2873,7 +2872,7 @@ svg.solution-expand {
   .mobile-menu summary {
     list-style: none;
     padding: 10px;
-    color: #fffaf4;
+    color: var(--hero-ink);
   }
   .mobile-menu nav {
     position: absolute;
@@ -3145,9 +3144,9 @@ svg.solution-expand {
   box-shadow: none;
   padding-inline: 0;
   text-shadow:
-    0 1px 1px #ef604f,
-    0 0 10px #ef604f,
-    0 0 24px #ef604fd9;
+    0 1px 1px var(--hero-coral),
+    0 0 10px var(--hero-coral),
+    0 0 24px var(--hero-coral);
 }
 .hero-description {
   max-width: 560px;
@@ -3945,15 +3944,7 @@ a.footer-channel:hover .footer-channel-icon {
 .hero .hero-description,
 .hero .hero-start,
 .hero .hero-bottom {
-  color: #fffaf4;
-}
-.hero .eyebrow,
-.hero .hero-description,
-.hero .hero-start {
-  text-shadow: 0 2px 14px #3d17143d;
-}
-.hero h1 {
-  text-shadow: 0 2px 24px #3d17142e;
+  color: var(--hero-ink);
 }
 .footer-wordmark {
   display: inline-block;
@@ -3995,11 +3986,11 @@ a.footer-channel:hover .footer-channel-icon {
 .back-to-top {
   position: fixed;
   z-index: 9;
-  right: 22px;
-  bottom: 76px;
+  left: 50%;
+  bottom: 20px;
   opacity: 0;
   visibility: hidden;
-  translate: 0 12px;
+  translate: -50% 12px;
   transition:
     opacity 0.25s,
     translate 0.25s,
@@ -4008,7 +3999,7 @@ a.footer-channel:hover .footer-channel-icon {
 .back-to-top[data-visible="true"] {
   opacity: 1;
   visibility: visible;
-  translate: 0 0;
+  translate: -50% 0;
   transition:
     opacity 0.25s,
     translate 0.25s;
@@ -4034,8 +4025,7 @@ a.footer-channel:hover .footer-channel-icon {
 }
 @media (max-width: 767px) {
   .back-to-top {
-    right: 14px;
-    bottom: 66px;
+    bottom: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -4043,5 +4033,33 @@ a.footer-channel:hover .footer-channel-icon {
   .back-to-top[data-visible="true"],
   .back-to-top a {
     transition: none;
+  }
+}
+.site-header[data-stuck="true"] {
+  position: fixed;
+  z-index: 20;
+  padding-block: 12px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--surface-line);
+  animation: header-in 0.35s ease both;
+}
+.site-header[data-stuck="true"] > nav,
+.site-header[data-stuck="true"] .site-preferences,
+.site-header[data-stuck="true"] .mobile-menu summary {
+  color: var(--text);
+}
+.site-header[data-stuck="true"] .brand {
+  font-size: 36px;
+}
+@keyframes header-in {
+  from {
+    translate: 0 -100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header[data-stuck="true"] {
+    animation: none;
   }
 }
