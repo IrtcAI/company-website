@@ -1,5 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Locale } from "@/lib/content";
+import { pagePath } from "@/lib/routes";
 
 const founderCopy = {
   "pt-BR": {
@@ -12,6 +15,7 @@ const founderCopy = {
     body: "Sua atuação em plataformas web, aplicativos, integrações e engenharia de IA orienta o trabalho da IRTC: entender o negócio, construir com qualidade e acompanhar o que foi entregue.",
     location: "De Belém, Pará, para trabalhar junto com você.",
     alt: "Retrato de Iago Rodrigues, fundador da IRTC",
+    link: "Conheça a trajetória do Iago",
   },
   en: {
     label: "THE PERSON BEHIND IRTC",
@@ -23,6 +27,7 @@ const founderCopy = {
     body: "His work across web platforms, mobile apps, integrations and AI engineering shapes IRTC’s approach: understand the business, build with care and stay involved after delivery.",
     location: "Based in Belém, Pará. Ready to work alongside you.",
     alt: "Portrait of Iago Rodrigues, founder of IRTC",
+    link: "Read Iago's story",
   },
   es: {
     label: "QUIÉN ESTÁ DETRÁS",
@@ -34,6 +39,7 @@ const founderCopy = {
     body: "Su trabajo en plataformas web, aplicaciones, integraciones e ingeniería de IA guía a IRTC: entender el negocio, construir con calidad y seguir acompañando después de la entrega.",
     location: "Desde Belém, Pará, para trabajar contigo.",
     alt: "Retrato de Iago Rodrigues, fundador de IRTC",
+    link: "Conoce la trayectoria de Iago",
   },
 };
 
@@ -54,6 +60,10 @@ export function Founder({ locale }: { locale: Locale }) {
           <span aria-hidden="true">✳</span>
           {copy.location}
         </p>
+        <Link href={pagePath(locale, "founder")} className="inline-link">
+          {copy.link}
+          <ArrowRight aria-hidden="true" />
+        </Link>
       </div>
       <figure className="founder-portrait">
         <div className="founder-blueprint" aria-hidden="true">

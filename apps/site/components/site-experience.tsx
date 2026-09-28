@@ -35,6 +35,7 @@ import { Founder } from "./founder";
 import { DevelopmentWorld } from "./development-world";
 import { ServiceCard } from "./service-card";
 import { ContactCta } from "./contact-cta";
+import { Stats } from "./stats";
 import { useShell } from "./site-shell";
 import { pagePath } from "@/lib/routes";
 
@@ -366,6 +367,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           ))}
         </div>
       </section>
+      <Stats locale={locale} />
       <div className="object-run">
         <DevelopmentWorld paused={paused} kind="database" />
         <section className="projects section-pad" id="projetos" tabIndex={-1}>

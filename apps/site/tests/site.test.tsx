@@ -191,6 +191,9 @@ describe("institutional experience", () => {
       }),
     ).toHaveLength(1);
     expect(document.querySelectorAll("#manifesto")).toHaveLength(1);
+    expect(
+      screen.getByRole("link", { name: /Conheça a trajetória do Iago/ }),
+    ).toHaveAttribute("href", "/fundador");
   });
 
   it("links every home service card to its service page", () => {

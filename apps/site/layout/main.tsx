@@ -12,6 +12,7 @@ import "@/styles/footer.css";
 import "@/styles/contact-cta.css";
 import "@/styles/services.css";
 import "@/styles/contact.css";
+import "@/styles/about.css";
 
 const body = Manrope({
   subsets: ["latin"],
