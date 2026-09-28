@@ -154,6 +154,8 @@
     left: 0;
     width: var(--content-width, min(1460px, calc(100vw - 116px)));
     opacity: var(--story-opacity, 0);
+    transform: scale(var(--content-scale, 1));
+    transform-origin: 0 0;
   }
   .intro-story:not([data-enhanced="false"]) .screen-preview {
     position: absolute;

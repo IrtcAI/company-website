@@ -35,9 +35,11 @@ export function ScrollStory({
       const progress = Math.max(0, Math.min(1, -bounds.top / distance));
       const eased = progress * progress * (3 - 2 * progress);
       element.dataset.progress = String(progress);
+      const width = terminalSize + eased * (expandedWidth - terminalSize);
+      element.style.setProperty("--screen-width", `${width}px`);
       element.style.setProperty(
-        "--screen-width",
-        `${terminalSize + eased * (expandedWidth - terminalSize)}px`,
+        "--content-scale",
+        String(width / expandedWidth),
       );
       element.style.setProperty(
         "--screen-height",
