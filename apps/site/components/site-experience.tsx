@@ -505,6 +505,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           </div>
         </section>
         <section className="projects section-pad" id="projetos" tabIndex={-1}>
+          <DevelopmentWorld paused={paused} kind="database" />
           <div className="section-label">
             <span>{copy.projects.label}</span>
             <span>{copy.projects.aside}</span>
@@ -596,6 +597,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           id="depoimentos"
           tabIndex={-1}
         >
+          <DevelopmentWorld paused={paused} kind="server" />
           <div className="section-label">
             <span>{copy.testimonials.label}</span>
           </div>

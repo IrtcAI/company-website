@@ -1,11 +1,13 @@
-import { act, render, waitFor } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DevelopmentWorld } from "@/components/development-world";
 
-const scene = vi.hoisted(() => ({ create: vi.fn(), dispose: vi.fn() }));
-vi.mock("@/lib/development-world", () => ({
-  createDevelopmentWorld: scene.create,
+const stage = vi.hoisted(() => ({
+  create: vi.fn(),
+  update: vi.fn(),
+  destroy: vi.fn(),
 }));
+vi.mock("@/lib/studio-scene", () => ({ createStage: stage.create }));
 
 let intersect: (visible: boolean) => void;
 let changeMedia: () => void;
@@ -16,8 +18,12 @@ let media: {
 };
 
 beforeEach(() => {
-  scene.create.mockReset().mockReturnValue(scene.dispose);
-  scene.dispose.mockReset();
+  vi.useFakeTimers();
+  stage.create
+    .mockReset()
+    .mockReturnValue({ update: stage.update, destroy: stage.destroy });
+  stage.update.mockReset();
+  stage.destroy.mockReset();
   media = {
     matches: true,
     addEventListener: vi.fn((event, callback) => {
@@ -41,55 +47,83 @@ beforeEach(() => {
   );
 });
 
-function View({ paused = false }: { paused?: boolean }) {
+async function settle() {
+  await act(() => vi.advanceTimersByTimeAsync(3000));
+  await act(() => vi.dynamicImportSettled());
+}
+
+function View({
+  paused = false,
+  kind,
+}: {
+  paused?: boolean;
+  kind?: "code" | "database" | "server";
+}) {
   return (
     <section className="solutions">
-      <DevelopmentWorld paused={paused} />
+      <DevelopmentWorld paused={paused} kind={kind} />
     </section>
   );
 }
 
-describe("development background", () => {
-  it("loads only near the section and remains decorative", async () => {
-    const { container } = render(<View />);
-    expect(scene.create).not.toHaveBeenCalled();
+describe("section objects", () => {
+  it("shows a decorative poster and loads WebGL only near the section", async () => {
+    const { container } = render(<View kind="database" />);
     expect(container.querySelector(".development-backdrop")).toHaveAttribute(
       "aria-hidden",
       "true",
     );
-    await act(async () => intersect(true));
-    await waitFor(() => expect(scene.create).toHaveBeenCalledTimes(1));
-    await act(async () => intersect(true));
-    expect(scene.create).toHaveBeenCalledTimes(1);
+    expect(container.querySelector("img")).toHaveAttribute(
+      "src",
+      "/studio/database.webp",
+    );
+    await settle();
+    expect(stage.create).not.toHaveBeenCalled();
+    intersect(true);
+    await settle();
+    expect(stage.create).toHaveBeenCalledTimes(1);
+    expect(stage.create.mock.calls[0][1]).toEqual([
+      expect.objectContaining({ kind: "database" }),
+    ]);
+    intersect(true);
+    await settle();
+    expect(stage.create).toHaveBeenCalledTimes(1);
   });
 
-  it("does not initialize WebGL on mobile or reduced motion", async () => {
+  it("keeps only the poster on mobile or reduced motion", async () => {
     media.matches = false;
     render(<View />);
-    await act(async () => intersect(true));
-    expect(scene.create).not.toHaveBeenCalled();
+    intersect(true);
+    await settle();
+    expect(stage.create).not.toHaveBeenCalled();
   });
 
-  it("passes updated pause state without rebuilding the scene", async () => {
+  it("freezes scroll progress while paused without rebuilding", async () => {
     const { rerender } = render(<View />);
-    await act(async () => intersect(true));
-    const isPaused = scene.create.mock.calls[0][2];
-    expect(isPaused()).toBe(false);
+    intersect(true);
+    await settle();
+    const { paused, progress } = stage.create.mock.calls[0][2];
+    expect(paused()).toBe(false);
+    const before = progress();
     rerender(<View paused />);
-    expect(isPaused()).toBe(true);
-    expect(scene.create).toHaveBeenCalledTimes(1);
+    expect(paused()).toBe(true);
+    expect(stage.update).toHaveBeenCalled();
+    expect(progress()).toBe(before);
+    expect(stage.create).toHaveBeenCalledTimes(1);
   });
 
-  it("releases the renderer when the viewport becomes ineligible and on unmount", async () => {
+  it("releases the renderer when ineligible and on unmount", async () => {
     const { unmount } = render(<View />);
-    await act(async () => intersect(true));
+    intersect(true);
+    await settle();
     media.matches = false;
-    await act(async () => changeMedia());
-    expect(scene.dispose).toHaveBeenCalledTimes(1);
+    act(() => changeMedia());
+    expect(stage.destroy).toHaveBeenCalledTimes(1);
     media.matches = true;
-    await act(async () => changeMedia());
-    expect(scene.create).toHaveBeenCalledTimes(2);
+    act(() => changeMedia());
+    await settle();
+    expect(stage.create).toHaveBeenCalledTimes(2);
     unmount();
-    expect(scene.dispose).toHaveBeenCalledTimes(2);
+    expect(stage.destroy).toHaveBeenCalledTimes(2);
   });
 });

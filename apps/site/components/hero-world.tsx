@@ -1,69 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
+import { StudioSlot, useStudioStage } from "./studio-stage";
 
 export function HeroWorld({ paused }: { paused: boolean }) {
   const mount = useRef<HTMLDivElement>(null);
-  const motion = useRef(paused);
-
-  useEffect(() => {
-    motion.current = paused;
-  }, [paused]);
-
-  useEffect(() => {
-    let disposed = false;
-    let cleanup: (() => void) | undefined;
-    let timer: ReturnType<typeof setTimeout>;
-    let visible = true;
-    let generation = 0;
-    const element = mount.current;
-    if (!element) return;
-    const capable = window.matchMedia(
-      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-    );
-    const configure = () => {
-      const request = ++generation;
-      clearTimeout(timer);
-      if (!capable.matches) {
-        cleanup?.();
-        cleanup = undefined;
-        delete element.dataset.ready;
-        return;
-      }
-      if (cleanup || !visible) return;
-      timer = setTimeout(async () => {
-        try {
-          const { createWorld } = await import("@/lib/hero-world");
-          if (!disposed && request === generation)
-            cleanup = createWorld(element, () => motion.current);
-        } catch {
-          element.dataset.fallback = "true";
-        }
-      }, 3000);
-    };
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      configure();
-    });
-    observer.observe(element);
-    capable.addEventListener("change", configure);
-    configure();
-    return () => {
-      disposed = true;
-      clearTimeout(timer);
-      observer.disconnect();
-      capable.removeEventListener("change", configure);
-      cleanup?.();
-    };
+  const active = useCallback(() => {
+    const story = mount.current?.closest<HTMLElement>(".intro-story");
+    return Number(story?.dataset.progress ?? 0) < 0.5;
   }, []);
+  useStudioStage(mount, { paused, active });
 
   return (
-    <div ref={mount} className="hero-world" aria-hidden="true">
-      <div className="world-fallback">
-        <span className="fallback-terminal">&gt;_</span>
-        <span className="fallback-code">&lt;/&gt;</span>
-        <span className="fallback-phone" />
-      </div>
+    <div ref={mount} className="hero-world studio-world" aria-hidden="true">
+      <span className="fallback-terminal">&gt;_</span>
+      <StudioSlot kind="phone" className="hero-phone" />
+      <StudioSlot kind="code" className="hero-code" />
+      <StudioSlot kind="database" className="hero-database" />
+      <StudioSlot kind="server" className="hero-server" />
     </div>
   );
 }

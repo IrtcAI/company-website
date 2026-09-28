@@ -1,68 +1,43 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { StudioKind } from "@/lib/studio-kinds";
+import { StudioSlot, useStudioStage } from "./studio-stage";
 
-export function DevelopmentWorld({ paused }: { paused: boolean }) {
+export function DevelopmentWorld({
+  paused,
+  kind = "code",
+}: {
+  paused: boolean;
+  kind?: StudioKind;
+}) {
   const mount = useRef<HTMLDivElement>(null);
+  const frozen = useRef(0);
   const motion = useRef(paused);
-
   useEffect(() => {
     motion.current = paused;
-    window.dispatchEvent(new Event("irtc-motion-change"));
   }, [paused]);
-
-  useEffect(() => {
+  const progress = useCallback(() => {
     const element = mount.current;
-    const section = element?.closest<HTMLElement>(".solutions");
-    if (!element || !section) return;
-    const media = matchMedia(
-      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-    );
-    let visible = false;
-    let generation = 0;
-    let release: (() => void) | undefined;
-    const configure = async () => {
-      const request = ++generation;
-      if (!media.matches) {
-        release?.();
-        release = undefined;
-        return;
-      }
-      if (!visible || release) return;
-      try {
-        const { createDevelopmentWorld } = await import(
-          "@/lib/development-world"
-        );
-        if (request === generation)
-          release = createDevelopmentWorld(
-            element,
-            section,
-            () => motion.current,
-          );
-      } catch {
-        element.dataset.fallback = "true";
-      }
-    };
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting;
-        void configure();
-      },
-      { rootMargin: "200px" },
-    );
-    observer.observe(section);
-    media.addEventListener("change", configure);
-    return () => {
-      generation++;
-      observer.disconnect();
-      media.removeEventListener("change", configure);
-      release?.();
-    };
+    const section = element?.closest("section");
+    if (!element || !section) return 0;
+    if (!motion.current) {
+      const bounds = section.getBoundingClientRect();
+      frozen.current = Math.max(
+        0,
+        Math.min(1, (innerHeight - bounds.top) / (bounds.height + innerHeight)),
+      );
+      element.dataset.progress = frozen.current.toFixed(3);
+    }
+    return frozen.current;
   }, []);
+  useStudioStage(mount, { paused, progress });
 
   return (
-    <div className="development-backdrop" aria-hidden="true">
-      <div className="development-world" ref={mount} />
+    <div className={`development-backdrop backdrop-${kind}`} aria-hidden="true">
+      <div className="development-world" ref={mount}>
+        <StudioSlot kind={kind} className="development-slot" lazy />
+      </div>
     </div>
   );
 }

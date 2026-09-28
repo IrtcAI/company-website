@@ -24,8 +24,9 @@ export function ScrollStory({
     );
     let frame = 0;
     let active = false;
-    let initialScaleX = 0.2;
-    let initialScaleY = 0.4;
+    let terminalSize = 220;
+    let expandedWidth = 1200;
+    let expandedHeight = 700;
     const update = () => {
       frame = 0;
       if (!active) return;
@@ -35,19 +36,20 @@ export function ScrollStory({
       const eased = progress * progress * (3 - 2 * progress);
       element.dataset.progress = String(progress);
       element.style.setProperty(
-        "--screen-visibility",
-        String(Math.min(1, progress / 0.18)),
+        "--screen-width",
+        `${terminalSize + eased * (expandedWidth - terminalSize)}px`,
       );
-      const scaleX = initialScaleX + eased * (1 - initialScaleX);
-      const scaleY = initialScaleY + eased * (1 - initialScaleY);
-      element.style.setProperty("--screen-scale-x", String(scaleX));
-      element.style.setProperty("--screen-scale-y", String(scaleY));
-      element.style.setProperty("--preview-ratio", String(scaleY / scaleX));
-      element.style.setProperty("--screen-rim", `${32 * (1 - eased)}px`);
-      element.style.setProperty("--screen-x", `${-25 * (1 - eased)}vw`);
-      element.style.setProperty("--screen-y", `${-23 * (1 - eased)}svh`);
+      element.style.setProperty(
+        "--screen-height",
+        `${terminalSize + eased * (expandedHeight - terminalSize)}px`,
+      );
+      element.style.setProperty(
+        "--float-strength",
+        String(Math.max(0, 1 - progress * 5)),
+      );
+      element.style.setProperty("--screen-x", `${-31 * (1 - eased)}vw`);
+      element.style.setProperty("--screen-y", `${-25 * (1 - eased)}svh`);
       element.style.setProperty("--screen-rotate", `${-14 * (1 - eased)}deg`);
-      element.style.setProperty("--screen-tilt", `${18 * (1 - eased)}deg`);
       element.style.setProperty(
         "--hero-opacity",
         String(Math.max(0, 1 - progress * 2)),
@@ -67,14 +69,13 @@ export function ScrollStory({
       if (!frame && active) frame = requestAnimationFrame(update);
     };
     const configure = () => {
-      const screen = element.querySelector<HTMLElement>(".story-screen");
-      const terminalSize = Math.min(240, window.innerWidth * 0.18);
-      initialScaleX = terminalSize / Math.max(1, screen?.offsetWidth ?? 1);
-      initialScaleY = terminalSize / Math.max(1, screen?.offsetHeight ?? 1);
+      const content = element.querySelector<HTMLElement>(".screen-content");
+      terminalSize = Math.max(150, Math.min(220, window.innerWidth * 0.15));
+      expandedWidth = Math.min(1480, window.innerWidth - 96);
+      element.style.setProperty("--content-width", `${expandedWidth - 20}px`);
+      expandedHeight = (content?.offsetHeight ?? 0) + 72;
       active =
-        media.matches &&
-        !paused &&
-        (screen?.offsetHeight ?? 0) + 80 <= window.innerHeight;
+        media.matches && !paused && expandedHeight + 80 <= window.innerHeight;
       element.dataset.enhanced = String(active);
       if (active) schedule();
       else {
@@ -92,8 +93,8 @@ export function ScrollStory({
     });
     visibility.observe(element);
     const size = new ResizeObserver(configure);
-    const screen = element.querySelector<HTMLElement>(".story-screen");
-    if (screen) size.observe(screen);
+    const content = element.querySelector<HTMLElement>(".screen-content");
+    if (content) size.observe(content);
     media.addEventListener("change", configure);
     window.addEventListener("resize", configure, { passive: true });
     configure();
