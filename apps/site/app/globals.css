@@ -5,9 +5,14 @@
   --secondary: light-dark(#525e54, #bfcac1);
   --surface-line: light-dark(#c7cec5, #49584f);
   --coral: #ef604f;
+  --hero-coral: light-dark(#c44437, #8f362c);
   --ink: #191b1b;
   --paper: #f5f4f0;
   --mint: #d2e8d9;
+  --mint-surface: light-dark(#d2e8d9, #33473c);
+  --peach-surface: light-dark(#f1d5be, #4a3226);
+  --quote-text: light-dark(#21372a, #eef2ea);
+  --quote-muted: light-dark(#506151, #c3cdc5);
   --muted: #676c68;
   --line: #d6d8d2;
 }
@@ -69,7 +74,7 @@ button {
   color: var(--ink);
 }
 :focus-visible {
-  outline: 3px solid #205f53;
+  outline: 3px solid light-dark(#205f53, #7fd9b9);
   outline-offset: 6px;
 }
 .manifesto :focus-visible,
@@ -447,7 +452,7 @@ button:hover > .arrow {
 }
 .provenance {
   font-size: 10px;
-  color: #71746e;
+  color: light-dark(#71746e, #a0a99d);
   margin: 24px 0 0;
 }
 .section-pad {
@@ -1115,12 +1120,12 @@ summary::-webkit-details-marker {
   min-height: 370px;
   display: flex;
   flex-direction: column;
-  background: var(--mint);
+  background: var(--mint-surface);
   transform: rotate(2deg);
   animation: quote-arrival 0.4s ease both;
 }
 .quote-card.peach {
-  background: #f1d5be;
+  background: var(--peach-surface);
   transform: rotate(-2deg);
 }
 .quote-mark {
@@ -1147,6 +1152,7 @@ summary::-webkit-details-marker {
   width: 42px;
   height: 42px;
   background: #8ab69a;
+  color: #21372a;
   display: grid;
   place-items: center;
   font-size: 12px;
@@ -1160,7 +1166,7 @@ summary::-webkit-details-marker {
 .quote-card figcaption > span:nth-child(2) > span {
   display: block;
   font-size: 9px;
-  color: #4f6253;
+  color: var(--quote-muted);
 }
 .linkedin-mark {
   font-size: 24px;
@@ -1170,7 +1176,7 @@ summary::-webkit-details-marker {
 }
 .quote-card small {
   margin: 15px 0 0 54px;
-  color: #506151;
+  color: var(--quote-muted);
   font-size: 9px;
 }
 .origin {
@@ -1523,7 +1529,7 @@ summary::-webkit-details-marker {
 }
 .iris-face {
   font-size: 38px;
-  color: #496e53;
+  color: light-dark(#496e53, #7fae90);
 }
 .iris-header > div {
   flex: 1;
@@ -1584,7 +1590,7 @@ summary::-webkit-details-marker {
 }
 .chat-thinking {
   font-size: 12px;
-  color: #62745e;
+  color: light-dark(#62745e, #9fb0a3);
 }
 .iris-form {
   display: flex;
@@ -2255,8 +2261,8 @@ main[tabindex="-1"]:focus {
   max-width: 94px;
 }
 .preference option {
-  color: #191b1b;
-  background: #f5f4f0;
+  color: var(--text);
+  background: var(--surface);
 }
 .header-cta {
   margin-left: 0;
@@ -2268,20 +2274,20 @@ main[tabindex="-1"]:focus {
   max-width: 430px;
   padding: 8px 14px;
   border-radius: 12px;
-  background: #ef604fe8;
+  background: color-mix(in srgb, var(--coral) 91%, transparent);
   font-size: 18px;
 }
 .hero-start {
   padding: 5px 5px 5px 16px;
   border-radius: 50px;
-  background: #ef604ff2;
+  background: color-mix(in srgb, var(--coral) 95%, transparent);
   font-weight: 600;
 }
 .eyebrow {
   display: inline-block;
   padding: 7px 13px;
   border-radius: 50px;
-  background: #ef604fe8;
+  background: color-mix(in srgb, var(--coral) 91%, transparent);
 }
 .hero h1 {
   font-size: clamp(60px, 7.5vw, 126px);
@@ -2614,7 +2620,7 @@ svg.solution-expand {
   color: #191b1b;
 }
 .quote-card {
-  color: #21372a;
+  color: var(--quote-text);
   min-height: 430px;
 }
 .quote-symbol {
@@ -2646,8 +2652,8 @@ svg.solution-expand {
 }
 .origin-network {
   position: relative;
-  background: #d8e5d8;
-  color: #294934;
+  background: light-dark(#d8e5d8, #223226);
+  color: light-dark(#294934, #a8c9b4);
   border-radius: 25px;
   overflow: hidden;
   aspect-ratio: 1.2;
@@ -2661,29 +2667,29 @@ svg.solution-expand {
   display: block;
   width: 100%;
   height: 100%;
-  fill: #39694b;
+  fill: light-dark(#39694b, #6fa77e);
 }
 .network-route {
   fill: none;
-  stroke: #497759;
+  stroke: light-dark(#497759, #7fae8c);
   stroke-width: 2;
   stroke-dasharray: 6 8;
   animation: network-flow 12s linear infinite;
 }
 .route-two {
   animation-direction: reverse;
-  stroke: #7c6651;
+  stroke: light-dark(#7c6651, #b08d6c);
 }
 .route-three {
   animation-duration: 9s;
 }
 .network-pulse {
-  fill: #679e7950;
+  fill: light-dark(#679e7950, #8fc79f66);
   transform-origin: 180px 330px;
   animation: network-pulse 4s ease-out infinite;
 }
 .network-hub {
-  fill: #294e36;
+  fill: light-dark(#294e36, #3f6b4d);
 }
 .network-coordinates {
   position: absolute;
@@ -2712,7 +2718,7 @@ svg.solution-expand {
   display: flex;
   gap: 8px;
   align-items: center;
-  background: #f8faf4;
+  background: light-dark(#f8faf4, #2c3a30);
   padding: 13px 15px;
   border-radius: 12px;
   box-shadow:
@@ -2748,7 +2754,7 @@ svg.solution-expand {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #367345;
+  background: light-dark(#367345, #5c9c72);
 }
 .inline-link {
   border-color: var(--text);
@@ -2828,8 +2834,8 @@ svg.solution-expand {
   color: var(--text);
 }
 .iris .message.user {
-  background: #d2e8d9;
-  color: #21372a;
+  background: var(--mint-surface);
+  color: var(--quote-text);
 }
 .iris-form {
   border-color: var(--surface-line);
@@ -3650,11 +3656,11 @@ a.footer-channel:hover .footer-channel-icon {
 }
 
 .hero {
-  background: #c44437;
+  background: var(--hero-coral);
 }
 .intro-story {
   position: relative;
-  background: #c44437;
+  background: var(--hero-coral);
 }
 .story-screen {
   position: relative;
@@ -3861,8 +3867,8 @@ a.footer-channel:hover .footer-channel-icon {
 .founder-photo {
   position: relative;
   padding: 10px;
-  background: #f5f4f0;
-  border: 1px solid #829b8e;
+  background: light-dark(#f5f4f0, #2a332e);
+  border: 1px solid light-dark(#829b8e, #4b5c53);
   border-radius: 8px;
   box-shadow: 12px 14px 0 #2c4e4333;
   transform: rotate(-3deg) scale(0.88);

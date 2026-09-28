@@ -9,6 +9,7 @@ import {
   MouseEvent,
   ReactNode,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -51,6 +52,8 @@ import { Founder } from "./founder";
 import { AccessibilityToolbar } from "./accessibility-toolbar";
 import { DevelopmentWorld } from "./development-world";
 
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 const Iris = dynamic(() => import("./iris"));
 const sectionIds = ["manifesto", "solucoes", "projetos", "depoimentos"];
 const techNames = [
@@ -194,11 +197,12 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   };
   const author = recommendationAuthors[recommendation];
 
+  useIsomorphicLayoutEffect(() => {
+    setTheme(document.documentElement.dataset.theme || "system");
+  }, []);
+
   useEffect(() => {
     document.documentElement.lang = locale;
-    const frame = requestAnimationFrame(() =>
-      setTheme(document.documentElement.dataset.theme || "system"),
-    );
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
@@ -214,7 +218,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
       .forEach((element) => observer.observe(element));
     return () => {
       observer.disconnect();
-      cancelAnimationFrame(frame);
     };
   }, [locale]);
 

@@ -6,20 +6,44 @@
 
 .project-visual.leaflink {
   background:
-    radial-gradient(circle at 88% 14%, #d5c7f0 0 11%, transparent 36%),
-    linear-gradient(135deg, #d8f3f2 0%, #cae9ee 100%);
+    radial-gradient(
+      circle at 88% 14%,
+      light-dark(#d5c7f0, #362f52) 0 11%,
+      transparent 36%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#d8f3f2, #1c3536) 0%,
+      light-dark(#cae9ee, #17282f) 100%
+    );
 }
 
 .project-visual.dasa {
   background:
-    radial-gradient(circle at 8% 88%, #c8d8f0 0 13%, transparent 35%),
-    linear-gradient(135deg, #e5f0fa 0%, #cfdcf2 100%);
+    radial-gradient(
+      circle at 8% 88%,
+      light-dark(#c8d8f0, #2b3752) 0 13%,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#e5f0fa, #22303f) 0%,
+      light-dark(#cfdcf2, #1c2636) 100%
+    );
 }
 
 .project-visual.perfectpay {
   background:
-    radial-gradient(circle at 90% 16%, #bde5d4 0 12%, transparent 35%),
-    linear-gradient(135deg, #dff5eb 0%, #bfe7d8 100%);
+    radial-gradient(
+      circle at 90% 16%,
+      light-dark(#bde5d4, #274a3c) 0 12%,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#dff5eb, #1d332a) 0%,
+      light-dark(#bfe7d8, #17281f) 100%
+    );
 }
 
 .project-orb {
