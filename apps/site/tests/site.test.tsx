@@ -9,7 +9,10 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
+import { ContactForm } from "@/components/contact-form";
 import { SiteExperience } from "@/components/site-experience";
+import { SiteShell } from "@/components/site-shell";
+import type { Locale } from "@/lib/content";
 
 const push = vi.hoisted(() => vi.fn());
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
@@ -20,18 +23,34 @@ vi.mock("next/image", () => ({
 vi.mock("@/components/hero-world", () => ({ HeroWorld: () => null }));
 vi.mock("next/dynamic", () => ({ default: () => () => null }));
 
+function renderHome(locale: Locale = "pt-BR") {
+  return render(
+    <SiteShell locale={locale} page="home">
+      <SiteExperience locale={locale} />
+    </SiteShell>,
+  );
+}
+
+function renderContact() {
+  return render(
+    <SiteShell locale="pt-BR" page="contact">
+      <ContactForm locale="pt-BR" />
+    </SiteShell>,
+  );
+}
+
 describe("institutional experience", () => {
   it("introduces solutions before client evidence and projects", () => {
-    const { container } = render(<SiteExperience />);
+    const { container } = renderHome();
     const sections = [
       ...container.querySelectorAll(
-        "#manifesto, #solucoes, .client-strip, #projetos",
+        "#manifesto, #servicos, .client-strip, #projetos",
       ),
     ];
 
     expect(sections.map((section) => section.id || section.className)).toEqual([
       "manifesto",
-      "solucoes",
+      "servicos",
       "client-strip",
       "projetos",
     ]);
@@ -44,14 +63,13 @@ describe("institutional experience", () => {
   });
 
   it("navigates and moves focus without adding a URL fragment", async () => {
-    render(<SiteExperience />);
+    renderHome();
     await userEvent.click(screen.getAllByRole("link", { name: "Projetos" })[0]);
     expect(document.activeElement?.id).toBe("projetos");
     expect(location.hash).toBe("");
-    expect(document.querySelectorAll('a[href^="#"]')).toHaveLength(0);
   });
 
-  it("tracks the visible section, sticks the header and offers back-to-top", async () => {
+  it("tracks the visible section, sticks the header and returns to the top", async () => {
     type Callback = (
       entries: {
         target: Element;
@@ -76,7 +94,7 @@ describe("institutional experience", () => {
       },
     );
 
-    const { container } = render(<SiteExperience />);
+    const { container } = renderHome();
     const report = (id: string, isIntersecting: boolean) => {
       const target = document.getElementById(id) as Element;
       act(() =>
@@ -86,14 +104,9 @@ describe("institutional experience", () => {
       );
     };
 
-    const control = container.querySelector(".back-to-top");
     const header = container.querySelector(".site-header");
-
-    expect(control).toHaveAttribute("data-visible", "false");
     expect(header).toHaveAttribute("data-stuck", "false");
-
-    report("inicio", false);
-    expect(control).toHaveAttribute("data-visible", "true");
+    expect(container.querySelector(".back-to-top")).toBeNull();
 
     report("projetos", true);
     const [projects] = screen.getAllByRole("link", { name: "Projetos" });
@@ -105,14 +118,17 @@ describe("institutional experience", () => {
     });
     expect(header).toHaveAttribute("data-stuck", "true");
 
-    await userEvent.click(within(control as HTMLElement).getByRole("link"));
+    const footer = container.querySelector(".site-footer") as HTMLElement;
+    await userEvent.click(
+      within(footer).getByRole("link", { name: "Voltar ao início" }),
+    );
     expect(document.activeElement).toHaveAttribute("id", "conteudo");
     expect(screen.queryByText(/Imagem pública da marca/)).toBeNull();
   });
 
   it("saves the explicit theme and restores the saved mode", async () => {
     document.documentElement.dataset.theme = "dark";
-    render(<SiteExperience />);
+    renderHome();
     const select = screen.getByLabelText("Aparência");
     await waitFor(() => expect(select).toHaveValue("dark"));
 
@@ -125,14 +141,14 @@ describe("institutional experience", () => {
   });
 
   it("persists language choice and uses the localized route", async () => {
-    render(<SiteExperience />);
+    renderHome();
     await userEvent.selectOptions(screen.getByLabelText("Idioma"), "es");
     expect(document.cookie).toContain("irtc-locale=es");
     expect(push).toHaveBeenCalledWith("/es", { scroll: false });
   });
 
   it("renders English content and updates the document language", () => {
-    render(<SiteExperience locale="en" />);
+    renderHome("en");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Your idea becomes",
     );
@@ -140,7 +156,7 @@ describe("institutional experience", () => {
   });
 
   it("cycles all six recommendations and wraps backwards", async () => {
-    render(<SiteExperience />);
+    renderHome();
     const region = document.getElementById("depoimentos")!;
     expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
 
@@ -160,7 +176,7 @@ describe("institutional experience", () => {
   });
 
   it("renders the founder portrait and one accessible manifesto", () => {
-    render(<SiteExperience />);
+    renderHome();
 
     expect(
       screen.getByRole("img", {
@@ -176,7 +192,7 @@ describe("institutional experience", () => {
   });
 
   it("keeps only one solution accordion open", async () => {
-    render(<SiteExperience />);
+    renderHome();
     const products = screen.getByRole("button", {
       name: /Produtos & plataformas/,
     });
@@ -193,7 +209,7 @@ describe("institutional experience", () => {
   });
 
   it("switches projects and explains a selected technology", async () => {
-    render(<SiteExperience />);
+    renderHome();
     await userEvent.click(screen.getByRole("button", { name: /Dasa/ }));
     expect(
       screen.getByText("Informação disponível quando ela faz diferença."),
@@ -205,20 +221,23 @@ describe("institutional experience", () => {
     ).toBeVisible();
   });
 
-  it("pauses motion and removes the redundant contact email link", async () => {
-    render(<SiteExperience />);
+  it("pauses motion and moves the contact form to its own page", async () => {
+    renderHome();
     await userEvent.click(
       screen.getByRole("button", { name: "Pausar animações" }),
     );
     expect(
       screen.getByRole("button", { name: "Ativar animações" }),
     ).toHaveAttribute("aria-pressed", "true");
-    expect(document.querySelector("#contato a[href^='mailto:']")).toBeNull();
+    expect(document.getElementById("contato")).toBeNull();
+    expect(
+      screen.getByRole("link", { name: /Conte o que você quer construir/ }),
+    ).toHaveAttribute("href", "/contato");
   });
 
   it("keeps the form values and reports failed delivery", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
-    render(<SiteExperience />);
+    renderContact();
 
     fireEvent.change(screen.getByLabelText("Seu nome"), {
       target: { value: "Cliente Teste" },
@@ -232,9 +251,25 @@ describe("institutional experience", () => {
     expect(screen.queryByText(/Mensagem enviada\./)).toBeNull();
   });
 
+  it("shows the address, hours and every service in the footer", () => {
+    const { container } = renderContact();
+    const footer = container.querySelector(".site-footer") as HTMLElement;
+
+    expect(within(footer).getByText("Trav. Alferes Costa, 1750")).toBeVisible();
+    expect(within(footer).getByText("Sáb e dom: fechado")).toBeVisible();
+    expect(
+      within(footer).getByRole("link", { name: "Aplicativos para celular" }),
+    ).toHaveAttribute("href", "/servicos/aplicativos");
+    expect(
+      within(footer).getByRole("link", { name: "contato@irtc.com.br" }),
+    ).toHaveAttribute("href", "mailto:contato@irtc.com.br");
+    for (const link of screen.getAllByRole("link", { name: "Vamos conversar" }))
+      expect(link).toHaveAttribute("aria-current", "page");
+  });
+
   it("clears the form only after confirmed delivery", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true }));
-    render(<SiteExperience />);
+    renderContact();
 
     fireEvent.change(screen.getByLabelText("Seu nome"), {
       target: { value: "Cliente Teste" },

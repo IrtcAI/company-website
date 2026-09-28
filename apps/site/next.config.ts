@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { internalRedirects, localizedRewrites } from "./lib/routes";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -6,8 +7,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [],
   },
+  async redirects() {
+    return internalRedirects();
+  },
   async rewrites() {
-    return [{ source: "/llms.txt", destination: "/llm.txt" }];
+    return [
+      { source: "/llms.txt", destination: "/llm.txt" },
+      ...localizedRewrites(),
+    ];
   },
   async headers() {
     return [

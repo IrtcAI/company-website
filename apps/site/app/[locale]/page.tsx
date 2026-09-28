@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteExperience } from "@/components/site-experience";
+import { SiteShell } from "@/components/site-shell";
 import { content } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -45,5 +46,9 @@ export default async function LocalizedHome({
 }) {
   const { locale } = await params;
   if (locale !== "en" && locale !== "es") notFound();
-  return <SiteExperience locale={locale} />;
+  return (
+    <SiteShell locale={locale} page="home">
+      <SiteExperience locale={locale} />
+    </SiteShell>
+  );
 }

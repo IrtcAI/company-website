@@ -6,6 +6,7 @@ import "@/styles/studio-objects.css";
 import "@/styles/project-showcase.css";
 import "@/styles/accessibility-toolbar.css";
 import "@/styles/origin-map.css";
+import "@/styles/footer.css";
 
 const body = Manrope({
   subsets: ["latin"],
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const preferences = `try{var t=localStorage.getItem('irtc-theme');document.documentElement.dataset.theme=['light','dark'].includes(t)?t:'system'}catch(e){document.documentElement.dataset.theme='system'}document.documentElement.lang=location.pathname==='/en'?'en':location.pathname==='/es'?'es':'pt-BR'`;
+  const preferences = `try{var t=localStorage.getItem('irtc-theme');document.documentElement.dataset.theme=['light','dark'].includes(t)?t:'system'}catch(e){document.documentElement.dataset.theme='system'}var p=location.pathname.split('/')[1];document.documentElement.lang=p==='en'||p==='es'?p:'pt-BR'`;
   return (
     <html lang="pt-BR" className={body.variable} suppressHydrationWarning>
       <head>

@@ -1,4 +1,5 @@
 import { SiteExperience } from "@/components/site-experience";
+import { SiteShell } from "@/components/site-shell";
 
 export default function Home() {
   const organization = {
@@ -7,7 +8,7 @@ export default function Home() {
     "@id": "https://irtc.com.br/#organization",
     name: "IRTC",
     url: "https://irtc.com.br",
-    email: "iago@irtc.com.br",
+    email: "contato@irtc.com.br",
     description:
       "Engenharia de software, produtos digitais, integrações, dados e inteligência artificial em Belém do Pará.",
     address: {
@@ -39,7 +40,9 @@ export default function Home() {
           __html: JSON.stringify(organization).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteExperience />
+      <SiteShell locale="pt-BR" page="home">
+        <SiteExperience />
+      </SiteShell>
     </>
   );
 }

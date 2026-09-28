@@ -2,7 +2,7 @@ export type Locale = "pt-BR" | "en" | "es";
 
 export const content = {
   "pt-BR": {
-    nav: ["Nosso jeito", "Soluções", "Projetos", "Depoimentos"],
+    nav: ["Serviços", "Projetos", "Sobre"],
     skip: "Pular para o conteúdo",
     home: "IRTC, início",
     talk: "Vamos conversar",
@@ -221,6 +221,18 @@ export const content = {
       top: "Voltar ao início",
       soon: "Em breve",
       socials: "Nossas redes",
+      services: "Serviços",
+      company: "Empresa",
+      contact: "Contato",
+      address: "Endereço",
+      hours: "Horário de atendimento",
+      links: [
+        "Sobre a IRTC",
+        "Fundador",
+        "Projetos",
+        "Fale conosco",
+        "Converse com a Iris",
+      ],
     },
     iris: {
       launcher: "Oi, eu sou a Iris.",
@@ -257,7 +269,7 @@ export const content = {
     },
   },
   en: {
-    nav: ["Our approach", "Solutions", "Projects", "Testimonials"],
+    nav: ["Services", "Projects", "About"],
     skip: "Skip to content",
     home: "IRTC, home",
     talk: "Let's talk",
@@ -476,6 +488,18 @@ export const content = {
       top: "Back to top",
       soon: "Coming soon",
       socials: "Find us online",
+      services: "Services",
+      company: "Company",
+      contact: "Contact",
+      address: "Address",
+      hours: "Business hours",
+      links: [
+        "About IRTC",
+        "Founder",
+        "Projects",
+        "Contact us",
+        "Chat with Iris",
+      ],
     },
     iris: {
       launcher: "Hi, I'm Iris.",
@@ -512,7 +536,7 @@ export const content = {
     },
   },
   es: {
-    nav: ["Cómo trabajamos", "Soluciones", "Proyectos", "Testimonios"],
+    nav: ["Servicios", "Proyectos", "Nosotros"],
     skip: "Saltar al contenido",
     home: "IRTC, inicio",
     talk: "Conversemos",
@@ -731,6 +755,18 @@ export const content = {
       top: "Volver al inicio",
       soon: "Próximamente",
       socials: "Nuestras redes",
+      services: "Servicios",
+      company: "Empresa",
+      contact: "Contacto",
+      address: "Dirección",
+      hours: "Horario de atención",
+      links: [
+        "Sobre IRTC",
+        "Fundador",
+        "Proyectos",
+        "Contáctanos",
+        "Habla con Iris",
+      ],
     },
     iris: {
       launcher: "Hola, soy Iris.",
