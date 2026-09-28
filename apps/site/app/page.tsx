@@ -1,44 +1,36 @@
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
+import { SITE_URL } from "@/lib/routes";
+import {
+  founder,
+  graph,
+  jsonLd,
+  organization,
+  ORGANIZATION_ID,
+} from "@/lib/structured-data";
+
+const description =
+  "Fábrica de software em Belém, Pará. Criamos software sob medida, sites, aplicativos, integrações e inteligência artificial para empresas de todos os tamanhos.";
 
 export default function Home() {
-  const organization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://irtc.com.br/#organization",
-    name: "IRTC",
-    url: "https://irtc.com.br",
-    email: "contato@irtc.com.br",
-    description:
-      "Engenharia de software, produtos digitais, integrações, dados e inteligência artificial em Belém do Pará.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Belém",
-      addressRegion: "PA",
-      addressCountry: "BR",
-    },
-    knowsAbout: [
-      "SaaS",
-      "ERP",
-      "CRM",
-      "Node.js",
-      "React",
-      "PostgreSQL",
-      "AWS",
-      "RAG",
-      "Agentes de IA",
-      "ETL",
-      "Integrações",
-    ],
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organization).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={jsonLd(
+          graph(
+            organization("pt-BR", description),
+            {
+              "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
+              url: SITE_URL,
+              name: "IRTC",
+              inLanguage: "pt-BR",
+              publisher: { "@id": ORGANIZATION_ID },
+            },
+            founder("pt-BR", "Fundador"),
+          ),
+        )}
       />
       <SiteShell locale="pt-BR" page="home">
         <SiteExperience />
