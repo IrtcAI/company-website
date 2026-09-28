@@ -59,18 +59,6 @@ function createMaterials() {
       roughness: 0.25,
       clearcoat: 1,
     }),
-    sage: new THREE.MeshPhysicalMaterial({
-      color: 0x8fb5a4,
-      metalness: 0.72,
-      roughness: 0.3,
-      clearcoat: 0.8,
-    }),
-    peach: new THREE.MeshPhysicalMaterial({
-      color: 0xd49a82,
-      metalness: 0.65,
-      roughness: 0.28,
-      clearcoat: 0.8,
-    }),
   };
 }
 
@@ -89,7 +77,10 @@ function rounded(
   );
 }
 
-function extruded(points: [number, number][], material: THREE.Material) {
+function extruded(
+  points: [number, number][],
+  material: THREE.Material | THREE.Material[],
+) {
   const shape = new THREE.Shape(
     points.map(([x, y]) => new THREE.Vector2(x, y)),
   );
@@ -135,7 +126,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [-1.2, 0],
           [-0.4, 0.7],
         ],
-        materials.sage,
+        [materials.charcoal, materials.silver],
       ),
       [-3, 1.4, -2],
       [0, -1.4, 0],
@@ -151,7 +142,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [0.7, -1.05],
           [1.9, 0],
         ],
-        materials.sage,
+        [materials.charcoal, materials.silver],
       ),
       [3, -1, 1.5],
       [0, 1.4, 0],
@@ -165,7 +156,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [-0.14, -1.3],
           [0.54, 1.3],
         ],
-        materials.peach,
+        [materials.mint, materials.silver],
       ),
       [0, 2.8, 2],
       [0, 0, 0.8],
