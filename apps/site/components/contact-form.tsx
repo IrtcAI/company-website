@@ -10,6 +10,7 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import { addressLines, company, openingHours } from "@/lib/company";
 import { content, Locale } from "@/lib/content";
 import { services } from "@/lib/services";
@@ -44,6 +45,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       });
       if (!response.ok) throw new Error();
       setState("sent");
+      trackEvent("contact_submit", { topic: topic.current?.value || "none" });
       form.reset();
     } catch {
       setState("error");
