@@ -93,6 +93,8 @@
 }
 .solutions .contact-cta {
   margin-top: 70px;
+  padding-inline: 0;
+  padding-bottom: 0;
   border-color: #ffffff26;
 }
 .solutions .contact-cta .pill-link {
