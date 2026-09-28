@@ -47,12 +47,14 @@ export default function Iris({
     input.current?.focus();
     return () => controller.current?.abort();
   }, []);
+
   useEffect(() => {
     messagesEnd.current?.scrollIntoView({
       block: "nearest",
       behavior: "instant",
     });
   }, [messages, busy]);
+
   useEffect(() => {
     if (confirmClose) keepTalking.current?.focus();
     else input.current?.focus();
@@ -69,6 +71,7 @@ export default function Iris({
     setValue("");
     setBusy(true);
     controller.current = new AbortController();
+
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -119,6 +122,7 @@ export default function Iris({
     event.preventDefault();
     if (!draft.trim() || sendingDraft) return;
     setSendingDraft(true);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",

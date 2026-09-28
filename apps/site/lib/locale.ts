@@ -10,6 +10,7 @@ export function resolveLocale(
   acceptLanguage = "",
 ): Locale {
   if (isLocale(saved)) return saved;
+
   if (country === "BR" || country === "PT") return "pt-BR";
   if (
     country &&
@@ -38,6 +39,7 @@ export function resolveLocale(
     return "es";
   if (country && ["US", "GB", "CA", "AU", "NZ", "IE"].includes(country))
     return "en";
+
   const languages = acceptLanguage
     .split(",")
     .map((entry) => {
@@ -51,5 +53,6 @@ export function resolveLocale(
     if (tag === "es" || tag.startsWith("es-")) return "es";
     if (tag === "en" || tag.startsWith("en-")) return "en";
   }
+
   return "pt-BR";
 }

@@ -84,6 +84,7 @@ describe("Iris response policy", () => {
       }),
     });
     vi.stubGlobal("fetch", fetchMock);
+
     const response = await chat(
       request({
         message: "What is IRTC?",
@@ -93,6 +94,7 @@ describe("Iris response policy", () => {
       }),
     );
     const result = await response.json();
+
     expect(result.answer).toBe("IRTC builds software.");
     expect(result.signature).toEqual(expect.any(String));
     const payload = JSON.parse(
@@ -121,6 +123,7 @@ describe("contact delivery", () => {
     email: "test@example.com",
     message: "Test project",
   };
+
   it("rejects invalid email", async () =>
     expect((await contact(request({ ...lead, email: "invalid" }))).status).toBe(
       400,
@@ -147,6 +150,7 @@ describe("contact delivery", () => {
     vi.stubEnv("CONTACT_TO", "owner@example.com");
     const fetchMock = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", fetchMock);
+
     expect(
       (
         await contact(
@@ -154,6 +158,7 @@ describe("contact delivery", () => {
         )
       ).status,
     ).toBe(400);
+
     await contact(
       request({
         ...lead,
@@ -161,6 +166,7 @@ describe("contact delivery", () => {
         to: ["victim@example.com"],
       }),
     );
+
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.to).toEqual(["owner@example.com"]);
     expect(body.text).toContain("Tipo: contact");
@@ -172,9 +178,11 @@ describe("contact delivery", () => {
     vi.stubEnv("CONTACT_TO", "owner@example.com");
     const fetchMock = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", fetchMock);
+
     const response = await contact(
       request({ ...lead, kind: "scope_approval" }),
     );
+
     expect((await response.json()).ok).toBe(true);
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.to).toEqual(["owner@example.com"]);

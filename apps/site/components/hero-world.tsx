@@ -5,10 +5,12 @@ import { StudioSlot, useStudioStage } from "./studio-stage";
 
 export function HeroWorld({ paused }: { paused: boolean }) {
   const mount = useRef<HTMLDivElement>(null);
+
   const active = useCallback(() => {
     const story = mount.current?.closest<HTMLElement>(".intro-story");
     return Number(story?.dataset.progress ?? 0) < 0.5;
   }, []);
+
   useStudioStage(mount, { paused, active });
 
   return (

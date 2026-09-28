@@ -4,6 +4,7 @@ import { SiteExperience } from "@/components/site-experience";
 import { content } from "@/lib/content";
 
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "es" }];
 }
@@ -15,10 +16,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (locale !== "en" && locale !== "es") return {};
+
   const title =
     locale === "en"
       ? "IRTC | Software engineering, AI and data"
       : "IRTC | Ingeniería de software, IA y datos";
+
   return {
     title,
     description: content[locale].hero.description,

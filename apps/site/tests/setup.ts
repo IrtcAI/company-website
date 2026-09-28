@@ -28,6 +28,7 @@ beforeEach(() => {
       disconnect() {}
     },
   );
+
   Element.prototype.scrollIntoView = vi.fn();
   HTMLDialogElement.prototype.showModal = function () {
     this.setAttribute("open", "");
@@ -35,6 +36,7 @@ beforeEach(() => {
   HTMLDialogElement.prototype.close = function () {
     this.removeAttribute("open");
   };
+
   localStorage.clear();
   document.documentElement.dataset.theme = "system";
 });

@@ -10,6 +10,7 @@ const require = createRequire(
   createRequire(join(site, "package.json")).resolve("vitest"),
 );
 const { createServer } = await import(require.resolve("vite"));
+
 const chromePath =
   process.env.CHROME_PATH ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -55,6 +56,7 @@ const chrome = spawn(
   ],
   { stdio: "ignore" },
 );
+
 const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 let target;
 for (let attempt = 0; attempt < 50 && !target; attempt++) {
@@ -64,14 +66,17 @@ for (let attempt = 0; attempt < 50 && !target; attempt++) {
     target = pages.find((page) => page.type === "page");
   } catch {}
 }
+
 const socket = new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((done) => socket.addEventListener("open", done));
+
 let sequence = 0;
 const pending = new Map();
 socket.addEventListener("message", (event) => {
   const message = JSON.parse(event.data);
   pending.get(message.id)?.(message);
 });
+
 const send = (method, params = {}) =>
   new Promise((done) => {
     const id = ++sequence;
@@ -95,7 +100,9 @@ try {
     if (await evaluate("typeof window.renderPoster === 'function'")) break;
     await sleep(200);
   }
+
   mkdirSync(output, { recursive: true });
+
   for (const kind of kinds) {
     const image = await evaluate(`window.renderPoster("${kind}", ${size})`);
     const png = join(scratch, `${kind}.png`);

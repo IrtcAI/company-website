@@ -10,6 +10,7 @@ describe("accessibility toolbar", () => {
       JSON.stringify({ textSize: "large", contrast: true, motionPaused: true }),
     );
     const onPausedChange = vi.fn();
+
     render(
       <AccessibilityToolbar
         locale="en"
@@ -17,6 +18,7 @@ describe("accessibility toolbar", () => {
         onPausedChange={onPausedChange}
       />,
     );
+
     expect(
       document.getElementById("accessibility-toolbar-panel"),
     ).toHaveAttribute("inert");
@@ -29,6 +31,7 @@ describe("accessibility toolbar", () => {
       );
     });
   });
+
   it("opens from its visible control and updates text and contrast preferences", async () => {
     const user = userEvent.setup();
     render(

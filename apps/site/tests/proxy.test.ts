@@ -13,6 +13,7 @@ describe("locale routing", () => {
     expect(response.headers.get("cache-control")).toBe("private, no-store");
     expect(response.headers.get("vary")).toContain("Cookie");
   });
+
   it("redirects browser languages to their localized route", () => {
     const response = proxy(
       new NextRequest("https://irtc.com.br/", {
@@ -21,6 +22,7 @@ describe("locale routing", () => {
     );
     expect(response.headers.get("location")).toBe("https://irtc.com.br/es");
   });
+
   it("honors the saved preference over location", () => {
     vi.stubEnv("VERCEL", "1");
     const response = proxy(
@@ -30,6 +32,7 @@ describe("locale routing", () => {
     );
     expect(response.headers.get("location")).toBe("https://irtc.com.br/en");
   });
+
   it("uses country detection only on its trusted hosting provider", () => {
     const headers = { "x-vercel-ip-country": "BR", "accept-language": "en-US" };
     vi.stubEnv("VERCEL", "");
@@ -38,6 +41,7 @@ describe("locale routing", () => {
         "location",
       ),
     ).toBe("https://irtc.com.br/en");
+
     vi.stubEnv("VERCEL", "1");
     expect(
       proxy(new NextRequest("https://irtc.com.br/", { headers })).headers.get(

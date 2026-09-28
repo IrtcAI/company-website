@@ -19,6 +19,7 @@ export function ScrollStory({
   useEffect(() => {
     const element = root.current;
     if (!element) return;
+
     const media = window.matchMedia(
       "(min-width: 1024px) and (min-height: 760px) and (prefers-reduced-motion: no-preference)",
     );
@@ -28,6 +29,7 @@ export function ScrollStory({
     let expandedWidth = 1200;
     let expandedHeight = 700;
     let headerOffset = 0;
+
     const update = () => {
       frame = 0;
       if (!active) return;
@@ -71,9 +73,11 @@ export function ScrollStory({
       const hero = element.querySelector<HTMLElement>(".hero");
       if (hero) hero.inert = progress > 0.5;
     };
+
     const schedule = () => {
       if (!frame && active) frame = requestAnimationFrame(update);
     };
+
     const configure = () => {
       const content = element.querySelector<HTMLElement>(".screen-content");
       terminalSize = Math.max(150, Math.min(220, window.innerWidth * 0.15));
@@ -95,6 +99,7 @@ export function ScrollStory({
         if (hero) hero.inert = false;
       }
     };
+
     const visibility = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting)
         window.addEventListener("scroll", schedule, { passive: true });
@@ -102,12 +107,15 @@ export function ScrollStory({
       schedule();
     });
     visibility.observe(element);
+
     const size = new ResizeObserver(configure);
     const content = element.querySelector<HTMLElement>(".screen-content");
     if (content) size.observe(content);
+
     media.addEventListener("change", configure);
     window.addEventListener("resize", configure, { passive: true });
     configure();
+
     return () => {
       cancelAnimationFrame(frame);
       visibility.disconnect();

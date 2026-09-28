@@ -59,8 +59,11 @@ import { DevelopmentWorld } from "./development-world";
 
 const useIsomorphicLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 const Iris = dynamic(() => import("./iris"));
+
 const sectionIds = ["manifesto", "solucoes", "projetos", "depoimentos"];
+
 const techNames = [
   "Node.js",
   "Next.js",
@@ -71,6 +74,7 @@ const techNames = [
   "GitHub",
   "NestJS",
 ];
+
 const techSlugs = [
   "nodedotjs",
   "nextdotjs",
@@ -81,10 +85,13 @@ const techSlugs = [
   "github",
   "nestjs",
 ];
+
 const serviceIcons = [Layers3, Network, Sparkles, Database];
+
 const BELEM = projectLonLat(-48.4902, -1.4558);
 const SAO_PAULO = projectLonLat(-46.63, -23.55);
 const NEW_YORK = projectLonLat(-74.01, 40.71);
+
 function originArc(
   [x1, y1]: [number, number],
   [x2, y2]: [number, number],
@@ -99,8 +106,10 @@ function originArc(
   const cy = my + (dx / length) * bend;
   return `M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}`;
 }
+
 const ROUTE_SAO_PAULO = originArc(BELEM, SAO_PAULO, 22);
 const ROUTE_NEW_YORK = originArc(BELEM, NEW_YORK, -28);
+
 const REACH = (
   [
     [-122.42, 37.77],
@@ -124,6 +133,7 @@ const REACH = (
   const length = Math.hypot(point[0] - BELEM[0], point[1] - BELEM[1]);
   return { point, route: originArc(BELEM, point, -length * 0.22) };
 });
+
 const footerSocials = [
   {
     name: "LinkedIn",
@@ -152,6 +162,7 @@ function SectionLink({
     event.preventDefault();
     const destination = document.getElementById(target);
     if (!destination) return;
+
     const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
       .matches
       ? "instant"
@@ -159,15 +170,18 @@ function SectionLink({
     const story = destination.hasAttribute("data-scroll-stage")
       ? destination.closest<HTMLElement>('.intro-story[data-enhanced="true"]')
       : null;
+
     if (story)
       window.scrollTo({
         top: story.offsetTop + story.offsetHeight - window.innerHeight,
         behavior,
       });
     else destination.scrollIntoView({ behavior });
+
     destination.focus({ preventScroll: true });
     event.currentTarget.closest("details")?.removeAttribute("open");
   }
+
   return (
     <Link
       href="/"
@@ -190,12 +204,14 @@ function TypedHeadline({
   words: string[];
 }) {
   const [word, setWord] = useState(words[0]);
+
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let index = 0;
     let length = words[0].length;
     let deleting = true;
     let timer: ReturnType<typeof setTimeout>;
+
     const tick = () => {
       if (paused || reduced.matches) return;
       const current = words[index];
@@ -212,17 +228,21 @@ function TypedHeadline({
       }
       timer = setTimeout(tick, delay);
     };
+
     const restart = () => {
       clearTimeout(timer);
       timer = setTimeout(tick, 6000);
     };
+
     restart();
     reduced.addEventListener("change", restart);
+
     return () => {
       clearTimeout(timer);
       reduced.removeEventListener("change", restart);
     };
   }, [paused, words]);
+
   return (
     <span className="typed-line" aria-hidden="true">
       {word}
@@ -234,6 +254,7 @@ function TypedHeadline({
 export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const copy = content[locale];
   const router = useRouter();
+
   const [paused, setPaused] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [stuck, setStuck] = useState(false);
@@ -247,8 +268,10 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const [contactState, setContactState] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
+
   const launcher = useRef<HTMLButtonElement>(null);
   const chatTrigger = useRef<HTMLElement | null>(null);
+
   const currentProject = {
     ...projectBrands[project],
     ...copy.projects.cases[project],
@@ -261,6 +284,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
+
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
@@ -274,6 +298,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
     document
       .querySelectorAll("[data-reveal]")
       .forEach((element) => observer.observe(element));
+
     const top = new IntersectionObserver(([entry]) =>
       setScrolled(!entry.isIntersecting),
     );
@@ -320,14 +345,17 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
       localStorage.setItem("irtc-theme", value);
     } catch {}
   }
+
   function changeLanguage(value: string) {
     document.cookie = `irtc-locale=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
     router.push(value === "pt-BR" ? "/" : `/${value}`, { scroll: false });
   }
+
   function openChat(event: MouseEvent<HTMLButtonElement>) {
     chatTrigger.current = event.currentTarget;
     setChatOpen(true);
   }
+
   async function sendContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;

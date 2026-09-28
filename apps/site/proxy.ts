@@ -15,6 +15,7 @@ export function proxy(request: NextRequest) {
     locale === "pt-BR"
       ? NextResponse.next()
       : NextResponse.redirect(new URL(`/${locale}`, request.url));
+
   response.headers.set("Vary", "Accept-Language, Cookie");
   response.headers.set("Cache-Control", "private, no-store");
   return response;

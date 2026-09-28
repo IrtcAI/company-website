@@ -115,11 +115,13 @@ function isLand(polygons, lon, lat) {
 async function main() {
   console.log(`Fetching ${SOURCE_URL}`);
   const response = await fetch(SOURCE_URL);
+
   if (!response.ok) {
     throw new Error(
       `Download failed: ${response.status} ${response.statusText}`,
     );
   }
+
   const topology = await response.json();
   const arcs = decodeArcs(topology);
   const land = topology.objects.land;

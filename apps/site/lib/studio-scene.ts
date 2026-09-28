@@ -97,9 +97,11 @@ function part(
 function buildBrowser(body: THREE.Group, parts: Part[], materials: Materials) {
   const frame = rounded(2.6, 1.9, 0.14, materials.silver, 0.08);
   body.add(part(parts, frame, [0, -1.3, -0.9], [0.7, 0, 0]));
+
   const screen = rounded(2.42, 1.46, 0.04, materials.charcoal, 0.04);
   screen.position.set(0, -0.14, 0.08);
   body.add(part(parts, screen, [0, 0, -0.7]));
+
   const toolbar = new THREE.Group();
   [materials.orange, materials.mint, materials.charcoal].forEach(
     (material, index) => {
@@ -115,6 +117,7 @@ function buildBrowser(body: THREE.Group, parts: Part[], materials: Materials) {
   address.position.set(0.15, 0.77, 0.08);
   toolbar.add(address);
   body.add(part(parts, toolbar, [0, 0.9, 0.9]));
+
   const tiles: [number, number, number, number, THREE.Material][] = [
     [0, 0.42, 2.2, 0.22, materials.mint],
     [-0.62, -0.28, 0.95, 0.95, materials.orange],
@@ -175,6 +178,7 @@ function buildChip(body: THREE.Group, parts: Part[], materials: Materials) {
     }
   }
   body.add(part(parts, pins, [0, -0.9, 0]));
+
   const board = new THREE.Group();
   board.add(rounded(2.1, 0.22, 2.1, materials.charcoal, 0.14));
   const lid = rounded(1.6, 0.06, 1.6, materials.silver, 0.1);
@@ -184,6 +188,7 @@ function buildChip(body: THREE.Group, parts: Part[], materials: Materials) {
   core.position.y = 0.17;
   board.add(core);
   body.add(part(parts, board, [0, -0.4, 0]));
+
   const spark = sparkle(0.52, 0.12, materials.mint);
   spark.position.set(-0.1, 0.2, 0.08);
   const spark2 = sparkle(0.22, 0.08, materials.orange);
@@ -197,6 +202,7 @@ function buildChip(body: THREE.Group, parts: Part[], materials: Materials) {
 function buildDatabase(body: THREE.Group, parts: Part[], materials: Materials) {
   const disc = new THREE.CylinderGeometry(0.64, 0.64, 0.33, 48, 1);
   const rim = new THREE.TorusGeometry(0.62, 0.025, 8, 48);
+
   for (let index = 0; index < 3; index++) {
     const tier = new THREE.Group();
     tier.add(new THREE.Mesh(disc, materials.charcoal));
@@ -225,11 +231,13 @@ function buildServer(body: THREE.Group, parts: Part[], materials: Materials) {
 
 function buildPhone(body: THREE.Group, parts: Part[], materials: Materials) {
   body.add(rounded(1.05, 2.05, 0.22, materials.silver, 0.16));
+
   const screen = rounded(0.9, 1.88, 0.05, materials.charcoal, 0.11);
   screen.position.z = 0.13;
   const speaker = rounded(0.28, 0.055, 0.03, materials.silver, 0.015);
   speaker.position.set(0, 0.8, 0.18);
   body.add(screen, speaker);
+
   for (let index = 0; index < 4; index++) {
     const tile = rounded(
       0.3,
@@ -263,6 +271,7 @@ function createModel(kind: StudioKind, materials: Materials): Model {
   root.add(body);
   root.scale.setScalar(1 / sphere.radius);
   root.rotation.set(...poses[kind]);
+
   return { root, body, parts };
 }
 
@@ -290,11 +299,13 @@ function createRenderer(canvas?: HTMLCanvasElement) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
   renderer.setClearColor(0x000000, 0);
+
   const pmrem = new THREE.PMREMGenerator(renderer);
   const room = new RoomEnvironment();
   const environment = pmrem.fromScene(room, 0.04);
   room.dispose();
   pmrem.dispose();
+
   return { renderer, environment };
 }
 
@@ -304,6 +315,7 @@ function createScene(environment: THREE.Texture) {
   const key = new THREE.DirectionalLight(0xffffff, 3.2);
   key.position.set(-3, 6, 8);
   scene.add(key, new THREE.AmbientLight(0xffffff, 0.55));
+
   return scene;
 }
 
@@ -328,14 +340,17 @@ export function renderPoster(kind: StudioKind, size: number) {
   const scene = createScene(environment.texture);
   const materials = createMaterials();
   const model = createModel(kind, materials);
+
   scene.add(model.root);
   renderer.render(scene, createCamera());
   const image = renderer.domElement.toDataURL("image/png");
+
   dispose(scene);
   Object.values(materials).forEach((material) => material.dispose());
   environment.dispose();
   renderer.dispose();
   renderer.forceContextLoss();
+
   return image;
 }
 
@@ -346,12 +361,14 @@ export function createStage(
 ) {
   const canvas = document.createElement("canvas");
   canvas.className = "studio-canvas";
+
   const { renderer, environment } = createRenderer(canvas);
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.setScissorTest(true);
   const scene = createScene(environment.texture);
   const camera = createCamera();
   const materials = createMaterials();
+
   const entries = slots.map(({ element, kind }, index) => {
     const model = createModel(kind, materials);
     model.root.visible = false;
@@ -364,6 +381,7 @@ export function createStage(
       rect: { x: 0, y: 0, width: 0, height: 0 },
     };
   });
+
   const pointer = new THREE.Vector2();
   const tilt = new THREE.Vector2();
   const scrolled = Boolean(options.progress);
@@ -380,6 +398,7 @@ export function createStage(
     width = bounds.width;
     height = bounds.height;
     renderer.setSize(width, height, false);
+
     entries.forEach((entry) => {
       const rect = entry.element.getBoundingClientRect();
       entry.rect = {
@@ -425,6 +444,7 @@ export function createStage(
       renderer.render(scene, camera);
       model.root.visible = false;
     });
+
     if (!ready) {
       ready = true;
       host.dataset.ready = "true";
@@ -478,11 +498,13 @@ export function createStage(
   observer.observe(host);
   size.observe(host);
   entries.forEach(({ element }) => size.observe(element));
+
   window.addEventListener("scroll", schedule, { passive: true });
   if (!scrolled)
     window.addEventListener("pointermove", move, { passive: true });
   document.addEventListener("visibilitychange", schedule);
   window.addEventListener("irtc-motion-change", schedule);
+
   renderer.compile(scene, camera);
   host.prepend(canvas);
   measure();
@@ -494,15 +516,18 @@ export function createStage(
       cancelAnimationFrame(frame);
       observer.disconnect();
       size.disconnect();
+
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("pointermove", move);
       document.removeEventListener("visibilitychange", schedule);
       window.removeEventListener("irtc-motion-change", schedule);
+
       dispose(scene);
       Object.values(materials).forEach((material) => material.dispose());
       environment.dispose();
       renderer.dispose();
       renderer.forceContextLoss();
+
       canvas.remove();
       delete host.dataset.ready;
     },

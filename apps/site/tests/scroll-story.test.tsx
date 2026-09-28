@@ -12,6 +12,7 @@ describe("scroll story", () => {
     expect(container.firstChild).toHaveAttribute("data-enhanced", "false");
     expect(screen.getByText("Qualidade desde o começo.")).toBeVisible();
   });
+
   it("disables the pinned scene and restores hero access when paused", () => {
     vi.stubGlobal(
       "matchMedia",
@@ -21,12 +22,14 @@ describe("scroll story", () => {
         removeEventListener: vi.fn(),
       })),
     );
+
     const { container, rerender } = render(
       <ScrollStory locale="en" paused={false}>
         <div className="hero">Hero</div>
       </ScrollStory>,
     );
     expect(container.firstChild).toHaveAttribute("data-enhanced", "true");
+
     rerender(
       <ScrollStory locale="en" paused>
         <div className="hero">Hero</div>

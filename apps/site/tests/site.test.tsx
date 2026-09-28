@@ -28,6 +28,7 @@ describe("institutional experience", () => {
         "#manifesto, #solucoes, .client-strip, #projetos",
       ),
     ];
+
     expect(sections.map((section) => section.id || section.className)).toEqual([
       "manifesto",
       "solucoes",
@@ -41,6 +42,7 @@ describe("institutional experience", () => {
       "true",
     );
   });
+
   it("navigates and moves focus without adding a URL fragment", async () => {
     render(<SiteExperience />);
     await userEvent.click(screen.getAllByRole("link", { name: "Projetos" })[0]);
@@ -48,6 +50,7 @@ describe("institutional experience", () => {
     expect(location.hash).toBe("");
     expect(document.querySelectorAll('a[href^="#"]')).toHaveLength(0);
   });
+
   it("tracks the visible section, sticks the header and offers back-to-top", async () => {
     type Callback = (
       entries: {
@@ -56,6 +59,7 @@ describe("institutional experience", () => {
         intersectionRatio: number;
       }[],
     ) => void;
+
     const watchers = new Map<Element, Callback>();
     vi.stubGlobal(
       "IntersectionObserver",
@@ -71,6 +75,7 @@ describe("institutional experience", () => {
         disconnect() {}
       },
     );
+
     const { container } = render(<SiteExperience />);
     const report = (id: string, isIntersecting: boolean) => {
       const target = document.getElementById(id) as Element;
@@ -80,6 +85,7 @@ describe("institutional experience", () => {
         ]),
       );
     };
+
     const control = container.querySelector(".back-to-top");
     const header = container.querySelector(".site-header");
 
@@ -109,18 +115,22 @@ describe("institutional experience", () => {
     render(<SiteExperience />);
     const select = screen.getByLabelText("Aparência");
     await waitFor(() => expect(select).toHaveValue("dark"));
+
     await userEvent.selectOptions(select, "light");
     expect(localStorage.getItem("irtc-theme")).toBe("light");
     expect(document.documentElement.dataset.theme).toBe("light");
+
     await userEvent.selectOptions(select, "system");
     expect(document.documentElement.dataset.theme).toBe("system");
   });
+
   it("persists language choice and uses the localized route", async () => {
     render(<SiteExperience />);
     await userEvent.selectOptions(screen.getByLabelText("Idioma"), "es");
     expect(document.cookie).toContain("irtc-locale=es");
     expect(push).toHaveBeenCalledWith("/es", { scroll: false });
   });
+
   it("renders English content and updates the document language", () => {
     render(<SiteExperience locale="en" />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
@@ -128,14 +138,17 @@ describe("institutional experience", () => {
     );
     expect(document.documentElement.lang).toBe("en");
   });
+
   it("cycles all six recommendations and wraps backwards", async () => {
     render(<SiteExperience />);
     const region = document.getElementById("depoimentos")!;
     expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
+
     await userEvent.click(
       screen.getByRole("button", { name: "Recomendação anterior" }),
     );
     expect(within(region).getByText("Pedro Felipe")).toBeVisible();
+
     await userEvent.click(
       screen.getByRole("button", { name: "Próxima recomendação" }),
     );
@@ -145,8 +158,10 @@ describe("institutional experience", () => {
       within(region).queryByRole("link", { name: /recomendações/i }),
     ).toBeNull();
   });
+
   it("renders the founder portrait and one accessible manifesto", () => {
     render(<SiteExperience />);
+
     expect(
       screen.getByRole("img", {
         name: "Retrato de Iago Rodrigues, fundador da IRTC",
@@ -159,6 +174,7 @@ describe("institutional experience", () => {
     ).toHaveLength(1);
     expect(document.querySelectorAll("#manifesto")).toHaveLength(1);
   });
+
   it("keeps only one solution accordion open", async () => {
     render(<SiteExperience />);
     const products = screen.getByRole("button", {
@@ -167,23 +183,28 @@ describe("institutional experience", () => {
     const systems = screen.getByRole("button", {
       name: /Sistemas & integrações/,
     });
+
     await userEvent.click(products);
     expect(products).toHaveAttribute("aria-expanded", "true");
+
     await userEvent.click(systems);
     expect(products).toHaveAttribute("aria-expanded", "false");
     expect(systems).toHaveAttribute("aria-expanded", "true");
   });
+
   it("switches projects and explains a selected technology", async () => {
     render(<SiteExperience />);
     await userEvent.click(screen.getByRole("button", { name: /Dasa/ }));
     expect(
       screen.getByText("Informação disponível quando ela faz diferença."),
     ).toBeVisible();
+
     await userEvent.click(screen.getByRole("button", { name: "PostgreSQL" }));
     expect(
       screen.getByText(/Dados bem estruturados, consultas eficientes/),
     ).toBeVisible();
   });
+
   it("pauses motion and removes the redundant contact email link", async () => {
     render(<SiteExperience />);
     await userEvent.click(
@@ -194,28 +215,34 @@ describe("institutional experience", () => {
     ).toHaveAttribute("aria-pressed", "true");
     expect(document.querySelector("#contato a[href^='mailto:']")).toBeNull();
   });
+
   it("keeps the form values and reports failed delivery", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
     render(<SiteExperience />);
+
     fireEvent.change(screen.getByLabelText("Seu nome"), {
       target: { value: "Cliente Teste" },
     });
     fireEvent.submit(
       screen.getByRole("button", { name: "Enviar mensagem" }).closest("form")!,
     );
+
     expect(await screen.findByText(/Não foi possível enviar/)).toBeVisible();
     expect(screen.getByLabelText("Seu nome")).toHaveValue("Cliente Teste");
     expect(screen.queryByText(/Mensagem enviada\./)).toBeNull();
   });
+
   it("clears the form only after confirmed delivery", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true }));
     render(<SiteExperience />);
+
     fireEvent.change(screen.getByLabelText("Seu nome"), {
       target: { value: "Cliente Teste" },
     });
     fireEvent.submit(
       screen.getByRole("button", { name: "Enviar mensagem" }).closest("form")!,
     );
+
     expect(await screen.findByText(/Mensagem enviada\./)).toBeVisible();
     expect(screen.getByLabelText("Seu nome")).toHaveValue("");
   });

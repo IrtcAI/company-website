@@ -76,6 +76,7 @@ export function useStudioStage(
     let near = false;
     let generation = 0;
     let pending = 0;
+
     const release = () => {
       stage.current?.destroy();
       stage.current = null;
@@ -107,6 +108,7 @@ export function useStudioStage(
       if (!near || stage.current) return;
       pending = whenIdle(() => void load(request));
     };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         near = entry.isIntersecting;
@@ -116,6 +118,7 @@ export function useStudioStage(
     );
     observer.observe(element);
     media.addEventListener("change", configure);
+
     return () => {
       generation++;
       cancelIdle(pending);

@@ -24,6 +24,7 @@ beforeEach(() => {
     .mockReturnValue({ update: stage.update, destroy: stage.destroy });
   stage.update.mockReset();
   stage.destroy.mockReset();
+
   media = {
     matches: true,
     addEventListener: vi.fn((event, callback) => {
@@ -31,6 +32,7 @@ beforeEach(() => {
     }),
     removeEventListener: vi.fn(),
   };
+
   vi.stubGlobal(
     "matchMedia",
     vi.fn(() => media),
@@ -77,14 +79,17 @@ describe("section objects", () => {
       "src",
       "/studio/database.webp",
     );
+
     await settle();
     expect(stage.create).not.toHaveBeenCalled();
+
     intersect(true);
     await settle();
     expect(stage.create).toHaveBeenCalledTimes(1);
     expect(stage.create.mock.calls[0][1]).toEqual([
       expect.objectContaining({ kind: "database" }),
     ]);
+
     intersect(true);
     await settle();
     expect(stage.create).toHaveBeenCalledTimes(1);
@@ -102,9 +107,11 @@ describe("section objects", () => {
     const { rerender } = render(<View />);
     intersect(true);
     await settle();
+
     const { paused, progress } = stage.create.mock.calls[0][2];
     expect(paused()).toBe(false);
     const before = progress();
+
     rerender(<View paused />);
     expect(paused()).toBe(true);
     expect(stage.update).toHaveBeenCalled();
@@ -116,13 +123,16 @@ describe("section objects", () => {
     const { unmount } = render(<View />);
     intersect(true);
     await settle();
+
     media.matches = false;
     act(() => changeMedia());
     expect(stage.destroy).toHaveBeenCalledTimes(1);
+
     media.matches = true;
     act(() => changeMedia());
     await settle();
     expect(stage.create).toHaveBeenCalledTimes(2);
+
     unmount();
     expect(stage.destroy).toHaveBeenCalledTimes(2);
   });

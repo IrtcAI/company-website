@@ -50,20 +50,24 @@ describe("hero artwork", () => {
         disconnect() {}
       },
     );
+
     const { container } = render(
       <div className="intro-story" data-progress="0">
         <HeroWorld paused={false} />
       </div>,
     );
     const slots = [...container.querySelectorAll("[data-studio-slot]")];
+
     intersect(true);
     await act(() => vi.advanceTimersByTimeAsync(3000));
     await act(() => vi.dynamicImportSettled());
+
     const [, handed, options] = stage.create.mock.calls[0];
     expect(handed.map((slot: { element: Element }) => slot.element)).toEqual(
       slots,
     );
     expect(options.active()).toBe(true);
+
     (container.firstChild as HTMLElement).dataset.progress = "0.7";
     expect(options.active()).toBe(false);
   });
@@ -75,11 +79,13 @@ describe("hero artwork", () => {
       </ScrollStory>,
     );
     const terminal = container.querySelector(".story-screen");
+
     rerender(
       <ScrollStory locale="pt-BR" paused>
         <div className="hero" />
       </ScrollStory>,
     );
+
     expect(container.querySelectorAll(".story-screen")).toHaveLength(1);
     expect(container.querySelector(".story-screen")).toBe(terminal);
     expect(container.querySelectorAll("#story-title")).toHaveLength(1);

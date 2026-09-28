@@ -14,9 +14,11 @@ export function DevelopmentWorld({
   const mount = useRef<HTMLDivElement>(null);
   const frozen = useRef(0);
   const motion = useRef(paused);
+
   useEffect(() => {
     motion.current = paused;
   }, [paused]);
+
   const progress = useCallback(() => {
     const element = mount.current;
     const section = element?.parentElement?.parentElement;
@@ -31,6 +33,7 @@ export function DevelopmentWorld({
     }
     return frozen.current;
   }, []);
+
   useStudioStage(mount, { paused, progress });
 
   return (

@@ -8,6 +8,7 @@ describe("Iris dialog", () => {
     const onClose = vi.fn();
     render(<Iris onClose={onClose} />);
     await userEvent.type(screen.getByLabelText("Sua mensagem"), "Minha ideia");
+
     await userEvent.click(
       screen.getByRole("button", { name: "Fechar conversa" }),
     );
@@ -15,29 +16,35 @@ describe("Iris dialog", () => {
     expect(
       screen.getByRole("button", { name: "Continuar conversando" }),
     ).toHaveFocus();
+
     await userEvent.click(
       screen.getByRole("button", { name: "Continuar conversando" }),
     );
     expect(screen.getByLabelText("Sua mensagem")).toHaveValue("Minha ideia");
+
     await userEvent.click(
       screen.getByRole("button", { name: "Fechar conversa" }),
     );
     await userEvent.click(
       screen.getByRole("button", { name: "Sim, encerrar" }),
     );
+
     expect(onClose).toHaveBeenCalledOnce();
     expect(screen.queryByRole("dialog")).toBeNull();
   });
   it("opens confirmation on Escape and toggles fullscreen", async () => {
     render(<Iris onClose={vi.fn()} locale="en" />);
+
     await userEvent.click(
       screen.getByRole("button", { name: "Open fullscreen" }),
     );
     expect(screen.getByRole("dialog")).toHaveClass("expanded");
+
     await userEvent.click(
       screen.getByRole("button", { name: "Restore window" }),
     );
     expect(screen.getByRole("dialog")).not.toHaveClass("expanded");
+
     fireEvent(
       screen.getByRole("dialog"),
       new Event("cancel", { cancelable: true }),
@@ -51,9 +58,11 @@ describe("Iris dialog", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<Iris onClose={vi.fn()} locale="es" />);
+
     await userEvent.type(screen.getByLabelText("Tu mensaje"), "Quiero un CRM");
     await userEvent.click(screen.getByRole("button", { name: "Enviar" }));
     expect(await screen.findByText("Un MVP pequeño.")).toBeVisible();
+
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.locale).toBe("es");
     expect(body.knowledge).toBeUndefined();
@@ -79,9 +88,11 @@ describe("Iris dialog", () => {
       });
     vi.stubGlobal("fetch", fetchMock);
     render(<Iris onClose={vi.fn()} locale="en" />);
+
     await userEvent.type(screen.getByLabelText("Your message"), "First");
     await userEvent.click(screen.getByRole("button", { name: "Send" }));
     await screen.findByText("Signed answer.");
+
     await userEvent.type(screen.getByLabelText("Your message"), "Second");
     await userEvent.click(screen.getByRole("button", { name: "Send" }));
     expect(
@@ -89,9 +100,11 @@ describe("Iris dialog", () => {
         "Too many messages in a short time. Please try again in a few minutes.",
       ),
     ).toBeVisible();
+
     await userEvent.type(screen.getByLabelText("Your message"), "Third");
     await userEvent.click(screen.getByRole("button", { name: "Send" }));
     await screen.findByText("Ok.");
+
     expect(JSON.parse(fetchMock.mock.calls[2][1].body).history).toEqual([
       { role: "user", content: "First" },
       { role: "assistant", content: "Signed answer.", signature: "sig" },
@@ -110,6 +123,7 @@ describe("Iris dialog", () => {
         .mockResolvedValueOnce({ ok: false }),
     );
     render(<Iris onClose={vi.fn()} />);
+
     await userEvent.type(screen.getByLabelText("Sua mensagem"), "Quero um MVP");
     await userEvent.click(screen.getByRole("button", { name: "Enviar" }));
     await userEvent.click(
@@ -122,6 +136,7 @@ describe("Iris dialog", () => {
     await userEvent.click(
       screen.getByRole("button", { name: "Aprovar e enviar por e-mail" }),
     );
+
     expect(
       await screen.findByText(
         "Não foi possível enviar. Tente novamente em instantes.",
