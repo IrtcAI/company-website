@@ -69,12 +69,22 @@
   position: relative;
   isolation: isolate;
 }
+.object-run > .development-backdrop {
+  z-index: 0;
+}
 .object-run > section {
+  content-visibility: visible;
+}
+.object-run > section > * {
   position: relative;
   z-index: 1;
 }
+.testimonials,
+.founder {
+  background: var(--surface-alt);
+}
 .backdrop-database .development-world {
-  opacity: 0.15;
+  opacity: 0.13;
   mask-image: radial-gradient(closest-side, #000 60%, transparent);
 }
 .backdrop-database .development-slot {
@@ -89,32 +99,21 @@
 html[data-theme="dark"] .backdrop-database .development-world {
   opacity: 0.22;
 }
-.origin > .backdrop-server {
-  position: relative;
-  inset: auto;
-  z-index: 0;
-  grid-column: 7;
-  grid-row: 1;
-  justify-self: center;
-  align-self: center;
-  width: calc(100% + 2 * var(--layout-gap) + 40px);
-  aspect-ratio: 1;
-}
-.origin > :not(.development-backdrop) {
-  position: relative;
-  z-index: 1;
-}
 .backdrop-server .development-world {
-  position: absolute;
-  inset: 0;
-  height: auto;
-  opacity: 1;
-  mask-image: none;
+  opacity: 0.13;
+  mask-image: radial-gradient(closest-side, #000 60%, transparent);
 }
 .backdrop-server .development-slot {
-  inset: 0;
-  width: 100%;
-  translate: none;
+  left: 55%;
+  width: min(72svh, 46vw);
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .backdrop-server .development-world {
+    opacity: 0.22;
+  }
+}
+html[data-theme="dark"] .backdrop-server .development-world {
+  opacity: 0.22;
 }
 @media (min-width: 1024px) and (min-height: 760px) and (prefers-reduced-motion: no-preference) {
   .intro-story:not([data-enhanced="false"]) {

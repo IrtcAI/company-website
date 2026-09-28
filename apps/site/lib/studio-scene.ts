@@ -59,6 +59,20 @@ function createMaterials() {
       roughness: 0.25,
       clearcoat: 1,
     }),
+    pastelMint: new THREE.MeshPhysicalMaterial({
+      color: 0x8fcfb2,
+      metalness: 0,
+      roughness: 0.5,
+      clearcoat: 0.25,
+      clearcoatRoughness: 0.4,
+    }),
+    pastelOrange: new THREE.MeshPhysicalMaterial({
+      color: 0xf7ad55,
+      metalness: 0,
+      roughness: 0.5,
+      clearcoat: 0.25,
+      clearcoatRoughness: 0.4,
+    }),
   };
 }
 
@@ -77,10 +91,7 @@ function rounded(
   );
 }
 
-function extruded(
-  points: [number, number][],
-  material: THREE.Material | THREE.Material[],
-) {
+function extruded(points: [number, number][], material: THREE.Material) {
   const shape = new THREE.Shape(
     points.map(([x, y]) => new THREE.Vector2(x, y)),
   );
@@ -126,7 +137,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [-1.2, 0],
           [-0.4, 0.7],
         ],
-        [materials.charcoal, materials.silver],
+        materials.pastelMint,
       ),
       [-3, 1.4, -2],
       [0, -1.4, 0],
@@ -142,7 +153,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [0.7, -1.05],
           [1.9, 0],
         ],
-        [materials.charcoal, materials.silver],
+        materials.pastelMint,
       ),
       [3, -1, 1.5],
       [0, 1.4, 0],
@@ -156,7 +167,7 @@ function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
           [-0.14, -1.3],
           [0.54, 1.3],
         ],
-        [materials.mint, materials.silver],
+        materials.pastelOrange,
       ),
       [0, 2.8, 2],
       [0, 0, 0.8],

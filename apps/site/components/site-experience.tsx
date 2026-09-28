@@ -668,88 +668,90 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             </div>
           </section>
         </div>
-        <section className="origin section-pad">
+        <div className="object-run">
           <DevelopmentWorld paused={paused} kind="server" />
-          <figure
-            className="origin-figure"
-            aria-labelledby="origin-map-title"
-            aria-describedby="origin-map-description"
-          >
-            <div className="origin-network" aria-hidden="true">
-              <svg viewBox="0 0 600 500">
-                <defs>
-                  <pattern
-                    id="map-grid"
-                    width="36"
-                    height="36"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
-                  </pattern>
-                </defs>
-                <rect width="600" height="500" fill="url(#map-grid)" />
-                <path
-                  className="network-route route-one"
-                  d="M180 330Q180 90 440 140"
-                />
-                <path
-                  className="network-route route-two"
-                  d="M180 330Q370 410 460 300"
-                />
-                <path
-                  className="network-route route-three"
-                  d="M180 330Q55 190 170 105"
-                />
-                <circle className="network-pulse" cx="180" cy="330" r="28" />
-                <circle className="network-hub" cx="180" cy="330" r="10" />
-                <circle cx="440" cy="140" r="7" />
-                <circle cx="460" cy="300" r="7" />
-                <circle cx="170" cy="105" r="7" />
-              </svg>
-              <span className="network-coordinates">01°27′ S · 48°30′ W</span>
-              <span className="network-belem">
-                Belém<span>Pará, Brasil</span>
-              </span>
-              <span className="network-endpoint endpoint-one">
-                <Monitor aria-hidden="true" />
-                {copy.origin.node}
-              </span>
-              <span className="network-endpoint endpoint-two">
-                <Network aria-hidden="true" />
-                API / CLOUD
-              </span>
-              <span className="network-endpoint endpoint-three">
-                <Code2 aria-hidden="true" />
-                IRTC
-              </span>
-              <span className="network-status">
-                <span />
-                {copy.origin.link}
-              </span>
+          <section className="origin section-pad">
+            <figure
+              className="origin-figure"
+              aria-labelledby="origin-map-title"
+              aria-describedby="origin-map-description"
+            >
+              <div className="origin-network" aria-hidden="true">
+                <svg viewBox="0 0 600 500">
+                  <defs>
+                    <pattern
+                      id="map-grid"
+                      width="36"
+                      height="36"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
+                    </pattern>
+                  </defs>
+                  <rect width="600" height="500" fill="url(#map-grid)" />
+                  <path
+                    className="network-route route-one"
+                    d="M180 330Q180 90 440 140"
+                  />
+                  <path
+                    className="network-route route-two"
+                    d="M180 330Q370 410 460 300"
+                  />
+                  <path
+                    className="network-route route-three"
+                    d="M180 330Q55 190 170 105"
+                  />
+                  <circle className="network-pulse" cx="180" cy="330" r="28" />
+                  <circle className="network-hub" cx="180" cy="330" r="10" />
+                  <circle cx="440" cy="140" r="7" />
+                  <circle cx="460" cy="300" r="7" />
+                  <circle cx="170" cy="105" r="7" />
+                </svg>
+                <span className="network-coordinates">01°27′ S · 48°30′ W</span>
+                <span className="network-belem">
+                  Belém<span>Pará, Brasil</span>
+                </span>
+                <span className="network-endpoint endpoint-one">
+                  <Monitor aria-hidden="true" />
+                  {copy.origin.node}
+                </span>
+                <span className="network-endpoint endpoint-two">
+                  <Network aria-hidden="true" />
+                  API / CLOUD
+                </span>
+                <span className="network-endpoint endpoint-three">
+                  <Code2 aria-hidden="true" />
+                  IRTC
+                </span>
+                <span className="network-status">
+                  <span />
+                  {copy.origin.link}
+                </span>
+              </div>
+              <figcaption className="network-caption">
+                <strong id="origin-map-title">{copy.origin.mapTitle}</strong>
+                <span id="origin-map-description">
+                  {copy.origin.mapDescription}
+                </span>
+              </figcaption>
+            </figure>
+            <div data-reveal>
+              <p className="overline">{copy.origin.label}</p>
+              <h2>
+                {copy.origin.title}
+                <br />
+                <span>{copy.origin.accent}</span>
+              </h2>
+              <p>{copy.origin.body}</p>
+              <p>{copy.origin.vision}</p>
+              <SectionLink target="contato" className="inline-link">
+                {copy.origin.cta}
+                <MessageCircle aria-hidden="true" />
+              </SectionLink>
             </div>
-            <figcaption className="network-caption">
-              <strong id="origin-map-title">{copy.origin.mapTitle}</strong>
-              <span id="origin-map-description">
-                {copy.origin.mapDescription}
-              </span>
-            </figcaption>
-          </figure>
-          <div data-reveal>
-            <p className="overline">{copy.origin.label}</p>
-            <h2>
-              {copy.origin.title}
-              <br />
-              <span>{copy.origin.accent}</span>
-            </h2>
-            <p>{copy.origin.body}</p>
-            <p>{copy.origin.vision}</p>
-            <SectionLink target="contato" className="inline-link">
-              {copy.origin.cta}
-              <MessageCircle aria-hidden="true" />
-            </SectionLink>
-          </div>
-        </section>
-        <Founder locale={locale} />
+          </section>
+          <Founder locale={locale} />
+        </div>
         <section className="contact section-pad" id="contato" tabIndex={-1}>
           <div>
             <p className="overline">{copy.contact.label}</p>

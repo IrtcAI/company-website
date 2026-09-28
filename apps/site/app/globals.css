@@ -5,8 +5,10 @@
   --secondary: light-dark(#525e54, #bfcac1);
   --surface-line: light-dark(#c7cec5, #49584f);
   --coral: #ef604f;
-  --hero-coral: light-dark(#c44437, #8f362c);
-  --footer-coral: light-dark(#ef604f, #8f362c);
+  --hero-coral: light-dark(#c44437, #4a2440);
+  --footer-coral: light-dark(#ef604f, #4a2440);
+  --surface-alt: light-dark(#f8e7e0, #2a1f28);
+  --hero-chip: light-dark(#ef604f, #5e2e52);
   --footer-ink: light-dark(#34150f, #fff4e9);
   --footer-accent: light-dark(#fffaf4, #f6c2b6);
   --footer-line: light-dark(#823b3260, #fff4e940);
@@ -2226,20 +2228,20 @@ main[tabindex="-1"]:focus {
   max-width: 430px;
   padding: 8px 14px;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--coral) 91%, transparent);
+  background: color-mix(in srgb, var(--hero-chip) 91%, transparent);
   font-size: 18px;
 }
 .hero-start {
   padding: 5px 5px 5px 16px;
   border-radius: 50px;
-  background: color-mix(in srgb, var(--coral) 95%, transparent);
+  background: color-mix(in srgb, var(--hero-chip) 95%, transparent);
   font-weight: 600;
 }
 .eyebrow {
   display: inline-block;
   padding: 7px 13px;
   border-radius: 50px;
-  background: color-mix(in srgb, var(--coral) 91%, transparent);
+  background: color-mix(in srgb, var(--hero-chip) 91%, transparent);
 }
 .hero h1 {
   font-size: clamp(60px, 7.5vw, 126px);
