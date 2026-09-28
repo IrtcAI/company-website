@@ -79,9 +79,18 @@ button {
   background: var(--mint);
   color: var(--ink);
 }
+:root {
+  --focus-ring: light-dark(#205f53, #7fd9b9);
+}
 :focus-visible {
-  outline: 3px solid light-dark(#205f53, #7fd9b9);
-  outline-offset: 6px;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+.contact input:focus-visible,
+.contact textarea:focus-visible {
+  outline: none;
+  border-bottom-color: var(--focus-ring);
+  box-shadow: 0 1px 0 var(--focus-ring);
 }
 .manifesto :focus-visible,
 .solutions :focus-visible,
