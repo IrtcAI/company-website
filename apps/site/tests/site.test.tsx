@@ -1,5 +1,6 @@
 import { createElement, ImgHTMLAttributes } from "react";
 import {
+  act,
   fireEvent,
   render,
   screen,
@@ -47,6 +48,31 @@ describe("institutional experience", () => {
     expect(location.hash).toBe("");
     expect(document.querySelectorAll('a[href^="#"]')).toHaveLength(0);
   });
+  it("offers a back-to-top control once the hero leaves the viewport", async () => {
+    let leave: (visible: boolean) => void = () => {};
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(
+          callback: (entries: { isIntersecting: boolean }[]) => void,
+        ) {
+          leave = (visible) => callback([{ isIntersecting: visible }]);
+        }
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+      },
+    );
+    const { container } = render(<SiteExperience />);
+    const control = container.querySelector(".back-to-top");
+    expect(control).toHaveAttribute("data-visible", "false");
+    act(() => leave(false));
+    expect(control).toHaveAttribute("data-visible", "true");
+    await userEvent.click(within(control as HTMLElement).getByRole("link"));
+    expect(document.activeElement).toHaveAttribute("id", "conteudo");
+    expect(screen.queryByText(/Imagem pública da marca/)).toBeNull();
+  });
+
   it("saves the explicit theme and restores the saved mode", async () => {
     document.documentElement.dataset.theme = "dark";
     render(<SiteExperience />);

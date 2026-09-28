@@ -58,8 +58,6 @@ export const content = {
       choose: "Escolha um projeto",
       details: "O que foi desenvolvido",
       visit: "Visitar site",
-      image:
-        "Imagem pública da marca; ilustra o produto, não a autoria de toda a plataforma.",
       source:
         "Indicadores de projetos relatados no material institucional. Resultados dependem do contexto de cada operação.",
       cases: [
@@ -315,8 +313,6 @@ export const content = {
       choose: "Choose a project",
       details: "What we built",
       visit: "Visit website",
-      image:
-        "Public brand imagery illustrates the product, not authorship of the entire platform.",
       source:
         "Project metrics reported in the source materials. Results depend on each operating context.",
       cases: [
@@ -572,8 +568,6 @@ export const content = {
       choose: "Elige un proyecto",
       details: "Qué desarrollamos",
       visit: "Visitar sitio",
-      image:
-        "Imagen pública de la marca; ilustra el producto, no la autoría de toda la plataforma.",
       source:
         "Indicadores de proyectos documentados en el material de referencia. Los resultados dependen de cada operación.",
       cases: [

@@ -88,11 +88,6 @@
   box-shadow: 0 0.5rem 1.5rem #11285624;
 }
 
-.visual-caption {
-  color: #254947;
-  background: #ffffffdf;
-  box-shadow: 0 0.35rem 1.4rem #143f4520;
-}
 
 @media (max-width: 760px) {
   .project-visual {

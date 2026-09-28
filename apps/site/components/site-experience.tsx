@@ -180,6 +180,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const copy = content[locale];
   const router = useRouter();
   const [paused, setPaused] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState("system");
   const [chatOpen, setChatOpen] = useState(false);
   const [recommendation, setRecommendation] = useState(0);
@@ -216,8 +217,14 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
     document
       .querySelectorAll("[data-reveal]")
       .forEach((element) => observer.observe(element));
+    const top = new IntersectionObserver(([entry]) =>
+      setScrolled(!entry.isIntersecting),
+    );
+    const start = document.getElementById("inicio");
+    if (start) top.observe(start);
     return () => {
       observer.disconnect();
+      top.disconnect();
     };
   }, [locale]);
 
@@ -507,161 +514,162 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             ))}
           </div>
         </section>
-        <section className="projects section-pad" id="projetos" tabIndex={-1}>
+        <div className="object-run">
           <DevelopmentWorld paused={paused} kind="database" />
-          <div className="section-label">
-            <span>{copy.projects.label}</span>
-            <span>{copy.projects.aside}</span>
-          </div>
-          <div className="section-title-row" data-reveal>
-            <h2>
-              {copy.projects.title}
-              <br />
-              <span>{copy.projects.accent}</span>
-            </h2>
-            <p>{copy.projects.intro}</p>
-          </div>
-          <div
-            className="project-selector"
-            role="group"
-            aria-label={copy.projects.choose}
-          >
-            {projectBrands.map((item, index) => (
-              <button
-                key={item.name}
-                aria-pressed={project === index}
-                onClick={() => setProject(index)}
-              >
-                <span>0{index + 1}</span>
-                {item.name}
-                <span className="selected-indicator">
-                  {project === index ? (
-                    <CircleCheck aria-hidden="true" />
-                  ) : (
-                    <Plus aria-hidden="true" />
-                  )}
-                </span>
-              </button>
-            ))}
-          </div>
-          <article className="project-feature" key={currentProject.name}>
-            <div className={`project-visual ${currentProject.theme}`}>
-              <div className="project-orb" aria-hidden="true" />
-              <a
-                className="product-window real-product"
-                href={currentProject.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${copy.projects.visit}: ${currentProject.name} (${new URL(currentProject.url).hostname})`}
-              >
-                <div className="window-bar" aria-hidden="true">
-                  <span className="window-dots">● ● ●</span>
-                  <span>{new URL(currentProject.url).hostname}</span>
-                  <ExternalLink />
-                </div>
-                <div className="real-product-content">
-                  <Image
-                    src={currentProject.image}
-                    alt={`${currentProject.name} — ${currentProject.category}`}
-                    width={900}
-                    height={620}
-                    sizes="(max-width: 760px) 90vw, 48vw"
-                  />
-                </div>
-              </a>
-              <span className="visual-caption">{copy.projects.image}</span>
+          <section className="projects section-pad" id="projetos" tabIndex={-1}>
+            <div className="section-label">
+              <span>{copy.projects.label}</span>
+              <span>{copy.projects.aside}</span>
             </div>
-            <div className="project-info">
-              <p className="overline">{currentProject.category}</p>
-              <h3>{currentProject.title}</h3>
-              <p>{currentProject.description}</p>
-              <div className="project-result">
-                <strong>{currentProject.metric}</strong>
-                <span>{currentProject.result}</span>
-              </div>
-              <p className="project-stack">{currentProject.stack}</p>
-              <details className="project-details">
-                <summary>
-                  {copy.projects.details}
-                  <Plus aria-hidden="true" />
-                </summary>
-                <p>{currentProject.detail}</p>
-                <a href={currentProject.url} target="_blank" rel="noreferrer">
-                  {copy.projects.visit}
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              </details>
-            </div>
-          </article>
-          <p className="project-source">{copy.projects.source}</p>
-        </section>
-        <section
-          className="testimonials section-pad"
-          id="depoimentos"
-          tabIndex={-1}
-        >
-          <DevelopmentWorld paused={paused} kind="server" />
-          <div className="section-label">
-            <span>{copy.testimonials.label}</span>
-          </div>
-          <div className="testimonial-layout">
-            <div>
-              <h2 data-reveal>
-                {copy.testimonials.title}
+            <div className="section-title-row" data-reveal>
+              <h2>
+                {copy.projects.title}
                 <br />
-                <span>{copy.testimonials.accent}</span>
+                <span>{copy.projects.accent}</span>
               </h2>
-              <p>{copy.testimonials.intro}</p>
-              <div className="testimonial-controls">
+              <p>{copy.projects.intro}</p>
+            </div>
+            <div
+              className="project-selector"
+              role="group"
+              aria-label={copy.projects.choose}
+            >
+              {projectBrands.map((item, index) => (
                 <button
-                  aria-label={copy.testimonials.previous}
-                  onClick={() =>
-                    setRecommendation(
-                      (recommendation + recommendationAuthors.length - 1) %
-                        recommendationAuthors.length,
-                    )
-                  }
+                  key={item.name}
+                  aria-pressed={project === index}
+                  onClick={() => setProject(index)}
                 >
-                  <ChevronLeft aria-hidden="true" />
+                  <span>0{index + 1}</span>
+                  {item.name}
+                  <span className="selected-indicator">
+                    {project === index ? (
+                      <CircleCheck aria-hidden="true" />
+                    ) : (
+                      <Plus aria-hidden="true" />
+                    )}
+                  </span>
                 </button>
-                <span>
-                  0{recommendation + 1} / 0{recommendationAuthors.length}
-                </span>
-                <button
-                  aria-label={copy.testimonials.next}
-                  onClick={() =>
-                    setRecommendation(
-                      (recommendation + 1) % recommendationAuthors.length,
-                    )
-                  }
+              ))}
+            </div>
+            <article className="project-feature" key={currentProject.name}>
+              <div className={`project-visual ${currentProject.theme}`}>
+                <div className="project-orb" aria-hidden="true" />
+                <a
+                  className="product-window real-product"
+                  href={currentProject.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${copy.projects.visit}: ${currentProject.name} (${new URL(currentProject.url).hostname})`}
                 >
-                  <ChevronRight aria-hidden="true" />
-                </button>
+                  <div className="window-bar" aria-hidden="true">
+                    <span className="window-dots">● ● ●</span>
+                    <span>{new URL(currentProject.url).hostname}</span>
+                    <ExternalLink />
+                  </div>
+                  <div className="real-product-content">
+                    <Image
+                      src={currentProject.image}
+                      alt={`${currentProject.name} — ${currentProject.category}`}
+                      width={900}
+                      height={620}
+                      sizes="(max-width: 760px) 90vw, 48vw"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div className="project-info">
+                <p className="overline">{currentProject.category}</p>
+                <h3>{currentProject.title}</h3>
+                <p>{currentProject.description}</p>
+                <div className="project-result">
+                  <strong>{currentProject.metric}</strong>
+                  <span>{currentProject.result}</span>
+                </div>
+                <p className="project-stack">{currentProject.stack}</p>
+                <details className="project-details">
+                  <summary>
+                    {copy.projects.details}
+                    <Plus aria-hidden="true" />
+                  </summary>
+                  <p>{currentProject.detail}</p>
+                  <a href={currentProject.url} target="_blank" rel="noreferrer">
+                    {copy.projects.visit}
+                    <ExternalLink aria-hidden="true" />
+                  </a>
+                </details>
+              </div>
+            </article>
+            <p className="project-source">{copy.projects.source}</p>
+          </section>
+          <section
+            className="testimonials section-pad"
+            id="depoimentos"
+            tabIndex={-1}
+          >
+            <div className="section-label">
+              <span>{copy.testimonials.label}</span>
+            </div>
+            <div className="testimonial-layout">
+              <div>
+                <h2 data-reveal>
+                  {copy.testimonials.title}
+                  <br />
+                  <span>{copy.testimonials.accent}</span>
+                </h2>
+                <p>{copy.testimonials.intro}</p>
+                <div className="testimonial-controls">
+                  <button
+                    aria-label={copy.testimonials.previous}
+                    onClick={() =>
+                      setRecommendation(
+                        (recommendation + recommendationAuthors.length - 1) %
+                          recommendationAuthors.length,
+                      )
+                    }
+                  >
+                    <ChevronLeft aria-hidden="true" />
+                  </button>
+                  <span>
+                    0{recommendation + 1} / 0{recommendationAuthors.length}
+                  </span>
+                  <button
+                    aria-label={copy.testimonials.next}
+                    onClick={() =>
+                      setRecommendation(
+                        (recommendation + 1) % recommendationAuthors.length,
+                      )
+                    }
+                  >
+                    <ChevronRight aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+              <div aria-live="polite" aria-atomic="true">
+                <figure
+                  className={`quote-card ${recommendation % 2 ? "peach" : "mint"}`}
+                  key={author.name}
+                >
+                  <MessageCircle className="quote-symbol" aria-hidden="true" />
+                  <p className="recommendation-summary">
+                    {copy.testimonials.summaries[recommendation]}
+                  </p>
+                  <figcaption>
+                    <span className="quote-avatar" aria-hidden="true">
+                      {author.initials}
+                    </span>
+                    <span>
+                      <strong>{author.name}</strong>
+                      <span>{author.role}</span>
+                    </span>
+                  </figcaption>
+                </figure>
               </div>
             </div>
-            <div aria-live="polite" aria-atomic="true">
-              <figure
-                className={`quote-card ${recommendation % 2 ? "peach" : "mint"}`}
-                key={author.name}
-              >
-                <MessageCircle className="quote-symbol" aria-hidden="true" />
-                <p className="recommendation-summary">
-                  {copy.testimonials.summaries[recommendation]}
-                </p>
-                <figcaption>
-                  <span className="quote-avatar" aria-hidden="true">
-                    {author.initials}
-                  </span>
-                  <span>
-                    <strong>{author.name}</strong>
-                    <span>{author.role}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
         <section className="origin section-pad">
+          <DevelopmentWorld paused={paused} kind="server" />
           <figure
             className="origin-figure"
             aria-labelledby="origin-map-title"
@@ -883,6 +891,11 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         paused={paused}
         onPausedChange={setPaused}
       />
+      <div className="back-to-top" data-visible={scrolled}>
+        <SectionLink target="conteudo" label={copy.footer.top}>
+          <ArrowUp aria-hidden="true" />
+        </SectionLink>
+      </div>
       <button
         ref={launcher}
         className="iris-launcher"

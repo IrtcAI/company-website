@@ -811,13 +811,6 @@ h3 {
 .floating-note b {
   font-weight: 500;
 }
-.visual-caption {
-  position: absolute;
-  left: 22px;
-  bottom: 20px;
-  font-size: 9px;
-  color: #4d5d50;
-}
 .project-info {
   padding: 22px 0;
 }
@@ -1995,10 +1988,6 @@ summary::-webkit-details-marker {
     right: 15px;
     bottom: 40px;
   }
-  .visual-caption {
-    bottom: 12px;
-    font-size: 8px;
-  }
   .solutions {
     border-radius: 24px 24px 0 0;
     margin-top: 0;
@@ -2389,15 +2378,6 @@ main[tabindex="-1"]:focus {
   background: white;
   border-radius: 6px;
   padding: 10px;
-}
-.visual-caption {
-  right: 22px;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #263b38;
-  background: #ffffffed;
-  padding: 9px 12px;
-  border-radius: 6px;
 }
 .hero-bottom .motion-toggle {
   position: absolute;
@@ -2973,11 +2953,6 @@ svg.solution-expand {
   }
   .project-visual {
     min-height: 380px;
-  }
-  .visual-caption {
-    left: 18px;
-    right: 18px;
-    font-size: 11px;
   }
   .real-product-content > img:first-child {
     height: 230px;
@@ -4013,5 +3988,58 @@ a.footer-channel:hover .footer-channel-icon {
   }
   .footer-wordmark {
     font-size: clamp(108px, 35vw, 160px);
+  }
+}
+.back-to-top {
+  position: fixed;
+  z-index: 9;
+  right: 22px;
+  bottom: 76px;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 12px;
+  transition:
+    opacity 0.25s,
+    translate 0.25s,
+    visibility 0s 0.25s;
+}
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition:
+    opacity 0.25s,
+    translate 0.25s;
+}
+.back-to-top a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #dddcd4;
+  background: #fffaf4;
+  color: #191b1b;
+  box-shadow: 0 5px 22px #00000012;
+  transition: transform 0.25s;
+}
+.back-to-top a:hover {
+  transform: translateY(-3px);
+}
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+@media (max-width: 767px) {
+  .back-to-top {
+    right: 14px;
+    bottom: 66px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top[data-visible="true"],
+  .back-to-top a {
+    transition: none;
   }
 }

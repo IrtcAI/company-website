@@ -19,7 +19,7 @@ export function DevelopmentWorld({
   }, [paused]);
   const progress = useCallback(() => {
     const element = mount.current;
-    const section = element?.closest("section");
+    const section = element?.parentElement?.parentElement;
     if (!element || !section) return 0;
     if (!motion.current) {
       const bounds = section.getBoundingClientRect();
