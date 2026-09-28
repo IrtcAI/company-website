@@ -20,10 +20,15 @@
 [data-ready="true"] > .studio-slot img {
   visibility: hidden;
 }
-.hero-laptop {
+.hero-browser {
   left: 0;
   bottom: 0;
   width: clamp(150px, 17vw, 250px);
+}
+.hero-network {
+  left: 44%;
+  top: 7%;
+  width: clamp(120px, 12vw, 170px);
 }
 .hero-phone {
   right: 3%;
@@ -178,7 +183,7 @@ html[data-theme="dark"] .backdrop-server .development-world {
   }
 }
 @media (max-width: 1023px) {
-  .hero-laptop {
+  .hero-browser {
     left: 2%;
     bottom: 2%;
     width: clamp(110px, 24vw, 170px);
@@ -203,5 +208,22 @@ html[data-theme="dark"] .backdrop-server .development-world {
     right: 8%;
     bottom: 6%;
     width: clamp(110px, 18vw, 160px);
+  }
+}
+@media (max-width: 1023px) {
+  .hero-network {
+    left: 43%;
+    top: auto;
+    bottom: 6%;
+    width: clamp(80px, 14vw, 130px);
+  }
+}
+@media (max-width: 639px) {
+  .hero-network {
+    left: auto;
+    right: 4%;
+    top: auto;
+    bottom: 4%;
+    width: clamp(84px, 22vw, 120px);
   }
 }

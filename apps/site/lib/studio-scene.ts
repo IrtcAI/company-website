@@ -24,7 +24,8 @@ export type StageOptions = {
 };
 
 const poses: Record<StudioKind, [number, number, number]> = {
-  laptop: [0.42, -0.55, 0.06],
+  browser: [0.18, -0.45, 0.05],
+  network: [0.3, -0.55, 0.12],
   database: [0.42, 0.3, -0.22],
   server: [0.42, -0.42, 0.08],
   phone: [0.12, -0.42, 0.26],
@@ -93,36 +94,94 @@ function part(
   return mesh;
 }
 
-function buildLaptop(body: THREE.Group, parts: Part[], materials: Materials) {
-  const base = new THREE.Group();
-  base.add(rounded(2.4, 0.12, 1.6, materials.silver, 0.06));
-  const deck = rounded(2.1, 0.02, 0.8, materials.charcoal, 0.01);
-  deck.position.set(0, 0.07, -0.25);
-  const pad = rounded(0.7, 0.02, 0.42, materials.charcoal, 0.01);
-  pad.position.set(0, 0.07, 0.48);
-  base.add(deck, pad);
-  body.add(part(parts, base, [0, -1.4, 0.8], [0.5, 0, 0]));
-  const lid = new THREE.Group();
-  lid.position.set(0, 0.06, -0.8);
-  lid.rotation.x = -0.22;
-  const shell = rounded(2.4, 1.6, 0.08, materials.silver, 0.06);
-  shell.position.y = 0.8;
-  const screen = rounded(2.2, 1.4, 0.03, materials.charcoal, 0.03);
-  screen.position.set(0, 0.8, 0.045);
-  lid.add(shell, screen);
-  body.add(part(parts, lid, [0, 1.2, -0.8], [-1.1, 0, 0]));
+function buildBrowser(body: THREE.Group, parts: Part[], materials: Materials) {
+  const frame = rounded(2.6, 1.9, 0.14, materials.silver, 0.08);
+  body.add(part(parts, frame, [0, -1.3, -0.9], [0.7, 0, 0]));
+  const screen = rounded(2.42, 1.46, 0.04, materials.charcoal, 0.04);
+  screen.position.set(0, -0.14, 0.08);
+  body.add(part(parts, screen, [0, 0, -0.7]));
+  const toolbar = new THREE.Group();
+  [materials.orange, materials.mint, materials.charcoal].forEach(
+    (material, index) => {
+      const dot = new THREE.Mesh(
+        new THREE.SphereGeometry(0.055, 16, 12),
+        material,
+      );
+      dot.position.set(-1.1 + index * 0.17, 0.77, 0.08);
+      toolbar.add(dot);
+    },
+  );
+  const address = rounded(1.3, 0.14, 0.04, materials.charcoal, 0.05);
+  address.position.set(0.15, 0.77, 0.08);
+  toolbar.add(address);
+  body.add(part(parts, toolbar, [0, 0.9, 0.9]));
   const tiles: [number, number, number, number, THREE.Material][] = [
-    [-0.78, 0.8, 0.42, 1.1, materials.mint],
-    [0.2, 1.3, 1.25, 0.16, materials.orange],
-    [-0.2, 0.56, 0.24, 0.5, materials.orange],
-    [0.2, 0.68, 0.24, 0.74, materials.mint],
-    [0.6, 0.62, 0.24, 0.62, materials.orange],
+    [0, 0.42, 2.2, 0.22, materials.mint],
+    [-0.62, -0.28, 0.95, 0.95, materials.orange],
+    [0.55, -0.02, 1.1, 0.42, materials.mint],
+    [0.55, -0.55, 1.1, 0.42, materials.mint],
   ];
   tiles.forEach(([x, y, width, height, material], index) => {
-    const tile = rounded(width, height, 0.05, material, 0.04);
-    tile.position.set(x, y, 0.08);
-    lid.add(part(parts, tile, [0, 0, 1.2 + index * 0.25]));
+    const tile = rounded(width, height, 0.05, material, 0.05);
+    tile.position.set(x, y, 0.12);
+    body.add(part(parts, tile, [0, 0, 1.2 + index * 0.3]));
   });
+}
+
+function buildNetwork(body: THREE.Group, parts: Part[], materials: Materials) {
+  const layers = [3, 4, 2];
+  const node = new THREE.SphereGeometry(0.2, 32, 24);
+  const positions = layers.map((count, layer) =>
+    Array.from(
+      { length: count },
+      (_, index) =>
+        new THREE.Vector3(
+          (layer - 1) * 1.25,
+          (index - (count - 1) / 2) * 0.72,
+          ((index + layer) % 2 ? 0.18 : -0.18) * (layer === 1 ? 1 : 0.5),
+        ),
+    ),
+  );
+  const edges = new THREE.Group();
+  const up = new THREE.Vector3(0, 1, 0);
+  positions.slice(0, -1).forEach((column, layer) =>
+    column.forEach((from) =>
+      positions[layer + 1].forEach((to) => {
+        const length = from.distanceTo(to);
+        const rod = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.025, 0.025, length, 8),
+          materials.silver,
+        );
+        rod.position.copy(from).add(to).multiplyScalar(0.5);
+        rod.quaternion.setFromUnitVectors(
+          up,
+          to.clone().sub(from).normalize(),
+        );
+        edges.add(rod);
+      }),
+    ),
+  );
+  body.add(part(parts, edges, [0, 0, -1.4], [0, 0.8, 0]));
+  positions.forEach((column, layer) =>
+    column.forEach((position, index) => {
+      const sphere = new THREE.Mesh(
+        node,
+        layer !== 1
+          ? materials.charcoal
+          : index % 2
+            ? materials.mint
+            : materials.orange,
+      );
+      sphere.position.copy(position);
+      body.add(
+        part(parts, sphere, [
+          (layer - 1) * 1.6,
+          (index - (column.length - 1) / 2) * 1.2,
+          1.4,
+        ]),
+      );
+    }),
+  );
 }
 
 function buildDatabase(body: THREE.Group, parts: Part[], materials: Materials) {
@@ -175,7 +234,8 @@ function buildPhone(body: THREE.Group, parts: Part[], materials: Materials) {
 }
 
 const builders = {
-  laptop: buildLaptop,
+  browser: buildBrowser,
+  network: buildNetwork,
   database: buildDatabase,
   server: buildServer,
   phone: buildPhone,
@@ -334,7 +394,7 @@ export function createStage(
         assemble(model, spread);
         model.root.rotation.set(
           x + progress * 0.55,
-          y + progress * Math.PI * (kind === "laptop" ? 1.2 : 0.7),
+          y + progress * Math.PI * (kind === "browser" ? 0.35 : 0.7),
           z + progress * 0.28,
         );
       } else {

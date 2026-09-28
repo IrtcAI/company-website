@@ -57,7 +57,7 @@ function View({
   kind,
 }: {
   paused?: boolean;
-  kind?: "laptop" | "database" | "server";
+  kind?: "browser" | "database" | "server";
 }) {
   return (
     <section className="solutions">

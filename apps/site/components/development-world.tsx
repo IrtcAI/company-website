@@ -6,7 +6,7 @@ import { StudioSlot, useStudioStage } from "./studio-stage";
 
 export function DevelopmentWorld({
   paused,
-  kind = "laptop",
+  kind = "browser",
 }: {
   paused: boolean;
   kind?: StudioKind;

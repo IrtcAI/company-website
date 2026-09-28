@@ -15,7 +15,8 @@ export function HeroWorld({ paused }: { paused: boolean }) {
     <div ref={mount} className="hero-world studio-world" aria-hidden="true">
       <span className="fallback-terminal">&gt;_</span>
       <StudioSlot kind="phone" className="hero-phone" />
-      <StudioSlot kind="laptop" className="hero-laptop" />
+      <StudioSlot kind="browser" className="hero-browser" />
+      <StudioSlot kind="network" className="hero-network" />
       <StudioSlot kind="database" className="hero-database" />
       <StudioSlot kind="server" className="hero-server" />
     </div>
