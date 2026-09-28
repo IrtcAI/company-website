@@ -16,7 +16,7 @@ export function HeroWorld({ paused }: { paused: boolean }) {
       <span className="fallback-terminal">&gt;_</span>
       <StudioSlot kind="phone" className="hero-phone" />
       <StudioSlot kind="browser" className="hero-browser" />
-      <StudioSlot kind="network" className="hero-network" />
+      <StudioSlot kind="brain" className="hero-brain" />
       <StudioSlot kind="database" className="hero-database" />
       <StudioSlot kind="server" className="hero-server" />
     </div>

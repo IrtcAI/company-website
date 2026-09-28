@@ -190,7 +190,7 @@ export const content = {
       novaYork: "Nova York",
       mapTitle: "Belém é o ponto de partida.",
       mapDescription:
-        "Da Amazônia, construímos software para empresas no Brasil e nos Estados Unidos.",
+        "Da Amazônia para o mundo: trabalhamos com equipes onde elas estiverem.",
     },
     contact: {
       label: "VAMOS ENTENDER O SEU DESAFIO.",
@@ -444,7 +444,7 @@ export const content = {
       novaYork: "New York",
       mapTitle: "Belém is the starting point.",
       mapDescription:
-        "From the Amazon, we build software for companies in Brazil and the United States.",
+        "From the Amazon to the world: we work with teams wherever they are.",
     },
     contact: {
       label: "LET'S UNDERSTAND YOUR CHALLENGE.",
@@ -698,7 +698,7 @@ export const content = {
       novaYork: "Nueva York",
       mapTitle: "Belém es el punto de partida.",
       mapDescription:
-        "Desde la Amazonía, construimos software para empresas en Brasil y en Estados Unidos.",
+        "De la Amazonía al mundo: trabajamos con equipos donde estén.",
     },
     contact: {
       label: "ENTENDAMOS TU DESAFÍO.",

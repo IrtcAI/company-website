@@ -97,6 +97,29 @@ function originArc([x1, y1]: [number, number], [x2, y2]: [number, number], bend:
 }
 const ROUTE_SAO_PAULO = originArc(BELEM, SAO_PAULO, 22);
 const ROUTE_NEW_YORK = originArc(BELEM, NEW_YORK, -28);
+const REACH = (
+  [
+    [-122.42, 37.77],
+    [-79.38, 43.65],
+    [-58.38, -34.6],
+    [-74.07, 4.71],
+    [-9.14, 38.72],
+    [-0.13, 51.51],
+    [13.4, 52.52],
+    [3.38, 6.52],
+    [36.82, -1.29],
+    [18.42, -33.92],
+    [55.27, 25.2],
+    [103.82, 1.35],
+    [139.69, 35.68],
+    [151.21, -33.87],
+    [174.76, -36.85],
+  ] as const
+).map(([lon, lat]) => {
+  const point = projectLonLat(lon, lat);
+  const length = Math.hypot(point[0] - BELEM[0], point[1] - BELEM[1]);
+  return { point, route: originArc(BELEM, point, -length * 0.22) };
+});
 const footerSocials = [
   { name: "LinkedIn", Icon: BriefcaseBusiness },
   { name: "Instagram", Icon: Camera },
@@ -715,6 +738,12 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                   viewBox={`0 0 ${WORLD_MAP_WIDTH} ${WORLD_MAP_HEIGHT}`}
                 >
                   <path className="world-land" d={WORLD_LAND_DOTS} />
+                  {REACH.map(({ point, route }) => (
+                    <g className="network-reach" key={route}>
+                      <path d={route} />
+                      <circle cx={point[0]} cy={point[1]} r="3" />
+                    </g>
+                  ))}
                   <path className="network-route" d={ROUTE_SAO_PAULO} />
                   <path className="network-route route-two" d={ROUTE_NEW_YORK} />
                   <circle

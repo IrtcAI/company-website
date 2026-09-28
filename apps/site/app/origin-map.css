@@ -29,6 +29,15 @@
   stroke-dasharray: 6 8;
   animation: network-flow 12s linear infinite;
 }
+.network-reach path {
+  fill: none;
+  stroke: light-dark(#49775966, #7fae8c66);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 6;
+}
+.network-reach circle {
+  fill: light-dark(#497759, #7fae8c);
+}
 .route-two {
   animation-direction: reverse;
   stroke: light-dark(#7c6651, #b08d6c);

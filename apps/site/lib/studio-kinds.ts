@@ -1,13 +1,13 @@
 export type StudioKind =
   | "browser"
-  | "network"
+  | "brain"
   | "database"
   | "server"
   | "phone";
 
 export const studioKinds: StudioKind[] = [
   "browser",
-  "network",
+  "brain",
   "database",
   "server",
   "phone",
