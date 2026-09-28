@@ -24,7 +24,7 @@ export type StageOptions = {
 };
 
 const poses: Record<StudioKind, [number, number, number]> = {
-  code: [0.24, -0.5, -0.18],
+  laptop: [0.42, -0.55, 0.06],
   database: [0.42, 0.3, -0.22],
   server: [0.42, -0.42, 0.08],
   phone: [0.12, -0.42, 0.26],
@@ -59,12 +59,6 @@ function createMaterials() {
       roughness: 0.25,
       clearcoat: 1,
     }),
-    prompt: new THREE.MeshStandardMaterial({
-      color: 0x5fae8a,
-      metalness: 0,
-      roughness: 0.8,
-      envMapIntensity: 0.3,
-    }),
   };
 }
 
@@ -83,23 +77,6 @@ function rounded(
   );
 }
 
-function extruded(points: [number, number][], material: THREE.Material) {
-  const shape = new THREE.Shape(
-    points.map(([x, y]) => new THREE.Vector2(x, y)),
-  );
-  shape.closePath();
-  const geometry = new THREE.ExtrudeGeometry(shape, {
-    depth: 0.45,
-    bevelEnabled: true,
-    bevelSegments: 4,
-    steps: 1,
-    bevelSize: 0.07,
-    bevelThickness: 0.07,
-  });
-  geometry.translate(0, 0, -0.225);
-  return new THREE.Mesh(geometry, material);
-}
-
 function part(
   parts: Part[],
   mesh: THREE.Object3D,
@@ -116,55 +93,36 @@ function part(
   return mesh;
 }
 
-function buildCode(body: THREE.Group, parts: Part[], materials: Materials) {
-  body.add(
-    part(
-      parts,
-      extruded(
-        [
-          [-0.7, 1.05],
-          [-1.9, 0],
-          [-0.7, -1.05],
-          [-0.4, -0.7],
-          [-1.2, 0],
-          [-0.4, 0.7],
-        ],
-        materials.prompt,
-      ),
-      [-3, 1.4, -2],
-      [0, -1.4, 0],
-    ),
-    part(
-      parts,
-      extruded(
-        [
-          [0.7, 1.05],
-          [0.4, 0.7],
-          [1.2, 0],
-          [0.4, -0.7],
-          [0.7, -1.05],
-          [1.9, 0],
-        ],
-        materials.prompt,
-      ),
-      [3, -1, 1.5],
-      [0, 1.4, 0],
-    ),
-    part(
-      parts,
-      extruded(
-        [
-          [0.18, 1.3],
-          [-0.5, -1.3],
-          [-0.14, -1.3],
-          [0.54, 1.3],
-        ],
-        materials.prompt,
-      ),
-      [0, 2.8, 2],
-      [0, 0, 0.8],
-    ),
-  );
+function buildLaptop(body: THREE.Group, parts: Part[], materials: Materials) {
+  const base = new THREE.Group();
+  base.add(rounded(2.4, 0.12, 1.6, materials.silver, 0.06));
+  const deck = rounded(2.1, 0.02, 0.8, materials.charcoal, 0.01);
+  deck.position.set(0, 0.07, -0.25);
+  const pad = rounded(0.7, 0.02, 0.42, materials.charcoal, 0.01);
+  pad.position.set(0, 0.07, 0.48);
+  base.add(deck, pad);
+  body.add(part(parts, base, [0, -1.4, 0.8], [0.5, 0, 0]));
+  const lid = new THREE.Group();
+  lid.position.set(0, 0.06, -0.8);
+  lid.rotation.x = -0.22;
+  const shell = rounded(2.4, 1.6, 0.08, materials.silver, 0.06);
+  shell.position.y = 0.8;
+  const screen = rounded(2.2, 1.4, 0.03, materials.charcoal, 0.03);
+  screen.position.set(0, 0.8, 0.045);
+  lid.add(shell, screen);
+  body.add(part(parts, lid, [0, 1.2, -0.8], [-1.1, 0, 0]));
+  const tiles: [number, number, number, number, THREE.Material][] = [
+    [-0.78, 0.8, 0.42, 1.1, materials.mint],
+    [0.2, 1.3, 1.25, 0.16, materials.orange],
+    [-0.2, 0.56, 0.24, 0.5, materials.orange],
+    [0.2, 0.68, 0.24, 0.74, materials.mint],
+    [0.6, 0.62, 0.24, 0.62, materials.orange],
+  ];
+  tiles.forEach(([x, y, width, height, material], index) => {
+    const tile = rounded(width, height, 0.05, material, 0.04);
+    tile.position.set(x, y, 0.08);
+    lid.add(part(parts, tile, [0, 0, 1.2 + index * 0.25]));
+  });
 }
 
 function buildDatabase(body: THREE.Group, parts: Part[], materials: Materials) {
@@ -217,7 +175,7 @@ function buildPhone(body: THREE.Group, parts: Part[], materials: Materials) {
 }
 
 const builders = {
-  code: buildCode,
+  laptop: buildLaptop,
   database: buildDatabase,
   server: buildServer,
   phone: buildPhone,
@@ -376,7 +334,7 @@ export function createStage(
         assemble(model, spread);
         model.root.rotation.set(
           x + progress * 0.55,
-          y + progress * Math.PI * (kind === "code" ? 3 : 0.7),
+          y + progress * Math.PI * (kind === "laptop" ? 1.2 : 0.7),
           z + progress * 0.28,
         );
       } else {

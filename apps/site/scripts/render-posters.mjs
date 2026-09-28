@@ -11,7 +11,7 @@ const { createServer } = await import(require.resolve("vite"));
 const chromePath =
   process.env.CHROME_PATH ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const kinds = ["code", "database", "server", "phone"];
+const kinds = ["laptop", "database", "server", "phone"];
 const size = 960;
 const output = join(site, "public", "studio");
 const scratch = mkdtempSync(join(tmpdir(), "irtc-posters-"));

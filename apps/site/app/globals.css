@@ -5,11 +5,10 @@
   --secondary: light-dark(#525e54, #bfcac1);
   --surface-line: light-dark(#c7cec5, #49584f);
   --coral: #ef604f;
-  --hero-coral: light-dark(#f2be7e, #ef7e6c);
+  --hero-coral: #ef7e6c;
   --hero-ink: #2a1712;
   --footer-coral: light-dark(#ef604f, #ef7e6c);
-  --surface-alt: light-dark(#f9ecdc, #2d2321);
-  --hero-chip: light-dark(#f5cc96, #f29383);
+  --hero-chip: #f29383;
   --footer-ink: #34150f;
   --footer-accent: light-dark(#fffaf4, #6b2a1e);
   --footer-line: #823b3260;
