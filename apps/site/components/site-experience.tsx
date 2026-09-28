@@ -31,7 +31,6 @@ import {
   Mail,
   Menu,
   MessageCircle,
-  Monitor,
   Network,
   Pause,
   Play,
@@ -46,6 +45,12 @@ import {
   projectBrands,
   recommendationAuthors,
 } from "@/lib/content";
+import {
+  projectLonLat,
+  WORLD_LAND_DOTS,
+  WORLD_MAP_HEIGHT,
+  WORLD_MAP_WIDTH,
+} from "@/lib/world-map";
 import { HeroWorld } from "./hero-world";
 import { ScrollStory } from "./scroll-story";
 import { Founder } from "./founder";
@@ -77,6 +82,21 @@ const techSlugs = [
   "nestjs",
 ];
 const serviceIcons = [Layers3, Network, Sparkles, Database];
+const BELEM = projectLonLat(-48.4902, -1.4558);
+const SAO_PAULO = projectLonLat(-46.63, -23.55);
+const NEW_YORK = projectLonLat(-74.01, 40.71);
+function originArc([x1, y1]: [number, number], [x2, y2]: [number, number], bend: number) {
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const length = Math.hypot(dx, dy) || 1;
+  const cx = mx - (dy / length) * bend;
+  const cy = my + (dx / length) * bend;
+  return `M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}`;
+}
+const ROUTE_SAO_PAULO = originArc(BELEM, SAO_PAULO, 22);
+const ROUTE_NEW_YORK = originArc(BELEM, NEW_YORK, -28);
 const footerSocials = [
   { name: "LinkedIn", Icon: BriefcaseBusiness },
   { name: "Instagram", Icon: Camera },
@@ -690,55 +710,56 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               aria-describedby="origin-map-description"
             >
               <div className="origin-network" aria-hidden="true">
-                <svg viewBox="0 0 600 500">
-                  <defs>
-                    <pattern
-                      id="map-grid"
-                      width="36"
-                      height="36"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <circle cx="1" cy="1" r="1" fill="#5e7e69" opacity=".35" />
-                    </pattern>
-                  </defs>
-                  <rect width="600" height="500" fill="url(#map-grid)" />
-                  <path
-                    className="network-route route-one"
-                    d="M180 330Q180 90 440 140"
+                <svg
+                  className="world-map"
+                  viewBox={`0 0 ${WORLD_MAP_WIDTH} ${WORLD_MAP_HEIGHT}`}
+                >
+                  <path className="world-land" d={WORLD_LAND_DOTS} />
+                  <path className="network-route" d={ROUTE_SAO_PAULO} />
+                  <path className="network-route route-two" d={ROUTE_NEW_YORK} />
+                  <circle
+                    className="network-pulse"
+                    cx={BELEM[0]}
+                    cy={BELEM[1]}
+                    r="20"
+                    style={{ transformOrigin: `${BELEM[0]}px ${BELEM[1]}px` }}
                   />
-                  <path
-                    className="network-route route-two"
-                    d="M180 330Q370 410 460 300"
+                  <circle className="network-hub" cx={BELEM[0]} cy={BELEM[1]} r="6" />
+                  <circle className="network-dest" cx={SAO_PAULO[0]} cy={SAO_PAULO[1]} r="4.5" />
+                  <circle
+                    className="network-dest dest-two"
+                    cx={NEW_YORK[0]}
+                    cy={NEW_YORK[1]}
+                    r="4.5"
                   />
-                  <path
-                    className="network-route route-three"
-                    d="M180 330Q55 190 170 105"
-                  />
-                  <circle className="network-pulse" cx="180" cy="330" r="28" />
-                  <circle className="network-hub" cx="180" cy="330" r="10" />
-                  <circle cx="440" cy="140" r="7" />
-                  <circle cx="460" cy="300" r="7" />
-                  <circle cx="170" cy="105" r="7" />
                 </svg>
                 <span className="network-coordinates">01°27′ S · 48°30′ W</span>
-                <span className="network-belem">
-                  Belém<span>Pará, Brasil</span>
+                <span
+                  className="network-belem"
+                  style={{
+                    left: `${(BELEM[0] / WORLD_MAP_WIDTH) * 100}%`,
+                    top: `${(BELEM[1] / WORLD_MAP_HEIGHT) * 100}%`,
+                  }}
+                >
+                  Belém
                 </span>
-                <span className="network-endpoint endpoint-one">
-                  <Monitor aria-hidden="true" />
-                  {copy.origin.node}
+                <span
+                  className="network-city"
+                  style={{
+                    left: `${(SAO_PAULO[0] / WORLD_MAP_WIDTH) * 100}%`,
+                    top: `${(SAO_PAULO[1] / WORLD_MAP_HEIGHT) * 100}%`,
+                  }}
+                >
+                  {copy.origin.saoPaulo}
                 </span>
-                <span className="network-endpoint endpoint-two">
-                  <Network aria-hidden="true" />
-                  API / CLOUD
-                </span>
-                <span className="network-endpoint endpoint-three">
-                  <Code2 aria-hidden="true" />
-                  IRTC
-                </span>
-                <span className="network-status">
-                  <span />
-                  {copy.origin.link}
+                <span
+                  className="network-city city-two"
+                  style={{
+                    left: `${(NEW_YORK[0] / WORLD_MAP_WIDTH) * 100}%`,
+                    top: `${(NEW_YORK[1] / WORLD_MAP_HEIGHT) * 100}%`,
+                  }}
+                >
+                  {copy.origin.novaYork}
                 </span>
               </div>
               <figcaption className="network-caption">

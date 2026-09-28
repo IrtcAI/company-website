@@ -1,0 +1,95 @@
+.origin-network {
+  position: relative;
+  background: light-dark(#d8e5d8, #223226);
+  color: light-dark(#294934, #a8c9b4);
+  border-radius: 25px;
+  overflow: hidden;
+  aspect-ratio: 600 / 280;
+  transform: perspective(1000px) rotateY(5deg) rotateZ(-2deg);
+  transition: transform 0.6s;
+}
+.origin-network:hover {
+  transform: perspective(1000px) rotateY(-3deg) rotateZ(0);
+}
+.world-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.world-land {
+  fill: none;
+  stroke: light-dark(#39694b, #6fa77e);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.network-route {
+  fill: none;
+  stroke: light-dark(#497759, #7fae8c);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  animation: network-flow 12s linear infinite;
+}
+.route-two {
+  animation-direction: reverse;
+  stroke: light-dark(#7c6651, #b08d6c);
+}
+.network-pulse {
+  fill: light-dark(#679e7950, #8fc79f66);
+  animation: network-pulse 4s ease-out infinite;
+}
+.network-hub {
+  fill: light-dark(#294e36, #3f6b4d);
+}
+.network-dest {
+  fill: light-dark(#497759, #7fae8c);
+}
+.network-dest.dest-two {
+  fill: light-dark(#7c6651, #b08d6c);
+}
+.network-coordinates {
+  position: absolute;
+  bottom: 7%;
+  left: 5%;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+}
+.network-belem {
+  position: absolute;
+  translate: 16px -50%;
+  font-size: clamp(18px, 2vw, 28px);
+  letter-spacing: -0.06em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.network-city {
+  position: absolute;
+  translate: 9px -50%;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: left;
+}
+.city-two {
+  translate: 9px -110%;
+}
+@media (max-width: 767px) {
+  .origin-network {
+    transform: none;
+  }
+}
+@keyframes network-flow {
+  to {
+    stroke-dashoffset: -168;
+  }
+}
+@keyframes network-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}

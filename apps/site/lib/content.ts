@@ -11,7 +11,7 @@ export const content = {
     theme: "Aparência",
     themes: ["Sistema", "Claro", "Escuro"],
     hero: {
-      eyebrow: "De Belém para o seu próximo projeto.",
+      eyebrow: "Da Amazônia para o seu próximo projeto.",
       title: "Sua ideia vira",
       words: [
         "um aplicativo sob medida.",
@@ -186,12 +186,11 @@ export const content = {
       vision:
         "Queremos que empresas de todos os tamanhos tenham acesso a software bem feito, com comunicação clara e uma parceria que continua depois do lançamento.",
       cta: "Vamos conhecer seu projeto",
-      node: "Sua operação",
-      link: "Fluxo contínuo",
-      caption: "Uma base em Belém. Colaboração de onde você estiver.",
+      saoPaulo: "São Paulo",
+      novaYork: "Nova York",
       mapTitle: "Belém é o ponto de partida.",
       mapDescription:
-        "A IRTC conecta engenharia, infraestrutura e a operação do cliente em um fluxo contínuo de colaboração e entrega.",
+        "Da Amazônia, construímos software para empresas no Brasil e nos Estados Unidos.",
     },
     contact: {
       label: "VAMOS ENTENDER O SEU DESAFIO.",
@@ -266,7 +265,7 @@ export const content = {
     theme: "Appearance",
     themes: ["System", "Light", "Dark"],
     hero: {
-      eyebrow: "From Belém to your next big idea.",
+      eyebrow: "From the Amazon to your next big idea.",
       title: "Your idea becomes",
       words: [
         "an app made for you.",
@@ -441,12 +440,11 @@ export const content = {
       vision:
         "We want businesses of every size to have access to well-built software, clear communication and a partnership that continues beyond launch.",
       cta: "Let's explore your project",
-      node: "Your business",
-      link: "Continuous flow",
-      caption: "A home base in Belém. Collaboration wherever you are.",
+      saoPaulo: "São Paulo",
+      novaYork: "New York",
       mapTitle: "Belém is the starting point.",
       mapDescription:
-        "IRTC connects engineering, infrastructure and the client's operation in a continuous flow of collaboration and delivery.",
+        "From the Amazon, we build software for companies in Brazil and the United States.",
     },
     contact: {
       label: "LET'S UNDERSTAND YOUR CHALLENGE.",
@@ -521,7 +519,7 @@ export const content = {
     theme: "Apariencia",
     themes: ["Sistema", "Claro", "Oscuro"],
     hero: {
-      eyebrow: "Desde Belém hasta tu próximo proyecto.",
+      eyebrow: "Desde la Amazonía hasta tu próximo proyecto.",
       title: "Tu idea se convierte en",
       words: [
         "una app a tu medida.",
@@ -696,12 +694,11 @@ export const content = {
       vision:
         "Queremos que empresas de todos los tamaños accedan a software bien construido, comunicación clara y una colaboración que continúe después del lanzamiento.",
       cta: "Conozcamos tu proyecto",
-      node: "Tu operación",
-      link: "Flujo continuo",
-      caption: "Una base en Belém. Colaboración estés donde estés.",
+      saoPaulo: "São Paulo",
+      novaYork: "Nueva York",
       mapTitle: "Belém es el punto de partida.",
       mapDescription:
-        "IRTC conecta ingeniería, infraestructura y la operación del cliente en un flujo continuo de colaboración y entrega.",
+        "Desde la Amazonía, construimos software para empresas en Brasil y en Estados Unidos.",
     },
     contact: {
       label: "ENTENDAMOS TU DESAFÍO.",

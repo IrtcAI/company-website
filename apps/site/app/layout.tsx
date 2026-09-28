@@ -5,6 +5,7 @@ import "./development-story.css";
 import "./studio-objects.css";
 import "./project-showcase.css";
 import "./accessibility-toolbar.css";
+import "./origin-map.css";
 
 const body = Manrope({
   subsets: ["latin"],
