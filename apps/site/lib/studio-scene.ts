@@ -479,7 +479,8 @@ export function createStage(
   size.observe(host);
   entries.forEach(({ element }) => size.observe(element));
   window.addEventListener("scroll", schedule, { passive: true });
-  if (!scrolled) window.addEventListener("pointermove", move, { passive: true });
+  if (!scrolled)
+    window.addEventListener("pointermove", move, { passive: true });
   document.addEventListener("visibilitychange", schedule);
   window.addEventListener("irtc-motion-change", schedule);
   renderer.compile(scene, camera);

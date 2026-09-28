@@ -71,20 +71,18 @@ describe("Iris response policy", () => {
       language: "en",
       reply: "IRTC builds software.",
     };
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue({
-        ok: true,
-        json: async () => ({
-          output: [
-            {
-              type: "message",
-              content: [{ type: "output_text", text: JSON.stringify(reply) }],
-            },
-          ],
-          results: [],
-        }),
-      });
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        output: [
+          {
+            type: "message",
+            content: [{ type: "output_text", text: JSON.stringify(reply) }],
+          },
+        ],
+        results: [],
+      }),
+    });
     vi.stubGlobal("fetch", fetchMock);
     const response = await chat(
       request({

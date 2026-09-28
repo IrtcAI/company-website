@@ -45,12 +45,10 @@ describe("Iris dialog", () => {
     expect(screen.getByText("End this conversation?")).toBeVisible();
   });
   it("passes the selected language and does not send a client-controlled knowledge base", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue({
-        ok: true,
-        json: async () => ({ answer: "Un MVP pequeño." }),
-      });
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ answer: "Un MVP pequeño." }),
+    });
     vi.stubGlobal("fetch", fetchMock);
     render(<Iris onClose={vi.fn()} locale="es" />);
     await userEvent.type(screen.getByLabelText("Tu mensaje"), "Quiero un CRM");

@@ -292,15 +292,13 @@ describe.each(locales)("Iris harness in %s", (locale) => {
 
     vi.stubGlobal(
       "fetch",
-      vi
-        .fn()
-        .mockResolvedValue({
-          ok: true,
-          json: async () => ({
-            status: "incomplete",
-            output_text: '{"intent":"ans',
-          }),
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          status: "incomplete",
+          output_text: '{"intent":"ans',
         }),
+      }),
     );
     expect(await answer({ message: "MVP CRM", locale })).toBe(copy.fallback);
   });

@@ -3494,7 +3494,9 @@ a.footer-channel:hover .footer-channel-icon {
     scale(var(--screen-scale-x, 0.2), var(--screen-scale-y, 0.4));
   transform-origin: center;
   will-change: transform;
-  box-shadow: inset 0 0 0 var(--screen-rim, 32px) #bbc8bf, 14px 20px 0 #343d39;
+  box-shadow:
+    inset 0 0 0 var(--screen-rim, 32px) #bbc8bf,
+    14px 20px 0 #343d39;
 }
 .intro-story[data-enhanced="true"] .screen-chrome {
   opacity: var(--story-opacity, 0);

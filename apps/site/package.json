@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "lucide-react": "^1.46.0",
@@ -28,6 +29,7 @@
     "eslint": "9.38.0",
     "eslint-config-next": "16.0.1",
     "jsdom": "^30.0.1",
+    "prettier": "^3.9.9",
     "simple-icons": "^16.31.0",
     "typescript": "5.9.3",
     "vitest": "^5.0.1"

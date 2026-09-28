@@ -41,7 +41,9 @@ describe("hero artwork", () => {
     vi.stubGlobal(
       "IntersectionObserver",
       class {
-        constructor(callback: (entries: { isIntersecting: boolean }[]) => void) {
+        constructor(
+          callback: (entries: { isIntersecting: boolean }[]) => void,
+        ) {
           intersect = (visible) => callback([{ isIntersecting: visible }]);
         }
         observe() {}

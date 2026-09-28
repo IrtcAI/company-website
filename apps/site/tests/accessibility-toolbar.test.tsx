@@ -24,7 +24,9 @@ describe("accessibility toolbar", () => {
     await waitFor(() => {
       expect(onPausedChange).toHaveBeenCalledWith(true);
       expect(document.documentElement.dataset.accessibilityText).toBe("large");
-      expect(document.documentElement.dataset.accessibilityContrast).toBe("true");
+      expect(document.documentElement.dataset.accessibilityContrast).toBe(
+        "true",
+      );
     });
   });
   it("opens from its visible control and updates text and contrast preferences", async () => {

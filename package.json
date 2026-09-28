@@ -9,6 +9,7 @@
     "start": "pnpm --filter @irtc/site start",
     "lint": "pnpm --filter @irtc/site lint",
     "typecheck": "pnpm --filter @irtc/site typecheck",
-    "test": "pnpm --filter @irtc/site test"
+    "test": "pnpm --filter @irtc/site test",
+    "format": "pnpm --filter @irtc/site format"
   }
 }

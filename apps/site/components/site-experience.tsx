@@ -85,7 +85,11 @@ const serviceIcons = [Layers3, Network, Sparkles, Database];
 const BELEM = projectLonLat(-48.4902, -1.4558);
 const SAO_PAULO = projectLonLat(-46.63, -23.55);
 const NEW_YORK = projectLonLat(-74.01, 40.71);
-function originArc([x1, y1]: [number, number], [x2, y2]: [number, number], bend: number) {
+function originArc(
+  [x1, y1]: [number, number],
+  [x2, y2]: [number, number],
+  bend: number,
+) {
   const mx = (x1 + x2) / 2;
   const my = (y1 + y2) / 2;
   const dx = x2 - x1;
@@ -353,11 +357,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         </SectionLink>
         <nav aria-label={copy.menu}>
           {sectionIds.map((id, index) => (
-            <SectionLink
-              key={id}
-              target={id}
-              current={activeSection === id}
-            >
+            <SectionLink key={id} target={id} current={activeSection === id}>
               {copy.nav[index]}
             </SectionLink>
           ))}
@@ -402,11 +402,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           </summary>
           <nav aria-label={copy.menu}>
             {sectionIds.map((id, index) => (
-              <SectionLink
-              key={id}
-              target={id}
-              current={activeSection === id}
-            >
+              <SectionLink key={id} target={id} current={activeSection === id}>
                 {copy.nav[index]}
               </SectionLink>
             ))}
@@ -577,8 +573,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               </p>
             </div>
             <p className="tech-extra">
-              TypeScript · Python · Django · React Native
-              / ELT
+              TypeScript · Python · Django · React Native / ELT
             </p>
           </div>
         </section>
@@ -778,7 +773,10 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                     </g>
                   ))}
                   <path className="network-route" d={ROUTE_SAO_PAULO} />
-                  <path className="network-route route-two" d={ROUTE_NEW_YORK} />
+                  <path
+                    className="network-route route-two"
+                    d={ROUTE_NEW_YORK}
+                  />
                   <circle
                     className="network-pulse"
                     cx={BELEM[0]}
@@ -786,8 +784,18 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                     r="20"
                     style={{ transformOrigin: `${BELEM[0]}px ${BELEM[1]}px` }}
                   />
-                  <circle className="network-hub" cx={BELEM[0]} cy={BELEM[1]} r="6" />
-                  <circle className="network-dest" cx={SAO_PAULO[0]} cy={SAO_PAULO[1]} r="4.5" />
+                  <circle
+                    className="network-hub"
+                    cx={BELEM[0]}
+                    cy={BELEM[1]}
+                    r="6"
+                  />
+                  <circle
+                    className="network-dest"
+                    cx={SAO_PAULO[0]}
+                    cy={SAO_PAULO[1]}
+                    r="4.5"
+                  />
                   <circle
                     className="network-dest dest-two"
                     cx={NEW_YORK[0]}

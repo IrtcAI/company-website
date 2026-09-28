@@ -6,7 +6,9 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const require = createRequire(createRequire(join(site, "package.json")).resolve("vitest"));
+const require = createRequire(
+  createRequire(join(site, "package.json")).resolve("vitest"),
+);
 const { createServer } = await import(require.resolve("vite"));
 const chromePath =
   process.env.CHROME_PATH ??

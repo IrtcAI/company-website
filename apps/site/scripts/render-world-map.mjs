@@ -93,8 +93,7 @@ function pointInPolygon(x, y, polygon) {
       const [xi, yi] = points[i];
       const [xj, yj] = points[j];
       const intersects =
-        yi > y !== yj > y &&
-        x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+        yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
       if (intersects) inside = !inside;
     }
   }
@@ -117,13 +116,17 @@ async function main() {
   console.log(`Fetching ${SOURCE_URL}`);
   const response = await fetch(SOURCE_URL);
   if (!response.ok) {
-    throw new Error(`Download failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Download failed: ${response.status} ${response.statusText}`,
+    );
   }
   const topology = await response.json();
   const arcs = decodeArcs(topology);
   const land = topology.objects.land;
   const rawPolygons =
-    land.type === "MultiPolygon" ? land.arcs : land.geometries.flatMap((g) => g.arcs);
+    land.type === "MultiPolygon"
+      ? land.arcs
+      : land.geometries.flatMap((g) => g.arcs);
 
   const polygons = rawPolygons.map((rings) => {
     const decodedRings = rings.map((ring) => {
@@ -182,7 +185,9 @@ export const WORLD_LAND_DOTS =
 `;
 
   writeFileSync(OUTPUT, output.trimStart());
-  console.log(`Wrote ${OUTPUT} (${(Buffer.byteLength(output) / 1024).toFixed(1)} KB total)`);
+  console.log(
+    `Wrote ${OUTPUT} (${(Buffer.byteLength(output) / 1024).toFixed(1)} KB total)`,
+  );
 }
 
 main().catch((error) => {

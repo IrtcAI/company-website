@@ -19,7 +19,8 @@ export const content = {
         "menos trabalho repetitivo.",
         "uma ferramenta com IA.",
       ],
-      description: "Software que simplifica processos e ajuda sua empresa a crescer.",
+      description:
+        "Software que simplifica processos e ajuda sua empresa a crescer.",
       cta: "Conte o que você quer construir",
       label: "ENGENHARIA DE SOFTWARE · DADOS · IA",
       pause: "Pausar animações",
@@ -243,7 +244,8 @@ export const content = {
       email: "Seu e-mail para retorno",
       sent: "Rascunho enviado. Vamos conversar em breve.",
       error: "Não foi possível enviar. Tente novamente em instantes.",
-      limit: "Muitas mensagens em pouco tempo. Tente de novo em alguns minutos.",
+      limit:
+        "Muitas mensagens em pouco tempo. Tente de novo em alguns minutos.",
       disclaimer:
         "Iris usa IA e pode errar. O rascunho não é uma proposta comercial.",
       refusal:
@@ -272,7 +274,8 @@ export const content = {
         "less repetitive work.",
         "a tool powered by AI.",
       ],
-      description: "Software that simplifies work and helps your business grow.",
+      description:
+        "Software that simplifies work and helps your business grow.",
       cta: "Tell us what you want to build",
       label: "SOFTWARE ENGINEERING · DATA · AI",
       pause: "Pause animation",
@@ -496,7 +499,8 @@ export const content = {
       email: "Your email for a reply",
       sent: "Draft sent. We'll be in touch soon.",
       error: "We couldn't send it. Please try again shortly.",
-      limit: "Too many messages in a short time. Please try again in a few minutes.",
+      limit:
+        "Too many messages in a short time. Please try again in a few minutes.",
       disclaimer:
         "Iris uses AI and may make mistakes. This draft is not a commercial proposal.",
       refusal:
@@ -525,7 +529,8 @@ export const content = {
         "menos trabajo repetitivo.",
         "una herramienta con IA.",
       ],
-      description: "Software que simplifica procesos y ayuda a crecer tu negocio.",
+      description:
+        "Software que simplifica procesos y ayuda a crecer tu negocio.",
       cta: "Cuéntanos qué quieres construir",
       label: "INGENIERÍA DE SOFTWARE · DATOS · IA",
       pause: "Pausar animaciones",
@@ -749,7 +754,8 @@ export const content = {
       email: "Tu correo para recibir respuesta",
       sent: "Borrador enviado. Pronto conversaremos.",
       error: "No pudimos enviarlo. Inténtalo de nuevo en un momento.",
-      limit: "Demasiados mensajes en poco tiempo. Inténtalo de nuevo en unos minutos.",
+      limit:
+        "Demasiados mensajes en poco tiempo. Inténtalo de nuevo en unos minutos.",
       disclaimer:
         "Iris usa IA y puede equivocarse. El borrador no es una propuesta comercial.",
       refusal:

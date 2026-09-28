@@ -23,7 +23,8 @@ export function StudioSlot({
   className?: string;
   lazy?: boolean;
 }) {
-  if (!lazy) preload(studioPoster(kind), { as: "image", fetchPriority: "high" });
+  if (!lazy)
+    preload(studioPoster(kind), { as: "image", fetchPriority: "high" });
   return (
     <div className={`studio-slot ${className}`} data-studio-slot={kind}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
