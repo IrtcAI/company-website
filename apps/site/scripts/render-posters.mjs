@@ -14,7 +14,11 @@ const { createServer } = await import(require.resolve("vite"));
 const chromePath =
   process.env.CHROME_PATH ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const kinds = ["browser", "chip", "database", "server", "phone"];
+const everyKind = ["browser", "robot", "database", "server", "phone"];
+const requested = process.argv.slice(2);
+const unknown = requested.filter((kind) => !everyKind.includes(kind));
+if (unknown.length) throw new Error(`Unknown studio kind: ${unknown}`);
+const kinds = requested.length ? requested : everyKind;
 const size = 960;
 const output = join(site, "public", "studio");
 const scratch = mkdtempSync(join(tmpdir(), "irtc-posters-"));

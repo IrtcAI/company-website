@@ -1,8 +1,8 @@
-export type StudioKind = "browser" | "chip" | "database" | "server" | "phone";
+export type StudioKind = "browser" | "robot" | "database" | "server" | "phone";
 
 export const studioKinds: StudioKind[] = [
   "browser",
-  "chip",
+  "robot",
   "database",
   "server",
   "phone",

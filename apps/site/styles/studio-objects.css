@@ -25,10 +25,10 @@
   bottom: 0;
   width: clamp(150px, 17vw, 250px);
 }
-.hero-chip {
+.hero-robot {
   left: 44%;
-  top: 7%;
-  width: clamp(120px, 12vw, 170px);
+  top: 6%;
+  width: clamp(140px, 13vw, 190px);
 }
 .hero-phone {
   right: 3%;
@@ -211,19 +211,19 @@ html[data-theme="dark"] .backdrop-server .development-world {
   }
 }
 @media (max-width: 1023px) {
-  .hero-chip {
+  .hero-robot {
     left: 43%;
     top: auto;
-    bottom: 6%;
-    width: clamp(80px, 14vw, 130px);
+    bottom: 5%;
+    width: clamp(104px, 18vw, 156px);
   }
 }
 @media (max-width: 639px) {
-  .hero-chip {
+  .hero-robot {
     left: auto;
     right: 4%;
     top: auto;
-    bottom: 4%;
-    width: clamp(84px, 22vw, 120px);
+    bottom: 3%;
+    width: clamp(100px, 28vw, 130px);
   }
 }

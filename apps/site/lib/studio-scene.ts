@@ -9,10 +9,13 @@ type Part = {
   turn: THREE.Euler;
 };
 
+type Idle = (wave: (speed: number) => number) => void;
+
 type Model = {
   root: THREE.Group;
   body: THREE.Group;
   parts: Part[];
+  idle?: Idle;
 };
 
 export type StageSlot = { element: HTMLElement; kind: StudioKind };
@@ -25,7 +28,7 @@ export type StageOptions = {
 
 const poses: Record<StudioKind, [number, number, number]> = {
   browser: [0.18, -0.45, 0.05],
-  chip: [0.62, -0.5, 0.05],
+  robot: [0.14, -0.34, 0.03],
   database: [0.42, 0.3, -0.22],
   server: [0.42, -0.42, 0.08],
   phone: [0.12, -0.42, 0.26],
@@ -59,6 +62,12 @@ function createMaterials() {
       metalness: 0.28,
       roughness: 0.25,
       clearcoat: 1,
+    }),
+    glow: new THREE.MeshStandardMaterial({
+      color: 0x8fdcb8,
+      emissive: 0x3fc48e,
+      emissiveIntensity: 0.55,
+      roughness: 0.4,
     }),
   };
 }
@@ -161,42 +170,125 @@ function sparkle(radius: number, depth: number, material: THREE.Material) {
   return new THREE.Mesh(geometry, material);
 }
 
-function buildChip(body: THREE.Group, parts: Part[], materials: Materials) {
-  const pins = new THREE.Group();
-  for (let side = 0; side < 4; side++) {
-    for (let index = 0; index < 5; index++) {
-      const pin = rounded(0.12, 0.06, 0.34, materials.silver, 0.025);
-      const offset = (index - 2) * 0.36;
-      const angle = (side * Math.PI) / 2;
-      pin.position.set(
-        Math.cos(angle) * 1.12 - Math.sin(angle) * offset,
-        -0.02,
-        Math.sin(angle) * 1.12 + Math.cos(angle) * offset,
-      );
-      pin.rotation.y = -angle + Math.PI / 2;
-      pins.add(pin);
-    }
-  }
-  body.add(part(parts, pins, [0, -0.9, 0]));
+function plate(
+  width: number,
+  height: number,
+  radius: number,
+  material: THREE.Material,
+) {
+  const x = width / 2 - radius;
+  const y = height / 2 - radius;
+  const shape = new THREE.Shape();
+  shape.absarc(x, y, radius, 0, Math.PI / 2);
+  shape.absarc(-x, y, radius, Math.PI / 2, Math.PI);
+  shape.absarc(-x, -y, radius, Math.PI, Math.PI * 1.5);
+  shape.absarc(x, -y, radius, Math.PI * 1.5, Math.PI * 2);
+  const geometry = new THREE.ExtrudeGeometry(shape, {
+    depth: 0.04,
+    bevelEnabled: true,
+    bevelSegments: 3,
+    bevelSize: 0.03,
+    bevelThickness: 0.03,
+    curveSegments: 10,
+  });
+  return new THREE.Mesh(geometry, material);
+}
 
-  const board = new THREE.Group();
-  board.add(rounded(2.1, 0.22, 2.1, materials.charcoal, 0.14));
-  const lid = rounded(1.6, 0.06, 1.6, materials.silver, 0.1);
-  lid.position.y = 0.13;
-  board.add(lid);
-  const core = rounded(1.34, 0.04, 1.34, materials.charcoal, 0.08);
-  core.position.y = 0.17;
-  board.add(core);
-  body.add(part(parts, board, [0, -0.4, 0]));
-
-  const spark = sparkle(0.52, 0.12, materials.mint);
-  spark.position.set(-0.1, 0.2, 0.08);
-  const spark2 = sparkle(0.22, 0.08, materials.orange);
-  spark2.position.set(0.4, 0.2, -0.38);
-  body.add(
-    part(parts, spark, [0, 1.6, 0], [0, 1.4, 0]),
-    part(parts, spark2, [0.4, 2.1, 0], [0, -1.4, 0]),
+function buildRobot(body: THREE.Group, parts: Part[], materials: Materials) {
+  const torso = new THREE.Group();
+  torso.add(
+    new THREE.Mesh(
+      new RoundedBoxGeometry(1.04, 0.78, 0.84, 4, 0.32),
+      materials.silver,
+    ),
   );
+  const chest = plate(0.5, 0.36, 0.12, materials.charcoal);
+  chest.position.set(0, 0.02, 0.38);
+  const badge = sparkle(0.12, 0.03, materials.glow);
+  badge.rotation.x = Math.PI / 2;
+  badge.position.set(0, 0.02, 0.46);
+  const neck = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.2, 0.24, 0.16, 24),
+    materials.charcoal,
+  );
+  neck.position.y = 0.44;
+  torso.add(chest, badge, neck);
+  torso.position.y = -0.88;
+  body.add(part(parts, torso, [0, -1.2, 0]));
+
+  const arm = new THREE.CapsuleGeometry(0.12, 0.26, 4, 12);
+  const arms = [-1, 1].map((side) => {
+    const shoulder = new THREE.Group();
+    const limb = new THREE.Mesh(arm, materials.silver);
+    limb.position.y = side * 0.22;
+    shoulder.add(limb);
+    shoulder.position.set(side * 0.5, -0.82, 0.02);
+    shoulder.rotation.z = side < 0 ? -0.42 : -0.6;
+    body.add(part(parts, shoulder, [side * 1.1, -0.4, 0.3]));
+    return shoulder;
+  });
+
+  const head = new THREE.Group();
+  head.add(
+    new THREE.Mesh(
+      new RoundedBoxGeometry(1.6, 1.18, 1.14, 5, 0.42),
+      materials.silver,
+    ),
+  );
+  const visor = plate(1.24, 0.8, 0.3, materials.charcoal);
+  visor.position.z = 0.54;
+  head.add(visor);
+
+  const smile = new THREE.TorusGeometry(0.12, 0.04, 10, 24, Math.PI);
+  [-0.27, 0.27].forEach((x) => {
+    const eye = new THREE.Mesh(smile, materials.glow);
+    eye.position.set(x, 0.04, 0.66);
+    head.add(eye);
+  });
+  const mouth = new THREE.Mesh(
+    new THREE.TorusGeometry(0.11, 0.034, 10, 24, Math.PI),
+    materials.glow,
+  );
+  mouth.rotation.z = Math.PI;
+  mouth.position.set(0, -0.14, 0.66);
+  head.add(mouth);
+
+  const ear = new THREE.CylinderGeometry(0.22, 0.22, 0.14, 32);
+  ear.rotateZ(Math.PI / 2);
+  [-1, 1].forEach((side) => {
+    const pod = new THREE.Mesh(ear, materials.orange);
+    pod.position.x = side * 0.82;
+    head.add(pod);
+  });
+
+  const antenna = new THREE.Group();
+  const stem = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.03, 0.03, 0.3, 12),
+    materials.charcoal,
+  );
+  stem.position.y = 0.15;
+  const tip = new THREE.Mesh(
+    new THREE.SphereGeometry(0.11, 24, 16),
+    materials.orange,
+  );
+  tip.position.y = 0.34;
+  antenna.add(stem, tip);
+  antenna.position.y = 0.56;
+  antenna.rotation.z = -0.18;
+  head.add(antenna);
+
+  head.position.y = 0.2;
+  body.add(part(parts, head, [0, 1.2, 0.4]));
+
+  const spark = sparkle(0.2, 0.06, materials.orange);
+  spark.rotation.x = Math.PI / 2;
+  spark.position.set(0.9, 1.0, 0.1);
+  body.add(part(parts, spark, [0.8, 1.4, 0], [0, 0, 1.4]));
+
+  return (wave: (speed: number) => number) => {
+    head.rotation.z = wave(0.8) * 0.07;
+    arms[1].rotation.z = -0.6 + wave(2.4) * 0.14;
+  };
 }
 
 function buildDatabase(body: THREE.Group, parts: Part[], materials: Materials) {
@@ -251,9 +343,12 @@ function buildPhone(body: THREE.Group, parts: Part[], materials: Materials) {
   }
 }
 
-const builders = {
+const builders: Record<
+  StudioKind,
+  (body: THREE.Group, parts: Part[], materials: Materials) => Idle | void
+> = {
   browser: buildBrowser,
-  chip: buildChip,
+  robot: buildRobot,
   database: buildDatabase,
   server: buildServer,
   phone: buildPhone,
@@ -263,7 +358,7 @@ function createModel(kind: StudioKind, materials: Materials): Model {
   const root = new THREE.Group();
   const body = new THREE.Group();
   const parts: Part[] = [];
-  builders[kind](body, parts, materials);
+  const idle = builders[kind](body, parts, materials) ?? undefined;
   const sphere = new THREE.Box3()
     .setFromObject(body)
     .getBoundingSphere(new THREE.Sphere());
@@ -272,7 +367,7 @@ function createModel(kind: StudioKind, materials: Materials): Model {
   root.scale.setScalar(1 / sphere.radius);
   root.rotation.set(...poses[kind]);
 
-  return { root, body, parts };
+  return { root, body, parts, idle };
 }
 
 function assemble(model: Model, spread: number) {
@@ -435,6 +530,7 @@ export function createStage(
           y + tilt.x * 0.3 + wave(0.3) * 0.12,
           z + wave(0.35) * 0.08,
         );
+        model.idle?.(wave);
       }
       camera.aspect = rect.width / rect.height;
       camera.updateProjectionMatrix();

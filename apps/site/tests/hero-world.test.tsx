@@ -13,7 +13,7 @@ vi.mock("@/lib/studio-scene", () => ({ createStage: stage.create }));
 describe("hero artwork", () => {
   it("paints every object from a baked poster before WebGL loads", () => {
     const html = renderToString(<HeroWorld paused={false} />);
-    for (const kind of ["phone", "browser", "chip", "database", "server"])
+    for (const kind of ["phone", "browser", "robot", "database", "server"])
       expect(html).toContain(`data-studio-slot="${kind}"`);
     expect(html).toContain("fallback-terminal");
     expect(html).not.toContain("canvas");
