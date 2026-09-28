@@ -25,7 +25,7 @@
   bottom: 0;
   width: clamp(150px, 17vw, 250px);
 }
-.hero-brain {
+.hero-chip {
   left: 44%;
   top: 7%;
   width: clamp(120px, 12vw, 170px);
@@ -211,7 +211,7 @@ html[data-theme="dark"] .backdrop-server .development-world {
   }
 }
 @media (max-width: 1023px) {
-  .hero-brain {
+  .hero-chip {
     left: 43%;
     top: auto;
     bottom: 6%;
@@ -219,7 +219,7 @@ html[data-theme="dark"] .backdrop-server .development-world {
   }
 }
 @media (max-width: 639px) {
-  .hero-brain {
+  .hero-chip {
     left: auto;
     right: 4%;
     top: auto;

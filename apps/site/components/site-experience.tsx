@@ -121,7 +121,12 @@ const REACH = (
   return { point, route: originArc(BELEM, point, -length * 0.22) };
 });
 const footerSocials = [
-  { name: "LinkedIn", Icon: BriefcaseBusiness },
+  {
+    name: "LinkedIn",
+    Icon: BriefcaseBusiness,
+    href: "https://www.linkedin.com/in/iago-rodrigues/",
+    handle: "in/iago-rodrigues",
+  },
   { name: "Instagram", Icon: Camera },
   { name: "GitHub", Icon: CodeXml },
 ];
@@ -131,11 +136,13 @@ function SectionLink({
   children,
   className,
   label,
+  current,
 }: {
   target: string;
   children: ReactNode;
   className?: string;
   label?: string;
+  current?: boolean;
 }) {
   function navigate(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
@@ -164,6 +171,7 @@ function SectionLink({
       onClick={navigate}
       className={className}
       aria-label={label}
+      aria-current={current ? "location" : undefined}
     >
       {children}
     </Link>
@@ -225,6 +233,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const [paused, setPaused] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [stuck, setStuck] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [theme, setTheme] = useState("system");
   const [chatOpen, setChatOpen] = useState(false);
   const [recommendation, setRecommendation] = useState(0);
@@ -261,26 +270,42 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
     document
       .querySelectorAll("[data-reveal]")
       .forEach((element) => observer.observe(element));
-    const edges = new Map<Element, boolean>();
-    const top = new IntersectionObserver((entries) => {
-      entries.forEach((entry) =>
-        edges.set(entry.target, entry.isIntersecting),
-      );
-      setScrolled(![...edges.values()].some(Boolean));
-    });
-    const start = document.getElementById("inicio");
-    const footer = document.querySelector(".site-footer");
-    if (start) top.observe(start);
-    if (footer) top.observe(footer);
-    const header = new IntersectionObserver(([entry]) =>
-      setStuck(!entry.isIntersecting && entry.boundingClientRect.top < 0),
+    const top = new IntersectionObserver(([entry]) =>
+      setScrolled(!entry.isIntersecting),
     );
-    const story = document.querySelector(".intro-story");
-    if (story) header.observe(story);
+    const start = document.getElementById("inicio");
+    if (start) top.observe(start);
+
+    const visible = new Map<string, number>();
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) =>
+          visible.set(
+            entry.target.id,
+            entry.isIntersecting ? entry.intersectionRatio : 0,
+          ),
+        );
+        const [current] = [...visible.entries()]
+          .filter(([, ratio]) => ratio > 0)
+          .sort((first, second) => second[1] - first[1]);
+        setActiveSection(current?.[0] ?? null);
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.01, 1] },
+    );
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) spy.observe(section);
+    });
+
+    const onScroll = () => setStuck(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
       observer.disconnect();
       top.disconnect();
-      header.disconnect();
+      spy.disconnect();
+      window.removeEventListener("scroll", onScroll);
     };
   }, [locale]);
 
@@ -328,7 +353,11 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         </SectionLink>
         <nav aria-label={copy.menu}>
           {sectionIds.map((id, index) => (
-            <SectionLink key={id} target={id}>
+            <SectionLink
+              key={id}
+              target={id}
+              current={activeSection === id}
+            >
               {copy.nav[index]}
             </SectionLink>
           ))}
@@ -373,7 +402,11 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
           </summary>
           <nav aria-label={copy.menu}>
             {sectionIds.map((id, index) => (
-              <SectionLink key={id} target={id}>
+              <SectionLink
+              key={id}
+              target={id}
+              current={activeSection === id}
+            >
                 {copy.nav[index]}
               </SectionLink>
             ))}
@@ -772,24 +805,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                 >
                   Belém
                 </span>
-                <span
-                  className="network-city"
-                  style={{
-                    left: `${(SAO_PAULO[0] / WORLD_MAP_WIDTH) * 100}%`,
-                    top: `${(SAO_PAULO[1] / WORLD_MAP_HEIGHT) * 100}%`,
-                  }}
-                >
-                  {copy.origin.saoPaulo}
-                </span>
-                <span
-                  className="network-city city-two"
-                  style={{
-                    left: `${(NEW_YORK[0] / WORLD_MAP_WIDTH) * 100}%`,
-                    top: `${(NEW_YORK[1] / WORLD_MAP_HEIGHT) * 100}%`,
-                  }}
-                >
-                  {copy.origin.novaYork}
-                </span>
               </div>
               <figcaption className="network-caption">
                 <strong id="origin-map-title">{copy.origin.mapTitle}</strong>
@@ -918,17 +933,35 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                   <small>iago@irtc.com.br</small>
                 </span>
               </a>
-              {footerSocials.map(({ name, Icon }) => (
-                <span className="footer-channel" key={name}>
-                  <span className="footer-channel-icon">
-                    <Icon aria-hidden="true" />
+              {footerSocials.map(({ name, Icon, href, handle }) => {
+                const inner = (
+                  <>
+                    <span className="footer-channel-icon">
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <span>
+                      {name}
+                      <small>{handle ?? copy.footer.soon}</small>
+                    </span>
+                  </>
+                );
+
+                return href ? (
+                  <a
+                    className="footer-channel"
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <span className="footer-channel" key={name}>
+                    {inner}
                   </span>
-                  <span>
-                    {name}
-                    <small>{copy.footer.soon}</small>
-                  </span>
-                </span>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

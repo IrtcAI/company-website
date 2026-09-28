@@ -27,6 +27,7 @@ export function ScrollStory({
     let terminalSize = 220;
     let expandedWidth = 1200;
     let expandedHeight = 700;
+    let headerOffset = 0;
     const update = () => {
       frame = 0;
       if (!active) return;
@@ -50,7 +51,10 @@ export function ScrollStory({
         String(Math.max(0, 1 - progress * 5)),
       );
       element.style.setProperty("--screen-x", `${-31 * (1 - eased)}vw`);
-      element.style.setProperty("--screen-y", `${-25 * (1 - eased)}svh`);
+      element.style.setProperty(
+        "--screen-y",
+        `calc(${-25 * (1 - eased)}svh + ${(eased * headerOffset) / 2}px)`,
+      );
       element.style.setProperty("--screen-rotate", `${-14 * (1 - eased)}deg`);
       element.style.setProperty(
         "--hero-opacity",
@@ -76,8 +80,12 @@ export function ScrollStory({
       expandedWidth = Math.min(1480, window.innerWidth - 96);
       element.style.setProperty("--content-width", `${expandedWidth - 20}px`);
       expandedHeight = (content?.offsetHeight ?? 0) + 72;
+      headerOffset =
+        document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 0;
       active =
-        media.matches && !paused && expandedHeight + 80 <= window.innerHeight;
+        media.matches &&
+        !paused &&
+        expandedHeight + 80 + headerOffset <= window.innerHeight;
       element.dataset.enhanced = String(active);
       if (active) schedule();
       else {

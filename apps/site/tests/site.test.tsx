@@ -48,12 +48,12 @@ describe("institutional experience", () => {
     expect(location.hash).toBe("");
     expect(document.querySelectorAll('a[href^="#"]')).toHaveLength(0);
   });
-  it("reveals back-to-top and the sticky header after the opening story", async () => {
+  it("tracks the visible section, sticks the header and offers back-to-top", async () => {
     type Callback = (
       entries: {
         target: Element;
         isIntersecting: boolean;
-        boundingClientRect: { top: number };
+        intersectionRatio: number;
       }[],
     ) => void;
     const watchers = new Map<Element, Callback>();
@@ -61,36 +61,44 @@ describe("institutional experience", () => {
       "IntersectionObserver",
       class {
         constructor(private callback: Callback) {}
+
         observe(target: Element) {
           watchers.set(target, this.callback);
         }
+
         unobserve() {}
+
         disconnect() {}
       },
     );
-    const { container } = render(
-      <div className="intro-story">
-        <SiteExperience />
-      </div>,
-    );
-    const leave = (target: Element | null) =>
+    const { container } = render(<SiteExperience />);
+    const report = (id: string, isIntersecting: boolean) => {
+      const target = document.getElementById(id) as Element;
       act(() =>
-        watchers.get(target as Element)?.([
-          {
-            target: target as Element,
-            isIntersecting: false,
-            boundingClientRect: { top: -100 },
-          },
+        watchers.get(target)?.([
+          { target, isIntersecting, intersectionRatio: isIntersecting ? 1 : 0 },
         ]),
       );
+    };
     const control = container.querySelector(".back-to-top");
     const header = container.querySelector(".site-header");
+
     expect(control).toHaveAttribute("data-visible", "false");
     expect(header).toHaveAttribute("data-stuck", "false");
-    leave(document.getElementById("inicio"));
+
+    report("inicio", false);
     expect(control).toHaveAttribute("data-visible", "true");
-    leave(document.querySelector(".intro-story"));
+
+    report("projetos", true);
+    const [projects] = screen.getAllByRole("link", { name: "Projetos" });
+    expect(projects).toHaveAttribute("aria-current", "location");
+
+    act(() => {
+      window.scrollY = 400;
+      window.dispatchEvent(new Event("scroll"));
+    });
     expect(header).toHaveAttribute("data-stuck", "true");
+
     await userEvent.click(within(control as HTMLElement).getByRole("link"));
     expect(document.activeElement).toHaveAttribute("id", "conteudo");
     expect(screen.queryByText(/Imagem pública da marca/)).toBeNull();

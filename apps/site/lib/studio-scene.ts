@@ -25,7 +25,7 @@ export type StageOptions = {
 
 const poses: Record<StudioKind, [number, number, number]> = {
   browser: [0.18, -0.45, 0.05],
-  brain: [0.12, -1.25, 0.02],
+  chip: [0.62, -0.5, 0.05],
   database: [0.42, 0.3, -0.22],
   server: [0.42, -0.42, 0.08],
   phone: [0.12, -0.42, 0.26],
@@ -59,16 +59,6 @@ function createMaterials() {
       metalness: 0.28,
       roughness: 0.25,
       clearcoat: 1,
-    }),
-    cortex: new THREE.MeshPhysicalMaterial({
-      color: 0x262c2a,
-      metalness: 0.1,
-      roughness: 0.35,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.2,
-      sheen: 1,
-      sheenColor: new THREE.Color(0xa5dec5),
-      sheenRoughness: 0.3,
     }),
   };
 }
@@ -138,55 +128,69 @@ function buildBrowser(body: THREE.Group, parts: Part[], materials: Materials) {
   });
 }
 
-function lobeShape(point: THREE.Vector3, side: number) {
-  const front = Math.max(0, point.z);
-  point.x = side * (Math.abs(point.x) * 0.6 + 0.03);
-  point.y = point.y * (0.8 - front * 0.1) - (point.y < 0 ? front * 0.16 : 0);
-  point.z = point.z * 1.18;
-  return point;
-}
-
-function hemisphere(side: number) {
-  const geometry = new THREE.SphereGeometry(1, 128, 96);
-  const position = geometry.attributes.position;
-  const point = new THREE.Vector3();
-  for (let index = 0; index < position.count; index++) {
-    point.fromBufferAttribute(position, index);
-    const ridges =
-      Math.abs(
-        Math.sin(point.x * 6 + Math.sin(point.y * 5) * 1.6 + point.z * 3),
-      ) *
-      Math.abs(
-        Math.sin(point.z * 7 + Math.sin(point.x * 4) * 1.3 + point.y * 5),
-      );
-    point.multiplyScalar(1 + Math.sqrt(ridges) * 0.07);
-    lobeShape(point, side);
-    position.setXYZ(index, point.x, point.y, point.z);
-  }
-  geometry.computeVertexNormals();
-  return geometry;
-}
-
-function buildBrain(body: THREE.Group, parts: Part[], materials: Materials) {
-  [-1, 1].forEach((side) => {
-    const lobe = new THREE.Mesh(hemisphere(side), materials.cortex);
-    body.add(part(parts, lobe, [side * 1.6, 0.4, 0], [0, 0, side * 0.5]));
+function sparkle(radius: number, depth: number, material: THREE.Material) {
+  const shape = new THREE.Shape();
+  const waist = radius * 0.1;
+  shape.moveTo(0, radius);
+  [
+    [radius, 0],
+    [0, -radius],
+    [-radius, 0],
+    [0, radius],
+  ].forEach(([x, y], index) => {
+    const corner = [
+      [waist, waist],
+      [waist, -waist],
+      [-waist, -waist],
+      [-waist, waist],
+    ][index];
+    shape.quadraticCurveTo(corner[0], corner[1], x, y);
   });
-  const cerebellum = new THREE.Mesh(
-    new THREE.SphereGeometry(0.42, 48, 32),
-    materials.cortex,
-  );
-  cerebellum.scale.set(1.4, 0.6, 0.85);
-  cerebellum.position.set(0, -0.5, -0.84);
-  const stem = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.15, 0.1, 0.6, 24),
-    materials.cortex,
-  );
-  stem.position.set(0, -0.8, -0.45);
-  stem.rotation.x = 0.35;
+  const geometry = new THREE.ExtrudeGeometry(shape, {
+    depth,
+    bevelEnabled: true,
+    bevelSegments: 3,
+    bevelSize: 0.03,
+    bevelThickness: 0.03,
+    curveSegments: 16,
+  });
+  geometry.rotateX(-Math.PI / 2);
+  return new THREE.Mesh(geometry, material);
+}
+
+function buildChip(body: THREE.Group, parts: Part[], materials: Materials) {
+  const pins = new THREE.Group();
+  for (let side = 0; side < 4; side++) {
+    for (let index = 0; index < 5; index++) {
+      const pin = rounded(0.12, 0.06, 0.34, materials.silver, 0.025);
+      const offset = (index - 2) * 0.36;
+      const angle = (side * Math.PI) / 2;
+      pin.position.set(
+        Math.cos(angle) * 1.12 - Math.sin(angle) * offset,
+        -0.02,
+        Math.sin(angle) * 1.12 + Math.cos(angle) * offset,
+      );
+      pin.rotation.y = -angle + Math.PI / 2;
+      pins.add(pin);
+    }
+  }
+  body.add(part(parts, pins, [0, -0.9, 0]));
+  const board = new THREE.Group();
+  board.add(rounded(2.1, 0.22, 2.1, materials.charcoal, 0.14));
+  const lid = rounded(1.6, 0.06, 1.6, materials.silver, 0.1);
+  lid.position.y = 0.13;
+  board.add(lid);
+  const core = rounded(1.34, 0.04, 1.34, materials.charcoal, 0.08);
+  core.position.y = 0.17;
+  board.add(core);
+  body.add(part(parts, board, [0, -0.4, 0]));
+  const spark = sparkle(0.52, 0.12, materials.mint);
+  spark.position.set(-0.1, 0.2, 0.08);
+  const spark2 = sparkle(0.22, 0.08, materials.orange);
+  spark2.position.set(0.4, 0.2, -0.38);
   body.add(
-    part(parts, cerebellum, [0, -1.4, -0.8]),
-    part(parts, stem, [0, -1.8, 0]),
+    part(parts, spark, [0, 1.6, 0], [0, 1.4, 0]),
+    part(parts, spark2, [0.4, 2.1, 0], [0, -1.4, 0]),
   );
 }
 
@@ -241,7 +245,7 @@ function buildPhone(body: THREE.Group, parts: Part[], materials: Materials) {
 
 const builders = {
   browser: buildBrowser,
-  brain: buildBrain,
+  chip: buildChip,
   database: buildDatabase,
   server: buildServer,
   phone: buildPhone,

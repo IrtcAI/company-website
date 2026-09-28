@@ -186,8 +186,6 @@ export const content = {
       vision:
         "Queremos que empresas de todos os tamanhos tenham acesso a software bem feito, com comunicação clara e uma parceria que continua depois do lançamento.",
       cta: "Vamos conhecer seu projeto",
-      saoPaulo: "São Paulo",
-      novaYork: "Nova York",
       mapTitle: "Belém é o ponto de partida.",
       mapDescription:
         "Da Amazônia para o mundo: trabalhamos com equipes onde elas estiverem.",
@@ -440,8 +438,6 @@ export const content = {
       vision:
         "We want businesses of every size to have access to well-built software, clear communication and a partnership that continues beyond launch.",
       cta: "Let's explore your project",
-      saoPaulo: "São Paulo",
-      novaYork: "New York",
       mapTitle: "Belém is the starting point.",
       mapDescription:
         "From the Amazon to the world: we work with teams wherever they are.",
@@ -694,8 +690,6 @@ export const content = {
       vision:
         "Queremos que empresas de todos los tamaños accedan a software bien construido, comunicación clara y una colaboración que continúe después del lanzamiento.",
       cta: "Conozcamos tu proyecto",
-      saoPaulo: "São Paulo",
-      novaYork: "Nueva York",
       mapTitle: "Belém es el punto de partida.",
       mapDescription:
         "De la Amazonía al mundo: trabajamos con equipos donde estén.",

@@ -137,8 +137,8 @@ button:hover > .arrow {
   overflow: clip;
 }
 .site-header {
-  position: absolute;
-  z-index: 5;
+  position: fixed;
+  z-index: 20;
   top: 0;
   width: 100%;
   display: flex;
@@ -1280,7 +1280,7 @@ summary::-webkit-details-marker {
 .site-footer {
   background: var(--footer-coral);
   color: var(--footer-ink);
-  padding: 65px 5% 30px;
+  padding: 65px 5% 96px;
 }
 .footer-top {
   display: flex;
@@ -3800,15 +3800,19 @@ a.footer-channel:hover .footer-channel-icon {
     transition: none;
   }
 }
+.site-header {
+  transition:
+    background-color 0.3s,
+    padding 0.3s,
+    border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
 .site-header[data-stuck="true"] {
-  position: fixed;
-  z-index: 20;
   padding-block: 12px;
   color: var(--text);
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: blur(14px) saturate(1.2);
-  border-bottom: 1px solid var(--surface-line);
-  animation: header-in 0.35s ease both;
+  border-bottom-color: var(--surface-line);
 }
 .site-header[data-stuck="true"] > nav,
 .site-header[data-stuck="true"] .site-preferences,
@@ -3818,13 +3822,6 @@ a.footer-channel:hover .footer-channel-icon {
 .site-header[data-stuck="true"] .brand {
   font-size: 36px;
 }
-@keyframes header-in {
-  from {
-    translate: 0 -100%;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .site-header[data-stuck="true"] {
-    animation: none;
-  }
+.site-header nav a[aria-current="location"]::after {
+  transform: scaleX(1);
 }

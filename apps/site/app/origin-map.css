@@ -70,17 +70,6 @@
   font-weight: 600;
   white-space: nowrap;
 }
-.network-city {
-  position: absolute;
-  translate: 9px -50%;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  text-align: left;
-}
-.city-two {
-  translate: 9px -110%;
-}
 @media (max-width: 767px) {
   .origin-network {
     transform: none;
