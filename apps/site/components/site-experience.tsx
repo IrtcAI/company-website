@@ -478,7 +478,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               </p>
             </div>
             <p className="tech-extra">
-              TypeScript · Python · Django · React Native · pgvector · RAG · ETL
+              TypeScript · Python · Django · React Native
               / ELT
             </p>
           </div>

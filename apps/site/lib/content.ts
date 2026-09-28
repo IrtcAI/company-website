@@ -14,10 +14,10 @@ export const content = {
       eyebrow: "De Belém para o seu próximo projeto.",
       title: "Sua ideia vira",
       words: [
-        "um SaaS sob medida.",
-        "um sistema integrado.",
-        "uma automação útil.",
-        "uma solução com IA.",
+        "um aplicativo sob medida.",
+        "um sistema que une tudo.",
+        "menos trabalho repetitivo.",
+        "uma ferramenta com IA.",
       ],
       description: "Software que simplifica processos e ajuda sua empresa a crescer.",
       cta: "Conte o que você quer construir",
@@ -64,10 +64,10 @@ export const content = {
         "Indicadores de projetos relatados no material institucional. Resultados dependem do contexto de cada operação.",
       cases: [
         {
-          category: "Marketplace · CRM · Dados",
+          category: "Marketplace · Clientes · Dados",
           title: "Mais clareza para uma operação complexa.",
           description:
-            "Modernização de marketplace, CRM e relatórios. Fluxos de trabalho conectados para reduzir tarefas manuais e facilitar as decisões da equipe.",
+            "Modernização de marketplace, sistema de clientes e relatórios. Fluxos de trabalho conectados para reduzir tarefas manuais e facilitar as decisões da equipe.",
           result: "mais velocidade nas entregas",
           detail:
             "Refatoração de serviços, componentes reutilizáveis, notificações em tempo real e operações em lote. A evolução dos padrões de engenharia ajudou a acelerar as entregas sem perder consistência.",
@@ -79,14 +79,14 @@ export const content = {
             "Integrações entre sistemas de saúde, dados organizados e aplicativos para facilitar a coleta em campo e o trabalho das equipes.",
           result: "menos tempo de carregamento",
           detail:
-            "APIs para conectar laboratórios, estratégias de cache e modelagem de dados em PostgreSQL. O módulo de coleta em campo também reduziu em 30% o tempo de entrada de dados.",
+            "Conexões para integrar laboratórios, técnicas para carregar as telas mais rápido e organização do banco de dados PostgreSQL. O módulo de coleta em campo também reduziu em 30% o tempo de entrada de dados.",
         },
         {
           category: "Educação · Pagamentos · Plataforma",
           title: "Uma estrutura pronta para crescer junto.",
           description:
             "Conteúdo, pagamentos e autenticação integrados em uma plataforma de cursos. Mais eficiência nos bastidores, menos atrito para quem aprende e vende.",
-          result: "de melhoria na eficiência do backend",
+          result: "de melhoria na eficiência do sistema",
           detail:
             "Otimização de consultas, cache e refatoração de serviços. Integração de pagamentos e autenticação para apoiar a evolução da experiência de ensino e da operação.",
         },
@@ -100,50 +100,50 @@ export const content = {
       items: [
         {
           title: "Produtos & plataformas",
-          tags: "SaaS · Portais · Aplicativos",
+          tags: "Aplicativos · Portais · Sistemas online",
           intro:
             "Tire uma ideia do papel com uma primeira versão que já resolve um problema importante.",
-          text: "Mapeamos a jornada, definimos o essencial e construímos um produto fácil de usar. Depois do lançamento, acompanhamos os resultados para decidir o que vale evoluir.",
+          text: "Entendemos como as pessoas vão usar o produto, definimos o essencial e construímos algo fácil de usar. Depois do lançamento, os resultados guiam o que evolui em seguida.",
           deliverables: [
-            "Descoberta e definição do MVP",
-            "Interfaces web e mobile",
+            "Planejamento da primeira versão",
+            "Telas para computador e celular",
             "Lançamento e evolução do produto",
           ],
         },
         {
           title: "Sistemas & integrações",
-          tags: "ERP · CRM · APIs · Automações",
+          tags: "Gestão · Clientes · Conexões · Automações",
           intro:
             "Conecte as ferramentas da empresa e deixe de depender de planilhas e tarefas repetidas.",
-          text: "Criamos sistemas de gestão e integrações para que vendas, finanças e operação trabalhem com a mesma informação. Cada fluxo tem validação, rastreabilidade e tratamento de falhas.",
+          text: "Criamos sistemas de gestão e integrações para que vendas, finanças e operação trabalhem com a mesma informação. Cada etapa é conferida automaticamente, para que erros sejam encontrados e corrigidos rápido.",
           deliverables: [
             "Gestão sob medida",
-            "Integrações com serviços e ERPs",
+            "Integrações com outros sistemas e serviços",
             "Automação de processos internos",
           ],
         },
         {
           title: "Inteligência artificial aplicada",
-          tags: "Agentes de IA · RAG · Busca semântica",
+          tags: "Assistentes de IA · Busca inteligente · Respostas automáticas",
           intro:
             "Use IA onde ela pode poupar tempo, encontrar respostas e melhorar decisões.",
-          text: "Conectamos modelos ao conhecimento da empresa, com limites de acesso e avaliações de qualidade. Começamos com um caso de uso claro e medimos utilidade, custo e segurança.",
+          text: "Conectamos a IA ao conhecimento da empresa, com controle de acesso e verificações de qualidade. Começamos por um problema claro e medimos se a solução é útil, o custo e a segurança.",
           deliverables: [
-            "Assistentes com base de conhecimento",
-            "Agentes com ferramentas controladas",
-            "Avaliação e monitoramento de respostas",
+            "Assistentes que respondem com base nos seus documentos",
+            "Automações de IA com regras de segurança",
+            "Acompanhamento da qualidade das respostas",
           ],
         },
         {
           title: "Dados & infraestrutura",
-          tags: "ETL · ELT · Analytics · Cloud",
+          tags: "Organização de dados · Relatórios · Nuvem",
           intro:
             "Tenha dados confiáveis e uma estrutura que acompanha o crescimento da operação.",
           text: "Organizamos a coleta e o processamento de dados, construímos indicadores e cuidamos da infraestrutura. Com monitoramento e rotinas de recuperação, os problemas deixam de ser uma surpresa.",
           deliverables: [
-            "Pipelines e qualidade de dados",
-            "Dashboards e indicadores",
-            "Cloud, observabilidade e performance",
+            "Dados organizados e confiáveis",
+            "Painéis e indicadores para decisões",
+            "Nuvem, monitoramento e velocidade",
           ],
         },
       ],
@@ -152,14 +152,14 @@ export const content = {
         "Explore as ferramentas. A escolha depende do desafio, não da moda.",
       techHint: "Selecione uma tecnologia para saber onde ela entra.",
       techDescriptions: [
-        "APIs e serviços que conectam sua operação, com TypeScript e uma estrutura preparada para evoluir.",
+        "Conexões e serviços que ligam sua operação, com TypeScript e uma base pronta para crescer.",
         "Produtos web rápidos, acessíveis e fáceis de usar, do portal ao painel de gestão.",
-        "Interfaces reutilizáveis para experiências consistentes na web e em aplicativos.",
-        "Dados bem estruturados, consultas eficientes e busca vetorial com pgvector.",
-        "Cache, filas e respostas rápidas para processos que não podem esperar.",
+        "Telas reutilizáveis para experiências consistentes na web e em aplicativos.",
+        "Dados bem estruturados, consultas eficientes e busca por significado com a extensão pgvector.",
+        "Memória rápida e fila de tarefas para respostas ágeis em processos urgentes.",
         "Infraestrutura em nuvem, armazenamento, monitoramento e implantação de aplicações.",
         "Versionamento, revisão de código e automação de testes e entregas.",
-        "APIs modulares, validação e organização para sistemas de negócio complexos.",
+        "Código organizado em módulos, verificações automáticas e clareza para sistemas de negócio complexos.",
       ],
     },
     testimonials: {
@@ -176,7 +176,7 @@ export const content = {
         "Modernização de sistemas, componentes escaláveis e mentoria que elevam a qualidade das entregas.",
         "Proatividade e compromisso com as entregas, com agilidade e eficácia na correção de problemas.",
         "Atenção aos detalhes e disposição para compartilhar conhecimento, melhorar a qualidade e padronizar o projeto.",
-        "Componentes reutilizáveis que facilitaram o desenvolvimento e autonomia para conduzir o início do frontend.",
+        "Componentes reutilizáveis que facilitaram o desenvolvimento e autonomia para conduzir o início da parte visual do sistema.",
         "Domínio técnico, dedicação e iniciativa, com destaque para o trabalho em Vue.js e TypeScript.",
       ],
     },
@@ -243,7 +243,7 @@ export const content = {
       send: "Enviar",
       thinking: "Iris está pensando…",
       use: "Usar como rascunho",
-      draft: "Seu rascunho de MVP",
+      draft: "Seu rascunho de primeira versão",
       approve: "Aprovar e enviar por e-mail",
       email: "Seu e-mail para retorno",
       sent: "Rascunho enviado. Vamos conversar em breve.",
@@ -251,9 +251,9 @@ export const content = {
       disclaimer:
         "Iris usa IA e pode errar. O rascunho não é uma proposta comercial.",
       refusal:
-        "Posso ajudar com a IRTC ou com uma ideia inicial de MVP. Qual desafio do seu negócio você quer resolver?",
+        "Posso ajudar com a IRTC ou com uma ideia inicial de produto. Qual desafio do seu negócio você quer resolver?",
       fallback:
-        "Para começar: 1. Escolha um público e uma dor. 2. Resolva uma tarefa essencial. 3. Meça o resultado. A IRTC ajuda a transformar isso em um MVP.",
+        "Para começar: 1. Escolha um público e um problema. 2. Resolva uma tarefa essencial. 3. Meça o resultado. A IRTC ajuda a transformar isso em uma primeira versão do seu produto.",
       about:
         "A IRTC desenvolve software, integrações, dados e IA em Belém. Trabalhamos com entregas curtas, qualidade técnica e suporte próximo.",
     },
@@ -271,10 +271,10 @@ export const content = {
       eyebrow: "From Belém to your next big idea.",
       title: "Your idea becomes",
       words: [
-        "software built to fit.",
-        "a connected system.",
-        "useful automation.",
-        "an AI solution.",
+        "an app made for you.",
+        "one system for it all.",
+        "less repetitive work.",
+        "a tool powered by AI.",
       ],
       description: "Software that simplifies work and helps your business grow.",
       cta: "Tell us what you want to build",
@@ -321,10 +321,10 @@ export const content = {
         "Project metrics reported in the source materials. Results depend on each operating context.",
       cases: [
         {
-          category: "Marketplace · CRM · Data",
+          category: "Marketplace · Customers · Data",
           title: "Clarity for a complex operation.",
           description:
-            "Marketplace, CRM and reporting modernization. Connected workflows that reduce manual work and help teams make informed decisions.",
+            "Marketplace, customer management and reporting modernization. Connected workflows that reduce manual work and help teams make informed decisions.",
           result: "faster delivery",
           detail:
             "Service refactoring, reusable components, real-time notifications and batch operations. Better engineering practices accelerated delivery while maintaining consistency.",
@@ -336,14 +336,14 @@ export const content = {
             "Connected healthcare systems, structured data and mobile tools that make field collection and daily operations easier.",
           result: "less loading time",
           detail:
-            "Laboratory integration APIs, caching strategies and PostgreSQL data modeling. The field collection module also reduced data entry time by 30%.",
+            "Laboratory integration connections, techniques to load pages faster and PostgreSQL database design. The field collection module also reduced data entry time by 30%.",
         },
         {
           category: "Education · Payments · Platform",
           title: "A foundation for the next stage of growth.",
           description:
             "Content, payments and authentication connected in a learning platform. More efficient services and less friction for learners and sellers.",
-          result: "improvement in backend efficiency",
+          result: "improvement in system efficiency",
           detail:
             "Query optimization, caching and service refactoring. Payment and authentication integrations to support the learning experience and business operations.",
         },
@@ -357,50 +357,50 @@ export const content = {
       items: [
         {
           title: "Products & platforms",
-          tags: "SaaS · Portals · Apps",
+          tags: "Apps · Portals · Online systems",
           intro:
             "Turn an idea into a first release that solves a meaningful problem.",
-          text: "We map the journey, identify the essentials and build a product people can use with confidence. After launch, real results guide what comes next.",
+          text: "We start by understanding how people will use it, then build something simple to use with confidence. After launch, real results guide what comes next.",
           deliverables: [
-            "Discovery and MVP definition",
-            "Web and mobile experiences",
-            "Product launch and iteration",
+            "Discovery and planning for the first version",
+            "Screens for computer and phone",
+            "Product launch and continuous improvements",
           ],
         },
         {
           title: "Systems & integrations",
-          tags: "ERP · CRM · APIs · Automation",
+          tags: "Management · Customers · Connections · Automation",
           intro:
             "Connect your business tools and move beyond spreadsheets and repetitive work.",
-          text: "We build management systems and integrations so sales, finance and operations share the same information. Every workflow includes validation, traceability and failure handling.",
+          text: "We build management systems and integrations so sales, finance and operations share the same information. Every step is checked automatically, so mistakes are caught and fixed quickly.",
           deliverables: [
             "Custom business systems",
-            "ERP and service integrations",
+            "Integrations with other systems and services",
             "Internal workflow automation",
           ],
         },
         {
           title: "Applied artificial intelligence",
-          tags: "AI agents · RAG · Semantic search",
+          tags: "AI assistants · Smart search · Automatic answers",
           intro:
             "Put AI to work saving time, finding answers and supporting better decisions.",
-          text: "We connect models to company knowledge with access controls and quality evaluations. Start with a clear use case, then measure usefulness, cost and safety.",
+          text: "We connect AI to company knowledge, with access controls and quality checks. We start with one clear problem, then measure how useful it is, the cost and the safety.",
           deliverables: [
-            "Knowledge-based assistants",
-            "Agents with controlled tools",
-            "Response evaluation and monitoring",
+            "Assistants that answer using your documents",
+            "AI automations with safety rules",
+            "Ongoing checks on answer quality",
           ],
         },
         {
           title: "Data & infrastructure",
-          tags: "ETL · ELT · Analytics · Cloud",
+          tags: "Data organization · Reports · Cloud",
           intro:
             "Reliable data and infrastructure that grows with your operations.",
           text: "We organize data collection and processing, build useful metrics and manage infrastructure. Monitoring and recovery routines help teams catch problems early.",
           deliverables: [
-            "Data pipelines and quality",
-            "Dashboards and business metrics",
-            "Cloud, observability and performance",
+            "Organized, reliable data",
+            "Dashboards and metrics for decisions",
+            "Cloud hosting, monitoring and speed",
           ],
         },
       ],
@@ -409,14 +409,14 @@ export const content = {
         "Explore our toolkit. The challenge drives the choice, not the hype.",
       techHint: "Select a technology to see where it fits.",
       techDescriptions: [
-        "APIs and services that connect your operations, built with TypeScript and room to evolve.",
+        "Connections and services that link your operations, built with TypeScript and room to grow.",
         "Fast, accessible web products, from customer portals to management dashboards.",
-        "Reusable interfaces for consistent web and mobile experiences.",
-        "Structured data, efficient queries and vector search with pgvector.",
-        "Caching, queues and fast responses for time-sensitive workflows.",
+        "Reusable screens for a consistent experience on the web and in apps.",
+        "Structured data, efficient queries and search by meaning using the pgvector extension.",
+        "Fast memory and task queues for quick responses in urgent processes.",
         "Cloud infrastructure, storage, monitoring and application deployment.",
         "Version control, code review and automated testing and delivery.",
-        "Modular APIs, validation and structure for complex business systems.",
+        "Modular code, automatic checks and structure for complex business systems.",
       ],
     },
     testimonials: {
@@ -433,7 +433,7 @@ export const content = {
         "System modernization, scalable components and mentoring that raise the standard of delivery.",
         "Proactive, committed to delivery and quick and effective at resolving bugs.",
         "Attention to detail, knowledge sharing and a drive to improve project quality and consistency.",
-        "Reusable components that made development easier, with the autonomy to lead the initial frontend work.",
+        "Reusable components that made development easier, with the autonomy to lead the early work on the product's visual side.",
         "Technical depth, dedication and initiative, particularly in Vue.js and TypeScript.",
       ],
     },
@@ -500,7 +500,7 @@ export const content = {
       send: "Send",
       thinking: "Iris is thinking…",
       use: "Use as draft",
-      draft: "Your MVP draft",
+      draft: "Your first-version draft",
       approve: "Approve and email",
       email: "Your email for a reply",
       sent: "Draft sent. We'll be in touch soon.",
@@ -508,9 +508,9 @@ export const content = {
       disclaimer:
         "Iris uses AI and may make mistakes. This draft is not a commercial proposal.",
       refusal:
-        "I can help with IRTC or an initial MVP idea. What business challenge would you like to solve?",
+        "I can help with IRTC or an early product idea. What business challenge would you like to solve?",
       fallback:
-        "Start here: 1. Choose an audience and a pain point. 2. Solve one essential task. 3. Measure the result. IRTC can help turn this into an MVP.",
+        "Start here: 1. Choose an audience and a problem. 2. Solve one essential task. 3. Measure the result. IRTC can help turn this into a first version of your product.",
       about:
         "IRTC builds software, integrations, data systems and AI in Belém, Brazil. We work in short delivery cycles with technical quality and hands-on support.",
     },
@@ -528,10 +528,10 @@ export const content = {
       eyebrow: "Desde Belém hasta tu próximo proyecto.",
       title: "Tu idea se convierte en",
       words: [
-        "un SaaS a tu medida.",
-        "un sistema conectado.",
-        "más automatización.",
-        "una solución con IA.",
+        "una app a tu medida.",
+        "un sistema que une todo.",
+        "menos trabajo repetitivo.",
+        "una herramienta con IA.",
       ],
       description: "Software que simplifica procesos y ayuda a crecer tu negocio.",
       cta: "Cuéntanos qué quieres construir",
@@ -578,10 +578,10 @@ export const content = {
         "Indicadores de proyectos documentados en el material de referencia. Los resultados dependen de cada operación.",
       cases: [
         {
-          category: "Marketplace · CRM · Datos",
+          category: "Marketplace · Clientes · Datos",
           title: "Más claridad para una operación compleja.",
           description:
-            "Modernización de marketplace, CRM e informes. Flujos conectados para reducir tareas manuales y facilitar las decisiones del equipo.",
+            "Modernización de marketplace, gestión de clientes e informes. Flujos conectados para reducir tareas manuales y facilitar las decisiones del equipo.",
           result: "más velocidad de entrega",
           detail:
             "Refactorización de servicios, componentes reutilizables, notificaciones en tiempo real y operaciones por lotes. Mejores prácticas para acelerar las entregas sin perder consistencia.",
@@ -593,14 +593,14 @@ export const content = {
             "Sistemas de salud conectados, datos organizados y aplicaciones que facilitan la recolección en campo y el trabajo de los equipos.",
           result: "menos tiempo de carga",
           detail:
-            "APIs para integrar laboratorios, estrategias de caché y modelado de datos en PostgreSQL. El módulo de recolección en campo también redujo un 30% el tiempo de entrada de datos.",
+            "Conexiones para integrar laboratorios, técnicas para cargar las pantallas más rápido y organización de la base de datos PostgreSQL. El módulo de recolección en campo también redujo un 30% el tiempo de entrada de datos.",
         },
         {
           category: "Educación · Pagos · Plataforma",
           title: "Una base preparada para crecer.",
           description:
             "Contenido, pagos y autenticación integrados en una plataforma de cursos. Más eficiencia interna y menos obstáculos para estudiantes y vendedores.",
-          result: "de mejora en la eficiencia del backend",
+          result: "de mejora en la eficiencia del sistema",
           detail:
             "Optimización de consultas, caché y refactorización de servicios. Integración de pagos y autenticación para mejorar la experiencia de aprendizaje y la operación.",
         },
@@ -614,50 +614,50 @@ export const content = {
       items: [
         {
           title: "Productos y plataformas",
-          tags: "SaaS · Portales · Aplicaciones",
+          tags: "Aplicaciones · Portales · Sistemas online",
           intro:
             "Convierte una idea en una primera versión que resuelva un problema importante.",
-          text: "Definimos el recorrido, priorizamos lo esencial y construimos un producto fácil de usar. Tras el lanzamiento, los resultados nos ayudan a decidir qué mejorar.",
+          text: "Entendemos cómo las personas van a usar el producto, priorizamos lo esencial y construimos algo fácil de usar. Tras el lanzamiento, los resultados nos ayudan a decidir qué mejorar.",
           deliverables: [
-            "Descubrimiento y definición del MVP",
-            "Experiencias web y móviles",
+            "Descubrimiento y planificación de la primera versión",
+            "Pantallas para computadora y celular",
             "Lanzamiento y evolución del producto",
           ],
         },
         {
           title: "Sistemas e integraciones",
-          tags: "ERP · CRM · APIs · Automatización",
+          tags: "Gestión · Clientes · Conexiones · Automatización",
           intro:
             "Conecta las herramientas de tu empresa y deja atrás las tareas repetitivas.",
-          text: "Creamos sistemas de gestión e integraciones para que ventas, finanzas y operaciones compartan la misma información. Cada flujo incluye validación, trazabilidad y manejo de errores.",
+          text: "Creamos sistemas de gestión e integraciones para que ventas, finanzas y operaciones compartan la misma información. Cada paso se revisa de forma automática, así los errores se detectan y se corrigen rápido.",
           deliverables: [
             "Sistemas de gestión a medida",
-            "Integraciones con ERPs y servicios",
+            "Integraciones con otros sistemas y servicios",
             "Automatización de procesos internos",
           ],
         },
         {
           title: "Inteligencia artificial aplicada",
-          tags: "Agentes de IA · RAG · Búsqueda semántica",
+          tags: "Asistentes de IA · Búsqueda inteligente · Respuestas automáticas",
           intro:
             "Aplica IA donde pueda ahorrar tiempo, encontrar respuestas y mejorar decisiones.",
-          text: "Conectamos modelos al conocimiento de la empresa con controles de acceso y evaluaciones de calidad. Empezamos por un caso de uso concreto y medimos utilidad, costo y seguridad.",
+          text: "Conectamos la IA al conocimiento de la empresa, con control de acceso y revisiones de calidad. Empezamos por un problema concreto y medimos si es útil, el costo y la seguridad.",
           deliverables: [
-            "Asistentes con base de conocimiento",
-            "Agentes con herramientas controladas",
-            "Evaluación y monitoreo de respuestas",
+            "Asistentes que responden con base en tus documentos",
+            "Automatizaciones de IA con reglas de seguridad",
+            "Seguimiento continuo de la calidad de las respuestas",
           ],
         },
         {
           title: "Datos e infraestructura",
-          tags: "ETL · ELT · Analytics · Cloud",
+          tags: "Organización de datos · Informes · Nube",
           intro:
             "Datos confiables e infraestructura que crece con tu operación.",
           text: "Organizamos la recolección y el procesamiento de datos, creamos indicadores y cuidamos la infraestructura. El monitoreo y las rutinas de recuperación permiten detectar problemas a tiempo.",
           deliverables: [
-            "Pipelines y calidad de datos",
-            "Dashboards e indicadores",
-            "Cloud, observabilidad y rendimiento",
+            "Datos organizados y confiables",
+            "Paneles e indicadores para decisiones",
+            "Nube, monitoreo y velocidad",
           ],
         },
       ],
@@ -666,14 +666,14 @@ export const content = {
         "Explora nuestras herramientas. Elegimos según el desafío, no la moda.",
       techHint: "Selecciona una tecnología para conocer su función.",
       techDescriptions: [
-        "APIs y servicios que conectan tu operación con TypeScript y una estructura lista para evolucionar.",
+        "Conexiones y servicios que enlazan tu operación, con TypeScript y una base lista para crecer.",
         "Productos web rápidos y accesibles, desde portales hasta paneles de gestión.",
-        "Interfaces reutilizables para experiencias consistentes en la web y en aplicaciones.",
-        "Datos estructurados, consultas eficientes y búsqueda vectorial con pgvector.",
-        "Caché, colas y respuestas rápidas para procesos que no pueden esperar.",
+        "Pantallas reutilizables para experiencias consistentes en la web y en aplicaciones.",
+        "Datos bien estructurados, consultas eficientes y búsqueda por significado con la extensión pgvector.",
+        "Memoria rápida y colas de tareas para respuestas ágiles en procesos urgentes.",
         "Infraestructura cloud, almacenamiento, monitoreo y despliegue de aplicaciones.",
         "Control de versiones, revisión de código y automatización de pruebas y entregas.",
-        "APIs modulares, validación y organización para sistemas complejos.",
+        "Código organizado en módulos, validaciones automáticas y estructura clara para sistemas complejos.",
       ],
     },
     testimonials: {
@@ -690,7 +690,7 @@ export const content = {
         "Modernización de sistemas, componentes escalables y mentoría que elevan la calidad de las entregas.",
         "Proactividad y compromiso, con rapidez y eficacia para corregir problemas.",
         "Atención al detalle y disposición para compartir conocimientos, mejorar la calidad y estandarizar el proyecto.",
-        "Componentes reutilizables que facilitaron el desarrollo y autonomía para liderar el inicio del frontend.",
+        "Componentes reutilizables que facilitaron el desarrollo y autonomía para liderar el inicio de la parte visual del producto.",
         "Dominio técnico, dedicación e iniciativa, especialmente en Vue.js y TypeScript.",
       ],
     },
@@ -757,7 +757,7 @@ export const content = {
       send: "Enviar",
       thinking: "Iris está pensando…",
       use: "Usar como borrador",
-      draft: "Tu borrador de MVP",
+      draft: "Tu borrador de primera versión",
       approve: "Aprobar y enviar por correo",
       email: "Tu correo para recibir respuesta",
       sent: "Borrador enviado. Pronto conversaremos.",
@@ -765,9 +765,9 @@ export const content = {
       disclaimer:
         "Iris usa IA y puede equivocarse. El borrador no es una propuesta comercial.",
       refusal:
-        "Puedo ayudarte con IRTC o una idea inicial de MVP. ¿Qué desafío de tu negocio quieres resolver?",
+        "Puedo ayudarte con IRTC o una idea inicial de producto. ¿Qué desafío de tu negocio quieres resolver?",
       fallback:
-        "Para empezar: 1. Elige un público y un problema. 2. Resuelve una tarea esencial. 3. Mide el resultado. IRTC te ayuda a convertirlo en un MVP.",
+        "Para empezar: 1. Elige un público y un problema. 2. Resuelve una tarea esencial. 3. Mide el resultado. IRTC te ayuda a convertirlo en la primera versión de tu producto.",
       about:
         "IRTC desarrolla software, integraciones, datos e IA desde Belém, Brasil. Trabajamos con entregas cortas, calidad técnica y soporte cercano.",
     },

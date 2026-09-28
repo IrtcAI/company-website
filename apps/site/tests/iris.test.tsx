@@ -48,7 +48,7 @@ describe("Iris dialog", () => {
     await userEvent.type(screen.getByLabelText("Seu e-mail para retorno"), "teste@example.com");
     await userEvent.click(screen.getByRole("button", { name: "Aprovar e enviar por e-mail" }));
     expect(await screen.findByText("Não foi possível enviar. Tente novamente em instantes.")).toBeVisible();
-    expect(screen.getByLabelText("Seu rascunho de MVP")).toHaveValue("MVP: cadastro e agenda.");
+    expect(screen.getByLabelText("Seu rascunho de primeira versão")).toHaveValue("MVP: cadastro e agenda.");
     await waitFor(() => expect(screen.getByRole("button", { name: "Aprovar e enviar por e-mail" })).toBeEnabled());
   });
 });
