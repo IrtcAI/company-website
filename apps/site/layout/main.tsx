@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 import "@/styles/development-story.css";
 import "@/styles/studio-objects.css";
@@ -16,9 +18,9 @@ const body = Manrope({
   display: "optional",
 });
 
-const title = "IRTC | Engenharia de software, IA e dados";
+const title = "IRTC | Software, sites, apps e IA em Belém";
 const description =
-  "Fábrica de software em Belém, Pará. Sistemas SaaS, ERP, CRM, IA, RAG, integrações e produtos digitais confiáveis.";
+  "Fábrica de software em Belém, Pará. Criamos software sob medida, sites, aplicativos, integrações e inteligência artificial para empresas de todos os tamanhos.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irtc.com.br"),
@@ -30,24 +32,22 @@ export const metadata: Metadata = {
   },
   keywords: [
     "fábrica de software",
-    "engenharia de IA",
-    "desenvolvimento de software Belém",
-    "SaaS",
-    "ERP",
-    "CRM",
-    "RAG",
-    "agentes de IA",
-    "banco vetorial",
+    "software sob medida",
+    "desenvolvimento de sites",
+    "sites e plataformas web",
+    "aplicativos para celular",
+    "desenvolvimento de aplicativos mobile",
+    "inteligência artificial",
+    "integrações de sistemas",
+    "automação de processos",
+    "modernização de sistemas",
+    "desenvolvimento de software em Belém",
+    "desenvolvimento de software no Pará",
     "Node.js",
-    "NestJS",
-    "Next.js",
     "React",
+    "Next.js",
     "PostgreSQL",
     "AWS",
-    "ETL",
-    "ELT",
-    "integrações",
-    "automação",
   ],
   openGraph: {
     type: "website",
@@ -85,7 +85,11 @@ export default function RootLayout({
         />
         <script dangerouslySetInnerHTML={{ __html: preferences }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

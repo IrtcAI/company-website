@@ -25,6 +25,7 @@ import {
   Sparkles,
   SunMoon,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import { content, Locale } from "@/lib/content";
 import { addressLines, company, openingHours } from "@/lib/company";
 import { Page, pageAlternates, pagePath, sectionPath } from "@/lib/routes";
@@ -198,6 +199,7 @@ export function SiteShell({
   function openIris(event: MouseEvent<HTMLElement>) {
     chatTrigger.current = event.currentTarget;
     setChatOpen(true);
+    trackEvent("iris_open");
   }
 
   function current(item: (typeof nav)[number]) {

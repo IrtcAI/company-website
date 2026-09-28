@@ -11,12 +11,23 @@ const nextConfig: NextConfig = {
     return internalRedirects();
   },
   async rewrites() {
-    return [
-      { source: "/llms.txt", destination: "/llm.txt" },
-      ...localizedRewrites(),
-    ];
+    return localizedRewrites();
   },
   async headers() {
+    const isProd = process.env.NODE_ENV === "production";
+    // Vercel Analytics and Speed Insights load from same-origin /_vercel/...
+    // in production, but fall back to va.vercel-scripts.com in dev/debug mode.
+    const devAnalyticsHost = isProd ? [] : ["https://va.vercel-scripts.com"];
+    const scriptSrc = ["'self'", "'unsafe-inline'", ...devAnalyticsHost].join(
+      " ",
+    );
+    const connectSrc = [
+      "'self'",
+      "https://api.openai.com",
+      "https://api.resend.com",
+      ...devAnalyticsHost,
+    ].join(" ");
+
     return [
       {
         source: "/(.*)",
@@ -30,8 +41,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.openai.com https://api.resend.com; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+            value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src ${connectSrc}; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'`,
           },
         ],
       },
