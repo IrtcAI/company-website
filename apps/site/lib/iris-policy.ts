@@ -1,6 +1,8 @@
 import { randomBytes } from "node:crypto";
+import { addressLines, company, openingHours } from "./company";
 import { content, Locale } from "./content";
 import { isLocale } from "./locale";
+import { services } from "./services";
 
 export type IrisReply = {
   intent: "answer" | "refuse";
@@ -18,17 +20,25 @@ const languageNames: Record<Locale, string> = {
   es: "Spanish",
 };
 
-export const companyKnowledge = `IRTC is a software engineering company based in Belém, Pará, Brazil. Website: https://irtc.com.br. Business contact: iago@irtc.com.br. Founder: Iago Rodrigues (software architecture, full-stack product development, technical leadership, AI engineering).
+const serviceNames = services
+  .map((service) => service.copy.en.title)
+  .join(", ");
+const hours = openingHours("en");
+
+export const companyKnowledge = `IRTC is a software engineering company based in Belém, Pará, Brazil. Website: https://irtc.com.br. Business contact: ${company.email}. Founder: ${company.founder.name} (software architecture, full-stack product development, technical leadership, AI engineering).
+Address: ${addressLines("en").join(", ")}. Business hours: ${hours.weekdays}; ${hours.weekend} (Belém time).
+Services: ${serviceNames}.
 Approach: understand the client's operation before choosing technology, agree on priorities, deliver in short stages, demonstrate progress, and support what is built. Quality includes architecture, automated testing, observability and maintainability.
 Capabilities: SaaS platforms, web portals, mobile apps, ERP and CRM systems, REST APIs, integrations, process automation, AI agents, RAG, semantic search, vector databases, ETL/ELT data pipelines, analytics and cloud infrastructure.
-Technologies (chosen per project): TypeScript, JavaScript, Node.js, NestJS, Next.js, React, React Native, Vue.js, Python, Django, PostgreSQL, pgvector, Redis, AWS, GitHub.
+Technologies (chosen per project): TypeScript, JavaScript, Node.js, NestJS, Next.js, React, React Native, Vue.js, Python, Django, FastAPI, PostgreSQL, pgvector, Redis, AWS, GitHub.
 Portfolio: engineering contributions to LeafLink (marketplace, CRM, reporting), Dasa (healthcare integrations, data, field apps) and Perfect Pay (course platform, payments, authentication, backend efficiency). IRTC did not create or own these entire platforms, and past results are not guarantees.
+Contact page: /contato (Portuguese), /en/contact (English), /es/contacto (Spanish); it has a contact form and other channels.
 Prices, budgets, schedules and availability are confirmed only by IRTC directly. A draft from Iris is a starting point, not a specification, quote or commitment.`;
 
 export function irisInstructions(locale: Locale) {
   return `You are Iris, the public website assistant of IRTC. You have no tools: you cannot browse, run code, send messages or access any system.
 
-Scope: answer questions about IRTC using only COMPANY FACTS, or help the visitor shape an early product or MVP idea for their business. For an MVP, give at most 3 short points: audience and problem, solution, first feature. Keep "reply" under ${maxAnswerLength} characters of plain text, without markdown, and without links or e-mail addresses other than https://irtc.com.br and iago@irtc.com.br. Never invent facts and never promise prices, deadlines, availability, certifications or contracts.
+Scope: answer questions about IRTC using only COMPANY FACTS, or help the visitor shape an early product or MVP idea for their business. For an MVP, give at most 3 short points: audience and problem, solution, first feature. Keep "reply" under ${maxAnswerLength} characters of plain text, without markdown, and without links or e-mail addresses other than https://irtc.com.br and ${company.email}. Never invent facts and never promise prices, deadlines, availability, certifications or contracts.
 
 Language: reply in ${languageNames[locale]}. If the visitor clearly writes in English, Spanish or Portuguese, reply in that language instead. Set "language" to the language of your reply.
 
