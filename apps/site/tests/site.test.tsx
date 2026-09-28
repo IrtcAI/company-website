@@ -13,6 +13,8 @@ import { ContactForm } from "@/components/contact-form";
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
 import type { Locale } from "@/lib/content";
+import { services } from "@/lib/services";
+import ServicePage from "@/app/[locale]/services/[slug]/page";
 
 const push = vi.hoisted(() => vi.fn());
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
@@ -54,7 +56,7 @@ describe("institutional experience", () => {
       "client-strip",
       "projetos",
     ]);
-    expect(screen.getByText("02 / O QUE CONSTRUÍMOS")).toBeVisible();
+    expect(screen.getByText("02 / SERVIÇOS")).toBeVisible();
     expect(screen.getByText("03 / PROJETOS EM OPERAÇÃO")).toBeVisible();
     expect(container.querySelector(".development-backdrop")).toHaveAttribute(
       "aria-hidden",
@@ -191,33 +193,35 @@ describe("institutional experience", () => {
     expect(document.querySelectorAll("#manifesto")).toHaveLength(1);
   });
 
-  it("keeps only one solution accordion open", async () => {
-    renderHome();
-    const products = screen.getByRole("button", {
-      name: /Produtos & plataformas/,
-    });
-    const systems = screen.getByRole("button", {
-      name: /Sistemas & integrações/,
-    });
+  it("links every home service card to its service page", () => {
+    const { container } = renderHome();
+    const section = container.querySelector("#servicos") as HTMLElement;
 
-    await userEvent.click(products);
-    expect(products).toHaveAttribute("aria-expanded", "true");
+    for (const service of services) {
+      const slug = service.copy["pt-BR"].slug;
+      expect(
+        section.querySelector(`a[href="/servicos/${slug}"]`),
+      ).not.toBeNull();
+    }
 
-    await userEvent.click(systems);
-    expect(products).toHaveAttribute("aria-expanded", "false");
-    expect(systems).toHaveAttribute("aria-expanded", "true");
+    expect(
+      within(section).getByRole("link", { name: /Ver todos os serviços/ }),
+    ).toHaveAttribute("href", "/servicos");
   });
 
-  it("switches projects and explains a selected technology", async () => {
+  it("shows the tools row as a plain, non-interactive list", () => {
+    const { container } = renderHome();
+    const section = container.querySelector("#servicos") as HTMLElement;
+
+    expect(within(section).getByText("PostgreSQL")).toBeVisible();
+    expect(section.querySelectorAll(".tech-token button")).toHaveLength(0);
+  });
+
+  it("switches the featured project", async () => {
     renderHome();
     await userEvent.click(screen.getByRole("button", { name: /Dasa/ }));
     expect(
       screen.getByText("Informação disponível quando ela faz diferença."),
-    ).toBeVisible();
-
-    await userEvent.click(screen.getByRole("button", { name: "PostgreSQL" }));
-    expect(
-      screen.getByText(/Dados bem estruturados, consultas eficientes/),
     ).toBeVisible();
   });
 
@@ -290,5 +294,29 @@ describe("institutional experience", () => {
 
     expect(await screen.findByText(/Mensagem enviada\./)).toBeVisible();
     expect(screen.getByLabelText("Seu nome")).toHaveValue("");
+  });
+
+  it("renders a service page with its FAQ and a contact call to action", async () => {
+    const service = services.find((item) => item.id === "mobile-apps")!;
+    const page = await ServicePage({
+      params: Promise.resolve({
+        locale: "pt-BR",
+        slug: service.copy["pt-BR"].slug,
+      }),
+    });
+    render(page);
+
+    expect(
+      screen.getByRole("heading", {
+        level: 1,
+        name: service.copy["pt-BR"].title,
+      }),
+    ).toBeVisible();
+    expect(
+      screen.getByText(service.copy["pt-BR"].faq[0].question),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Tem um projeto em mente?" }),
+    ).toBeVisible();
   });
 });

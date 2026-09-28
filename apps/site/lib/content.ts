@@ -92,74 +92,16 @@ export const content = {
       ],
     },
     solutions: {
-      label: "02 / O QUE CONSTRUÍMOS",
-      aside: "DA PRIMEIRA VERSÃO À EVOLUÇÃO CONTÍNUA.",
-      title: "O que seu negócio",
-      accent: "precisa resolver?",
-      items: [
-        {
-          title: "Produtos & plataformas",
-          tags: "Aplicativos · Portais · Sistemas online",
-          intro:
-            "Tire uma ideia do papel com uma primeira versão que já resolve um problema importante.",
-          text: "Entendemos como as pessoas vão usar o produto, definimos o essencial e construímos algo fácil de usar. Depois do lançamento, os resultados guiam o que evolui em seguida.",
-          deliverables: [
-            "Planejamento da primeira versão",
-            "Telas para computador e celular",
-            "Lançamento e evolução do produto",
-          ],
-        },
-        {
-          title: "Sistemas & integrações",
-          tags: "Gestão · Clientes · Conexões · Automações",
-          intro:
-            "Conecte as ferramentas da empresa e deixe de depender de planilhas e tarefas repetidas.",
-          text: "Criamos sistemas de gestão e integrações para que vendas, finanças e operação trabalhem com a mesma informação. Cada etapa é conferida automaticamente, para que erros sejam encontrados e corrigidos rápido.",
-          deliverables: [
-            "Gestão sob medida",
-            "Integrações com outros sistemas e serviços",
-            "Automação de processos internos",
-          ],
-        },
-        {
-          title: "Inteligência artificial aplicada",
-          tags: "Assistentes de IA · Busca inteligente · Respostas automáticas",
-          intro:
-            "Use IA onde ela pode poupar tempo, encontrar respostas e melhorar decisões.",
-          text: "Conectamos a IA ao conhecimento da empresa, com controle de acesso e verificações de qualidade. Começamos por um problema claro e medimos se a solução é útil, o custo e a segurança.",
-          deliverables: [
-            "Assistentes que respondem com base nos seus documentos",
-            "Automações de IA com regras de segurança",
-            "Acompanhamento da qualidade das respostas",
-          ],
-        },
-        {
-          title: "Dados & infraestrutura",
-          tags: "Organização de dados · Relatórios · Nuvem",
-          intro:
-            "Tenha dados confiáveis e uma estrutura que acompanha o crescimento da operação.",
-          text: "Organizamos a coleta e o processamento de dados, construímos indicadores e cuidamos da infraestrutura. Com monitoramento e rotinas de recuperação, os problemas deixam de ser uma surpresa.",
-          deliverables: [
-            "Dados organizados e confiáveis",
-            "Painéis e indicadores para decisões",
-            "Nuvem, monitoramento e velocidade",
-          ],
-        },
-      ],
-      techTitle: "Tecnologia com propósito.",
-      techIntro:
-        "Explore as ferramentas. A escolha depende do desafio, não da moda.",
-      techHint: "Selecione uma tecnologia para saber onde ela entra.",
-      techDescriptions: [
-        "Conexões e serviços que ligam sua operação, com TypeScript e uma base pronta para crescer.",
-        "Produtos web rápidos, acessíveis e fáceis de usar, do portal ao painel de gestão.",
-        "Telas reutilizáveis para experiências consistentes na web e em aplicativos.",
-        "Dados bem estruturados, consultas eficientes e busca por significado com a extensão pgvector.",
-        "Memória rápida e fila de tarefas para respostas ágeis em processos urgentes.",
-        "Infraestrutura em nuvem, armazenamento, monitoramento e implantação de aplicações.",
-        "Versionamento, revisão de código e automação de testes e entregas.",
-        "Código organizado em módulos, verificações automáticas e clareza para sistemas de negócio complexos.",
-      ],
+      label: "02 / SERVIÇOS",
+      aside: "TECNOLOGIA ESCOLHIDA PARA O SEU PROJETO.",
+      title: "Serviços moldados",
+      accent: "pela experiência real.",
+      intro:
+        "Da primeira versão ao sistema em produção. Cada serviço nasce de um problema que já resolvemos, não de uma lista de tecnologias da moda.",
+      cardCta: "Ver serviço",
+      allServices: "Ver todos os serviços",
+      techTitle:
+        "Ferramentas que usamos com frequência, escolhidas por projeto.",
     },
     testimonials: {
       label: "04 / QUEM TRABALHA JUNTO, RECOMENDA",
@@ -368,74 +310,15 @@ export const content = {
       ],
     },
     solutions: {
-      label: "02 / WHAT WE BUILD",
-      aside: "FROM FIRST RELEASE TO CONTINUOUS IMPROVEMENT.",
-      title: "What does your business",
-      accent: "need to solve?",
-      items: [
-        {
-          title: "Products & platforms",
-          tags: "Apps · Portals · Online systems",
-          intro:
-            "Turn an idea into a first release that solves a meaningful problem.",
-          text: "We start by understanding how people will use it, then build something simple to use with confidence. After launch, real results guide what comes next.",
-          deliverables: [
-            "Discovery and planning for the first version",
-            "Screens for computer and phone",
-            "Product launch and continuous improvements",
-          ],
-        },
-        {
-          title: "Systems & integrations",
-          tags: "Management · Customers · Connections · Automation",
-          intro:
-            "Connect your business tools and move beyond spreadsheets and repetitive work.",
-          text: "We build management systems and integrations so sales, finance and operations share the same information. Every step is checked automatically, so mistakes are caught and fixed quickly.",
-          deliverables: [
-            "Custom business systems",
-            "Integrations with other systems and services",
-            "Internal workflow automation",
-          ],
-        },
-        {
-          title: "Applied artificial intelligence",
-          tags: "AI assistants · Smart search · Automatic answers",
-          intro:
-            "Put AI to work saving time, finding answers and supporting better decisions.",
-          text: "We connect AI to company knowledge, with access controls and quality checks. We start with one clear problem, then measure how useful it is, the cost and the safety.",
-          deliverables: [
-            "Assistants that answer using your documents",
-            "AI automations with safety rules",
-            "Ongoing checks on answer quality",
-          ],
-        },
-        {
-          title: "Data & infrastructure",
-          tags: "Data organization · Reports · Cloud",
-          intro:
-            "Reliable data and infrastructure that grows with your operations.",
-          text: "We organize data collection and processing, build useful metrics and manage infrastructure. Monitoring and recovery routines help teams catch problems early.",
-          deliverables: [
-            "Organized, reliable data",
-            "Dashboards and metrics for decisions",
-            "Cloud hosting, monitoring and speed",
-          ],
-        },
-      ],
-      techTitle: "The right tools for the job.",
-      techIntro:
-        "Explore our toolkit. The challenge drives the choice, not the hype.",
-      techHint: "Select a technology to see where it fits.",
-      techDescriptions: [
-        "Connections and services that link your operations, built with TypeScript and room to grow.",
-        "Fast, accessible web products, from customer portals to management dashboards.",
-        "Reusable screens for a consistent experience on the web and in apps.",
-        "Structured data, efficient queries and search by meaning using the pgvector extension.",
-        "Fast memory and task queues for quick responses in urgent processes.",
-        "Cloud infrastructure, storage, monitoring and application deployment.",
-        "Version control, code review and automated testing and delivery.",
-        "Modular code, automatic checks and structure for complex business systems.",
-      ],
+      label: "02 / SERVICES",
+      aside: "TECHNOLOGY CHOSEN FOR YOUR PROJECT.",
+      title: "Services shaped",
+      accent: "by real experience.",
+      intro:
+        "From first release to a system in production. Every service comes from a problem we've already solved, not a list of trending technologies.",
+      cardCta: "View service",
+      allServices: "See all services",
+      techTitle: "Tools we often use, chosen per project.",
     },
     testimonials: {
       label: "04 / WORDS FROM OUR COLLABORATORS",
@@ -644,74 +527,15 @@ export const content = {
       ],
     },
     solutions: {
-      label: "02 / QUÉ CONSTRUIMOS",
-      aside: "DE LA PRIMERA VERSIÓN A LA MEJORA CONTINUA.",
-      title: "¿Qué necesita resolver",
-      accent: "tu negocio?",
-      items: [
-        {
-          title: "Productos y plataformas",
-          tags: "Aplicaciones · Portales · Sistemas online",
-          intro:
-            "Convierte una idea en una primera versión que resuelva un problema importante.",
-          text: "Entendemos cómo las personas van a usar el producto, priorizamos lo esencial y construimos algo fácil de usar. Tras el lanzamiento, los resultados nos ayudan a decidir qué mejorar.",
-          deliverables: [
-            "Descubrimiento y planificación de la primera versión",
-            "Pantallas para computadora y celular",
-            "Lanzamiento y evolución del producto",
-          ],
-        },
-        {
-          title: "Sistemas e integraciones",
-          tags: "Gestión · Clientes · Conexiones · Automatización",
-          intro:
-            "Conecta las herramientas de tu empresa y deja atrás las tareas repetitivas.",
-          text: "Creamos sistemas de gestión e integraciones para que ventas, finanzas y operaciones compartan la misma información. Cada paso se revisa de forma automática, así los errores se detectan y se corrigen rápido.",
-          deliverables: [
-            "Sistemas de gestión a medida",
-            "Integraciones con otros sistemas y servicios",
-            "Automatización de procesos internos",
-          ],
-        },
-        {
-          title: "Inteligencia artificial aplicada",
-          tags: "Asistentes de IA · Búsqueda inteligente · Respuestas automáticas",
-          intro:
-            "Aplica IA donde pueda ahorrar tiempo, encontrar respuestas y mejorar decisiones.",
-          text: "Conectamos la IA al conocimiento de la empresa, con control de acceso y revisiones de calidad. Empezamos por un problema concreto y medimos si es útil, el costo y la seguridad.",
-          deliverables: [
-            "Asistentes que responden con base en tus documentos",
-            "Automatizaciones de IA con reglas de seguridad",
-            "Seguimiento continuo de la calidad de las respuestas",
-          ],
-        },
-        {
-          title: "Datos e infraestructura",
-          tags: "Organización de datos · Informes · Nube",
-          intro:
-            "Datos confiables e infraestructura que crece con tu operación.",
-          text: "Organizamos la recolección y el procesamiento de datos, creamos indicadores y cuidamos la infraestructura. El monitoreo y las rutinas de recuperación permiten detectar problemas a tiempo.",
-          deliverables: [
-            "Datos organizados y confiables",
-            "Paneles e indicadores para decisiones",
-            "Nube, monitoreo y velocidad",
-          ],
-        },
-      ],
-      techTitle: "Tecnología con propósito.",
-      techIntro:
-        "Explora nuestras herramientas. Elegimos según el desafío, no la moda.",
-      techHint: "Selecciona una tecnología para conocer su función.",
-      techDescriptions: [
-        "Conexiones y servicios que enlazan tu operación, con TypeScript y una base lista para crecer.",
-        "Productos web rápidos y accesibles, desde portales hasta paneles de gestión.",
-        "Pantallas reutilizables para experiencias consistentes en la web y en aplicaciones.",
-        "Datos bien estructurados, consultas eficientes y búsqueda por significado con la extensión pgvector.",
-        "Memoria rápida y colas de tareas para respuestas ágiles en procesos urgentes.",
-        "Infraestructura cloud, almacenamiento, monitoreo y despliegue de aplicaciones.",
-        "Control de versiones, revisión de código y automatización de pruebas y entregas.",
-        "Código organizado en módulos, validaciones automáticas y estructura clara para sistemas complejos.",
-      ],
+      label: "02 / SERVICIOS",
+      aside: "TECNOLOGÍA ELEGIDA PARA TU PROYECTO.",
+      title: "Servicios moldeados",
+      accent: "por la experiencia real.",
+      intro:
+        "De la primera versión a un sistema en producción. Cada servicio nace de un problema que ya resolvimos, no de una lista de tecnologías de moda.",
+      cardCta: "Ver servicio",
+      allServices: "Ver todos los servicios",
+      techTitle: "Herramientas que solemos usar, elegidas por proyecto.",
     },
     testimonials: {
       label: "04 / QUIENES TRABAJAN CON NOSOTROS, RECOMIENDAN",

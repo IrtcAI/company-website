@@ -5,20 +5,16 @@ import Link from "next/link";
 import { MouseEvent, ReactNode, useEffect, useState } from "react";
 import {
   ArrowDown,
+  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   CircleCheck,
   Cloud,
-  Code2,
-  Database,
   ExternalLink,
-  Layers3,
   MessageCircle,
-  Network,
   Pause,
   Play,
   Plus,
-  Sparkles,
 } from "lucide-react";
 import {
   content,
@@ -32,10 +28,13 @@ import {
   WORLD_MAP_HEIGHT,
   WORLD_MAP_WIDTH,
 } from "@/lib/world-map";
+import { services } from "@/lib/services";
 import { HeroWorld } from "./hero-world";
 import { ScrollStory } from "./scroll-story";
 import { Founder } from "./founder";
 import { DevelopmentWorld } from "./development-world";
+import { ServiceCard } from "./service-card";
+import { ContactCta } from "./contact-cta";
 import { useShell } from "./site-shell";
 import { pagePath } from "@/lib/routes";
 
@@ -60,8 +59,6 @@ const techSlugs = [
   "github",
   "nestjs",
 ];
-
-const serviceIcons = [Layers3, Network, Sparkles, Database];
 
 const BELEM = projectLonLat(-48.4902, -1.4558);
 const SAO_PAULO = projectLonLat(-46.63, -23.55);
@@ -221,8 +218,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
 
   const [recommendation, setRecommendation] = useState(0);
   const [project, setProject] = useState(0);
-  const [technology, setTechnology] = useState(0);
-  const [openSolution, setOpenSolution] = useState<number | null>(null);
 
   const currentProject = {
     ...projectBrands[project],
@@ -299,77 +294,37 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             <br />
             <span>{copy.solutions.accent}</span>
           </h2>
+          <p className="solutions-intro">{copy.solutions.intro}</p>
         </div>
-        <div className="solution-list">
-          {copy.solutions.items.map((item, index) => {
-            const Icon = serviceIcons[index];
-            return (
-              <article
-                key={item.title}
-                className="solution-item"
-                data-open={openSolution === index}
-              >
-                <button
-                  className="solution-trigger"
-                  aria-expanded={openSolution === index}
-                  aria-controls={`solution-panel-${index}`}
-                  id={`solution-trigger-${index}`}
-                  onClick={() =>
-                    setOpenSolution(openSolution === index ? null : index)
-                  }
-                >
-                  <span
-                    className={`solution-icon ${["product", "systems", "ai", "data"][index]}`}
-                  >
-                    <Icon aria-hidden="true" />
-                  </span>
-                  <span className="solution-text">
-                    <span className="solution-name">{item.title}</span>
-                    <span>{item.tags}</span>
-                    <span className="solution-intro">{item.intro}</span>
-                  </span>
-                  <Plus className="solution-expand" aria-hidden="true" />
-                </button>
-                <div
-                  className="solution-panel"
-                  data-open={openSolution === index}
-                  id={`solution-panel-${index}`}
-                  role="region"
-                  aria-labelledby={`solution-trigger-${index}`}
-                  aria-hidden={openSolution !== index}
-                >
-                  <div className="solution-expanded">
-                    <p>{item.text}</p>
-                    <ul>
-                      {item.deliverables.map((deliverable) => (
-                        <li key={deliverable}>
-                          <CircleCheck aria-hidden="true" />
-                          {deliverable}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+        <div className="service-grid home-service-grid">
+          {services.map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              locale={locale}
+              cta={copy.solutions.cardCta}
+            />
+          ))}
         </div>
+        <Link
+          href={pagePath(locale, "services")}
+          className="inline-link services-all-link"
+        >
+          {copy.solutions.allServices}
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
         <div className="tech-playground">
-          <div>
-            <h3>{copy.solutions.techTitle}</h3>
-            <p>{copy.solutions.techIntro}</p>
-          </div>
+          <h3>{copy.solutions.techTitle}</h3>
           <div
             className="tech-tokens"
-            role="group"
-            aria-label={copy.solutions.techHint}
+            role="list"
+            aria-label={copy.solutions.techTitle}
           >
             {techNames.map((name, index) => (
-              <button
+              <div
                 key={name}
                 className={`tech-token token-${index}`}
-                aria-pressed={technology === index}
-                onClick={() => setTechnology(index)}
+                role="listitem"
               >
                 <span className="tech-token-face">
                   {index === 5 ? (
@@ -384,20 +339,11 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                   )}
                 </span>
                 <span>{name}</span>
-              </button>
+              </div>
             ))}
           </div>
-          <div className="tech-explainer" aria-live="polite">
-            <Code2 aria-hidden="true" />
-            <p>
-              <strong>{techNames[technology]}</strong>
-              {copy.solutions.techDescriptions[technology]}
-            </p>
-          </div>
-          <p className="tech-extra">
-            TypeScript · Python · Django · React Native / ELT
-          </p>
         </div>
+        <ContactCta locale={locale} />
       </section>
       <section className="client-strip" aria-label={copy.clients}>
         <p>{copy.clients}</p>

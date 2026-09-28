@@ -1,10 +1,31 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MessageCircle } from "lucide-react";
+import { ContactCta } from "@/components/contact-cta";
+import { ServiceBreadcrumb } from "@/components/service-breadcrumb";
+import { ServiceCard } from "@/components/service-card";
+import { ServiceFaq } from "@/components/service-faq";
+import { ServiceTechTokens } from "@/components/service-tech-tokens";
 import { SiteShell } from "@/components/site-shell";
+import { content, projectBrands } from "@/lib/content";
+import { servicesPageCopy } from "@/lib/copy/services-page";
 import { resolveLocaleParam } from "@/lib/locale-params";
-import { pageAlternates } from "@/lib/routes";
+import { absoluteUrl, pageAlternates, pagePath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { serviceBySlug, services, serviceSlugs } from "@/lib/services";
+import {
+  relatedServices,
+  serviceBySlug,
+  serviceSlugs,
+  services,
+} from "@/lib/services";
+import {
+  breadcrumbs,
+  faq,
+  graph,
+  jsonLd,
+  ORGANIZATION_ID,
+} from "@/lib/structured-data";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -41,16 +62,142 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function ServicePage({ params }: Params) {
   const { locale, service } = await resolve(params);
   const copy = service.copy[locale];
+  const pageCopy = servicesPageCopy[locale];
+  const siteCopy = content[locale];
+  const home = pagePath(locale, "home");
+  const servicesHref = pagePath(locale, "services");
+  const path = pagePath(locale, "services", copy.slug);
+  const related = relatedServices(service);
+  const project =
+    service.relatedProject !== undefined
+      ? {
+          brand: projectBrands[service.relatedProject],
+          details: siteCopy.projects.cases[service.relatedProject],
+        }
+      : null;
+
+  const structuredData = graph(
+    {
+      "@type": "Service",
+      name: copy.title,
+      description: copy.summary,
+      serviceType: copy.title,
+      provider: { "@id": ORGANIZATION_ID },
+      areaServed: "Worldwide",
+      url: absoluteUrl(path),
+    },
+    faq(copy.faq),
+    breadcrumbs([
+      { name: pageCopy.breadcrumbHome, path: home },
+      { name: pageCopy.breadcrumbServices, path: servicesHref },
+      { name: copy.title, path },
+    ]),
+  );
+
   return (
     <SiteShell
       locale={locale}
       page="services"
       alternates={pageAlternates("services", serviceSlugs(service))}
     >
-      <section className="page-intro section-pad">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(structuredData)}
+      />
+      <section className="page-intro services-page-intro service-hero section-pad">
+        <ServiceBreadcrumb
+          items={[
+            { label: pageCopy.breadcrumbHome, href: home },
+            { label: pageCopy.breadcrumbServices, href: servicesHref },
+            { label: copy.title },
+          ]}
+        />
         <h1>{copy.title}</h1>
-        <p>{copy.summary}</p>
+        <p>{copy.intro}</p>
+        <Link
+          href={`${pagePath(locale, "contact")}?servico=${service.id}`}
+          className="pill-link"
+        >
+          {siteCopy.talk}
+          <span>
+            <MessageCircle aria-hidden="true" />
+          </span>
+        </Link>
       </section>
+
+      <section className="service-section section-pad">
+        <h2>{pageCopy.whenTitle}</h2>
+        <ul className="service-list">
+          {copy.problems.map((problem) => (
+            <li key={problem}>{problem}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="service-section section-pad">
+        <h2>{pageCopy.whatTitle}</h2>
+        <ul className="service-list">
+          {copy.deliverables.map((deliverable) => (
+            <li key={deliverable}>{deliverable}</li>
+          ))}
+        </ul>
+      </section>
+
+      {project ? (
+        <section className="service-section service-related-project section-pad">
+          <h2>{pageCopy.relatedProjectTitle}</h2>
+          <p className="overline">{project.details.category}</p>
+          <p className="service-project-summary">
+            {project.details.description}
+          </p>
+          <div className="service-project-result">
+            <strong>{project.brand.metric}</strong>
+            <span>{project.details.result}</span>
+          </div>
+          <p className="provenance">{siteCopy.projects.source}</p>
+        </section>
+      ) : null}
+
+      <section className="service-section section-pad">
+        <h2>{pageCopy.howTitle}</h2>
+        <div className="service-how-grid">
+          {siteCopy.manifesto.points.map((point) => (
+            <article key={point.title}>
+              <h3>{point.title}</h3>
+              <p>{point.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="service-section section-pad">
+        <h2>{pageCopy.techTitle}</h2>
+        <ServiceTechTokens
+          technologies={service.technologies}
+          label={pageCopy.techTitle}
+        />
+      </section>
+
+      <section className="service-section section-pad">
+        <h2>{pageCopy.faqTitle}</h2>
+        <ServiceFaq items={copy.faq} />
+      </section>
+
+      <section className="service-section service-related section-pad">
+        <h2>{pageCopy.relatedTitle}</h2>
+        <div className="service-grid">
+          {related.map((item) => (
+            <ServiceCard
+              key={item.id}
+              service={item}
+              locale={locale}
+              cta={pageCopy.cardCta}
+            />
+          ))}
+        </div>
+      </section>
+
+      <ContactCta locale={locale} service={service.id} />
     </SiteShell>
   );
 }

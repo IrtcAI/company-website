@@ -1,6 +1,6 @@
 import type { Locale } from "../content";
 
-type PageCopy = { title: string; description: string };
+type PageCopy = { title: string; description: string; heading?: string };
 
 export const pageCopy: Record<
   "services" | "about" | "founder" | "contact",
@@ -9,16 +9,19 @@ export const pageCopy: Record<
   services: {
     "pt-BR": {
       title: "Serviços | IRTC",
+      heading: "Serviços",
       description:
         "Software sob medida, sites, aplicativos, integrações, IA, dados e nuvem. Conheça os serviços da IRTC, de Belém para o mundo.",
     },
     en: {
       title: "Services | IRTC",
+      heading: "Services",
       description:
         "Custom software, websites, mobile apps, integrations, AI, data and cloud. See what IRTC builds, from Belém to the world.",
     },
     es: {
       title: "Servicios | IRTC",
+      heading: "Servicios",
       description:
         "Software a medida, sitios, aplicaciones, integraciones, IA, datos y nube. Conoce los servicios de IRTC, desde Belém para el mundo.",
     },
