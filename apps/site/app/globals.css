@@ -6,6 +6,10 @@
   --surface-line: light-dark(#c7cec5, #49584f);
   --coral: #ef604f;
   --hero-coral: light-dark(#c44437, #8f362c);
+  --footer-coral: light-dark(#ef604f, #8f362c);
+  --footer-ink: light-dark(#34150f, #fff4e9);
+  --footer-accent: light-dark(#fffaf4, #f6c2b6);
+  --footer-line: light-dark(#823b3260, #fff4e940);
   --ink: #191b1b;
   --paper: #f5f4f0;
   --mint: #d2e8d9;
@@ -229,20 +233,6 @@ button:hover > .arrow {
   transform: translateX(-50%);
   z-index: -1;
 }
-.hero-world canvas {
-  position: absolute;
-  inset: 0;
-  display: block;
-  animation: object-arrival 1s ease both;
-}
-.world-fallback {
-  position: absolute;
-  inset: 0;
-  transition: opacity 0.5s;
-}
-.hero-world[data-ready="true"] .world-fallback {
-  opacity: 0;
-}
 .fallback-terminal {
   position: absolute;
   left: 9%;
@@ -259,33 +249,6 @@ button:hover > .arrow {
     inset 5px 6px 5px #59605b,
     10px 14px 0 #252a28;
   transform: rotate(-14deg);
-}
-.fallback-code {
-  position: absolute;
-  left: 18%;
-  bottom: 12%;
-  font-size: clamp(100px, 15vw, 230px);
-  color: #d7eee1;
-  font-weight: 800;
-  text-shadow: 8px 10px #65796e;
-  transform: rotate(-10deg);
-}
-.fallback-phone {
-  position: absolute;
-  right: 13%;
-  top: 19%;
-  width: clamp(76px, 11vw, 140px);
-  aspect-ratio: 0.5;
-  border: 10px solid #d8dfd8;
-  border-radius: 25px;
-  background:
-    linear-gradient(#a5dec5 0 0) 28% 28% / 26% 11% no-repeat,
-    linear-gradient(#ffbd66 0 0) 70% 28% / 26% 11% no-repeat,
-    linear-gradient(#a5dec5 0 0) 28% 46% / 26% 11% no-repeat,
-    linear-gradient(#ffbd66 0 0) 70% 46% / 26% 11% no-repeat,
-    #242827;
-  box-shadow: 8px 11px #505854;
-  transform: rotate(16deg);
 }
 .hero-content {
   position: relative;
@@ -1371,8 +1334,8 @@ summary::-webkit-details-marker {
   color: #616b5d;
 }
 .site-footer {
-  background: var(--coral);
-  color: #34150f;
+  background: var(--footer-coral);
+  color: var(--footer-ink);
   padding: 65px 5% 30px;
 }
 .footer-top {
@@ -1387,7 +1350,7 @@ summary::-webkit-details-marker {
   line-height: 1.15;
 }
 .footer-invitation > span {
-  color: #fffaf4;
+  color: var(--footer-accent);
 }
 .footer-invitation .arrow {
   width: 38px;
@@ -1447,10 +1410,10 @@ summary::-webkit-details-marker {
   align-items: center;
   justify-content: space-between;
   gap: 25px;
-  border-top: 1px solid #823b3260;
+  border-top: 1px solid var(--footer-line);
   padding-top: 22px;
   font-size: 10px;
-  color: #34150f;
+  color: var(--footer-ink);
 }
 .footer-bottom > span:nth-child(2) {
   letter-spacing: 0.09em;
@@ -3321,7 +3284,7 @@ svg.solution-expand {
   gap: 13px;
   padding: 8px;
   border-radius: 16px;
-  color: #34150f;
+  color: var(--footer-ink);
 }
 .footer-channel-icon {
   width: 52px;
@@ -3330,6 +3293,7 @@ svg.solution-expand {
   display: grid;
   place-items: center;
   border-radius: 15px;
+  color: #34150f;
   background: #d2e8d9;
   box-shadow:
     3px 4px #799d87,
@@ -3369,7 +3333,7 @@ a.footer-channel:hover .footer-channel-icon {
 }
 .footer-channel small {
   overflow: hidden;
-  color: #321611;
+  color: var(--footer-ink);
   font-size: 9px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3528,16 +3492,6 @@ a.footer-channel:hover .footer-channel-icon {
     left: -5%;
     top: 18%;
     transform: rotate(-12deg) scale(0.76);
-  }
-  .fallback-phone {
-    right: 0;
-    top: 20%;
-    transform: rotate(14deg) scale(0.82);
-  }
-  .fallback-code {
-    left: 4%;
-    bottom: 10%;
-    font-size: clamp(82px, 18vw, 150px);
   }
   .testimonial-layout {
     align-items: start;
@@ -4008,14 +3962,6 @@ a.footer-channel:hover .footer-channel-icon {
 .fallback-terminal {
   top: 7%;
 }
-.fallback-phone {
-  top: 7%;
-}
-.fallback-code {
-  left: 2%;
-  bottom: -2%;
-  font-size: clamp(100px, 10vw, 150px);
-}
 .site-header > nav,
 .site-header .site-preferences,
 .hero .eyebrow,
@@ -4064,13 +4010,6 @@ a.footer-channel:hover .footer-channel-icon {
   .fallback-terminal {
     top: 4%;
     transform: rotate(-12deg) scale(0.62);
-  }
-  .fallback-phone {
-    top: 6%;
-    transform: rotate(14deg) scale(0.65);
-  }
-  .fallback-code {
-    bottom: 0;
   }
   .footer-wordmark {
     font-size: clamp(108px, 35vw, 160px);
