@@ -172,6 +172,25 @@ describe("contact delivery", () => {
     expect(body.text).toContain("Tipo: contact");
     expect(body.text).not.toContain("spam@example.com");
   });
+  it("includes the phone and only a known service topic", async () => {
+    vi.stubEnv("RESEND_API_KEY", "test-only");
+    vi.stubEnv("CONTACT_FROM", "test@example.com");
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+
+    await contact(
+      request({ ...lead, phone: "+55 91 99999-0000", service: "applied-ai" }),
+    );
+    await contact(request({ ...lead, service: "<script>" }));
+
+    const [known, unknown] = fetchMock.mock.calls.map(
+      ([, init]) => JSON.parse(init.body).text,
+    );
+    expect(known).toContain("Telefone: +55 91 99999-0000");
+    expect(known).toContain("Assunto: Inteligência artificial aplicada");
+    expect(unknown).toContain("Assunto: não informado");
+    expect(unknown).not.toContain("<script>");
+  });
   it("sends an approved scope with reply-to to the configured recipient", async () => {
     vi.stubEnv("RESEND_API_KEY", "test-only");
     vi.stubEnv("CONTACT_FROM", "test@example.com");

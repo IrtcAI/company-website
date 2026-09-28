@@ -251,6 +251,16 @@ describe("institutional experience", () => {
     expect(screen.queryByText(/Mensagem enviada\./)).toBeNull();
   });
 
+  it("preselects the topic requested by a service page", () => {
+    window.history.replaceState(null, "", "/contato?servico=mobile-apps");
+    renderContact();
+    expect(screen.getByLabelText(/Assunto/)).toHaveValue("mobile-apps");
+    expect(
+      screen.getByRole("button", { name: /Falar com a Iris/ }),
+    ).toBeVisible();
+    window.history.replaceState(null, "", "/");
+  });
+
   it("shows the address, hours and every service in the footer", () => {
     const { container } = renderContact();
     const footer = container.querySelector(".site-footer") as HTMLElement;

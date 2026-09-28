@@ -23,10 +23,12 @@ export function ContactCta({
   locale,
   title,
   text,
+  service,
 }: {
   locale: Locale;
   title?: string;
   text?: string;
+  service?: string;
 }) {
   const copy = content[locale];
   return (
@@ -36,7 +38,10 @@ export function ContactCta({
         <p>{text ?? ctaCopy[locale].text}</p>
       </div>
       <div className="contact-cta-actions">
-        <Link href={pagePath(locale, "contact")} className="pill-link">
+        <Link
+          href={`${pagePath(locale, "contact")}${service ? `?servico=${service}` : ""}`}
+          className="pill-link"
+        >
           {copy.talk}
           <span>
             <MessageCircle aria-hidden="true" />

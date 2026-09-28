@@ -212,6 +212,15 @@ export const content = {
       error:
         "Não foi possível enviar. Tente novamente ou use o contato no rodapé.",
       privacy: "Usamos seus dados apenas para responder a este contato.",
+      phone: "Telefone ou WhatsApp",
+      phoneHint: "Se preferir que a gente ligue",
+      service: "Assunto",
+      serviceUnknown: "Ainda não sei, quero conversar",
+      channels: "Outros canais",
+      irisTitle: "Prefere conversar agora?",
+      irisText:
+        "A Iris, nossa assistente, ajuda a organizar sua ideia em poucos minutos. Depois você pode enviar o rascunho para a nossa equipe.",
+      irisAction: "Falar com a Iris",
     },
     footer: {
       title: "Seu próximo projeto",
@@ -479,6 +488,15 @@ export const content = {
       error:
         "We couldn't send your message. Try again or use the contact in the footer.",
       privacy: "We only use your details to respond to this inquiry.",
+      phone: "Phone or WhatsApp",
+      phoneHint: "If you'd rather we call",
+      service: "Topic",
+      serviceUnknown: "Not sure yet, I'd like to talk",
+      channels: "Other ways to reach us",
+      irisTitle: "Rather talk right now?",
+      irisText:
+        "Iris, our assistant, helps you shape your idea in a few minutes. You can then send the draft to our team.",
+      irisAction: "Chat with Iris",
     },
     footer: {
       title: "Your next project",
@@ -746,6 +764,15 @@ export const content = {
       error:
         "No pudimos enviarlo. Inténtalo de nuevo o usa el contacto del pie de página.",
       privacy: "Solo usamos tus datos para responder a esta consulta.",
+      phone: "Teléfono o WhatsApp",
+      phoneHint: "Si prefieres que te llamemos",
+      service: "Asunto",
+      serviceUnknown: "Aún no lo sé, quiero conversar",
+      channels: "Otros canales",
+      irisTitle: "¿Prefieres conversar ahora?",
+      irisText:
+        "Iris, nuestra asistente, te ayuda a ordenar tu idea en pocos minutos. Después puedes enviar el borrador a nuestro equipo.",
+      irisAction: "Hablar con Iris",
     },
     footer: {
       title: "Tu próximo proyecto",

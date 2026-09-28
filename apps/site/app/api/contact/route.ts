@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { company as irtc } from "@/lib/company";
 import { exceedsLimit } from "@/lib/rate-limit";
+import { services } from "@/lib/services";
 import { clientAddress, email, text } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -20,6 +22,8 @@ export async function POST(request: Request) {
     const sender = email(body.email);
     const company = text(body.company, 120);
     const message = text(body.message, 1800);
+    const phone = text(body.phone, 40);
+    const service = services.find(({ id }) => id === body.service);
     const kind = body.kind === "scope_approval" ? "scope_approval" : "contact";
     if (!name || !message || !sender)
       return NextResponse.json(
@@ -29,7 +33,7 @@ export async function POST(request: Request) {
 
     const apiKey = process.env.RESEND_API_KEY;
     const from = process.env.CONTACT_FROM;
-    const to = process.env.CONTACT_TO || "iago@irtc.com.br";
+    const to = process.env.CONTACT_TO || irtc.email;
     if (!apiKey || !from)
       return NextResponse.json(
         { error: "O canal de e-mail ainda não foi configurado." },
@@ -45,6 +49,8 @@ export async function POST(request: Request) {
       `Nome: ${name}`,
       `E-mail: ${sender || "não informado"}`,
       `Empresa: ${company || "não informada"}`,
+      `Telefone: ${phone || "não informado"}`,
+      `Assunto: ${service?.copy["pt-BR"].title || "não informado"}`,
       "",
       "Contexto:",
       message,

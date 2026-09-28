@@ -1,8 +1,18 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { MessageCircle, Send, Sparkles } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import {
+  BriefcaseBusiness,
+  Clock3,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+  Sparkles,
+} from "lucide-react";
+import { addressLines, company, openingHours } from "@/lib/company";
 import { content, Locale } from "@/lib/content";
+import { services } from "@/lib/services";
 import { useShell } from "./site-shell";
 
 export function ContactForm({ locale }: { locale: Locale }) {
@@ -12,6 +22,15 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
+  const topic = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    const requested = new URLSearchParams(location.search).get("servico");
+    if (topic.current && services.some(({ id }) => id === requested))
+      topic.current.value = requested!;
+  }, []);
+
+  const hours = openingHours(locale);
 
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,8 +51,12 @@ export function ContactForm({ locale }: { locale: Locale }) {
   }
 
   return (
-    <section className="contact section-pad" id="contato" tabIndex={-1}>
-      <div>
+    <section
+      className="contact contact-page section-pad"
+      id="contato"
+      tabIndex={-1}
+    >
+      <div className="contact-intro">
         <p className="overline">{copy.label}</p>
         <h1>
           {copy.title}
@@ -41,11 +64,49 @@ export function ContactForm({ locale }: { locale: Locale }) {
           <span>{copy.accent}</span>
         </h1>
         <p>{copy.intro}</p>
-        <button type="button" className="iris-inline" onClick={openIris}>
-          <Sparkles aria-hidden="true" />
-          {copy.iris}
-          <MessageCircle aria-hidden="true" />
-        </button>
+        <div className="contact-iris" aria-labelledby="contact-iris-title">
+          <Sparkles className="contact-iris-spark" aria-hidden="true" />
+          <h2 id="contact-iris-title">{copy.irisTitle}</h2>
+          <p>{copy.irisText}</p>
+          <button type="button" className="pill-link" onClick={openIris}>
+            {copy.irisAction}
+            <span>
+              <MessageCircle aria-hidden="true" />
+            </span>
+          </button>
+        </div>
+        <div className="contact-channels">
+          <h2>{copy.channels}</h2>
+          <ul>
+            <li>
+              <Mail aria-hidden="true" />
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </li>
+            <li>
+              <MapPin aria-hidden="true" />
+              <address>
+                {addressLines(locale).map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </address>
+            </li>
+            <li>
+              <Clock3 aria-hidden="true" />
+              <p>
+                <span>{hours.weekdays}</span>
+                <span>{hours.weekend}</span>
+              </p>
+            </li>
+            {company.socials.map((social) => (
+              <li key={social.name}>
+                <BriefcaseBusiness aria-hidden="true" />
+                <a href={social.href} target="_blank" rel="noopener noreferrer">
+                  {social.name} · {social.handle}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <form onSubmit={send}>
         <div className="field-row">
@@ -69,6 +130,31 @@ export function ContactForm({ locale }: { locale: Locale }) {
               maxLength={160}
               placeholder="voce@empresa.com"
             />
+          </label>
+        </div>
+        <div className="field-row">
+          <label>
+            {copy.phone}
+            <span className="optional"> ({copy.optional})</span>
+            <input
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              maxLength={40}
+              placeholder={copy.phoneHint}
+            />
+          </label>
+          <label>
+            {copy.service}
+            <span className="optional"> ({copy.optional})</span>
+            <select name="service" ref={topic} defaultValue="">
+              <option value="">{copy.serviceUnknown}</option>
+              {services.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.copy[locale].title}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
         <label>
