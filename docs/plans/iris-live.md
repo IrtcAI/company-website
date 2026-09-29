@@ -9,8 +9,8 @@ Objetivo: a Iris conversar por voz (e, se possível, com o avatar do Gemini 3.8 
 Vale fazer, mas em etapas e com o avatar por último.
 
 - A melhoria que mais reduz alucinação é o RAG, e ela serve para a Iris de texto de hoje. Começa por ele.
-- Voz sem avatar é barata (uns US$ 0,07 por conversa de 3 minutos) e o acesso é simples.
-- O avatar custa perto de 10 vezes mais, tem sessões de vídeo limitadas a 2 minutos (exige reconexão transparente), foi lançado com endpoints só nos EUA e na Europa, e ainda não está claro se funciona com uma chave comum do AI Studio ou só pela Google Cloud (Gemini Enterprise). Primeiro um teste de acesso de meio dia, depois a decisão.
+- Voz sem avatar é barata (uns US$ 0,15 por conversa de 3 minutos) e o acesso é simples.
+- O avatar custa US$ 0,37 por minuto em que ele fala, cerca de 20 vezes o áudio, foi lançado com endpoints só nos EUA e na Europa, e a documentação dele só mostra acesso pela Google Cloud (Agent Platform) com token OAuth. Primeiro um teste de acesso de meio dia, depois a decisão.
 - Jev não é exagero no lugar certo. Ele classifica, não gera texto, custa US$ 0,042 por milhão de tokens de entrada e a saída é grátis. Serve para decidir "esses trechos respondem à pergunta?" antes de a Iris falar, e para etiquetar a base. O modelo barato da OpenAI entra só onde é preciso gerar texto: perguntas sintéticas para cada trecho, usadas na busca e na avaliação.
 
 ## O que a pesquisa encontrou
@@ -24,20 +24,21 @@ Confirmado em documentação oficial:
 - Modelo `gemini-3.8-live`, pela Live API (`BidiGenerateContent`, WebSocket). O avatar é ativado com `avatar_config` e `response_modalities: ["VIDEO"]`.
 - O navegador conecta direto no Google com um token efêmero criado pelo nosso servidor ([ephemeral tokens](https://ai.google.dev/gemini-api/docs/live-api/ephemeral-tokens)). O token tem `uses`, `expireTime` (padrão 30 min), `newSessionExpireTime` (padrão 1 min) e `liveConnectConstraints`, que trava modelo, instruções e ferramentas. Sem isso, quem tem o token poderia trocar as instruções da Iris.
 - Function calling durante a sessão, com modo `NON_BLOCKING` e agendamento `SILENT`, `WHEN_IDLE` ou `INTERRUPTED` ([capabilities](https://ai.google.dev/gemini-api/docs/live-api/capabilities)).
-- Limites de sessão: 15 min só áudio, 2 min áudio com vídeo. Precisa de retomada de sessão (`sessionResumption`).
+- Limites de sessão sem compressão de contexto: 15 min só áudio, 2 min áudio com vídeo. Com `ContextWindowCompressionConfig` a sessão não tem limite. A conexão WebSocket dura cerca de 10 min e precisa de retomada de sessão ([start-manage-session](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/start-manage-session)).
 - Áudio: entrada PCM 16 bits 16 kHz mono, saída PCM 24 kHz. VAD automático com interrupção pela fala do visitante. Transcrição dos dois lados disponível.
 - Preço do áudio ([pricing](https://ai.google.dev/gemini-api/docs/pricing)): entrada US$ 3/1M tokens (cerca de US$ 0,005/min), saída US$ 12/1M (cerca de US$ 0,018/min).
+- Preço na Agent Platform ([pricing](https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing)): saída de vídeo do avatar a US$ 1/1M tokens, a 6.192 tokens por segundo de vídeo, ou seja, US$ 0,37 por minuto. Só cobra enquanto o avatar fala. Texto de entrada US$ 0,75/1M, texto de saída US$ 4,50/1M.
+- Cobrança por turno: todo o contexto acumulado da sessão (instruções, trechos do RAG, áudio anterior a 25 tokens/s) é cobrado de novo a cada turno, até o limite da janela. Conversas longas ficam mais caras por minuto; compressão de contexto e instruções curtas reduzem isso.
+- Avatares prontos (por exemplo `avatar_name: "Ben"`) estão disponíveis para todos. Avatares personalizados a partir de uma foto são só para clientes selecionados, via time de conta do Google Cloud ([configure live avatars](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/configure-live-avatars)).
 - Google Workspace não dá acesso à API. O Gemini do Workspace é outro produto, com outra cobrança.
 - No plano gratuito da API o Google pode usar entradas e saídas para melhorar produtos, com revisão humana ([termos](https://ai.google.dev/gemini-api/terms)). Com a Iris recebendo nome, e-mail e ideia de projeto de visitantes brasileiros, só usar chave com faturamento ativo (plano pago).
 - File Search do Gemini não funciona na Live API. O RAG tem que ser nosso, exposto como ferramenta.
 
 Não confirmado (fontes secundárias ou conflitantes):
 
-- Se `avatar_config` funciona com chave do AI Studio ou só via Google Cloud/Gemini Enterprise. As fontes divergem.
+- Se `avatar_config` funciona com chave do AI Studio. A documentação do avatar só mostra o endpoint regional da Agent Platform com token OAuth, e não fala de token efêmero para o navegador. Se não houver, a sessão precisa de um relay nosso (Cloud Run, por exemplo), porque a Vercel não segura WebSocket longo.
 - Disponibilidade do avatar no Brasil. O anúncio fala em endpoints nos EUA e na Europa; o modelo de áudio aparece em `southamerica-east1`.
-- Preço do vídeo do avatar: fontes de terceiros convergem em cerca de US$ 0,39 por minuto de avatar falando. A página oficial não carregou na pesquisa.
 - Formato do vídeo (MP4 fragmentado, H.264 + AAC, segundo uma issue no GitHub), latência e resolução.
-- Avatares personalizados (foto de referência) exigem liberação via vendas do Google Cloud. Os avatares prontos são para todos.
 - Limite de sessões simultâneas por tier.
 
 ### Jev (TypeSafe)
@@ -63,14 +64,16 @@ A base tem poucas centenas de trechos. Um JSON gerado por script, com os vetores
 
 ## Custos estimados
 
-| Item                                               | Por conversa de 3 min  | 500 conversas/mês |
-| -------------------------------------------------- | ---------------------- | ----------------- |
-| Voz (Gemini Live, áudio)                           | ~US$ 0,07              | ~US$ 35           |
-| Avatar (não confirmado, avatar falando metade)     | ~US$ 0,60 a mais       | ~US$ 300 a mais   |
-| Jev no portão de resposta (5 trechos por pergunta) | < US$ 0,001            | < US$ 0,50        |
-| Embeddings e curadoria da base                     | por deploy, < US$ 0,01 | < US$ 1           |
+Preços oficiais da Agent Platform. Premissa de uma conversa de 3 minutos: visitante fala 1 min, Iris fala 1,5 min, 10 turnos, uns 3 mil tokens de instruções e trechos do RAG.
 
-O custo é quase todo do avatar. Por isso o plano tem teto diário global e desliga o avatar (mantendo a voz) quando o teto chega.
+| Item                                                | Por conversa de 3 min  | 100 conversas/mês | 500 conversas/mês |
+| --------------------------------------------------- | ---------------------- | ----------------- | ----------------- |
+| Voz (áudio de saída + contexto recobrado por turno) | ~US$ 0,15              | ~US$ 15           | ~US$ 75           |
+| Avatar (90 s falando × US$ 0,37/min)                | ~US$ 0,56 a mais       | ~US$ 56 a mais    | ~US$ 280 a mais   |
+| Jev no portão de resposta (5 trechos por pergunta)  | < US$ 0,001            | < US$ 0,10        | < US$ 0,50        |
+| Embeddings e curadoria da base                      | por deploy, < US$ 0,01 | < US$ 1           | < US$ 1           |
+
+O avatar é quase 80% do custo. Uma conversa longa (10 min, com a Iris falando metade) passa de US$ 2 com avatar. Se o avatar entrar, precisa de teto diário global e de queda para só voz quando o teto chegar.
 
 ## Arquitetura proposta
 
@@ -162,7 +165,7 @@ Caminho A ou B da decisão 0.5:
 | #   | Tarefa                                                                                                                             | Modelo | Pronto quando                               |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------- |
 | 3.1 | `avatar_config` nas restrições do token; vídeo tocado num `<video>` via Media Source Extensions no formato que o 0.2 encontrou     | Sonnet | avatar fala com lábios sincronizados        |
-| 3.2 | Reconexão a cada 2 minutos com o handle de retomada, sem corte perceptível                                                         | Sonnet | conversa de 6 minutos sem o visitante notar |
+| 3.2 | Compressão de contexto e reconexão a cada ~10 min com o handle de retomada, sem corte perceptível                                  | Sonnet | conversa de 6 minutos sem o visitante notar |
 | 3.3 | Pôster estático enquanto conecta; queda para só voz se o vídeo falhar ou o teto diário do avatar chegar                            | Haiku  | teste com teto zerado                       |
 | 3.4 | Caminho B: autenticação da Vercel no Google Cloud por OIDC (Workload Identity Federation), sem arquivo de chave de service account | Opus   | token criado em produção sem chave estática |
 
@@ -239,7 +242,6 @@ Nada abaixo foi confirmado em fonte oficial durante a pesquisa. A Fase 0 existe 
 
 - Acesso ao avatar por chave do AI Studio ou só pela Google Cloud.
 - Avatar disponível para visitantes no Brasil e a latência a partir daqui.
-- Preço oficial do vídeo do avatar.
 - Formato do stream de vídeo, resolução e latência do avatar.
 - Limite de sessões Live simultâneas no Tier 1.
 - Latência do Jev e precisão em pt-BR e espanhol.
