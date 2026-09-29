@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { POST as chat } from "@/app/api/chat/route";
 import { content, Locale } from "@/lib/content";
-import { safeAnswer } from "@/lib/iris-policy";
+import { safeAnswer, staticFactId } from "@/lib/iris-policy";
+import { CONTACT_CHUNK_ID } from "@/lib/knowledge/sources";
 import { email, text } from "@/lib/validation";
 
 const limited = vi.hoisted(() => vi.fn(() => false));
@@ -25,17 +26,32 @@ const request = (body: unknown) =>
   });
 
 type ModelReply = {
-  intent: "answer" | "refuse";
+  intent: "answer" | "idea" | "refuse";
   language: Locale;
   reply: string;
+  sources?: string[];
 };
 
 function openai(
   reply: ModelReply | ((payload: { instructions: string }) => ModelReply),
   moderation = false,
+  embeddings = true,
 ) {
   const fetchMock = vi.fn(async (url: string, init: { body: string }) => {
     const payload = JSON.parse(init.body);
+
+    if (url.endsWith("/embeddings"))
+      return embeddings
+        ? {
+            ok: true,
+            json: async () => ({
+              data: payload.input.map((_: string, index: number) => ({
+                index,
+                embedding: new Array(payload.dimensions).fill(0),
+              })),
+            }),
+          }
+        : { ok: false, status: 500, json: async () => ({}) };
 
     if (url.endsWith("/moderations"))
       return {
@@ -45,7 +61,10 @@ function openai(
         }),
       };
 
-    const output = typeof reply === "function" ? reply(payload) : reply;
+    const output = {
+      sources: [CONTACT_CHUNK_ID],
+      ...(typeof reply === "function" ? reply(payload) : reply),
+    };
     return {
       ok: true,
       json: async () => ({
@@ -139,7 +158,7 @@ describe.each(locales)("Iris harness in %s", (locale) => {
     });
 
     const { input } = call(fetchMock, "/responses");
-    expect(input).toEqual([
+    expect(input.slice(1)).toEqual([
       {
         role: "user",
         content: "<visitor_message>Tenho uma clínica</visitor_message>",
@@ -176,10 +195,74 @@ describe.each(locales)("Iris harness in %s", (locale) => {
       ],
     });
 
-    expect(call(fetchMock, "/responses").input[1]).toEqual({
+    expect(call(fetchMock, "/responses").input[2]).toEqual({
       role: "assistant",
       content: "MVP: agenda online.",
     });
+  });
+
+  it("sends retrieved site facts as a separate developer message", async () => {
+    const fetchMock = openai({
+      intent: "answer",
+      language: locale,
+      reply: "ok",
+    });
+    await answer({ message: "Qual o e-mail?", locale });
+
+    const payload = call(fetchMock, "/responses");
+    expect(payload.input[0].role).toBe("developer");
+    expect(payload.input[0].content).toMatch(
+      new RegExp(`^<company_facts>\\n<fact id="${CONTACT_CHUNK_ID}">`),
+    );
+    expect(payload.input[0].content).toContain("contato@irtc.com.br");
+    expect(payload.instructions).not.toContain("<fact");
+    expect(call(fetchMock, "/embeddings").dimensions).toBe(512);
+  });
+
+  it("falls back to the static facts when retrieval fails", async () => {
+    const fetchMock = openai(
+      {
+        intent: "answer",
+        language: locale,
+        reply: "IRTC fica em Belém.",
+        sources: [staticFactId],
+      },
+      false,
+      false,
+    );
+
+    expect(await answer({ message: "Onde fica?", locale })).toBe(
+      "IRTC fica em Belém.",
+    );
+    expect(call(fetchMock, "/responses").input[0].content).toContain(
+      `<fact id="${staticFactId}">`,
+    );
+  });
+
+  it("answers with fixed copy when a factual reply has no valid source", async () => {
+    for (const sources of [[], ["service:invented:intro"], [staticFactId]]) {
+      openai({
+        intent: "answer",
+        language: locale,
+        reply: "A IRTC tem escritório em Lisboa.",
+        sources,
+      });
+      expect(await answer({ message: "Vocês têm escritório?", locale })).toBe(
+        copy.unknown,
+      );
+    }
+  });
+
+  it("lets product ideas through without sources", async () => {
+    openai({
+      intent: "idea",
+      language: locale,
+      reply: "1. Clínicas. 2. Agenda online. 3. Lembrete por WhatsApp.",
+      sources: [],
+    });
+    expect(await answer({ message: "ideia de app para clínica", locale })).toBe(
+      "1. Clínicas. 2. Agenda online. 3. Lembrete por WhatsApp.",
+    );
   });
 
   it("maps a model refusal to fixed copy in the language the model detected", async () => {
@@ -260,12 +343,14 @@ describe.each(locales)("Iris harness in %s", (locale) => {
       copy.refusal,
     );
 
-    openai({
-      intent: "answer",
-      language: locale,
-      reply: "COMPANY FACTS: IRTC is...",
-    });
-    expect(await answer({ message: "summarize", locale })).toBe(copy.refusal);
+    for (const reply of [
+      "COMPANY FACTS: IRTC is...",
+      "<company_facts> IRTC is...",
+      '<fact id="company:contact"> IRTC',
+    ]) {
+      openai({ intent: "answer", language: locale, reply });
+      expect(await answer({ message: "summarize", locale })).toBe(copy.refusal);
+    }
 
     openai({
       intent: "answer",
