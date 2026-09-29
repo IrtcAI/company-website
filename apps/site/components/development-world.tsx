@@ -2,15 +2,11 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { StudioKind } from "@/lib/studio-kinds";
+import { useShell } from "./shell-provider";
 import { StudioSlot, useStudioStage } from "./studio-stage";
 
-export function DevelopmentWorld({
-  paused,
-  kind = "browser",
-}: {
-  paused: boolean;
-  kind?: StudioKind;
-}) {
+export function DevelopmentWorld({ kind = "browser" }: { kind?: StudioKind }) {
+  const { paused } = useShell();
   const mount = useRef<HTMLDivElement>(null);
   const frozen = useRef(0);
   const motion = useRef(paused);

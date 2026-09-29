@@ -347,10 +347,8 @@
 }
 
 .stats-map-land {
-  fill: none;
-  stroke: #9fd6b433;
-  stroke-width: 2.4;
-  stroke-linecap: round;
+  background: #9fd6b433;
+  mask: url(/world-dots.svg) center / contain no-repeat;
 }
 
 .stats-map-belem {

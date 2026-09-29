@@ -28,14 +28,6 @@
   width: 100%;
   height: 100%;
 }
-.solutions .solution-trigger {
-  background: transparent;
-}
-.solutions .solution-expanded {
-  background: #191b1be8;
-  border-radius: 12px;
-  padding: 20px;
-}
 .solutions .tech-playground {
   background: linear-gradient(90deg, #191b1bf2, #191b1bb3);
 }

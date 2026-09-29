@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useRef } from "react";
+import { useShell } from "./shell-provider";
 import { StudioSlot, useStudioStage } from "./studio-stage";
 
-export function HeroWorld({ paused }: { paused: boolean }) {
+export function HeroWorld() {
+  const { paused } = useShell();
   const mount = useRef<HTMLDivElement>(null);
 
   const active = useCallback(() => {

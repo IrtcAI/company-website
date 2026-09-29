@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/contact-form";
+import { ContactSection } from "@/components/contact-section";
 import { SiteShell } from "@/components/site-shell";
 import { pageCopy } from "@/lib/copy/pages";
 import {
@@ -55,7 +55,7 @@ export default async function ContactPage({ params }: LocaleParams) {
           ),
         )}
       />
-      <ContactForm locale={locale} />
+      <ContactSection locale={locale} />
     </SiteShell>
   );
 }

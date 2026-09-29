@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 import "@/styles/development-story.css";
 import "@/styles/studio-objects.css";
@@ -12,6 +10,7 @@ import "@/styles/footer.css";
 import "@/styles/contact-cta.css";
 import "@/styles/services.css";
 import "@/styles/contact.css";
+import "@/styles/consent.css";
 import "@/styles/about.css";
 
 const body = Manrope({
@@ -87,11 +86,7 @@ export default function RootLayout({
         />
         <script dangerouslySetInnerHTML={{ __html: preferences }} />
       </head>
-      <body>
-        {children}
-        <Analytics />
-        <SpeedInsights />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

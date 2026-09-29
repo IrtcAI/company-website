@@ -1,6 +1,7 @@
 import { act, render } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DevelopmentWorld } from "@/components/development-world";
+import { Motion } from "./motion";
 
 const stage = vi.hoisted(() => ({
   create: vi.fn(),
@@ -62,9 +63,11 @@ function View({
   kind?: "browser" | "database" | "server";
 }) {
   return (
-    <section className="solutions">
-      <DevelopmentWorld paused={paused} kind={kind} />
-    </section>
+    <Motion paused={paused}>
+      <section className="solutions">
+        <DevelopmentWorld kind={kind} />
+      </section>
+    </Motion>
   );
 }
 

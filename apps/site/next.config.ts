@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: [],
+    inlineCss: true,
   },
   async redirects() {
     return internalRedirects();
@@ -14,18 +15,17 @@ const nextConfig: NextConfig = {
     return localizedRewrites();
   },
   async headers() {
-    const isProd = process.env.NODE_ENV === "production";
-    // Vercel Analytics and Speed Insights load from same-origin /_vercel/...
-    // in production, but fall back to va.vercel-scripts.com in dev/debug mode.
-    const devAnalyticsHost = isProd ? [] : ["https://va.vercel-scripts.com"];
-    const scriptSrc = ["'self'", "'unsafe-inline'", ...devAnalyticsHost].join(
-      " ",
-    );
+    const google = [
+      "https://www.googletagmanager.com",
+      "https://*.google-analytics.com",
+      "https://*.analytics.google.com",
+    ];
+    const scriptSrc = ["'self'", "'unsafe-inline'", google[0]].join(" ");
     const connectSrc = [
       "'self'",
       "https://api.openai.com",
       "https://api.resend.com",
-      ...devAnalyticsHost,
+      ...google,
     ].join(" ");
 
     return [

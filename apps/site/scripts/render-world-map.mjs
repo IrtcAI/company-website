@@ -5,12 +5,17 @@ import { fileURLToPath } from "node:url";
 const SOURCE_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json";
 const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(site, "lib", "world-map.ts");
+const DOTS_OUTPUT = join(site, "public", "world-dots.svg");
 
 const WIDTH = 600;
 const HEIGHT = 280;
 const LAT_MIN = -58;
 const LAT_MAX = 83;
 const GRID = 4;
+
+function dotsSvg(dots) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}"><path d="${dots}" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round"/></svg>\n`;
+}
 
 function projectLonLat(lon, lat) {
   const mapWidth = WIDTH;
@@ -181,12 +186,10 @@ export function projectLonLat(lon: number, lat: number): [number, number] {
   const y = offsetY + ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * mapHeight;
   return [x, y];
 }
-
-export const WORLD_LAND_DOTS =
-  "${dots}";
 `;
 
   writeFileSync(OUTPUT, output.trimStart());
+  writeFileSync(DOTS_OUTPUT, dotsSvg(dots));
   console.log(
     `Wrote ${OUTPUT} (${(Buffer.byteLength(output) / 1024).toFixed(1)} KB total)`,
   );

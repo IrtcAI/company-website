@@ -2,19 +2,18 @@
 
 import { ReactNode, useEffect, useRef } from "react";
 import { MessageCircle, ShieldCheck, Zap } from "lucide-react";
-import { content, Locale } from "@/lib/content";
+import { useShell } from "./shell-provider";
+import type { content } from "@/lib/content";
 
 export function ScrollStory({
   children,
-  locale,
-  paused,
+  copy,
 }: {
   children: ReactNode;
-  locale: Locale;
-  paused: boolean;
+  copy: (typeof content)["pt-BR"]["manifesto"];
 }) {
+  const { paused } = useShell();
   const root = useRef<HTMLDivElement>(null);
-  const copy = content[locale].manifesto;
 
   useEffect(() => {
     const element = root.current;
@@ -124,7 +123,7 @@ export function ScrollStory({
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", configure);
     };
-  }, [paused, locale]);
+  }, [paused, copy]);
 
   return (
     <div className="intro-story" ref={root}>

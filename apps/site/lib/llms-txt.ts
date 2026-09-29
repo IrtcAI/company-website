@@ -2,12 +2,7 @@ import { addressLines, company, openingHours } from "./company";
 import { content, type Locale } from "./content";
 import { pageCopy } from "./copy/pages";
 import { absoluteUrl, locales, pagePath, SITE_URL, type Page } from "./routes";
-import {
-  serviceSlugs,
-  services,
-  type Service,
-  type ServiceCopy,
-} from "./services";
+import { services, type Service, type ServiceCopy } from "./services";
 
 const localeLabel: Record<Locale, string> = {
   "pt-BR": "Portuguese",

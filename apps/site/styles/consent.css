@@ -1,0 +1,59 @@
+.consent {
+  position: fixed;
+  z-index: 12;
+  left: 50%;
+  bottom: 84px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  width: min(560px, calc(100% - 32px));
+  padding: 16px 18px;
+  translate: -50% 0;
+  border: 1px solid var(--surface-line);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 12px 40px #00000026;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.consent p {
+  flex: 1 1 260px;
+  margin: 0;
+}
+
+.consent div {
+  display: flex;
+  gap: 8px;
+}
+
+.consent button {
+  padding: 9px 16px;
+  border: 1px solid var(--surface-line);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.consent .consent-accept {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--surface);
+}
+
+.consent-settings {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.consent-settings:hover {
+  text-decoration: underline;
+}

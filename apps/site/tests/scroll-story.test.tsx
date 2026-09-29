@@ -1,13 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ScrollStory } from "@/components/scroll-story";
+import { content } from "@/lib/content";
+import { Motion } from "./motion";
 
 describe("scroll story", () => {
   it("keeps the full content available without the motion enhancement", () => {
     const { container } = render(
-      <ScrollStory locale="pt-BR" paused={false}>
-        <div className="hero">Hero</div>
-      </ScrollStory>,
+      <Motion>
+        <ScrollStory copy={content["pt-BR"].manifesto}>
+          <div className="hero">Hero</div>
+        </ScrollStory>
+      </Motion>,
     );
     expect(container.firstChild).toHaveAttribute("data-enhanced", "false");
     expect(screen.getByText("Qualidade desde o começo.")).toBeVisible();
@@ -24,16 +28,20 @@ describe("scroll story", () => {
     );
 
     const { container, rerender } = render(
-      <ScrollStory locale="en" paused={false}>
-        <div className="hero">Hero</div>
-      </ScrollStory>,
+      <Motion>
+        <ScrollStory copy={content["en"].manifesto}>
+          <div className="hero">Hero</div>
+        </ScrollStory>
+      </Motion>,
     );
     expect(container.firstChild).toHaveAttribute("data-enhanced", "true");
 
     rerender(
-      <ScrollStory locale="en" paused>
-        <div className="hero">Hero</div>
-      </ScrollStory>,
+      <Motion paused>
+        <ScrollStory copy={content["en"].manifesto}>
+          <div className="hero">Hero</div>
+        </ScrollStory>
+      </Motion>,
     );
     expect(container.firstChild).toHaveAttribute("data-enhanced", "false");
     expect(container.querySelector<HTMLElement>(".hero")?.inert).toBe(false);

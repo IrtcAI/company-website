@@ -9,7 +9,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { ContactForm } from "@/components/contact-form";
+import { ContactSection } from "@/components/contact-section";
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
 import type { Locale } from "@/lib/content";
@@ -36,7 +36,7 @@ function renderHome(locale: Locale = "pt-BR") {
 function renderContact() {
   return render(
     <SiteShell locale="pt-BR" page="contact">
-      <ContactForm locale="pt-BR" />
+      <ContactSection locale="pt-BR" />
     </SiteShell>,
   );
 }
