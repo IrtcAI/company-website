@@ -14,7 +14,7 @@
   "dependencies": {
     "@next/third-parties": "16.0.1",
     "lucide-react": "^1.46.0",
-    "next": "16.0.1",
+    "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "three": "^0.186.0"
