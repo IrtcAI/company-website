@@ -19,6 +19,7 @@ pnpm test         # Vitest
 pnpm lint         # ESLint + Prettier check
 pnpm typecheck    # tsc --noEmit
 pnpm format       # Prettier write
+pnpm knowledge    # regenerate the Iris knowledge index after content changes (needs OPENAI_API_KEY)
 ```
 
 Single test file: `cd apps/site && pnpm exec vitest run tests/site.test.tsx`.
@@ -30,7 +31,7 @@ All five checks (`format`, `lint`, `typecheck`, `test`, `build`) must pass befor
 - `app/`: routes. pt-BR home is `app/page.tsx`; en/es homes and every inner page live under `app/[locale]/`. Localized URLs (`/servicos`, `/es/nosotros`...) are rewritten to them by `lib/routes.ts` + `next.config.ts`.
 - `layout/main.tsx`: the real root layout (re-exported by `app/layout.tsx`), CSS imports, splash, global metadata.
 - `components/`: server components by default; interactive pieces are small `"use client"` islands (`site-header`, `shell-provider`, `home-hero`, `project-showcase`, `contact-form`, ...).
-- `lib/`: data and rules. `content.ts` (UI copy), `services.ts`, `company.ts`, `copy/*`, `stats.ts`, `routes.ts`, `seo.ts`, `structured-data.ts`, `iris-policy.ts`, `analytics.ts`.
+- `lib/`: data and rules. `content.ts` (UI copy), `services.ts`, `company.ts`, `copy/*`, `stats.ts`, `routes.ts`, `seo.ts`, `structured-data.ts`, `iris-policy.ts` (Iris system prompt and grounding), `knowledge/` (RAG index and retrieval; regenerate with `pnpm knowledge` after content edits), `analytics.ts`.
 - `styles/`: one CSS file per area, imported in `layout/main.tsx`. Colors are `light-dark()` tokens in `styles/globals.css`.
 - `scripts/`: generators for 3D posters, the world map and the About photos.
 
@@ -43,6 +44,7 @@ All five checks (`format`, `lint`, `typecheck`, `test`, `build`) must pass befor
 - Every user-facing string exists in pt-BR, en and es. `tests/locale.test.ts` only checks services and testimonials, so compare the other locales by hand.
 - Sitemap, robots, `llms.txt` and JSON-LD are generated from `lib/`. Add pages and services there, not by hand.
 - After changing a 3D model in `lib/studio-scene.ts`, regenerate its poster: `node apps/site/scripts/render-posters.mjs <kind>`.
+- Changing copy in `lib/` that feeds Iris (`company.ts`, `services.ts`, `copy/*`, the `projects` block in `content.ts`, `stats.ts`) requires `pnpm knowledge`; `tests/knowledge-index.test.ts` will fail otherwise.
 - Iris security (`lib/iris-policy.ts`, `app/api/chat/route.ts`) is covered by `tests/iris-security.test.ts`. Keep it green and don't weaken checks to make a feature work.
 - New third-party scripts or GTM custom-HTML tags need a CSP entry in `next.config.ts`.
 - Don't invent company facts. Placeholder figures and personal details are listed in `docs/site-guide.md`; keep that table current.
