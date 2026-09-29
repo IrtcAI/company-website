@@ -330,11 +330,11 @@ describe("institutional experience", () => {
     ).toBeVisible();
   });
 
-  it("hides the header until the hero is scrolled past, then reveals it", () => {
+  it("shows the header at the top of the page and keeps it without the scroll-story", () => {
     window.scrollY = 0;
     const { container } = renderHome();
     const header = container.querySelector(".site-header") as HTMLElement;
-    expect(header).toHaveAttribute("data-visible", "false");
+    expect(header).toHaveAttribute("data-visible", "true");
 
     act(() => {
       window.scrollY = 400;
@@ -351,7 +351,7 @@ describe("institutional experience", () => {
     );
   });
 
-  it("shows the header once the scroll-story finishes growing, not before", () => {
+  function renderGrowingStory() {
     vi.stubGlobal(
       "matchMedia",
       vi.fn(() => ({
@@ -361,13 +361,21 @@ describe("institutional experience", () => {
       })),
     );
 
+    window.scrollY = 0;
     const { container } = renderHome();
     const header = container.querySelector(".site-header") as HTMLElement;
     const story = container.querySelector(".intro-story") as HTMLElement;
     story.getBoundingClientRect = () => ({ bottom: 400 }) as unknown as DOMRect;
     expect(story).toHaveAttribute("data-enhanced", "true");
+    return { header, story };
+  }
+
+  it("hides the header while the scroll-story grows and shows it again once it finishes", () => {
+    const { header, story } = renderGrowingStory();
+    expect(header).toHaveAttribute("data-visible", "true");
 
     act(() => {
+      window.scrollY = 300;
       story.dataset.progress = "0.4";
       window.dispatchEvent(new Event("scroll"));
     });
@@ -381,9 +389,12 @@ describe("institutional experience", () => {
   });
 
   it("shows the header once a header control receives focus", () => {
-    window.scrollY = 0;
-    const { container } = renderHome();
-    const header = container.querySelector(".site-header") as HTMLElement;
+    const { header, story } = renderGrowingStory();
+    act(() => {
+      window.scrollY = 300;
+      story.dataset.progress = "0.4";
+      window.dispatchEvent(new Event("scroll"));
+    });
     expect(header).toHaveAttribute("data-visible", "false");
 
     const [projetos] = screen.getAllByRole("link", { name: "Projetos" });

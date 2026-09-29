@@ -31,6 +31,7 @@ export function SiteShell({
   const serviceLinks = services.map((service) => ({
     title: service.copy[locale].title,
     summary: service.copy[locale].summary,
+    icon: service.icon,
     href: pagePath(locale, "services", service.copy[locale].slug),
   }));
   const companyLinks = [
@@ -45,6 +46,7 @@ export function SiteShell({
       locale={locale}
       launcherLabel={copy.iris.launcher}
       consent={copy.footer.consent}
+      toastLabels={copy.toast}
     >
       <a href="#conteudo" className="skip-link">
         {copy.skip}

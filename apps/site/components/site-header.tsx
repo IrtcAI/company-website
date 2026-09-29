@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import type { Locale } from "@/lib/content";
 import type { Page } from "@/lib/routes";
+import { ServiceIcon } from "./service-icon";
 
 const useIsomorphicLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
@@ -36,6 +37,7 @@ export type NavItem = {
 export type ServiceLink = {
   title: string;
   summary: string;
+  icon: string;
   href: string;
 };
 
@@ -88,6 +90,7 @@ function ServicesDropdown({
   menu: ServicesMenu;
 }) {
   const [open, setOpen] = useState(false);
+  const [highlighted, setHighlighted] = useState(0);
   const wrapper = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLAnchorElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -171,10 +174,22 @@ function ServicesDropdown({
         <ChevronDown aria-hidden="true" />
       </button>
       <div className="services-menu" id="services-menu">
+        <span
+          key={highlighted}
+          className="services-menu-icon"
+          aria-hidden="true"
+        >
+          <ServiceIcon icon={menu.items[highlighted]?.icon ?? ""} />
+        </span>
         <ul>
-          {menu.items.map((service) => (
+          {menu.items.map((service, index) => (
             <li key={service.href}>
-              <Link href={service.href} prefetch={false}>
+              <Link
+                href={service.href}
+                prefetch={false}
+                onMouseEnter={() => setHighlighted(index)}
+                onFocus={() => setHighlighted(index)}
+              >
                 <span className="services-menu-title">{service.title}</span>
                 <span className="services-menu-summary">{service.summary}</span>
               </Link>
@@ -215,7 +230,7 @@ export function SiteHeader({
   const router = useRouter();
 
   const [stuck, setStuck] = useState(false);
-  const [visible, setVisible] = useState(page !== "home");
+  const [visible, setVisible] = useState(true);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [theme, setTheme] = useState("system");
 
@@ -251,12 +266,10 @@ export function SiteHeader({
         : null;
 
     const computeVisible = (scrollY: number) => {
-      if (page !== "home") return true;
-      if (introStory?.dataset.enhanced === "true") {
-        const progress = Number(introStory.dataset.progress ?? 0);
-        return progress >= 1 || introStory.getBoundingClientRect().bottom <= 0;
-      }
-      return scrollY > 24;
+      if (page !== "home" || scrollY <= 24) return true;
+      if (introStory?.dataset.enhanced !== "true") return true;
+      const progress = Number(introStory.dataset.progress ?? 0);
+      return progress >= 1 || introStory.getBoundingClientRect().bottom <= 0;
     };
 
     const onScroll = () => {

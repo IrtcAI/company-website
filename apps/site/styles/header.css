@@ -26,10 +26,18 @@
 .services-toggle {
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  background: none;
   color: inherit;
   transition: transform 0.2s ease;
+}
+
+.services-toggle svg {
+  width: 15px;
+  height: 15px;
 }
 
 .nav-services:hover .services-toggle,
@@ -43,7 +51,7 @@
   top: 100%;
   left: 0;
   z-index: 1;
-  width: min(560px, 80vw);
+  width: min(600px, 80vw);
   padding: 20px;
   border-radius: 16px;
   background: var(--surface);
@@ -85,9 +93,50 @@
   color: var(--text);
 }
 
-.site-header .services-menu a:hover,
-.site-header .services-menu a:focus-visible {
-  background: color-mix(in srgb, var(--secondary) 14%, transparent);
+.site-header .services-menu a::after {
+  content: none;
+}
+
+.services-menu li a {
+  transition: opacity 0.2s ease;
+}
+
+.services-menu ul:hover a:not(:hover) {
+  opacity: 0.55;
+}
+
+.services-menu li:nth-child(2) a {
+  padding-right: 92px;
+}
+
+.services-menu-icon {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: #d2e8d9;
+  color: #21372a;
+  box-shadow: 6px 8px 0 #9cc5aa;
+  transform: perspective(260px) rotateX(16deg) rotateY(-20deg) rotateZ(-7deg);
+  pointer-events: none;
+  animation: services-icon-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.services-menu-icon svg {
+  width: 30px;
+  height: 30px;
+  transform: rotate(10deg) scale(1.12);
+}
+
+@keyframes services-icon-pop {
+  from {
+    transform: perspective(260px) translateY(6px) scale(0.85);
+    box-shadow: 0 0 0 #9cc5aa;
+  }
 }
 
 .services-menu-title {
@@ -111,6 +160,7 @@
   width: 100%;
   padding-top: 12px;
   border-top: 1px solid var(--surface-line);
+  border-radius: 0;
   font-size: 13px;
   font-weight: 600;
 }
@@ -169,9 +219,17 @@
   animation: route-fade-in 0.32s ease both;
 }
 
+.motion-paused .services-menu-icon {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-header[data-visible="false"] {
     transform: none;
+  }
+
+  .services-menu-icon {
+    animation: none;
   }
 
   ::view-transition-group(*),
