@@ -1,0 +1,97 @@
+.project-visual {
+  min-height: clamp(26rem, 43vw, 34rem);
+  padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(4.75rem, 8vw, 5.5rem);
+  isolation: isolate;
+}
+
+.project-visual.leaflink {
+  background:
+    radial-gradient(
+      circle at 88% 14%,
+      light-dark(#d5c7f0, #362f52) 0 11%,
+      transparent 36%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#d8f3f2, #1c3536) 0%,
+      light-dark(#cae9ee, #17282f) 100%
+    );
+}
+
+.project-visual.dasa {
+  background:
+    radial-gradient(
+      circle at 8% 88%,
+      light-dark(#c8d8f0, #2b3752) 0 13%,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#e5f0fa, #22303f) 0%,
+      light-dark(#cfdcf2, #1c2636) 100%
+    );
+}
+
+.project-visual.perfectpay {
+  background:
+    radial-gradient(
+      circle at 90% 16%,
+      light-dark(#bde5d4, #274a3c) 0 12%,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      light-dark(#dff5eb, #1d332a) 0%,
+      light-dark(#bfe7d8, #17281f) 100%
+    );
+}
+
+.project-orb {
+  z-index: -1;
+  border-color: #ffffff73;
+}
+
+.real-product {
+  border: 1px solid #ffffffa8;
+  border-radius: 0.9rem;
+  box-shadow:
+    0 1.5rem 3.5rem #143f4530,
+    0 0.3rem #ffffff80;
+}
+
+.real-product .window-bar {
+  background: #f9ffff;
+  border-bottom-color: #d7e8e7;
+  color: #426563;
+}
+
+.real-product-content {
+  overflow: hidden;
+}
+
+.real-product-content > img:first-child {
+  height: clamp(17rem, 28vw, 21.25rem);
+  object-position: center 56%;
+  transform: scale(1.2);
+  transform-origin: center 56%;
+}
+
+.perfectpay .real-product-content {
+  padding: 0;
+}
+
+.perfectpay .real-product-content > img:first-child {
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+@media (max-width: 760px) {
+  .project-visual {
+    min-height: 24rem;
+  }
+
+  .real-product-content > img:first-child {
+    height: 17rem;
+    transform: scale(1.15);
+  }
+}
