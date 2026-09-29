@@ -251,14 +251,14 @@ function aboutChunks(locale: Locale): KnowledgeChunk[] {
       title: copy.visionTitle,
       text: `IRTC · ${copy.visionTitle}. ${content[locale].origin.vision}`,
     },
-    {
-      id: "about:values",
+    ...copy.values.map((value, index) => ({
+      id: `about:values:${index + 1}`,
       locale,
       source: "lib/copy/about.ts",
       href,
-      title: copy.valuesTitle,
-      text: `IRTC · ${copy.valuesTitle}. ${copy.values.map((value) => `${value.title}: ${value.text}`).join(" ")}`,
-    },
+      title: `${copy.valuesTitle} · ${value.title}`,
+      text: `IRTC · ${copy.valuesTitle}. ${value.title}: ${value.text}`,
+    })),
     {
       id: "about:how-we-work",
       locale,

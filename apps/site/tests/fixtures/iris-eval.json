@@ -60,7 +60,7 @@
     "locale": "pt-BR",
     "question": "Vocês explicam as coisas com termo técnico complicado ou tentam ser mais simples?",
     "kind": "fact",
-    "expectedChunks": ["about:values"],
+    "expectedChunks": ["about:values:5"],
     "mustContain": ["jargão"]
   },
   {
@@ -276,7 +276,7 @@
     "locale": "en",
     "question": "Do you explain things in plain language or a lot of technical jargon?",
     "kind": "fact",
-    "expectedChunks": ["about:values"],
+    "expectedChunks": ["about:values:5"],
     "mustContain": ["jargon"]
   },
   {
@@ -492,7 +492,7 @@
     "locale": "es",
     "question": "¿Explican las cosas en lenguaje simple o usan mucha jerga técnica?",
     "kind": "fact",
-    "expectedChunks": ["about:values"],
+    "expectedChunks": ["about:values:5"],
     "mustContain": ["jerga"]
   },
   {
