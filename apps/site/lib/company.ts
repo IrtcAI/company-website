@@ -9,7 +9,7 @@ export const company = {
   },
   address: {
     street: "Trav. Alferes Costa, 1750",
-    complement: "Edifício 17 Cinco Zero, Apto 602",
+    complement: "Edifício 17 Cinco Zero",
     locality: "Belém",
     region: "PA",
     country: "BR",
