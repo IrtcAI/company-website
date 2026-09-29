@@ -11,6 +11,7 @@ import {
   FileCheck,
 } from "lucide-react";
 import { content, Locale } from "@/lib/content";
+import { reportHttpError } from "@/lib/toast";
 
 type Message = {
   role: "user" | "assistant";
@@ -85,7 +86,7 @@ export default function Iris({
         }),
         signal: controller.current.signal,
       });
-      const result = (await response.json()) as {
+      const result = (await response.json().catch(() => ({}))) as {
         answer?: string;
         signature?: string;
       };
@@ -96,6 +97,7 @@ export default function Iris({
         ]);
         return;
       }
+      if (!response.ok) reportHttpError(response.status);
       if (!response.ok || !result.answer) throw new Error();
 
       const { answer, signature } = result;
@@ -105,6 +107,7 @@ export default function Iris({
       ]);
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") return;
+      if (error instanceof TypeError) reportHttpError(null);
       setMessages((current) => [
         ...current,
         {
@@ -134,7 +137,10 @@ export default function Iris({
           kind: "scope_approval",
         }),
       });
-      if (!response.ok) throw new Error();
+      if (!response.ok) {
+        reportHttpError(response.status);
+        throw new Error();
+      }
       setMessages((current) => [
         ...current,
         {
@@ -143,7 +149,8 @@ export default function Iris({
         },
       ]);
       setDraft("");
-    } catch {
+    } catch (error) {
+      if (error instanceof TypeError) reportHttpError(null);
       setMessages((current) => [
         ...current,
         {

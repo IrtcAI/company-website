@@ -13,8 +13,10 @@ import {
 import { MessageCircle, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/lib/content";
+import type { ToastLabels } from "@/lib/toast";
 import { AccessibilityToolbar } from "./accessibility-toolbar";
 import { AnalyticsConsent, type ConsentLabels } from "./analytics-consent";
+import { Toaster } from "./toaster";
 
 const Iris = dynamic(() => import("./iris"));
 
@@ -73,11 +75,13 @@ export function ShellProvider({
   locale,
   launcherLabel,
   consent,
+  toastLabels,
   children,
 }: {
   locale: Locale;
   launcherLabel: string;
   consent: ConsentLabels;
+  toastLabels: ToastLabels;
   children: ReactNode;
 }) {
   const [paused, setPaused] = useState(false);
@@ -117,6 +121,7 @@ export function ShellProvider({
       <div className={paused ? "site motion-paused" : "site"}>
         {children}
         <AnalyticsConsent labels={consent} />
+        <Toaster labels={toastLabels} />
         <AccessibilityToolbar
           locale={locale}
           paused={paused}

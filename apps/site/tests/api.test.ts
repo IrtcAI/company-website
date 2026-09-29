@@ -141,8 +141,22 @@ describe("contact delivery", () => {
   it("reports provider failure without success", async () => {
     vi.stubEnv("RESEND_API_KEY", "test-only");
     vi.stubEnv("CONTACT_FROM", "test@example.com");
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
+    vi.stubGlobal(
+      "fetch",
+      vi
+        .fn()
+        .mockResolvedValue(
+          new Response('{"message":"domain is not verified"}', { status: 403 }),
+        ),
+    );
+    const log = vi.spyOn(console, "error").mockImplementation(() => {});
     expect((await contact(request(lead))).status).toBe(502);
+    expect(log).toHaveBeenCalledWith(
+      "Resend rejected the contact e-mail",
+      403,
+      '{"message":"domain is not verified"}',
+    );
+    log.mockRestore();
   });
   it("requires a reply address and ignores unknown kinds", async () => {
     vi.stubEnv("RESEND_API_KEY", "test-only");

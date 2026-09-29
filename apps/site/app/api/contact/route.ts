@@ -71,11 +71,18 @@ export async function POST(request: Request) {
       }),
     });
 
-    if (!response.ok)
+    if (!response.ok) {
+      console.error(
+        "Resend rejected the contact e-mail",
+        response.status,
+        await response.text().catch(() => ""),
+      );
       return NextResponse.json(
         { error: "Não foi possível encaminhar o e-mail." },
         { status: 502 },
       );
+    }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

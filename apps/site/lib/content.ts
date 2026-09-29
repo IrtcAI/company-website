@@ -4,6 +4,15 @@ export const content = {
   "pt-BR": {
     nav: ["Serviços", "Projetos", "Sobre"],
     navServicesToggle: "Mostrar lista de serviços",
+    toast: {
+      network:
+        "Sem conexão com o servidor. Confira sua internet e tente de novo.",
+      rateLimit: "Muitas tentativas seguidas. Aguarde alguns minutos.",
+      invalid: "Alguns campos estão incompletos. Revise e envie de novo.",
+      server:
+        "Não conseguimos enviar agora. Tente mais tarde ou escreva para contato@irtc.com.br.",
+      dismiss: "Fechar aviso",
+    },
     skip: "Pular para o conteúdo",
     home: "IRTC, início",
     talk: "Vamos conversar",
@@ -229,6 +238,15 @@ export const content = {
   en: {
     nav: ["Services", "Projects", "About"],
     navServicesToggle: "Show services list",
+    toast: {
+      network:
+        "Couldn't reach the server. Check your connection and try again.",
+      rateLimit: "Too many attempts in a row. Please wait a few minutes.",
+      invalid: "Some fields are incomplete. Review them and send again.",
+      server:
+        "We couldn't send it right now. Try later or write to contato@irtc.com.br.",
+      dismiss: "Dismiss notice",
+    },
     skip: "Skip to content",
     home: "IRTC, home",
     talk: "Let's talk",
@@ -453,6 +471,15 @@ export const content = {
   es: {
     nav: ["Servicios", "Proyectos", "Nosotros"],
     navServicesToggle: "Mostrar lista de servicios",
+    toast: {
+      network:
+        "No hay conexión con el servidor. Revisa tu internet e inténtalo de nuevo.",
+      rateLimit: "Demasiados intentos seguidos. Espera unos minutos.",
+      invalid: "Faltan datos en algunos campos. Revísalos y envía de nuevo.",
+      server:
+        "No pudimos enviarlo ahora. Inténtalo más tarde o escribe a contato@irtc.com.br.",
+      dismiss: "Cerrar aviso",
+    },
     skip: "Saltar al contenido",
     home: "IRTC, inicio",
     talk: "Conversemos",

@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Send } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { reportHttpError } from "@/lib/toast";
 import type { content } from "@/lib/content";
 
 type Copy = (typeof content)["pt-BR"]["contact"];
@@ -29,19 +30,29 @@ export function ContactForm({
     event.preventDefault();
     const form = event.currentTarget;
     setState("sending");
+
+    let response: Response;
     try {
-      const response = await fetch("/api/contact", {
+      response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      if (!response.ok) throw new Error();
-      setState("sent");
-      trackEvent("contact_submit", { topic: topic.current?.value || "none" });
-      form.reset();
     } catch {
+      reportHttpError(null);
       setState("error");
+      return;
     }
+
+    if (!response.ok) {
+      reportHttpError(response.status);
+      setState("error");
+      return;
+    }
+
+    setState("sent");
+    trackEvent("contact_submit", { topic: topic.current?.value || "none" });
+    form.reset();
   }
 
   return (

@@ -37,7 +37,7 @@ Seis objetos formam a identidade visual: terminal (CSS), navegador, robô, banco
 - Um único canvas por cena desenha em várias "slots" do DOM com scissor. O loop para quando a aba está oculta, quando o usuário pausa ou quando a cena sai da tela.
 - Depois de mudar um modelo, regenere a imagem: `node apps/site/scripts/render-posters.mjs <tipo>`.
 
-A seção 2 da home usa `ScrollStory`: o terminal do hero cresce até virar o painel "Nosso jeito", com scroll nativo e `position: sticky`. Só é ativado em telas de pelo menos 1024 × 760 e sem movimento reduzido.
+A seção 2 da home usa `ScrollStory`: o terminal do hero cresce até virar o painel "Nosso jeito", com scroll nativo e `position: sticky`. Só é ativado em telas de pelo menos 1024 × 760 e sem movimento reduzido. O cabeçalho aparece no topo da página, some enquanto o terminal cresce e volta fixo quando a animação termina.
 
 ## SEO, AEO e descoberta por IA
 
@@ -70,6 +70,8 @@ Se o conteúdo crescer, a evolução prevista é PostgreSQL com pgvector: fontes
 ## Contato
 
 `/api/contact` recebe o formulário e os rascunhos aprovados na Iris. Valida e normaliza os campos, aceita só assuntos da lista de serviços, tem honeypot e limite de 4 envios a cada 15 minutos por IP. O e-mail sai pelo Resend para `CONTACT_TO`, com o visitante em `reply_to`.
+
+Falhas de HTTP no formulário e na Iris disparam um aviso (`reportHttpError` em `lib/toast.ts`), mostrado por `components/toaster.tsx` no idioma da página. O aviso usa `popover` para ficar acima do diálogo da Iris. Quando o Resend recusa o envio, a rota registra o status e a resposta dele no log da Vercel.
 
 Os limites de requisição ficam em memória (`lib/rate-limit.ts`). Na Vercel cada instância tem o seu; se o tráfego crescer, mover para uma store compartilhada, como Upstash Redis.
 
