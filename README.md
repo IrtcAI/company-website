@@ -14,13 +14,13 @@ O `next.config.ts` lê o `.env` da raiz do monorepo. Variáveis definidas em `ap
 
 ## Variáveis de ambiente
 
-| Variável | Para que serve | Sem ela |
-| --- | --- | --- |
-| `OPENAI_API_KEY` | Iris usa a API Responses da OpenAI; também assina o histórico da conversa | Iris responde com textos locais, restritos ao escopo |
-| `OPENAI_MODEL` | modelo usado pela Iris | usa `gpt-5-mini` |
-| `RESEND_API_KEY`, `CONTACT_FROM` | envio do formulário de contato e dos rascunhos aprovados na Iris | o formulário avisa que o envio não está configurado |
-| `CONTACT_TO` | caixa que recebe os contatos | `contato@irtc.com.br` |
-| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager, carregado só depois do aceite de cookies | nenhum analytics e nenhum aviso de cookies |
+| Variável                         | Para que serve                                                            | Sem ela                                              |
+| -------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `OPENAI_API_KEY`                 | Iris usa a API Responses da OpenAI; também assina o histórico da conversa | Iris responde com textos locais, restritos ao escopo |
+| `OPENAI_MODEL`                   | modelo usado pela Iris                                                    | usa `gpt-5-mini`                                     |
+| `RESEND_API_KEY`, `CONTACT_FROM` | envio do formulário de contato e dos rascunhos aprovados na Iris          | o formulário avisa que o envio não está configurado  |
+| `CONTACT_TO`                     | caixa que recebe os contatos                                              | `contato@irtc.com.br`                                |
+| `NEXT_PUBLIC_GTM_ID`             | Google Tag Manager, carregado só depois do aceite de cookies              | nenhum analytics e nenhum aviso de cookies           |
 
 Na hospedagem, cadastre as mesmas variáveis no painel do provedor. `NEXT_PUBLIC_GTM_ID` entra no bundle durante o build.
 
@@ -60,26 +60,26 @@ docs/             decisões de arquitetura e guia de conteúdo
 
 As URLs públicas são traduzidas e reescritas para `app/[locale]/<página>` (veja `lib/routes.ts`):
 
-| Página | pt-BR | en | es |
-| --- | --- | --- | --- |
-| Serviços | `/servicos` | `/en/services` | `/es/servicios` |
-| Serviço | `/servicos/<slug>` | `/en/services/<slug>` | `/es/servicios/<slug>` |
-| Sobre | `/sobre` | `/en/about` | `/es/nosotros` |
-| Fundador | `/fundador` | `/en/founder` | `/es/fundador` |
-| Contato | `/contato` | `/en/contact` | `/es/contacto` |
+| Página   | pt-BR              | en                    | es                     |
+| -------- | ------------------ | --------------------- | ---------------------- |
+| Serviços | `/servicos`        | `/en/services`        | `/es/servicios`        |
+| Serviço  | `/servicos/<slug>` | `/en/services/<slug>` | `/es/servicios/<slug>` |
+| Sobre    | `/sobre`           | `/en/about`           | `/es/nosotros`         |
+| Fundador | `/fundador`        | `/en/founder`         | `/es/fundador`         |
+| Contato  | `/contato`         | `/en/contact`         | `/es/contacto`         |
 
 `proxy.ts` redireciona a raiz `/` para `/en` ou `/es` conforme cookie, país (na Vercel) ou idioma do navegador.
 
 ## Onde editar
 
-| O quê | Arquivo |
-| --- | --- |
-| Textos da home, menu, rodapé, contato e Iris | `lib/content.ts` |
-| Serviços (títulos, slugs, FAQ, entregas) | `lib/services.ts` |
-| Páginas Sobre, Fundador e títulos de SEO | `lib/copy/` |
-| Endereço, horário, e-mail e redes | `lib/company.ts` |
-| Números da seção de estatísticas | `lib/stats.ts` (há valores provisórios, marcados no arquivo) |
-| Conhecimento e regras da Iris | `lib/iris-policy.ts` |
+| O quê                                        | Arquivo                                                      |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| Textos da home, menu, rodapé, contato e Iris | `lib/content.ts`                                             |
+| Serviços (títulos, slugs, FAQ, entregas)     | `lib/services.ts`                                            |
+| Páginas Sobre, Fundador e títulos de SEO     | `lib/copy/`                                                  |
+| Endereço, horário, e-mail e redes            | `lib/company.ts`                                             |
+| Números da seção de estatísticas             | `lib/stats.ts` (há valores provisórios, marcados no arquivo) |
+| Conhecimento e regras da Iris                | `lib/iris-policy.ts`                                         |
 
 Toda cópia existe em pt-BR, en e es. Mantenha as três versões equivalentes.
 
