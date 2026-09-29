@@ -44,7 +44,7 @@ const capabilities = [
   "process automation",
 ];
 
-function technologies(): string[] {
+export function technologies(): string[] {
   const used = new Set(services.flatMap((service) => service.technologies));
   used.add("JavaScript");
   const ordered = preferredTechOrder.filter((tech) => used.has(tech));
