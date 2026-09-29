@@ -48,6 +48,8 @@ export function SiteShell({
       consent={copy.footer.consent}
       toastLabels={copy.toast}
       accessibilityLabels={copy.accessibility}
+      irisLabels={copy.iris}
+      contactSending={copy.contact.sending}
     >
       <a href="#conteudo" className="skip-link">
         {copy.skip}

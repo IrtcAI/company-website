@@ -10,7 +10,7 @@ import {
   MessageCircle,
   FileCheck,
 } from "lucide-react";
-import { content, Locale } from "@/lib/content";
+import type { content, Locale } from "@/lib/content";
 import { reportHttpError } from "@/lib/toast";
 
 type Message = {
@@ -19,14 +19,19 @@ type Message = {
   signature?: string;
 };
 
+export type IrisLabels = (typeof content)["pt-BR"]["iris"];
+
 export default function Iris({
   onClose,
   locale = "pt-BR",
+  labels,
+  contactSending,
 }: {
   onClose: () => void;
   locale?: Locale;
+  labels: IrisLabels;
+  contactSending: string;
 }) {
-  const copy = content[locale].iris;
   const dialog = useRef<HTMLDialogElement>(null);
   const messagesEnd = useRef<HTMLDivElement>(null);
   const keepTalking = useRef<HTMLButtonElement>(null);
@@ -35,7 +40,7 @@ export default function Iris({
   const [confirmClose, setConfirmClose] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: copy.greeting },
+    { role: "assistant", content: labels.greeting },
   ]);
   const [value, setValue] = useState("");
   const [draft, setDraft] = useState("");
@@ -93,7 +98,7 @@ export default function Iris({
       if (response.status === 429) {
         setMessages((current) => [
           ...current,
-          { role: "assistant", content: copy.limit },
+          { role: "assistant", content: labels.limit },
         ]);
         return;
       }
@@ -112,7 +117,7 @@ export default function Iris({
         ...current,
         {
           role: "assistant",
-          content: copy.error,
+          content: labels.error,
         },
       ]);
     } finally {
@@ -145,7 +150,7 @@ export default function Iris({
         ...current,
         {
           role: "assistant",
-          content: copy.sent,
+          content: labels.sent,
         },
       ]);
       setDraft("");
@@ -155,7 +160,7 @@ export default function Iris({
         ...current,
         {
           role: "assistant",
-          content: copy.error,
+          content: labels.error,
         },
       ]);
     } finally {
@@ -179,10 +184,10 @@ export default function Iris({
         </span>
         <div>
           <h2 id="iris-title">Iris</h2>
-          <p>{copy.subtitle}</p>
+          <p>{labels.subtitle}</p>
         </div>
         <button
-          aria-label={expanded ? copy.shrink : copy.expand}
+          aria-label={expanded ? labels.shrink : labels.expand}
           onClick={() => setExpanded(!expanded)}
         >
           {expanded ? (
@@ -191,7 +196,7 @@ export default function Iris({
             <Maximize2 aria-hidden="true" />
           )}
         </button>
-        <button aria-label={copy.close} onClick={() => setConfirmClose(true)}>
+        <button aria-label={labels.close} onClick={() => setConfirmClose(true)}>
           <X aria-hidden="true" />
         </button>
       </header>
@@ -200,14 +205,14 @@ export default function Iris({
           <span aria-hidden="true">
             <MessageCircle />
           </span>
-          <h3>{copy.confirm}</h3>
-          <p>{copy.clear}</p>
+          <h3>{labels.confirm}</h3>
+          <p>{labels.clear}</p>
           <button
             ref={keepTalking}
             className="chat-primary"
             onClick={() => setConfirmClose(false)}
           >
-            {copy.keep}
+            {labels.keep}
           </button>
           <button
             className="chat-secondary"
@@ -217,7 +222,7 @@ export default function Iris({
               onClose();
             }}
           >
-            {copy.yes}
+            {labels.yes}
           </button>
         </div>
       ) : (
@@ -233,7 +238,7 @@ export default function Iris({
                 <span className="sr-only">
                   {message.role === "assistant"
                     ? "Iris: "
-                    : `${content[locale].iris.input}: `}
+                    : `${labels.input}: `}
                 </span>
                 <p>{message.content}</p>
                 {message.role === "assistant" && index > 0 ? (
@@ -241,21 +246,21 @@ export default function Iris({
                     className="use-draft"
                     onClick={() => setDraft(message.content)}
                   >
-                    {copy.use} <FileCheck aria-hidden="true" />
+                    {labels.use} <FileCheck aria-hidden="true" />
                   </button>
                 ) : null}
               </div>
             ))}
             {busy ? (
               <p className="chat-thinking" role="status">
-                {copy.thinking}
+                {labels.thinking}
               </p>
             ) : null}
             <div ref={messagesEnd} />
           </div>
           {draft ? (
             <form className="scope-draft" onSubmit={approve}>
-              <label htmlFor="scope">{copy.draft}</label>
+              <label htmlFor="scope">{labels.draft}</label>
               <textarea
                 id="scope"
                 value={draft}
@@ -264,7 +269,7 @@ export default function Iris({
                 rows={3}
               />
               <label>
-                {copy.email}
+                {labels.email}
                 <input
                   type="email"
                   required
@@ -275,27 +280,27 @@ export default function Iris({
                 />
               </label>
               <button className="chat-primary" disabled={sendingDraft}>
-                {sendingDraft ? content[locale].contact.sending : copy.approve}
+                {sendingDraft ? contactSending : labels.approve}
               </button>
             </form>
           ) : null}
           <form className="iris-form" onSubmit={send}>
             <label htmlFor="iris-message" className="sr-only">
-              {copy.input}
+              {labels.input}
             </label>
             <input
               ref={input}
               id="iris-message"
-              placeholder={copy.placeholder}
+              placeholder={labels.placeholder}
               value={value}
               onChange={(event) => setValue(event.target.value)}
               maxLength={800}
             />
-            <button disabled={busy || !value.trim()} aria-label={copy.send}>
+            <button disabled={busy || !value.trim()} aria-label={labels.send}>
               <Send aria-hidden="true" />
             </button>
           </form>
-          <p className="iris-limit">{copy.disclaimer}</p>
+          <p className="iris-limit">{labels.disclaimer}</p>
         </>
       )}
     </dialog>
