@@ -1,0 +1,116 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+/* Iris launcher: a 52px icon-only button under 1024px, expanding into the
+   full pill with its label only on large screens. */
+.iris-launcher {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+}
+
+.iris-launcher-label {
+  display: grid;
+  grid-template-columns: 0fr;
+  overflow: hidden;
+}
+
+.iris-launcher-label > span {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.iris-launcher-chat {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .iris-launcher {
+    width: auto;
+    height: auto;
+    padding: 8px 15px 8px 8px;
+    gap: 10px;
+    justify-content: flex-start;
+    animation: iris-launcher-grow 0.6s ease 0.4s both;
+  }
+
+  .iris-launcher-label {
+    grid-template-columns: 1fr;
+    animation: iris-launcher-label-grow 0.6s ease 0.4s both;
+  }
+
+  .iris-launcher-chat {
+    display: block;
+  }
+}
+
+@keyframes iris-launcher-grow {
+  from {
+    padding: 0;
+    gap: 0;
+  }
+}
+
+@keyframes iris-launcher-label-grow {
+  from {
+    grid-template-columns: 0fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris-launcher,
+  .iris-launcher-label {
+    animation: none;
+  }
+}
+
+/* Accordion animation for the service FAQ and project details <details>
+   elements. Chrome 131+ animates height via ::details-content; other
+   browsers fall back to the instant native toggle. */
+.service-faq-item::details-content,
+.project-details::details-content {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    height 0.3s ease,
+    opacity 0.3s ease,
+    content-visibility 0.3s allow-discrete;
+}
+
+.service-faq-item[open]::details-content,
+.project-details[open]::details-content {
+  height: auto;
+  opacity: 1;
+}
+
+.service-faq-item summary::after {
+  content: "+";
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+}
+
+.service-faq-item[open] summary::after {
+  content: "+";
+  transform: rotate(45deg);
+}
+
+.project-details summary svg {
+  transition: transform 0.25s ease;
+}
+
+.project-details[open] summary svg {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-faq-item::details-content,
+  .project-details::details-content,
+  .service-faq-item summary::after,
+  .project-details summary svg {
+    transition: none;
+  }
+}

@@ -1,0 +1,268 @@
+.accessibility-toolbar {
+  --toolbar-ink: #173e38;
+  --toolbar-paper: #f8f4e9;
+  --toolbar-mint: #cce9d9;
+  --a11y-top: 50%;
+  position: fixed;
+  z-index: 90;
+  top: var(--a11y-top);
+  left: 0;
+  display: flex;
+  align-items: center;
+  /* Anchored at the left edge always: the right-edge state is expressed
+     with 100vw so both edges animate through the same transform property,
+     avoiding a left/right property switch that couldn't transition. */
+  transform: translate(calc(-100% + 48px + var(--a11y-drag-x, 0px)), -50%);
+  transition: transform 220ms ease;
+}
+
+.accessibility-toolbar[data-open="true"] {
+  transform: translate(var(--a11y-drag-x, 0px), -50%);
+}
+
+.accessibility-toolbar[data-edge="right"] {
+  flex-direction: row-reverse;
+  transform: translate(calc(100vw - 48px + var(--a11y-drag-x, 0px)), -50%);
+}
+
+.accessibility-toolbar[data-edge="right"][data-open="true"] {
+  transform: translate(calc(100vw - 100% + var(--a11y-drag-x, 0px)), -50%);
+}
+
+.accessibility-toolbar[data-dragging="true"] {
+  transition: none;
+}
+
+.accessibility-toolbar-trigger {
+  order: 2;
+  width: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  border: 2px solid var(--toolbar-ink);
+  border-left: 0;
+  border-radius: 0 14px 14px 0;
+  background: var(--toolbar-mint);
+  color: var(--toolbar-ink);
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.12em;
+  box-shadow: 3px 4px 0 color-mix(in srgb, var(--toolbar-ink) 22%, transparent);
+  touch-action: none;
+}
+
+.accessibility-toolbar[data-edge="right"] .accessibility-toolbar-trigger {
+  border-left: 2px solid var(--toolbar-ink);
+  border-right: 0;
+  border-radius: 14px 0 0 14px;
+}
+
+.accessibility-toolbar-panel {
+  width: min(276px, calc(100vw - 48px));
+  max-height: calc(100svh - 32px);
+  overflow-y: auto;
+  padding: 18px;
+  border: 2px solid var(--toolbar-ink);
+  border-left: 0;
+  border-radius: 0 18px 18px 0;
+  background: var(--toolbar-paper);
+  color: var(--toolbar-ink);
+  box-shadow: 7px 8px 0 color-mix(in srgb, var(--toolbar-ink) 18%, transparent);
+}
+
+.accessibility-toolbar[data-edge="right"] .accessibility-toolbar-panel {
+  border-left: 2px solid var(--toolbar-ink);
+  border-right: 0;
+  border-radius: 18px 0 0 18px;
+}
+
+.accessibility-toolbar-panel[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.accessibility-toolbar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.accessibility-toolbar-heading button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+}
+
+.accessibility-toolbar-heading p {
+  margin: 0 0 14px;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.accessibility-toolbar fieldset {
+  min-width: 0;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+}
+
+.accessibility-toolbar legend {
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.accessibility-toolbar-size,
+.accessibility-toolbar-option,
+.accessibility-toolbar-reset {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.accessibility-toolbar-size button,
+.accessibility-toolbar-option,
+.accessibility-toolbar-reset {
+  border: 1px solid color-mix(in srgb, var(--toolbar-ink) 35%, transparent);
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.accessibility-toolbar-size button {
+  flex: 1;
+  min-height: 44px;
+}
+
+.accessibility-toolbar-size button[aria-pressed="true"],
+.accessibility-toolbar-option[aria-pressed="true"] {
+  background: var(--toolbar-ink);
+  color: var(--toolbar-paper);
+}
+
+.accessibility-toolbar-option {
+  justify-content: space-between;
+  margin-top: 7px;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.accessibility-toolbar-option > span:last-child {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.accessibility-toolbar-reset {
+  justify-content: center;
+  margin-top: 12px;
+  border-color: var(--toolbar-ink);
+}
+
+.accessibility-toolbar button:hover {
+  background: #f5b59a;
+  color: var(--toolbar-ink);
+}
+
+.accessibility-toolbar button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid #d34b3d;
+  outline-offset: 3px;
+}
+
+html[data-accessibility-contrast="true"] {
+  --surface: #fff;
+  --text: #101010;
+  --secondary: #252525;
+  --surface-line: #101010;
+  --ink: #101010;
+  --paper: #fff;
+  --muted: #252525;
+  --line: #101010;
+}
+
+html[data-accessibility-contrast="true"]
+  .site
+  :is(.hero, .story-screen, .solutions, .site-footer) {
+  background: #101010;
+  color: #fff;
+}
+
+html[data-accessibility-contrast="true"]
+  .site
+  :is(.projects, .testimonials, .origin, .founder, .contact, .client-strip) {
+  background: #fff;
+  color: #101010;
+}
+
+html[data-accessibility-contrast="true"] .site-footer :is(a, p, span) {
+  color: #fff;
+}
+
+html[data-accessibility-text="large"]
+  .site
+  :is(
+    .hero-description,
+    .screen-introduction > p,
+    .screen-principles p,
+    .section-title-row > p,
+    .project-info > p,
+    .project-details p,
+    .solution-item > p,
+    .solution-intro,
+    .solution-expanded p,
+    .tech-ribbon > p,
+    .tech-playground > div > p,
+    .tech-explainer p,
+    .testimonial-layout > div > p,
+    .origin-copy > p,
+    .founder-copy > p,
+    .contact-copy > p,
+    .footer-top > div p,
+    .footer-contact > p,
+    .message p
+  ) {
+  font-size: max(20px, 1.25em);
+}
+
+html[data-accessibility-text="large"]
+  .site
+  :is(
+    .hero-description,
+    .manifesto-heading > p,
+    .manifesto-points p,
+    .section-title-row > p,
+    .project-info > p,
+    .project-details p,
+    .solution-intro,
+    .solution-expanded p,
+    .tech-ribbon > p,
+    .tech-playground > div > p,
+    .tech-explainer p,
+    .testimonial-layout > div > p,
+    .origin-copy > p,
+    .founder-copy > p,
+    .contact-copy > p,
+    .footer-top > div p,
+    .footer-contact > p,
+    .message p
+  ) {
+  --irtc-copy-size: 1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-toolbar {
+    transition: none;
+  }
+}
