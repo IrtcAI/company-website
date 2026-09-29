@@ -77,7 +77,7 @@ Os limites de requisição ficam em memória (`lib/rate-limit.ts`). Na Vercel ca
 
 ## Acessibilidade
 
-HTML semântico com landmarks, skip link, um `h1` por página e foco visível (sublinhado nos campos de formulário). O item do menu da seção visível recebe `aria-current`. A barra de acessibilidade oferece texto maior, alto contraste e pausa das animações, salvos no navegador. Todas as animações respeitam `prefers-reduced-motion`, e o conteúdo aparece sem JavaScript.
+HTML semântico com landmarks, skip link, um `h1` por página e foco visível (sublinhado nos campos de formulário). O item do menu da seção visível recebe `aria-current`. A barra de acessibilidade abre por clique e pode ser arrastada para qualquer borda da tela (ou movida com Alt e as setas). Ela oferece cinco tamanhos de texto, alto contraste e pausa das animações, salvos no navegador. O tamanho de texto (`lib/text-scale.ts`) só altera textos de até 24 px, para não quebrar os títulos, e é reaplicado quando a página muda. O alto contraste leva os tokens de cor ao preto e branco do tema atual e aplica um filtro de contraste nas áreas com cores fixas da marca. Os textos da barra ficam em `lib/content.ts`. Todas as animações respeitam `prefers-reduced-motion`, e o conteúdo aparece sem JavaScript.
 
 ## Metas de qualidade
 

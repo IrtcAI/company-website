@@ -47,6 +47,7 @@ export function SiteShell({
       launcherLabel={copy.iris.launcher}
       consent={copy.footer.consent}
       toastLabels={copy.toast}
+      accessibilityLabels={copy.accessibility}
     >
       <a href="#conteudo" className="skip-link">
         {copy.skip}

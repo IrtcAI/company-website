@@ -2,6 +2,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { ShellProvider } from "@/components/shell-provider";
+import { content } from "@/lib/content";
 import { Toaster } from "@/components/toaster";
 import { reportHttpError } from "@/lib/toast";
 
@@ -24,6 +25,7 @@ describe("Iris launcher", () => {
         launcherLabel="Oi, eu sou a Iris."
         consent={consent}
         toastLabels={toastLabels}
+        accessibilityLabels={content.en.accessibility}
       >
         <div />
       </ShellProvider>,
@@ -44,6 +46,7 @@ describe("Iris launcher", () => {
         launcherLabel="Hi, I'm Iris."
         consent={consent}
         toastLabels={toastLabels}
+        accessibilityLabels={content.en.accessibility}
       >
         <div />
       </ShellProvider>,

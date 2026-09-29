@@ -14,7 +14,10 @@ import { MessageCircle, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/lib/content";
 import type { ToastLabels } from "@/lib/toast";
-import { AccessibilityToolbar } from "./accessibility-toolbar";
+import {
+  AccessibilityToolbar,
+  type AccessibilityLabels,
+} from "./accessibility-toolbar";
 import { AnalyticsConsent, type ConsentLabels } from "./analytics-consent";
 import { Toaster } from "./toaster";
 
@@ -76,12 +79,14 @@ export function ShellProvider({
   launcherLabel,
   consent,
   toastLabels,
+  accessibilityLabels,
   children,
 }: {
   locale: Locale;
   launcherLabel: string;
   consent: ConsentLabels;
   toastLabels: ToastLabels;
+  accessibilityLabels: AccessibilityLabels;
   children: ReactNode;
 }) {
   const [paused, setPaused] = useState(false);
@@ -123,7 +128,7 @@ export function ShellProvider({
         <AnalyticsConsent labels={consent} />
         <Toaster labels={toastLabels} />
         <AccessibilityToolbar
-          locale={locale}
+          labels={accessibilityLabels}
           paused={paused}
           onPausedChange={setPaused}
         />
