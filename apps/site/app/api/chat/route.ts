@@ -10,14 +10,19 @@ import {
   Turn,
 } from "@/lib/iris-history";
 import {
+  CompanyFact,
+  companyFacts,
   fallbackAnswer,
   irisInstructions,
+  isGrounded,
   looksEncoded,
   parseReply,
   replyFormat,
   safeAnswer,
+  staticFacts,
   visitorMessage,
 } from "@/lib/iris-policy";
+import { retrieve } from "@/lib/knowledge/search";
 
 export const runtime = "nodejs";
 
@@ -55,8 +60,34 @@ async function flagged(inputs: string[], apiKey: string, signal: AbortSignal) {
   }
 }
 
+async function facts(
+  turns: Turn[],
+  locale: Locale,
+  apiKey: string,
+  signal: AbortSignal,
+): Promise<CompanyFact[]> {
+  const question = turns
+    .filter((turn) => turn.role === "user")
+    .slice(-2)
+    .map((turn) => turn.content)
+    .join("\n");
+
+  try {
+    const chunks = await retrieve(
+      question,
+      locale,
+      apiKey,
+      AbortSignal.any([signal, AbortSignal.timeout(5_000)]),
+    );
+    return chunks.map(({ id, title, text }) => ({ id, title, text }));
+  } catch {
+    return staticFacts;
+  }
+}
+
 async function ask(
   turns: Turn[],
+  facts: CompanyFact[],
   locale: Locale,
   apiKey: string,
   user: string,
@@ -74,11 +105,14 @@ async function ask(
       body: JSON.stringify({
         model,
         instructions: irisInstructions(locale),
-        input: turns.map((turn) =>
-          turn.role === "user"
-            ? { role: "user", content: visitorMessage(turn.content) }
-            : turn,
-        ),
+        input: [
+          { role: "developer", content: companyFacts(facts) },
+          ...turns.map((turn) =>
+            turn.role === "user"
+              ? { role: "user", content: visitorMessage(turn.content) }
+              : turn,
+          ),
+        ],
         text: { format: replyFormat },
         ...(/^(gpt-5|o\d)/.test(model) ? { reasoning: { effort: "low" } } : {}),
         max_output_tokens: 600,
@@ -89,7 +123,8 @@ async function ask(
     });
     if (!response.ok) return;
 
-    return parseReply(await response.json());
+    const reply = parseReply(await response.json());
+    return reply && { ...reply, found: isGrounded(reply, facts) };
   } catch {
     return;
   }
@@ -143,15 +178,21 @@ export async function POST(request: Request) {
 
     const [unsafe, reply] = await Promise.all([
       flagged(userInputs, apiKey, signal),
-      ask(turns, locale, apiKey, anonymousId(address, apiKey), signal),
+      facts(turns, locale, apiKey, signal).then((found) =>
+        ask(turns, found, locale, apiKey, anonymousId(address, apiKey), signal),
+      ),
     ]);
 
     if (!reply)
       return NextResponse.json({ answer: fallbackAnswer(message, locale) });
 
+    const copy = content[reply.language].iris;
     const answer =
-      (!unsafe && reply.intent === "answer" && safeAnswer(reply.reply)) ||
-      content[reply.language].iris.refusal;
+      unsafe || reply.intent === "refuse"
+        ? copy.refusal
+        : !reply.found
+          ? copy.unknown
+          : safeAnswer(reply.reply) || copy.refusal;
     return NextResponse.json({ answer, signature: signAnswer(answer, apiKey) });
   } catch {
     return NextResponse.json({ error: "unavailable" }, { status: 500 });

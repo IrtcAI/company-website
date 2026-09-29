@@ -256,6 +256,8 @@ export const content = {
         "Para começar: 1. Escolha um público e um problema. 2. Resolva uma tarefa essencial. 3. Meça o resultado. A IRTC ajuda a transformar isso em uma primeira versão do seu produto.",
       about:
         "A IRTC desenvolve software, integrações, dados e IA em Belém. Trabalhamos com entregas curtas, qualidade técnica e suporte próximo.",
+      unknown:
+        "Não tenho essa informação confirmada. A equipe responde pelo contato@irtc.com.br ou pela página de contato.",
     },
   },
   en: {
@@ -512,6 +514,8 @@ export const content = {
         "Start here: 1. Choose an audience and a problem. 2. Solve one essential task. 3. Measure the result. IRTC can help turn this into a first version of your product.",
       about:
         "IRTC builds software, integrations, data systems and AI in Belém, Brazil. We work in short delivery cycles with technical quality and hands-on support.",
+      unknown:
+        "I don't have that information confirmed. The team can answer at contato@irtc.com.br or through the contact page.",
     },
   },
   es: {
@@ -768,6 +772,8 @@ export const content = {
         "Para empezar: 1. Elige un público y un problema. 2. Resuelve una tarea esencial. 3. Mide el resultado. IRTC te ayuda a convertirlo en la primera versión de tu producto.",
       about:
         "IRTC desarrolla software, integraciones, datos e IA desde Belém, Brasil. Trabajamos con entregas cortas, calidad técnica y soporte cercano.",
+      unknown:
+        "No tengo esa información confirmada. El equipo responde en contato@irtc.com.br o en la página de contacto.",
     },
   },
 };

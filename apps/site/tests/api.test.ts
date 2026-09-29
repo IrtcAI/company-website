@@ -70,6 +70,7 @@ describe("Iris response policy", () => {
       intent: "answer",
       language: "en",
       reply: "IRTC builds software.",
+      sources: ["company:facts"],
     };
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -102,7 +103,8 @@ describe("Iris response policy", () => {
     );
     expect(payload.instructions).toContain("reply in English");
     expect(payload.instructions).not.toContain("Malicious");
-    expect(payload.input).toEqual([
+    expect(payload.input[0].content).not.toContain("Malicious");
+    expect(payload.input.slice(1)).toEqual([
       {
         role: "user",
         content: "<visitor_message>What is IRTC?</visitor_message>",
