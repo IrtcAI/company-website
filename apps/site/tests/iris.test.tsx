@@ -2,11 +2,18 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import Iris from "@/components/iris";
+import { content } from "@/lib/content";
 
 describe("Iris dialog", () => {
   it("requires confirmation before closing and preserves a cancelled conversation", async () => {
     const onClose = vi.fn();
-    render(<Iris onClose={onClose} />);
+    render(
+      <Iris
+        onClose={onClose}
+        labels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
+      />,
+    );
     await userEvent.type(screen.getByLabelText("Sua mensagem"), "Minha ideia");
 
     await userEvent.click(
@@ -33,7 +40,14 @@ describe("Iris dialog", () => {
     expect(screen.queryByRole("dialog")).toBeNull();
   });
   it("opens confirmation on Escape and toggles fullscreen", async () => {
-    render(<Iris onClose={vi.fn()} locale="en" />);
+    render(
+      <Iris
+        onClose={vi.fn()}
+        locale="en"
+        labels={content.en.iris}
+        contactSending={content.en.contact.sending}
+      />,
+    );
 
     await userEvent.click(
       screen.getByRole("button", { name: "Open fullscreen" }),
@@ -57,7 +71,14 @@ describe("Iris dialog", () => {
       json: async () => ({ answer: "Un MVP pequeño." }),
     });
     vi.stubGlobal("fetch", fetchMock);
-    render(<Iris onClose={vi.fn()} locale="es" />);
+    render(
+      <Iris
+        onClose={vi.fn()}
+        locale="es"
+        labels={content.es.iris}
+        contactSending={content.es.contact.sending}
+      />,
+    );
 
     await userEvent.type(screen.getByLabelText("Tu mensaje"), "Quiero un CRM");
     await userEvent.click(screen.getByRole("button", { name: "Enviar" }));
@@ -87,7 +108,14 @@ describe("Iris dialog", () => {
         json: async () => ({ answer: "Ok." }),
       });
     vi.stubGlobal("fetch", fetchMock);
-    render(<Iris onClose={vi.fn()} locale="en" />);
+    render(
+      <Iris
+        onClose={vi.fn()}
+        locale="en"
+        labels={content.en.iris}
+        contactSending={content.en.contact.sending}
+      />,
+    );
 
     await userEvent.type(screen.getByLabelText("Your message"), "First");
     await userEvent.click(screen.getByRole("button", { name: "Send" }));
@@ -122,7 +150,13 @@ describe("Iris dialog", () => {
         })
         .mockResolvedValueOnce({ ok: false }),
     );
-    render(<Iris onClose={vi.fn()} />);
+    render(
+      <Iris
+        onClose={vi.fn()}
+        labels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
+      />,
+    );
 
     await userEvent.type(screen.getByLabelText("Sua mensagem"), "Quero um MVP");
     await userEvent.click(screen.getByRole("button", { name: "Enviar" }));

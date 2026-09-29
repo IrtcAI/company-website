@@ -26,6 +26,8 @@ describe("Iris launcher", () => {
         consent={consent}
         toastLabels={toastLabels}
         accessibilityLabels={content.en.accessibility}
+        irisLabels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
       >
         <div />
       </ShellProvider>,
@@ -47,6 +49,8 @@ describe("Iris launcher", () => {
         consent={consent}
         toastLabels={toastLabels}
         accessibilityLabels={content.en.accessibility}
+        irisLabels={content.en.iris}
+        contactSending={content.en.contact.sending}
       >
         <div />
       </ShellProvider>,
