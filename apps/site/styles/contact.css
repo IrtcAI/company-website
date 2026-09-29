@@ -1,0 +1,133 @@
+.contact-page {
+  border-top: 0;
+  padding-top: 150px;
+}
+
+.contact-page h1 {
+  margin: 23px 0;
+  font-size: clamp(39px, 4.4vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.contact-page h1 span {
+  color: var(--secondary);
+}
+
+.contact-intro {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.contact-iris {
+  position: relative;
+  margin-top: 28px;
+  padding: 28px;
+  border-radius: 24px;
+  background: light-dark(#e3f1e8, #1f3a30);
+}
+
+.contact-iris h2,
+.contact-channels h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+.contact-iris p {
+  max-width: 44ch;
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+
+.contact-iris-spark {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 26px;
+  height: 26px;
+  color: light-dark(#416c53, #a8c9b4);
+}
+
+.contact-channels {
+  margin-top: 36px;
+}
+
+.contact-channels h2 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-channels ul {
+  display: grid;
+  gap: 14px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-channels li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.contact-channels svg {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  color: var(--secondary);
+}
+
+.contact-channels address,
+.contact-channels p {
+  display: grid;
+  margin: 0;
+  font-style: normal;
+}
+
+.contact-channels a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact select {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #aeb7a9;
+  background: none;
+  padding: 14px 0;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.contact select option {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.contact select:focus-visible {
+  outline: none;
+  border-bottom-color: var(--focus-ring);
+  box-shadow: 0 1px 0 var(--focus-ring);
+}
+
+@media (max-width: 767px) {
+  .contact-page {
+    padding-top: 120px;
+  }
+
+  .contact-iris {
+    padding: 22px;
+  }
+}

@@ -1,0 +1,32 @@
+.contact-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-top: 1px solid var(--line, #0000001a);
+}
+
+.contact-cta h2 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.contact-cta p {
+  max-width: 52ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.contact-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-cta-actions .iris-inline {
+  margin-top: 0;
+}
