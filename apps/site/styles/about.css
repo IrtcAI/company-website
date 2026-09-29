@@ -1,0 +1,248 @@
+.breadcrumbs.section-pad {
+  padding-top: 120px;
+  padding-bottom: 0;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.breadcrumbs a {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+  color: var(--text);
+}
+
+.breadcrumbs li[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.breadcrumbs svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+.about-intro h1 {
+  margin: 10px 0 6px;
+  font-size: clamp(34px, 4.5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.about-vision h2,
+.about-values h2,
+.about-how h2,
+.about-founder-link h2,
+.about-gallery h2 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.about-vision,
+.about-values,
+.about-how,
+.about-founder-link,
+.about-gallery {
+  border-top: 1px solid var(--line);
+}
+
+.about-vision {
+  max-width: 66ch;
+}
+
+.about-vision p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.about-values-grid {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.about-values-grid li {
+  background: var(--surface);
+  border: 1px solid var(--surface-line);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.about-values-grid strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.about-values-grid p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+
+.about-gallery-intro {
+  margin: 8px 0 32px;
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 60ch;
+}
+
+.about-founder-link {
+  max-width: 66ch;
+}
+
+.about-founder-link p {
+  margin: 0 0 20px;
+  color: var(--secondary);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+.about-intro p:not(.overline) {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 60ch;
+}
+
+.about-how-steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.about-how-steps li {
+  border-top: 2px solid var(--coral);
+  padding-top: 16px;
+}
+
+.about-how-index {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-how-steps strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.about-how-steps p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+
+.about-gallery-grid {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.about-gallery-item {
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.about-gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.about-gallery-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.about-gallery-placeholder.placeholder-0 {
+  background: linear-gradient(
+    135deg,
+    var(--peach-surface),
+    var(--mint-surface)
+  );
+}
+
+.about-gallery-placeholder.placeholder-1 {
+  background: linear-gradient(
+    135deg,
+    var(--mint-surface),
+    var(--peach-surface)
+  );
+}
+
+.about-gallery-placeholder.placeholder-2 {
+  background: linear-gradient(160deg, var(--coral), var(--mint-surface));
+}
+
+.about-gallery-placeholder.placeholder-3 {
+  background: linear-gradient(200deg, var(--mint-surface), var(--surface));
+}
+
+@media (max-width: 480px) {
+  .breadcrumbs.section-pad,
+  .about-intro.section-pad,
+  .about-vision.section-pad,
+  .about-values.section-pad,
+  .about-how.section-pad,
+  .about-founder-link.section-pad,
+  .about-gallery.section-pad {
+    padding-inline: 16px;
+  }
+
+  .breadcrumbs.section-pad {
+    padding-top: 104px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-gallery-item img {
+    transition: none;
+  }
+
+  .about-gallery-item:hover img {
+    transform: none;
+  }
+}
