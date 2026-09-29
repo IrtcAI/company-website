@@ -9,7 +9,7 @@ import {
 import { dequantize, topK } from "./vectors";
 import index from "./index.json";
 
-export const MIN_SCORE = 0.3;
+export const MIN_SCORE = 0.35;
 export const MAX_RESULTS = 4;
 
 export type RetrievedChunk = KnowledgeChunk & { score: number };
