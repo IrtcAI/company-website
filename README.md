@@ -36,9 +36,12 @@ pnpm test        # Vitest
 pnpm lint        # ESLint e Prettier (checagem)
 pnpm typecheck   # TypeScript
 pnpm format      # Prettier (escrita)
+pnpm knowledge   # regenera o índice de conhecimento da Iris após mudanças de conteúdo (precisa OPENAI_API_KEY)
 ```
 
 Antes de abrir um PR: `pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
+
+Para avaliar a qualidade das respostas da Iris: `pnpm --filter @irtc/site eval:iris` (precisa `OPENAI_API_KEY`, não roda em CI, escreve em `apps/site/eval-results/`).
 
 ## Estrutura
 

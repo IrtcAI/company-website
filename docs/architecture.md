@@ -59,13 +59,16 @@ Tudo é derivado dos dados em `lib/`, para não ficar desatualizado:
 
 Iris é uma assistente de descoberta: explica a IRTC ou esboça um MVP em até três pontos e 250 caracteres. Não é uma assistente geral.
 
-- As instruções do modelo ficam em inglês em `lib/iris-policy.ts`; a resposta sai no idioma do visitante. O conhecimento da empresa é montado no servidor a partir de `lib/company.ts` e `lib/services.ts`. A rota ignora qualquer conhecimento enviado pelo navegador.
+- As instruções do modelo ficam em inglês em `lib/iris-policy.ts`; a resposta sai no idioma do visitante. A rota ignora qualquer conhecimento enviado pelo navegador.
+- O conhecimento vem de RAG. `lib/knowledge/sources.ts` monta trechos a partir do conteúdo publicado em `lib/` (empresa, serviços e FAQ, Sobre, especialidades do fundador, projetos, anos de experiência), sem depoimentos e sem o conteúdo provisório de `site-guide.md`. `pnpm knowledge` gera os embeddings (`text-embedding-3-small`, 512 dimensões, int8) em `lib/knowledge/index.json` e só recalcula trechos cujo texto mudou. `tests/knowledge-index.test.ts` falha quando o conteúdo muda sem regenerar o índice.
+- A cada mensagem, `lib/knowledge/search.ts` busca no idioma da página os quatro trechos mais próximos das duas últimas mensagens do visitante, acima de um limiar de similaridade, mais o trecho de contato. Eles vão ao modelo numa mensagem `developer` separada (`<company_facts>`), fora das instruções. Se a busca falhar, a rota usa o bloco fixo `companyKnowledge`.
+- A resposta traz `intent` (`answer`, `idea` ou `refuse`) e `sources`, os IDs dos trechos usados. Uma resposta factual sem fonte, ou com fonte que não foi enviada, vira o texto fixo `iris.unknown`. Ideias de MVP não precisam de fonte.
 - A mensagem do visitante vai delimitada e normalizada (NFKC, sem caracteres invisíveis). Entradas codificadas são recusadas. A saída segue um schema JSON estrito e passa por checagem de links, e-mails e de um canário contra vazamento das instruções.
 - Só as respostas assinadas por HMAC (chave derivada de `OPENAI_API_KEY`) voltam ao histórico, o que impede que o navegador forje falas da assistente.
 - Entrada e saída passam pela moderação `omni-moderation-latest` em paralelo. Limites: 10 mensagens por minuto e 100 por dia por IP, 3.000 por dia no total, corpo de até 16 KB, timeout de 20 s e `store: false` na OpenAI.
 - A base segue OWASP LLM01, LLM07 e LLM10. `tests/iris-security.test.ts` cobre os ataques conhecidos nos três idiomas.
 
-Se o conteúdo crescer, a evolução prevista é PostgreSQL com pgvector: fontes aprovadas, embeddings por documento, até cinco trechos recuperados, metadados de origem e avaliação antes de publicar. Nunca indexar leads, conversas ou material privado.
+O índice em JSON serve enquanto a base tiver poucas centenas de trechos e mudar só com deploy. Com milhares de trechos, ou conteúdo editado fora do código, o caminho é PostgreSQL com pgvector. Nunca indexar leads, conversas ou material privado.
 
 ## Contato
 
