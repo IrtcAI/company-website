@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { useReportWebVitals } from "next/web-vitals";
 import {
   CONSENT_EVENT,
-  GA_ID,
-  loadAnalytics,
+  GTM_ID,
   readConsent,
   saveConsent,
   trackEvent,
+  updateConsent,
 } from "@/lib/analytics";
 
 export type ConsentLabels = {
@@ -18,7 +19,7 @@ export type ConsentLabels = {
 };
 
 export function ConsentSettings({ children }: { children: string }) {
-  if (!GA_ID) return null;
+  if (!GTM_ID) return null;
 
   return (
     <button
@@ -33,27 +34,33 @@ export function ConsentSettings({ children }: { children: string }) {
 
 export function AnalyticsConsent({ labels }: { labels: ConsentLabels }) {
   const [open, setOpen] = useState(false);
+  const [granted, setGranted] = useState(false);
 
   useReportWebVitals((metric) =>
-    trackEvent(metric.name, {
-      value: Math.round(
+    trackEvent("web_vitals", {
+      metric_name: metric.name,
+      metric_value: Math.round(
         metric.name === "CLS" ? metric.value * 1000 : metric.value,
       ),
       metric_id: metric.id,
       metric_rating: metric.rating,
-      non_interaction: true,
     }),
   );
 
   useEffect(() => {
-    if (!GA_ID) return;
+    if (!GTM_ID) return;
 
     const reopen = () => setOpen(true);
     window.addEventListener(CONSENT_EVENT, reopen);
 
     const consent = readConsent();
-    if (consent === "granted") loadAnalytics();
-    const timer = consent ? undefined : setTimeout(() => setOpen(true), 1500);
+    const timer = setTimeout(
+      () => {
+        if (consent === "granted") setGranted(true);
+        else if (!consent) setOpen(true);
+      },
+      consent ? 0 : 1500,
+    );
 
     return () => {
       clearTimeout(timer);
@@ -61,30 +68,34 @@ export function AnalyticsConsent({ labels }: { labels: ConsentLabels }) {
     };
   }, []);
 
-  if (!open) return null;
-
-  function choose(granted: boolean) {
-    saveConsent(granted ? "granted" : "denied");
-    if (granted) loadAnalytics();
-    else window.gtag?.("consent", "update", { analytics_storage: "denied" });
+  function choose(accepted: boolean) {
+    const consent = accepted ? "granted" : "denied";
+    saveConsent(consent);
+    updateConsent(consent);
+    if (accepted) setGranted(true);
     setOpen(false);
   }
 
   return (
-    <div className="consent" role="region" aria-label={labels.text}>
-      <p>{labels.text}</p>
-      <div>
-        <button type="button" onClick={() => choose(false)}>
-          {labels.decline}
-        </button>
-        <button
-          type="button"
-          className="consent-accept"
-          onClick={() => choose(true)}
-        >
-          {labels.accept}
-        </button>
-      </div>
-    </div>
+    <>
+      {granted ? <GoogleTagManager gtmId={GTM_ID} /> : null}
+      {open ? (
+        <div className="consent" role="region" aria-label={labels.text}>
+          <p>{labels.text}</p>
+          <div>
+            <button type="button" onClick={() => choose(false)}>
+              {labels.decline}
+            </button>
+            <button
+              type="button"
+              className="consent-accept"
+              onClick={() => choose(true)}
+            >
+              {labels.accept}
+            </button>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }

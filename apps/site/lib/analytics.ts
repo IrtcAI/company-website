@@ -1,15 +1,6 @@
 type EventProps = Record<string, string | number | boolean>;
 
-type Gtag = (command: string, ...args: unknown[]) => void;
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-    gtag?: Gtag;
-  }
-}
-
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 
 export const CONSENT_KEY = "irtc-analytics-consent";
 
@@ -32,23 +23,23 @@ export function saveConsent(consent: Consent) {
   } catch {}
 }
 
-export function loadAnalytics() {
-  if (!GA_ID || window.gtag) return;
-
+function dataLayer() {
   window.dataLayer = window.dataLayer ?? [];
-  window.gtag = function gtag() {
-    // gtag.js expects the arguments object itself, not an array.
-    window.dataLayer!.push(arguments);
-  };
-  window.gtag("js", new Date());
-  window.gtag("config", GA_ID, { anonymize_ip: true });
+  return window.dataLayer;
+}
 
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  document.head.appendChild(script);
+export function updateConsent(consent: Consent) {
+  // Consent Mode reads gtag-style commands, which must be pushed as the arguments object.
+  (function gtag(..._: unknown[]) {
+    dataLayer().push(arguments);
+  })("consent", "update", {
+    analytics_storage: consent,
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
 }
 
 export function trackEvent(name: string, props?: EventProps) {
-  window.gtag?.("event", name, props);
+  dataLayer().push({ event: name, ...props });
 }
