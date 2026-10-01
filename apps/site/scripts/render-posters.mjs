@@ -14,7 +14,7 @@ const { createServer } = await import(require.resolve("vite"));
 const chromePath =
   process.env.CHROME_PATH ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const everyKind = ["browser", "robot", "database", "server", "phone"];
+const everyKind = ["browser", "database", "server", "phone"];
 const requested = process.argv.slice(2);
 const unknown = requested.filter((kind) => !everyKind.includes(kind));
 if (unknown.length) throw new Error(`Unknown studio kind: ${unknown}`);

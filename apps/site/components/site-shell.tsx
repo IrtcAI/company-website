@@ -85,6 +85,7 @@ export function SiteShell({
         labels={{
           home: copy.home,
           menu: copy.menu,
+          close: copy.menuClose,
           language: copy.language,
           theme: copy.theme,
           themes: copy.themes,
@@ -184,9 +185,6 @@ export function SiteShell({
         </div>
         <Link href={home} className="footer-wordmark" aria-label={copy.home}>
           irtc
-          <span className="footer-asterisk" aria-hidden="true">
-            ✳
-          </span>
         </Link>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>

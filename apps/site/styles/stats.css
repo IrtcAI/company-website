@@ -1,8 +1,8 @@
 .stats-band {
   position: relative;
   overflow: hidden;
-  background: light-dark(#d2e8d9, #1c2a22);
-  color: light-dark(#191b1b, #f4f5ef);
+  background: light-dark(#d6e7df, #08303b);
+  color: light-dark(#061827, #f1eee8);
 }
 
 .stats-content {
@@ -39,7 +39,7 @@
   width: 100%;
   height: auto;
   fill: none;
-  stroke: light-dark(#ef604f, #ef7e6c);
+  stroke: light-dark(#d98f6c, #d98f6c);
   stroke-width: 34;
   stroke-linecap: round;
 }
@@ -59,7 +59,7 @@
   flex-direction: column;
   gap: 16px;
   padding-top: 22px;
-  border-top: 2px solid light-dark(#191b1b, #f4f5ef);
+  border-top: 2px solid light-dark(#061827, #f1eee8);
 }
 
 .stat dt {
@@ -80,7 +80,7 @@
   max-width: 24ch;
   font-size: 16px;
   line-height: 1.5;
-  color: light-dark(#2f4636, #c3d3c7);
+  color: light-dark(#1f4452, #bfd2cc);
 }
 
 @media (prefers-reduced-motion: no-preference) {

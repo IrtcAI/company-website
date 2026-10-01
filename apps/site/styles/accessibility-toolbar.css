@@ -1,10 +1,10 @@
 .accessibility-toolbar {
-  --toolbar-ink: light-dark(#173e38, #d9efe2);
-  --toolbar-paper: light-dark(#f8f4e9, #18201e);
-  --toolbar-mint: light-dark(#cce9d9, #2c4a3d);
+  --toolbar-ink: light-dark(#0b3a47, #d6ece1);
+  --toolbar-paper: light-dark(#f6f3ee, #051521);
+  --toolbar-mint: light-dark(#cfe5da, #113f4a);
   --toolbar-line: color-mix(in srgb, var(--toolbar-ink) 35%, transparent);
-  --toolbar-hover: light-dark(#f5d3c2, #3b2a24);
-  --toolbar-focus: light-dark(#b8382b, #ff9b86);
+  --toolbar-hover: light-dark(#f1d9cc, #3a2a2b);
+  --toolbar-focus: light-dark(#a4553a, #e6a988);
   position: fixed;
   z-index: 90;
   top: 50%;

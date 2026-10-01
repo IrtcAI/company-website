@@ -1,7 +1,7 @@
 .origin-network {
   position: relative;
-  background: light-dark(#d8e5d8, #223226);
-  color: light-dark(#294934, #a8c9b4);
+  background: light-dark(#d6e5e0, #0a2a35);
+  color: light-dark(#0d4150, #a9cdbd);
   border-radius: 25px;
   overflow: hidden;
   aspect-ratio: 600 / 280;
@@ -20,24 +20,24 @@
 .world-land {
   position: absolute;
   inset: 0;
-  background: light-dark(#39694b, #6fa77e);
+  background: light-dark(#2f6a5c, #74ad93);
   mask: url(/world-dots.svg) center / 100% 100% no-repeat;
 }
 .network-route {
   fill: none;
-  stroke: light-dark(#497759, #7fae8c);
+  stroke: light-dark(#3a7564, #86bca2);
   stroke-width: 2;
   stroke-dasharray: 6 8;
   animation: network-flow 12s linear infinite;
 }
 .reach-line {
   fill: none;
-  stroke: light-dark(#49775966, #7fae8c66);
+  stroke: light-dark(#3a756466, #86bca266);
   stroke-width: 1.2;
   stroke-dasharray: 3 6;
 }
 .network-reach circle {
-  fill: light-dark(#497759, #7fae8c);
+  fill: light-dark(#3a7564, #86bca2);
 }
 .reach-draw,
 .reach-trace {
@@ -48,20 +48,20 @@
 }
 .route-two {
   animation-direction: reverse;
-  stroke: light-dark(#7c6651, #b08d6c);
+  stroke: light-dark(#a4553a, #d98f6c);
 }
 .network-pulse {
-  fill: light-dark(#679e7950, #8fc79f66);
+  fill: light-dark(#5f9a8250, #86bca266);
   animation: network-pulse 4s ease-out infinite;
 }
 .network-hub {
-  fill: light-dark(#294e36, #3f6b4d);
+  fill: light-dark(#0d4150, #2a6a68);
 }
 .network-dest {
-  fill: light-dark(#497759, #7fae8c);
+  fill: light-dark(#3a7564, #86bca2);
 }
 .network-dest.dest-two {
-  fill: light-dark(#7c6651, #b08d6c);
+  fill: light-dark(#a4553a, #d98f6c);
 }
 .network-coordinates {
   position: absolute;
@@ -94,14 +94,14 @@
     stroke-linecap: round;
   }
   .reach-draw {
-    stroke: light-dark(#497759, #7fae8c);
+    stroke: light-dark(#3a7564, #86bca2);
     stroke-width: 1.2;
     stroke-dasharray: 1 1;
     stroke-dashoffset: 1;
     opacity: 0;
   }
   .reach-trace {
-    stroke: light-dark(#294e36, #b9e2c5);
+    stroke: light-dark(#0d4150, #b5dac7);
     stroke-width: 2;
     stroke-dasharray: 0.05 1.2;
     stroke-dashoffset: 0.05;

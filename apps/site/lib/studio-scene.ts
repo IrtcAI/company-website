@@ -28,7 +28,6 @@ export type StageOptions = {
 
 const poses: Record<StudioKind, [number, number, number]> = {
   browser: [0.18, -0.45, 0.05],
-  robot: [0.14, -0.34, 0.03],
   database: [0.42, 0.3, -0.22],
   server: [0.42, -0.42, 0.08],
   phone: [0.12, -0.42, 0.26],
@@ -194,103 +193,6 @@ function plate(
   return new THREE.Mesh(geometry, material);
 }
 
-function buildRobot(body: THREE.Group, parts: Part[], materials: Materials) {
-  const torso = new THREE.Group();
-  torso.add(
-    new THREE.Mesh(
-      new RoundedBoxGeometry(1.04, 0.78, 0.84, 4, 0.32),
-      materials.silver,
-    ),
-  );
-  const chest = plate(0.5, 0.36, 0.12, materials.charcoal);
-  chest.position.set(0, 0.02, 0.38);
-  const badge = sparkle(0.12, 0.03, materials.glow);
-  badge.rotation.x = Math.PI / 2;
-  badge.position.set(0, 0.02, 0.46);
-  const neck = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.2, 0.24, 0.16, 24),
-    materials.charcoal,
-  );
-  neck.position.y = 0.44;
-  torso.add(chest, badge, neck);
-  torso.position.y = -0.88;
-  body.add(part(parts, torso, [0, -1.2, 0]));
-
-  const arm = new THREE.CapsuleGeometry(0.12, 0.26, 4, 12);
-  const arms = [-1, 1].map((side) => {
-    const shoulder = new THREE.Group();
-    const limb = new THREE.Mesh(arm, materials.silver);
-    limb.position.y = side * 0.22;
-    shoulder.add(limb);
-    shoulder.position.set(side * 0.5, -0.82, 0.02);
-    shoulder.rotation.z = side < 0 ? -0.42 : -0.6;
-    body.add(part(parts, shoulder, [side * 1.1, -0.4, 0.3]));
-    return shoulder;
-  });
-
-  const head = new THREE.Group();
-  head.add(
-    new THREE.Mesh(
-      new RoundedBoxGeometry(1.6, 1.18, 1.14, 5, 0.42),
-      materials.silver,
-    ),
-  );
-  const visor = plate(1.24, 0.8, 0.3, materials.charcoal);
-  visor.position.z = 0.54;
-  head.add(visor);
-
-  const smile = new THREE.TorusGeometry(0.12, 0.04, 10, 24, Math.PI);
-  [-0.27, 0.27].forEach((x) => {
-    const eye = new THREE.Mesh(smile, materials.glow);
-    eye.position.set(x, 0.04, 0.66);
-    head.add(eye);
-  });
-  const mouth = new THREE.Mesh(
-    new THREE.TorusGeometry(0.11, 0.034, 10, 24, Math.PI),
-    materials.glow,
-  );
-  mouth.rotation.z = Math.PI;
-  mouth.position.set(0, -0.14, 0.66);
-  head.add(mouth);
-
-  const ear = new THREE.CylinderGeometry(0.22, 0.22, 0.14, 32);
-  ear.rotateZ(Math.PI / 2);
-  [-1, 1].forEach((side) => {
-    const pod = new THREE.Mesh(ear, materials.orange);
-    pod.position.x = side * 0.82;
-    head.add(pod);
-  });
-
-  const antenna = new THREE.Group();
-  const stem = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.03, 0.03, 0.3, 12),
-    materials.charcoal,
-  );
-  stem.position.y = 0.15;
-  const tip = new THREE.Mesh(
-    new THREE.SphereGeometry(0.11, 24, 16),
-    materials.orange,
-  );
-  tip.position.y = 0.34;
-  antenna.add(stem, tip);
-  antenna.position.y = 0.56;
-  antenna.rotation.z = -0.18;
-  head.add(antenna);
-
-  head.position.y = 0.2;
-  body.add(part(parts, head, [0, 1.2, 0.4]));
-
-  const spark = sparkle(0.2, 0.06, materials.orange);
-  spark.rotation.x = Math.PI / 2;
-  spark.position.set(0.9, 1.0, 0.1);
-  body.add(part(parts, spark, [0.8, 1.4, 0], [0, 0, 1.4]));
-
-  return (wave: (speed: number) => number) => {
-    head.rotation.z = wave(0.8) * 0.07;
-    arms[1].rotation.z = -0.6 + wave(2.4) * 0.14;
-  };
-}
-
 function buildDatabase(body: THREE.Group, parts: Part[], materials: Materials) {
   const disc = new THREE.CylinderGeometry(0.64, 0.64, 0.33, 48, 1);
   const rim = new THREE.TorusGeometry(0.62, 0.025, 8, 48);
@@ -348,7 +250,6 @@ const builders: Record<
   (body: THREE.Group, parts: Part[], materials: Materials) => Idle | void
 > = {
   browser: buildBrowser,
-  robot: buildRobot,
   database: buildDatabase,
   server: buildServer,
   phone: buildPhone,

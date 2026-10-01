@@ -138,7 +138,7 @@
 }
 
 .about-how-steps li {
-  border-top: 2px solid var(--coral);
+  border-top: 2px solid var(--terracotta);
   padding-top: 16px;
 }
 
@@ -200,25 +200,25 @@
 .about-gallery-placeholder.placeholder-0 {
   background: linear-gradient(
     135deg,
-    var(--peach-surface),
-    var(--mint-surface)
+    var(--terracotta-surface),
+    var(--sage-surface)
   );
 }
 
 .about-gallery-placeholder.placeholder-1 {
   background: linear-gradient(
     135deg,
-    var(--mint-surface),
-    var(--peach-surface)
+    var(--sage-surface),
+    var(--terracotta-surface)
   );
 }
 
 .about-gallery-placeholder.placeholder-2 {
-  background: linear-gradient(160deg, var(--coral), var(--mint-surface));
+  background: linear-gradient(160deg, var(--terracotta), var(--sage-surface));
 }
 
 .about-gallery-placeholder.placeholder-3 {
-  background: linear-gradient(200deg, var(--mint-surface), var(--surface));
+  background: linear-gradient(200deg, var(--sage-surface), var(--surface));
 }
 
 @media (max-width: 480px) {

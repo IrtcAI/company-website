@@ -30,7 +30,7 @@ Todas as páginas têm `canonical`, `hreflang` e Open Graph por idioma, gerados 
 
 ## Objetos 3D
 
-Seis objetos formam a identidade visual: terminal (CSS), navegador, robô, banco de dados, servidor e celular (Three.js, em `lib/studio-scene.ts`).
+Cinco objetos formam a identidade visual: terminal (CSS), navegador, banco de dados, servidor e celular (Three.js, em `lib/studio-scene.ts`).
 
 - O primeiro paint mostra imagens WebP pré-renderizadas de cada objeto na pose de repouso (`public/studio`). O canvas WebGL substitui a imagem sem salto visível.
 - O Three.js (cerca de 140 KB gzip) só carrega em desktop, quando o navegador fica ocioso, e nunca com movimento reduzido. No celular, as imagens flutuam com animações CSS, pausadas fora da tela.
@@ -53,7 +53,7 @@ Tudo é derivado dos dados em `lib/`, para não ficar desatualizado:
 
 - **Google Tag Manager** (`@next/third-parties`) é o único analytics. Ele só carrega depois que o visitante aceita o aviso de cookies (`components/analytics-consent.tsx`). A escolha fica no `localStorage`, é enviada como atualização do Consent Mode e pode ser mudada no rodapé. O código envia ao `dataLayer` os eventos `iris_open`, `contact_submit` e `web_vitals`; o GA4 e as conversões são configurados no painel do GTM.
 - **Vercel Speed Insights** coleta Core Web Vitals reais. Não conta visitas, não usa cookies e carrega do mesmo domínio em produção.
-- A CSP em `next.config.ts` libera `googletagmanager.com` e os domínios de coleta do Google Analytics. Qualquer tag de HTML personalizado no GTM que carregue script de outro domínio precisa ser adicionada ali.
+- A CSP em `next.config.ts` libera `googletagmanager.com` e os domínios de coleta do Google Analytics. Qualquer tag de HTML personalizado no GTM que carregue script de outro domínio precisa ser adicionada ali. Só em desenvolvimento a CSP inclui `'unsafe-eval'`, que o React usa para montar as pilhas de erro do servidor.
 
 ## Iris
 
@@ -77,7 +77,7 @@ Os limites de requisição ficam em memória (`lib/rate-limit.ts`). Na Vercel ca
 
 ## Acessibilidade
 
-HTML semântico com landmarks, skip link, um `h1` por página e foco visível (sublinhado nos campos de formulário). O item do menu da seção visível recebe `aria-current`. A barra de acessibilidade abre por clique e pode ser arrastada para qualquer borda da tela (ou movida com Alt e as setas). Ela oferece cinco tamanhos de texto, alto contraste e pausa das animações, salvos no navegador. O tamanho de texto (`lib/text-scale.ts`) só altera textos de até 24 px, para não quebrar os títulos, e é reaplicado quando a página muda. O alto contraste leva os tokens de cor ao preto e branco do tema atual e aplica um filtro de contraste nas áreas com cores fixas da marca. Os textos da barra ficam em `lib/content.ts`. Todas as animações respeitam `prefers-reduced-motion`, e o conteúdo aparece sem JavaScript.
+HTML semântico com landmarks, skip link, um `h1` por página e foco visível (sublinhado nos campos de formulário). O item do menu da seção visível recebe `aria-current`. No celular e no tablet o menu abre em tela cheia num `<dialog>` modal, que prende o foco, trava a rolagem da página e fecha com Esc. A barra de acessibilidade abre por clique e pode ser arrastada para qualquer borda da tela (ou movida com Alt e as setas). Ela oferece cinco tamanhos de texto, alto contraste e pausa das animações, salvos no navegador. O tamanho de texto (`lib/text-scale.ts`) só altera textos de até 24 px, para não quebrar os títulos, e é reaplicado quando a página muda. O alto contraste leva os tokens de cor ao preto e branco do tema atual e aplica um filtro de contraste nas áreas com cores fixas da marca. Os textos da barra ficam em `lib/content.ts`. Todas as animações respeitam `prefers-reduced-motion`, e o conteúdo aparece sem JavaScript.
 
 ## Metas de qualidade
 

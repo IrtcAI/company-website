@@ -8,8 +8,8 @@
   flex-direction: column;
   gap: 14px;
   background: #fff;
-  color: #191b1b;
-  border: 1px solid #e3e6df;
+  color: #061827;
+  border: 1px solid #e1e6e7;
   border-radius: 20px;
   padding: 28px 26px;
   box-shadow:
@@ -31,9 +31,9 @@
   width: 52px;
   height: 52px;
   border-radius: 15px;
-  background: #d2e8d9;
-  color: #21372a;
-  box-shadow: 0 0 0 #9cc5aa;
+  background: #d6e7df;
+  color: #0b3440;
+  box-shadow: 0 0 0 #86bca2;
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.45s;
@@ -47,7 +47,7 @@
 .service-card:focus-visible .service-card-icon {
   transform: perspective(220px) translateY(-5px) rotateX(16deg) rotateY(-20deg)
     rotateZ(-7deg);
-  box-shadow: 5px 7px 0 #9cc5aa;
+  box-shadow: 5px 7px 0 #86bca2;
 }
 .service-card:hover .service-card-icon svg,
 .service-card:focus-visible .service-card-icon svg {
@@ -64,7 +64,7 @@
   margin: 0;
   font-size: 13.5px;
   line-height: 1.6;
-  color: #52584f;
+  color: #48555e;
 }
 .service-card-link {
   display: inline-flex;
@@ -73,7 +73,7 @@
   margin-top: auto;
   font-size: 12px;
   font-weight: 600;
-  color: #21372a;
+  color: #0b3440;
 }
 .service-card-link svg {
   width: 15px;
@@ -89,7 +89,7 @@
   margin: 22px 0 0;
   font-size: 16px;
   line-height: 1.7;
-  color: #c3cdc5;
+  color: #c2ced0;
 }
 .solutions .service-grid {
   margin: 55px 0 30px;
@@ -223,7 +223,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #6a9c78;
+  background: #5f9a82;
 }
 
 .service-how-grid {
@@ -244,7 +244,7 @@
 }
 
 .service-related-project {
-  background: color-mix(in srgb, var(--mint) 32%, transparent);
+  background: color-mix(in srgb, var(--sage-tint) 32%, transparent);
   border-radius: 20px;
   border-top: 0;
 }
@@ -297,12 +297,12 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--mint) 55%, transparent);
+  background: color-mix(in srgb, var(--sage-tint) 55%, transparent);
 }
 .service-tech-face svg {
   width: 16px;
   height: 16px;
-  color: #21372a;
+  color: #0b3440;
 }
 
 .service-faq-list {

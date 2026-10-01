@@ -47,6 +47,8 @@ Quando confirmar ou corrigir um item, atualize esta tabela e o comentário no ar
 
 Origem e tratamento de cada imagem publicada em `image-sources.md`. Logos e fotos ficam no próprio repositório, otimizados em WebP. Revalide o uso de marcas de clientes antes de qualquer campanha paga.
 
+O favicon (`apps/site/app/icon.svg`) é o terminal `>_`. As duas versões aprovadas ficam em `docs/brand/`: `favicon-terminal.svg`, a que está no ar, e `favicon-it.svg`, o monograma IT. Para trocar, copie a escolhida por cima do `icon.svg`.
+
 ## Antes de publicar uma mudança de conteúdo
 
 1. Atualize as três línguas.
