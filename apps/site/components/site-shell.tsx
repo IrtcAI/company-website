@@ -85,6 +85,7 @@ export function SiteShell({
         labels={{
           home: copy.home,
           menu: copy.menu,
+          close: copy.menuClose,
           language: copy.language,
           theme: copy.theme,
           themes: copy.themes,

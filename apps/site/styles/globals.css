@@ -144,13 +144,18 @@ button {
   color: var(--hero-ink);
 }
 .brand {
-  font-size: 49px;
+  position: relative;
+  top: -0.13em;
+  font-size: var(--brand-size, 49px);
   line-height: 1;
   font-weight: 500;
   letter-spacing: -0.07em;
   color: var(--terracotta);
 }
+/* Puts the 14px nav text on the wordmark's baseline, from Manrope's ascent at both sizes. */
 .site-header > nav {
+  position: relative;
+  top: calc(var(--brand-size, 49px) * 0.248 - 5.5px);
   display: flex;
   gap: 32px;
   font-size: 14px;
@@ -282,8 +287,10 @@ button {
 }
 .typed-line {
   display: block;
-  height: 1.1em;
-  white-space: nowrap;
+  height: 2.06em;
+  max-width: 8.6em;
+  margin-inline: auto;
+  text-wrap: balance;
   color: var(--terracotta);
 }
 .typing-caret {
@@ -909,9 +916,9 @@ summary::-webkit-details-marker {
   z-index: 10;
   right: 22px;
   bottom: 20px;
-  background: #d98f6c;
+  background: #f4efe7;
   border: 1px solid #d9dcdc;
-  box-shadow: 0 5px 22px #00000012;
+  box-shadow: 0 5px 22px #0000002e;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -1231,32 +1238,6 @@ summary::-webkit-details-marker {
   .mobile-menu {
     display: block;
     margin-left: auto;
-  }
-  .mobile-menu summary {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    font-size: 14px;
-    padding: 12px 0 12px 15px;
-    list-style: none;
-  }
-  .mobile-menu summary span {
-    font-size: 23px;
-  }
-  .mobile-menu nav {
-    position: absolute;
-    top: 85px;
-    left: 5%;
-    right: 5%;
-    padding: 20px;
-    border-radius: 15px;
-    background: var(--ink);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  .mobile-menu nav a {
-    padding: 13px;
   }
   .hero {
     min-height: 750px;
@@ -1947,22 +1928,8 @@ main[tabindex="-1"]:focus {
   .mobile-menu {
     display: block;
   }
-  .mobile-menu summary {
-    list-style: none;
-    padding: 10px;
+  .menu-toggle {
     color: var(--hero-ink);
-  }
-  .mobile-menu nav {
-    position: absolute;
-    right: 4%;
-    top: 90px;
-    background: #061827;
-    color: #fff;
-    padding: 25px;
-    display: grid;
-    gap: 10px;
-    border-radius: 15px;
-    min-width: 220px;
   }
   .tech-tokens {
     grid-template-columns: repeat(4, 1fr);
@@ -1986,9 +1953,6 @@ main[tabindex="-1"]:focus {
   .preference select {
     font-size: 11px;
     max-width: 79px;
-  }
-  .mobile-menu summary {
-    padding: 8px 0 8px 5px;
   }
   .hero h1 {
     font-size: clamp(34px, 8.2vw, 62px);
@@ -2775,11 +2739,11 @@ main[tabindex="-1"]:focus {
 }
 .site-header[data-stuck="true"] > nav,
 .site-header[data-stuck="true"] .site-preferences,
-.site-header[data-stuck="true"] .mobile-menu summary {
+.site-header[data-stuck="true"] .menu-toggle {
   color: var(--text);
 }
-.site-header[data-stuck="true"] .brand {
-  font-size: 36px;
+.site-header[data-stuck="true"] {
+  --brand-size: 36px;
 }
 .site-header nav a[aria-current="location"]::after {
   transform: scaleX(1);

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
+  CSSProperties,
   FocusEvent,
   KeyboardEvent,
   MouseEvent,
@@ -11,13 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  ChevronDown,
-  Globe2,
-  Menu,
-  MessageCircle,
-  SunMoon,
-} from "lucide-react";
+import { ChevronDown, Globe2, MessageCircle, SunMoon } from "lucide-react";
 import type { Locale } from "@/lib/content";
 import type { Page } from "@/lib/routes";
 import { ServiceIcon } from "./service-icon";
@@ -51,6 +46,7 @@ export type ServicesMenu = {
 export type HeaderLabels = {
   home: string;
   menu: string;
+  close: string;
   language: string;
   theme: string;
   themes: string[];
@@ -75,7 +71,6 @@ function scrollToSection(event: MouseEvent<HTMLAnchorElement>, id: string) {
     destination.getBoundingClientRect().top + window.scrollY - padding;
   window.scrollTo({ top, behavior });
   destination.focus({ preventScroll: true });
-  event.currentTarget.closest("details")?.removeAttribute("open");
 }
 
 function ServicesDropdown({
@@ -204,6 +199,217 @@ function ServicesDropdown({
           {menu.allLabel}
         </Link>
       </div>
+    </div>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <span className="menu-icon" aria-hidden="true">
+      <span />
+      <span />
+      <span />
+    </span>
+  );
+}
+
+function MobileMenu({
+  home,
+  homeLabel,
+  menuLabel,
+  closeLabel,
+  services,
+  servicesMenu,
+  links,
+  contact,
+  talk,
+  contactCurrent,
+}: {
+  home: string;
+  homeLabel: string;
+  menuLabel: string;
+  closeLabel: string;
+  services?: {
+    item: NavItem;
+    current: "page" | "location" | undefined;
+    onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  };
+  servicesMenu: ServicesMenu;
+  links: (NavItem & {
+    current: "page" | "location" | undefined;
+    onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  })[];
+  contact: string;
+  talk: string;
+  contactCurrent: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const wide = window.matchMedia("(min-width: 1201px)");
+    const onChange = () => wide.matches && closeMenu();
+    wide.addEventListener("change", onChange);
+    return () => wide.removeEventListener("change", onChange);
+  }, [open]);
+
+  function openMenu() {
+    const panel = dialog.current;
+    const button = toggle.current;
+    if (!panel || !button) return;
+    // The close button and the reveal circle start exactly where the
+    // hamburger sits, whatever padding the header has at the moment.
+    const box = button.getBoundingClientRect();
+    panel.style.setProperty("--toggle-top", `${box.top}px`);
+    panel.style.setProperty("--toggle-right", `${innerWidth - box.right}px`);
+    panel.style.setProperty("--toggle-size", `${box.width}px`);
+    panel.style.setProperty("--origin-x", `${box.left + box.width / 2}px`);
+    panel.style.setProperty("--origin-y", `${box.top + box.height / 2}px`);
+    panel.showModal();
+    setOpen(true);
+  }
+
+  function closeMenu() {
+    dialog.current?.close();
+    setOpen(false);
+    setServicesOpen(false);
+  }
+
+  function follow(onClick?: (event: MouseEvent<HTMLAnchorElement>) => void) {
+    return (event: MouseEvent<HTMLAnchorElement>) => {
+      closeMenu();
+      onClick?.(event);
+    };
+  }
+
+  let index = 0;
+  const stagger = () => ({ "--i": index++ }) as CSSProperties;
+
+  return (
+    <div className="mobile-menu">
+      <button
+        ref={toggle}
+        type="button"
+        className="menu-toggle"
+        aria-label={menuLabel}
+        aria-expanded={open}
+        aria-controls="mobile-menu-panel"
+        onClick={openMenu}
+      >
+        <MenuIcon />
+      </button>
+      <dialog
+        ref={dialog}
+        id="mobile-menu-panel"
+        className="mobile-menu-panel"
+        aria-label={menuLabel}
+        onClose={() => {
+          setOpen(false);
+          setServicesOpen(false);
+        }}
+      >
+        <div className="mobile-menu-top">
+          <Link
+            href={home}
+            className="mobile-menu-brand"
+            aria-label={homeLabel}
+            onClick={closeMenu}
+          >
+            irtc
+          </Link>
+          <button
+            type="button"
+            className="menu-toggle menu-close"
+            aria-label={closeLabel}
+            onClick={closeMenu}
+          >
+            <MenuIcon />
+          </button>
+        </div>
+        <nav aria-label={menuLabel}>
+          {services && (
+            <div
+              className="mobile-services"
+              data-open={servicesOpen}
+              style={stagger()}
+            >
+              <div className="mobile-services-row">
+                <Link
+                  href={services.item.href}
+                  prefetch={false}
+                  aria-current={services.current}
+                  onClick={follow(services.onClick)}
+                >
+                  {services.item.label}
+                </Link>
+                <button
+                  type="button"
+                  aria-expanded={servicesOpen}
+                  aria-controls="mobile-services-list"
+                  onClick={() => setServicesOpen((value) => !value)}
+                >
+                  <span className="sr-only">{servicesMenu.toggleLabel}</span>
+                  <ChevronDown aria-hidden="true" />
+                </button>
+              </div>
+              <div id="mobile-services-list" className="mobile-services-list">
+                <div>
+                  <ul>
+                    {servicesMenu.items.map((service) => (
+                      <li key={service.href}>
+                        <Link
+                          href={service.href}
+                          prefetch={false}
+                          tabIndex={servicesOpen ? undefined : -1}
+                          onClick={closeMenu}
+                        >
+                          <span>{service.title}</span>
+                          <small>{service.summary}</small>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={servicesMenu.allHref}
+                    prefetch={false}
+                    tabIndex={servicesOpen ? undefined : -1}
+                    onClick={closeMenu}
+                  >
+                    {servicesMenu.allLabel}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              prefetch={false}
+              aria-current={link.current}
+              onClick={follow(link.onClick)}
+              style={stagger()}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <Link
+          href={contact}
+          className="pill-link mobile-menu-cta"
+          aria-current={contactCurrent ? "page" : undefined}
+          onClick={closeMenu}
+          style={stagger()}
+        >
+          {talk}
+          <span>
+            <MessageCircle aria-hidden="true" />
+          </span>
+        </Link>
+      </dialog>
     </div>
   );
 }
@@ -409,51 +615,28 @@ export function SiteHeader({
           <MessageCircle aria-hidden="true" />
         </span>
       </Link>
-      <details className="mobile-menu">
-        <summary aria-label={labels.menu}>
-          <Menu aria-hidden="true" />
-        </summary>
-        <nav aria-label={labels.menu}>
-          {servicesItem && (
-            <div className="mobile-services">
-              <Link
-                href={servicesItem.href}
-                prefetch={false}
-                aria-current={current(servicesItem)}
-                onClick={sectionClick(servicesItem)}
-              >
-                {servicesItem.label}
-              </Link>
-              <details>
-                <summary>
-                  <span className="sr-only">{servicesMenu.toggleLabel}</span>
-                  <ChevronDown aria-hidden="true" />
-                </summary>
-                <ul>
-                  {servicesMenu.items.map((service) => (
-                    <li key={service.href}>
-                      <Link href={service.href} prefetch={false}>
-                        <span>{service.title}</span>
-                        <small>{service.summary}</small>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link href={servicesMenu.allHref} prefetch={false}>
-                  {servicesMenu.allLabel}
-                </Link>
-              </details>
-            </div>
-          )}
-          {restNav.map(navLink)}
-          <Link
-            href={contact}
-            aria-current={page === "contact" ? "page" : undefined}
-          >
-            {labels.talk}
-          </Link>
-        </nav>
-      </details>
+      <MobileMenu
+        home={home}
+        homeLabel={labels.home}
+        menuLabel={labels.menu}
+        closeLabel={labels.close}
+        services={
+          servicesItem && {
+            item: servicesItem,
+            current: current(servicesItem),
+            onClick: sectionClick(servicesItem),
+          }
+        }
+        servicesMenu={servicesMenu}
+        links={restNav.map((item) => ({
+          ...item,
+          current: current(item),
+          onClick: sectionClick(item),
+        }))}
+        contact={contact}
+        talk={labels.talk}
+        contactCurrent={page === "contact"}
+      />
     </header>
   );
 }

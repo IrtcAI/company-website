@@ -465,17 +465,43 @@ describe("institutional experience", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
 
-  it("lists services as a nested group in the mobile menu", () => {
+  it("lists services as a nested group in the mobile menu", async () => {
     const { container } = renderHome();
+    await userEvent.click(screen.getByRole("button", { name: "Menu" }));
     const group = container.querySelector(".mobile-services") as HTMLElement;
 
     expect(
       within(group).getByRole("link", { name: "Serviços" }),
     ).toHaveAttribute("href", "/#servicos");
+    const toggle = within(group).getByRole("button");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await userEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
     for (const service of services)
       expect(
         within(group).getByText(service.copy["pt-BR"].title),
       ).toBeInTheDocument();
+  });
+
+  it("opens the mobile menu as a modal and closes it from the X or a link", async () => {
+    const { container } = renderHome();
+    const open = screen.getByRole("button", { name: "Menu" });
+    const panel = container.querySelector(
+      "#mobile-menu-panel",
+    ) as HTMLDialogElement;
+
+    expect(panel).not.toHaveAttribute("open");
+    await userEvent.click(open);
+    expect(panel).toHaveAttribute("open");
+    expect(open).toHaveAttribute("aria-expanded", "true");
+
+    await userEvent.click(screen.getByRole("button", { name: "Fechar menu" }));
+    expect(panel).not.toHaveAttribute("open");
+    expect(open).toHaveAttribute("aria-expanded", "false");
+
+    await userEvent.click(open);
+    await userEvent.click(within(panel).getByRole("link", { name: "Sobre" }));
+    expect(panel).not.toHaveAttribute("open");
   });
 
   it("scrolls to the services section when clicking Serviços on the home page", async () => {
