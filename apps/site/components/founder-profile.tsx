@@ -68,7 +68,7 @@ export function FounderProfile({ locale }: { locale: Locale }) {
             />
           </div>
           <span className="founder-frame-stamp" aria-hidden="true">
-            irtc✳
+            irtc
           </span>
           <span className="founder-frame-coordinate" aria-hidden="true">
             01°27′ S · 48°30′ W

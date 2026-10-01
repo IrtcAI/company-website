@@ -101,9 +101,7 @@ export default function RootLayout({
           aria-hidden="true"
           suppressHydrationWarning
         >
-          <span className="splash-mark">
-            irtc<span>✳</span>
-          </span>
+          <span className="splash-mark">irtc</span>
           <span className="splash-bar" />
         </div>
         <noscript>

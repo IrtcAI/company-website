@@ -83,7 +83,7 @@ export function Founder({ locale }: { locale: Locale }) {
             loading="lazy"
           />
           <span className="founder-stamp" aria-hidden="true">
-            irtc✳
+            irtc
           </span>
         </div>
         <figcaption>

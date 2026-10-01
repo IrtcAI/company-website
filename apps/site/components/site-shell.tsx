@@ -184,9 +184,6 @@ export function SiteShell({
         </div>
         <Link href={home} className="footer-wordmark" aria-label={copy.home}>
           irtc
-          <span className="footer-asterisk" aria-hidden="true">
-            ✳
-          </span>
         </Link>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>

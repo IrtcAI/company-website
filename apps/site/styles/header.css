@@ -118,9 +118,9 @@
   width: 64px;
   height: 64px;
   border-radius: 18px;
-  background: #d2e8d9;
-  color: #21372a;
-  box-shadow: 6px 8px 0 #9cc5aa;
+  background: #d6e7df;
+  color: #0b3440;
+  box-shadow: 6px 8px 0 #86bca2;
   transform: perspective(260px) rotateX(16deg) rotateY(-20deg) rotateZ(-7deg);
   pointer-events: none;
   animation: services-icon-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -135,7 +135,7 @@
 @keyframes services-icon-pop {
   from {
     transform: perspective(260px) translateY(6px) scale(0.85);
-    box-shadow: 0 0 0 #9cc5aa;
+    box-shadow: 0 0 0 #86bca2;
   }
 }
 

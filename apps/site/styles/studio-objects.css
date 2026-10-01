@@ -142,12 +142,12 @@ html[data-theme="dark"] .backdrop-server .development-world {
     margin: 0;
     width: var(--screen-width, clamp(150px, 15vw, 220px));
     height: var(--screen-height, clamp(150px, 15vw, 220px));
-    border: 10px solid #c9cbc5;
+    border: 10px solid #b9c6ca;
     border-radius: 20px;
-    background: #242827;
+    background: #0a1f2c;
     box-shadow:
-      inset 5px 6px 5px #59605b,
-      10px 14px 0 #252a28;
+      inset 5px 6px 5px #2a4a57,
+      10px 14px 0 #04121d;
     opacity: 1;
     transform: translate(-50%, -50%)
       translate(var(--screen-x, -31vw), var(--screen-y, -25svh))
@@ -181,7 +181,7 @@ html[data-theme="dark"] .backdrop-server .development-world {
       800 clamp(46px, 7vw, 100px) var(--font-body),
       sans-serif;
     letter-spacing: -0.15em;
-    color: #a5dec5;
+    color: #a9d3bd;
     transform: none;
   }
 }

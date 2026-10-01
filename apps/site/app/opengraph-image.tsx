@@ -4,28 +4,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "IRTC, fábrica de software em Belém, Pará";
 
-const ink = "#2a1712";
-const cream = "#fff4e9";
-
-function Asterisk({ size, color }: { size: number; color: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100">
-      {[0, 45, 90, 135].map((angle) => (
-        <line
-          key={angle}
-          x1="50"
-          y1="8"
-          x2="50"
-          y2="92"
-          stroke={color}
-          strokeWidth="13"
-          strokeLinecap="round"
-          transform={`rotate(${angle} 50 50)`}
-        />
-      ))}
-    </svg>
-  );
-}
+const cream = "#f4efe7";
+const terracotta = "#d98f6c";
+const sage = "#86bca2";
 
 export default function Image() {
   return new ImageResponse(
@@ -37,25 +18,23 @@ export default function Image() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 88px",
-        background: "#ef7e6c",
-        color: ink,
+        background:
+          "linear-gradient(165deg, #020b16 0%, #071a2a 48%, #003340 100%)",
+        borderBottom: `12px solid ${sage}`,
+        color: cream,
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
-        <span
-          style={{
-            fontSize: 220,
-            fontWeight: 700,
-            letterSpacing: "-0.07em",
-            lineHeight: 1,
-          }}
-        >
-          irtc
-        </span>
-        <div style={{ display: "flex", marginLeft: 14, marginTop: 18 }}>
-          <Asterisk size={92} color={cream} />
-        </div>
-      </div>
+      <span
+        style={{
+          fontSize: 220,
+          fontWeight: 500,
+          letterSpacing: "-0.07em",
+          lineHeight: 1,
+          color: terracotta,
+        }}
+      >
+        irtc
+      </span>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
@@ -74,7 +53,7 @@ export default function Image() {
             justifyContent: "space-between",
             marginTop: 36,
             paddingTop: 28,
-            borderTop: `2px solid ${ink}33`,
+            borderTop: `2px solid ${cream}33`,
             fontSize: 28,
           }}
         >

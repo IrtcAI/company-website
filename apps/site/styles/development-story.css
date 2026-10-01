@@ -29,7 +29,7 @@
   height: 100%;
 }
 .solutions .tech-playground {
-  background: linear-gradient(90deg, #191b1bf2, #191b1bb3);
+  background: linear-gradient(90deg, #003c4af2, #003c4ab3);
 }
 html[data-accessibility-contrast="true"] .development-backdrop {
   display: none;
@@ -62,12 +62,12 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   position: absolute;
   inset: -6% -4% 18% -4%;
   z-index: -1;
-  border: 1px solid light-dark(#8daa99, #3d5346);
+  border: 1px solid light-dark(#8fb0a6, #24485a);
   border-radius: 12px;
   background:
-    repeating-linear-gradient(0deg, transparent 0 31px, #73958026 31px 32px),
-    repeating-linear-gradient(90deg, transparent 0 31px, #73958026 31px 32px),
-    light-dark(#d7e5d9, #212f27);
+    repeating-linear-gradient(0deg, transparent 0 31px, #5f8f8a26 31px 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, #5f8f8a26 31px 32px),
+    light-dark(#d6e5e0, #0a2a35);
   transform: rotate(5deg);
 }
 
@@ -75,7 +75,7 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   content: "";
   position: absolute;
   inset: 13% 8%;
-  border: 1px solid #7c9b8799;
+  border: 1px solid #6f978f99;
   border-radius: 50%;
 }
 
@@ -86,9 +86,9 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   bottom: 12%;
   left: -4%;
   width: 17%;
-  border: 1px solid #b7786066;
+  border: 1px solid #b8735566;
   border-radius: 6px;
-  background: #e9bd9f;
+  background: #e6b59c;
   transform: rotate(-12deg);
   z-index: -1;
 }
@@ -102,10 +102,10 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   width: 92px;
   height: 72px;
   border-radius: 12px;
-  background: #26473b;
-  color: #c7e4d4;
+  background: #0b3a47;
+  color: #c5e0d2;
   font: 700 32px monospace;
-  box-shadow: 5px 6px 0 #829b8e;
+  box-shadow: 5px 6px 0 #86a3a0;
   transform: rotate(7deg);
 }
 
@@ -113,7 +113,7 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   position: absolute;
   top: 5%;
   left: 6%;
-  color: light-dark(#345440, #9fc2ab);
+  color: light-dark(#1f5059, #9fc4b4);
   font: 10px monospace;
   letter-spacing: 0.08em;
 }
@@ -125,8 +125,8 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: light-dark(#456f52, #7fae90);
-  box-shadow: 0 0 0 6px light-dark(#456f5226, #7fae9033);
+  background: light-dark(#3a7564, #86bca2);
+  box-shadow: 0 0 0 6px light-dark(#3a756426, #86bca233);
 }
 
 @media (max-width: 767px) {

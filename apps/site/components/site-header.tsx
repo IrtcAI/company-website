@@ -358,7 +358,7 @@ export function SiteHeader({
       onFocus={() => setVisible(true)}
     >
       <Link href={home} className="brand" aria-label={labels.home}>
-        irtc<span aria-hidden="true">✳</span>
+        irtc
       </Link>
       <nav aria-label={labels.menu}>
         {servicesItem && (
