@@ -20,7 +20,6 @@ export function HeroWorld() {
       <span className="fallback-terminal">&gt;_</span>
       <StudioSlot kind="phone" className="hero-phone" />
       <StudioSlot kind="browser" className="hero-browser" />
-      <StudioSlot kind="robot" className="hero-robot" />
       <StudioSlot kind="database" className="hero-database" />
       <StudioSlot kind="server" className="hero-server" />
     </div>

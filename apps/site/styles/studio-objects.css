@@ -25,11 +25,6 @@
   bottom: 0;
   width: clamp(150px, 17vw, 250px);
 }
-.hero-robot {
-  left: 44%;
-  top: 6%;
-  width: clamp(140px, 13vw, 190px);
-}
 .hero-phone {
   right: 3%;
   top: 2%;
@@ -205,11 +200,6 @@ html[data-theme="dark"] .backdrop-server .development-world {
     top: 12%;
     width: clamp(64px, 13vw, 110px);
   }
-  .hero-robot {
-    left: calc(50% - clamp(52px, 9vw, 75px));
-    top: calc(50% + 245px);
-    width: clamp(104px, 18vw, 150px);
-  }
   .hero-server {
     right: 5%;
     top: calc(50% + 225px);
@@ -242,11 +232,13 @@ html[data-theme="dark"] .backdrop-server .development-world {
     top: calc(50% + 214px);
     width: clamp(88px, 26vw, 104px);
   }
-  .hero-robot {
-    left: calc(50% - clamp(40px, 12vw, 48px));
-    top: calc(50% + 208px);
+  .hero-server {
+    right: 5%;
+    top: calc(50% + 222px);
     width: clamp(80px, 24vw, 96px);
   }
+}
+@media (max-width: 639px) and (max-height: 720px) {
   .hero-server {
     display: none;
   }
@@ -265,12 +257,6 @@ html[data-theme="dark"] .backdrop-server .development-world {
     --drift-time: 7.4s;
     --drift-delay: -3.1s;
     --drift-tilt: 2deg;
-  }
-  .hero-robot {
-    --drift-time: 5.6s;
-    --drift-delay: -0.6s;
-    --drift-tilt: 4deg;
-    --drift-lift: -10px;
   }
   .hero-database {
     --drift-time: 6.8s;
