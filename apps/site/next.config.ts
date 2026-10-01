@@ -22,6 +22,8 @@ const nextConfig: NextConfig = {
     const isProd = process.env.NODE_ENV === "production";
     // Speed Insights loads same-origin from /_vercel in production, but from va.vercel-scripts.com in dev.
     const devInsights = isProd ? [] : ["https://va.vercel-scripts.com"];
+    // React dev mode rebuilds server stack traces with eval(); production never calls it.
+    const devEval = isProd ? [] : ["'unsafe-eval'"];
     const google = [
       "https://www.googletagmanager.com",
       "https://*.google-analytics.com",
@@ -30,6 +32,7 @@ const nextConfig: NextConfig = {
     const scriptSrc = [
       "'self'",
       "'unsafe-inline'",
+      ...devEval,
       google[0],
       ...devInsights,
     ].join(" ");
