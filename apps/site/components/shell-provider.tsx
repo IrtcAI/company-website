@@ -20,6 +20,7 @@ import {
 } from "./accessibility-toolbar";
 import { AnalyticsConsent, type ConsentLabels } from "./analytics-consent";
 import { Toaster } from "./toaster";
+import type { IrisLabels } from "./iris";
 
 const Iris = dynamic(() => import("./iris"));
 
@@ -80,6 +81,8 @@ export function ShellProvider({
   consent,
   toastLabels,
   accessibilityLabels,
+  irisLabels,
+  contactSending,
   children,
 }: {
   locale: Locale;
@@ -87,6 +90,8 @@ export function ShellProvider({
   consent: ConsentLabels;
   toastLabels: ToastLabels;
   accessibilityLabels: AccessibilityLabels;
+  irisLabels: IrisLabels;
+  contactSending: string;
   children: ReactNode;
 }) {
   const [paused, setPaused] = useState(false);
@@ -152,6 +157,8 @@ export function ShellProvider({
               setChatOpen(false);
               (chatTrigger.current || launcher.current)?.focus();
             }}
+            labels={irisLabels}
+            contactSending={contactSending}
           />
         ) : null}
       </div>
