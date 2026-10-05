@@ -20,6 +20,12 @@ Cada área tem seu arquivo de CSS em `styles/`, importado em `layout/main.tsx`. 
 
 Uma splash com a marca cobre a página até o evento `load` e as fontes, com limite de 2,2 s. Ela é renderizada no servidor, escondida por um script inline e desativada sem JavaScript.
 
+## Identidade visual
+
+Cores, tipografia, espaçamento, raios e movimento seguem o Design System IRTC 1.0. Os tokens ficam em `styles/globals.css` com o prefixo `--irtc-` (por exemplo `--irtc-color-action-primary-bg`), em `light-dark()` para os dois temas; as variáveis antigas dos componentes apontam para eles. A fonte é Inter, carregada por `next/font` com o eixo `opsz`.
+
+O logo usa os arquivos oficiais em `public/brand/`: `irtc-wordmark-deep-teal.svg` em fundo claro e `irtc-wordmark-offwhite.svg` em fundo escuro. O arquivo off-white traz o descritor desenhado na arte; o CSS recorta a área do wordmark (517 × 219) e o descritor "Cloud, Software & AI Engineering" aparece como texto HTML onde há espaço. O favicon é o símbolo i. Não redesenhe nem recolora esses arquivos: novas variantes vêm de `irtc/assets`.
+
 ## Rotas e idiomas
 
 pt-BR é o idioma base, na raiz. en e es ficam em `/en` e `/es`. As páginas internas usam segmentos traduzidos (`/servicos`, `/en/services`, `/es/servicios`), que `next.config.ts` reescreve para `app/[locale]/<página>`. Os endereços internos (`/pt-BR/services`) redirecionam para os públicos. A fonte da verdade é `lib/routes.ts`.
@@ -57,12 +63,12 @@ Tudo é derivado dos dados em `lib/`, para não ficar desatualizado:
 
 ## Iris
 
-Iris é uma assistente de descoberta: explica a IRTC ou esboça um MVP em até três pontos e 250 caracteres. Não é uma assistente geral.
+Iris é a assistente de IA da IRTC. Explica a empresa e os serviços e ajuda o visitante a organizar o contexto do problema (o que acontece, quem é afetado, o que precisa mudar) para a equipe analisar, em até três pontos e 250 caracteres. Não é uma assistente geral e não assume compromisso comercial.
 
 - As instruções do modelo ficam em inglês em `lib/iris-policy.ts`; a resposta sai no idioma do visitante. A rota ignora qualquer conhecimento enviado pelo navegador.
-- O conhecimento vem de RAG. `lib/knowledge/sources.ts` monta trechos a partir do conteúdo publicado em `lib/` (empresa, serviços e FAQ, Sobre, especialidades do fundador, projetos, anos de experiência), sem depoimentos e sem o conteúdo provisório de `site-guide.md`. `pnpm knowledge` gera os embeddings (`text-embedding-3-small`, 512 dimensões, int8) em `lib/knowledge/index.json` e só recalcula trechos cujo texto mudou. `tests/knowledge-index.test.ts` falha quando o conteúdo muda sem regenerar o índice.
+- O conhecimento vem de RAG. `lib/knowledge/sources.ts` monta trechos a partir do conteúdo publicado em `lib/` (empresa, pilares e Continuous Engineering, serviços com FAQ e critérios de resultado, Sobre, fundador e contato). Projetos, números e depoimentos ficam fora até terem evidência e autorização de publicação. `pnpm knowledge` gera os embeddings (`text-embedding-3-small`, 512 dimensões, int8) em `lib/knowledge/index.json` e só recalcula trechos cujo texto mudou. `tests/knowledge-index.test.ts` falha quando o conteúdo muda sem regenerar o índice.
 - A cada mensagem, `lib/knowledge/search.ts` busca no idioma da página os quatro trechos mais próximos das duas últimas mensagens do visitante, acima de um limiar de similaridade, mais o trecho de contato. Eles vão ao modelo numa mensagem `developer` separada (`<company_facts>`), fora das instruções. Se a busca falhar, a rota usa o bloco fixo `companyKnowledge`.
-- A resposta traz `intent` (`answer`, `idea` ou `refuse`) e `sources`, os IDs dos trechos usados. Uma resposta factual sem fonte, ou com fonte que não foi enviada, vira o texto fixo `iris.unknown`. Ideias de MVP não precisam de fonte.
+- A resposta traz `intent` (`answer`, `idea` ou `refuse`) e `sources`, os IDs dos trechos usados. Uma resposta factual sem fonte, ou com fonte que não foi enviada, vira o texto fixo `iris.unknown`. Respostas `idea`, que organizam o contexto do visitante sem afirmar fatos sobre a IRTC, não precisam de fonte.
 - A mensagem do visitante vai delimitada e normalizada (NFKC, sem caracteres invisíveis). Entradas codificadas são recusadas. A saída segue um schema JSON estrito e passa por checagem de links, e-mails e de um canário contra vazamento das instruções.
 - Só as respostas assinadas por HMAC (chave derivada de `OPENAI_API_KEY`) voltam ao histórico, o que impede que o navegador forje falas da assistente.
 - Entrada e saída passam pela moderação `omni-moderation-latest` em paralelo. Limites: 10 mensagens por minuto e 100 por dia por IP, 3.000 por dia no total, corpo de até 16 KB, timeout de 20 s e `store: false` na OpenAI.
@@ -72,7 +78,7 @@ O índice em JSON serve enquanto a base tiver poucas centenas de trechos e mudar
 
 ## Contato
 
-`/api/contact` recebe o formulário e os rascunhos aprovados na Iris. Valida e normaliza os campos, aceita só assuntos da lista de serviços, tem honeypot e limite de 4 envios a cada 15 minutos por IP. O e-mail sai pelo Resend para `CONTACT_TO`, com o visitante em `reply_to`.
+`/api/contact` recebe o formulário e os rascunhos aprovados na Iris. Valida e normaliza os campos, aceita só assuntos da lista de serviços (agrupados por pilar no formulário) ou `undecided`, para quem ainda não sabe qual serviço precisa, tem honeypot e limite de 4 envios a cada 15 minutos por IP. O e-mail sai pelo Resend para `CONTACT_TO`, com o visitante em `reply_to`.
 
 Falhas de HTTP no formulário e na Iris disparam um aviso (`reportHttpError` em `lib/toast.ts`), mostrado por `components/toaster.tsx` no idioma da página. O aviso usa `popover` para ficar acima do diálogo da Iris. Quando o Resend recusa o envio, a rota registra o status e a resposta dele no log da Vercel.
 

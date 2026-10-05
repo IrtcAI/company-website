@@ -10,7 +10,7 @@ Regras para textos, dados e imagens do site. Decisões técnicas ficam em `archi
 | Serviços: títulos, slugs, resumo, problemas, entregas, FAQ, tecnologias | `apps/site/lib/services.ts`                                                     |
 | Páginas Serviços, Sobre e Fundador; títulos e descrições de SEO         | `apps/site/lib/copy/`                                                           |
 | Endereço, horário, e-mail e redes sociais                               | `apps/site/lib/company.ts`                                                      |
-| Números da faixa de estatísticas                                        | `apps/site/lib/stats.ts`                                                        |
+| Números da faixa de estatísticas (vazia até haver evidência aprovada)   | `apps/site/lib/stats.ts`                                                        |
 | Fatos que a Iris pode usar                                              | `apps/site/lib/iris-policy.ts` (monta a partir de `company.ts` e `services.ts`) |
 
 Sitemap, `llms.txt`, dados estruturados e o conhecimento da Iris leem esses arquivos. Mudou um dado? Mude na fonte, e o resto acompanha.
@@ -27,8 +27,10 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 
 ## Fatos e limites
 
-- **Portfólio.** LeafLink, Dasa e Perfect Pay aparecem como contribuições de engenharia, não como autoria da plataforma inteira. Métricas de projeto dependem do contexto e não são promessa. As imagens são capturas públicas dos produtos, ilustrativas.
-- **Recomendações.** São sínteses de recomendações públicas no LinkedIn, não citações literais. Não invente endossos.
+- **Identidade.** Marca IRTC, descritor "Cloud, Software & AI Engineering", slogan "We engineer what moves your business forward." e assinatura "Da Amazônia para o seu próximo desafio." seguem o Brand Book 1.2; descritor, slogan e nomes dos pilares ficam em inglês nos três idiomas.
+- **Evidências.** Cases, clientes, logos, números, depoimentos, certificações e parcerias só entram com evidência, atribuição e autorização registradas (decisão D10 do Company Blueprint). Os componentes `Stats`, `ProjectShowcase` e `Testimonials` não renderizam nada enquanto as listas estiverem vazias.
+- **Serviços.** Os oito serviços pertencem a um pilar (Cloud Engineering, Software Engineering ou AI Engineering) e podem ter pilares de apoio. Critérios de resultado são objetivos do projeto, não resultado garantido. As ofertas do Service Catalog em validação não aparecem como produtos, nem com preço ou prazo.
+- **Endereço.** O site mostra só Belém · PA · Brasil e atendimento remoto. Não publique rua nem o endereço fiscal.
 - **Iris.** Não promete preço, prazo, disponibilidade nem contrato. O rascunho que ela gera é ponto de partida, não proposta comercial.
 
 ## Conteúdo provisório
@@ -37,9 +39,7 @@ Estes itens foram criados como marcadores e precisam de confirmação antes de s
 
 | Item                                                               | Onde                  | Estado                                                 |
 | ------------------------------------------------------------------ | --------------------- | ------------------------------------------------------ |
-| "+30 projetos entregues", "+1 mi pessoas", "4,9/5 avaliação média" | `lib/stats.ts`        | provisório; "+8 anos" é real                           |
-| Detalhes pessoais do fundador (família, hobbies, trajetória)       | `lib/copy/founder.ts` | provisório, aguardando revisão do Iago                 |
-| Fotos de equipes na página Sobre                                   | `public/about/`       | geradas por IA; a legenda informa que são ilustrativas |
+| Fotos e menções a equipe na página Sobre                           | `public/about/`, `lib/copy/about.ts` | geradas por IA; a legenda informa que são ilustrativas; serão substituídas pelo Iago |
 
 Quando confirmar ou corrigir um item, atualize esta tabela e o comentário no arquivo correspondente.
 
@@ -47,7 +47,7 @@ Quando confirmar ou corrigir um item, atualize esta tabela e o comentário no ar
 
 Origem e tratamento de cada imagem publicada em `image-sources.md`. Logos e fotos ficam no próprio repositório, otimizados em WebP. Revalide o uso de marcas de clientes antes de qualquer campanha paga.
 
-O favicon (`apps/site/app/icon.svg`) é o terminal `>_`. As duas versões aprovadas ficam em `docs/brand/`: `favicon-terminal.svg`, a que está no ar, e `favicon-it.svg`, o monograma IT. Para trocar, copie a escolhida por cima do `icon.svg`.
+O favicon (`apps/site/app/icon.svg`) é o símbolo i oficial, cópia de `irtc/assets/03-icone-i.svg`. Os logos ficam em `apps/site/public/brand/`.
 
 ## Antes de publicar uma mudança de conteúdo
 
