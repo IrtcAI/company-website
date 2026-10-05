@@ -2,6 +2,35 @@ import type { Locale } from "../content";
 
 type PageCopy = { title: string; description: string; heading?: string };
 
+export const homeCopy: Record<
+  Locale,
+  { title: string; description: string; organization: string }
+> = {
+  "pt-BR": {
+    title: "IRTC | Cloud, Software & AI Engineering",
+    description:
+      "Resolvemos problemas de negócio modernizando sistemas, construindo software e aplicando cloud e IA a fluxos com resultado verificável.",
+    organization:
+      "A IRTC é uma empresa de Cloud, Software & AI Engineering. Resolvemos problemas de negócio modernizando sistemas, construindo software e aplicando cloud e IA a fluxos com resultado verificável.",
+  },
+  en: {
+    title: "IRTC | Cloud, Software & AI Engineering",
+    description:
+      "We solve business problems by modernizing systems, building software and applying cloud and AI to workflows with verifiable results.",
+    organization:
+      "IRTC is a Cloud, Software & AI Engineering company. We solve business problems by modernizing systems, building software and applying cloud and AI to workflows with verifiable results.",
+  },
+  es: {
+    title: "IRTC | Cloud, Software & AI Engineering",
+    description:
+      "Resolvemos problemas de negocio modernizando sistemas, construyendo software y aplicando cloud e IA a flujos con resultado verificable.",
+    organization:
+      "IRTC es una empresa de Cloud, Software & AI Engineering. Resolvemos problemas de negocio modernizando sistemas, construyendo software y aplicando cloud e IA a flujos con resultado verificable.",
+  },
+};
+
+export const founderJobTitle = "Founder & Principal Engineer";
+
 export const pageCopy: Record<
   "services" | "about" | "founder" | "contact",
   Record<Locale, PageCopy>
@@ -11,53 +40,53 @@ export const pageCopy: Record<
       title: "Serviços | IRTC",
       heading: "Serviços",
       description:
-        "Software sob medida, sites, aplicativos, integrações, IA, dados e nuvem. Conheça os serviços da IRTC, de Belém para o mundo.",
+        "Cloud Engineering, Software Engineering e AI Engineering: oito serviços para modernizar sistemas, construir software e aplicar IA.",
     },
     en: {
       title: "Services | IRTC",
       heading: "Services",
       description:
-        "Custom software, websites, mobile apps, integrations, AI, data and cloud. See what IRTC builds, from Belém to the world.",
+        "Cloud Engineering, Software Engineering and AI Engineering: eight services to modernize systems, build software and apply AI.",
     },
     es: {
       title: "Servicios | IRTC",
       heading: "Servicios",
       description:
-        "Software a medida, sitios, aplicaciones, integraciones, IA, datos y nube. Conoce los servicios de IRTC, desde Belém para el mundo.",
+        "Cloud Engineering, Software Engineering y AI Engineering: ocho servicios para modernizar sistemas, construir software y aplicar IA.",
     },
   },
   about: {
     "pt-BR": {
-      title: "Sobre a IRTC | Cultura e visão",
+      title: "Sobre a IRTC | Propósito, missão e visão",
       description:
-        "Uma fábrica de software de Belém do Pará. Como trabalhamos, no que acreditamos e aonde queremos chegar.",
+        "Empresa de engenharia AI-native de Belém, no Pará. Nosso propósito, missão, visão e valores, e como trabalhamos.",
     },
     en: {
-      title: "About IRTC | Culture and vision",
+      title: "About IRTC | Purpose, mission and vision",
       description:
-        "A software company from Belém, Brazil. How we work, what we believe in and where we are going.",
+        "AI-native engineering company from Belém, Brazil. Our purpose, mission, vision and values, and how we work.",
     },
     es: {
-      title: "Sobre IRTC | Cultura y visión",
+      title: "Sobre IRTC | Propósito, misión y visión",
       description:
-        "Una fábrica de software de Belém, Brasil. Cómo trabajamos, en qué creemos y hacia dónde vamos.",
+        "Empresa de ingeniería AI-native de Belém, Brasil. Nuestro propósito, misión, visión y valores, y cómo trabajamos.",
     },
   },
   founder: {
     "pt-BR": {
       title: "Iago Rodrigues, fundador | IRTC",
       description:
-        "Conheça Iago Rodrigues, fundador da IRTC: quem ele é, como pensa o trabalho e por que construiu a empresa a partir de Belém.",
+        "Conheça Iago Rodrigues, Founder & Principal Engineer da IRTC, e as três frentes de engenharia da empresa.",
     },
     en: {
       title: "Iago Rodrigues, founder | IRTC",
       description:
-        "Meet Iago Rodrigues, founder of IRTC: who he is, how he thinks about the work and why he built the company from Belém.",
+        "Meet Iago Rodrigues, Founder & Principal Engineer at IRTC, and the three engineering areas of the company.",
     },
     es: {
       title: "Iago Rodrigues, fundador | IRTC",
       description:
-        "Conoce a Iago Rodrigues, fundador de IRTC: quién es, cómo piensa el trabajo y por qué construyó la empresa desde Belém.",
+        "Conoce a Iago Rodrigues, Founder & Principal Engineer de IRTC, y las tres áreas de ingeniería de la empresa.",
     },
   },
   contact: {

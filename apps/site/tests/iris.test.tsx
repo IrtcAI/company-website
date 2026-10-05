@@ -177,12 +177,66 @@ describe("Iris dialog", () => {
       ),
     ).toBeVisible();
     expect(
-      screen.getByLabelText("Seu rascunho de primeira versão"),
+      screen.getByLabelText("Rascunho do contexto para a equipe"),
     ).toHaveValue("MVP: cadastro e agenda.");
     await waitFor(() =>
       expect(
         screen.getByRole("button", { name: "Aprovar e enviar por e-mail" }),
       ).toBeEnabled(),
     );
+  });
+  it("sends on Enter, breaks the line on Shift+Enter and blocks double submit", async () => {
+    let resolve: (value: unknown) => void = () => {};
+    const fetchMock = vi.fn().mockReturnValue(
+      new Promise((done) => {
+        resolve = done;
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(
+      <Iris
+        onClose={vi.fn()}
+        labels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
+      />,
+    );
+
+    const field = screen.getByLabelText("Sua mensagem");
+    await userEvent.type(field, "Linha um{Shift>}{Enter}{/Shift}linha dois");
+    expect(field).toHaveValue("Linha um\nlinha dois");
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    await userEvent.type(field, "{Enter}");
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      content["pt-BR"].iris.thinking,
+    );
+
+    await userEvent.type(field, "outra{Enter}");
+    expect(fetchMock).toHaveBeenCalledOnce();
+
+    resolve({ ok: true, status: 200, json: async () => ({ answer: "Ok." }) });
+    await screen.findByText("Ok.");
+    expect(screen.getByRole("status")).toBeEmptyDOMElement();
+  });
+  it("shows a transport error as a notice that cannot become a draft", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({ ok: false, status: 500 }),
+    );
+    render(
+      <Iris
+        onClose={vi.fn()}
+        labels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
+      />,
+    );
+
+    await userEvent.type(screen.getByLabelText("Sua mensagem"), "Oi{Enter}");
+
+    expect(await screen.findByText(content["pt-BR"].iris.error)).toBeVisible();
+    expect(
+      screen.queryByRole("button", { name: "Usar como rascunho" }),
+    ).toBeNull();
   });
 });

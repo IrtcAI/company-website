@@ -4,7 +4,7 @@
   --toolbar-mint: light-dark(#cfe5da, #113f4a);
   --toolbar-line: color-mix(in srgb, var(--toolbar-ink) 35%, transparent);
   --toolbar-hover: light-dark(#f1d9cc, #3a2a2b);
-  --toolbar-focus: light-dark(#a4553a, #e6a988);
+  --toolbar-focus: light-dark(#002c32, #83b8a4);
   position: fixed;
   z-index: 90;
   top: 50%;

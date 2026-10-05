@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
-import type { content, recommendationAuthors } from "@/lib/content";
+import type { content, RecommendationAuthor } from "@/lib/content";
 
 type Copy = (typeof content)["pt-BR"]["testimonials"];
 
@@ -11,9 +11,11 @@ export function Testimonials({
   authors,
 }: {
   copy: Copy;
-  authors: typeof recommendationAuthors;
+  authors: RecommendationAuthor[];
 }) {
   const [recommendation, setRecommendation] = useState(0);
+
+  if (authors.length === 0) return null;
 
   const author = authors[recommendation];
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactCta } from "@/components/contact-cta";
 import { ServiceBreadcrumb } from "@/components/service-breadcrumb";
 import { ServiceCard } from "@/components/service-card";
@@ -13,7 +14,7 @@ import {
 } from "@/lib/locale-params";
 import { absoluteUrl, pagePath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { services } from "@/lib/services";
+import { pillarNames, pillars, services } from "@/lib/services";
 import { breadcrumbs, graph, jsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
@@ -88,16 +89,34 @@ export default async function ServicesPage({ params }: LocaleParams) {
       </section>
       <section className="service-grid-section section-pad">
         <h2>{copy.gridTitle}</h2>
-        <div className="service-grid">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              locale={locale}
-              cta={copy.cardCta}
-            />
-          ))}
-        </div>
+        {pillars.map((pillar) => (
+          <div className="service-pillar-group" key={pillar}>
+            <header className="service-pillar-head">
+              <h3>{pillarNames[pillar]}</h3>
+              <p>{copy.pillarText[pillar]}</p>
+            </header>
+            <div className="service-grid">
+              {services
+                .filter((service) => service.pillar === pillar)
+                .map((service) => (
+                  <ServiceCard
+                    key={service.id}
+                    service={service}
+                    locale={locale}
+                    cta={copy.cardCta}
+                  />
+                ))}
+            </div>
+          </div>
+        ))}
+      </section>
+      <section className="service-continuity section-pad">
+        <p className="overline">{copy.continuity.label}</p>
+        <h2>{copy.continuity.name}</h2>
+        <p>{copy.continuity.text}</p>
+        <Link href={pagePath(locale, "contact")} className="pill-link">
+          {copy.continuity.cta}
+        </Link>
       </section>
       <section className="service-tech-note section-pad">
         <h2>{copy.techNoteTitle}</h2>

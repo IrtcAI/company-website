@@ -29,7 +29,7 @@
   height: 100%;
 }
 .solutions .tech-playground {
-  background: linear-gradient(90deg, #003c4af2, #003c4ab3);
+  background: linear-gradient(90deg, #013e4bf2, #013e4bb3);
 }
 html[data-accessibility-contrast="true"] .development-backdrop {
   display: none;
@@ -125,8 +125,8 @@ html[data-accessibility-contrast="true"] .development-backdrop {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: light-dark(#3a7564, #86bca2);
-  box-shadow: 0 0 0 6px light-dark(#3a756426, #86bca233);
+  background: light-dark(#3a7564, #83b8a4);
+  box-shadow: 0 0 0 6px light-dark(#3a756426, #83b8a433);
 }
 
 @media (max-width: 767px) {

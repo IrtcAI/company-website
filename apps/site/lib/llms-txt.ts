@@ -1,8 +1,15 @@
 import { addressLines, company, openingHours } from "./company";
-import { content, type Locale } from "./content";
-import { pageCopy } from "./copy/pages";
+import type { Locale } from "./content";
+import { founderJobTitle, homeCopy, pageCopy } from "./copy/pages";
 import { absoluteUrl, locales, pagePath, SITE_URL, type Page } from "./routes";
-import { services, type Service, type ServiceCopy } from "./services";
+import {
+  pillarNames,
+  pillars,
+  services,
+  type Service,
+  type ServiceCopy,
+} from "./services";
+import { SLOGAN } from "./structured-data";
 
 const localeLabel: Record<Locale, string> = {
   "pt-BR": "Portuguese",
@@ -64,7 +71,7 @@ function introSection(): string {
   return [
     `Official website: ${SITE_URL}`,
     `Business contact: ${company.email}`,
-    `Founder: ${company.founder.name} (${company.founder.linkedin}), whose work includes software architecture, full-stack product development, technical leadership and AI engineering.`,
+    `Founder: ${company.founder.name}, ${founderJobTitle} (${company.founder.linkedin}).`,
     `Address: ${address}.`,
     `Business hours: ${hours.weekdays}; ${hours.weekend} (Belém, Brazil time).`,
     `Languages: Brazilian Portuguese (default), English and Spanish.`,
@@ -80,7 +87,7 @@ function pagesSection(): string {
     {
       label: "Home",
       page: "home",
-      summary: (l) => content[l].hero.description,
+      summary: (l) => homeCopy[l].description,
     },
     {
       label: "Services",
@@ -136,11 +143,30 @@ function servicesSection(): string {
   ].join("\n");
 }
 
+function pillarsSection(): string {
+  const lines = pillars.map((id) => {
+    const names = services
+      .filter((service) => service.pillar === id)
+      .map((service) => service.copy.en.title);
+    return `- ${pillarNames[id]}: ${names.join(", ")}.`;
+  });
+
+  return [
+    "## Engineering pillars",
+    "",
+    "Services are organized into three pillars.",
+    "",
+    ...lines,
+    "",
+    "Continuous Engineering is the continuity model across the three pillars: evolution, optimization, reliability and modernization after delivery. Scope, cadence and support are set according to each operation.",
+  ].join("\n");
+}
+
 function howWeWorkSection(): string {
   return [
     "## How we work",
     "",
-    "We understand the client's operation before choosing technology, agree on priorities, deliver in short stages, demonstrate progress and support what we build. Architecture, automated testing and observability are part of the project from the start, and clients talk directly to the people building their system.",
+    "We understand the client's operation before choosing technology, agree on priorities, deliver in short cycles and show what is ready and what comes next. Architecture, automated testing and monitoring are part of the project from the start, and delivery includes documentation and clear terms for support and evolution.",
   ].join("\n");
 }
 
@@ -151,14 +177,6 @@ function technologiesSection(): string {
     `Capabilities include ${capabilities.join(", ")}.`,
     "",
     `Technology choices depend on the project. Our toolkit includes ${technologies().join(", ")}.`,
-  ].join("\n");
-}
-
-function portfolioSection(): string {
-  return [
-    "## Portfolio",
-    "",
-    "Portfolio examples describe engineering contributions involving LeafLink (marketplace, CRM and reporting), Dasa (healthcare integrations, data and field applications), and Perfect Pay (course platform, payments, authentication and backend efficiency). These examples do not claim that IRTC owns each entire platform. Public brand images illustrate the products. Project-specific results are not universal performance guarantees. Testimonials are summaries of recommendations about collaboration and engineering work, not verbatim quotations.",
   ].join("\n");
 }
 
@@ -211,7 +229,7 @@ export function buildLlmsTxt(): string {
   return [
     "# IRTC",
     "",
-    "> IRTC is a software factory based in Belém, Pará, Brazil. We build custom software, websites, mobile apps, integrations, automations, data systems and applied AI solutions. Our public website is available in Brazilian Portuguese, English and Spanish, with a dedicated page per language for each topic below.",
+    `> IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil: an AI-native engineering company focused on solving business problems. ${SLOGAN} We modernize systems, build software and apply cloud and AI to workflows with verifiable results. The website is available in Brazilian Portuguese, English and Spanish, with a dedicated page per language for each topic below.`,
     "",
     introSection(),
     "",
@@ -219,11 +237,11 @@ export function buildLlmsTxt(): string {
     "",
     servicesSection(),
     "",
+    pillarsSection(),
+    "",
     howWeWorkSection(),
     "",
     technologiesSection(),
-    "",
-    portfolioSection(),
     "",
     irisSection(),
     "",
@@ -270,7 +288,7 @@ export function buildLlmsFullTxt(): string {
   return [
     "# IRTC",
     "",
-    "> Full reference version of /llms.txt, with expanded detail for every service.",
+    `> IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil. ${SLOGAN} Full reference version of /llms.txt, with expanded detail for every service.`,
     "",
     introSection(),
     "",
@@ -279,11 +297,11 @@ export function buildLlmsFullTxt(): string {
     "## Services (full detail)",
     "",
     ...services.map(serviceDetailSection).flatMap((section) => [section, ""]),
+    pillarsSection(),
+    "",
     howWeWorkSection(),
     "",
     technologiesSection(),
-    "",
-    portfolioSection(),
     "",
     irisSection(),
     "",

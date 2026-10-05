@@ -42,22 +42,15 @@ function renderContact() {
 }
 
 describe("institutional experience", () => {
-  it("introduces solutions before client evidence and projects", () => {
+  it("introduces the manifesto before the services", () => {
     const { container } = renderHome();
-    const sections = [
-      ...container.querySelectorAll(
-        "#manifesto, #servicos, .client-strip, #projetos",
-      ),
-    ];
+    const sections = [...container.querySelectorAll("#manifesto, #servicos")];
 
-    expect(sections.map((section) => section.id || section.className)).toEqual([
+    expect(sections.map((section) => section.id)).toEqual([
       "manifesto",
       "servicos",
-      "client-strip",
-      "projetos",
     ]);
     expect(screen.getByText("02 / SERVIÇOS")).toBeVisible();
-    expect(screen.getByText("03 / PROJETOS EM OPERAÇÃO")).toBeVisible();
     expect(container.querySelector(".development-backdrop")).toHaveAttribute(
       "aria-hidden",
       "true",
@@ -66,8 +59,8 @@ describe("institutional experience", () => {
 
   it("navigates and moves focus without adding a URL fragment", async () => {
     renderHome();
-    await userEvent.click(screen.getAllByRole("link", { name: "Projetos" })[0]);
-    expect(document.activeElement?.id).toBe("projetos");
+    await userEvent.click(screen.getAllByRole("link", { name: "Serviços" })[0]);
+    expect(document.activeElement?.id).toBe("servicos");
     expect(location.hash).toBe("");
   });
 
@@ -110,9 +103,9 @@ describe("institutional experience", () => {
     expect(header).toHaveAttribute("data-stuck", "false");
     expect(container.querySelector(".back-to-top")).toBeNull();
 
-    report("projetos", true);
-    const [projects] = screen.getAllByRole("link", { name: "Projetos" });
-    expect(projects).toHaveAttribute("aria-current", "location");
+    report("servicos", true);
+    const [services] = screen.getAllByRole("link", { name: "Serviços" });
+    expect(services).toHaveAttribute("aria-current", "location");
 
     act(() => {
       window.scrollY = 400;
@@ -152,29 +145,19 @@ describe("institutional experience", () => {
   it("renders English content and updates the document language", () => {
     renderHome("en");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Your idea becomes",
+      "We engineer what moves your business forward.",
     );
     expect(document.documentElement.lang).toBe("en");
   });
 
-  it("cycles all six recommendations and wraps backwards", async () => {
+  it("renders no recommendations, projects or client names while none are approved", () => {
     renderHome();
-    const region = document.getElementById("depoimentos")!;
-    expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
 
-    await userEvent.click(
-      screen.getByRole("button", { name: "Recomendação anterior" }),
+    expect(document.getElementById("depoimentos")).toBeNull();
+    expect(document.getElementById("projetos")).toBeNull();
+    expect(document.body.textContent).not.toMatch(
+      /LeafLink|Dasa|Perfect Pay|4,9\/5|mi pessoas/,
     );
-    expect(within(region).getByText("Pedro Felipe")).toBeVisible();
-
-    await userEvent.click(
-      screen.getByRole("button", { name: "Próxima recomendação" }),
-    );
-    expect(within(region).getByText("Rafael F. Andrade")).toBeVisible();
-    expect(within(region).queryByText("LinkedIn")).toBeNull();
-    expect(
-      within(region).queryByRole("link", { name: /recomendações/i }),
-    ).toBeNull();
   });
 
   it("renders the founder portrait and one accessible manifesto", () => {
@@ -187,7 +170,7 @@ describe("institutional experience", () => {
     ).toHaveAttribute("loading", "lazy");
     expect(
       screen.getAllByRole("heading", {
-        name: /Tecnologia boa\s*resolve de verdade\./,
+        name: /Engenharia próxima\s*da sua operação\./,
       }),
     ).toHaveLength(1);
     expect(document.querySelectorAll("#manifesto")).toHaveLength(1);
@@ -196,27 +179,28 @@ describe("institutional experience", () => {
     ).toHaveAttribute("href", "/fundador");
   });
 
-  it("links the four featured home service cards to their service pages", () => {
+  it("presents the three pillars and continuity without service cards", () => {
     const { container } = renderHome();
     const section = container.querySelector("#servicos") as HTMLElement;
-    const featured = [
-      "custom-software",
-      "web-platforms",
-      "mobile-apps",
-      "applied-ai",
-    ];
 
-    expect(section.querySelectorAll(".service-card")).toHaveLength(4);
-    for (const service of services) {
-      const slug = service.copy["pt-BR"].slug;
-      const card = section.querySelector(`a[href="/servicos/${slug}"]`);
-      if (featured.includes(service.id)) expect(card).not.toBeNull();
-      else expect(card).toBeNull();
-    }
-
+    expect(section.querySelectorAll(".service-card")).toHaveLength(0);
+    expect(
+      within(section)
+        .getAllByRole("heading", { level: 3 })
+        .map((heading) => heading.textContent)
+        .slice(0, 4),
+    ).toEqual([
+      "Cloud Engineering",
+      "Software Engineering",
+      "AI Engineering",
+      "Continuous Engineering",
+    ]);
     expect(
       within(section).getByRole("link", { name: /Ver todos os serviços/ }),
     ).toHaveAttribute("href", "/servicos");
+    expect(
+      within(section).getByRole("link", { name: "Traga o problema" }),
+    ).toHaveAttribute("href", "/contato");
   });
 
   it("shows the tools row as a plain, non-interactive list", () => {
@@ -225,14 +209,6 @@ describe("institutional experience", () => {
 
     expect(within(section).getByText("PostgreSQL")).toBeVisible();
     expect(section.querySelectorAll(".tech-token button")).toHaveLength(0);
-  });
-
-  it("switches the featured project", async () => {
-    renderHome();
-    await userEvent.click(screen.getByRole("button", { name: /Dasa/ }));
-    expect(
-      screen.getByText("Informação disponível quando ela faz diferença."),
-    ).toBeVisible();
   });
 
   it("pauses motion and moves the contact form to its own page", async () => {
@@ -244,25 +220,90 @@ describe("institutional experience", () => {
       screen.getByRole("button", { name: "Ativar animações" }),
     ).toHaveAttribute("aria-pressed", "true");
     expect(document.getElementById("contato")).toBeNull();
+    const [heroCta] = screen.getAllByRole("link", { name: "Traga o problema" });
+    expect(heroCta).toHaveAttribute("href", "/contato");
     expect(
-      screen.getByRole("link", { name: /Conte o que você quer construir/ }),
-    ).toHaveAttribute("href", "/contato");
+      screen.getByRole("link", { name: "Conheça os serviços" }),
+    ).toHaveAttribute("href", "/servicos");
   });
 
-  it("keeps the form values and reports failed delivery", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
-    renderContact();
-
+  function fillContact(name = "Cliente Teste") {
     fireEvent.change(screen.getByLabelText("Seu nome"), {
-      target: { value: "Cliente Teste" },
+      target: { value: name },
     });
+    fireEvent.change(screen.getByLabelText("E-mail"), {
+      target: { value: "cliente@empresa.com" },
+    });
+    fireEvent.change(screen.getByLabelText(/O que acontece hoje/), {
+      target: { value: "Relatórios manuais atrasam o fechamento." },
+    });
+  }
+
+  function submitContact() {
     fireEvent.submit(
       screen.getByRole("button", { name: "Enviar mensagem" }).closest("form")!,
     );
+  }
+
+  it("keeps the form values and reports failed delivery", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: false, status: 502 });
+    vi.stubGlobal("fetch", fetchMock);
+    renderContact();
+    fillContact();
+    submitContact();
 
     expect(await screen.findByText(/Não foi possível enviar/)).toBeVisible();
     expect(screen.getByLabelText("Seu nome")).toHaveValue("Cliente Teste");
     expect(screen.queryByText(/Mensagem enviada\./)).toBeNull();
+  });
+
+  it("does not report success when the transport fails", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("offline")));
+    renderContact();
+    fillContact();
+    submitContact();
+
+    expect(await screen.findByText(/Não foi possível enviar/)).toBeVisible();
+    expect(screen.queryByText(/Mensagem enviada\./)).toBeNull();
+    expect(screen.getByLabelText("Seu nome")).toHaveValue("Cliente Teste");
+  });
+
+  it("blocks empty submissions and links each error to its field", () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    renderContact();
+    submitContact();
+
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(screen.getByLabelText("Seu nome")).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+    expect(screen.getByLabelText("E-mail")).toHaveAccessibleDescription(
+      /Use o e-mail da sua empresa\..*Informe um e-mail/,
+    );
+    expect(
+      screen.getByRole("link", { name: "Informe seu nome." }),
+    ).toHaveAttribute("href", `#${screen.getByLabelText("Seu nome").id}`);
+  });
+
+  it("sends the topic grouped by pillar and accepts the undecided option", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    renderContact();
+    const select = screen.getByLabelText(/Assunto/);
+
+    expect(
+      [...select.querySelectorAll("optgroup")].map((group) => group.label),
+    ).toEqual(["Cloud Engineering", "Software Engineering", "AI Engineering"]);
+    expect(select).toHaveValue("undecided");
+
+    fillContact();
+    submitContact();
+    await screen.findByText(/Mensagem enviada\./);
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body).service).toBe(
+      "undecided",
+    );
   });
 
   it("preselects the topic requested by a service page", () => {
@@ -270,7 +311,7 @@ describe("institutional experience", () => {
     renderContact();
     expect(screen.getByLabelText(/Assunto/)).toHaveValue("mobile-apps");
     expect(
-      screen.getByRole("button", { name: /Falar com a Iris/ }),
+      screen.getByRole("button", { name: /Organize o contexto com a Iris/ }),
     ).toBeVisible();
     window.history.replaceState(null, "", "/");
   });
@@ -279,7 +320,7 @@ describe("institutional experience", () => {
     const { container } = renderContact();
     const footer = container.querySelector(".site-footer") as HTMLElement;
 
-    expect(within(footer).getByText("Trav. Alferes Costa, 1750")).toBeVisible();
+    expect(within(footer).getByText("Belém · PA · Brasil")).toBeVisible();
     expect(within(footer).getByText("Sáb e dom: fechado")).toBeVisible();
     expect(
       within(footer).getByRole("link", { name: "Aplicativos para celular" }),
@@ -295,12 +336,8 @@ describe("institutional experience", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true }));
     renderContact();
 
-    fireEvent.change(screen.getByLabelText("Seu nome"), {
-      target: { value: "Cliente Teste" },
-    });
-    fireEvent.submit(
-      screen.getByRole("button", { name: "Enviar mensagem" }).closest("form")!,
-    );
+    fillContact();
+    submitContact();
 
     expect(await screen.findByText(/Mensagem enviada\./)).toBeVisible();
     expect(screen.getByLabelText("Seu nome")).toHaveValue("");
@@ -397,8 +434,8 @@ describe("institutional experience", () => {
     });
     expect(header).toHaveAttribute("data-visible", "false");
 
-    const [projetos] = screen.getAllByRole("link", { name: "Projetos" });
-    act(() => projetos.focus());
+    const [about] = screen.getAllByRole("link", { name: "Sobre" });
+    act(() => about.focus());
     expect(header).toHaveAttribute("data-visible", "true");
   });
 

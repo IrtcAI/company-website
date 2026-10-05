@@ -154,4 +154,20 @@ describe("llms.txt", () => {
       expect(text).toContain(service.technologies[0]);
     }
   });
+
+  it("states the official identity and no removed claims", async () => {
+    for (const text of [await llmsGet().text(), await llmFullGet().text()]) {
+      expect(text).toContain("Cloud, Software & AI Engineering");
+      expect(text).toContain("We engineer what moves your business forward.");
+      for (const pillar of [
+        "Cloud Engineering",
+        "Software Engineering",
+        "AI Engineering",
+      ])
+        expect(text).toContain(pillar);
+      expect(text).not.toMatch(
+        /LeafLink|Dasa|Perfect Pay|software factory|testimonial|São Paulo/i,
+      );
+    }
+  });
 });

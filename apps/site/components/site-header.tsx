@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -318,7 +319,15 @@ function MobileMenu({
             aria-label={homeLabel}
             onClick={closeMenu}
           >
-            irtc
+            <span className="brand-crop">
+              <Image
+                unoptimized
+                src="/brand/irtc-wordmark-offwhite.svg"
+                width={517}
+                height={260}
+                alt=""
+              />
+            </span>
           </Link>
           <button
             type="button"
@@ -461,10 +470,8 @@ export function SiteHeader({
       },
       { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.01, 1] },
     );
-    ["servicos", "projetos"].forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) spy.observe(section);
-    });
+    const servicesSection = document.getElementById("servicos");
+    if (servicesSection) spy.observe(servicesSection);
 
     const introStory =
       page === "home"
@@ -564,7 +571,24 @@ export function SiteHeader({
       onFocus={() => setVisible(true)}
     >
       <Link href={home} className="brand" aria-label={labels.home}>
-        irtc
+        <span className="brand-crop on-light">
+          <Image
+            unoptimized
+            src="/brand/irtc-wordmark-deep-teal.svg"
+            width={517}
+            height={219}
+            alt=""
+          />
+        </span>
+        <span className="brand-crop on-dark">
+          <Image
+            unoptimized
+            src="/brand/irtc-wordmark-offwhite.svg"
+            width={517}
+            height={260}
+            alt=""
+          />
+        </span>
       </Link>
       <nav aria-label={labels.menu}>
         {servicesItem && (

@@ -23,11 +23,15 @@ export function ContactCta({
   locale,
   title,
   text,
+  action,
+  irisLabel,
   service,
 }: {
   locale: Locale;
   title?: string;
   text?: string;
+  action?: string;
+  irisLabel?: string;
   service?: string;
 }) {
   const copy = content[locale];
@@ -42,14 +46,14 @@ export function ContactCta({
           href={`${pagePath(locale, "contact")}${service ? `?servico=${service}` : ""}`}
           className="pill-link"
         >
-          {copy.talk}
+          {action ?? copy.talk}
           <span>
             <MessageCircle aria-hidden="true" />
           </span>
         </Link>
         <IrisButton className="iris-inline">
           <Sparkles aria-hidden="true" />
-          {copy.contact.iris}
+          {irisLabel ?? copy.contact.iris}
         </IrisButton>
       </div>
     </section>

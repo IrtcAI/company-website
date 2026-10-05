@@ -25,19 +25,19 @@
 }
 .network-route {
   fill: none;
-  stroke: light-dark(#3a7564, #86bca2);
+  stroke: light-dark(#3a7564, #83b8a4);
   stroke-width: 2;
   stroke-dasharray: 6 8;
   animation: network-flow 12s linear infinite;
 }
 .reach-line {
   fill: none;
-  stroke: light-dark(#3a756466, #86bca266);
+  stroke: light-dark(#3a756466, #83b8a466);
   stroke-width: 1.2;
   stroke-dasharray: 3 6;
 }
 .network-reach circle {
-  fill: light-dark(#3a7564, #86bca2);
+  fill: light-dark(#3a7564, #83b8a4);
 }
 .reach-draw,
 .reach-trace {
@@ -48,20 +48,20 @@
 }
 .route-two {
   animation-direction: reverse;
-  stroke: light-dark(#a4553a, #d98f6c);
+  stroke: light-dark(#a4553a, #f58f69);
 }
 .network-pulse {
-  fill: light-dark(#5f9a8250, #86bca266);
+  fill: light-dark(#5f9a8250, #83b8a466);
   animation: network-pulse 4s ease-out infinite;
 }
 .network-hub {
   fill: light-dark(#0d4150, #2a6a68);
 }
 .network-dest {
-  fill: light-dark(#3a7564, #86bca2);
+  fill: light-dark(#3a7564, #83b8a4);
 }
 .network-dest.dest-two {
-  fill: light-dark(#a4553a, #d98f6c);
+  fill: light-dark(#a4553a, #f58f69);
 }
 .network-coordinates {
   position: absolute;
@@ -74,7 +74,7 @@
   position: absolute;
   translate: 16px -50%;
   font-size: clamp(18px, 2vw, 28px);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.02em;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -94,7 +94,7 @@
     stroke-linecap: round;
   }
   .reach-draw {
-    stroke: light-dark(#3a7564, #86bca2);
+    stroke: light-dark(#3a7564, #83b8a4);
     stroke-width: 1.2;
     stroke-dasharray: 1 1;
     stroke-dashoffset: 1;

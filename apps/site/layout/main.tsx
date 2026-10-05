@@ -1,6 +1,8 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { homeCopy } from "@/lib/copy/pages";
 import "@/styles/globals.css";
 import "@/styles/header.css";
 import "@/styles/development-story.css";
@@ -19,15 +21,14 @@ import "@/styles/stats.css";
 import "@/styles/founder.css";
 import "@/styles/widgets.css";
 
-const body = Manrope({
+const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
-  display: "optional",
+  display: "swap",
+  axes: ["opsz"],
 });
 
-const title = "IRTC | Software, sites, apps e IA em Belém";
-const description =
-  "Fábrica de software em Belém, Pará. Criamos software sob medida, sites, aplicativos, integrações e inteligência artificial para empresas de todos os tamanhos.";
+const { title, description } = homeCopy["pt-BR"];
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irtc.com.br"),
@@ -37,23 +38,18 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: { "pt-BR": "/", en: "/en", es: "/es", "x-default": "/" },
   },
+  applicationName: "IRTC",
   keywords: [
-    "fábrica de software",
-    "software sob medida",
-    "desenvolvimento de sites",
-    "sites e plataformas web",
-    "aplicativos para celular",
-    "desenvolvimento de aplicativos mobile",
-    "inteligência artificial",
-    "integrações de sistemas",
-    "automação de processos",
+    "Cloud, Software & AI Engineering",
+    "engenharia de software",
+    "engenharia de cloud",
+    "engenharia de IA",
+    "empresa de engenharia AI-native",
     "modernização de sistemas",
-    "desenvolvimento de software em Belém",
-    "desenvolvimento de software no Pará",
-    "Node.js",
-    "React",
-    "Next.js",
-    "PostgreSQL",
+    "software sob medida",
+    "integrações de sistemas",
+    "inteligência artificial aplicada",
+    "engenharia de software em Belém",
     "AWS",
   ],
   openGraph: {
@@ -101,7 +97,20 @@ export default function RootLayout({
           aria-hidden="true"
           suppressHydrationWarning
         >
-          <span className="splash-mark">irtc</span>
+          <span className="splash-mark">
+            <span className="brand-crop">
+              <Image
+                unoptimized
+                src="/brand/irtc-wordmark-offwhite.svg"
+                width={517}
+                height={260}
+                alt=""
+              />
+            </span>
+          </span>
+          <span className="splash-descriptor">
+            Cloud, Software &amp; AI Engineering
+          </span>
           <span className="splash-bar" />
         </div>
         <noscript>

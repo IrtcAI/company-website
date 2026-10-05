@@ -121,8 +121,38 @@
     box-shadow 0.2s ease;
 }
 
-.iris-form input:focus-visible {
+.iris-form {
+  align-items: flex-end;
+  border-radius: 22px;
+}
+
+.iris-form textarea {
+  width: 100%;
+  min-width: 0;
+  max-height: 120px;
+  padding: 9px 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  field-sizing: content;
+}
+
+.iris-form textarea::placeholder {
+  color: var(--secondary);
+}
+
+.iris-form textarea:focus-visible {
   outline: none;
+}
+
+@media (max-width: 640px) {
+  .iris-form textarea {
+    font-size: 16px;
+  }
 }
 
 .iris-form:focus-within {

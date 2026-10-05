@@ -1,5 +1,6 @@
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
+import { founderJobTitle, homeCopy } from "@/lib/copy/pages";
 import { SITE_URL } from "@/lib/routes";
 import {
   founder,
@@ -9,9 +10,6 @@ import {
   ORGANIZATION_ID,
 } from "@/lib/structured-data";
 
-const description =
-  "Fábrica de software em Belém, Pará. Criamos software sob medida, sites, aplicativos, integrações e inteligência artificial para empresas de todos os tamanhos.";
-
 export default function Home() {
   return (
     <>
@@ -19,7 +17,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(
           graph(
-            organization("pt-BR", description),
+            organization("pt-BR", homeCopy["pt-BR"].organization),
             {
               "@type": "WebSite",
               "@id": `${SITE_URL}/#website`,
@@ -28,7 +26,7 @@ export default function Home() {
               inLanguage: "pt-BR",
               publisher: { "@id": ORGANIZATION_ID },
             },
-            founder("pt-BR", "Fundador"),
+            founder("pt-BR", founderJobTitle),
           ),
         )}
       />

@@ -7,7 +7,7 @@
   margin: 23px 0;
   font-size: clamp(39px, 4.4vw, 64px);
   line-height: 1.08;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
 }
 
 .contact-page h1 span {
@@ -32,7 +32,7 @@
 .contact-channels h2 {
   margin: 0 0 10px;
   font-size: 20px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .contact-iris p {
@@ -130,4 +130,108 @@
   .contact-iris {
     padding: 22px;
   }
+}
+
+.contact {
+  --contact-danger: var(--irtc-color-status-danger-text);
+}
+
+.contact .field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.contact .field > label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.contact .field > label .optional {
+  font-weight: 400;
+}
+
+.contact input,
+.contact textarea,
+.contact select {
+  min-height: 48px;
+  border-bottom-color: var(--irtc-color-border-control);
+}
+
+.contact textarea {
+  min-height: 120px;
+}
+
+.contact input:hover,
+.contact textarea:hover,
+.contact select:hover {
+  border-bottom-color: var(--irtc-color-action-link);
+}
+
+.contact [aria-invalid="true"] {
+  border-bottom-color: var(--contact-danger);
+}
+
+.field-hint,
+.field-error {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.field-hint {
+  color: var(--irtc-color-text-secondary);
+}
+
+.field-error {
+  color: var(--contact-danger);
+}
+
+.form-summary {
+  padding: 16px 20px;
+  border: 1px solid var(--contact-danger);
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.form-summary[hidden] {
+  display: none;
+}
+
+.form-summary p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.form-summary ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-summary a {
+  color: var(--contact-danger);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact .form-submit {
+  min-width: 220px;
+  justify-content: space-between;
+}
+
+.contact .form-submit:disabled {
+  cursor: progress;
+}
+
+.contact .form-status {
+  min-height: 20px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--irtc-color-text-secondary);
+}
+
+.contact .form-status.is-error {
+  color: var(--contact-danger);
 }

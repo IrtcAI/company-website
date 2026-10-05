@@ -1,7 +1,6 @@
 import type { Locale } from "../content";
 
-type Value = { title: string; text: string };
-type Step = { title: string; text: string };
+type Item = { title: string; text: string };
 type GalleryImage = { file: string; alt: string };
 
 type AboutCopy = {
@@ -10,13 +9,13 @@ type AboutCopy = {
   breadcrumbCurrent: string;
   eyebrow: string;
   introTitle: string;
-  introText: string;
-  visionTitle: string;
+  introText: string[];
+  foundationsTitle: string;
+  foundations: Item[];
   valuesTitle: string;
-  values: Value[];
+  values: Item[];
   howTitle: string;
-  howIntro: string;
-  steps: Step[];
+  howText: string;
   galleryTitle: string;
   galleryIntro: string;
   gallery: GalleryImage[];
@@ -31,60 +30,59 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Início",
     breadcrumbCurrent: "Sobre",
     eyebrow: "Sobre a IRTC",
-    introTitle: "Uma fábrica de software de Belém",
-    introText:
-      "A IRTC é uma fábrica de software baseada em Belém, no Pará. Trabalhamos com equipes em qualquer lugar, sempre de perto, entendendo o negócio antes de escrever a primeira linha de código.",
-    visionTitle: "Nossa visão",
-    valuesTitle: "Cultura e valores",
+    introTitle: "Engenharia de cloud, software e IA com base em Belém",
+    introText: [
+      "A IRTC é uma empresa de Cloud, Software & AI Engineering. Projetamos, construímos, modernizamos e operamos sistemas para resolver problemas de negócio. Unimos diagnóstico, arquitetura e execução, com comunicação clara e acompanhamento das entregas.",
+      "Belém é nossa base. Trabalhamos com equipes de diferentes lugares e preservamos a proximidade no modo de entender o problema, explicar as escolhas e conduzir o projeto.",
+    ],
+    foundationsTitle: "Propósito, missão e visão",
+    foundations: [
+      {
+        title: "Propósito",
+        text: "Ampliar o que empresas e pessoas conseguem fazer com tecnologia que funciona no dia a dia.",
+      },
+      {
+        title: "Missão",
+        text: "Resolver problemas de negócio projetando, construindo, modernizando e operando sistemas de cloud, software e IA, com qualidade técnica, comunicação clara e responsabilidade pela entrega.",
+      },
+      {
+        title: "Visão",
+        text: "Ser uma referência de engenharia nascida na Amazônia, reconhecida por tornar cloud, software e IA acessíveis a empresas de diferentes portes e por construir relações que sustentam seu avanço ao longo do tempo.",
+      },
+    ],
+    valuesTitle: "Valores",
     values: [
       {
-        title: "Comunicação clara",
-        text: "Organizamos o projeto em etapas curtas, com prioridades combinadas e demonstrações frequentes. Você sabe o que está pronto e o que vem depois.",
+        title: "Responsabilidade pelo resultado",
+        text: "Escopo, responsáveis e critérios de aceite claros desde o início.",
       },
       {
-        title: "Qualidade desde o começo",
-        text: "Arquitetura, testes e monitoramento entram no projeto desde o início, não depois que os problemas aparecem.",
+        title: "Clareza nas relações",
+        text: "Prioridades, escolhas e próximos passos que o cliente consegue acompanhar.",
       },
       {
-        title: "Suporte de quem construiu",
-        text: "Quem resolve o seu problema é quem construiu o sistema, sem passar sua demanda de um time para outro.",
+        title: "Qualidade desde o início",
+        text: "Arquitetura, segurança, testes e operação planejados como parte da entrega.",
       },
       {
-        title: "Perto mesmo à distância",
-        text: "Trabalhamos de perto com a equipe do cliente, mesmo quando o time está em outra cidade ou outro país.",
+        title: "Proximidade com o cliente",
+        text: "Participação de quem conhece o sistema e continuidade com contexto.",
       },
       {
-        title: "Acessibilidade e linguagem simples",
-        text: "Preferimos explicações diretas a jargão técnico, e cuidamos para que sites e sistemas funcionem para todo mundo.",
+        title: "Respeito às pessoas",
+        text: "Linguagem simples, acessibilidade e cuidado com dados e condições de trabalho.",
+      },
+      {
+        title: "Aprendizado com evidência",
+        text: "Conhecimento aplicado, feedback e documentação que melhoram a entrega.",
       },
     ],
     howTitle: "Como trabalhamos",
-    howIntro: "Um caminho simples, do primeiro problema ao suporte contínuo.",
-    steps: [
-      {
-        title: "Entender",
-        text: "Conversamos sobre o problema, quem ele afeta e o que precisa mudar.",
-      },
-      {
-        title: "Planejar a primeira versão",
-        text: "Definimos o essencial para resolver o problema principal, sem inchar o escopo.",
-      },
-      {
-        title: "Construir em ciclos curtos",
-        text: "Entregamos em etapas pequenas, com demonstrações frequentes para ajustar o rumo cedo.",
-      },
-      {
-        title: "Lançar",
-        text: "Colocamos a primeira versão no ar e acompanhamos o uso real.",
-      },
-      {
-        title: "Dar suporte e evoluir",
-        text: "Continuamos por perto depois do lançamento, corrigindo e melhorando com base no que acontece.",
-      },
-    ],
+    howText:
+      "Entendemos o problema e definimos a primeira entrega. Construímos em ciclos curtos, validamos o sistema em uso e documentamos sua operação. Suporte e evolução seguem o escopo e a cadência combinados com o cliente.",
     galleryTitle: "Gente que faz tecnologia",
     galleryIntro:
-      "Fotos ilustrativas do tipo de ambiente colaborativo que buscamos construir.",
+      "Fotos ilustrativas, sem relação com pessoas da IRTC. Mostram o tipo de ambiente colaborativo que buscamos construir.",
     gallery: [
       {
         file: "team-collaboration.webp",
@@ -103,9 +101,9 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: "Equipe pequena comemorando de forma descontraída em um escritório, com xícaras de café na mesa.",
       },
     ],
-    founderTitle: "Conheça quem lidera",
+    founderTitle: "Liderança",
     founderText:
-      "A IRTC nasceu do trabalho de Iago Rodrigues em plataformas web, aplicativos, integrações e IA.",
+      "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
     founderLink: "Conheça o fundador",
   },
   en: {
@@ -113,60 +111,59 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Home",
     breadcrumbCurrent: "About",
     eyebrow: "About IRTC",
-    introTitle: "A software company from Belém",
-    introText:
-      "IRTC is a software company based in Belém, Brazil. We work with teams anywhere, staying close and understanding the business before writing the first line of code.",
-    visionTitle: "Our vision",
-    valuesTitle: "Culture and values",
+    introTitle: "Cloud, software and AI engineering based in Belém",
+    introText: [
+      "IRTC is a Cloud, Software & AI Engineering company. We design, build, modernize and operate systems to solve business problems. We combine diagnosis, architecture and execution, with clear communication and close follow-up of deliveries.",
+      "Belém is our base. We work with teams from different places and keep closeness in how we understand the problem, explain our choices and run the project.",
+    ],
+    foundationsTitle: "Purpose, mission and vision",
+    foundations: [
+      {
+        title: "Purpose",
+        text: "To expand what companies and people can do with technology that works in everyday life.",
+      },
+      {
+        title: "Mission",
+        text: "To solve business problems by designing, building, modernizing and operating cloud, software and AI systems, with technical quality, clear communication and ownership of delivery.",
+      },
+      {
+        title: "Vision",
+        text: "To be an engineering reference born in the Amazon, recognized for making cloud, software and AI accessible to companies of different sizes and for building relationships that sustain their progress over time.",
+      },
+    ],
+    valuesTitle: "Values",
     values: [
       {
-        title: "Clear communication",
-        text: "We organize the project into short cycles, with shared priorities and regular demos. You know what's ready and what comes next.",
+        title: "Ownership of results",
+        text: "Clear scope, owners and acceptance criteria from the start.",
       },
       {
-        title: "Quality from day one",
-        text: "Architecture, testing and monitoring are part of the project from the start, not added after problems show up.",
+        title: "Clarity in relationships",
+        text: "Priorities, choices and next steps the client can follow.",
       },
       {
-        title: "Support from the people who built it",
-        text: "The person who solves your problem is the person who built the system, without passing you around.",
+        title: "Quality from the start",
+        text: "Architecture, security, testing and operations planned as part of the delivery.",
       },
       {
-        title: "Close even at a distance",
-        text: "We work closely with the client's team, even when they are in another city or country.",
+        title: "Closeness to the client",
+        text: "Involvement of people who know the system, and continuity with context.",
       },
       {
-        title: "Accessibility and plain language",
-        text: "We prefer plain explanations over jargon, and make sure sites and systems work for everyone.",
+        title: "Respect for people",
+        text: "Plain language, accessibility and care for data and working conditions.",
+      },
+      {
+        title: "Learning from evidence",
+        text: "Applied knowledge, feedback and documentation that improve delivery.",
       },
     ],
     howTitle: "How we work",
-    howIntro: "A simple path, from the first problem to ongoing support.",
-    steps: [
-      {
-        title: "Understand",
-        text: "We talk through the problem, who it affects and what needs to change.",
-      },
-      {
-        title: "Plan the first version",
-        text: "We define what's essential to solve the main problem, without letting scope grow.",
-      },
-      {
-        title: "Build in short cycles",
-        text: "We deliver in small steps, with regular demos to adjust course early.",
-      },
-      {
-        title: "Launch",
-        text: "We put the first version live and watch how it's actually used.",
-      },
-      {
-        title: "Support and improve",
-        text: "We stay close after launch, fixing and improving based on what happens.",
-      },
-    ],
+    howText:
+      "We understand the problem and define the first delivery. We build in short cycles, validate the system in use and document how it runs. Support and evolution follow the scope and pace agreed with the client.",
     galleryTitle: "People who build technology",
     galleryIntro:
-      "Illustrative photos of the kind of collaborative environment we aim to build.",
+      "Illustrative photos, not of IRTC people. They show the kind of collaborative environment we aim to build.",
     gallery: [
       {
         file: "team-collaboration.webp",
@@ -185,9 +182,9 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: "A small team having a relaxed celebration in an office, with coffee mugs on the table.",
       },
     ],
-    founderTitle: "Meet the person behind it",
+    founderTitle: "Leadership",
     founderText:
-      "IRTC grew out of Iago Rodrigues's work on web platforms, mobile apps, integrations and AI.",
+      "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership shapes the company's work.",
     founderLink: "Meet the founder",
   },
   es: {
@@ -195,61 +192,59 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Inicio",
     breadcrumbCurrent: "Nosotros",
     eyebrow: "Sobre IRTC",
-    introTitle: "Una fábrica de software de Belém",
-    introText:
-      "IRTC es una fábrica de software con base en Belém, Brasil. Trabajamos con equipos en cualquier lugar, de cerca, entendiendo el negocio antes de escribir la primera línea de código.",
-    visionTitle: "Nuestra visión",
-    valuesTitle: "Cultura y valores",
+    introTitle: "Ingeniería de cloud, software e IA con base en Belém",
+    introText: [
+      "IRTC es una empresa de Cloud, Software & AI Engineering. Diseñamos, construimos, modernizamos y operamos sistemas para resolver problemas de negocio. Unimos diagnóstico, arquitectura y ejecución, con comunicación clara y seguimiento de las entregas.",
+      "Belém es nuestra base. Trabajamos con equipos de distintos lugares y mantenemos la cercanía en la forma de entender el problema, explicar las decisiones y conducir el proyecto.",
+    ],
+    foundationsTitle: "Propósito, misión y visión",
+    foundations: [
+      {
+        title: "Propósito",
+        text: "Ampliar lo que las empresas y las personas pueden hacer con tecnología que funciona en el día a día.",
+      },
+      {
+        title: "Misión",
+        text: "Resolver problemas de negocio diseñando, construyendo, modernizando y operando sistemas de cloud, software e IA, con calidad técnica, comunicación clara y responsabilidad por la entrega.",
+      },
+      {
+        title: "Visión",
+        text: "Ser una referencia de ingeniería nacida en la Amazonía, reconocida por hacer que cloud, software e IA sean accesibles para empresas de distintos tamaños y por construir relaciones que sostienen su avance a lo largo del tiempo.",
+      },
+    ],
+    valuesTitle: "Valores",
     values: [
       {
-        title: "Comunicación clara",
-        text: "Organizamos el proyecto en ciclos cortos, con prioridades acordadas y demostraciones frecuentes. Sabes qué está listo y qué sigue.",
+        title: "Responsabilidad por el resultado",
+        text: "Alcance, responsables y criterios de aceptación claros desde el inicio.",
       },
       {
-        title: "Calidad desde el principio",
-        text: "La arquitectura, las pruebas y el monitoreo forman parte del proyecto desde el inicio, no se agregan después de los problemas.",
+        title: "Claridad en las relaciones",
+        text: "Prioridades, decisiones y próximos pasos que el cliente puede seguir.",
       },
       {
-        title: "Soporte de quienes lo construyeron",
-        text: "Quien resuelve tu problema es quien construyó el sistema, sin pasarte de un equipo a otro.",
+        title: "Calidad desde el inicio",
+        text: "Arquitectura, seguridad, pruebas y operación planificadas como parte de la entrega.",
       },
       {
-        title: "Cerca aunque a distancia",
-        text: "Trabajamos de cerca con el equipo del cliente, incluso cuando está en otra ciudad o país.",
+        title: "Cercanía con el cliente",
+        text: "Participación de quien conoce el sistema y continuidad con contexto.",
       },
       {
-        title: "Accesibilidad y lenguaje simple",
-        text: "Preferimos explicaciones directas antes que la jerga técnica, y cuidamos que los sitios y sistemas funcionen para todos.",
+        title: "Respeto por las personas",
+        text: "Lenguaje simple, accesibilidad y cuidado con los datos y las condiciones de trabajo.",
+      },
+      {
+        title: "Aprendizaje con evidencia",
+        text: "Conocimiento aplicado, retroalimentación y documentación que mejoran la entrega.",
       },
     ],
     howTitle: "Cómo trabajamos",
-    howIntro:
-      "Un camino simple, desde el primer problema hasta el soporte continuo.",
-    steps: [
-      {
-        title: "Entender",
-        text: "Conversamos sobre el problema, a quién afecta y qué necesita cambiar.",
-      },
-      {
-        title: "Planificar la primera versión",
-        text: "Definimos lo esencial para resolver el problema principal, sin inflar el alcance.",
-      },
-      {
-        title: "Construir en ciclos cortos",
-        text: "Entregamos en pasos pequeños, con demostraciones frecuentes para ajustar el rumbo temprano.",
-      },
-      {
-        title: "Lanzar",
-        text: "Ponemos la primera versión en marcha y observamos el uso real.",
-      },
-      {
-        title: "Dar soporte y mejorar",
-        text: "Seguimos cerca después del lanzamiento, corrigiendo y mejorando según lo que ocurre.",
-      },
-    ],
+    howText:
+      "Entendemos el problema y definimos la primera entrega. Construimos en ciclos cortos, validamos el sistema en uso y documentamos su operación. El soporte y la evolución siguen el alcance y el ritmo acordados con el cliente.",
     galleryTitle: "Personas que hacen tecnología",
     galleryIntro:
-      "Fotos ilustrativas del tipo de ambiente colaborativo que buscamos construir.",
+      "Fotos ilustrativas, sin relación con personas de IRTC. Muestran el tipo de ambiente colaborativo que buscamos construir.",
     gallery: [
       {
         file: "team-collaboration.webp",
@@ -268,9 +263,9 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: "Un pequeño equipo celebrando de forma relajada en una oficina, con tazas de café sobre la mesa.",
       },
     ],
-    founderTitle: "Conoce a quien lidera",
+    founderTitle: "Liderazgo",
     founderText:
-      "IRTC nació del trabajo de Iago Rodrigues en plataformas web, aplicaciones, integraciones e IA.",
+      "Iago Rodrigues es el fundador de IRTC y actúa como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
     founderLink: "Conoce al fundador",
   },
 };

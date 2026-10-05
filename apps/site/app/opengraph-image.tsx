@@ -1,14 +1,22 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { SLOGAN } from "@/lib/structured-data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "IRTC, fábrica de software em Belém, Pará";
+export const alt = "IRTC, Cloud, Software & AI Engineering";
 
-const cream = "#f4efe7";
-const terracotta = "#d98f6c";
-const sage = "#86bca2";
+const deepTeal = "#002C32";
+const offWhite = "#F5F4EF";
+const coral = "#F58F69";
 
-export default function Image() {
+export default async function Image() {
+  const wordmark = await readFile(
+    join(process.cwd(), "public/brand/irtc-wordmark-offwhite.svg"),
+  );
+  const wordmarkSrc = `data:image/svg+xml;base64,${wordmark.toString("base64")}`;
+
   return new ImageResponse(
     <div
       style={{
@@ -18,23 +26,12 @@ export default function Image() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 88px",
-        background:
-          "linear-gradient(165deg, #020b16 0%, #071a2a 48%, #003340 100%)",
-        borderBottom: `12px solid ${sage}`,
-        color: cream,
+        background: deepTeal,
+        borderBottom: `12px solid ${coral}`,
+        color: offWhite,
       }}
     >
-      <span
-        style={{
-          fontSize: 220,
-          fontWeight: 500,
-          letterSpacing: "-0.07em",
-          lineHeight: 1,
-          color: terracotta,
-        }}
-      >
-        irtc
-      </span>
+      <img src={wordmarkSrc} width={414} height={208} alt="" />
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
@@ -45,7 +42,7 @@ export default function Image() {
             lineHeight: 1.1,
           }}
         >
-          Software, sites, apps e IA.
+          {SLOGAN}
         </div>
         <div
           style={{
@@ -53,12 +50,12 @@ export default function Image() {
             justifyContent: "space-between",
             marginTop: 36,
             paddingTop: 28,
-            borderTop: `2px solid ${cream}33`,
+            borderTop: `2px solid ${offWhite}33`,
             fontSize: 28,
           }}
         >
-          <span>Da Amazônia para o seu próximo projeto.</span>
-          <span>irtc.com.br</span>
+          <span>Da Amazônia para o seu próximo desafio.</span>
+          <span style={{ color: coral }}>irtc.com.br</span>
         </div>
       </div>
     </div>,

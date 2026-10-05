@@ -1,28 +1,19 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Cloud, MessageCircle } from "lucide-react";
-import {
-  content,
-  Locale,
-  projectBrands,
-  recommendationAuthors,
-} from "@/lib/content";
+import { Cloud, MessageCircle } from "lucide-react";
+import { content, Locale } from "@/lib/content";
 import { pagePath } from "@/lib/routes";
-import { services, type ServiceId } from "@/lib/services";
 import {
   projectLonLat,
   WORLD_MAP_HEIGHT,
   WORLD_MAP_WIDTH,
 } from "@/lib/world-map";
+import "@/styles/pillars.css";
 import { ContactCta } from "./contact-cta";
 import { DevelopmentWorld } from "./development-world";
 import { Founder } from "./founder";
 import { HomeHero } from "./home-hero";
-import { ProjectShowcase } from "./project-showcase";
-import { ServiceCard } from "./service-card";
-import { Stats } from "./stats";
-import { Testimonials } from "./testimonials";
+import { HomePillars } from "./home-pillars";
 
 const techNames = [
   "Node.js",
@@ -46,75 +37,19 @@ const techSlugs = [
   "nestjs",
 ];
 
-const HOME_SERVICES: ServiceId[] = [
-  "custom-software",
-  "web-platforms",
-  "mobile-apps",
-  "applied-ai",
-];
-
-const homeServices = services.filter((service) =>
-  HOME_SERVICES.includes(service.id),
-);
-
 const BELEM = projectLonLat(-48.4902, -1.4558);
-const SAO_PAULO = projectLonLat(-46.63, -23.55);
-const NEW_YORK = projectLonLat(-74.01, 40.71);
-
-function originArc(
-  [x1, y1]: [number, number],
-  [x2, y2]: [number, number],
-  bend: number,
-) {
-  const mx = (x1 + x2) / 2;
-  const my = (y1 + y2) / 2;
-  const dx = x2 - x1;
-  const dy = y2 - y1;
-  const length = Math.hypot(dx, dy) || 1;
-  const cx = mx - (dy / length) * bend;
-  const cy = my + (dx / length) * bend;
-  return `M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}`;
-}
-
-const ROUTE_SAO_PAULO = originArc(BELEM, SAO_PAULO, 22);
-const ROUTE_NEW_YORK = originArc(BELEM, NEW_YORK, -28);
-
-const REACH = (
-  [
-    [-122.42, 37.77],
-    [-79.38, 43.65],
-    [-58.38, -34.6],
-    [-74.07, 4.71],
-    [-9.14, 38.72],
-    [-0.13, 51.51],
-    [13.4, 52.52],
-    [3.38, 6.52],
-    [36.82, -1.29],
-    [18.42, -33.92],
-    [55.27, 25.2],
-    [103.82, 1.35],
-    [139.69, 35.68],
-    [151.21, -33.87],
-    [174.76, -36.85],
-  ] as const
-)
-  .map(([lon, lat]) => {
-    const point = projectLonLat(lon, lat);
-    const length = Math.hypot(point[0] - BELEM[0], point[1] - BELEM[1]);
-    return { point, length, route: originArc(BELEM, point, -length * 0.22) };
-  })
-  .sort((a, b) => a.length - b.length)
-  .map((reach, order) => ({ ...reach, order }));
 
 export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
   const copy = content[locale];
   const contact = pagePath(locale, "contact");
+  const servicesHref = pagePath(locale, "services");
 
   return (
     <>
       <HomeHero
         copy={{ hero: copy.hero, manifesto: copy.manifesto }}
         contact={contact}
+        services={servicesHref}
       />
       <section className="solutions section-pad" id="servicos" tabIndex={-1}>
         <DevelopmentWorld />
@@ -128,25 +63,8 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             <br />
             <span>{copy.solutions.accent}</span>
           </h2>
-          <p className="solutions-intro">{copy.solutions.intro}</p>
         </div>
-        <div className="service-grid home-service-grid">
-          {homeServices.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              locale={locale}
-              cta={copy.solutions.cardCta}
-            />
-          ))}
-        </div>
-        <Link
-          href={pagePath(locale, "services")}
-          className="inline-link services-all-link"
-        >
-          {copy.solutions.allServices}
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
+        <HomePillars copy={copy.solutions} href={servicesHref} />
         <div className="tech-playground">
           <h3>{copy.solutions.techTitle}</h3>
           <div
@@ -177,38 +95,14 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
             ))}
           </div>
         </div>
-        <ContactCta locale={locale} />
-      </section>
-      <section className="client-strip" aria-label={copy.clients}>
-        <p>{copy.clients}</p>
-        <div className="client-names">
-          {projectBrands.map((brand) => (
-            <a
-              key={brand.name}
-              href={brand.url}
-              target="_blank"
-              rel="noreferrer"
-              className={`brand-logo ${brand.theme}`}
-            >
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                width={180}
-                height={52}
-              />
-            </a>
-          ))}
-        </div>
-      </section>
-      <Stats locale={locale} />
-      <div className="object-run">
-        <DevelopmentWorld kind="database" />
-        <ProjectShowcase copy={copy.projects} brands={projectBrands} />
-        <Testimonials
-          copy={copy.testimonials}
-          authors={recommendationAuthors}
+        <ContactCta
+          locale={locale}
+          title={copy.solutions.cta.title}
+          text={copy.solutions.cta.text}
+          action={copy.solutions.cta.action}
+          irisLabel={copy.solutions.cta.iris}
         />
-      </div>
+      </section>
       <div className="object-run">
         <DevelopmentWorld kind="server" />
         <section className="origin section-pad">
@@ -224,20 +118,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                 viewBox={`0 0 ${WORLD_MAP_WIDTH} ${WORLD_MAP_HEIGHT}`}
                 data-reveal
               >
-                {REACH.map(({ point, route, order }) => (
-                  <g
-                    className="network-reach"
-                    key={route}
-                    style={{ "--reach": order } as CSSProperties}
-                  >
-                    <path className="reach-line" d={route} />
-                    <path className="reach-draw" d={route} pathLength={1} />
-                    <path className="reach-trace" d={route} pathLength={1} />
-                    <circle cx={point[0]} cy={point[1]} r="3" />
-                  </g>
-                ))}
-                <path className="network-route" d={ROUTE_SAO_PAULO} />
-                <path className="network-route route-two" d={ROUTE_NEW_YORK} />
                 <circle
                   className="network-pulse"
                   cx={BELEM[0]}
@@ -250,18 +130,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
                   cx={BELEM[0]}
                   cy={BELEM[1]}
                   r="6"
-                />
-                <circle
-                  className="network-dest"
-                  cx={SAO_PAULO[0]}
-                  cy={SAO_PAULO[1]}
-                  r="4.5"
-                />
-                <circle
-                  className="network-dest dest-two"
-                  cx={NEW_YORK[0]}
-                  cy={NEW_YORK[1]}
-                  r="4.5"
                 />
               </svg>
               <span className="network-coordinates">01°27′ S · 48°30′ W</span>
@@ -290,7 +158,6 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
               <span>{copy.origin.accent}</span>
             </h2>
             <p>{copy.origin.body}</p>
-            <p>{copy.origin.vision}</p>
             <Link href={contact} className="inline-link">
               {copy.origin.cta}
               <MessageCircle aria-hidden="true" />

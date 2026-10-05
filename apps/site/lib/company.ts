@@ -8,13 +8,10 @@ export const company = {
     linkedin: "https://www.linkedin.com/in/iago-rodrigues/",
   },
   address: {
-    street: "Trav. Alferes Costa, 1750",
-    complement: "Edifício 17 Cinco Zero",
     locality: "Belém",
     region: "PA",
     country: "BR",
   },
-  geo: { latitude: -1.4558, longitude: -48.4902 },
   opens: "08:00",
   closes: "18:00",
   socials: [
@@ -33,12 +30,8 @@ const countryName: Record<Locale, string> = {
 };
 
 export function addressLines(locale: Locale) {
-  const { street, complement, locality, region } = company.address;
-  return [
-    street,
-    complement,
-    `${locality} · ${region} · ${countryName[locale]}`,
-  ];
+  const { locality, region } = company.address;
+  return [`${locality} · ${region} · ${countryName[locale]}`];
 }
 
 const hours: Record<Locale, { weekdays: string; weekend: string }> = {

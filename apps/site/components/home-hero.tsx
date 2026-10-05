@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MouseEvent, ReactNode, useEffect, useState } from "react";
+import { MouseEvent, ReactNode } from "react";
 import { ArrowDown, MessageCircle, Pause, Play } from "lucide-react";
 import type { content } from "@/lib/content";
 import { HeroWorld } from "./hero-world";
@@ -61,67 +61,14 @@ function SectionLink({
   );
 }
 
-function TypedHeadline({
-  paused,
-  words,
-}: {
-  paused: boolean;
-  words: string[];
-}) {
-  const [word, setWord] = useState(words[0]);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let index = 0;
-    let length = words[0].length;
-    let deleting = true;
-    let timer: ReturnType<typeof setTimeout>;
-
-    const tick = () => {
-      if (paused || reduced.matches) return;
-      const current = words[index];
-      length += deleting ? -1 : 1;
-      setWord(current.slice(0, length));
-      let delay = deleting ? 32 : 85;
-      if (length === 0) {
-        index = (index + 1) % words.length;
-        deleting = false;
-        delay = 220;
-      } else if (length === current.length) {
-        deleting = true;
-        delay = 2300;
-      }
-      timer = setTimeout(tick, delay);
-    };
-
-    const restart = () => {
-      clearTimeout(timer);
-      timer = setTimeout(tick, 6000);
-    };
-
-    restart();
-    reduced.addEventListener("change", restart);
-
-    return () => {
-      clearTimeout(timer);
-      reduced.removeEventListener("change", restart);
-    };
-  }, [paused, words]);
-
-  return (
-    <span className="typed-line" aria-hidden="true">
-      {word}
-      <span className="typing-caret" />
-    </span>
-  );
-}
-
 export function HomeHero({
   copy,
   contact,
+  services,
 }: {
   copy: Pick<Copy, "hero" | "manifesto">;
   contact: string;
+  services: string;
 }) {
   const { paused, setPaused } = useShell();
 
@@ -139,22 +86,21 @@ export function HomeHero({
             <span />
             {copy.hero.eyebrow}
           </p>
-          <h1 id="hero-title">
+          <h1 id="hero-title" className="hero-slogan">
             <span>{copy.hero.title}</span>
-            <TypedHeadline
-              key={copy.hero.words[0]}
-              paused={paused}
-              words={copy.hero.words}
-            />
-            <span className="sr-only">{copy.hero.words.join(" ")}</span>
           </h1>
           <p className="hero-description">{copy.hero.description}</p>
-          <Link href={contact} className="hero-start">
-            {copy.hero.cta}
-            <span>
-              <MessageCircle aria-hidden="true" />
-            </span>
-          </Link>
+          <div className="hero-actions">
+            <Link href={contact} className="hero-start">
+              {copy.hero.cta}
+              <span>
+                <MessageCircle aria-hidden="true" />
+              </span>
+            </Link>
+            <Link href={services} className="hero-secondary">
+              {copy.hero.secondaryCta}
+            </Link>
+          </div>
         </div>
         <div className="hero-bottom">
           <span>{copy.hero.label}</span>

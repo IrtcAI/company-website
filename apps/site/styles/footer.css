@@ -83,3 +83,16 @@
     gap: 32px;
   }
 }
+
+.footer-wordmark .brand-crop {
+  height: auto;
+  width: clamp(240px, 44vw, 640px);
+}
+
+.footer-descriptor {
+  margin: 0 0 28px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--footer-ink);
+}

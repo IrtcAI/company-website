@@ -8,12 +8,13 @@ import { ServiceCard } from "@/components/service-card";
 import { ServiceFaq } from "@/components/service-faq";
 import { ServiceTechTokens } from "@/components/service-tech-tokens";
 import { SiteShell } from "@/components/site-shell";
-import { content, projectBrands } from "@/lib/content";
+import { content } from "@/lib/content";
 import { servicesPageCopy } from "@/lib/copy/services-page";
 import { resolveLocaleParam } from "@/lib/locale-params";
 import { absoluteUrl, pageAlternates, pagePath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import {
+  pillarNames,
   relatedServices,
   serviceBySlug,
   serviceSlugs,
@@ -68,13 +69,6 @@ export default async function ServicePage({ params }: Params) {
   const servicesHref = pagePath(locale, "services");
   const path = pagePath(locale, "services", copy.slug);
   const related = relatedServices(service);
-  const project =
-    service.relatedProject !== undefined
-      ? {
-          brand: projectBrands[service.relatedProject],
-          details: siteCopy.projects.cases[service.relatedProject],
-        }
-      : null;
 
   const structuredData = graph(
     {
@@ -112,6 +106,20 @@ export default async function ServicePage({ params }: Params) {
             { label: copy.title },
           ]}
         />
+        <p className="service-pillar-tag">
+          <span>{pageCopy.pillarLabel}</span>
+          <strong>{pillarNames[service.pillar]}</strong>
+          {service.supportPillars ? (
+            <>
+              <span>{pageCopy.supportPillarLabel}</span>
+              <strong>
+                {service.supportPillars
+                  .map((pillar) => pillarNames[pillar])
+                  .join(", ")}
+              </strong>
+            </>
+          ) : null}
+        </p>
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
         <Link
@@ -143,20 +151,15 @@ export default async function ServicePage({ params }: Params) {
         </ul>
       </section>
 
-      {project ? (
-        <section className="service-section service-related-project section-pad">
-          <h2>{pageCopy.relatedProjectTitle}</h2>
-          <p className="overline">{project.details.category}</p>
-          <p className="service-project-summary">
-            {project.details.description}
-          </p>
-          <div className="service-project-result">
-            <strong>{project.brand.metric}</strong>
-            <span>{project.details.result}</span>
-          </div>
-          <p className="provenance">{siteCopy.projects.source}</p>
-        </section>
-      ) : null}
+      <section className="service-section section-pad">
+        <h2>{pageCopy.measureTitle}</h2>
+        <ul className="service-list">
+          {copy.measure.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <p className="service-measure-note">{pageCopy.measureNote}</p>
+      </section>
 
       <section className="service-section section-pad">
         <h2>{pageCopy.howTitle}</h2>

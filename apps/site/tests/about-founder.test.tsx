@@ -1,6 +1,7 @@
 import { createElement, ImgHTMLAttributes } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { AboutContent } from "@/components/about-content";
 import { AboutGallery } from "@/components/about-gallery";
 import { ContactCta } from "@/components/contact-cta";
 import { FounderProfile } from "@/components/founder-profile";
@@ -48,14 +49,19 @@ describe("founder page", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("renders the beyond work section with its items", () => {
+  it("shows the official role, the three pillars and no personal details", () => {
     render(<FounderProfile locale="pt-BR" />);
 
+    expect(screen.getByText("Founder & Principal Engineer")).toBeVisible();
+    expect(screen.getByText("Cloud Engineering")).toBeVisible();
+    expect(screen.getByText("Software Engineering")).toBeVisible();
+    expect(screen.getByText("AI Engineering")).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: "Fora do trabalho" }),
-    ).toBeVisible();
-    expect(screen.getByText("Família")).toBeVisible();
-    expect(screen.getByText("Belém")).toBeVisible();
+      screen.queryByRole("heading", { name: "Fora do trabalho" }),
+    ).not.toBeInTheDocument();
+    expect(document.body.textContent).not.toMatch(
+      /LeafLink|Dasa|Perfect Pay|futebol|açaí|mentoria/i,
+    );
   });
 });
 
@@ -66,22 +72,45 @@ describe("about page", () => {
     for (const image of aboutCopy["pt-BR"].gallery)
       expect(screen.getByAltText(image.alt)).toBeVisible();
   });
+
+  it.each(["pt-BR", "en", "es"] as const)(
+    "renders the institutional foundations in %s",
+    (locale) => {
+      render(<AboutContent locale={locale} />);
+
+      const copy = aboutCopy[locale];
+      expect(
+        screen.getByRole("heading", { level: 1, name: copy.introTitle }),
+      ).toBeVisible();
+      for (const item of [...copy.foundations, ...copy.values])
+        expect(
+          screen.getByRole("heading", { level: 3, name: item.title }),
+        ).toBeVisible();
+      expect(copy.foundations).toHaveLength(3);
+      expect(copy.values).toHaveLength(6);
+    },
+  );
+
+  it("uses the official Brand Book purpose, mission and vision in pt-BR", () => {
+    const [purpose, mission, vision] = aboutCopy["pt-BR"].foundations;
+
+    expect(purpose.text).toBe(
+      "Ampliar o que empresas e pessoas conseguem fazer com tecnologia que funciona no dia a dia.",
+    );
+    expect(mission.text).toMatch(/^Resolver problemas de negócio projetando/);
+    expect(vision.text).toMatch(
+      /^Ser uma referência de engenharia nascida na Amazônia/,
+    );
+  });
 });
 
 describe("stats section", () => {
-  it("renders the headline numbers in the server-rendered markup", () => {
-    render(<Stats locale="pt-BR" />);
+  it.each(["pt-BR", "en", "es"] as const)(
+    "renders nothing in %s while no figure is approved",
+    (locale) => {
+      const { container } = render(<Stats locale={locale} />);
 
-    expect(screen.getByText("+8")).toBeVisible();
-    expect(screen.getByText("+30")).toBeVisible();
-    expect(screen.getByText("+1 mi")).toBeVisible();
-    expect(screen.getByText("4,9/5")).toBeVisible();
-  });
-
-  it("uses a decimal point for the English rating", () => {
-    render(<Stats locale="en" />);
-
-    expect(screen.getByText("4.9/5")).toBeVisible();
-    expect(screen.getByText("+8")).toBeVisible();
-  });
+      expect(container).toBeEmptyDOMElement();
+    },
+  );
 });

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { company as irtc } from "@/lib/company";
 import { exceedsLimit } from "@/lib/rate-limit";
 import { services } from "@/lib/services";
-import { clientAddress, email, text } from "@/lib/validation";
+import { clientAddress, email, text, undecidedTopic } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -24,6 +24,11 @@ export async function POST(request: Request) {
     const message = text(body.message, 1800);
     const phone = text(body.phone, 40);
     const service = services.find(({ id }) => id === body.service);
+    const topic = service
+      ? service.copy["pt-BR"].title
+      : body.service === undecidedTopic
+        ? "ainda não sabe, quer conversar"
+        : "não informado";
     const kind = body.kind === "scope_approval" ? "scope_approval" : "contact";
     if (!name || !message || !sender)
       return NextResponse.json(
@@ -50,7 +55,7 @@ export async function POST(request: Request) {
       `E-mail: ${sender || "não informado"}`,
       `Empresa: ${company || "não informada"}`,
       `Telefone: ${phone || "não informado"}`,
-      `Assunto: ${service?.copy["pt-BR"].title || "não informado"}`,
+      `Assunto: ${topic}`,
       "",
       "Contexto:",
       message,

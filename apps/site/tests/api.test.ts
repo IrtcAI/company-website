@@ -198,14 +198,16 @@ describe("contact delivery", () => {
       request({ ...lead, phone: "+55 91 99999-0000", service: "applied-ai" }),
     );
     await contact(request({ ...lead, service: "<script>" }));
+    await contact(request({ ...lead, service: "undecided" }));
 
-    const [known, unknown] = fetchMock.mock.calls.map(
+    const [known, unknown, undecided] = fetchMock.mock.calls.map(
       ([, init]) => JSON.parse(init.body).text,
     );
     expect(known).toContain("Telefone: +55 91 99999-0000");
     expect(known).toContain("Assunto: Inteligência artificial aplicada");
     expect(unknown).toContain("Assunto: não informado");
     expect(unknown).not.toContain("<script>");
+    expect(undecided).toContain("Assunto: ainda não sabe, quer conversar");
   });
   it("sends an approved scope with reply-to to the configured recipient", async () => {
     vi.stubEnv("RESEND_API_KEY", "test-only");

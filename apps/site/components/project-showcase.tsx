@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CircleCheck, ExternalLink, Plus } from "lucide-react";
-import type { content, projectBrands } from "@/lib/content";
+import type { content, ProjectBrand } from "@/lib/content";
 
 type Copy = (typeof content)["pt-BR"]["projects"];
 
@@ -12,9 +12,11 @@ export function ProjectShowcase({
   brands,
 }: {
   copy: Copy;
-  brands: typeof projectBrands;
+  brands: ProjectBrand[];
 }) {
   const [project, setProject] = useState(0);
+
+  if (brands.length === 0 || projects.cases.length === 0) return null;
 
   const currentProject = {
     ...brands[project],

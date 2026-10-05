@@ -1,6 +1,9 @@
 import type { Locale } from "./content";
 import { company } from "./company";
 import { absoluteUrl, pagePath, SITE_URL } from "./routes";
+import { pillarNames, pillars } from "./services";
+
+export const SLOGAN = "We engineer what moves your business forward.";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const FOUNDER_ID = `${SITE_URL}/#founder`;
@@ -21,19 +24,15 @@ export function organization(locale: Locale, description: string) {
     logo: `${SITE_URL}/icon.svg`,
     email: company.email,
     description,
+    slogan: SLOGAN,
+    knowsAbout: pillars.map((id) => pillarNames[id]),
     inLanguage: locale,
     founder: { "@id": FOUNDER_ID },
     address: {
       "@type": "PostalAddress",
-      streetAddress: `${address.street}, ${address.complement}`,
       addressLocality: address.locality,
       addressRegion: address.region,
       addressCountry: address.country,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: company.geo.latitude,
-      longitude: company.geo.longitude,
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

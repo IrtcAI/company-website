@@ -15,6 +15,16 @@ export type ServiceFaqItem = {
   answer: string;
 };
 
+export type PillarId = "cloud" | "software" | "ai";
+
+export const pillars: PillarId[] = ["cloud", "software", "ai"];
+
+export const pillarNames: Record<PillarId, string> = {
+  cloud: "Cloud Engineering",
+  software: "Software Engineering",
+  ai: "AI Engineering",
+};
+
 export type ServiceCopy = {
   slug: string;
   title: string;
@@ -22,6 +32,7 @@ export type ServiceCopy = {
   intro: string;
   problems: string[];
   deliverables: string[];
+  measure: string[];
   faq: ServiceFaqItem[];
 };
 
@@ -29,7 +40,8 @@ export type Service = {
   id: ServiceId;
   icon: string;
   technologies: string[];
-  relatedProject?: number;
+  pillar: PillarId;
+  supportPillars?: PillarId[];
   copy: Record<Locale, ServiceCopy>;
 };
 
@@ -37,6 +49,7 @@ export const services: Service[] = [
   {
     id: "custom-software",
     icon: "Layers3",
+    pillar: "software",
     technologies: ["TypeScript", "Node.js", "NestJS", "React", "PostgreSQL"],
     copy: {
       "pt-BR": {
@@ -59,12 +72,17 @@ export const services: Service[] = [
           "Um lançamento que você já pode colocar na frente dos usuários",
           "Um roteiro do que vem depois da primeira versão",
         ],
+        measure: [
+          "O projeto define com você, no início, qual fluxo precisa funcionar de ponta a ponta na primeira versão e como ele será aceito.",
+          "O tempo e o retrabalho do processo atual são medidos antes e comparados depois da implantação.",
+          "Usuários reais testam a primeira versão, e o que eles encontram define as prioridades seguintes.",
+        ],
         faq: [
           {
             question:
               "O que influencia o custo de um projeto de software sob medida?",
             answer:
-              "Principalmente o tamanho da primeira versão: quantos fluxos, integrações e perfis de usuário ela precisa. Definimos isso juntos antes de escrever qualquer código, para que a estimativa reflita o seu problema, não um pacote genérico.",
+              "Principalmente o tamanho da primeira versão: quantos fluxos, integrações e perfis de usuário ela precisa. Definimos isso juntos antes de escrever qualquer código, para que a estimativa reflita o seu problema, não um pacote genérico. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como o projeto sai da ideia até um sistema funcionando?",
@@ -103,11 +121,16 @@ export const services: Service[] = [
           "A working release you can put in front of users",
           "A roadmap for what comes after the first version",
         ],
+        measure: [
+          "The project defines with you, at the start, which flow has to work end to end in the first version and how it will be accepted.",
+          "Time and rework in the current process are measured before and compared after rollout.",
+          "Real users test the first version, and what they find sets the next priorities.",
+        ],
         faq: [
           {
             question: "What affects the cost of a custom software project?",
             answer:
-              "Mostly the size of the first version: how many flows, integrations and user roles it needs. We scope this together before any code is written, so the estimate reflects your actual problem, not a generic package.",
+              "Mostly the size of the first version: how many flows, integrations and user roles it needs. We scope this together before any code is written, so the estimate reflects your actual problem, not a generic package. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question:
@@ -147,12 +170,17 @@ export const services: Service[] = [
           "Un lanzamiento que ya puedes poner frente a los usuarios",
           "Una hoja de ruta de lo que viene después de la primera versión",
         ],
+        measure: [
+          "El proyecto define contigo, al inicio, qué flujo debe funcionar de punta a punta en la primera versión y cómo se aceptará.",
+          "El tiempo y el retrabajo del proceso actual se miden antes y se comparan después de la implantación.",
+          "Usuarios reales prueban la primera versión, y lo que encuentran define las prioridades siguientes.",
+        ],
         faq: [
           {
             question:
               "¿Qué influye en el costo de un proyecto de software a medida?",
             answer:
-              "Sobre todo el tamaño de la primera versión: cuántos flujos, integraciones y perfiles de usuario necesita. Definimos esto juntos antes de escribir código, para que el presupuesto refleje tu problema real, no un paquete genérico.",
+              "Sobre todo el tamaño de la primera versión: cuántos flujos, integraciones y perfiles de usuario necesita. Definimos esto juntos antes de escribir código, para que el presupuesto refleje tu problema real, no un paquete genérico. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question:
@@ -177,8 +205,8 @@ export const services: Service[] = [
   {
     id: "web-platforms",
     icon: "Globe2",
+    pillar: "software",
     technologies: ["Next.js", "React", "Vue.js", "TypeScript"],
-    relatedProject: 2,
     copy: {
       "pt-BR": {
         slug: "sites-e-plataformas-web",
@@ -200,16 +228,21 @@ export const services: Service[] = [
           "Uma área de conteúdo ou administração que sua equipe atualiza sem depender de um desenvolvedor",
           "Indicadores e monitoramento para você acompanhar o desempenho do site",
         ],
+        measure: [
+          "A velocidade de carregamento e a acessibilidade são medidas em páginas combinadas, com metas definidas no projeto.",
+          "Na entrega, verificamos com sua equipe que ela consegue atualizar o conteúdo sem depender de um desenvolvedor.",
+          "Indicadores de uso mostram o que os visitantes realmente fazem no site.",
+        ],
         faq: [
           {
             question: "O que influencia o preço de um site ou plataforma web?",
             answer:
-              "A quantidade de páginas e fluxos, se precisa de área logada ou painel, e as integrações com outros sistemas. Um site institucional custa menos que um portal com contas e permissões.",
+              "A quantidade de páginas e fluxos, se precisa de área logada ou painel, e as integrações com outros sistemas. Um site institucional custa menos que um portal com contas e permissões. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Quanto tempo leva para lançar um site ou plataforma?",
             answer:
-              "Depende do escopo, mas lançamos por etapas: uma primeira versão vai ao ar com as páginas essenciais, e adicionamos funcionalidades de acordo com o que os visitantes realmente usam.",
+              "Depende do escopo definido no diagnóstico. Lançamos por etapas: uma primeira versão vai ao ar com as páginas essenciais, e adicionamos funcionalidades de acordo com o que os visitantes realmente usam.",
           },
           {
             question: "O que devo levar para a primeira conversa?",
@@ -219,7 +252,7 @@ export const services: Service[] = [
           {
             question: "O que acontece depois que o site entra no ar?",
             answer:
-              "Acompanhamos desempenho e disponibilidade, e podemos apoiar atualizações, novas páginas ou funcionalidades conforme sua empresa muda. Isso é um acordo separado e contínuo, combinado depois do lançamento.",
+              "Acompanhamos desempenho e disponibilidade, e podemos apoiar atualizações, novas páginas ou funcionalidades conforme sua empresa muda. Esse acompanhamento é combinado como Continuous Engineering, com escopo, cadência e atendimento definidos conforme a operação.",
           },
         ],
       },
@@ -243,16 +276,21 @@ export const services: Service[] = [
           "A content or admin area your team can update without a developer",
           "Analytics and monitoring so you know how the site performs",
         ],
+        measure: [
+          "Loading speed and accessibility are measured on agreed pages, against targets set in the project.",
+          "At handover, we check with your team that they can update content without a developer.",
+          "Usage indicators show what visitors actually do on the site.",
+        ],
         faq: [
           {
             question: "What affects the price of a website or web platform?",
             answer:
-              "The number of pages and flows, whether it needs a login area or dashboard, and any integrations with other systems. A marketing site costs less than a portal with accounts and permissions.",
+              "The number of pages and flows, whether it needs a login area or dashboard, and any integrations with other systems. A marketing site costs less than a portal with accounts and permissions. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How long does a website or platform take to launch?",
             answer:
-              "It depends on scope, but we release in stages: a first version goes live with the core pages, then we add features based on what visitors actually use.",
+              "It depends on the scope defined during the diagnosis. We release in stages: a first version goes live with the core pages, then we add features based on what visitors actually use.",
           },
           {
             question: "What should I bring to the first conversation?",
@@ -262,7 +300,7 @@ export const services: Service[] = [
           {
             question: "What happens after the site goes live?",
             answer:
-              "We monitor performance and uptime and can support updates, new pages or features as your business changes. That's a separate, ongoing arrangement we agree on after launch.",
+              "We monitor performance and uptime and can support updates, new pages or features as your business changes. That is arranged as Continuous Engineering, with scope, cadence and support set according to the operation.",
           },
         ],
       },
@@ -286,16 +324,21 @@ export const services: Service[] = [
           "Un área de contenido o administración que tu equipo actualiza sin depender de un desarrollador",
           "Indicadores y monitoreo para que sigas el desempeño del sitio",
         ],
+        measure: [
+          "La velocidad de carga y la accesibilidad se miden en páginas acordadas, con metas definidas en el proyecto.",
+          "En la entrega, verificamos con tu equipo que pueda actualizar el contenido sin depender de un desarrollador.",
+          "Indicadores de uso muestran lo que los visitantes realmente hacen en el sitio.",
+        ],
         faq: [
           {
             question: "¿Qué influye en el precio de un sitio o plataforma web?",
             answer:
-              "La cantidad de páginas y flujos, si necesita área con cuenta o panel, y las integraciones con otros sistemas. Un sitio institucional cuesta menos que un portal con cuentas y permisos.",
+              "La cantidad de páginas y flujos, si necesita área con cuenta o panel, y las integraciones con otros sistemas. Un sitio institucional cuesta menos que un portal con cuentas y permisos. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cuánto tarda en lanzarse un sitio o plataforma?",
             answer:
-              "Depende del alcance, pero lanzamos por etapas: una primera versión sale con las páginas esenciales, y agregamos funciones según lo que los visitantes realmente usan.",
+              "Depende del alcance definido en el diagnóstico. Lanzamos por etapas: una primera versión sale con las páginas esenciales, y agregamos funciones según lo que los visitantes realmente usan.",
           },
           {
             question: "¿Qué debo llevar a la primera conversación?",
@@ -305,7 +348,7 @@ export const services: Service[] = [
           {
             question: "¿Qué pasa después de que el sitio sale en línea?",
             answer:
-              "Damos seguimiento al desempeño y la disponibilidad, y podemos apoyar actualizaciones, nuevas páginas o funciones conforme tu empresa cambia. Eso es un acuerdo aparte y continuo, que definimos después del lanzamiento.",
+              "Damos seguimiento al desempeño y la disponibilidad, y podemos apoyar actualizaciones, nuevas páginas o funciones conforme tu empresa cambia. Eso se acuerda como Continuous Engineering, con alcance, cadencia y atención definidos según la operación.",
           },
         ],
       },
@@ -314,8 +357,8 @@ export const services: Service[] = [
   {
     id: "mobile-apps",
     icon: "Smartphone",
+    pillar: "software",
     technologies: ["React Native", "TypeScript", "Node.js"],
-    relatedProject: 1,
     copy: {
       "pt-BR": {
         slug: "aplicativos",
@@ -323,7 +366,7 @@ export const services: Service[] = [
         summary:
           "Aplicativos para Android e iPhone que funcionam no dia a dia, até em campo e com internet instável.",
         intro:
-          "Desenvolvemos aplicativos para Android e iPhone para equipes que trabalham fora do escritório: visitas em campo, entregas, vistorias, vendas externas. Um dos nossos aplicativos de coleta de dados em campo reduziu em 30% o tempo de entrada de dados, funcionando de forma confiável mesmo com internet instável.",
+          "Desenvolvemos aplicativos para Android e iPhone para equipes que trabalham fora do escritório: visitas em campo, entregas, vistorias, vendas externas. O aplicativo é desenhado para continuar funcionando com internet instável, porque é nesse cenário que o trabalho em campo costuma acontecer.",
         problems: [
           "Sua equipe ainda coleta dados em papel ou planilha durante o trabalho em campo.",
           "Seu aplicativo atual trava ou para de funcionar sem uma conexão forte.",
@@ -331,17 +374,22 @@ export const services: Service[] = [
           "Você quer um único aplicativo que funcione em Android e iPhone sem construir dois.",
         ],
         deliverables: [
-          "Um fluxo de navegação testado para uso com uma mão só, em movimento",
+          "Um fluxo de navegação desenhado para uso com uma mão só, em movimento, e validado com quem vai usar",
           "Funcionamento offline, para o aplicativo continuar funcionando com conexão fraca ou sem internet",
           "Desenvolvimento em React Native para Android e iPhone a partir de uma única base de código",
           "Integração com os sistemas e dados que você já usa",
           "Publicação nas lojas de aplicativos e suporte a atualizações",
         ],
+        measure: [
+          "O projeto mede o tempo de entrada de dados do processo atual e define uma meta para o aplicativo.",
+          "O funcionamento com conexão fraca ou sem internet é testado em cenários combinados antes do lançamento.",
+          "A equipe de campo valida o fluxo principal antes da publicação nas lojas.",
+        ],
         faq: [
           {
             question: "O que influencia o custo de um aplicativo de celular?",
             answer:
-              "A quantidade de telas, se precisa funcionar offline e quantos sistemas ele conecta. Aplicativos que funcionam offline exigem mais cuidado no design, mas valem a pena no campo.",
+              "A quantidade de telas, se precisa funcionar offline e quantos sistemas ele conecta. Aplicativos que funcionam offline exigem mais cuidado no design, mas valem a pena no campo. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como vocês conduzem o desenvolvimento?",
@@ -357,7 +405,7 @@ export const services: Service[] = [
             question:
               "Por que React Native em vez de aplicativos nativos separados?",
             answer:
-              "Isso permite construir e manter um único aplicativo para as duas plataformas, geralmente mais rápido e mais barato. Quando um projeto realmente precisa de desempenho nativo em uma plataforma, avisamos isso desde o início.",
+              "Isso permite construir e manter um único aplicativo para as duas plataformas, o que tende a simplificar a manutenção. Quando um projeto realmente precisa de desempenho nativo em uma plataforma, avisamos isso desde o início.",
           },
         ],
       },
@@ -367,7 +415,7 @@ export const services: Service[] = [
         summary:
           "Android and iPhone apps built for daily work, even in the field with a patchy connection.",
         intro:
-          "We build Android and iPhone apps for teams that work outside a desk: field visits, deliveries, inspections, sales on the road. One of our field data-collection apps cut data entry time by 30% by working reliably even with a weak connection.",
+          "We build Android and iPhone apps for teams that work outside a desk: field visits, deliveries, inspections, sales on the road. The app is designed to keep working on a weak connection, because that is where field work usually happens.",
         problems: [
           "Your team collects data on paper or in spreadsheets while out in the field.",
           "Your current app breaks or gets stuck without a strong internet connection.",
@@ -375,17 +423,22 @@ export const services: Service[] = [
           "You want one app that works for both Android and iPhone without building it twice.",
         ],
         deliverables: [
-          "A field-tested navigation flow designed for one-handed, on-the-go use",
+          "A navigation flow designed for one-handed, on-the-go use and checked with the people who will use it",
           "Offline support so the app keeps working with a weak or no connection",
           "React Native development for Android and iPhone from one codebase",
           "Integration with your existing systems and data",
           "App store publishing and update support",
         ],
+        measure: [
+          "The project measures data entry time in the current process and sets a target for the app.",
+          "Behavior on a weak or missing connection is tested in agreed scenarios before launch.",
+          "The field team validates the main flow before the app is published to the stores.",
+        ],
         faq: [
           {
             question: "What affects the cost of a mobile app?",
             answer:
-              "The number of screens, whether it needs offline support, and how many systems it connects to. Offline-first apps take more care to design well, but they pay off in the field.",
+              "The number of screens, whether it needs offline support, and how many systems it connects to. Offline-first apps take more care to design well, but they pay off in the field. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you approach the build?",
@@ -401,7 +454,7 @@ export const services: Service[] = [
             question:
               "Why React Native instead of separate Android and iPhone apps?",
             answer:
-              "It lets us build and maintain one app for both platforms, which is usually faster and cheaper. When a project truly needs native performance for one platform, we say so up front.",
+              "It lets us build and maintain one app for both platforms, which tends to simplify maintenance. When a project truly needs native performance for one platform, we say so up front.",
           },
         ],
       },
@@ -411,7 +464,7 @@ export const services: Service[] = [
         summary:
           "Aplicaciones para Android y iPhone pensadas para el día a día, incluso en campo y con conexión inestable.",
         intro:
-          "Desarrollamos aplicaciones para Android y iPhone para equipos que trabajan fuera de la oficina: visitas de campo, entregas, inspecciones, ventas externas. Una de nuestras aplicaciones de recolección de datos en campo redujo un 30% el tiempo de entrada de datos, funcionando de forma confiable incluso con conexión inestable.",
+          "Desarrollamos aplicaciones para Android y iPhone para equipos que trabajan fuera de la oficina: visitas de campo, entregas, inspecciones, ventas externas. La aplicación se diseña para seguir funcionando con conexión inestable, porque ahí suele ocurrir el trabajo de campo.",
         problems: [
           "Tu equipo todavía recolecta datos en papel o en hojas de cálculo durante el trabajo de campo.",
           "Tu aplicación actual se traba o deja de funcionar sin una conexión fuerte.",
@@ -419,17 +472,22 @@ export const services: Service[] = [
           "Quieres una sola aplicación que funcione en Android y iPhone sin construir dos.",
         ],
         deliverables: [
-          "Un flujo de navegación probado para usarse con una mano, en movimiento",
+          "Un flujo de navegación diseñado para usarse con una mano, en movimiento, y validado con quienes lo van a usar",
           "Funcionamiento offline, para que la aplicación siga funcionando con conexión débil o sin internet",
           "Desarrollo en React Native para Android y iPhone desde una sola base de código",
           "Integración con los sistemas y datos que ya usas",
           "Publicación en las tiendas de aplicaciones y soporte para actualizaciones",
         ],
+        measure: [
+          "El proyecto mide el tiempo de entrada de datos del proceso actual y define una meta para la aplicación.",
+          "El funcionamiento con conexión débil o sin internet se prueba en escenarios acordados antes del lanzamiento.",
+          "El equipo de campo valida el flujo principal antes de la publicación en las tiendas.",
+        ],
         faq: [
           {
             question: "¿Qué influye en el costo de una aplicación móvil?",
             answer:
-              "La cantidad de pantallas, si necesita funcionar offline y con cuántos sistemas se conecta. Las aplicaciones que funcionan offline exigen más cuidado en el diseño, pero valen la pena en el campo.",
+              "La cantidad de pantallas, si necesita funcionar offline y con cuántos sistemas se conecta. Las aplicaciones que funcionan offline exigen más cuidado en el diseño, pero valen la pena en el campo. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo abordan el desarrollo?",
@@ -445,7 +503,7 @@ export const services: Service[] = [
             question:
               "¿Por qué React Native en lugar de aplicaciones nativas separadas?",
             answer:
-              "Nos permite construir y mantener una sola aplicación para ambas plataformas, generalmente más rápido y más barato. Cuando un proyecto realmente necesita rendimiento nativo en una plataforma, lo decimos desde el principio.",
+              "Nos permite construir y mantener una sola aplicación para ambas plataformas, lo que tiende a simplificar el mantenimiento. Cuando un proyecto realmente necesita rendimiento nativo en una plataforma, lo decimos desde el principio.",
           },
         ],
       },
@@ -454,8 +512,9 @@ export const services: Service[] = [
   {
     id: "integrations",
     icon: "Network",
+    pillar: "software",
+    supportPillars: ["ai"],
     technologies: ["Node.js", "NestJS", "Python", "Redis"],
-    relatedProject: 1,
     copy: {
       "pt-BR": {
         slug: "integracoes-e-automacao",
@@ -477,11 +536,16 @@ export const services: Service[] = [
           "Monitoramento para você saber quando uma conexão falha",
           "Documentação que sua equipe consegue usar sem precisar nos chamar",
         ],
+        measure: [
+          "O projeto mede o retrabalho e os erros de digitação manual antes e depois da integração.",
+          "As verificações automáticas registram falhas entre sistemas, e o aceite define quais precisam estar cobertas.",
+          "Você e a IRTC combinam em quanto tempo uma falha deve ser percebida e quem recebe o aviso.",
+        ],
         faq: [
           {
             question: "O que influencia o custo de um projeto de integração?",
             answer:
-              "Principalmente quantos sistemas estão envolvidos e a qualidade da documentação deles. Uma API bem documentada conecta rápido; um sistema antigo sem documentação leva mais tempo.",
+              "Principalmente quantos sistemas estão envolvidos e a qualidade da documentação deles. Uma API bem documentada conecta rápido; um sistema antigo sem documentação leva mais tempo. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como vocês evitam quebrar o que já funciona?",
@@ -520,11 +584,16 @@ export const services: Service[] = [
           "Monitoring so you know when a connection fails",
           "Documentation your team can use without calling us first",
         ],
+        measure: [
+          "The project measures rework and manual-entry errors before and after the integration.",
+          "Automated checks log failures between systems, and acceptance defines which ones must be covered.",
+          "You and IRTC agree on how quickly a failure must be noticed and who gets the alert.",
+        ],
         faq: [
           {
             question: "What affects the cost of an integration project?",
             answer:
-              "Mostly how many systems are involved and whether their documentation is good. A well-documented API is quick to connect; a legacy system with no documentation takes longer.",
+              "Mostly how many systems are involved and whether their documentation is good. A well-documented API is quick to connect; a legacy system with no documentation takes longer. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you avoid breaking what already works?",
@@ -563,11 +632,16 @@ export const services: Service[] = [
           "Monitoreo para que sepas cuándo falla una conexión",
           "Documentación que tu equipo puede usar sin tener que llamarnos primero",
         ],
+        measure: [
+          "El proyecto mide el retrabajo y los errores de digitación manual antes y después de la integración.",
+          "Las verificaciones automáticas registran fallas entre sistemas, y la aceptación define cuáles deben estar cubiertas.",
+          "Tú e IRTC acuerdan en cuánto tiempo debe detectarse una falla y quién recibe el aviso.",
+        ],
         faq: [
           {
             question: "¿Qué influye en el costo de un proyecto de integración?",
             answer:
-              "Sobre todo cuántos sistemas están involucrados y qué tan buena es su documentación. Una API bien documentada se conecta rápido; un sistema antiguo sin documentación toma más tiempo.",
+              "Sobre todo cuántos sistemas están involucrados y qué tan buena es su documentación. Una API bien documentada se conecta rápido; un sistema antiguo sin documentación toma más tiempo. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo evitan romper lo que ya funciona?",
@@ -591,8 +665,9 @@ export const services: Service[] = [
   {
     id: "modernization",
     icon: "RefreshCw",
+    pillar: "software",
+    supportPillars: ["cloud"],
     technologies: ["TypeScript", "Python", "Django", "PostgreSQL"],
-    relatedProject: 0,
     copy: {
       "pt-BR": {
         slug: "modernizacao-de-sistemas",
@@ -600,7 +675,7 @@ export const services: Service[] = [
         summary:
           "Atualizamos sistemas antigos por etapas, sem parar a operação que depende deles.",
         intro:
-          "Sistemas antigos raramente precisam ser reconstruídos do zero. Atualizamos por etapas, trocando as partes que travam sua equipe sem parar a operação. Um projeto de modernização entregou 40% mais velocidade nas entregas com refatoração de serviços, componentes reutilizáveis e notificações em tempo real.",
+          "Sistemas antigos raramente precisam ser reconstruídos do zero. Atualizamos por etapas, trocando as partes que travam sua equipe sem parar a operação. Começamos medindo quanto tempo as entregas levam hoje, para que a melhora tenha uma base de comparação.",
         problems: [
           "Toda funcionalidade nova demora mais do que deveria porque o código resiste à mudança.",
           "Seu sistema funciona, mas ninguém quer mais mexer nele.",
@@ -612,13 +687,18 @@ export const services: Service[] = [
           "Um plano de migração por etapas que mantém o sistema no ar o tempo todo",
           "Serviços refatorados e componentes reutilizáveis",
           "Testes automatizados nas áreas que tocamos",
-          "Entregas mais rápidas, medidas a partir da sua realidade atual",
+          "Uma medição do tempo de entrega atual, usada como base de comparação",
+        ],
+        measure: [
+          "O projeto mede o tempo de entrega de mudanças antes de começar e define uma meta de melhora a partir dessa base.",
+          "Cada etapa tem critério de teste e plano de reversão combinados antes da mudança.",
+          "As áreas alteradas ganham testes automatizados, e a cobertura é registrada na entrega.",
         ],
         faq: [
           {
             question: "O que influencia o custo de um projeto de modernização?",
             answer:
-              "O tamanho do código, quanta cobertura de testes já existe e quantas partes precisam mudar juntas. Começamos com uma auditoria para que o plano seja baseado no seu sistema real, não em suposições.",
+              "O tamanho do código, quanta cobertura de testes já existe e quantas partes precisam mudar juntas. Começamos com uma auditoria para que o plano seja baseado no seu sistema real, não em suposições. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como vocês modernizam sem parar a empresa?",
@@ -643,7 +723,7 @@ export const services: Service[] = [
         summary:
           "We update older systems step by step, without stopping the work that depends on them.",
         intro:
-          "Old systems rarely need to be rebuilt from zero. We update them in stages, replacing the parts that slow your team down while keeping the operation running. One modernization project delivered 40% faster releases through service refactoring, reusable components and real-time notifications.",
+          "Old systems rarely need to be rebuilt from zero. We update them in stages, replacing the parts that slow your team down while keeping the operation running. We start by measuring how long changes take today, so any improvement has a baseline to compare against.",
         problems: [
           "Every new feature takes longer than it should because the codebase fights back.",
           "Your system works, but nobody wants to touch it anymore.",
@@ -655,13 +735,18 @@ export const services: Service[] = [
           "A staged migration plan that keeps the system running throughout",
           "Refactored services and reusable components",
           "Automated tests around the areas we touch",
-          "Faster releases, measured against your current baseline",
+          "A measurement of current delivery time, used as the baseline for comparison",
+        ],
+        measure: [
+          "The project measures how long changes take before starting and sets an improvement target from that baseline.",
+          "Each stage has test criteria and a rollback plan agreed before the change.",
+          "The areas we touch get automated tests, and coverage is recorded at handover.",
         ],
         faq: [
           {
             question: "What affects the cost of a modernization project?",
             answer:
-              "The size of the codebase, how much test coverage exists already, and how many parts need to change together. We start with an audit so the plan is based on your actual system, not guesswork.",
+              "The size of the codebase, how much test coverage exists already, and how many parts need to change together. We start with an audit so the plan is based on your actual system, not guesswork. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you modernize without stopping the business?",
@@ -686,7 +771,7 @@ export const services: Service[] = [
         summary:
           "Actualizamos sistemas antiguos por etapas, sin detener la operación que depende de ellos.",
         intro:
-          "Los sistemas antiguos casi nunca necesitan reconstruirse desde cero. Los actualizamos por etapas, cambiando las partes que frenan a tu equipo sin detener la operación. Un proyecto de modernización logró un 40% más de velocidad de entrega con refactorización de servicios, componentes reutilizables y notificaciones en tiempo real.",
+          "Los sistemas antiguos casi nunca necesitan reconstruirse desde cero. Los actualizamos por etapas, cambiando las partes que frenan a tu equipo sin detener la operación. Empezamos midiendo cuánto tardan hoy las entregas, para que cualquier mejora tenga una base de comparación.",
         problems: [
           "Cada función nueva tarda más de lo que debería porque el código se resiste al cambio.",
           "Tu sistema funciona, pero ya nadie quiere tocarlo.",
@@ -698,14 +783,19 @@ export const services: Service[] = [
           "Un plan de migración por etapas que mantiene el sistema funcionando todo el tiempo",
           "Servicios refactorizados y componentes reutilizables",
           "Pruebas automatizadas en las áreas que tocamos",
-          "Entregas más rápidas, medidas desde tu situación actual",
+          "Una medición del tiempo de entrega actual, usada como base de comparación",
+        ],
+        measure: [
+          "El proyecto mide cuánto tardan las entregas antes de empezar y define una meta de mejora a partir de esa base.",
+          "Cada etapa tiene criterios de prueba y plan de reversión acordados antes del cambio.",
+          "Las áreas modificadas reciben pruebas automatizadas, y la cobertura se registra en la entrega.",
         ],
         faq: [
           {
             question:
               "¿Qué influye en el costo de un proyecto de modernización?",
             answer:
-              "El tamaño del código, cuánta cobertura de pruebas existe ya y cuántas partes necesitan cambiar juntas. Empezamos con una auditoría para que el plan se base en tu sistema real, no en suposiciones.",
+              "El tamaño del código, cuánta cobertura de pruebas existe ya y cuántas partes necesitan cambiar juntas. Empezamos con una auditoría para que el plan se base en tu sistema real, no en suposiciones. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo modernizan sin detener el negocio?",
@@ -729,6 +819,7 @@ export const services: Service[] = [
   {
     id: "applied-ai",
     icon: "Sparkles",
+    pillar: "ai",
     technologies: ["Python", "FastAPI", "PostgreSQL", "pgvector"],
     copy: {
       "pt-BR": {
@@ -751,11 +842,16 @@ export const services: Service[] = [
           "Automações e agentes com verificações de segurança e revisão humana onde importa",
           "Acompanhamento contínuo da qualidade das respostas e do custo",
         ],
+        measure: [
+          "O piloto define a tarefa, as fontes de dados e o que conta como resposta correta antes de qualquer construção.",
+          "A qualidade das respostas é avaliada com um conjunto de perguntas reais, e o custo por tarefa é acompanhado.",
+          "Controle de acesso e revisão humana são definidos por tipo de tarefa e verificados na entrega.",
+        ],
         faq: [
           {
             question: "O que define o custo de um projeto de IA?",
             answer:
-              "O maior custo costuma estar em como o conhecimento está organizado e em quanta verificação as respostas exigem, não na IA em si. Um piloto bem definido em um caso de uso é a forma mais barata de saber se vale a pena expandir.",
+              "O maior custo costuma estar em como o conhecimento está organizado e em quanta verificação as respostas exigem, não na IA em si. Um piloto bem definido em um caso de uso permite saber se vale a pena expandir antes de investir mais. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como vocês conduzem um primeiro projeto de IA?",
@@ -794,11 +890,16 @@ export const services: Service[] = [
           "Automations and agents with safety checks and human review where it matters",
           "Ongoing tracking of answer quality and cost",
         ],
+        measure: [
+          "The pilot defines the task, the data sources and what counts as a correct answer before anything is built.",
+          "Answer quality is evaluated against a set of real questions, and cost per task is tracked.",
+          "Access control and human review are set per type of task and verified at handover.",
+        ],
         faq: [
           {
             question: "What drives the cost of an AI project?",
             answer:
-              "The main cost is usually in how the knowledge is organized and how much checking the answers need, not the AI itself. A well-scoped pilot on one use case is the cheapest way to find out if it's worth expanding.",
+              "The main cost is usually in how the knowledge is organized and how much checking the answers need, not the AI itself. A well-scoped pilot on one use case lets you find out if it's worth expanding before investing more. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you approach a first AI project?",
@@ -837,11 +938,16 @@ export const services: Service[] = [
           "Automatizaciones y agentes con verificaciones de seguridad y revisión humana donde importa",
           "Seguimiento continuo de la calidad de las respuestas y del costo",
         ],
+        measure: [
+          "El piloto define la tarea, las fuentes de datos y qué cuenta como respuesta correcta antes de construir.",
+          "La calidad de las respuestas se evalúa con un conjunto de preguntas reales, y el costo por tarea se da seguimiento.",
+          "El control de acceso y la revisión humana se definen por tipo de tarea y se verifican en la entrega.",
+        ],
         faq: [
           {
             question: "¿Qué define el costo de un proyecto de IA?",
             answer:
-              "El mayor costo suele estar en cómo está organizado el conocimiento y en cuánta revisión necesitan las respuestas, no en la IA en sí. Un piloto bien definido en un caso de uso es la forma más económica de saber si vale la pena expandirlo.",
+              "El mayor costo suele estar en cómo está organizado el conocimiento y en cuánta revisión necesitan las respuestas, no en la IA en sí. Un piloto bien definido en un caso de uso permite saber si vale la pena expandirlo antes de invertir más. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo abordan un primer proyecto de IA?",
@@ -866,8 +972,9 @@ export const services: Service[] = [
   {
     id: "data",
     icon: "Database",
+    pillar: "software",
+    supportPillars: ["cloud", "ai"],
     technologies: ["PostgreSQL", "Python", "Redis", "AWS"],
-    relatedProject: 0,
     copy: {
       "pt-BR": {
         slug: "dados-e-relatorios",
@@ -889,11 +996,16 @@ export const services: Service[] = [
           "Painéis construídos em torno das decisões que eles precisam apoiar",
           "Documentação para sua equipe entender de onde vêm os números",
         ],
+        measure: [
+          "O projeto lista os números que hoje divergem entre times e define a fonte única de cada um.",
+          "O tempo para obter um relatório é medido antes e depois.",
+          "Cada indicador do painel tem origem e regra de cálculo documentadas.",
+        ],
         faq: [
           {
             question: "O que influencia o custo de um projeto de dados?",
             answer:
-              "Quantas fontes de dados precisam ser conectadas e o quão bagunçadas elas estão hoje. Organizar anos de dados inconsistentes costuma demorar mais do que construir o painel em si.",
+              "Quantas fontes de dados precisam ser conectadas e o quão bagunçadas elas estão hoje. Organizar anos de dados inconsistentes costuma demorar mais do que construir o painel em si. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question: "Como vocês constroem painéis e fluxos de dados?",
@@ -932,11 +1044,16 @@ export const services: Service[] = [
           "Dashboards built around the decisions they need to support",
           "Documentation so your team understands where numbers come from",
         ],
+        measure: [
+          "The project lists the numbers that differ between teams today and defines a single source for each.",
+          "Time to get a report is measured before and after.",
+          "Every dashboard indicator has its source and calculation rule documented.",
+        ],
         faq: [
           {
             question: "What affects the cost of a data project?",
             answer:
-              "How many data sources need to be connected and how messy they currently are. Cleaning up years of inconsistent data usually takes longer than building the dashboard itself.",
+              "How many data sources need to be connected and how messy they currently are. Cleaning up years of inconsistent data usually takes longer than building the dashboard itself. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you approach building dashboards and pipelines?",
@@ -975,11 +1092,16 @@ export const services: Service[] = [
           "Paneles construidos alrededor de las decisiones que necesitan apoyar",
           "Documentación para que tu equipo entienda de dónde vienen los números",
         ],
+        measure: [
+          "El proyecto lista los números que hoy difieren entre equipos y define la fuente única de cada uno.",
+          "El tiempo para obtener un informe se mide antes y después.",
+          "Cada indicador del panel tiene su origen y su regla de cálculo documentados.",
+        ],
         faq: [
           {
             question: "¿Qué influye en el costo de un proyecto de datos?",
             answer:
-              "Cuántas fuentes de datos hay que conectar y qué tan desordenadas están hoy. Organizar años de datos inconsistentes suele tardar más que construir el panel en sí.",
+              "Cuántas fuentes de datos hay que conectar y qué tan desordenadas están hoy. Organizar años de datos inconsistentes suele tardar más que construir el panel en sí. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo construyen paneles y flujos de datos?",
@@ -1003,16 +1125,16 @@ export const services: Service[] = [
   {
     id: "cloud",
     icon: "Cloud",
+    pillar: "cloud",
     technologies: ["AWS", "GitHub", "Node.js", "PostgreSQL"],
-    relatedProject: 2,
     copy: {
       "pt-BR": {
         slug: "nuvem-e-arquitetura",
         title: "Nuvem e arquitetura",
         summary:
-          "Estrutura na nuvem que aguenta o crescimento, com monitoramento e custos previsíveis.",
+          "Estrutura na nuvem que aguenta o crescimento, com monitoramento e custo acompanhado.",
         intro:
-          "Infraestrutura deveria ser algo em que você raramente precisa pensar. Montamos ambientes em nuvem que aguentam o crescimento, se monitoram sozinhos e mantêm os custos previsíveis, além de buscar as mudanças de arquitetura que tornam um sistema existente mais rápido e eficiente.",
+          "Infraestrutura deveria ser algo em que você raramente precisa pensar. Montamos ambientes em nuvem que aguentam o crescimento, se monitoram sozinhos e acompanham os custos, além de buscar as mudanças de arquitetura que tornam um sistema existente mais rápido e eficiente.",
         problems: [
           "Seu sistema fica lento ou cai em horários de pico.",
           "Você só descobre que algo quebrou quando um cliente avisa.",
@@ -1026,11 +1148,16 @@ export const services: Service[] = [
           "Um plano de recuperação de desastres e rotina de backup",
           "Documentação da arquitetura e de como operá-la",
         ],
+        measure: [
+          "O projeto define metas de disponibilidade, desempenho e custo mensal a partir das medições atuais.",
+          "Alertas e plano de recuperação são testados com a sua equipe antes da entrega.",
+          "O custo da nuvem é acompanhado por serviço, para mostrar o que mudou depois de cada ajuste.",
+        ],
         faq: [
           {
             question: "O que define o custo de nuvem e infraestrutura?",
             answer:
-              "Principalmente os recursos que o seu tráfego realmente precisa e como o sistema está desenhado. Dimensionamos a infraestrutura para o uso real, em vez de superestimar, e buscamos mudanças que reduzem custo sem prejudicar a performance.",
+              "Principalmente os recursos que o seu tráfego realmente precisa e como o sistema está desenhado. Dimensionamos a infraestrutura para o uso real, em vez de superestimar, e buscamos mudanças que reduzem custo sem prejudicar a performance. O valor final depende do escopo definido no diagnóstico.",
           },
           {
             question:
@@ -1047,7 +1174,7 @@ export const services: Service[] = [
             question:
               "Vocês continuam monitorando depois que o projeto termina?",
             answer:
-              "Podemos, como um acordo contínuo à parte. Caso contrário, deixamos o monitoramento e a documentação prontos para sua equipe operar diretamente.",
+              "Podemos, como Continuous Engineering, com escopo, cadência e atendimento definidos conforme a operação. Caso contrário, deixamos o monitoramento e a documentação prontos para sua equipe operar diretamente.",
           },
         ],
       },
@@ -1055,9 +1182,9 @@ export const services: Service[] = [
         slug: "cloud-and-architecture",
         title: "Cloud and architecture",
         summary:
-          "Cloud infrastructure that handles growth, with monitoring and predictable costs.",
+          "Cloud infrastructure that handles growth, with monitoring and tracked costs.",
         intro:
-          "Infrastructure should be something you rarely have to think about. We set up cloud environments that handle growth, watch themselves through monitoring, and keep costs predictable, and we look for the architecture changes that make an existing system faster and more efficient.",
+          "Infrastructure should be something you rarely have to think about. We set up cloud environments that handle growth, watch themselves through monitoring, and track costs, and we look for the architecture changes that make an existing system faster and more efficient.",
         problems: [
           "Your system slows down or falls over during busy periods.",
           "You don't know something's wrong until a customer tells you.",
@@ -1071,11 +1198,16 @@ export const services: Service[] = [
           "A disaster-recovery plan and backup routine",
           "Documentation of the architecture and how to operate it",
         ],
+        measure: [
+          "The project sets availability, performance and monthly cost targets from current measurements.",
+          "Alerts and the recovery plan are tested with your team before handover.",
+          "Cloud cost is tracked per service, to show what changed after each adjustment.",
+        ],
         faq: [
           {
             question: "What drives cloud and infrastructure costs?",
             answer:
-              "Mostly the resources your traffic actually needs and how the system is architected. We size infrastructure to real usage instead of guessing high, and look for changes that cut cost without hurting performance.",
+              "Mostly the resources your traffic actually needs and how the system is architected. We size infrastructure to real usage instead of guessing high, and look for changes that cut cost without hurting performance. The final figure depends on the scope defined during the diagnosis.",
           },
           {
             question: "How do you improve an existing system without downtime?",
@@ -1090,7 +1222,7 @@ export const services: Service[] = [
           {
             question: "Do you monitor the system after the project ends?",
             answer:
-              "We can, as an ongoing arrangement. Otherwise we leave monitoring and documentation in place so your team can operate it directly.",
+              "We can, as Continuous Engineering, with scope, cadence and support set according to the operation. Otherwise we leave monitoring and documentation in place so your team can operate it directly.",
           },
         ],
       },
@@ -1098,9 +1230,9 @@ export const services: Service[] = [
         slug: "nube-y-arquitectura",
         title: "Nube y arquitectura",
         summary:
-          "Infraestructura en la nube preparada para crecer, con monitoreo y costos previsibles.",
+          "Infraestructura en la nube preparada para crecer, con monitoreo y costo seguido.",
         intro:
-          "La infraestructura debería ser algo en lo que casi nunca piensas. Montamos entornos en la nube que aguantan el crecimiento, se monitorean solos y mantienen los costos predecibles, además de buscar los cambios de arquitectura que hacen un sistema existente más rápido y eficiente.",
+          "La infraestructura debería ser algo en lo que casi nunca piensas. Montamos entornos en la nube que aguantan el crecimiento, se monitorean solos y siguen los costos, además de buscar los cambios de arquitectura que hacen un sistema existente más rápido y eficiente.",
         problems: [
           "Tu sistema se vuelve lento o falla en horas de mayor demanda.",
           "Solo te enteras de que algo se rompió cuando un cliente avisa.",
@@ -1114,11 +1246,16 @@ export const services: Service[] = [
           "Un plan de recuperación ante desastres y rutina de respaldo",
           "Documentación de la arquitectura y de cómo operarla",
         ],
+        measure: [
+          "El proyecto define metas de disponibilidad, rendimiento y costo mensual a partir de las mediciones actuales.",
+          "Las alertas y el plan de recuperación se prueban con tu equipo antes de la entrega.",
+          "El costo de la nube se sigue por servicio, para mostrar qué cambió después de cada ajuste.",
+        ],
         faq: [
           {
             question: "¿Qué define el costo de nube e infraestructura?",
             answer:
-              "Sobre todo los recursos que tu tráfico realmente necesita y cómo está diseñado el sistema. Dimensionamos la infraestructura según el uso real, en lugar de sobreestimar, y buscamos cambios que reduzcan el costo sin afectar el rendimiento.",
+              "Sobre todo los recursos que tu tráfico realmente necesita y cómo está diseñado el sistema. Dimensionamos la infraestructura según el uso real, en lugar de sobreestimar, y buscamos cambios que reduzcan el costo sin afectar el rendimiento. El valor final depende del alcance definido en el diagnóstico.",
           },
           {
             question: "¿Cómo mejoran un sistema existente sin detener todo?",
@@ -1134,7 +1271,7 @@ export const services: Service[] = [
             question:
               "¿Siguen monitoreando después de que termina el proyecto?",
             answer:
-              "Podemos hacerlo, como un acuerdo continuo aparte. De lo contrario, dejamos el monitoreo y la documentación listos para que tu equipo opere directamente.",
+              "Podemos hacerlo, como Continuous Engineering, con alcance, cadencia y atención definidos según la operación. De lo contrario, dejamos el monitoreo y la documentación listos para que tu equipo opere directamente.",
           },
         ],
       },

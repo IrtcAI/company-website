@@ -1,24 +1,11 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ChevronRight,
-  Compass,
-  GraduationCap,
-  Goal,
-  Heart,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { Locale } from "@/lib/content";
 import { company } from "@/lib/company";
 import { founderCopy } from "@/lib/copy/founder";
 import { pagePath } from "@/lib/routes";
-
-const beyondIcons = {
-  family: Heart,
-  belem: Compass,
-  football: Goal,
-  mentoring: GraduationCap,
-} as const;
 
 function staggerStyle(index: number): CSSProperties {
   return { "--i": index } as CSSProperties;
@@ -87,24 +74,6 @@ export function FounderProfile({ locale }: { locale: Locale }) {
         {copy.bio.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
-      </section>
-      <section
-        className="founder-beyond section-pad"
-        aria-labelledby="founder-beyond-title"
-      >
-        <h2 id="founder-beyond-title">{copy.beyondTitle}</h2>
-        <ul className="founder-beyond-grid">
-          {copy.beyondWork.map((item, index) => {
-            const Icon = beyondIcons[item.icon];
-            return (
-              <li key={item.title} data-reveal style={staggerStyle(index)}>
-                <Icon aria-hidden="true" />
-                <strong>{item.title}</strong>
-                <p>{item.line}</p>
-              </li>
-            );
-          })}
-        </ul>
       </section>
       <section
         className="founder-expertise section-pad"

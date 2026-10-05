@@ -3,6 +3,8 @@ import { stats, statsHeading } from "@/lib/stats";
 import { StatValue } from "./stat-value";
 
 export function Stats({ locale }: { locale: Locale }) {
+  if (stats.length === 0) return null;
+
   return (
     <section className="stats-band" aria-labelledby="stats-heading">
       <div className="stats-content section-pad">

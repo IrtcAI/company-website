@@ -31,3 +31,5 @@ export function clientAddress(request: Request) {
     "unknown"
   );
 }
+
+export const undecidedTopic = "undecided";

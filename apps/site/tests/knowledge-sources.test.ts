@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { company } from "@/lib/company";
-import { founderCopy } from "@/lib/copy/founder";
 import {
   allKnowledgeChunks,
   CONTACT_CHUNK_ID,
@@ -8,16 +7,9 @@ import {
 } from "@/lib/knowledge/sources";
 import { locales } from "@/lib/routes";
 import { services } from "@/lib/services";
-import { formatStat, stats } from "@/lib/stats";
 
 const byLocale = Object.fromEntries(
   locales.map((locale) => [locale, knowledgeChunks(locale)] as const),
-);
-
-const provisionalStats = stats.filter((stat) =>
-  (["projects", "reach", "rating"] as const).includes(
-    stat.id as "projects" | "reach" | "rating",
-  ),
 );
 
 describe("knowledge chunks", () => {
@@ -54,24 +46,53 @@ describe("knowledge chunks", () => {
       expect(chunk.text.length).toBeLessThanOrEqual(1600);
   });
 
-  it("never leaks the provisional stats (projects, reach, rating)", () => {
+  it("carries no unapproved figures, client names or personal details", () => {
+    const forbidden = [
+      /LeafLink/i,
+      /Dasa/i,
+      /Perfect ?Pay/i,
+      /company:experience/,
+      /São Paulo/i,
+      /\+\s?8 anos|\b8 years|\b4[,.]9\b|\+\s?30 projetos/i,
+      /açaí|futebol|football|fútbol|mentoria|mentoring/i,
+    ];
+
+    for (const chunk of allKnowledgeChunks())
+      for (const pattern of forbidden)
+        expect(`${chunk.id} ${chunk.text}`).not.toMatch(pattern);
+  });
+
+  it("covers each pillar, Continuous Engineering and the founder in every locale", () => {
+    const required = [
+      "company:overview",
+      "company:origin",
+      "company:pillar:cloud",
+      "company:pillar:software",
+      "company:pillar:ai",
+      "company:continuous-engineering",
+      "founder:profile",
+    ];
+
     for (const locale of locales) {
-      const provisionalValues = provisionalStats.map((stat) =>
-        formatStat(stat, locale),
-      );
-      for (const chunk of byLocale[locale])
-        for (const value of provisionalValues)
-          expect(chunk.text).not.toContain(value);
+      const ids = new Set(byLocale[locale].map((chunk) => chunk.id));
+      for (const id of required) expect(ids.has(id)).toBe(true);
     }
   });
 
-  it("never leaks the founder's beyond-work details", () => {
+  it("gives every service a measure chunk", () => {
     for (const locale of locales) {
-      const beyondLines = founderCopy[locale].beyondWork.map(
-        (item) => item.line,
+      const ids = new Set(byLocale[locale].map((chunk) => chunk.id));
+      for (const service of services)
+        expect(ids.has(`service:${service.id}:measure`)).toBe(true);
+    }
+  });
+
+  it("states the public address as Belém only", () => {
+    for (const locale of locales) {
+      const contact = byLocale[locale].find(
+        (chunk) => chunk.id === CONTACT_CHUNK_ID,
       );
-      for (const chunk of byLocale[locale])
-        for (const line of beyondLines) expect(chunk.text).not.toContain(line);
+      expect(contact?.text).toContain("Belém · PA");
     }
   });
 

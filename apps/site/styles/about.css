@@ -39,21 +39,21 @@
   margin: 10px 0 6px;
   font-size: clamp(34px, 4.5vw, 56px);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
-.about-vision h2,
+.about-foundations h2,
 .about-values h2,
 .about-how h2,
 .about-founder-link h2,
 .about-gallery h2 {
   margin: 0 0 12px;
   font-size: clamp(28px, 3.4vw, 46px);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
-.about-vision,
+.about-foundations,
 .about-values,
 .about-how,
 .about-founder-link,
@@ -61,26 +61,25 @@
   border-top: 1px solid var(--line);
 }
 
-.about-vision {
-  max-width: 66ch;
-}
-
-.about-vision p {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--text);
-}
-
 .about-values-grid {
   list-style: none;
   margin: 32px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 24px;
 }
 
+.about-foundations-grid {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+}
+
+.about-foundations-grid li,
 .about-values-grid li {
   background: var(--surface);
   border: 1px solid var(--surface-line);
@@ -88,12 +87,17 @@
   padding: 22px;
 }
 
-.about-values-grid strong {
-  display: block;
+.about-values-grid h3,
+.about-foundations-grid h3 {
+  margin: 0 0 8px;
   font-size: 15px;
-  margin-bottom: 8px;
 }
 
+.about-foundations-grid p {
+  font-size: 16px;
+}
+
+.about-foundations-grid p,
 .about-values-grid p {
   margin: 0;
   font-size: 14px;
@@ -120,48 +124,18 @@
 }
 
 .about-intro p:not(.overline) {
-  margin: 0;
+  margin: 0 0 14px;
   font-size: 17px;
   line-height: 1.7;
   color: var(--text);
   max-width: 60ch;
 }
 
-.about-how-steps {
-  list-style: none;
-  counter-reset: step;
-  margin: 32px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-.about-how-steps li {
-  border-top: 2px solid var(--terracotta);
-  padding-top: 16px;
-}
-
-.about-how-index {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.about-how-steps strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-
-.about-how-steps p {
+.about-how-text {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--secondary);
+  max-width: 66ch;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
 .about-gallery-grid {
@@ -169,7 +143,7 @@
   margin: 32px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 20px;
 }
 
@@ -224,7 +198,7 @@
 @media (max-width: 480px) {
   .breadcrumbs.section-pad,
   .about-intro.section-pad,
-  .about-vision.section-pad,
+  .about-foundations.section-pad,
   .about-values.section-pad,
   .about-how.section-pad,
   .about-founder-link.section-pad,

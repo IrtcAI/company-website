@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { ArrowUp, BriefcaseBusiness, Clock3, Mail, MapPin } from "lucide-react";
@@ -37,8 +38,7 @@ export function SiteShell({
   const companyLinks = [
     { label: copy.footer.links[0], href: pagePath(locale, "about") },
     { label: copy.footer.links[1], href: pagePath(locale, "founder") },
-    { label: copy.footer.links[2], href: sectionPath(locale, "projetos") },
-    { label: copy.footer.links[3], href: contact },
+    { label: copy.footer.links[2], href: contact },
   ];
 
   return (
@@ -69,11 +69,6 @@ export function SiteShell({
           },
           {
             label: copy.nav[1],
-            href: sectionPath(locale, "projetos"),
-            section: "projetos",
-          },
-          {
-            label: copy.nav[2],
             href: pagePath(locale, "about"),
             page: "about",
           },
@@ -136,7 +131,7 @@ export function SiteShell({
                 </li>
               ))}
               <li>
-                <IrisButton>{copy.footer.links[4]}</IrisButton>
+                <IrisButton>{copy.footer.links[3]}</IrisButton>
               </li>
             </ul>
           </nav>
@@ -186,8 +181,19 @@ export function SiteShell({
           </div>
         </div>
         <Link href={home} className="footer-wordmark" aria-label={copy.home}>
-          irtc
+          <span className="brand-crop">
+            <Image
+              unoptimized
+              src="/brand/irtc-wordmark-offwhite.svg"
+              width={517}
+              height={260}
+              alt=""
+            />
+          </span>
         </Link>
+        <p className="footer-descriptor">
+          Cloud, Software &amp; AI Engineering
+        </p>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} IRTC</span>
           <span>{copy.footer.signature}</span>

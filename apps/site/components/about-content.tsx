@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
-import { content, type Locale } from "@/lib/content";
+import type { Locale } from "@/lib/content";
 import { aboutCopy } from "@/lib/copy/about";
 import { pagePath } from "@/lib/routes";
 
 export function AboutContent({ locale }: { locale: Locale }) {
   const copy = aboutCopy[locale];
-  const origin = content[locale].origin;
   const home = pagePath(locale, "home");
   const founder = pagePath(locale, "founder");
 
@@ -32,14 +31,23 @@ export function AboutContent({ locale }: { locale: Locale }) {
       >
         <p className="overline">{copy.eyebrow}</p>
         <h1 id="about-intro-title">{copy.introTitle}</h1>
-        <p>{copy.introText}</p>
+        {copy.introText.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </section>
       <section
-        className="about-vision section-pad"
-        aria-labelledby="about-vision-title"
+        className="about-foundations section-pad"
+        aria-labelledby="about-foundations-title"
       >
-        <h2 id="about-vision-title">{copy.visionTitle}</h2>
-        <p>{origin.vision}</p>
+        <h2 id="about-foundations-title">{copy.foundationsTitle}</h2>
+        <ul className="about-foundations-grid">
+          {copy.foundations.map((item) => (
+            <li key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
       <section
         className="about-values section-pad"
@@ -49,7 +57,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
         <ul className="about-values-grid">
           {copy.values.map((value) => (
             <li key={value.title}>
-              <strong>{value.title}</strong>
+              <h3>{value.title}</h3>
               <p>{value.text}</p>
             </li>
           ))}
@@ -60,18 +68,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
         aria-labelledby="about-how-title"
       >
         <h2 id="about-how-title">{copy.howTitle}</h2>
-        <p className="about-how-intro">{copy.howIntro}</p>
-        <ol className="about-how-steps">
-          {copy.steps.map((step, index) => (
-            <li key={step.title}>
-              <span className="about-how-index" aria-hidden="true">
-                0{index + 1}
-              </span>
-              <strong>{step.title}</strong>
-              <p>{step.text}</p>
-            </li>
-          ))}
-        </ol>
+        <p className="about-how-text">{copy.howText}</p>
       </section>
       <section
         className="about-founder-link section-pad"

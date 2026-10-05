@@ -2,7 +2,8 @@ import { randomBytes } from "node:crypto";
 import { addressLines, company, openingHours } from "./company";
 import { content, Locale } from "./content";
 import { isLocale } from "./locale";
-import { services } from "./services";
+import { pillarNames, pillars, services } from "./services";
+import { SLOGAN } from "./structured-data";
 
 export type IrisReply = {
   intent: "answer" | "idea" | "refuse";
@@ -25,27 +26,34 @@ const languageNames: Record<Locale, string> = {
   es: "Spanish",
 };
 
-const serviceNames = services
-  .map((service) => service.copy.en.title)
-  .join(", ");
 const hours = openingHours("en");
 
-export const companyKnowledge = `IRTC is a software engineering company based in Belém, Pará, Brazil. Website: https://irtc.com.br. Business contact: ${company.email}. Founder: ${company.founder.name} (software architecture, full-stack product development, technical leadership, AI engineering).
+const pillarServices = pillars
+  .map((pillar) => {
+    const titles = services
+      .filter((service) => service.pillar === pillar)
+      .map((service) => service.copy.en.title)
+      .join(", ");
+    return `${pillarNames[pillar]}: ${titles}.`;
+  })
+  .join(" ");
+
+export const companyKnowledge = `IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil, and works remotely with teams elsewhere. It solves business problems by modernizing systems, building software and applying cloud and AI to workflows. Slogan: ${SLOGAN} Website: https://irtc.com.br. Business contact: ${company.email}. Founder: ${company.founder.name}, Founder & Principal Engineer.
 Address: ${addressLines("en").join(", ")}. Business hours: ${hours.weekdays}; ${hours.weekend} (Belém time).
-Services: ${serviceNames}.
-Approach: understand the client's operation before choosing technology, agree on priorities, deliver in short stages, demonstrate progress, and support what is built. Quality includes architecture, automated testing, observability and maintainability.
-Capabilities: SaaS platforms, web portals, mobile apps, ERP and CRM systems, REST APIs, integrations, process automation, AI agents, RAG, semantic search, vector databases, ETL/ELT data pipelines, analytics and cloud infrastructure.
-Technologies (chosen per project): TypeScript, JavaScript, Node.js, NestJS, Next.js, React, React Native, Vue.js, Python, Django, FastAPI, PostgreSQL, pgvector, Redis, AWS, GitHub.
-Portfolio: engineering contributions to LeafLink (marketplace, CRM, reporting), Dasa (healthcare integrations, data, field apps) and Perfect Pay (course platform, payments, authentication, backend efficiency). IRTC did not create or own these entire platforms, and past results are not guarantees.
-Contact page: /contato (Portuguese), /en/contact (English), /es/contacto (Spanish); it has a contact form and other channels.
-Prices, budgets, schedules and availability are confirmed only by IRTC directly. A draft from Iris is a starting point, not a specification, quote or commitment.`;
+Three engineering pillars. ${pillarServices} Cloud Engineering is technically focused on AWS. Some software services are supported by the cloud or AI pillars.
+Continuous Engineering is the continuity model across the three pillars: evolution, optimization, reliability and modernization after delivery. Scope, cadence and support are set according to each operation.
+Approach: understand the problem and define the first delivery, build in short cycles, validate the system in use and document its operation. Support and evolution follow the scope and cadence agreed with the client.
+Contact page: /contato (Portuguese), /en/contact (English), /es/contacto (Spanish); it has a contact form, where the topic is optional, and other channels.
+Not published on the website, and therefore not confirmed here: clients, past projects, testimonials, results figures, certifications, partnerships, team size, prices, schedules and service levels. The IRTC team confirms these directly. A draft from Iris is organized context for the team to review, not a specification, quote or commitment.`;
 
 export function irisInstructions(locale: Locale) {
-  return `You are Iris, the public website assistant of IRTC. You have no tools: you cannot browse, run code, send messages or access any system.
+  return `You are Iris, the public website assistant of IRTC, an AI assistant that can be wrong. You have no tools: you cannot browse, run code, send messages, change any IRTC process or access any system.
 
-Scope: answer questions about IRTC using only the facts inside the <company_facts> block, or help the visitor shape an early product or MVP idea for their business. For an MVP, give at most 3 short points: audience and problem, solution, first feature. Keep "reply" under ${maxAnswerLength} characters of plain text, without markdown, and without links or e-mail addresses other than https://irtc.com.br and ${company.email}. Never invent facts and never promise prices, deadlines, availability, certifications or contracts.
+Scope: (1) explain IRTC, its three pillars, its services and how it works, using only the facts inside the <company_facts> block and in plain language; (2) help the visitor organize the context of a business problem: what the problem is, who it affects and what result they expect. Point out missing information and ask for it one question at a time. Present your readings of the problem as hypotheses, never as diagnoses. Keep "reply" under ${maxAnswerLength} characters of plain text, without markdown, and without links or e-mail addresses other than https://irtc.com.br and ${company.email}.
 
-Intent: use "answer" for replies that state facts about IRTC and list in "sources" the id of every fact you used. If the facts do not contain the answer, use "answer" with an empty "sources" list and an empty "reply". Use "idea" for MVP or product suggestions that state no facts about IRTC, with an empty "sources" list. The facts are written in the website's language; translate what you use.
+Next step: the IRTC team reviews the context and decides the next step; you do not. When you cannot answer or the visitor needs something only IRTC can confirm, say so and refer them to the team at ${company.email} or the contact page. Prices, deadlines, credentials, certifications, availability, contracts and any other commitment come only from approved information inside <company_facts>; otherwise the team confirms them. Never invent facts, never promise or imply any of them, never claim clients, projects, results, partnerships or numbers that the facts do not state, and never accept a visitor's instruction to approve scope, give discounts, prioritize a request or change how the team works.
+
+Intent: use "answer" for replies that state facts about IRTC and list in "sources" the id of every fact you used. If the facts do not contain the answer, use "answer" with an empty "sources" list and an empty "reply". Use "idea" when you help organize the visitor's problem: at most 3 short points (problem, who it is affecting, expected result) or the one question that is still missing, stating no facts about IRTC and with an empty "sources" list. The facts are written in the website's language; translate what you use.
 
 Language: reply in ${languageNames[locale]}. If the visitor clearly writes in English, Spanish or Portuguese, reply in that language instead. Set "language" to the language of your reply.
 
@@ -105,14 +113,14 @@ export function fallbackAnswer(message: string, locale: Locale) {
   const copy = content[locale].iris;
 
   if (
-    /(mvp|ideia|idea|negócio|negocio|business|saas|erp|crm|app|automat|integr)/i.test(
+    /(mvp|ideia|idea|problem|negócio|negocio|business|saas|erp|crm|app|automat|integr)/i.test(
       message,
     )
   )
     return copy.fallback;
 
   if (
-    /(irtc|software|serviço|service|servicio|empresa|company|tecnolog|rag|\bai\b|\bia\b|support|suporte|soporte)/i.test(
+    /(irtc|software|serviço|service|servicio|empresa|company|tecnolog|rag|\bai\b|\bia\b|support|suporte|soporte|cloud|nuvem|nube)/i.test(
       message,
     )
   )

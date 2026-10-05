@@ -1,8 +1,8 @@
 .stats-band {
   position: relative;
   overflow: hidden;
-  background: light-dark(#d6e7df, #08303b);
-  color: light-dark(#061827, #f1eee8);
+  background: light-dark(#dceae6, #08303b);
+  color: light-dark(#021827, #f1eee8);
 }
 
 .stats-content {
@@ -23,7 +23,7 @@
   font-size: clamp(34px, 3.6vw, 54px);
   font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
 }
 
 .stats-mark {
@@ -39,7 +39,7 @@
   width: 100%;
   height: auto;
   fill: none;
-  stroke: light-dark(#d98f6c, #d98f6c);
+  stroke: light-dark(#f58f69, #f58f69);
   stroke-width: 34;
   stroke-linecap: round;
 }
@@ -59,7 +59,7 @@
   flex-direction: column;
   gap: 16px;
   padding-top: 22px;
-  border-top: 2px solid light-dark(#061827, #f1eee8);
+  border-top: 2px solid light-dark(#021827, #f1eee8);
 }
 
 .stat dt {
@@ -71,7 +71,7 @@
   font-size: clamp(64px, 7.6vw, 124px);
   font-weight: 600;
   line-height: 0.95;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import {
   Maximize2,
   Minimize2,
@@ -17,6 +17,7 @@ type Message = {
   role: "user" | "assistant";
   content: string;
   signature?: string;
+  notice?: boolean;
 };
 
 export type IrisLabels = (typeof content)["pt-BR"]["iris"];
@@ -35,7 +36,7 @@ export default function Iris({
   const dialog = useRef<HTMLDialogElement>(null);
   const messagesEnd = useRef<HTMLDivElement>(null);
   const keepTalking = useRef<HTMLButtonElement>(null);
-  const input = useRef<HTMLInputElement>(null);
+  const input = useRef<HTMLTextAreaElement>(null);
   const controller = useRef<AbortController | null>(null);
   const [confirmClose, setConfirmClose] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -65,6 +66,17 @@ export default function Iris({
     if (confirmClose) keepTalking.current?.focus();
     else input.current?.focus();
   }, [confirmClose]);
+
+  function submitOnEnter(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (
+      event.key !== "Enter" ||
+      event.shiftKey ||
+      event.nativeEvent.isComposing
+    )
+      return;
+    event.preventDefault();
+    event.currentTarget.form?.requestSubmit();
+  }
 
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -98,7 +110,7 @@ export default function Iris({
       if (response.status === 429) {
         setMessages((current) => [
           ...current,
-          { role: "assistant", content: labels.limit },
+          { role: "assistant", content: labels.limit, notice: true },
         ]);
         return;
       }
@@ -118,6 +130,7 @@ export default function Iris({
         {
           role: "assistant",
           content: labels.error,
+          notice: true,
         },
       ]);
     } finally {
@@ -151,6 +164,7 @@ export default function Iris({
         {
           role: "assistant",
           content: labels.sent,
+          notice: true,
         },
       ]);
       setDraft("");
@@ -161,6 +175,7 @@ export default function Iris({
         {
           role: "assistant",
           content: labels.error,
+          notice: true,
         },
       ]);
     } finally {
@@ -241,7 +256,9 @@ export default function Iris({
                     : `${labels.input}: `}
                 </span>
                 <p>{message.content}</p>
-                {message.role === "assistant" && index > 0 ? (
+                {message.role === "assistant" &&
+                index > 0 &&
+                !message.notice ? (
                   <button
                     className="use-draft"
                     onClick={() => setDraft(message.content)}
@@ -252,12 +269,15 @@ export default function Iris({
               </div>
             ))}
             {busy ? (
-              <p className="chat-thinking" role="status">
+              <p className="chat-thinking" aria-hidden="true">
                 {labels.thinking}
               </p>
             ) : null}
             <div ref={messagesEnd} />
           </div>
+          <p className="sr-only" role="status">
+            {busy ? labels.thinking : ""}
+          </p>
           {draft ? (
             <form className="scope-draft" onSubmit={approve}>
               <label htmlFor="scope">{labels.draft}</label>
@@ -288,12 +308,14 @@ export default function Iris({
             <label htmlFor="iris-message" className="sr-only">
               {labels.input}
             </label>
-            <input
+            <textarea
               ref={input}
               id="iris-message"
+              rows={1}
               placeholder={labels.placeholder}
               value={value}
               onChange={(event) => setValue(event.target.value)}
+              onKeyDown={submitOnEnter}
               maxLength={800}
             />
             <button disabled={busy || !value.trim()} aria-label={labels.send}>

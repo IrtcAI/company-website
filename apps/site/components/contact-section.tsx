@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { addressLines, company, openingHours } from "@/lib/company";
 import { content, Locale } from "@/lib/content";
-import { services } from "@/lib/services";
+import { pillarNames, pillars, services } from "@/lib/services";
 import { ContactForm } from "./contact-form";
 import { IrisButton } from "./shell-provider";
 
@@ -26,8 +26,12 @@ export function ContactSection({ locale }: { locale: Locale }) {
         <p className="overline">{copy.label}</p>
         <h1>
           {copy.title}
-          <br />
-          <span>{copy.accent}</span>
+          {copy.accent && (
+            <>
+              <br />
+              <span>{copy.accent}</span>
+            </>
+          )}
         </h1>
         <p>{copy.intro}</p>
         <div className="contact-iris" aria-labelledby="contact-iris-title">
@@ -76,9 +80,14 @@ export function ContactSection({ locale }: { locale: Locale }) {
       </div>
       <ContactForm
         copy={copy}
-        topics={services.map((service) => ({
-          id: service.id,
-          title: service.copy[locale].title,
+        topicGroups={pillars.map((pillar) => ({
+          label: pillarNames[pillar],
+          topics: services
+            .filter((service) => service.pillar === pillar)
+            .map((service) => ({
+              id: service.id,
+              title: service.copy[locale].title,
+            })),
         }))}
       />
     </section>
