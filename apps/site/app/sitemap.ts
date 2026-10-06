@@ -56,6 +56,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     ...entries("about", { priority: 0.6, changeFrequency: "monthly" }),
     ...entries("founder", { priority: 0.6, changeFrequency: "monthly" }),
+    ...entries("culture", { priority: 0.5, changeFrequency: "monthly" }),
+    ...entries("mission", { priority: 0.5, changeFrequency: "monthly" }),
+    ...entries("vision", { priority: 0.5, changeFrequency: "monthly" }),
     ...entries("contact", { priority: 0.7, changeFrequency: "monthly" }),
   ];
 }

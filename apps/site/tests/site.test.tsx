@@ -208,6 +208,10 @@ describe("institutional experience", () => {
     const section = container.querySelector("#servicos") as HTMLElement;
 
     expect(within(section).getByText("PostgreSQL")).toBeVisible();
+    expect(within(section).getByText("Amazon Bedrock")).toBeVisible();
+    expect(
+      section.querySelectorAll(".tech-tokens-focus .tech-token"),
+    ).toHaveLength(4);
     expect(section.querySelectorAll(".tech-token button")).toHaveLength(0);
   });
 
@@ -366,6 +370,29 @@ describe("institutional experience", () => {
       screen.getByRole("heading", { name: "Tem um projeto em mente?" }),
     ).toBeVisible();
   });
+
+  it.each(services)(
+    "gives the $id service page a signature visual and a stack tied to a function",
+    async (service) => {
+      const page = await ServicePage({
+        params: Promise.resolve({
+          locale: "pt-BR",
+          slug: service.copy["pt-BR"].slug,
+        }),
+      });
+      const { container } = render(page);
+
+      expect(
+        container.querySelector(`.sv[data-scene="${service.id}"]`),
+      ).not.toBeNull();
+      expect(container.querySelectorAll(".sp-stack-card")).toHaveLength(
+        service.stack.length,
+      );
+      expect(container.querySelectorAll(".service-faq-item")).toHaveLength(
+        service.copy["pt-BR"].faq.length,
+      );
+    },
+  );
 
   it("shows the header at the top of the page and keeps it without the scroll-story", () => {
     window.scrollY = 0;

@@ -105,6 +105,21 @@ function pagesSection(): string {
       summary: (l) => pageCopy.founder[l].description,
     },
     {
+      label: "Culture",
+      page: "culture",
+      summary: (l) => pageCopy.culture[l].description,
+    },
+    {
+      label: "Mission",
+      page: "mission",
+      summary: (l) => pageCopy.mission[l].description,
+    },
+    {
+      label: "Vision",
+      page: "vision",
+      summary: (l) => pageCopy.vision[l].description,
+    },
+    {
       label: "Contact",
       page: "contact",
       summary: (l) => pageCopy.contact[l].description,

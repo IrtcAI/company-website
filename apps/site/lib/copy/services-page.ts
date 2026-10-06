@@ -1,5 +1,5 @@
 import type { Locale } from "../content";
-import type { PillarId } from "../services";
+import type { PillarId, StackId } from "../services";
 
 export const servicesPageCopy: Record<
   Locale,
@@ -15,11 +15,15 @@ export const servicesPageCopy: Record<
     whenTitle: string;
     whatTitle: string;
     howTitle: string;
-    techTitle: string;
+    stackTitle: string;
+    stackNote: string;
+    stack: Record<StackId, { name: string; role: string }>;
     faqTitle: string;
     relatedTitle: string;
     measureTitle: string;
     measureNote: string;
+    measureFrom: string;
+    measureTo: string;
     pillarLabel: string;
     supportPillarLabel: string;
     pillarText: Record<PillarId, string>;
@@ -30,22 +34,40 @@ export const servicesPageCopy: Record<
     breadcrumbHome: "Início",
     breadcrumbServices: "Serviços",
     intro:
-      "Cada projeto começa pelo problema, não pela tecnologia. Os oito serviços abaixo estão organizados em três pilares de engenharia: Cloud Engineering, Software Engineering e AI Engineering.",
+      "Cada projeto começa pelo problema, não pela tecnologia. São oito serviços em três pilares de engenharia: Cloud, Software e AI Engineering.",
     gridTitle: "O que fazemos",
     cardCta: "Ver serviço",
     allServicesCta: "Ver todos os serviços",
-    techNoteTitle: "A tecnologia é escolhida por projeto.",
+    techNoteTitle: "Tecnologia com função definida.",
     techNoteText:
-      "Não vendemos uma stack fixa. Escolhemos as ferramentas depois de entender o seu problema, o orçamento e como o sistema precisa crescer. Estas são algumas das que usamos com frequência.",
+      "Nosso foco técnico é AWS e IA. A stack de produto (React, Node.js, Next.js, PostgreSQL) é escolhida por projeto, depois de entender o problema.",
     whenTitle: "Quando você precisa disso",
     whatTitle: "O que você recebe",
     howTitle: "Como trabalhamos",
-    techTitle: "Tecnologias que costumamos usar aqui",
+    stackTitle: "Tecnologia, com função definida",
+    stackNote:
+      "A stack de produto, como React, Node.js e PostgreSQL, é escolhida por projeto.",
+    stack: {
+      aws: {
+        name: "AWS",
+        role: "Onde o sistema roda, escala e é monitorado.",
+      },
+      bedrock: {
+        name: "Amazon Bedrock, RAG e agentes",
+        role: "IA que responde com os documentos da empresa e age com regras definidas.",
+      },
+      mcp: {
+        name: "MCP",
+        role: "Conecta agentes às ferramentas da empresa.",
+      },
+    },
     faqTitle: "Perguntas frequentes",
     relatedTitle: "Serviços relacionados",
     measureTitle: "Como medimos o resultado",
     measureNote:
-      "Estes são critérios que o projeto define com você no início. Servem de objetivo e de forma de verificar o trabalho, não de resultado garantido.",
+      "Critérios que o projeto define com você no início. Servem de objetivo e de forma de checar o trabalho, não de resultado garantido.",
+    measureFrom: "Hoje",
+    measureTo: "Meta combinada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Com apoio de",
     pillarText: {
@@ -66,22 +88,40 @@ export const servicesPageCopy: Record<
     breadcrumbHome: "Home",
     breadcrumbServices: "Services",
     intro:
-      "Every project starts with the problem, not the technology. The eight services below are organized into three engineering pillars: Cloud Engineering, Software Engineering and AI Engineering.",
+      "Every project starts with the problem, not the technology. Eight services in three engineering pillars: Cloud, Software and AI Engineering.",
     gridTitle: "What we do",
     cardCta: "View service",
     allServicesCta: "See all services",
-    techNoteTitle: "Technology is chosen per project.",
+    techNoteTitle: "Technology with a defined role.",
     techNoteText:
-      "We don't sell a fixed stack. We choose tools after understanding your problem, your budget and how the system needs to grow. These are some of the ones we use often.",
+      "Our technical focus is AWS and AI. The product stack (React, Node.js, Next.js, PostgreSQL) is chosen per project, after we understand the problem.",
     whenTitle: "When you need this",
     whatTitle: "What you get",
     howTitle: "How we work",
-    techTitle: "Technologies we often use here",
+    stackTitle: "Technology, with a defined role",
+    stackNote:
+      "The product stack, such as React, Node.js and PostgreSQL, is chosen per project.",
+    stack: {
+      aws: {
+        name: "AWS",
+        role: "Where the system runs, scales and is monitored.",
+      },
+      bedrock: {
+        name: "Amazon Bedrock, RAG and agents",
+        role: "AI that answers from the company's documents and acts within defined rules.",
+      },
+      mcp: {
+        name: "MCP",
+        role: "Connects agents to the company's tools.",
+      },
+    },
     faqTitle: "Frequently asked questions",
     relatedTitle: "Related services",
     measureTitle: "How we measure the result",
     measureNote:
-      "These are criteria the project defines with you at the start. They serve as a goal and a way to check the work, not as a guaranteed result.",
+      "Criteria the project defines with you at the start. They serve as a goal and a way to check the work, not as a guaranteed result.",
+    measureFrom: "Today",
+    measureTo: "Agreed target",
     pillarLabel: "Pillar",
     supportPillarLabel: "Supported by",
     pillarText: {
@@ -102,22 +142,40 @@ export const servicesPageCopy: Record<
     breadcrumbHome: "Inicio",
     breadcrumbServices: "Servicios",
     intro:
-      "Cada proyecto empieza por el problema, no por la tecnología. Los ocho servicios de abajo están organizados en tres pilares de ingeniería: Cloud Engineering, Software Engineering y AI Engineering.",
+      "Cada proyecto empieza por el problema, no por la tecnología. Ocho servicios en tres pilares de ingeniería: Cloud, Software y AI Engineering.",
     gridTitle: "Qué hacemos",
     cardCta: "Ver servicio",
     allServicesCta: "Ver todos los servicios",
-    techNoteTitle: "La tecnología se elige por proyecto.",
+    techNoteTitle: "Tecnología con función definida.",
     techNoteText:
-      "No vendemos una tecnología fija. Elegimos las herramientas después de entender tu problema, tu presupuesto y cómo necesita crecer el sistema. Estas son algunas de las que usamos con frecuencia.",
+      "Nuestro foco técnico es AWS e IA. El stack de producto (React, Node.js, Next.js, PostgreSQL) se elige por proyecto, después de entender el problema.",
     whenTitle: "Cuándo necesitas esto",
     whatTitle: "Qué recibes",
     howTitle: "Cómo trabajamos",
-    techTitle: "Tecnologías que solemos usar aquí",
+    stackTitle: "Tecnología, con función definida",
+    stackNote:
+      "El stack de producto, como React, Node.js y PostgreSQL, se elige por proyecto.",
+    stack: {
+      aws: {
+        name: "AWS",
+        role: "Donde el sistema corre, escala y se monitorea.",
+      },
+      bedrock: {
+        name: "Amazon Bedrock, RAG y agentes",
+        role: "IA que responde con los documentos de la empresa y actúa con reglas definidas.",
+      },
+      mcp: {
+        name: "MCP",
+        role: "Conecta agentes a las herramientas de la empresa.",
+      },
+    },
     faqTitle: "Preguntas frecuentes",
     relatedTitle: "Servicios relacionados",
     measureTitle: "Cómo medimos el resultado",
     measureNote:
-      "Son criterios que el proyecto define contigo al inicio. Sirven como objetivo y como forma de verificar el trabajo, no como resultado garantizado.",
+      "Criterios que el proyecto define contigo al inicio. Sirven como objetivo y como forma de verificar el trabajo, no como resultado garantizado.",
+    measureFrom: "Hoy",
+    measureTo: "Meta acordada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Con apoyo de",
     pillarText: {

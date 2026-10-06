@@ -137,8 +137,17 @@ export const content = {
         text: "Acompanha a evolução dos sistemas. Escopo, cadência e atendimento são definidos conforme a operação.",
       },
       allServices: "Ver todos os serviços",
-      techTitle:
-        "Ferramentas que usamos com frequência, escolhidas por projeto.",
+      techTitle: "Nosso foco: AWS e IA aplicada.",
+      techFocus: [
+        { name: "AWS", role: "Onde o sistema roda, escala e é monitorado." },
+        {
+          name: "Amazon Bedrock",
+          role: "IA que responde com os documentos da empresa.",
+        },
+        { name: "Agentes de IA", role: "Agem com regras e revisão definidas." },
+        { name: "MCP", role: "Conecta agentes às ferramentas da empresa." },
+      ],
+      techProductTitle: "Stack de produto, escolhida por projeto",
       cta: {
         title: "O que precisa avançar no seu negócio?",
         text: "Conte onde a tecnologia limita sua operação e o que você quer mudar. A equipe da IRTC analisa o contexto e combina o próximo passo.",
@@ -229,6 +238,9 @@ export const content = {
         "Fundador",
         "Fale conosco",
         "Converse com a Iris",
+        "Cultura",
+        "Missão",
+        "Visão",
       ],
     },
     iris: {
@@ -379,7 +391,20 @@ export const content = {
         text: "It follows how systems evolve. Scope, cadence and support are set according to the operation.",
       },
       allServices: "See all services",
-      techTitle: "Tools we often use, chosen per project.",
+      techTitle: "Our focus: AWS and applied AI.",
+      techFocus: [
+        {
+          name: "AWS",
+          role: "Where the system runs, scales and is monitored.",
+        },
+        {
+          name: "Amazon Bedrock",
+          role: "AI that answers from the company's documents.",
+        },
+        { name: "AI agents", role: "Act within defined rules and review." },
+        { name: "MCP", role: "Connects agents to the company's tools." },
+      ],
+      techProductTitle: "Product stack, chosen per project",
       cta: {
         title: "What needs to move forward in your business?",
         text: "Tell us where technology limits your operation and what you want to change. The IRTC team reviews the context and agrees on the next step.",
@@ -465,7 +490,15 @@ export const content = {
       contact: "Contact",
       address: "Address",
       hours: "Business hours",
-      links: ["About IRTC", "Founder", "Contact us", "Chat with Iris"],
+      links: [
+        "About IRTC",
+        "Founder",
+        "Contact us",
+        "Chat with Iris",
+        "Culture",
+        "Mission",
+        "Vision",
+      ],
     },
     iris: {
       launcher: "Hi, I'm Iris, an AI assistant.",
@@ -615,7 +648,23 @@ export const content = {
         text: "Acompaña la evolución de los sistemas. El alcance, la cadencia y la atención se definen según la operación.",
       },
       allServices: "Ver todos los servicios",
-      techTitle: "Herramientas que solemos usar, elegidas por proyecto.",
+      techTitle: "Nuestro foco: AWS e IA aplicada.",
+      techFocus: [
+        { name: "AWS", role: "Donde el sistema corre, escala y se monitorea." },
+        {
+          name: "Amazon Bedrock",
+          role: "IA que responde con los documentos de la empresa.",
+        },
+        {
+          name: "Agentes de IA",
+          role: "Actúan con reglas y revisión definidas.",
+        },
+        {
+          name: "MCP",
+          role: "Conecta agentes a las herramientas de la empresa.",
+        },
+      ],
+      techProductTitle: "Stack de producto, elegido por proyecto",
       cta: {
         title: "¿Qué necesita avanzar en tu negocio?",
         text: "Cuéntanos dónde la tecnología limita tu operación y qué quieres cambiar. El equipo de IRTC analiza el contexto y acuerda el próximo paso.",
@@ -701,7 +750,15 @@ export const content = {
       contact: "Contacto",
       address: "Dirección",
       hours: "Horario de atención",
-      links: ["Sobre IRTC", "Fundador", "Contáctanos", "Habla con Iris"],
+      links: [
+        "Sobre IRTC",
+        "Fundador",
+        "Contáctanos",
+        "Habla con Iris",
+        "Cultura",
+        "Misión",
+        "Visión",
+      ],
     },
     iris: {
       launcher: "Hola, soy Iris, asistente de IA.",

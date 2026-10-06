@@ -25,7 +25,7 @@ describe("founder page", () => {
 
     expect(
       screen.getByRole("img", {
-        name: "Retrato de Iago Rodrigues, fundador da IRTC",
+        name: /^Retrato de Iago Rodrigues, fundador da IRTC/,
       }),
     ).toBeVisible();
 
@@ -34,22 +34,48 @@ describe("founder page", () => {
     ).toBeVisible();
   });
 
-  it("does not render the testimonials, contributions or LinkedIn sections", () => {
+  it.each([
+    ["pt-BR", "Iago no LinkedIn"],
+    ["en", "Iago on LinkedIn"],
+    ["es", "Iago en LinkedIn"],
+  ] as const)(
+    "links to the personal LinkedIn profile in a new tab in %s",
+    (locale, label) => {
+      render(<FounderProfile locale={locale} />);
+
+      const link = screen.getByRole("link", { name: new RegExp(label) });
+      expect(link).toHaveAttribute("href", company.founder.linkedin);
+      expect(company.founder.linkedin).toBe(
+        "https://www.linkedin.com/in/iago-rodrigues/",
+      );
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    },
+  );
+
+  it("tells the story and lists the hobbies outside the code", () => {
+    render(<FounderProfile locale="pt-BR" />);
+
+    expect(
+      screen.getByRole("heading", { name: "O engenheiro fora do expediente" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Fora do código" }),
+    ).toBeVisible();
+    for (const name of ["Videogame", "Filmes e séries", "Juliette e Luna"])
+      expect(screen.getByRole("heading", { name })).toBeVisible();
+  });
+
+  it("does not render the testimonials or contributions sections", () => {
     render(<FounderProfile locale="pt-BR" />);
 
     expect(screen.queryByText("O que colegas dizem")).not.toBeInTheDocument();
     expect(
       screen.queryByText("Contribuições em projetos"),
     ).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole("link", { name: /Ver perfil no LinkedIn/ }),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText(company.founder.linkedin),
-    ).not.toBeInTheDocument();
   });
 
-  it("shows the official role, the three pillars and no personal details", () => {
+  it("shows the official role, the three pillars and no unauthorized personal details", () => {
     render(<FounderProfile locale="pt-BR" />);
 
     expect(screen.getByText("Founder & Principal Engineer")).toBeVisible();
@@ -60,7 +86,7 @@ describe("founder page", () => {
       screen.queryByRole("heading", { name: "Fora do trabalho" }),
     ).not.toBeInTheDocument();
     expect(document.body.textContent).not.toMatch(
-      /LeafLink|Dasa|Perfect Pay|futebol|açaí|mentoria/i,
+      /LeafLink|Dasa|Perfect Pay|futebol|açaí|mentoria|esposa|marido|filhos/i,
     );
   });
 });

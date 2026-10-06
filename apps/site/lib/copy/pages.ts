@@ -32,7 +32,13 @@ export const homeCopy: Record<
 export const founderJobTitle = "Founder & Principal Engineer";
 
 export const pageCopy: Record<
-  "services" | "about" | "founder" | "contact",
+  | "services"
+  | "about"
+  | "founder"
+  | "culture"
+  | "mission"
+  | "vision"
+  | "contact",
   Record<Locale, PageCopy>
 > = {
   services: {
@@ -87,6 +93,57 @@ export const pageCopy: Record<
       title: "Iago Rodrigues, fundador | IRTC",
       description:
         "Conoce a Iago Rodrigues, Founder & Principal Engineer de IRTC, y las tres áreas de ingeniería de la empresa.",
+    },
+  },
+  culture: {
+    "pt-BR": {
+      title: "Cultura | IRTC",
+      description:
+        "Como a IRTC trabalha no dia a dia: cinco práticas, valores e uma operação AI-native em que agentes ajudam e pessoas respondem pelas entregas.",
+    },
+    en: {
+      title: "Culture | IRTC",
+      description:
+        "How IRTC works day to day: five practices, values and an AI-native operation where agents help and people answer for the deliveries.",
+    },
+    es: {
+      title: "Cultura | IRTC",
+      description:
+        "Cómo trabaja IRTC día a día: cinco prácticas, valores y una operación AI-native donde los agentes ayudan y las personas responden por las entregas.",
+    },
+  },
+  mission: {
+    "pt-BR": {
+      title: "Missão | IRTC",
+      description:
+        "Resolver problemas de negócio projetando, construindo, modernizando e operando sistemas de cloud, software e IA. Veja o percurso do primeiro contato à evolução.",
+    },
+    en: {
+      title: "Mission | IRTC",
+      description:
+        "To solve business problems by designing, building, modernizing and operating cloud, software and AI systems. See the path from first contact to evolution.",
+    },
+    es: {
+      title: "Misión | IRTC",
+      description:
+        "Resolver problemas de negocio diseñando, construyendo, modernizando y operando sistemas de cloud, software e IA. Mira el recorrido desde el primer contacto hasta la evolución.",
+    },
+  },
+  vision: {
+    "pt-BR": {
+      title: "Visão | IRTC",
+      description:
+        "Ser uma referência de engenharia nascida na Amazônia, que torna cloud, software e IA acessíveis a empresas de diferentes portes.",
+    },
+    en: {
+      title: "Vision | IRTC",
+      description:
+        "To be an engineering reference born in the Amazon, making cloud, software and AI accessible to companies of different sizes.",
+    },
+    es: {
+      title: "Visión | IRTC",
+      description:
+        "Ser una referencia de ingeniería nacida en la Amazonia, que hace accesibles cloud, software e IA a empresas de diferentes tamaños.",
     },
   },
   contact: {

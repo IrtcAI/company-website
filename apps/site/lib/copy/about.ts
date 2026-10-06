@@ -22,6 +22,8 @@ type AboutCopy = {
   founderTitle: string;
   founderText: string;
   founderLink: string;
+  readMore: string;
+  cultureLink: string;
 };
 
 export const aboutCopy: Record<Locale, AboutCopy> = {
@@ -105,6 +107,8 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     founderText:
       "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
     founderLink: "Conheça o fundador",
+    readMore: "Ler mais",
+    cultureLink: "Ver como os valores viram rotina",
   },
   en: {
     breadcrumbLabel: "Breadcrumb",
@@ -186,6 +190,8 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     founderText:
       "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership shapes the company's work.",
     founderLink: "Meet the founder",
+    readMore: "Read more",
+    cultureLink: "See how the values become routine",
   },
   es: {
     breadcrumbLabel: "Ruta de navegación",
@@ -267,5 +273,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     founderText:
       "Iago Rodrigues es el fundador de IRTC y actúa como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
     founderLink: "Conoce al fundador",
+    readMore: "Leer más",
+    cultureLink: "Ver cómo los valores se vuelven rutina",
   },
 };

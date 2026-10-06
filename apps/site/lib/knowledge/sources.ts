@@ -1,6 +1,7 @@
 import { addressLines, company, openingHours } from "../company";
 import { content, type Locale } from "../content";
 import { aboutCopy } from "../copy/about";
+import { cultureCopy, missionCopy, visionCopy } from "../copy/culture";
 import { founderCopy } from "../copy/founder";
 import { servicesPageCopy } from "../copy/services-page";
 import { locales, pagePath } from "../routes";
@@ -261,6 +262,59 @@ function founderChunks(locale: Locale): KnowledgeChunk[] {
       title: copy.role,
       text: `${company.founder.name} · ${copy.eyebrow}. ${copy.role}. ${copy.intro} ${copy.bio.join(" ")} ${copy.expertiseTitle}: ${copy.expertise.join(", ")}.`,
     },
+    {
+      id: "founder:outside",
+      locale,
+      source: "lib/copy/founder.ts",
+      href: pagePath(locale, "founder"),
+      title: copy.outsideTitle,
+      text: `${company.founder.name} · ${copy.outsideTitle}. ${copy.outsideFact}`,
+    },
+  ];
+}
+
+function brandPageChunks(locale: Locale): KnowledgeChunk[] {
+  const culture = cultureCopy[locale];
+  const mission = missionCopy[locale];
+  const vision = visionCopy[locale];
+  const [purpose, missionText, visionText] = aboutCopy[locale].foundations;
+  const base = (page: "culture" | "mission" | "vision") => ({
+    locale,
+    source: "lib/copy/culture.ts",
+    href: pagePath(locale, page),
+  });
+
+  return [
+    ...culture.practices.map((practice, index) => ({
+      ...base("culture"),
+      id: `culture:practice:${index + 1}`,
+      title: `${culture.breadcrumbCurrent} · ${practice.title}`,
+      text: `IRTC · ${culture.practicesTitle}. ${practice.title}: ${practice.text}`,
+    })),
+    {
+      ...base("culture"),
+      id: "culture:ai-native",
+      title: culture.aiTitle,
+      text: `IRTC · ${culture.aiTitle}. ${culture.aiIntro} ${culture.ai.map((item) => `${item.title}: ${item.text}`).join(" ")}`,
+    },
+    {
+      ...base("mission"),
+      id: "mission:statement",
+      title: mission.breadcrumbCurrent,
+      text: `IRTC · ${missionText.title}. ${missionText.text} ${purpose.title}: ${purpose.text} ${mission.verbs.map((verb) => `${verb.title}: ${verb.text}`).join(" ")}`,
+    },
+    {
+      ...base("mission"),
+      id: "mission:path",
+      title: mission.pathTitle,
+      text: `IRTC · ${mission.pathTitle}. ${mission.pathIntro} ${mission.steps.map((step, index) => `${index + 1}. ${step.title}: ${step.text}`).join(" ")}`,
+    },
+    {
+      ...base("vision"),
+      id: "vision:statement",
+      title: vision.breadcrumbCurrent,
+      text: `IRTC · ${visionText.title}. ${visionText.text} ${vision.parts.map((part) => `${part.title}: ${part.text}`).join(" ")}`,
+    },
   ];
 }
 
@@ -334,6 +388,7 @@ export function knowledgeChunks(locale: Locale): KnowledgeChunk[] {
     ...companyChunks(locale),
     ...aboutChunks(locale),
     ...founderChunks(locale),
+    ...brandPageChunks(locale),
     ...serviceChunks(locale),
   ];
 }

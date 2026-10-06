@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Cloud, Code2, Sparkles } from "lucide-react";
 import { ContactCta } from "@/components/contact-cta";
 import { ServiceBreadcrumb } from "@/components/service-breadcrumb";
 import { ServiceCard } from "@/components/service-card";
-import { ServiceTechTokens } from "@/components/service-tech-tokens";
+import { ServiceStack } from "@/components/service-blocks";
 import { SiteShell } from "@/components/site-shell";
 import { pageCopy } from "@/lib/copy/pages";
 import { servicesPageCopy } from "@/lib/copy/services-page";
@@ -19,18 +20,13 @@ import { breadcrumbs, graph, jsonLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
-const commonTechnologies = [
-  "Node.js",
-  "Next.js",
-  "React",
-  "PostgreSQL",
-  "Redis",
-  "AWS",
-  "GitHub",
-  "NestJS",
-  "TypeScript",
-  "Python",
-];
+const pillarIcons = { cloud: Cloud, software: Code2, ai: Sparkles };
+
+const pillarAccents = {
+  cloud: "sage",
+  software: "sky",
+  ai: "terracotta",
+} as const;
 
 export function generateStaticParams() {
   return localeStaticParams();
@@ -89,26 +85,38 @@ export default async function ServicesPage({ params }: LocaleParams) {
       </section>
       <section className="service-grid-section section-pad">
         <h2>{copy.gridTitle}</h2>
-        {pillars.map((pillar) => (
-          <div className="service-pillar-group" key={pillar}>
-            <header className="service-pillar-head">
-              <h3>{pillarNames[pillar]}</h3>
-              <p>{copy.pillarText[pillar]}</p>
-            </header>
-            <div className="service-grid">
-              {services
-                .filter((service) => service.pillar === pillar)
-                .map((service) => (
-                  <ServiceCard
-                    key={service.id}
-                    service={service}
-                    locale={locale}
-                    cta={copy.cardCta}
-                  />
-                ))}
+        {pillars.map((pillar) => {
+          const PillarIcon = pillarIcons[pillar];
+          return (
+            <div
+              className="service-pillar-group"
+              key={pillar}
+              data-accent={pillarAccents[pillar]}
+            >
+              <header className="service-pillar-head">
+                <span className="service-pillar-icon">
+                  <PillarIcon aria-hidden="true" />
+                </span>
+                <div>
+                  <h3>{pillarNames[pillar]}</h3>
+                  <p>{copy.pillarText[pillar]}</p>
+                </div>
+              </header>
+              <div className="service-grid">
+                {services
+                  .filter((service) => service.pillar === pillar)
+                  .map((service) => (
+                    <ServiceCard
+                      key={service.id}
+                      service={service}
+                      locale={locale}
+                      cta={copy.cardCta}
+                    />
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
       <section className="service-continuity section-pad">
         <p className="overline">{copy.continuity.label}</p>
@@ -118,14 +126,14 @@ export default async function ServicesPage({ params }: LocaleParams) {
           {copy.continuity.cta}
         </Link>
       </section>
-      <section className="service-tech-note section-pad">
-        <h2>{copy.techNoteTitle}</h2>
-        <p>{copy.techNoteText}</p>
-        <ServiceTechTokens
-          technologies={commonTechnologies}
-          label={copy.techTitle}
+      <div className="sp" data-accent="sage">
+        <ServiceStack
+          title={copy.techNoteTitle}
+          ids={["aws", "bedrock", "mcp"]}
+          labels={copy.stack}
+          note={copy.techNoteText}
         />
-      </section>
+      </div>
       <ContactCta locale={locale} />
     </SiteShell>
   );

@@ -8,6 +8,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
   const copy = aboutCopy[locale];
   const home = pagePath(locale, "home");
   const founder = pagePath(locale, "founder");
+  const foundationPages = [null, "mission", "vision"] as const;
 
   return (
     <>
@@ -41,12 +42,25 @@ export function AboutContent({ locale }: { locale: Locale }) {
       >
         <h2 id="about-foundations-title">{copy.foundationsTitle}</h2>
         <ul className="about-foundations-grid">
-          {copy.foundations.map((item) => (
-            <li key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </li>
-          ))}
+          {copy.foundations.map((item, index) => {
+            const page = foundationPages[index];
+            return (
+              <li key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                {page ? (
+                  <Link
+                    href={pagePath(locale, page)}
+                    className="inline-link"
+                    aria-label={`${copy.readMore}: ${item.title}`}
+                  >
+                    {copy.readMore}
+                    <ArrowRight aria-hidden="true" />
+                  </Link>
+                ) : null}
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section
@@ -62,6 +76,10 @@ export function AboutContent({ locale }: { locale: Locale }) {
             </li>
           ))}
         </ul>
+        <Link href={pagePath(locale, "culture")} className="inline-link">
+          {copy.cultureLink}
+          <ArrowRight aria-hidden="true" />
+        </Link>
       </section>
       <section
         className="about-how section-pad"

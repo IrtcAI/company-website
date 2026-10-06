@@ -46,7 +46,7 @@ describe("knowledge chunks", () => {
       expect(chunk.text.length).toBeLessThanOrEqual(1600);
   });
 
-  it("carries no unapproved figures, client names or personal details", () => {
+  it("carries no unapproved figures, client names or unauthorized personal details", () => {
     const forbidden = [
       /LeafLink/i,
       /Dasa/i,
@@ -55,11 +55,41 @@ describe("knowledge chunks", () => {
       /São Paulo/i,
       /\+\s?8 anos|\b8 years|\b4[,.]9\b|\+\s?30 projetos/i,
       /açaí|futebol|football|fútbol|mentoria|mentoring/i,
+      /espos[ao]|marido|cônjuge|namorad[ao]|\bfilh[oa]s?\b|spouse|wife|husband|children|daughter|\bhij[oa]s?\b|aniversário|birthday|cumpleaños/i,
     ];
 
     for (const chunk of allKnowledgeChunks())
       for (const pattern of forbidden)
         expect(`${chunk.id} ${chunk.text}`).not.toMatch(pattern);
+  });
+
+  it("keeps the authorized founder hobbies and no hypothetical scene in the chunks", () => {
+    for (const locale of locales) {
+      const chunks = byLocale[locale];
+      const outside = chunks.find((chunk) => chunk.id === "founder:outside");
+      expect(outside?.text).toContain("Juliette");
+      expect(outside?.text).toContain("Luna");
+
+      for (const chunk of chunks)
+        expect(chunk.text).not.toMatch(
+          /planilha de pedidos|orders spreadsheet|planilla de pedidos|Obrigado pela revisão|Thanks for the review|Gracias por la revisión/i,
+        );
+    }
+  });
+
+  it("indexes the culture, mission and vision pages with their official definitions", () => {
+    for (const locale of locales) {
+      const ids = new Set(byLocale[locale].map((chunk) => chunk.id));
+      for (const id of [
+        "culture:practice:1",
+        "culture:practice:5",
+        "culture:ai-native",
+        "mission:statement",
+        "mission:path",
+        "vision:statement",
+      ])
+        expect(ids.has(id)).toBe(true);
+    }
   });
 
   it("covers each pillar, Continuous Engineering and the founder in every locale", () => {

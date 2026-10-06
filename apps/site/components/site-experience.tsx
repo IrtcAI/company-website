@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Cloud, MessageCircle } from "lucide-react";
+import { Bot, Cloud, MessageCircle, Sparkles } from "lucide-react";
 import { content, Locale } from "@/lib/content";
 import { pagePath } from "@/lib/routes";
 import {
@@ -15,26 +15,24 @@ import { Founder } from "./founder";
 import { HomeHero } from "./home-hero";
 import { HomePillars } from "./home-pillars";
 
-const techNames = [
-  "Node.js",
-  "Next.js",
-  "React",
-  "PostgreSQL",
-  "Redis",
-  "AWS",
-  "GitHub",
-  "NestJS",
+const focusIcons = [
+  <Cloud key="aws" aria-hidden="true" />,
+  <Sparkles key="bedrock" aria-hidden="true" />,
+  <Bot key="agents" aria-hidden="true" />,
+  <Image
+    key="mcp"
+    src="/technologies/modelcontextprotocol.svg"
+    alt=""
+    width={40}
+    height={40}
+  />,
 ];
 
-const techSlugs = [
-  "nodedotjs",
-  "nextdotjs",
-  "react",
-  "postgresql",
-  "redis",
-  "amazonwebservices",
-  "github",
-  "nestjs",
+const productTech = [
+  { name: "React", slug: "react" },
+  { name: "Node.js", slug: "nodedotjs" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "PostgreSQL", slug: "postgresql" },
 ];
 
 const BELEM = projectLonLat(-48.4902, -1.4558);
@@ -68,29 +66,45 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         <div className="tech-playground">
           <h3>{copy.solutions.techTitle}</h3>
           <div
-            className="tech-tokens"
+            className="tech-tokens tech-tokens-focus"
             role="list"
             aria-label={copy.solutions.techTitle}
           >
-            {techNames.map((name, index) => (
+            {copy.solutions.techFocus.map((tech, index) => (
               <div
-                key={name}
+                key={tech.name}
+                className={`tech-token token-${index}`}
+                role="listitem"
+              >
+                <span className="tech-token-face">{focusIcons[index]}</span>
+                <strong>{tech.name}</strong>
+                <span className="tech-token-role">{tech.role}</span>
+              </div>
+            ))}
+          </div>
+          <p className="tech-product-title">
+            {copy.solutions.techProductTitle}
+          </p>
+          <div
+            className="tech-tokens tech-tokens-product"
+            role="list"
+            aria-label={copy.solutions.techProductTitle}
+          >
+            {productTech.map((tech, index) => (
+              <div
+                key={tech.name}
                 className={`tech-token token-${index}`}
                 role="listitem"
               >
                 <span className="tech-token-face">
-                  {index === 5 ? (
-                    <Cloud aria-hidden="true" />
-                  ) : (
-                    <Image
-                      src={`/technologies/${techSlugs[index]}.svg`}
-                      alt=""
-                      width={40}
-                      height={40}
-                    />
-                  )}
+                  <Image
+                    src={`/technologies/${tech.slug}.svg`}
+                    alt=""
+                    width={40}
+                    height={40}
+                  />
                 </span>
-                <span>{name}</span>
+                <span>{tech.name}</span>
               </div>
             ))}
           </div>

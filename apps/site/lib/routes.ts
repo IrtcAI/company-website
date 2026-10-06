@@ -4,25 +4,42 @@ export const SITE_URL = "https://irtc.com.br";
 
 export const locales: Locale[] = ["pt-BR", "en", "es"];
 
-export type Page = "home" | "services" | "about" | "founder" | "contact";
+export type Page =
+  | "home"
+  | "services"
+  | "about"
+  | "founder"
+  | "culture"
+  | "mission"
+  | "vision"
+  | "contact";
 
 const segments: Record<Locale, Record<Exclude<Page, "home">, string>> = {
   "pt-BR": {
     services: "servicos",
     about: "sobre",
     founder: "fundador",
+    culture: "cultura",
+    mission: "missao",
+    vision: "visao",
     contact: "contato",
   },
   en: {
     services: "services",
     about: "about",
     founder: "founder",
+    culture: "culture",
+    mission: "mission",
+    vision: "vision",
     contact: "contact",
   },
   es: {
     services: "servicios",
     about: "nosotros",
     founder: "fundador",
+    culture: "cultura",
+    mission: "mision",
+    vision: "vision",
     contact: "contacto",
   },
 };

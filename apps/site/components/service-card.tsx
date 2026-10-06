@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/content";
 import { pagePath } from "@/lib/routes";
 import type { Service } from "@/lib/services";
 import { ServiceIcon } from "./service-icon";
+import { ServiceVisual } from "./service-visual";
 
 export function ServiceCard({
   service,
@@ -21,8 +22,11 @@ export function ServiceCard({
       className="service-card"
       data-reveal
     >
-      <span className="service-card-icon">
-        <ServiceIcon icon={service.icon} />
+      <span className="service-card-visual">
+        <ServiceVisual id={service.id} accent={service.accent} />
+        <span className="service-card-icon">
+          <ServiceIcon icon={service.icon} />
+        </span>
       </span>
       <h3>{copy.title}</h3>
       <p>{copy.summary}</p>

@@ -37,6 +37,9 @@ export function SiteShell({
   }));
   const companyLinks = [
     { label: copy.footer.links[0], href: pagePath(locale, "about") },
+    { label: copy.footer.links[4], href: pagePath(locale, "culture") },
+    { label: copy.footer.links[5], href: pagePath(locale, "mission") },
+    { label: copy.footer.links[6], href: pagePath(locale, "vision") },
     { label: copy.footer.links[1], href: pagePath(locale, "founder") },
     { label: copy.footer.links[2], href: contact },
   ];

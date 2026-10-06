@@ -1,11 +1,23 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import {
+  Cat,
+  ChevronRight,
+  Clapperboard,
+  ExternalLink,
+  Gamepad2,
+} from "lucide-react";
 import type { Locale } from "@/lib/content";
 import { company } from "@/lib/company";
-import { founderCopy } from "@/lib/copy/founder";
+import { founderCopy, type OutsideIcon } from "@/lib/copy/founder";
 import { pagePath } from "@/lib/routes";
+
+const outsideIcons: Record<OutsideIcon, typeof Cat> = {
+  game: Gamepad2,
+  film: Clapperboard,
+  cats: Cat,
+};
 
 function staggerStyle(index: number): CSSProperties {
   return { "--i": index } as CSSProperties;
@@ -46,9 +58,10 @@ export function FounderProfile({ locale }: { locale: Locale }) {
           />
           <div className="founder-frame-photo">
             <Image
-              src="/founder.webp"
+              src="/founder-profile.webp"
               alt={copy.portraitAlt}
-              fill
+              width={900}
+              height={1190}
               sizes="(max-width: 767px) 80vw, 420px"
               priority
               className="founder-frame-img"
@@ -68,12 +81,67 @@ export function FounderProfile({ locale }: { locale: Locale }) {
           </h1>
           <p className="founder-hero-role">{copy.role}</p>
           <p className="founder-hero-intro">{copy.intro}</p>
+          <a
+            className="founder-linkedin"
+            href={company.founder.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {copy.linkedinLabel}
+            <ExternalLink aria-hidden="true" />
+            <span className="sr-only"> ({copy.linkedinNewTab})</span>
+          </a>
         </div>
       </section>
       <section className="founder-bio section-pad" data-reveal>
         {copy.bio.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
+      </section>
+      <section
+        className="founder-story section-pad"
+        aria-labelledby="founder-story-title"
+      >
+        <div className="founder-story-head" data-reveal>
+          <p className="overline">{copy.storyTag}</p>
+          <h2 id="founder-story-title">{copy.storyTitle}</h2>
+          <p className="founder-story-lead">{copy.storyLead}</p>
+        </div>
+        <ol className="founder-story-steps">
+          {copy.story.map((block, index) => (
+            <li key={block.kicker} data-reveal style={staggerStyle(index)}>
+              <span className="founder-story-number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{block.kicker}</h3>
+              <p>{block.text}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="founder-story-closing" data-reveal>
+          {copy.storyClosing}
+        </p>
+      </section>
+      <section
+        className="founder-outside section-pad"
+        aria-labelledby="founder-outside-title"
+      >
+        <h2 id="founder-outside-title">{copy.outsideTitle}</h2>
+        <p className="founder-expertise-intro">{copy.outsideIntro}</p>
+        <ul className="founder-outside-grid">
+          {copy.outside.map((card, index) => {
+            const Icon = outsideIcons[card.icon];
+            return (
+              <li key={card.title} data-reveal style={staggerStyle(index)}>
+                <span className="founder-outside-icon" aria-hidden="true">
+                  <Icon />
+                </span>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </li>
+            );
+          })}
+        </ul>
       </section>
       <section
         className="founder-expertise section-pad"

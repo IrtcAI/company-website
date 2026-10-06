@@ -17,8 +17,8 @@ export const company = {
   socials: [
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/in/iago-rodrigues/",
-      handle: "in/iago-rodrigues",
+      href: "https://www.linkedin.com/company/ir-tec",
+      handle: "company/ir-tec",
     },
   ],
 };

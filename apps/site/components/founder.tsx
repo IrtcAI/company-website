@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { company } from "@/lib/company";
 import { Locale } from "@/lib/content";
 import { pagePath } from "@/lib/routes";
 
@@ -16,6 +17,8 @@ const founderCopy = {
     location: "Em Belém, Pará, com atendimento remoto.",
     alt: "Retrato de Iago Rodrigues, fundador da IRTC",
     link: "Conheça a trajetória do Iago",
+    linkedin: "Iago no LinkedIn",
+    newTab: "abre em uma nova aba",
   },
   en: {
     label: "THE PERSON BEHIND IRTC",
@@ -28,6 +31,8 @@ const founderCopy = {
     location: "Based in Belém, Pará, serving clients remotely.",
     alt: "Portrait of Iago Rodrigues, founder of IRTC",
     link: "Read Iago's story",
+    linkedin: "Iago on LinkedIn",
+    newTab: "opens in a new tab",
   },
   es: {
     label: "QUIÉN ESTÁ DETRÁS",
@@ -40,6 +45,8 @@ const founderCopy = {
     location: "En Belém, Pará, con atención remota.",
     alt: "Retrato de Iago Rodrigues, fundador de IRTC",
     link: "Conoce la trayectoria de Iago",
+    linkedin: "Iago en LinkedIn",
+    newTab: "se abre en una pestaña nueva",
   },
 };
 
@@ -60,10 +67,22 @@ export function Founder({ locale }: { locale: Locale }) {
           <span aria-hidden="true">✳</span>
           {copy.location}
         </p>
-        <Link href={pagePath(locale, "founder")} className="inline-link">
-          {copy.link}
-          <ArrowRight aria-hidden="true" />
-        </Link>
+        <div className="founder-links">
+          <Link href={pagePath(locale, "founder")} className="inline-link">
+            {copy.link}
+            <ArrowRight aria-hidden="true" />
+          </Link>
+          <a
+            href={company.founder.linkedin}
+            className="inline-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {copy.linkedin}
+            <ExternalLink aria-hidden="true" />
+            <span className="sr-only"> ({copy.newTab})</span>
+          </a>
+        </div>
       </div>
       <figure className="founder-portrait">
         <div className="founder-blueprint" aria-hidden="true">

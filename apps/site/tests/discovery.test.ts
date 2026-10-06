@@ -84,8 +84,16 @@ describe("sitemap", () => {
     }
   });
 
-  it("includes the services index, about, founder and contact pages for every locale", () => {
-    for (const page of ["services", "about", "founder", "contact"] as const) {
+  it("includes the services index, about, founder, culture, mission, vision and contact pages for every locale", () => {
+    for (const page of [
+      "services",
+      "about",
+      "founder",
+      "culture",
+      "mission",
+      "vision",
+      "contact",
+    ] as const) {
       for (const locale of locales)
         expect(
           entries.some(
@@ -130,6 +138,13 @@ describe("llms.txt", () => {
       "GitHub",
     ])
       expect(text).toContain(tech);
+  });
+
+  it("lists the culture, mission and vision pages in every locale", async () => {
+    const text = await llmsGet().text();
+    for (const page of ["culture", "mission", "vision"] as const)
+      for (const locale of locales)
+        expect(text).toContain(absoluteUrl(pagePath(locale, page)));
   });
 
   it("no longer claims the site is single-page or that service and founder URLs do not exist", async () => {
