@@ -39,6 +39,23 @@ describe("Iris dialog", () => {
     expect(onClose).toHaveBeenCalledOnce();
     expect(screen.queryByRole("dialog")).toBeNull();
   });
+  it("closes at once when the visitor has not written anything", async () => {
+    const onClose = vi.fn();
+    render(
+      <Iris
+        onClose={onClose}
+        labels={content["pt-BR"].iris}
+        contactSending={content["pt-BR"].contact.sending}
+      />,
+    );
+
+    await userEvent.click(
+      screen.getByRole("button", { name: "Fechar conversa" }),
+    );
+
+    expect(onClose).toHaveBeenCalledOnce();
+    expect(screen.queryByText(content["pt-BR"].iris.confirm)).toBeNull();
+  });
   it("opens confirmation on Escape and toggles fullscreen", async () => {
     render(
       <Iris
@@ -48,6 +65,7 @@ describe("Iris dialog", () => {
         contactSending={content.en.contact.sending}
       />,
     );
+    await userEvent.type(screen.getByLabelText("Your message"), "My idea");
 
     await userEvent.click(
       screen.getByRole("button", { name: "Open fullscreen" }),

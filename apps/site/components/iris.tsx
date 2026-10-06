@@ -78,6 +78,20 @@ export default function Iris({
     event.currentTarget.form?.requestSubmit();
   }
 
+  function closeChat() {
+    controller.current?.abort();
+    dialog.current?.close();
+    onClose();
+  }
+
+  function requestClose() {
+    if (value.trim() || messages.some((message) => message.role === "user")) {
+      setConfirmClose(true);
+    } else {
+      closeChat();
+    }
+  }
+
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!value.trim() || busy) return;
@@ -190,7 +204,7 @@ export default function Iris({
       aria-labelledby="iris-title"
       onCancel={(event) => {
         event.preventDefault();
-        setConfirmClose(true);
+        requestClose();
       }}
     >
       <header className="iris-header">
@@ -211,7 +225,7 @@ export default function Iris({
             <Maximize2 aria-hidden="true" />
           )}
         </button>
-        <button aria-label={labels.close} onClick={() => setConfirmClose(true)}>
+        <button aria-label={labels.close} onClick={requestClose}>
           <X aria-hidden="true" />
         </button>
       </header>
@@ -229,14 +243,7 @@ export default function Iris({
           >
             {labels.keep}
           </button>
-          <button
-            className="chat-secondary"
-            onClick={() => {
-              controller.current?.abort();
-              dialog.current?.close();
-              onClose();
-            }}
-          >
+          <button className="chat-secondary" onClick={closeChat}>
             {labels.yes}
           </button>
         </div>
