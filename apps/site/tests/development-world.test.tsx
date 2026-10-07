@@ -2,6 +2,7 @@ import { act, render } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DevelopmentWorld } from "@/components/development-world";
 import { Motion } from "./motion";
+import { stubWebGL } from "./webgl";
 
 const stage = vi.hoisted(() => ({
   create: vi.fn(),
@@ -26,6 +27,7 @@ beforeEach(() => {
     .mockReturnValue({ update: stage.update, destroy: stage.destroy });
   stage.update.mockReset();
   stage.destroy.mockReset();
+  stubWebGL();
 
   media = {
     matches: true,
@@ -108,6 +110,21 @@ describe("section objects", () => {
     render(<View />);
     intersect(true);
     await settle();
+    expect(stage.create).not.toHaveBeenCalled();
+  });
+
+  it("keeps only the poster when WebGL would run on the CPU", async () => {
+    for (const renderer of [
+      null,
+      "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero)), SwiftShader driver)",
+      "llvmpipe (LLVM 15.0.7, 256 bits)",
+    ]) {
+      stubWebGL(renderer);
+      const { unmount } = render(<View />);
+      intersect(true);
+      await settle();
+      unmount();
+    }
     expect(stage.create).not.toHaveBeenCalled();
   });
 

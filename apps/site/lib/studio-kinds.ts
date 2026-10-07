@@ -8,3 +8,6 @@ export const studioKinds: StudioKind[] = [
 ];
 
 export const studioPoster = (kind: StudioKind) => `/studio/${kind}.webp`;
+
+export const studioPosterSet = (kind: StudioKind) =>
+  `/studio/${kind}-320.webp 320w, ${studioPoster(kind)} 480w`;

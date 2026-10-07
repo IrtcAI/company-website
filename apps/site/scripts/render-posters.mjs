@@ -111,22 +111,27 @@ try {
     const image = await evaluate(`window.renderPoster("${kind}", ${size})`);
     const png = join(scratch, `${kind}.png`);
     writeFileSync(png, Buffer.from(image.split(",")[1], "base64"));
-    execFileSync("cwebp", [
-      "-quiet",
-      "-q",
-      "88",
-      "-alpha_q",
-      "100",
-      "-m",
-      "6",
-      "-resize",
-      String(size / 2),
-      String(size / 2),
-      png,
-      "-o",
-      join(output, `${kind}.webp`),
-    ]);
-    console.log(`public/studio/${kind}.webp`);
+    for (const [width, name] of [
+      [size / 2, `${kind}.webp`],
+      [320, `${kind}-320.webp`],
+    ]) {
+      execFileSync("cwebp", [
+        "-quiet",
+        "-q",
+        "88",
+        "-alpha_q",
+        "100",
+        "-m",
+        "6",
+        "-resize",
+        String(width),
+        String(width),
+        png,
+        "-o",
+        join(output, name),
+      ]);
+      console.log(`public/studio/${name}`);
+    }
   }
 } finally {
   socket.close();
