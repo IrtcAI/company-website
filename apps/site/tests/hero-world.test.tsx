@@ -8,6 +8,7 @@ import { ScrollStory } from "@/components/scroll-story";
 import { content } from "@/lib/content";
 import { studioKinds, studioPoster } from "@/lib/studio-kinds";
 import { Motion } from "./motion";
+import { stubWebGL } from "./webgl";
 
 const stage = vi.hoisted(() => ({ create: vi.fn() }));
 vi.mock("@/lib/studio-scene", () => ({ createStage: stage.create }));
@@ -20,6 +21,7 @@ describe("hero artwork", () => {
     expect(html).not.toContain('data-studio-slot="robot"');
     expect(html).toContain("fallback-terminal");
     expect(html).not.toContain("canvas");
+    expect(html).toContain("/studio/phone-320.webp 320w");
   });
 
   it("ships a poster for every studio object", () => {
@@ -27,10 +29,15 @@ describe("hero artwork", () => {
       expect(
         existsSync(join(process.cwd(), "public", studioPoster(kind))),
       ).toBe(true);
+    for (const kind of studioKinds)
+      expect(
+        existsSync(join(process.cwd(), "public", "studio", `${kind}-320.webp`)),
+      ).toBe(true);
   });
 
   it("hands the same slots to the live renderer and idles once the hero fades", async () => {
     vi.useFakeTimers();
+    stubWebGL();
     stage.create.mockReturnValue({ update: vi.fn(), destroy: vi.fn() });
     let intersect: (visible: boolean) => void = () => {};
     vi.stubGlobal(

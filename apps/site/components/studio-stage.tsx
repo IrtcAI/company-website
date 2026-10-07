@@ -2,9 +2,26 @@
 
 import { RefObject, useEffect, useRef } from "react";
 import { preload } from "react-dom";
-import { StudioKind, studioPoster } from "@/lib/studio-kinds";
+import { StudioKind, studioPoster, studioPosterSet } from "@/lib/studio-kinds";
+
+const posterSizes = "(min-width: 1024px) 250px, 160px";
 
 const idle = typeof requestIdleCallback === "function";
+
+// Without a GPU, Chrome renders WebGL on the CPU and every frame of the
+// scene blocks the main thread for ~100 ms; those visitors keep the posters.
+function hasHardwareWebGL() {
+  const gl = document.createElement("canvas").getContext("webgl2", {
+    failIfMajorPerformanceCaveat: true,
+  });
+  if (!gl) return false;
+  const debug = gl.getExtension("WEBGL_debug_renderer_info");
+  const renderer = debug
+    ? String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL))
+    : "";
+  gl.getExtension("WEBGL_lose_context")?.loseContext();
+  return !/swiftshader|llvmpipe|softpipe|software/i.test(renderer);
+}
 
 const whenIdle = (callback: () => void) =>
   idle
@@ -23,12 +40,20 @@ export function StudioSlot({
   className?: string;
   lazy?: boolean;
 }) {
-  if (!lazy) preload(studioPoster(kind), { as: "image", fetchPriority: "low" });
+  if (!lazy)
+    preload(studioPoster(kind), {
+      as: "image",
+      fetchPriority: "low",
+      imageSrcSet: studioPosterSet(kind),
+      imageSizes: posterSizes,
+    });
   return (
     <div className={`studio-slot ${className}`} data-studio-slot={kind}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={studioPoster(kind)}
+        srcSet={lazy ? undefined : studioPosterSet(kind)}
+        sizes={lazy ? undefined : posterSizes}
         alt=""
         width={480}
         height={480}
@@ -104,7 +129,7 @@ export function useStudioStage(
       const request = ++generation;
       cancelIdle(pending);
       if (!media.matches) return release();
-      if (!near || stage.current) return;
+      if (!near || stage.current || !hasHardwareWebGL()) return;
       pending = whenIdle(() => void load(request));
     };
 
