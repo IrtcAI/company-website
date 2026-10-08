@@ -689,9 +689,9 @@ export const services: Service[] = [
         slug: "modernizacao-de-sistemas",
         title: "Modernização de sistemas",
         summary:
-          "Atualizamos sistemas antigos por etapas, sem parar a operação que depende deles.",
+          "Atualizamos sistemas antigos por etapas, com o menor impacto possível na operação que depende deles.",
         intro:
-          "Sistema antigo raramente precisa ser refeito do zero. Modernizamos por etapas, trocando o que trava sua equipe sem parar a operação. Começamos medindo quanto as entregas levam hoje, para a melhora ter base de comparação.",
+          "Sistema antigo raramente precisa ser refeito do zero. Modernizamos por etapas, trocando o que trava sua equipe e protegendo a operação a cada passo. Começamos medindo quanto as entregas levam hoje, para a melhora ter base de comparação.",
         problems: [
           "Toda funcionalidade nova demora porque o código resiste à mudança.",
           "O sistema funciona, mas ninguém quer mexer nele.",
@@ -719,7 +719,7 @@ export const services: Service[] = [
           {
             question: "Como modernizam sem parar a empresa?",
             answer:
-              "Por etapas. Começamos pelas mudanças de maior impacto e menor risco e confirmamos que nada quebrou antes de seguir. Cada etapa tem plano de reversão.",
+              "Por etapas. Começamos pelas mudanças de maior impacto e menor risco e confirmamos que nada quebrou antes de seguir. Cada etapa tem plano de reversão, e se alguma exigir uma pausa, combinamos antes o horário de menor uso.",
           },
           {
             question: "O que vocês precisam da nossa equipe?",
@@ -737,9 +737,9 @@ export const services: Service[] = [
         slug: "system-modernization",
         title: "System modernization",
         summary:
-          "We update old systems in stages, without stopping the operation that depends on them.",
+          "We update old systems in stages, with as little impact as possible on the operation that depends on them.",
         intro:
-          "An old system rarely needs to be rebuilt from scratch. We modernize in stages, replacing what holds your team back without stopping operations. We start by measuring how long deliveries take today, so the improvement has a baseline.",
+          "An old system rarely needs to be rebuilt from scratch. We modernize in stages, replacing what holds your team back while protecting operations at every step. We start by measuring how long deliveries take today, so the improvement has a baseline.",
         problems: [
           "Every new feature takes long because the code resists change.",
           "The system works, but nobody wants to touch it.",
@@ -767,7 +767,7 @@ export const services: Service[] = [
           {
             question: "How do you modernize without stopping the company?",
             answer:
-              "In stages. We start with the highest-impact, lowest-risk changes and confirm nothing broke before moving on. Every stage has a rollback plan.",
+              "In stages. We start with the highest-impact, lowest-risk changes and confirm nothing broke before moving on. Every stage has a rollback plan, and if one needs a pause, we agree on a low-traffic window beforehand.",
           },
           {
             question: "What do you need from our team?",
@@ -785,9 +785,9 @@ export const services: Service[] = [
         slug: "modernizacion-de-sistemas",
         title: "Modernización de sistemas",
         summary:
-          "Actualizamos sistemas antiguos por etapas, sin detener la operación que depende de ellos.",
+          "Actualizamos sistemas antiguos por etapas, con el menor impacto posible en la operación que depende de ellos.",
         intro:
-          "Un sistema antiguo rara vez necesita rehacerse desde cero. Modernizamos por etapas, cambiando lo que frena a tu equipo sin detener la operación. Empezamos midiendo cuánto tardan hoy las entregas, para que la mejora tenga una base de comparación.",
+          "Un sistema antiguo rara vez necesita rehacerse desde cero. Modernizamos por etapas, cambiando lo que frena a tu equipo y protegiendo la operación en cada paso. Empezamos midiendo cuánto tardan hoy las entregas, para que la mejora tenga una base de comparación.",
         problems: [
           "Cada función nueva tarda porque el código se resiste al cambio.",
           "El sistema funciona, pero nadie quiere tocarlo.",
@@ -815,7 +815,7 @@ export const services: Service[] = [
           {
             question: "¿Cómo modernizan sin detener la empresa?",
             answer:
-              "Por etapas. Empezamos por los cambios de mayor impacto y menor riesgo y confirmamos que nada se rompió antes de seguir. Cada etapa tiene plan de reversión.",
+              "Por etapas. Empezamos por los cambios de mayor impacto y menor riesgo y confirmamos que nada se rompió antes de seguir. Cada etapa tiene plan de reversión, y si alguna requiere una pausa, acordamos antes el horario de menor uso.",
           },
           {
             question: "¿Qué necesitan de nuestro equipo?",
@@ -1185,7 +1185,7 @@ export const services: Service[] = [
           {
             question: "Como melhoram um sistema existente sem parar tudo?",
             answer:
-              "Medimos primeiro, mudamos a parte da arquitetura com maior impacto, confirmamos a melhora e seguimos. O sistema fica no ar o tempo todo.",
+              "Medimos primeiro, mudamos a parte da arquitetura com maior impacto, confirmamos a melhora e seguimos. Mudanças que pedem uma janela de manutenção são combinadas antes, no horário de menor uso.",
           },
           {
             question: "Que acesso vocês precisam?",
@@ -1234,7 +1234,7 @@ export const services: Service[] = [
             question:
               "How do you improve an existing system without stopping everything?",
             answer:
-              "We measure first, change the part of the architecture with the highest impact, confirm the improvement and move on. The system stays live throughout.",
+              "We measure first, change the part of the architecture with the highest impact, confirm the improvement and move on. Changes that need a maintenance window are agreed in advance, at the lowest-traffic time.",
           },
           {
             question: "What access do you need?",
@@ -1282,7 +1282,7 @@ export const services: Service[] = [
           {
             question: "¿Cómo mejoran un sistema existente sin detener todo?",
             answer:
-              "Medimos primero, cambiamos la parte de la arquitectura con mayor impacto, confirmamos la mejora y seguimos. El sistema queda en línea todo el tiempo.",
+              "Medimos primero, cambiamos la parte de la arquitectura con mayor impacto, confirmamos la mejora y seguimos. Los cambios que requieren una ventana de mantenimiento se acuerdan antes, en el horario de menor uso.",
           },
           {
             question: "¿Qué acceso necesitan?",
