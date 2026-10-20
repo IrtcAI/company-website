@@ -231,3 +231,64 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       "Retrato de Iago Rodrigues, fundador de IRTC, mirando a la cámara, con fondo claro",
   },
 };
+
+// Short founder section shown on the home page.
+export const founderSectionCopy: Record<
+  Locale,
+  {
+    label: string;
+    title: string;
+    accent: string;
+    role: string;
+    intro: string;
+    body: string;
+    location: string;
+    alt: string;
+    link: string;
+    linkedin: string;
+    newTab: string;
+  }
+> = {
+  "pt-BR": {
+    label: "QUEM ESTÁ POR TRÁS",
+    title: "Tecnologia se faz",
+    accent: "com gente.",
+    role: "Founder & Principal Engineer",
+    intro:
+      "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
+    body: "A IRTC organiza o trabalho em Cloud Engineering, Software Engineering e AI Engineering.",
+    location: "Em Belém, Pará, com atendimento remoto.",
+    alt: "Retrato de Iago Rodrigues, fundador da IRTC",
+    link: "Conheça a trajetória do Iago",
+    linkedin: "Iago no LinkedIn",
+    newTab: "abre em uma nova aba",
+  },
+  en: {
+    label: "THE PERSON BEHIND IRTC",
+    title: "Built with technology.",
+    accent: "Led by people.",
+    role: "Founder & Principal Engineer",
+    intro:
+      "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership is part of the company's work.",
+    body: "IRTC organizes its work in Cloud Engineering, Software Engineering and AI Engineering.",
+    location: "Based in Belém, Pará, serving clients remotely.",
+    alt: "Portrait of Iago Rodrigues, founder of IRTC",
+    link: "Read Iago's story",
+    linkedin: "Iago on LinkedIn",
+    newTab: "opens in a new tab",
+  },
+  es: {
+    label: "QUIÉN ESTÁ DETRÁS",
+    title: "La tecnología empieza",
+    accent: "con las personas.",
+    role: "Founder & Principal Engineer",
+    intro:
+      "Iago Rodrigues es el fundador de IRTC y trabaja como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
+    body: "IRTC organiza su trabajo en Cloud Engineering, Software Engineering y AI Engineering.",
+    location: "En Belém, Pará, con atención remota.",
+    alt: "Retrato de Iago Rodrigues, fundador de IRTC",
+    link: "Conoce la trayectoria de Iago",
+    linkedin: "Iago en LinkedIn",
+    newTab: "se abre en una pestaña nueva",
+  },
+};
