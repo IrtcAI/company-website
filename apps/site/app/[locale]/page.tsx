@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
 import { founderJobTitle, homeCopy } from "@/lib/copy/pages";
-import { SITE_URL } from "@/lib/routes";
+import {
+  LocaleParams,
+  localeStaticParams,
+  resolveLocaleParam,
+} from "@/lib/locale-params";
+import { absoluteUrl, pagePath, SITE_URL } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import {
   founder,
@@ -16,17 +20,13 @@ import {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "es" }];
+  return localeStaticParams();
 }
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (locale !== "en" && locale !== "es") return {};
-
+}: LocaleParams): Promise<Metadata> {
+  const locale = await resolveLocaleParam(params);
   return pageMetadata({
     locale,
     page: "home",
@@ -35,13 +35,8 @@ export async function generateMetadata({
   });
 }
 
-export default async function LocalizedHome({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  if (locale !== "en" && locale !== "es") notFound();
+export default async function Home({ params }: LocaleParams) {
+  const locale = await resolveLocaleParam(params);
 
   return (
     <>
@@ -53,7 +48,7 @@ export default async function LocalizedHome({
             {
               "@type": "WebSite",
               "@id": `${SITE_URL}/#website`,
-              url: `${SITE_URL}/${locale}`,
+              url: absoluteUrl(pagePath(locale, "home")),
               name: "IRTC",
               inLanguage: locale,
               publisher: { "@id": ORGANIZATION_ID },

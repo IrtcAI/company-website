@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: [],
+    globalNotFound: true,
   },
   async redirects() {
     return internalRedirects();

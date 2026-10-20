@@ -29,8 +29,8 @@ All five checks (`format`, `lint`, `typecheck`, `test`, `build`) must pass befor
 
 ## Map
 
-- `app/`: routes. pt-BR home is `app/page.tsx`; en/es homes and every inner page live under `app/[locale]/`. Localized URLs (`/servicos`, `/es/nosotros`...) are rewritten to them by `lib/routes.ts` + `next.config.ts`.
-- `layout/main.tsx`: the real root layout (re-exported by `app/layout.tsx`), CSS imports, splash, global metadata.
+- `app/`: routes. Every page, the pt-BR home included, lives under `app/[locale]/`. `/` and localized URLs (`/servicos`, `/es/nosotros`...) are rewritten to them by `lib/routes.ts` + `next.config.ts`. Unmatched URLs render `app/global-not-found.tsx`.
+- `layout/main.tsx`: the real root layout (rendered by `app/[locale]/layout.tsx` with the route's `lang`), CSS imports, splash, global metadata.
 - `components/`: server components by default; interactive pieces are small `"use client"` islands (`site-header`, `shell-provider`, `home-hero`, `project-showcase`, `contact-form`, ...).
 - `lib/`: data and rules. `content.ts` (UI copy), `services.ts`, `company.ts`, `copy/*`, `stats.ts`, `routes.ts`, `seo.ts`, `structured-data.ts`, `iris-policy.ts` (Iris system prompt and grounding), `knowledge/` (RAG index and retrieval; regenerate with `pnpm knowledge` after content edits), `analytics.ts`.
 - `styles/`: one CSS file per area, imported in `layout/main.tsx`. Colors are `light-dark()` tokens in `styles/globals.css`.

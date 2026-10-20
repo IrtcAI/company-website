@@ -28,11 +28,13 @@ O logo usa os arquivos oficiais em `public/brand/`: `irtc-wordmark-deep-teal.svg
 
 ## Rotas e idiomas
 
-pt-BR é o idioma base, na raiz. en e es ficam em `/en` e `/es`. As páginas internas usam segmentos traduzidos (`/servicos`, `/en/services`, `/es/servicios`), que `next.config.ts` reescreve para `app/[locale]/<página>`. Os endereços internos (`/pt-BR/services`) redirecionam para os públicos. A fonte da verdade é `lib/routes.ts`.
+pt-BR é o idioma base, na raiz. en e es ficam em `/en` e `/es`. As páginas internas usam segmentos traduzidos (`/servicos`, `/en/services`, `/es/servicios`), que `next.config.ts` reescreve para `app/[locale]/<página>`. A home pt-BR (`/`) é reescrita para `app/[locale]/page.tsx` com `pt-BR`. Os endereços internos (`/pt-BR`, `/pt-BR/services`) redirecionam para os públicos. A fonte da verdade é `lib/routes.ts`.
+
+O layout raiz é `app/[locale]/layout.tsx`, que põe o idioma da rota no `<html lang>` do HTML do servidor. Robôs que não executam JavaScript, como o Bingbot, leem esse atributo. URLs sem rota caem em `app/global-not-found.tsx`, que não passa pelo layout e por isso importa o próprio CSS.
 
 `proxy.ts` só atua na raiz: escolhe o idioma pela preferência salva em cookie, pelo país (cabeçalho da Vercel) ou pelo `Accept-Language`. Não há consulta de IP a terceiros. Robôs de busca (identificados pelo `User-Agent`) sempre recebem a home em pt-BR: o Googlebot rastreia dos EUA e, redirecionado, nunca indexaria `/`.
 
-Todas as páginas têm `canonical`, `hreflang` e Open Graph por idioma, gerados por `lib/seo.ts`.
+Todas as páginas têm `canonical`, `hreflang` e Open Graph por idioma, com a imagem de `app/opengraph-image.tsx`, gerados por `lib/seo.ts`.
 
 ## Objetos 3D
 
