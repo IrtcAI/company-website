@@ -27,20 +27,49 @@ const answerEngineBots = [
 ];
 
 describe("robots.txt", () => {
-  it("allows everything, blocks the API and sends content signals in every group", async () => {
-    const text = await robotsGet().text();
-    const groups = text
+  const trainingBots = [
+    "GPTBot",
+    "ClaudeBot",
+    "Google-Extended",
+    "Applebot-Extended",
+    "Amazonbot",
+    "Meta-ExternalAgent",
+    "CCBot",
+  ];
+
+  async function groups() {
+    return (await robotsGet().text())
       .split(/\n\n+/)
       .filter((block) => /User-Agent:/.test(block));
-    expect(groups.length).toBeGreaterThan(1);
-    for (const block of groups) {
+  }
+
+  it("refuses AI training in the content signal of every group", async () => {
+    for (const block of await groups())
       expect(block).toContain(
-        "Content-Signal: search=yes, ai-input=yes, ai-train=yes",
+        "Content-Signal: search=yes, ai-input=yes, ai-train=no",
       );
-      expect(block).toContain("Allow: /");
-      expect(block).toContain("Disallow: /api/");
+  });
+
+  it("blocks training crawlers from the whole site", async () => {
+    const training = (await groups()).filter((block) =>
+      block.includes("User-Agent: GPTBot"),
+    );
+    expect(training).toHaveLength(1);
+    for (const bot of trainingBots)
+      expect(training[0]).toMatch(new RegExp(`^User-Agent: ${bot}$`, "m"));
+    expect(training[0]).toMatch(/^Disallow: \/$/m);
+    expect(training[0]).not.toMatch(/^Allow:/m);
+  });
+
+  it("lets search and assistant crawlers read everything but the API", async () => {
+    const open = (await groups()).filter(
+      (block) => !block.includes("User-Agent: GPTBot"),
+    );
+    expect(open.some((block) => /^User-Agent: \*$/m.test(block))).toBe(true);
+    for (const block of open) {
+      expect(block).toMatch(/^Allow: \/$/m);
+      expect(block).toMatch(/^Disallow: \/api\/$/m);
     }
-    expect(text).toMatch(/^User-Agent: \*$/m);
   });
 
   it("names the major AI and search crawlers", async () => {

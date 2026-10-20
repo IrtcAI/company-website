@@ -1,10 +1,14 @@
 import { SITE_URL } from "./routes";
 
-export const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=yes";
+export const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 
-// Grouped by what each operator says the crawler is for. Every group gets the
-// same rules today; the split exists so one purpose can change on its own.
-export const crawlerGroups: { purpose: string; agents: string[] }[] = [
+// Grouped by what each operator says the crawler is for, so one purpose can
+// change without touching the others.
+export const crawlerGroups: {
+  purpose: string;
+  agents: string[];
+  allowed: boolean;
+}[] = [
   {
     purpose: "Search indexes, including the ones AI answers cite",
     agents: [
@@ -15,10 +19,12 @@ export const crawlerGroups: { purpose: string; agents: string[] }[] = [
       "Claude-SearchBot",
       "PerplexityBot",
     ],
+    allowed: true,
   },
   {
     purpose: "Fetches a person triggers from an AI assistant",
     agents: ["ChatGPT-User", "Claude-User", "Perplexity-User"],
+    allowed: true,
   },
   {
     purpose: "AI model training",
@@ -31,15 +37,15 @@ export const crawlerGroups: { purpose: string; agents: string[] }[] = [
       "Meta-ExternalAgent",
       "CCBot",
     ],
+    allowed: false,
   },
 ];
 
-function group(agents: string[]) {
+function group(agents: string[], allowed = true) {
   return [
     ...agents.map((agent) => `User-Agent: ${agent}`),
     `Content-Signal: ${CONTENT_SIGNAL}`,
-    "Allow: /",
-    "Disallow: /api/",
+    ...(allowed ? ["Allow: /", "Disallow: /api/"] : ["Disallow: /"]),
   ].join("\n");
 }
 
@@ -50,10 +56,10 @@ export function buildRobotsTxt() {
     "# ai-train = training or fine-tuning AI models.",
     "",
     group(["*"]),
-    ...crawlerGroups.flatMap(({ purpose, agents }) => [
+    ...crawlerGroups.flatMap(({ purpose, agents, allowed }) => [
       "",
       `# ${purpose}`,
-      group(agents),
+      group(agents, allowed),
     ]),
     "",
     `Sitemap: ${SITE_URL}/sitemap.xml`,
