@@ -1,6 +1,8 @@
 name: IndexNow
 
-on: deployment_status
+on:
+  deployment_status:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -9,21 +11,24 @@ permissions:
 jobs:
   ping:
     if: >-
-      github.event.deployment_status.state == 'success' &&
-      startsWith(github.event.deployment.environment, 'Production')
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+      startsWith(github.event.deployment.environment, 'Production'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.deployment.sha }}
+          ref: ${{ github.event.deployment.sha || github.sha }}
           fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
           node-version: 24
+          package-manager-cache: false
 
       - name: Find the previous successful production deploy
         id: previous
+        if: github.event_name == 'deployment_status'
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
