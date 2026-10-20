@@ -20,6 +20,7 @@ pnpm lint         # ESLint + Prettier check
 pnpm typecheck    # tsc --noEmit
 pnpm format       # Prettier write
 pnpm knowledge    # regenerate the Iris knowledge index after content changes (needs OPENAI_API_KEY)
+pnpm page-dates   # update lib/page-dates.json (sitemap lastmod, feeds, IndexNow) after content changes
 ```
 
 Single test file: `cd apps/site && pnpm exec vitest run tests/site.test.tsx`.
@@ -42,7 +43,11 @@ All five checks (`format`, `lint`, `typecheck`, `test`, `build`) must pass befor
 - Content visible at first paint must never start at `opacity: 0` in server HTML (it wrecks LCP). Reveal animations use transforms, or are gated behind `.is-visible` added by JS.
 - Every animation needs a `prefers-reduced-motion` fallback and must stop with `.motion-paused`.
 - Every user-facing string exists in pt-BR, en and es. `tests/locale.test.ts` only checks services and testimonials, so compare the other locales by hand.
-- Sitemap, robots, `llms.txt` and JSON-LD are generated from `lib/`. Add pages and services there, not by hand.
+- Sitemap, robots, `llms.txt`, JSON-LD, Markdown copies and RSS feeds are generated from `lib/`. Add pages and services there, not by hand. The AI-discovery rules are in `docs/architecture.md` ("SEO, AEO e descoberta por IA"); follow them for every new page.
+- Page text must be in the server HTML. AI crawlers don't run JavaScript.
+- Every page needs a Markdown copy built in `lib/page-markdown.ts` from the same sources as the page. A new section on a page goes into its Markdown builder too.
+- Any content change requires `pnpm page-dates`; `tests/ai-discovery.test.ts` fails otherwise. Never date pages by build time. Use `--rehash` when only the Markdown format changed.
+- Markdown copies stay `noindex` and out of the sitemap, and must not be blocked in robots.txt.
 - After changing a 3D model in `lib/studio-scene.ts`, regenerate its poster: `node apps/site/scripts/render-posters.mjs <kind>`.
 - Changing copy in `lib/` that feeds Iris (`company.ts`, `services.ts`, `copy/*`, the `projects` block in `content.ts`, `stats.ts`) requires `pnpm knowledge`; `tests/knowledge-index.test.ts` will fail otherwise.
 - Iris security (`lib/iris-policy.ts`, `app/api/chat/route.ts`) is covered by `tests/iris-security.test.ts`. Keep it green and don't weaken checks to make a feature work.

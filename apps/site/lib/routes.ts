@@ -56,6 +56,14 @@ export function pagePath(locale: Locale, page: Page, slug?: string) {
   return slug ? `${path}/${slug}` : path;
 }
 
+export function markdownPath(path: string) {
+  return path === "/" ? "/index.md" : `${path}.md`;
+}
+
+export function feedPath(locale: Locale) {
+  return `${localePrefix(locale)}/rss.xml`;
+}
+
 export function sectionPath(locale: Locale, id: string) {
   return `${localePrefix(locale)}/#${id}`;
 }

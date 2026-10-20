@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import type { NextConfig } from "next";
+import { markdownRewrites } from "./lib/page-markdown";
 import { internalRedirects, localizedRewrites } from "./lib/routes";
 
 const rootEnv = resolve(process.cwd(), "../../.env");
@@ -16,7 +17,11 @@ const nextConfig: NextConfig = {
     return internalRedirects();
   },
   async rewrites() {
-    return localizedRewrites();
+    return {
+      beforeFiles: markdownRewrites(),
+      afterFiles: localizedRewrites(),
+      fallback: [],
+    };
   },
   async headers() {
     const isProd = process.env.NODE_ENV === "production";

@@ -37,6 +37,7 @@ pnpm lint        # ESLint e Prettier (checagem)
 pnpm typecheck   # TypeScript
 pnpm format      # Prettier (escrita)
 pnpm knowledge   # regenera o índice de conhecimento da Iris após mudanças de conteúdo (precisa OPENAI_API_KEY)
+pnpm page-dates  # atualiza a data de modificação das páginas cujo conteúdo mudou
 ```
 
 Antes de abrir um PR: `pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
