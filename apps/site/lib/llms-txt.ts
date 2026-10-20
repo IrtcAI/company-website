@@ -1,7 +1,14 @@
 import { addressLines, company, openingHours } from "./company";
 import type { Locale } from "./content";
 import { founderJobTitle, homeCopy, pageCopy } from "./copy/pages";
-import { absoluteUrl, locales, pagePath, SITE_URL, type Page } from "./routes";
+import {
+  absoluteUrl,
+  feedPath,
+  locales,
+  pagePath,
+  SITE_URL,
+  type Page,
+} from "./routes";
 import {
   pillarNames,
   pillars,
@@ -228,6 +235,18 @@ function discoverySection(): string {
       "Crawler policy",
       "/robots.txt",
       "Public crawling rules; API endpoints are not content sources.",
+    ),
+    link(
+      "Markdown copies",
+      "/index.md",
+      "Every page is also served as Markdown: add .md to its path (the home page is /index.md), or request the page with Accept: text/markdown.",
+    ),
+    ...locales.map((locale) =>
+      link(
+        `Feed (${localeLabel[locale]})`,
+        feedPath(locale),
+        "RSS with the full text of every page in that language.",
+      ),
     ),
   ].join("\n");
 }

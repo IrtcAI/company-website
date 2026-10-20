@@ -47,13 +47,28 @@ A seção 2 da home usa `ScrollStory`: o terminal do hero cresce até virar o pa
 
 ## SEO, AEO e descoberta por IA
 
-Tudo é derivado dos dados em `lib/`, para não ficar desatualizado:
+Tudo é derivado dos dados em `lib/`, para não ficar desatualizado. A ordem abaixo segue o que robôs e agentes de IA de fato buscam (referência: https://pournasserian.com/writing/ai-friendly-website-2026).
 
-- `app/sitemap.ts`: todas as páginas nos três idiomas, com `hreflang`.
-- `app/robots.ts`: libera tudo exceto `/api/` e nomeia os principais robôs de busca e de IA.
-- `app/llms.txt`, `app/llm.txt` e `app/llms-full.txt`: guia em texto para assistentes de IA, gerado por `lib/llms-txt.ts`.
-- JSON-LD (`lib/structured-data.ts`): Organization e ProfessionalService com endereço e horário, WebSite, Person (fundador), Service, FAQPage, BreadcrumbList, AboutPage, ProfilePage e ContactPage.
-- `app/opengraph-image.tsx`: imagem de compartilhamento padrão.
+1. **HTML renderizado no servidor.** Os robôs da OpenAI, Anthropic e Perplexity não executam JavaScript. Todo texto de conteúdo precisa estar no HTML do servidor, dentro do único `<main>`, com headings reais. Nunca carregue conteúdo só no cliente.
+2. **JSON-LD** (`lib/structured-data.ts`), montado dos mesmos dados da página: Organization e ProfessionalService com endereço e horário, WebSite, Person (fundador), Service, FAQPage, BreadcrumbList, AboutPage, ProfilePage e ContactPage. O JSON-LD só pode afirmar o que a página mostra.
+3. **robots.txt** (`lib/robots.ts`, servido por `app/robots.txt/route.ts`). Robôs agrupados por finalidade: índices de busca, buscas que uma pessoa dispara num assistente, e treino de modelos. Hoje todos os grupos liberam tudo menos `/api/`, e cada grupo leva a mesma linha `Content-Signal` (search, ai-input e ai-train = yes). Para mudar a política de uma finalidade, mude só o grupo dela.
+4. **Sitemap com `lastmod` real** (`app/sitemap.ts`). A data vem de `lib/page-dates.json`, que guarda o hash da cópia em Markdown de cada página e o dia em que ela mudou. Nunca use a data do build. `tests/ai-discovery.test.ts` falha quando o conteúdo muda sem `pnpm page-dates`.
+5. **IndexNow.** A cada deploy de produção, `.github/workflows/indexnow.yml` compara `page-dates.json` com o do deploy anterior e envia só as URLs que mudaram (`apps/site/scripts/indexnow.mjs`). A chave fica em `public/<chave>.txt` e no script. Bing, Yandex e outros compartilham o aviso entre si; o Google não participa.
+6. **Cópia em Markdown de cada página** (`lib/page-markdown.ts`). Montada das mesmas fontes que a página, não convertida do HTML. Endereço: o caminho da página + `.md` (a home é `/index.md`), ou o próprio endereço da página com `Accept: text/markdown`. As duas formas são reescritas em `next.config.ts` para `app/md/[...path]/route.ts`, que responde com `noindex`, `Link: rel="canonical"` para a página e `Vary: Accept`. Cada página aponta para a sua cópia com `<link rel="alternate" type="text/markdown">`, gerado por `lib/seo.ts`. As cópias não entram no sitemap nem são bloqueadas no robots.txt. Limite conhecido: o Next sobrescreve o `Vary` das páginas HTML, então só a resposta em Markdown declara `Vary: Accept`.
+7. **Feeds RSS** (`lib/feed.ts`): `/rss.xml`, `/en/rss.xml` e `/es/rss.xml`, com o texto completo de cada página em `content:encoded` e a data de `page-dates.json`.
+8. **llms.txt** (`app/llms.txt`, `app/llm.txt`, `app/llms-full.txt`, gerados por `lib/llms-txt.ts`). Útil para agentes de código; robôs de busca praticamente não leem. Toda página aponta para ele com `rel="describedby"` (llms.txt v2).
+9. `app/opengraph-image.tsx`: imagem de compartilhamento padrão.
+
+### Ao criar ou mudar uma página
+
+- Página nova: adicione o tipo em `lib/routes.ts` e o construtor em `lib/page-markdown.ts`. Sitemap, cópia em Markdown, reescritas, feeds e `page-dates.json` saem dessa lista.
+- Uma seção nova numa página precisa entrar também no construtor da cópia em Markdown dela. A cópia deve ter o mesmo texto que a página mostra, sem botões e sem navegação.
+- Depois de qualquer mudança de conteúdo, rode `pnpm page-dates`. Se mudou só o formato do Markdown, sem mudar o texto, rode `pnpm --filter @irtc/site page-dates --rehash` para não mexer nas datas.
+- Use `pageMetadata` (`lib/seo.ts`) em toda página nova; é ele que gera `canonical`, `hreflang` e os links para a cópia em Markdown e o feed.
+
+### Medição
+
+Analytics em JavaScript (GTM) não vê robôs de IA, porque eles não executam scripts. Para contar quem busca o quê, use os logs da Vercel (Observability ou um log drain), contando só robôs verificados, não o nome no `User-Agent`. Para ver citações, use o relatório de desempenho de IA do Bing Webmaster Tools e o relatório de IA generativa do Search Console.
 
 ## Analytics e desempenho real
 

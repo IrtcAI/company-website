@@ -1,0 +1,44 @@
+name: IndexNow
+
+on: deployment_status
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  ping:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      startsWith(github.event.deployment.environment, 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Find the previous successful production deploy
+        id: previous
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          CURRENT: ${{ github.event.deployment.id }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+        run: |
+          for row in $(gh api --method GET "repos/$REPO/deployments" \
+            -f environment="$ENVIRONMENT" -F per_page=30 \
+            --jq ".[] | select(.id != $CURRENT) | \"\(.id):\(.sha)\""); do
+            state=$(gh api "repos/$REPO/deployments/${row%%:*}/statuses?per_page=1" --jq '.[0].state')
+            if [ "$state" = "success" ]; then
+              echo "sha=${row#*:}" >> "$GITHUB_OUTPUT"
+              break
+            fi
+          done
+
+      - name: Send changed pages to IndexNow
+        run: node apps/site/scripts/indexnow.mjs ${{ steps.previous.outputs.sha && format('--since {0}', steps.previous.outputs.sha) || '' }}

@@ -1,0 +1,194 @@
+{
+  "/": {
+    "hash": "94613a31dc59f5ca",
+    "lastModified": "2026-10-06"
+  },
+  "/en": {
+    "hash": "f5f8a5eebe24d6a4",
+    "lastModified": "2026-10-06"
+  },
+  "/es": {
+    "hash": "1d103412fb6da1fa",
+    "lastModified": "2026-10-06"
+  },
+  "/servicos": {
+    "hash": "711f4053cbfdd2ac",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services": {
+    "hash": "edc6f7dc21dadff8",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios": {
+    "hash": "7840c4a93236cc3a",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/software-sob-medida": {
+    "hash": "c98aea01d22a70cc",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/custom-software": {
+    "hash": "6885499a54e123cb",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/software-a-medida": {
+    "hash": "409037a1317b7375",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/sites-e-plataformas-web": {
+    "hash": "80dc871f4b002679",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/web-platforms": {
+    "hash": "e020435621602e73",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/sitios-y-plataformas-web": {
+    "hash": "d0c3a210f634c499",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/aplicativos": {
+    "hash": "e7fdf2556f9911e4",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/mobile-apps": {
+    "hash": "ad3a233fc316d48d",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/aplicaciones-moviles": {
+    "hash": "bb37e5d9c19bd466",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/integracoes-e-automacao": {
+    "hash": "8f36289559c39913",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/integrations-and-automation": {
+    "hash": "848b181275570da1",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/integraciones-y-automatizacion": {
+    "hash": "057deb4c70938de7",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/modernizacao-de-sistemas": {
+    "hash": "a244c86a302cbcc4",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/system-modernization": {
+    "hash": "b243db6e3ca06668",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/modernizacion-de-sistemas": {
+    "hash": "55e05b4a8330518c",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/inteligencia-artificial": {
+    "hash": "4d8267787a7f7b9f",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/applied-ai": {
+    "hash": "8945e5cfa2e597f2",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/inteligencia-artificial": {
+    "hash": "b83a80036c4def3b",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/dados-e-relatorios": {
+    "hash": "eb1a66b91ae96c52",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/data-and-reporting": {
+    "hash": "8610b2e1035581b6",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/datos-e-informes": {
+    "hash": "ca6fbe1a01580102",
+    "lastModified": "2026-10-07"
+  },
+  "/servicos/nuvem-e-arquitetura": {
+    "hash": "0e94a3d880e676da",
+    "lastModified": "2026-10-07"
+  },
+  "/en/services/cloud-and-architecture": {
+    "hash": "fe25ab797015f7e8",
+    "lastModified": "2026-10-07"
+  },
+  "/es/servicios/nube-y-arquitectura": {
+    "hash": "02daf43a49552f5a",
+    "lastModified": "2026-10-07"
+  },
+  "/sobre": {
+    "hash": "289017d0eebdf70a",
+    "lastModified": "2026-10-06"
+  },
+  "/en/about": {
+    "hash": "c9ca2b3cdd8e0759",
+    "lastModified": "2026-10-06"
+  },
+  "/es/nosotros": {
+    "hash": "7cf2601fede23d8c",
+    "lastModified": "2026-10-06"
+  },
+  "/fundador": {
+    "hash": "f215a8995d83dcbe",
+    "lastModified": "2026-10-06"
+  },
+  "/en/founder": {
+    "hash": "21c78c5d84cbf933",
+    "lastModified": "2026-10-06"
+  },
+  "/es/fundador": {
+    "hash": "c820081c2dba74f8",
+    "lastModified": "2026-10-06"
+  },
+  "/cultura": {
+    "hash": "fc8bd4596c913ebb",
+    "lastModified": "2026-10-06"
+  },
+  "/en/culture": {
+    "hash": "d0886b915becc630",
+    "lastModified": "2026-10-06"
+  },
+  "/es/cultura": {
+    "hash": "b7b83a428616dd0d",
+    "lastModified": "2026-10-06"
+  },
+  "/missao": {
+    "hash": "dfc1142c7cca9f5a",
+    "lastModified": "2026-10-06"
+  },
+  "/en/mission": {
+    "hash": "5ddb97b1073ade38",
+    "lastModified": "2026-10-06"
+  },
+  "/es/mision": {
+    "hash": "8c4c856acfa63522",
+    "lastModified": "2026-10-06"
+  },
+  "/visao": {
+    "hash": "67a4cbe7ff4a170b",
+    "lastModified": "2026-10-06"
+  },
+  "/en/vision": {
+    "hash": "7d16a2353bc12e0e",
+    "lastModified": "2026-10-06"
+  },
+  "/es/vision": {
+    "hash": "bea705dd02c51397",
+    "lastModified": "2026-10-06"
+  },
+  "/contato": {
+    "hash": "d18e3e94c51e03b8",
+    "lastModified": "2026-10-06"
+  },
+  "/en/contact": {
+    "hash": "1a55466778ddaab0",
+    "lastModified": "2026-10-06"
+  },
+  "/es/contacto": {
+    "hash": "83a06219a6d27e16",
+    "lastModified": "2026-10-06"
+  }
+}

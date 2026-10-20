@@ -11,6 +11,7 @@
     "typecheck": "pnpm --filter @irtc/site typecheck",
     "test": "pnpm --filter @irtc/site test",
     "format": "pnpm --filter @irtc/site format",
-    "knowledge": "pnpm --filter @irtc/site knowledge"
+    "knowledge": "pnpm --filter @irtc/site knowledge",
+    "page-dates": "pnpm --filter @irtc/site page-dates"
   }
 }

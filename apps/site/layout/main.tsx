@@ -37,6 +37,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: { "pt-BR": "/", en: "/en", es: "/es", "x-default": "/" },
+    types: {
+      "text/markdown": "/index.md",
+      "application/rss+xml": "/rss.xml",
+    },
   },
   applicationName: "IRTC",
   keywords: [

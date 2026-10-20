@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import type { Locale } from "./content";
-import { absoluteUrl, Page, pageAlternates, pagePath } from "./routes";
+import {
+  absoluteUrl,
+  feedPath,
+  markdownPath,
+  Page,
+  pageAlternates,
+  pagePath,
+} from "./routes";
 
 const ogLocale: Record<Locale, string> = {
   "pt-BR": "pt_BR",
@@ -25,7 +32,14 @@ export function pageMetadata({
   return {
     title,
     description,
-    alternates: { canonical: path, languages: pageAlternates(page, slugs) },
+    alternates: {
+      canonical: path,
+      languages: pageAlternates(page, slugs),
+      types: {
+        "text/markdown": markdownPath(path),
+        "application/rss+xml": feedPath(locale),
+      },
+    },
     openGraph: {
       type: "website",
       siteName: "IRTC",

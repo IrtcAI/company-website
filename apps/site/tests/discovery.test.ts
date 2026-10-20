@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import robots from "@/app/robots";
+import { GET as robotsGet } from "@/app/robots.txt/route";
 import { GET as llmFullGet } from "@/app/llms-full.txt/route";
 import { GET as llmsGet } from "@/app/llms.txt/route";
 import { GET as llmGet } from "@/app/llm.txt/route";
@@ -21,32 +21,38 @@ const answerEngineBots = [
   "Applebot-Extended",
   "Bingbot",
   "Googlebot",
+  "Applebot",
+  "Amazonbot",
+  "Meta-ExternalAgent",
 ];
 
-describe("robots", () => {
-  const rules = robots();
-
-  it("allows everything and blocks the API by default", () => {
-    const wildcard = (
-      Array.isArray(rules.rules) ? rules.rules : [rules.rules]
-    ).find((rule) => rule.userAgent === "*");
-    expect(wildcard).toMatchObject({
-      userAgent: "*",
-      allow: "/",
-      disallow: "/api/",
-    });
+describe("robots.txt", () => {
+  it("allows everything, blocks the API and sends content signals in every group", async () => {
+    const text = await robotsGet().text();
+    const groups = text
+      .split(/\n\n+/)
+      .filter((block) => /User-Agent:/.test(block));
+    expect(groups.length).toBeGreaterThan(1);
+    for (const block of groups) {
+      expect(block).toContain(
+        "Content-Signal: search=yes, ai-input=yes, ai-train=yes",
+      );
+      expect(block).toContain("Allow: /");
+      expect(block).toContain("Disallow: /api/");
+    }
+    expect(text).toMatch(/^User-Agent: \*$/m);
   });
 
-  it("explicitly allows the major AI and search crawlers", () => {
-    const agents = (
-      Array.isArray(rules.rules) ? rules.rules : [rules.rules]
-    ).map((rule) => rule.userAgent);
-    for (const bot of answerEngineBots) expect(agents).toContain(bot);
+  it("names the major AI and search crawlers", async () => {
+    const text = await robotsGet().text();
+    for (const bot of answerEngineBots)
+      expect(text).toMatch(new RegExp(`^User-Agent: ${bot}$`, "m"));
   });
 
-  it("declares the sitemap and host", () => {
-    expect(rules.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
-    expect(rules.host).toBe(SITE_URL);
+  it("declares the sitemap", async () => {
+    expect(await robotsGet().text()).toContain(
+      `Sitemap: ${SITE_URL}/sitemap.xml`,
+    );
   });
 });
 

@@ -13,7 +13,7 @@ Regras para textos, dados e imagens do site. Decisões técnicas ficam em `archi
 | Números da faixa de estatísticas (vazia até haver evidência aprovada)   | `apps/site/lib/stats.ts`                                                        |
 | Fatos que a Iris pode usar                                              | `apps/site/lib/iris-policy.ts` (monta a partir de `company.ts` e `services.ts`) |
 
-Sitemap, `llms.txt`, dados estruturados e o conhecimento da Iris leem esses arquivos. Mudou um dado? Mude na fonte, e o resto acompanha.
+Sitemap, `llms.txt`, dados estruturados, as cópias em Markdown, os feeds e o conhecimento da Iris leem esses arquivos. Mudou um dado? Mude na fonte, e o resto acompanha.
 
 ## Idiomas
 
@@ -55,5 +55,6 @@ O favicon (`apps/site/app/icon.svg`) é o símbolo i oficial, cópia de `irtc/as
 
 1. Atualize as três línguas.
 2. Rode `pnpm test`. Ele confere se serviços e recomendações estão completos nos três idiomas; o restante dos textos precisa ser comparado à mão.
-3. Confira `/llms.txt` e o `sitemap.xml` no build local se a mudança criou página ou serviço.
-4. Se mudou um dado da empresa (endereço, e-mail, horário), confira rodapé, página de contato e respostas da Iris.
+3. Rode `pnpm page-dates` para atualizar a data de modificação das páginas que mudaram (sitemap, feeds e IndexNow usam essa data).
+4. Se criou uma página ou uma seção nova, inclua o texto no construtor da página em `apps/site/lib/page-markdown.ts` e confira `/llms.txt`, o `sitemap.xml` e a cópia `.md` da página no build local.
+5. Se mudou um dado da empresa (endereço, e-mail, horário), confira rodapé, página de contato e respostas da Iris.
