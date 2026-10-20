@@ -95,23 +95,29 @@ function internalRoutes() {
 }
 
 export function localizedRewrites() {
-  return internalRoutes()
-    .filter(({ localized, internal }) => localized !== internal)
-    .flatMap(({ localized, internal }) => [
-      { source: localized, destination: internal },
-      { source: `${localized}/:slug`, destination: `${internal}/:slug` },
-    ]);
+  return [
+    { source: "/", destination: "/pt-BR" },
+    ...internalRoutes()
+      .filter(({ localized, internal }) => localized !== internal)
+      .flatMap(({ localized, internal }) => [
+        { source: localized, destination: internal },
+        { source: `${localized}/:slug`, destination: `${internal}/:slug` },
+      ]),
+  ];
 }
 
 export function internalRedirects() {
-  return internalRoutes()
-    .filter(({ localized, internal }) => localized !== internal)
-    .flatMap(({ localized, internal }) => [
-      { source: internal, destination: localized, permanent: true },
-      {
-        source: `${internal}/:slug`,
-        destination: `${localized}/:slug`,
-        permanent: true,
-      },
-    ]);
+  return [
+    { source: "/pt-BR", destination: "/", permanent: true },
+    ...internalRoutes()
+      .filter(({ localized, internal }) => localized !== internal)
+      .flatMap(({ localized, internal }) => [
+        { source: internal, destination: localized, permanent: true },
+        {
+          source: `${internal}/:slug`,
+          destination: `${localized}/:slug`,
+          permanent: true,
+        },
+      ]),
+  ];
 }

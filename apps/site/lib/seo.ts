@@ -15,6 +15,14 @@ const ogLocale: Record<Locale, string> = {
   es: "es_ES",
 };
 
+const shareImage = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "IRTC, Cloud, Software & AI Engineering",
+};
+
 export function pageMetadata({
   locale,
   page,
@@ -47,7 +55,13 @@ export function pageMetadata({
       description,
       url: absoluteUrl(path),
       locale: ogLocale[locale],
+      images: [shareImage],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [shareImage],
+    },
   };
 }

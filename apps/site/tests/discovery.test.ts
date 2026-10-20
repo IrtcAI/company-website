@@ -1,12 +1,25 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import LocaleLayout from "@/app/[locale]/layout";
 import { GET as robotsGet } from "@/app/robots.txt/route";
 import { GET as llmFullGet } from "@/app/llms-full.txt/route";
 import { GET as llmsGet } from "@/app/llms.txt/route";
 import { GET as llmGet } from "@/app/llm.txt/route";
 import sitemap from "@/app/sitemap";
 import { addressLines, company } from "@/lib/company";
-import { absoluteUrl, locales, pagePath, SITE_URL } from "@/lib/routes";
+import {
+  absoluteUrl,
+  internalRedirects,
+  localizedRewrites,
+  locales,
+  pagePath,
+  SITE_URL,
+} from "@/lib/routes";
+import { pageMetadata } from "@/lib/seo";
 import { serviceSlugs, services } from "@/lib/services";
+
+vi.mock("next/font/google", () => ({
+  Inter: () => ({ variable: "font-body" }),
+}));
 
 const answerEngineBots = [
   "GPTBot",
@@ -25,6 +38,45 @@ const answerEngineBots = [
   "Amazonbot",
   "Meta-ExternalAgent",
 ];
+
+describe("page language", () => {
+  it("sets the html lang of every locale in the server HTML", async () => {
+    for (const locale of locales) {
+      const layout = await LocaleLayout({
+        children: null,
+        params: Promise.resolve({ locale }),
+      });
+      expect(layout.props.lang).toBe(locale);
+    }
+  });
+
+  it("serves the pt-BR home from the locale route at /", () => {
+    expect(localizedRewrites()).toContainEqual({
+      source: "/",
+      destination: "/pt-BR",
+    });
+    expect(internalRedirects()).toContainEqual({
+      source: "/pt-BR",
+      destination: "/",
+      permanent: true,
+    });
+  });
+
+  it("gives every page the share image", () => {
+    const metadata = pageMetadata({
+      locale: "es",
+      page: "about",
+      title: "Nosotros",
+      description: "Nosotros",
+    });
+    expect(metadata.openGraph?.images).toEqual([
+      expect.objectContaining({ url: "/opengraph-image" }),
+    ]);
+    expect(metadata.twitter?.images).toEqual([
+      expect.objectContaining({ url: "/opengraph-image" }),
+    ]);
+  });
+});
 
 describe("robots.txt", () => {
   const trainingBots = [
