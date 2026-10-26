@@ -1,0 +1,5 @@
+repo=vercel-support/vercel-connect-debug
+path=vercel-debug.sh
+commit=da4e2fff23f3d91d74b4f219806c63c8958b5c83
+sha256=e75c9c4e610250cf6f5a5bd2cdda7bea459720676259eac914673f5ed51d043f
+verified_at=2026-10-26
