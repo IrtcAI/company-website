@@ -76,14 +76,14 @@ As URLs públicas são traduzidas e reescritas para `app/[locale]/<página>` (ve
 
 ## Onde editar
 
-| O quê                                        | Arquivo                                                      |
-| -------------------------------------------- | ------------------------------------------------------------ |
-| Textos da home, menu, rodapé, contato e Iris | `lib/content.ts`                                             |
-| Serviços (títulos, slugs, FAQ, entregas)     | `lib/services.ts`                                            |
-| Páginas Sobre, Fundador e títulos de SEO     | `lib/copy/`                                                  |
-| Endereço, horário, e-mail e redes            | `lib/company.ts`                                             |
-| Números da seção de estatísticas             | `lib/stats.ts` (há valores provisórios, marcados no arquivo) |
-| Conhecimento e regras da Iris                | `lib/iris-policy.ts`                                         |
+| O quê                                        | Arquivo                                                   |
+| -------------------------------------------- | --------------------------------------------------------- |
+| Textos da home, menu, rodapé, contato e Iris | `lib/content.ts`                                          |
+| Serviços (títulos, slugs, FAQ, entregas)     | `lib/services.ts`                                         |
+| Páginas Sobre, Fundador e títulos de SEO     | `lib/copy/`                                               |
+| Endereço, horário, e-mail e redes            | `lib/company.ts`                                          |
+| Números da seção de estatísticas             | `lib/stats.ts` (lista vazia até haver evidência aprovada) |
+| Conhecimento e regras da Iris                | `lib/iris-policy.ts`                                      |
 
 Toda cópia existe em pt-BR, en e es. Mantenha as três versões equivalentes.
 

@@ -194,9 +194,9 @@ describe("Iris dialog", () => {
         "Não foi possível enviar. Tente novamente em instantes.",
       ),
     ).toBeVisible();
-    expect(
-      screen.getByLabelText("Rascunho do contexto para a equipe"),
-    ).toHaveValue("MVP: cadastro e agenda.");
+    expect(screen.getByLabelText(content["pt-BR"].iris.draft)).toHaveValue(
+      "MVP: cadastro e agenda.",
+    );
     await waitFor(() =>
       expect(
         screen.getByRole("button", { name: "Aprovar e enviar por e-mail" }),

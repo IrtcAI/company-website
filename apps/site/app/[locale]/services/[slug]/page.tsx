@@ -108,6 +108,7 @@ export default async function ServicePage({ params }: Params) {
       <div className="sp" data-accent={service.accent}>
         <section className="page-intro services-page-intro service-hero sp-hero-section section-pad">
           <ServiceBreadcrumb
+            label={pageCopy.breadcrumbLabel}
             items={[
               { label: pageCopy.breadcrumbHome, href: home },
               { label: pageCopy.breadcrumbServices, href: servicesHref },

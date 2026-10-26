@@ -5,6 +5,7 @@ export const servicesPageCopy: Record<
   Locale,
   {
     breadcrumbHome: string;
+    breadcrumbLabel: string;
     breadcrumbServices: string;
     intro: string;
     gridTitle: string;
@@ -32,17 +33,18 @@ export const servicesPageCopy: Record<
 > = {
   "pt-BR": {
     breadcrumbHome: "Início",
+    breadcrumbLabel: "Trilha de navegação",
     breadcrumbServices: "Serviços",
     intro:
-      "Cada projeto começa pelo problema, não pela tecnologia. São oito serviços em três pilares de engenharia: Cloud, Software e AI Engineering.",
-    gridTitle: "O que fazemos",
+      "Integrações e automação ajudam a enfrentar o trabalho manual entre sistemas. Avaliamos também desafios de cloud, evolução de software e IA. Cada contratação depende do problema, do acesso aos sistemas e da capacidade de entrega.",
+    gridTitle: "Áreas de atuação",
     cardCta: "Ver serviço",
     allServicesCta: "Ver todos os serviços",
     techNoteTitle: "Tecnologia com função definida.",
     techNoteText:
-      "Nosso foco técnico é AWS e IA. A stack de produto (React, Node.js, Next.js, PostgreSQL) é escolhida por projeto, depois de entender o problema.",
+      "AWS é um foco técnico da IRTC. A escolha de ferramentas considera custo total, segurança, integração e capacidade de manutenção. As tecnologias citadas não representam certificações ou parcerias.",
     whenTitle: "Quando você precisa disso",
-    whatTitle: "O que você recebe",
+    whatTitle: "Entregáveis para definir no escopo",
     howTitle: "Como trabalhamos",
     stackTitle: "Tecnologia, com função definida",
     stackNote:
@@ -65,17 +67,17 @@ export const servicesPageCopy: Record<
     relatedTitle: "Serviços relacionados",
     measureTitle: "Como medimos o resultado",
     measureNote:
-      "Critérios que o projeto define com você no início. Servem de objetivo e de forma de checar o trabalho, não de resultado garantido.",
+      "Definimos a referência atual, a meta e o período de avaliação com você. Os indicadores orientam o aceite e a decisão de continuidade; o resultado depende do contexto da operação.",
     measureFrom: "Hoje",
     measureTo: "Meta combinada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Com apoio de",
     pillarText: {
       cloud:
-        "Ambientes na nuvem que ficam no ar, aguentam o crescimento e têm o custo acompanhado. Nosso foco técnico é a AWS, a nuvem da Amazon.",
+        "Entenda o custo e o risco do ambiente que sustenta sua operação. Diagnóstico, arquitetura e mudanças planejadas, com foco técnico em AWS.",
       software:
-        "Sistemas, sites, aplicativos e integrações que sua equipe e seus usuários usam no dia a dia, incluindo a atualização de sistemas antigos.",
-      ai: "IA aplicada ao conhecimento e aos processos da empresa, com tarefa definida, avaliação de qualidade e controle de acesso e custo.",
+        "Conecte sistemas e elimine etapas manuais que atrasam o trabalho. Integrações, evolução de produtos e modernização com escopo e aceite definidos.",
+      ai: "Avalie onde a IA pode ajudar em uma tarefa concreta. Protótipos com dados autorizados, critérios de qualidade, custo por tarefa e revisão humana.",
     },
     continuity: {
       label: "Continuidade",
@@ -86,17 +88,18 @@ export const servicesPageCopy: Record<
   },
   en: {
     breadcrumbHome: "Home",
+    breadcrumbLabel: "Breadcrumb",
     breadcrumbServices: "Services",
     intro:
-      "Every project starts with the problem, not the technology. Eight services in three engineering pillars: Cloud, Software and AI Engineering.",
-    gridTitle: "What we do",
+      "Integrations and automation address manual work between systems. We also assess cloud, software development and AI challenges. Each engagement depends on the problem, access to systems and delivery capacity.",
+    gridTitle: "Areas of work",
     cardCta: "View service",
     allServicesCta: "See all services",
     techNoteTitle: "Technology with a defined role.",
     techNoteText:
-      "Our technical focus is AWS and AI. The product stack (React, Node.js, Next.js, PostgreSQL) is chosen per project, after we understand the problem.",
+      "AWS is a technical focus for IRTC. Tool choices consider total cost, security, integration and maintenance capacity. Technologies mentioned do not imply certifications or partnerships.",
     whenTitle: "When you need this",
-    whatTitle: "What you get",
+    whatTitle: "Deliverables to define in the scope",
     howTitle: "How we work",
     stackTitle: "Technology, with a defined role",
     stackNote:
@@ -119,17 +122,17 @@ export const servicesPageCopy: Record<
     relatedTitle: "Related services",
     measureTitle: "How we measure the result",
     measureNote:
-      "Criteria the project defines with you at the start. They serve as a goal and a way to check the work, not as a guaranteed result.",
+      "We agree on the baseline, target and evaluation period with you. Indicators inform acceptance and continuity decisions; outcomes depend on the operating context.",
     measureFrom: "Today",
     measureTo: "Agreed target",
     pillarLabel: "Pillar",
     supportPillarLabel: "Supported by",
     pillarText: {
       cloud:
-        "Cloud environments that stay up, hold up as you grow and have their cost tracked. Our technical focus is AWS, Amazon's cloud.",
+        "Understand the cost and risk of the infrastructure behind your operation. Assessment, architecture and planned changes, with a technical focus on AWS.",
       software:
-        "Systems, websites, apps and integrations that your team and users rely on every day, including updating older systems.",
-      ai: "AI applied to a company's knowledge and processes, with a defined task, quality evaluation and control over access and cost.",
+        "Connect systems and remove manual steps that delay work. Integrations, product development and modernization with defined scope and acceptance criteria.",
+      ai: "Evaluate where AI can help with a specific task. Prototypes with authorized data, quality criteria, cost per task and human review.",
     },
     continuity: {
       label: "Continuity",
@@ -140,17 +143,18 @@ export const servicesPageCopy: Record<
   },
   es: {
     breadcrumbHome: "Inicio",
+    breadcrumbLabel: "Ruta de navegación",
     breadcrumbServices: "Servicios",
     intro:
-      "Cada proyecto empieza por el problema, no por la tecnología. Ocho servicios en tres pilares de ingeniería: Cloud, Software y AI Engineering.",
-    gridTitle: "Qué hacemos",
+      "Las integraciones y la automatización permiten abordar el trabajo manual entre sistemas. También evaluamos desafíos de cloud, evolución de software e IA. Cada contratación depende del problema, del acceso a los sistemas y de la capacidad de entrega.",
+    gridTitle: "Áreas de actuación",
     cardCta: "Ver servicio",
     allServicesCta: "Ver todos los servicios",
     techNoteTitle: "Tecnología con función definida.",
     techNoteText:
-      "Nuestro foco técnico es AWS e IA. El stack de producto (React, Node.js, Next.js, PostgreSQL) se elige por proyecto, después de entender el problema.",
+      "AWS es un foco técnico de IRTC. La elección de herramientas considera costo total, seguridad, integración y capacidad de mantenimiento. Las tecnologías citadas no representan certificaciones ni alianzas.",
     whenTitle: "Cuándo necesitas esto",
-    whatTitle: "Qué recibes",
+    whatTitle: "Entregables para definir en el alcance",
     howTitle: "Cómo trabajamos",
     stackTitle: "Tecnología, con función definida",
     stackNote:
@@ -173,17 +177,17 @@ export const servicesPageCopy: Record<
     relatedTitle: "Servicios relacionados",
     measureTitle: "Cómo medimos el resultado",
     measureNote:
-      "Criterios que el proyecto define contigo al inicio. Sirven como objetivo y como forma de verificar el trabajo, no como resultado garantizado.",
+      "Definimos contigo la referencia actual, la meta y el período de evaluación. Los indicadores orientan la aceptación y la decisión de continuidad; el resultado depende del contexto de la operación.",
     measureFrom: "Hoy",
     measureTo: "Meta acordada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Con apoyo de",
     pillarText: {
       cloud:
-        "Entornos en la nube que se mantienen en línea, aguantan el crecimiento y tienen el costo seguido. Nuestro foco técnico es AWS, la nube de Amazon.",
+        "Entiende el costo y el riesgo del entorno que sostiene tu operación. Diagnóstico, arquitectura y cambios planificados, con foco técnico en AWS.",
       software:
-        "Sistemas, sitios, aplicaciones e integraciones que tu equipo y tus usuarios usan todos los días, incluida la actualización de sistemas antiguos.",
-      ai: "IA aplicada al conocimiento y a los procesos de la empresa, con tarea definida, evaluación de calidad y control de acceso y costo.",
+        "Conecta sistemas y elimina pasos manuales que retrasan el trabajo. Integraciones, evolución de productos y modernización con alcance y aceptación definidos.",
+      ai: "Evalúa dónde puede ayudar la IA en una tarea concreta. Prototipos con datos autorizados, criterios de calidad, costo por tarea y revisión humana.",
     },
     continuity: {
       label: "Continuidad",

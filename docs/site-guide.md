@@ -30,8 +30,8 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 - **Identidade.** Marca IRTC, descritor "Cloud, Software & AI Engineering", slogan "We engineer what moves your business forward." e assinatura "Da Amazônia para o seu próximo desafio." seguem o Brand Book 1.2; descritor, slogan e nomes dos pilares ficam em inglês nos três idiomas.
 - **Evidências.** Cases, clientes, logos, números, depoimentos, certificações e parcerias só entram com evidência, atribuição e autorização registradas (decisão D10 do Company Blueprint). Os componentes `Stats`, `ProjectShowcase` e `Testimonials` não renderizam nada enquanto as listas estiverem vazias.
 - **Serviços.** Os oito serviços pertencem a um pilar (Cloud Engineering, Software Engineering ou AI Engineering) e podem ter pilares de apoio. Critérios de resultado são objetivos do projeto, não resultado garantido. As ofertas do Service Catalog em validação não aparecem como produtos, nem com preço ou prazo.
-- **Fundador.** Fatos autorizados por Iago: Founder & Principal Engineer, formado em Sistemas de Informação, vive em Belém; hobbies: videogame, filmes e séries com a família e as gatas Juliette e Luna. A história da página é narrativa leve sobre esses hobbies; não acrescente fatos profissionais nem outros dados pessoais. O LinkedIn pessoal aparece só no bloco e na página do fundador; o resto do site usa o LinkedIn da empresa.
-- **Cultura, Missão e Visão.** As páginas usam as definições oficiais do Brand Book. As cenas são marcadas como imaginadas e não entram na base da Iris.
+- **Fundador.** Fatos autorizados por Iago: Founder & Principal Engineer, formado em Sistemas de Informação, vive em Belém; hobbies: videogame, filmes e séries com a família e as gatas Juliette e Luna. A página descreve responsabilidades de projeto e mantém os hobbies confirmados; Experiência em LeafLink, Dasa e Perfect Pay é trabalho pessoal de Iago como contractor, autorizado por ele em 26/10/2026, e aparece apenas com essa atribuição. Essas empresas não são clientes nem cases da IRTC. Não acrescente outros fatos sem evidência. O LinkedIn pessoal aparece só no bloco e na página do fundador; o resto do site usa o LinkedIn da empresa.
+- **Cultura, Missão e Visão.** As páginas usam as definições oficiais do Brand Book. Os textos explicam práticas, avaliação de resultado e direção de crescimento. Não usar cenas fictícias como evidência.
 - **Endereço.** O site mostra só Belém · PA · Brasil e atendimento remoto. Não publique rua nem o endereço fiscal.
 - **Iris.** Não promete preço, prazo, disponibilidade nem contrato. O rascunho que ela gera é ponto de partida, não proposta comercial.
 
@@ -39,9 +39,9 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 
 Estes itens foram criados como marcadores e precisam de confirmação antes de serem tratados como fatos:
 
-| Item                                                               | Onde                  | Estado                                                 |
-| ------------------------------------------------------------------ | --------------------- | ------------------------------------------------------ |
-| Fotos e menções a equipe na página Sobre                           | `public/about/`, `lib/copy/about.ts` | geradas por IA; a legenda informa que são ilustrativas; serão substituídas pelo Iago |
+| Item                    | Onde                                 | Estado                                                   |
+| ----------------------- | ------------------------------------ | -------------------------------------------------------- |
+| Fotos geradas de equipe | `public/about/`, `lib/copy/about.ts` | preservadas no repositório, sem exibição na página Sobre |
 
 Quando confirmar ou corrigir um item, atualize esta tabela e o comentário no arquivo correspondente.
 
@@ -50,6 +50,14 @@ Quando confirmar ou corrigir um item, atualize esta tabela e o comentário no ar
 Origem e tratamento de cada imagem publicada em `image-sources.md`. Logos e fotos ficam no próprio repositório, otimizados em WebP. Revalide o uso de marcas de clientes antes de qualquer campanha paga.
 
 O favicon (`apps/site/app/icon.svg`) é o símbolo i oficial, cópia de `irtc/assets/03-icone-i.svg`. Os logos ficam em `apps/site/public/brand/`.
+
+## Posicionamento B2B
+
+A comunicação parte do problema de operação, descreve o escopo e informa como avaliar a entrega. `lib/copy/engagement.ts` reúne possíveis escopos iniciais para a conversa comercial; sua presença no site não altera a prontidão das ofertas do catálogo interno. Capacidade, preço e prazo dependem de avaliação e proposta.
+
+A operação atual é conduzida por Iago Rodrigues. Ferramentas de IA e a Iris não constituem uma equipe contratada. Tracejandos é um pequeno projeto de site; não publicar alegações de tração, receita ou resultado comercial.
+
+As opções de escopo aparecem em HTML, Markdown e na base da Iris a partir da mesma fonte. A experiência pessoal do fundador permanece na página dele, com contexto completo e sem logos de empresas.
 
 ## Antes de publicar uma mudança de conteúdo
 

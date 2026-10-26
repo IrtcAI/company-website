@@ -8,6 +8,7 @@ import { FounderProfile } from "@/components/founder-profile";
 import { Stats } from "@/components/stats";
 import { aboutCopy } from "@/lib/copy/about";
 import { company } from "@/lib/company";
+import { content } from "@/lib/content";
 
 vi.mock("next/image", () => ({
   default: (props: ImgHTMLAttributes<HTMLImageElement>) =>
@@ -30,7 +31,9 @@ describe("founder page", () => {
     ).toBeVisible();
 
     expect(
-      screen.getByRole("heading", { name: "Tem um projeto em mente?" }),
+      screen.getByRole("heading", {
+        name: content["pt-BR"].solutions.cta.title,
+      }),
     ).toBeVisible();
   });
 
@@ -53,11 +56,13 @@ describe("founder page", () => {
     },
   );
 
-  it("tells the story and lists the hobbies outside the code", () => {
+  it("explains delivery accountability and lists the hobbies outside the code", () => {
     render(<FounderProfile locale="pt-BR" />);
 
     expect(
-      screen.getByRole("heading", { name: "O engenheiro fora do expediente" }),
+      screen.getByRole("heading", {
+        name: "Responsabilidade que você pode acompanhar",
+      }),
     ).toBeVisible();
     expect(
       screen.getByRole("heading", { name: "Fora do código" }),
@@ -86,7 +91,7 @@ describe("founder page", () => {
       screen.queryByRole("heading", { name: "Fora do trabalho" }),
     ).not.toBeInTheDocument();
     expect(document.body.textContent).not.toMatch(
-      /LeafLink|Dasa|Perfect Pay|futebol|açaí|mentoria|esposa|marido|filhos/i,
+      /futebol|açaí|mentoria|esposa|marido|filhos/i,
     );
   });
 });

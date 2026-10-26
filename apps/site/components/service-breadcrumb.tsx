@@ -3,11 +3,13 @@ import { ChevronRight } from "lucide-react";
 
 export function ServiceBreadcrumb({
   items,
+  label,
 }: {
   items: { label: string; href?: string }[];
+  label: string;
 }) {
   return (
-    <nav className="service-breadcrumb" aria-label="Breadcrumb">
+    <nav className="service-breadcrumb" aria-label={label}>
       <ol>
         {items.map((item, index) => (
           <li key={item.label}>
