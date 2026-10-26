@@ -38,37 +38,38 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Fundador da IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
+      "Iago Rodrigues é o fundador e responsável técnico da IRTC. Participa da análise do problema, das decisões de engenharia e da revisão das entregas, mantendo o contexto entre a conversa comercial e a execução.",
     bio: [
-      "Iago é formado em Sistemas de Informação e vive e trabalha em Belém, no Pará. Na IRTC, seu trabalho se organiza em três frentes: Cloud Engineering, Software Engineering e AI Engineering.",
-      "A IRTC atende de forma remota, com conversa direta com quem vai usar o sistema.",
+      "Iago é formado em Sistemas de Informação e vive em Belém, no Pará. Sua experiência pessoal inclui atuação como contractor em projetos de LeafLink, Dasa e Perfect Pay.",
+      "Esses trabalhos pertencem à trajetória profissional de Iago. As organizações citadas não são apresentadas como clientes da IRTC, e seus projetos e resultados não compõem o portfólio comercial da empresa.",
+      "Na IRTC, cada oportunidade é avaliada pelo problema, pelo risco e pela capacidade de entrega. O escopo define responsabilidades, condições de implantação e continuidade.",
     ],
     linkedinLabel: "Iago no LinkedIn",
     linkedinNewTab: "abre em uma nova aba",
-    storyTitle: "O engenheiro fora do expediente",
-    storyTag: "Uma história com licença poética",
+    storyTitle: "Responsabilidade que você pode acompanhar",
+    storyTag: "NA CONDUÇÃO DO PROJETO",
     storyLead:
-      "O Iago tem uma teoria: quem aprende a ficar sem pressa diante de um chefe de fase impossível também aprende a ficar sem pressa diante de um sistema que não quer subir. A teoria nunca passou por laboratório, só pela sala de casa, em Belém.",
+      "O papel do fundador se traduz em decisões e entregáveis que ficam disponíveis para o cliente.",
     story: [
       {
-        kicker: "A fase difícil",
-        text: "Existe um jogo que ele zerou depois de perder a conta das tentativas no mesmo chefe. Em algum momento parou de apertar botão e começou a observar o padrão dos golpes. Funcionou. É assim que encara um erro teimoso no trabalho: respira, observa, muda uma coisa por vez e tenta de novo.",
+        kicker: "Contexto e prioridade",
+        text: "Relacionar o problema à operação, registrar restrições e definir o que precisa ser validado antes de investir.",
       },
       {
-        kicker: "A temporada",
-        text: "Série boa é roteiro em ciclos curtos. Cada episódio entrega um pedaço da história e deixa claro o que vem a seguir. Quando a família se junta para ver mais um capítulo, o Iago reconhece o método de casa: pouca coisa de cada vez, algo para mostrar no fim e um gancho para o próximo.",
+        kicker: "Decisões de engenharia",
+        text: "Explicar as alternativas, os custos de operação e os riscos da solução proposta.",
       },
       {
-        kicker: "As revisoras",
-        text: "Juliette e Luna têm opinião sobre código. A Juliette prefere a revisão rápida: senta no teclado e apaga um bloco inteiro. A Luna é mais metódica: percorre as teclas de ponta a ponta e deixa um comentário em letras que ninguém entende. Nenhuma das duas aprovou um commit até hoje, mas nenhuma deixou de dar atenção. Ele agradece sempre: “Obrigado pela revisão, Luna.”",
+        kicker: "Revisão da entrega",
+        text: "Conferir critérios de aceite, testes e pendências com quem conhece o processo do cliente.",
       },
       {
-        kicker: "A hora de desligar",
-        text: "No fim do dia o notebook fecha. A sala escurece, a família escolhe um filme e ninguém pergunta de deploy. O Iago aprendeu que desligar também faz parte do trabalho, porque a cabeça descansada é a que acha o erro na manhã seguinte.",
+        kicker: "Transferência de conhecimento",
+        text: "Entregar documentação e orientações para operar e evoluir o escopo contratado.",
       },
     ],
     storyClosing:
-      "No dia seguinte ele volta à tela com a paciência do jogo, o ritmo da série, as duas revisoras de plantão e a cabeça descansada pelo filme. É esse engenheiro que conversa com você sobre o seu sistema.",
+      "A primeira conversa serve para avaliar a aderência do problema e definir o próximo passo.",
     outsideTitle: "Fora do código",
     outsideIntro:
       "O que enche a semana do Iago quando o notebook está fechado.",
@@ -90,7 +91,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     outsideFact:
-      "Fora do trabalho, Iago gosta de jogar videogame, ver filmes e séries com a família e brincar com as duas gatas, Juliette e Luna. A história da página do fundador é uma narrativa leve, escrita com licença poética a partir desses hobbies.",
+      "Fora do trabalho, Iago gosta de videogame, filmes e séries com a família e de brincar com as gatas Juliette e Luna.",
     expertiseTitle: "Áreas de atuação",
     expertiseIntro:
       "O trabalho de Iago na IRTC cobre as três frentes da empresa.",
@@ -105,37 +106,38 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Founder of IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership is part of the company's work.",
+      "Iago Rodrigues is IRTC’s founder and technical lead. He takes part in assessing the problem, making engineering decisions and reviewing deliveries, keeping context from the business conversation through execution.",
     bio: [
-      "Iago holds a degree in Information Systems and lives and works in Belém, Pará. At IRTC, his work is organized around three areas: Cloud Engineering, Software Engineering and AI Engineering.",
-      "IRTC serves clients remotely, with direct conversation with the people who will use the system.",
+      "Iago holds a degree in Information Systems and lives in Belém, Pará, Brazil. His personal experience includes contractor work on projects for LeafLink, Dasa and Perfect Pay.",
+      "That work belongs to Iago’s professional background. These organizations are not presented as IRTC clients, and their projects and results are not part of the company’s commercial portfolio.",
+      "At IRTC, each opportunity is assessed against the problem, risk and delivery capacity. The scope defines responsibilities, deployment conditions and continuity.",
     ],
     linkedinLabel: "Iago on LinkedIn",
     linkedinNewTab: "opens in a new tab",
-    storyTitle: "The engineer after hours",
-    storyTag: "A story with some poetic license",
+    storyTitle: "Accountability you can follow",
+    storyTag: "LEADING THE PROJECT",
     storyLead:
-      "Iago has a theory: anyone who learns to stay unhurried in front of an impossible boss fight also learns to stay unhurried in front of a system that won't start. The theory never went through a lab, only through the living room at home in Belém.",
+      "The founder’s role translates into decisions and deliverables available to the client.",
     story: [
       {
-        kicker: "The hard level",
-        text: "There is one game he finished after losing count of his attempts against the same boss. At some point he stopped mashing buttons and started watching the pattern of the attacks. It worked. That is how he handles a stubborn bug at work: breathe, observe, change one thing at a time and try again.",
+        kicker: "Context and priority",
+        text: "Connect the problem to the operation, record constraints and define what needs validation before investing.",
       },
       {
-        kicker: "The season",
-        text: "A good series is a script in short cycles. Each episode delivers a piece of the story and makes clear what comes next. When the family gathers for one more chapter, Iago recognizes the method from work: a little at a time, something to show at the end and a hook for the next one.",
+        kicker: "Engineering decisions",
+        text: "Explain alternatives, operating costs and risks of the proposed solution.",
       },
       {
-        kicker: "The reviewers",
-        text: 'Juliette and Luna have opinions about code. Juliette likes the quick review: she sits on the keyboard and deletes a whole block. Luna is more methodical: she walks the keys from end to end and leaves a comment in letters nobody understands. Neither has approved a commit so far, but neither has ever stopped paying attention. He always thanks them: "Thanks for the review, Luna."',
+        kicker: "Delivery review",
+        text: "Review acceptance criteria, tests and open issues with the people who know the client’s process.",
       },
       {
-        kicker: "Time to switch off",
-        text: "At the end of the day the laptop closes. The living room goes dark, the family picks a movie and nobody asks about deploys. Iago learned that switching off is part of the job too, because the rested mind is the one that finds the bug the next morning.",
+        kicker: "Knowledge transfer",
+        text: "Deliver documentation and guidance to operate and evolve the contracted scope.",
       },
     ],
     storyClosing:
-      "The next day he returns to the screen with the patience of the game, the rhythm of the series, two reviewers on call and a mind rested by the movie. That is the engineer who talks with you about your system.",
+      "The first conversation assesses whether the problem is a fit and defines the next step.",
     outsideTitle: "Outside the code",
     outsideIntro: "What fills Iago's week when the laptop is closed.",
     outside: [
@@ -156,7 +158,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     outsideFact:
-      "Outside work, Iago likes playing video games, watching movies and series with the family and playing with the two cats, Juliette and Luna. The story on the founder page is a light narrative, written with poetic license from these hobbies.",
+      "Outside work, Iago enjoys video games, movies and series with his family, and playing with his cats Juliette and Luna.",
     expertiseTitle: "Areas of work",
     expertiseIntro: "Iago's work at IRTC covers the company's three areas.",
     expertise: ["Cloud Engineering", "Software Engineering", "AI Engineering"],
@@ -170,37 +172,38 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Fundador de IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues es el fundador de IRTC y trabaja como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
+      "Iago Rodrigues es el fundador y responsable técnico de IRTC. Participa en el análisis del problema, las decisiones de ingeniería y la revisión de las entregas, manteniendo el contexto entre la conversación comercial y la ejecución.",
     bio: [
-      "Iago es graduado en Sistemas de Información y vive y trabaja en Belém, en Pará. En IRTC, su trabajo se organiza en tres frentes: Cloud Engineering, Software Engineering y AI Engineering.",
-      "IRTC atiende de forma remota, con conversación directa con quien va a usar el sistema.",
+      "Iago es graduado en Sistemas de Información y vive en Belém, Pará, Brasil. Su experiencia personal incluye trabajo como contractor en proyectos de LeafLink, Dasa y Perfect Pay.",
+      "Esos trabajos forman parte de la trayectoria profesional de Iago. Las organizaciones citadas no se presentan como clientes de IRTC, y sus proyectos y resultados no integran el portafolio comercial de la empresa.",
+      "En IRTC, cada oportunidad se evalúa según el problema, el riesgo y la capacidad de entrega. El alcance define responsabilidades, condiciones de implantación y continuidad.",
     ],
     linkedinLabel: "Iago en LinkedIn",
     linkedinNewTab: "se abre en una pestaña nueva",
-    storyTitle: "El ingeniero fuera del horario",
-    storyTag: "Una historia con licencia poética",
+    storyTitle: "Responsabilidad que puedes seguir",
+    storyTag: "AL FRENTE DEL PROYECTO",
     storyLead:
-      "Iago tiene una teoría: quien aprende a no tener prisa frente a un jefe de fase imposible también aprende a no tener prisa frente a un sistema que no quiere arrancar. La teoría nunca pasó por un laboratorio, solo por la sala de su casa, en Belém.",
+      "El papel del fundador se traduce en decisiones y entregables disponibles para el cliente.",
     story: [
       {
-        kicker: "La fase difícil",
-        text: "Hay un juego que terminó después de perder la cuenta de los intentos contra el mismo jefe. En algún momento dejó de apretar botones y empezó a observar el patrón de los golpes. Funcionó. Así enfrenta un error terco en el trabajo: respira, observa, cambia una cosa por vez e intenta de nuevo.",
+        kicker: "Contexto y prioridad",
+        text: "Relacionar el problema con la operación, registrar restricciones y definir qué validar antes de invertir.",
       },
       {
-        kicker: "La temporada",
-        text: "Una buena serie es un guion en ciclos cortos. Cada episodio entrega un pedazo de la historia y deja claro lo que viene después. Cuando la familia se junta para ver un capítulo más, Iago reconoce el método del trabajo: poco a la vez, algo para mostrar al final y un gancho para el siguiente.",
+        kicker: "Decisiones de ingeniería",
+        text: "Explicar alternativas, costos de operación y riesgos de la solución propuesta.",
       },
       {
-        kicker: "Las revisoras",
-        text: "Juliette y Luna tienen opinión sobre el código. A Juliette le gusta la revisión rápida: se sienta en el teclado y borra un bloque entero. Luna es más metódica: recorre las teclas de punta a punta y deja un comentario en letras que nadie entiende. Ninguna aprobó un commit hasta hoy, pero ninguna dejó de prestar atención. Él siempre agradece: «Gracias por la revisión, Luna».",
+        kicker: "Revisión de la entrega",
+        text: "Revisar criterios de aceptación, pruebas y pendientes con quienes conocen el proceso del cliente.",
       },
       {
-        kicker: "La hora de desconectar",
-        text: "Al final del día el portátil se cierra. La sala se oscurece, la familia elige una película y nadie pregunta por el deploy. Iago aprendió que desconectar también es parte del trabajo, porque la cabeza descansada es la que encuentra el error a la mañana siguiente.",
+        kicker: "Transferencia de conocimiento",
+        text: "Entregar documentación e instrucciones para operar y evolucionar el alcance contratado.",
       },
     ],
     storyClosing:
-      "Al día siguiente vuelve a la pantalla con la paciencia del juego, el ritmo de la serie, las dos revisoras de guardia y la cabeza descansada por la película. Ese es el ingeniero que conversa contigo sobre tu sistema.",
+      "La primera conversación sirve para evaluar el encaje del problema y definir el siguiente paso.",
     outsideTitle: "Fuera del código",
     outsideIntro:
       "Lo que llena la semana de Iago cuando el portátil está cerrado.",
@@ -222,7 +225,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     outsideFact:
-      "Fuera del trabajo, a Iago le gusta jugar videojuegos, ver películas y series con la familia y jugar con las dos gatas, Juliette y Luna. La historia de la página del fundador es una narración ligera, escrita con licencia poética a partir de esos pasatiempos.",
+      "Fuera del trabajo, Iago disfruta de los videojuegos, las películas y series con su familia y de jugar con sus gatas Juliette y Luna.",
     expertiseTitle: "Áreas de actuación",
     expertiseIntro:
       "El trabajo de Iago en IRTC cubre los tres frentes de la empresa.",
@@ -251,12 +254,12 @@ export const founderSectionCopy: Record<
 > = {
   "pt-BR": {
     label: "QUEM ESTÁ POR TRÁS",
-    title: "Tecnologia se faz",
-    accent: "com gente.",
+    title: "Conversa direta",
+    accent: "com quem decide e entrega.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
-    body: "A IRTC organiza o trabalho em Cloud Engineering, Software Engineering e AI Engineering.",
+      "Iago Rodrigues é o fundador e responsável técnico da IRTC. Participa da análise do problema, das decisões de engenharia e da revisão das entregas, mantendo o contexto entre a conversa comercial e a execução.",
+    body: "Conheça sua experiência profissional e como ela orienta a condução dos projetos da IRTC.",
     location: "Em Belém, Pará, com atendimento remoto.",
     alt: "Retrato de Iago Rodrigues, fundador da IRTC",
     link: "Conheça a trajetória do Iago",
@@ -265,12 +268,12 @@ export const founderSectionCopy: Record<
   },
   en: {
     label: "THE PERSON BEHIND IRTC",
-    title: "Built with technology.",
-    accent: "Led by people.",
+    title: "Direct access",
+    accent: "to the person leading delivery.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership is part of the company's work.",
-    body: "IRTC organizes its work in Cloud Engineering, Software Engineering and AI Engineering.",
+      "Iago Rodrigues is IRTC’s founder and technical lead. He takes part in assessing the problem, making engineering decisions and reviewing deliveries, keeping context from the business conversation through execution.",
+    body: "Explore his professional background and how it informs the way IRTC projects are led.",
     location: "Based in Belém, Pará, serving clients remotely.",
     alt: "Portrait of Iago Rodrigues, founder of IRTC",
     link: "Read Iago's story",
@@ -279,12 +282,12 @@ export const founderSectionCopy: Record<
   },
   es: {
     label: "QUIÉN ESTÁ DETRÁS",
-    title: "La tecnología empieza",
-    accent: "con las personas.",
+    title: "Contacto directo",
+    accent: "con quien decide y entrega.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues es el fundador de IRTC y trabaja como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
-    body: "IRTC organiza su trabajo en Cloud Engineering, Software Engineering y AI Engineering.",
+      "Iago Rodrigues es el fundador y responsable técnico de IRTC. Participa en el análisis del problema, las decisiones de ingeniería y la revisión de las entregas, manteniendo el contexto entre la conversación comercial y la ejecución.",
+    body: "Conoce su trayectoria profesional y cómo orienta la conducción de los proyectos de IRTC.",
     location: "En Belém, Pará, con atención remota.",
     alt: "Retrato de Iago Rodrigues, fundador de IRTC",
     link: "Conoce la trayectoria de Iago",

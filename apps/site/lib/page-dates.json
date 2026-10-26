@@ -1,194 +1,194 @@
 {
   "/": {
-    "hash": "94613a31dc59f5ca",
-    "lastModified": "2026-10-06"
+    "hash": "2f26e94ee22c1803",
+    "lastModified": "2026-10-26"
   },
   "/en": {
-    "hash": "f5f8a5eebe24d6a4",
-    "lastModified": "2026-10-06"
+    "hash": "30d3b09ce34857a0",
+    "lastModified": "2026-10-26"
   },
   "/es": {
-    "hash": "1d103412fb6da1fa",
-    "lastModified": "2026-10-06"
+    "hash": "e63bf5451c02d76e",
+    "lastModified": "2026-10-26"
   },
   "/servicos": {
-    "hash": "711f4053cbfdd2ac",
-    "lastModified": "2026-10-07"
+    "hash": "2b793f649067a382",
+    "lastModified": "2026-10-26"
   },
   "/en/services": {
-    "hash": "edc6f7dc21dadff8",
-    "lastModified": "2026-10-07"
+    "hash": "145178eefe3a9b44",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios": {
-    "hash": "7840c4a93236cc3a",
-    "lastModified": "2026-10-07"
+    "hash": "4f3c516d0ee0852b",
+    "lastModified": "2026-10-26"
   },
   "/servicos/software-sob-medida": {
-    "hash": "c98aea01d22a70cc",
-    "lastModified": "2026-10-07"
+    "hash": "75bffa0cc0fc0aab",
+    "lastModified": "2026-10-26"
   },
   "/en/services/custom-software": {
-    "hash": "6885499a54e123cb",
-    "lastModified": "2026-10-07"
+    "hash": "cba761d2fdbe3d7a",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/software-a-medida": {
-    "hash": "409037a1317b7375",
-    "lastModified": "2026-10-07"
+    "hash": "c7454f56ed9ee505",
+    "lastModified": "2026-10-26"
   },
   "/servicos/sites-e-plataformas-web": {
-    "hash": "80dc871f4b002679",
-    "lastModified": "2026-10-07"
+    "hash": "ac5cfb71cc987343",
+    "lastModified": "2026-10-26"
   },
   "/en/services/web-platforms": {
-    "hash": "e020435621602e73",
-    "lastModified": "2026-10-07"
+    "hash": "7c225c5068f7a750",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/sitios-y-plataformas-web": {
-    "hash": "d0c3a210f634c499",
-    "lastModified": "2026-10-07"
+    "hash": "8928ea39806e6838",
+    "lastModified": "2026-10-26"
   },
   "/servicos/aplicativos": {
-    "hash": "e7fdf2556f9911e4",
-    "lastModified": "2026-10-07"
+    "hash": "5c5b2b9366c99cf9",
+    "lastModified": "2026-10-26"
   },
   "/en/services/mobile-apps": {
-    "hash": "ad3a233fc316d48d",
-    "lastModified": "2026-10-07"
+    "hash": "229d513bf43979c5",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/aplicaciones-moviles": {
-    "hash": "bb37e5d9c19bd466",
-    "lastModified": "2026-10-07"
+    "hash": "86908b84d3058eba",
+    "lastModified": "2026-10-26"
   },
   "/servicos/integracoes-e-automacao": {
-    "hash": "8f36289559c39913",
-    "lastModified": "2026-10-07"
+    "hash": "328f907017e91443",
+    "lastModified": "2026-10-26"
   },
   "/en/services/integrations-and-automation": {
-    "hash": "848b181275570da1",
-    "lastModified": "2026-10-07"
+    "hash": "29d1f70cf5ceed38",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/integraciones-y-automatizacion": {
-    "hash": "057deb4c70938de7",
-    "lastModified": "2026-10-07"
+    "hash": "6d73b79ae6717e28",
+    "lastModified": "2026-10-26"
   },
   "/servicos/modernizacao-de-sistemas": {
-    "hash": "a244c86a302cbcc4",
-    "lastModified": "2026-10-07"
+    "hash": "67372eb3371fa1d8",
+    "lastModified": "2026-10-26"
   },
   "/en/services/system-modernization": {
-    "hash": "b243db6e3ca06668",
-    "lastModified": "2026-10-07"
+    "hash": "652c23b33a42186e",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/modernizacion-de-sistemas": {
-    "hash": "55e05b4a8330518c",
-    "lastModified": "2026-10-07"
+    "hash": "f432e1a9cd401616",
+    "lastModified": "2026-10-26"
   },
   "/servicos/inteligencia-artificial": {
-    "hash": "4d8267787a7f7b9f",
-    "lastModified": "2026-10-07"
+    "hash": "b9ca9e5c24c01e9f",
+    "lastModified": "2026-10-26"
   },
   "/en/services/applied-ai": {
-    "hash": "8945e5cfa2e597f2",
-    "lastModified": "2026-10-07"
+    "hash": "99dc10caa53fcb89",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/inteligencia-artificial": {
-    "hash": "b83a80036c4def3b",
-    "lastModified": "2026-10-07"
+    "hash": "132d8ec39cc28cf5",
+    "lastModified": "2026-10-26"
   },
   "/servicos/dados-e-relatorios": {
-    "hash": "eb1a66b91ae96c52",
-    "lastModified": "2026-10-07"
+    "hash": "6cea0a7212dac6e3",
+    "lastModified": "2026-10-26"
   },
   "/en/services/data-and-reporting": {
-    "hash": "8610b2e1035581b6",
-    "lastModified": "2026-10-07"
+    "hash": "7caa147b578ce459",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/datos-e-informes": {
-    "hash": "ca6fbe1a01580102",
-    "lastModified": "2026-10-07"
+    "hash": "a52beea00eeefe73",
+    "lastModified": "2026-10-26"
   },
   "/servicos/nuvem-e-arquitetura": {
-    "hash": "0e94a3d880e676da",
-    "lastModified": "2026-10-07"
+    "hash": "d6d3dc01a8522865",
+    "lastModified": "2026-10-26"
   },
   "/en/services/cloud-and-architecture": {
-    "hash": "fe25ab797015f7e8",
-    "lastModified": "2026-10-07"
+    "hash": "be447047d1987230",
+    "lastModified": "2026-10-26"
   },
   "/es/servicios/nube-y-arquitectura": {
-    "hash": "02daf43a49552f5a",
-    "lastModified": "2026-10-07"
+    "hash": "8a4608239db8ab27",
+    "lastModified": "2026-10-26"
   },
   "/sobre": {
-    "hash": "289017d0eebdf70a",
-    "lastModified": "2026-10-06"
+    "hash": "5aee195dadc8d36f",
+    "lastModified": "2026-10-26"
   },
   "/en/about": {
-    "hash": "c9ca2b3cdd8e0759",
-    "lastModified": "2026-10-06"
+    "hash": "831cbf2c9456d2de",
+    "lastModified": "2026-10-26"
   },
   "/es/nosotros": {
-    "hash": "7cf2601fede23d8c",
-    "lastModified": "2026-10-06"
+    "hash": "354256e38cd5e3f1",
+    "lastModified": "2026-10-26"
   },
   "/fundador": {
-    "hash": "f215a8995d83dcbe",
-    "lastModified": "2026-10-06"
+    "hash": "077018e5bea7e6cf",
+    "lastModified": "2026-10-26"
   },
   "/en/founder": {
-    "hash": "21c78c5d84cbf933",
-    "lastModified": "2026-10-06"
+    "hash": "274939e2292a40cc",
+    "lastModified": "2026-10-26"
   },
   "/es/fundador": {
-    "hash": "c820081c2dba74f8",
-    "lastModified": "2026-10-06"
+    "hash": "16ce2da29b35f5cd",
+    "lastModified": "2026-10-26"
   },
   "/cultura": {
-    "hash": "fc8bd4596c913ebb",
-    "lastModified": "2026-10-06"
+    "hash": "6525f7439189825f",
+    "lastModified": "2026-10-26"
   },
   "/en/culture": {
-    "hash": "d0886b915becc630",
-    "lastModified": "2026-10-06"
+    "hash": "5baaae6c07431733",
+    "lastModified": "2026-10-26"
   },
   "/es/cultura": {
-    "hash": "b7b83a428616dd0d",
-    "lastModified": "2026-10-06"
+    "hash": "76c47a645cfe1ff7",
+    "lastModified": "2026-10-26"
   },
   "/missao": {
-    "hash": "dfc1142c7cca9f5a",
-    "lastModified": "2026-10-06"
+    "hash": "65b6189eb7cac69f",
+    "lastModified": "2026-10-26"
   },
   "/en/mission": {
-    "hash": "5ddb97b1073ade38",
-    "lastModified": "2026-10-06"
+    "hash": "ad7adc3d211ea78a",
+    "lastModified": "2026-10-26"
   },
   "/es/mision": {
-    "hash": "8c4c856acfa63522",
-    "lastModified": "2026-10-06"
+    "hash": "776e3e176f5679fe",
+    "lastModified": "2026-10-26"
   },
   "/visao": {
-    "hash": "67a4cbe7ff4a170b",
-    "lastModified": "2026-10-06"
+    "hash": "a0b5699f7255483c",
+    "lastModified": "2026-10-26"
   },
   "/en/vision": {
-    "hash": "7d16a2353bc12e0e",
-    "lastModified": "2026-10-06"
+    "hash": "dee6d4494c5f6c2a",
+    "lastModified": "2026-10-26"
   },
   "/es/vision": {
-    "hash": "bea705dd02c51397",
-    "lastModified": "2026-10-06"
+    "hash": "a1317568c1ef1c4a",
+    "lastModified": "2026-10-26"
   },
   "/contato": {
-    "hash": "d18e3e94c51e03b8",
-    "lastModified": "2026-10-06"
+    "hash": "eeb53b5d1e30d36b",
+    "lastModified": "2026-10-26"
   },
   "/en/contact": {
-    "hash": "1a55466778ddaab0",
-    "lastModified": "2026-10-06"
+    "hash": "79d6ed584bfc551f",
+    "lastModified": "2026-10-26"
   },
   "/es/contacto": {
-    "hash": "83a06219a6d27e16",
-    "lastModified": "2026-10-06"
+    "hash": "f6d77613c2a12be1",
+    "lastModified": "2026-10-26"
   }
 }

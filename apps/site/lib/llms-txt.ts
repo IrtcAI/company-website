@@ -1,5 +1,8 @@
 import { addressLines, company, openingHours } from "./company";
-import type { Locale } from "./content";
+import { content, type Locale } from "./content";
+import { aboutCopy } from "./copy/about";
+import { founderCopy } from "./copy/founder";
+import { engagementCopy } from "./copy/engagement";
 import { founderJobTitle, homeCopy, pageCopy } from "./copy/pages";
 import {
   absoluteUrl,
@@ -161,7 +164,7 @@ function servicesSection(): string {
     "",
     ...lines,
     "",
-    "Each service page above is also published in Portuguese (/servicos/...) and Spanish (/servicios/...); see the services index in each language for the localized links.",
+    "Each service page above is also published in Portuguese (/servicos/...) and Spanish (/es/servicios/...); see the services index in each language for the localized links.",
   ].join("\n");
 }
 
@@ -185,11 +188,7 @@ function pillarsSection(): string {
 }
 
 function howWeWorkSection(): string {
-  return [
-    "## How we work",
-    "",
-    "We understand the client's operation before choosing technology, agree on priorities, deliver in short cycles and show what is ready and what comes next. Architecture, automated testing and monitoring are part of the project from the start, and delivery includes documentation and clear terms for support and evolution.",
-  ].join("\n");
+  return ["## How we work", "", aboutCopy.en.howText].join("\n");
 }
 
 function technologiesSection(): string {
@@ -206,7 +205,7 @@ function irisSection(): string {
   return [
     "## Iris",
     "",
-    "Iris is the website's assistant. It explains IRTC and helps outline an initial MVP in up to three short points and 250 characters. A draft is a starting point for a conversation, not a technical specification, price quote or delivery commitment. Visitors can also use the contact form, or request to send an approved draft by e-mail. Availability, budgets and schedules are confirmed directly with IRTC.",
+    `${content.en.contact.irisText} ${content.en.iris.disclaimer}`,
   ].join("\n");
 }
 
@@ -251,8 +250,24 @@ function discoverySection(): string {
   ].join("\n");
 }
 
+function engagementSection(): string {
+  const copy = engagementCopy.en;
+  return [
+    `## ${copy.title}`,
+    copy.intro,
+    ...copy.items.map(
+      (item) =>
+        `### ${item.title}\n\n${item.problem}\n\n${copy.deliveryLabel}: ${item.delivery}\n\n${copy.decisionLabel}: ${item.decision}`,
+    ),
+  ].join("\n\n");
+}
+
 function optionalSection(): string {
   return [
+    "## Founder experience",
+    "",
+    ...founderCopy.en.bio,
+    "",
     "## Optional",
     "",
     `- [Founder professional profile](${company.founder.linkedin}): Public professional background of ${company.founder.name}. This is a personal profile, not a company social account.`,
@@ -263,7 +278,7 @@ export function buildLlmsTxt(): string {
   return [
     "# IRTC",
     "",
-    `> IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil: an AI-native engineering company focused on solving business problems. ${SLOGAN} We modernize systems, build software and apply cloud and AI to workflows with verifiable results. The website is available in Brazilian Portuguese, English and Spanish, with a dedicated page per language for each topic below.`,
+    `> ${homeCopy.en.organization} ${SLOGAN} The website is available in Brazilian Portuguese, English and Spanish, with a dedicated page per language for each topic below.`,
     "",
     introSection(),
     "",
@@ -272,6 +287,8 @@ export function buildLlmsTxt(): string {
     servicesSection(),
     "",
     pillarsSection(),
+    "",
+    engagementSection(),
     "",
     howWeWorkSection(),
     "",
@@ -332,6 +349,8 @@ export function buildLlmsFullTxt(): string {
     "",
     ...services.map(serviceDetailSection).flatMap((section) => [section, ""]),
     pillarsSection(),
+    "",
+    engagementSection(),
     "",
     howWeWorkSection(),
     "",

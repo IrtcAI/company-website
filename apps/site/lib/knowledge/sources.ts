@@ -4,6 +4,7 @@ import { aboutCopy } from "../copy/about";
 import { cultureCopy, missionCopy, visionCopy } from "../copy/culture";
 import { founderCopy } from "../copy/founder";
 import { servicesPageCopy } from "../copy/services-page";
+import { engagementCopy } from "../copy/engagement";
 import { locales, pagePath } from "../routes";
 import {
   pillarNames,
@@ -386,6 +387,15 @@ function serviceChunks(locale: Locale): KnowledgeChunk[] {
 export function knowledgeChunks(locale: Locale): KnowledgeChunk[] {
   return [
     ...companyChunks(locale),
+    ...engagementCopy[locale].items.map((item) => ({
+      id: `engagement:${item.service}`,
+      locale,
+      source: "lib/copy/engagement.ts",
+      href: pagePath(locale, "services"),
+      serviceId: item.service,
+      title: item.title,
+      text: `${engagementCopy[locale].intro} ${item.problem} ${engagementCopy[locale].deliveryLabel}: ${item.delivery} ${engagementCopy[locale].decisionLabel}: ${item.decision}`,
+    })),
     ...aboutChunks(locale),
     ...founderChunks(locale),
     ...brandPageChunks(locale),

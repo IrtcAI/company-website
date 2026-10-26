@@ -12,7 +12,7 @@ import { describe, expect, it, vi } from "vitest";
 import { ContactSection } from "@/components/contact-section";
 import { SiteExperience } from "@/components/site-experience";
 import { SiteShell } from "@/components/site-shell";
-import type { Locale } from "@/lib/content";
+import { content, type Locale } from "@/lib/content";
 import { services } from "@/lib/services";
 import ServicePage from "@/app/[locale]/services/[slug]/page";
 
@@ -204,7 +204,7 @@ describe("institutional experience", () => {
       within(section).getByRole("link", { name: /Ver todos os serviços/ }),
     ).toHaveAttribute("href", "/servicos");
     expect(
-      within(section).getByRole("link", { name: "Traga o problema" }),
+      within(section).getByRole("link", { name: content["pt-BR"].hero.cta }),
     ).toHaveAttribute("href", "/contato");
   });
 
@@ -229,10 +229,12 @@ describe("institutional experience", () => {
       screen.getByRole("button", { name: "Ativar animações" }),
     ).toHaveAttribute("aria-pressed", "true");
     expect(document.getElementById("contato")).toBeNull();
-    const [heroCta] = screen.getAllByRole("link", { name: "Traga o problema" });
+    const [heroCta] = screen.getAllByRole("link", {
+      name: content["pt-BR"].hero.cta,
+    });
     expect(heroCta).toHaveAttribute("href", "/contato");
     expect(
-      screen.getByRole("link", { name: "Conheça os serviços" }),
+      screen.getByRole("link", { name: content["pt-BR"].hero.secondaryCta }),
     ).toHaveAttribute("href", "/servicos");
   });
 
@@ -337,7 +339,9 @@ describe("institutional experience", () => {
     expect(
       within(footer).getByRole("link", { name: "contato@irtc.com.br" }),
     ).toHaveAttribute("href", "mailto:contato@irtc.com.br");
-    for (const link of screen.getAllByRole("link", { name: "Vamos conversar" }))
+    for (const link of screen.getAllByRole("link", {
+      name: content["pt-BR"].talk,
+    }))
       expect(link).toHaveAttribute("aria-current", "page");
   });
 
@@ -372,7 +376,9 @@ describe("institutional experience", () => {
       screen.getByText(service.copy["pt-BR"].faq[0].question),
     ).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: "Tem um projeto em mente?" }),
+      screen.getByRole("heading", {
+        name: content["pt-BR"].solutions.cta.title,
+      }),
     ).toBeVisible();
   });
 

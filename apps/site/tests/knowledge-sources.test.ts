@@ -48,9 +48,6 @@ describe("knowledge chunks", () => {
 
   it("carries no unapproved figures, client names or unauthorized personal details", () => {
     const forbidden = [
-      /LeafLink/i,
-      /Dasa/i,
-      /Perfect ?Pay/i,
       /company:experience/,
       /São Paulo/i,
       /\+\s?8 anos|\b8 years|\b4[,.]9\b|\+\s?30 projetos/i,
@@ -58,9 +55,18 @@ describe("knowledge chunks", () => {
       /espos[ao]|marido|cônjuge|namorad[ao]|\bfilh[oa]s?\b|spouse|wife|husband|children|daughter|\bhij[oa]s?\b|aniversário|birthday|cumpleaños/i,
     ];
 
-    for (const chunk of allKnowledgeChunks())
+    for (const chunk of allKnowledgeChunks()) {
       for (const pattern of forbidden)
         expect(`${chunk.id} ${chunk.text}`).not.toMatch(pattern);
+      if (chunk.id !== "founder:profile")
+        expect(chunk.text).not.toMatch(/LeafLink|Dasa|Perfect ?Pay/i);
+      else {
+        expect(chunk.text).toContain("contractor");
+        expect(chunk.text).toMatch(
+          /não são apresentadas como clientes|not presented as IRTC clients|no se presentan como clientes/,
+        );
+      }
+    }
   });
 
   it("keeps the authorized founder hobbies and no hypothetical scene in the chunks", () => {

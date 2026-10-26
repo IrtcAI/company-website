@@ -32,10 +32,10 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Início",
     breadcrumbCurrent: "Sobre",
     eyebrow: "Sobre a IRTC",
-    introTitle: "Engenharia de cloud, software e IA com base em Belém",
+    introTitle: "Um parceiro de engenharia para decisões de negócio",
     introText: [
-      "A IRTC é uma empresa de Cloud, Software & AI Engineering. Projetamos, construímos, modernizamos e operamos sistemas para resolver problemas de negócio. Unimos diagnóstico, arquitetura e execução, com comunicação clara e acompanhamento das entregas.",
-      "Belém é nossa base. Trabalhamos com equipes de diferentes lugares e preservamos a proximidade no modo de entender o problema, explicar as escolhas e conduzir o projeto.",
+      "A IRTC é uma empresa B2B de Cloud, Software & AI Engineering. Trabalhamos com lideranças de negócio e tecnologia para transformar gargalos operacionais em escopos executáveis, com entregáveis e critérios de resultado definidos.",
+      "Iago Rodrigues, Founder & Principal Engineer, conduz a operação e responde pelas decisões técnicas. A atuação tem base em Belém, com atendimento remoto e capacidade avaliada antes de assumir cada projeto.",
     ],
     foundationsTitle: "Propósito, missão e visão",
     foundations: [
@@ -81,7 +81,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     howTitle: "Como trabalhamos",
     howText:
-      "Entendemos o problema e definimos a primeira entrega. Construímos em ciclos curtos, validamos o sistema em uso e documentamos sua operação. Suporte e evolução seguem o escopo e a cadência combinados com o cliente.",
+      "O trabalho começa com o impacto do problema e uma comparação das alternativas. A proposta registra escopo, dependências e aceite. A execução inclui demonstrações e evidências de teste; o encerramento registra documentação, pendências e condições de continuidade.",
     galleryTitle: "Gente que faz tecnologia",
     galleryIntro:
       "Fotos ilustrativas, sem relação com pessoas da IRTC. Mostram o tipo de ambiente colaborativo que buscamos construir.",
@@ -105,7 +105,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     founderTitle: "Liderança",
     founderText:
-      "Iago Rodrigues é o fundador da IRTC e atua como Founder & Principal Engineer. Sua trajetória em desenvolvimento, arquitetura e liderança técnica participa do trabalho da empresa.",
+      "A experiência de Iago em desenvolvimento, arquitetura e liderança técnica orienta o trabalho da IRTC. Sua trajetória profissional tem atribuição pessoal e está descrita na página do fundador.",
     founderLink: "Conheça o fundador",
     readMore: "Ler mais",
     cultureLink: "Ver como os valores viram rotina",
@@ -115,10 +115,10 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Home",
     breadcrumbCurrent: "About",
     eyebrow: "About IRTC",
-    introTitle: "Cloud, software and AI engineering based in Belém",
+    introTitle: "An engineering partner for business decisions",
     introText: [
-      "IRTC is a Cloud, Software & AI Engineering company. We design, build, modernize and operate systems to solve business problems. We combine diagnosis, architecture and execution, with clear communication and close follow-up of deliveries.",
-      "Belém is our base. We work with teams from different places and keep closeness in how we understand the problem, explain our choices and run the project.",
+      "IRTC is a B2B Cloud, Software & AI Engineering company. We work with business and technology leaders to turn operational bottlenecks into executable scopes, with defined deliverables and outcome criteria.",
+      "Iago Rodrigues, Founder & Principal Engineer, runs the business and is accountable for technical decisions. Based in Belém, Brazil, IRTC works remotely and assesses capacity before taking on each project.",
     ],
     foundationsTitle: "Purpose, mission and vision",
     foundations: [
@@ -164,7 +164,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     howTitle: "How we work",
     howText:
-      "We understand the problem and define the first delivery. We build in short cycles, validate the system in use and document how it runs. Support and evolution follow the scope and pace agreed with the client.",
+      "Work starts with the impact of the problem and a comparison of alternatives. The proposal records scope, dependencies and acceptance criteria. Delivery includes demos and test evidence; handover records documentation, open issues and continuity terms.",
     galleryTitle: "People who build technology",
     galleryIntro:
       "Illustrative photos, not of IRTC people. They show the kind of collaborative environment we aim to build.",
@@ -188,7 +188,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     founderTitle: "Leadership",
     founderText:
-      "Iago Rodrigues is the founder of IRTC and works as Founder & Principal Engineer. His background in development, architecture and technical leadership shapes the company's work.",
+      "Iago’s experience in development, architecture and technical leadership informs IRTC’s work. His professional background is attributed to him personally and described on the founder page.",
     founderLink: "Meet the founder",
     readMore: "Read more",
     cultureLink: "See how the values become routine",
@@ -198,10 +198,10 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     breadcrumbHome: "Inicio",
     breadcrumbCurrent: "Nosotros",
     eyebrow: "Sobre IRTC",
-    introTitle: "Ingeniería de cloud, software e IA con base en Belém",
+    introTitle: "Un socio de ingeniería para decisiones de negocio",
     introText: [
-      "IRTC es una empresa de Cloud, Software & AI Engineering. Diseñamos, construimos, modernizamos y operamos sistemas para resolver problemas de negocio. Unimos diagnóstico, arquitectura y ejecución, con comunicación clara y seguimiento de las entregas.",
-      "Belém es nuestra base. Trabajamos con equipos de distintos lugares y mantenemos la cercanía en la forma de entender el problema, explicar las decisiones y conducir el proyecto.",
+      "IRTC es una empresa B2B de Cloud, Software & AI Engineering. Trabajamos con líderes de negocio y tecnología para convertir limitaciones operativas en alcances ejecutables, con entregables y criterios de resultado definidos.",
+      "Iago Rodrigues, Founder & Principal Engineer, conduce la operación y responde por las decisiones técnicas. IRTC tiene su base en Belém, Brasil, atiende de forma remota y evalúa su capacidad antes de asumir cada proyecto.",
     ],
     foundationsTitle: "Propósito, misión y visión",
     foundations: [
@@ -247,7 +247,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     howTitle: "Cómo trabajamos",
     howText:
-      "Entendemos el problema y definimos la primera entrega. Construimos en ciclos cortos, validamos el sistema en uso y documentamos su operación. El soporte y la evolución siguen el alcance y el ritmo acordados con el cliente.",
+      "El trabajo empieza por el impacto del problema y una comparación de alternativas. La propuesta registra alcance, dependencias y aceptación. La ejecución incluye demostraciones y evidencias de pruebas; el cierre registra documentación, pendientes y condiciones de continuidad.",
     galleryTitle: "Personas que hacen tecnología",
     galleryIntro:
       "Fotos ilustrativas, sin relación con personas de IRTC. Muestran el tipo de ambiente colaborativo que buscamos construir.",
@@ -271,7 +271,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     ],
     founderTitle: "Liderazgo",
     founderText:
-      "Iago Rodrigues es el fundador de IRTC y actúa como Founder & Principal Engineer. Su trayectoria en desarrollo, arquitectura y liderazgo técnico forma parte del trabajo de la empresa.",
+      "La experiencia de Iago en desarrollo, arquitectura y liderazgo técnico orienta el trabajo de IRTC. Su trayectoria profesional se atribuye a él personalmente y está descrita en la página del fundador.",
     founderLink: "Conoce al fundador",
     readMore: "Leer más",
     cultureLink: "Ver cómo los valores se vuelven rutina",

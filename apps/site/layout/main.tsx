@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "engenharia de software",
     "engenharia de cloud",
     "engenharia de IA",
-    "empresa de engenharia AI-native",
+    "parceiro de engenharia B2B",
     "modernização de sistemas",
     "software sob medida",
     "integrações de sistemas",

@@ -9,23 +9,23 @@ export const homeCopy: Record<
   "pt-BR": {
     title: "IRTC | Cloud, Software & AI Engineering",
     description:
-      "Resolvemos problemas de negócio modernizando sistemas, construindo software e aplicando cloud e IA a fluxos com resultado verificável.",
+      "Parceiro B2B em cloud, software e IA para integrar sistemas, modernizar operações e avaliar automação, com escopo e critérios de resultado definidos.",
     organization:
-      "A IRTC é uma empresa de Cloud, Software & AI Engineering. Resolvemos problemas de negócio modernizando sistemas, construindo software e aplicando cloud e IA a fluxos com resultado verificável.",
+      "A IRTC é uma empresa B2B de Cloud, Software & AI Engineering. Trabalhamos com lideranças de negócio e tecnologia para transformar gargalos operacionais em escopos executáveis, com entregáveis e critérios de resultado definidos.",
   },
   en: {
     title: "IRTC | Cloud, Software & AI Engineering",
     description:
-      "We solve business problems by modernizing systems, building software and applying cloud and AI to workflows with verifiable results.",
+      "A B2B partner in cloud, software and AI for system integration, modernization and automation, with defined scope and outcome criteria.",
     organization:
-      "IRTC is a Cloud, Software & AI Engineering company. We solve business problems by modernizing systems, building software and applying cloud and AI to workflows with verifiable results.",
+      "IRTC is a B2B Cloud, Software & AI Engineering company. We work with business and technology leaders to turn operational bottlenecks into executable scopes, with defined deliverables and outcome criteria.",
   },
   es: {
     title: "IRTC | Cloud, Software & AI Engineering",
     description:
-      "Resolvemos problemas de negocio modernizando sistemas, construyendo software y aplicando cloud e IA a flujos con resultado verificable.",
+      "Socio B2B en cloud, software e IA para integrar sistemas, modernizar operaciones y evaluar automatización, con alcance y criterios de resultado definidos.",
     organization:
-      "IRTC es una empresa de Cloud, Software & AI Engineering. Resolvemos problemas de negocio modernizando sistemas, construyendo software y aplicando cloud e IA a flujos con resultado verificable.",
+      "IRTC es una empresa B2B de Cloud, Software & AI Engineering. Trabajamos con líderes de negocio y tecnología para convertir limitaciones operativas en alcances ejecutables, con entregables y criterios de resultado definidos.",
   },
 };
 
@@ -43,73 +43,73 @@ export const pageCopy: Record<
 > = {
   services: {
     "pt-BR": {
-      title: "Serviços | IRTC",
-      heading: "Serviços",
+      title: "Soluções B2B em cloud, software e IA | IRTC",
+      heading: "Engenharia para o próximo passo da operação",
       description:
-        "Cloud Engineering, Software Engineering e AI Engineering: oito serviços para modernizar sistemas, construir software e aplicar IA.",
+        "Integrações, modernização e IA aplicadas a problemas de operação. Conheça entregáveis, critérios de avaliação e como definir o primeiro escopo.",
     },
     en: {
-      title: "Services | IRTC",
-      heading: "Services",
+      title: "B2B cloud, software and AI services | IRTC",
+      heading: "Engineering for your next operational priority",
       description:
-        "Cloud Engineering, Software Engineering and AI Engineering: eight services to modernize systems, build software and apply AI.",
+        "Integration, modernization and AI for operational problems. Explore deliverables, evaluation criteria and how to define the first scope.",
     },
     es: {
-      title: "Servicios | IRTC",
-      heading: "Servicios",
+      title: "Soluciones B2B en cloud, software e IA | IRTC",
+      heading: "Ingeniería para el próximo paso de tu operación",
       description:
-        "Cloud Engineering, Software Engineering y AI Engineering: ocho servicios para modernizar sistemas, construir software y aplicar IA.",
+        "Integraciones, modernización e IA para problemas operativos. Conoce los entregables, criterios de evaluación y cómo definir el primer alcance.",
     },
   },
   about: {
     "pt-BR": {
-      title: "Sobre a IRTC | Propósito, missão e visão",
+      title: "Sobre a IRTC | Parceiro de engenharia B2B",
       description:
-        "Empresa de engenharia AI-native de Belém, no Pará. Nosso propósito, missão, visão e valores, e como trabalhamos.",
+        "Engenharia B2B conduzida por Iago Rodrigues em Belém, com atendimento remoto. Conheça responsabilidades, processo de entrega e princípios da IRTC.",
     },
     en: {
-      title: "About IRTC | Purpose, mission and vision",
+      title: "About IRTC | B2B engineering partner",
       description:
-        "AI-native engineering company from Belém, Brazil. Our purpose, mission, vision and values, and how we work.",
+        "B2B engineering led by Iago Rodrigues in Belém, Brazil, working remotely. Learn about IRTC’s accountability, delivery process and principles.",
     },
     es: {
-      title: "Sobre IRTC | Propósito, misión y visión",
+      title: "Sobre IRTC | Socio de ingeniería B2B",
       description:
-        "Empresa de ingeniería AI-native de Belém, Brasil. Nuestro propósito, misión, visión y valores, y cómo trabajamos.",
+        "Ingeniería B2B dirigida por Iago Rodrigues en Belém, Brasil, con atención remota. Conoce responsabilidades, proceso de entrega y principios de IRTC.",
     },
   },
   founder: {
     "pt-BR": {
-      title: "Iago Rodrigues, fundador | IRTC",
+      title: "Iago Rodrigues | Fundador e responsável técnico da IRTC",
       description:
-        "Conheça Iago Rodrigues, Founder & Principal Engineer da IRTC, e as três frentes de engenharia da empresa.",
+        "Conheça a experiência pessoal de Iago Rodrigues como contractor e sua responsabilidade técnica na IRTC, com atribuição clara de cada atuação.",
     },
     en: {
-      title: "Iago Rodrigues, founder | IRTC",
+      title: "Iago Rodrigues | IRTC founder and technical lead",
       description:
-        "Meet Iago Rodrigues, Founder & Principal Engineer at IRTC, and the three engineering areas of the company.",
+        "Explore Iago Rodrigues’s personal contractor experience and technical responsibilities at IRTC, with clear attribution of each role.",
     },
     es: {
-      title: "Iago Rodrigues, fundador | IRTC",
+      title: "Iago Rodrigues | Fundador y responsable técnico de IRTC",
       description:
-        "Conoce a Iago Rodrigues, Founder & Principal Engineer de IRTC, y las tres áreas de ingeniería de la empresa.",
+        "Conoce la experiencia personal de Iago Rodrigues como contractor y su responsabilidad técnica en IRTC, con atribución clara de cada actuación.",
     },
   },
   culture: {
     "pt-BR": {
-      title: "Cultura | IRTC",
+      title: "Como trabalhamos | Cultura da IRTC",
       description:
-        "Como a IRTC trabalha no dia a dia: cinco práticas, valores e uma operação AI-native em que agentes ajudam e pessoas respondem pelas entregas.",
+        "Escopo, decisões, testes e documentação que permitem acompanhar a entrega. Conheça as práticas da IRTC e a responsabilidade humana no uso de IA.",
     },
     en: {
-      title: "Culture | IRTC",
+      title: "How we work | IRTC culture",
       description:
-        "How IRTC works day to day: five practices, values and an AI-native operation where agents help and people answer for the deliveries.",
+        "Scope, decisions, tests and documentation that make delivery visible. Learn about IRTC’s working practices and human accountability in AI use.",
     },
     es: {
-      title: "Cultura | IRTC",
+      title: "Cómo trabajamos | Cultura de IRTC",
       description:
-        "Cómo trabaja IRTC día a día: cinco prácticas, valores y una operación AI-native donde los agentes ayudan y las personas responden por las entregas.",
+        "Alcance, decisiones, pruebas y documentación para seguir la entrega. Conoce las prácticas de IRTC y la responsabilidad humana en el uso de IA.",
     },
   },
   mission: {
@@ -148,19 +148,19 @@ export const pageCopy: Record<
   },
   contact: {
     "pt-BR": {
-      title: "Contato | IRTC",
+      title: "Converse sobre seu desafio de negócio | IRTC",
       description:
-        "Conte sua ideia para a IRTC. Formulário, e-mail, endereço em Belém e a Iris, nossa assistente, para ajudar a organizar o primeiro passo.",
+        "Descreva o problema, o impacto e a prioridade da sua operação. Iago Rodrigues analisa o contexto para definir o próximo passo com a IRTC.",
     },
     en: {
-      title: "Contact | IRTC",
+      title: "Discuss your business challenge | IRTC",
       description:
-        "Tell IRTC about your idea. Contact form, email, our Belém address and Iris, our assistant, to help shape the first step.",
+        "Describe your operational problem, its impact and priority. Iago Rodrigues reviews the context to define the next step with IRTC.",
     },
     es: {
-      title: "Contacto | IRTC",
+      title: "Hablemos de tu desafío de negocio | IRTC",
       description:
-        "Cuéntale tu idea a IRTC. Formulario, correo, dirección en Belém e Iris, nuestra asistente, para ordenar el primer paso.",
+        "Describe el problema, el impacto y la prioridad de tu operación. Iago Rodrigues analiza el contexto para definir el siguiente paso con IRTC.",
     },
   },
 };

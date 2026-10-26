@@ -267,9 +267,9 @@ describe("llms.txt", () => {
         "AI Engineering",
       ])
         expect(text).toContain(pillar);
-      expect(text).not.toMatch(
-        /LeafLink|Dasa|Perfect Pay|software factory|testimonial|São Paulo/i,
-      );
+      expect(text).toContain("personal experience includes contractor work");
+      expect(text).toContain("not presented as IRTC clients");
+      expect(text).not.toMatch(/software factory|testimonial|São Paulo/i);
     }
   });
 });

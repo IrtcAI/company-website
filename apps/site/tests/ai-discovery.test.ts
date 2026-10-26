@@ -16,6 +16,7 @@ import {
 import { absoluteUrl, markdownPath, SITE_URL } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { services } from "@/lib/services";
+import { pageCopy } from "@/lib/copy/pages";
 import {
   changedPaths,
   INDEXNOW_KEY,
@@ -76,7 +77,9 @@ describe("markdown copies", () => {
     );
     expect(response.headers.get("Content-Location")).toBe("/servicos.md");
     expect(response.headers.get("Vary")).toBe("Accept");
-    expect(await response.text()).toMatch(/^# Serviços/);
+    expect(await response.text()).toContain(
+      `# ${pageCopy.services["pt-BR"].heading}`,
+    );
   });
 
   it("maps the home page to /index.md", async () => {

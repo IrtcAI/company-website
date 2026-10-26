@@ -66,9 +66,9 @@ export const services: Service[] = [
         slug: "software-sob-medida",
         title: "Software sob medida",
         summary:
-          "Da ideia à primeira versão: planejamos, construímos e evoluímos o sistema que a sua operação precisa.",
+          "Software sob medida para processos que limitam a operação, com prioridades, entregas verificáveis e documentação para sua equipe.",
         intro:
-          "Quando uma ferramenta pronta quase resolve, ou o processo ainda vive em planilhas, o caminho é um sistema feito para o seu jeito de trabalhar. Partimos do seu processo, não de um modelo pronto.",
+          "Quando as ferramentas atuais não atendem a um processo importante, avaliamos o custo de adaptar, integrar ou construir. O primeiro escopo cobre um fluxo prioritário, com usuários, regras e critérios de aceite definidos.",
         problems: [
           "A ferramenta pronta quase serve, mas sempre trava num detalhe.",
           "O processo vive em planilhas, mensagens e na memória de alguém.",
@@ -76,11 +76,11 @@ export const services: Service[] = [
           "Você quer um sistema seu: suas regras, seus dados, seu roteiro.",
         ],
         deliverables: [
-          "Descoberta com quem lida com o problema no dia a dia",
-          "Primeira versão com escopo definido",
-          "Telas de computador e celular para tarefas reais",
-          "Lançamento para usuários reais",
-          "Roteiro do que vem depois",
+          "Mapa do processo, regras e prioridades",
+          "Escopo do primeiro incremento e critérios de aceite",
+          "Software e integrações previstos no escopo",
+          "Testes dos fluxos acordados e registro de limitações",
+          "Código, documentação e plano de implantação",
         ],
         measure: [
           "Fluxo essencial aceito de ponta a ponta na primeira versão",
@@ -114,9 +114,9 @@ export const services: Service[] = [
         slug: "custom-software",
         title: "Custom software",
         summary:
-          "From idea to first release: we plan, build and keep improving the system your business needs.",
+          "Custom software for processes that hold back operations, with clear priorities, verifiable deliverables and documentation for your team.",
         intro:
-          "When a ready-made tool almost fits, or the process still lives in spreadsheets, the answer is a system built for how you work. We start from your process, not from a template.",
+          "When current tools do not support an important process, we assess the cost of adapting, integrating or building. The first scope covers a priority workflow with defined users, rules and acceptance criteria.",
         problems: [
           "The ready-made tool almost fits, but it always breaks on one detail.",
           "The process lives in spreadsheets, messages and someone's memory.",
@@ -124,11 +124,11 @@ export const services: Service[] = [
           "You want a system that's yours: your rules, your data, your roadmap.",
         ],
         deliverables: [
-          "Discovery with the people who deal with the problem every day",
-          "A first version with a defined scope",
-          "Computer and phone screens built around real tasks",
-          "A release for real users",
-          "A roadmap for what comes next",
+          "Process map, rules and priorities",
+          "Scope and acceptance criteria for the first increment",
+          "Software and integrations included in the scope",
+          "Tests of agreed workflows and recorded limitations",
+          "Code, documentation and deployment plan",
         ],
         measure: [
           "Essential flow accepted end to end in the first version",
@@ -162,9 +162,9 @@ export const services: Service[] = [
         slug: "software-a-medida",
         title: "Software a medida",
         summary:
-          "De la idea a la primera versión: planificamos, construimos y evolucionamos el sistema que tu operación necesita.",
+          "Software a medida para procesos que limitan la operación, con prioridades, entregas verificables y documentación para tu equipo.",
         intro:
-          "Cuando una herramienta lista casi sirve, o el proceso aún vive en hojas de cálculo, el camino es un sistema hecho para tu forma de trabajar. Partimos de tu proceso, no de una plantilla.",
+          "Cuando las herramientas actuales no resuelven un proceso importante, evaluamos el costo de adaptar, integrar o construir. El primer alcance cubre un flujo prioritario, con usuarios, reglas y criterios de aceptación definidos.",
         problems: [
           "La herramienta lista casi sirve, pero siempre falla en un detalle.",
           "El proceso vive en hojas de cálculo, mensajes y en la memoria de alguien.",
@@ -172,11 +172,11 @@ export const services: Service[] = [
           "Quieres un sistema tuyo: tus reglas, tus datos, tu hoja de ruta.",
         ],
         deliverables: [
-          "Descubrimiento con quienes lidian con el problema a diario",
-          "Primera versión con alcance definido",
-          "Pantallas de computador y celular para tareas reales",
-          "Lanzamiento para usuarios reales",
-          "Hoja de ruta de lo que viene después",
+          "Mapa del proceso, reglas y prioridades",
+          "Alcance del primer incremento y criterios de aceptación",
+          "Software e integraciones previstos en el alcance",
+          "Pruebas de los flujos acordados y registro de limitaciones",
+          "Código, documentación y plan de implantación",
         ],
         measure: [
           "Flujo esencial aceptado de punta a punta en la primera versión",
@@ -222,9 +222,9 @@ export const services: Service[] = [
         slug: "sites-e-plataformas-web",
         title: "Sites e plataformas web",
         summary:
-          "Portais, painéis e sites rápidos, acessíveis e fáceis de usar em qualquer tela.",
+          "Portais e plataformas web para facilitar atendimento, acesso à informação e tarefas de clientes ou equipes, com indicadores de uso definidos.",
         intro:
-          "Sites, portais e painéis são a forma como muita gente conhece sua empresa. Construímos para carregar rápido, funcionar em qualquer tela e crescer com o conteúdo e o tráfego, de um site institucional a um painel de uso diário.",
+          "Um portal pode concentrar solicitações, documentos e tarefas que hoje dependem de atendimento manual. Definimos o público e o fluxo prioritário, incluindo acessibilidade, desempenho e integração no escopo. Sites institucionais são avaliados conforme o objetivo comercial.",
         problems: [
           "O site é lento, difícil de atualizar ou ruim no celular.",
           "Você precisa de um portal para clientes ou parceiros, não só de uma página pública.",
@@ -232,11 +232,11 @@ export const services: Service[] = [
           "Você lança um produto novo e precisa de um site que sustente isso.",
         ],
         deliverables: [
-          "Estrutura de informação e conteúdo",
-          "Telas para computador e celular",
-          "Carregamento rápido e acessibilidade",
-          "Área de conteúdo que sua equipe atualiza sozinha",
-          "Indicadores e monitoramento no ar",
+          "Mapa da jornada e das tarefas prioritárias",
+          "Páginas, permissões e integrações do escopo",
+          "Verificação de acessibilidade e desempenho nas telas acordadas",
+          "Gestão de conteúdo quando necessária ao processo",
+          "Documentação e indicadores de conclusão das tarefas",
         ],
         measure: [
           "Velocidade e acessibilidade medidas em páginas combinadas",
@@ -270,9 +270,9 @@ export const services: Service[] = [
         slug: "web-platforms",
         title: "Websites and web platforms",
         summary:
-          "Portals, dashboards and websites that are fast, accessible and easy to use on any screen.",
+          "Web portals and platforms for customer service, access to information and everyday tasks, with defined usage indicators.",
         intro:
-          "Websites, portals and dashboards are how many people meet your company. We build them to load fast, work on any screen and grow with content and traffic, from a company site to a dashboard used every day.",
+          "A portal can bring together requests, documents and tasks that currently need manual support. We define the audience and priority workflow, including accessibility, performance and integrations in the scope. Company websites are assessed against their business purpose.",
         problems: [
           "The site is slow, hard to update or poor on mobile.",
           "You need a portal for clients or partners, not just a public page.",
@@ -280,11 +280,11 @@ export const services: Service[] = [
           "You're launching a new product and need a site to support it.",
         ],
         deliverables: [
-          "Information and content structure",
-          "Screens for computer and phone",
-          "Fast loading and accessibility",
-          "A content area your team updates on its own",
-          "Indicators and monitoring once live",
+          "Journey map and priority tasks",
+          "Pages, permissions and integrations in scope",
+          "Accessibility and performance checks on agreed screens",
+          "Content management where the process requires it",
+          "Documentation and task completion indicators",
         ],
         measure: [
           "Speed and accessibility measured on agreed pages",
@@ -318,9 +318,9 @@ export const services: Service[] = [
         slug: "sitios-y-plataformas-web",
         title: "Sitios y plataformas web",
         summary:
-          "Portales, paneles y sitios rápidos, accesibles y fáciles de usar en cualquier pantalla.",
+          "Portales y plataformas web para atención, acceso a información y tareas de clientes o equipos, con indicadores de uso definidos.",
         intro:
-          "Sitios, portales y paneles son la forma en que mucha gente conoce tu empresa. Los construimos para cargar rápido, funcionar en cualquier pantalla y crecer con el contenido y el tráfico, desde un sitio institucional hasta un panel de uso diario.",
+          "Un portal puede reunir solicitudes, documentos y tareas que hoy requieren atención manual. Definimos el público y el flujo prioritario, incluyendo accesibilidad, rendimiento e integración en el alcance. Los sitios institucionales se evalúan según su objetivo comercial.",
         problems: [
           "El sitio es lento, difícil de actualizar o malo en el celular.",
           "Necesitas un portal para clientes o socios, no solo una página pública.",
@@ -328,11 +328,11 @@ export const services: Service[] = [
           "Lanzas un producto nuevo y necesitas un sitio que lo sostenga.",
         ],
         deliverables: [
-          "Estructura de información y contenido",
-          "Pantallas para computador y celular",
-          "Carga rápida y accesibilidad",
-          "Un área de contenido que tu equipo actualiza por sí sola",
-          "Indicadores y monitoreo en línea",
+          "Mapa de la experiencia y tareas prioritarias",
+          "Páginas, permisos e integraciones del alcance",
+          "Verificación de accesibilidad y rendimiento en las pantallas acordadas",
+          "Gestión de contenido cuando el proceso lo requiera",
+          "Documentación e indicadores de finalización de tareas",
         ],
         measure: [
           "Velocidad y accesibilidad medidas en páginas acordadas",
@@ -377,9 +377,9 @@ export const services: Service[] = [
         slug: "aplicativos",
         title: "Aplicativos para celular",
         summary:
-          "Aplicativos para Android e iPhone que funcionam no dia a dia, até em campo e com internet instável.",
+          "Aplicativos para operações de campo e tarefas pelo celular, com integrações e requisitos de conectividade definidos com sua equipe.",
         intro:
-          "Aplicativos para equipes que trabalham fora do escritório: visitas, entregas, vistorias, vendas externas. O app é desenhado para continuar funcionando com internet instável, porque é assim que o campo costuma ser.",
+          "Visitas, vistorias e vendas externas precisam registrar informação no momento do trabalho. Avaliamos as tarefas, os dispositivos e a conectividade para definir um aplicativo que possa ser testado no contexto real de uso.",
         problems: [
           "A equipe de campo ainda anota em papel ou planilha.",
           "O aplicativo atual trava sem sinal forte.",
@@ -387,11 +387,11 @@ export const services: Service[] = [
           "Você quer um app só para Android e iPhone, sem construir dois.",
         ],
         deliverables: [
-          "Fluxo de telas pensado para uma mão só e testado com quem usa",
-          "Funcionamento com conexão fraca ou sem internet",
-          "Uma base de código para Android e iPhone, quando fizer sentido",
-          "Integração com os sistemas que você já usa",
-          "Publicação nas lojas e apoio nas atualizações",
+          "Fluxos prioritários validados com usuários",
+          "Aplicativo para as plataformas definidas no escopo",
+          "Regras de sincronização e testes offline, quando necessários",
+          "Integração com os sistemas autorizados",
+          "Plano de distribuição, documentação e requisitos das lojas",
         ],
         measure: [
           "Tempo de entrada de dados no processo atual e meta para o app",
@@ -425,9 +425,9 @@ export const services: Service[] = [
         slug: "mobile-apps",
         title: "Mobile apps",
         summary:
-          "Android and iPhone apps that work day to day, even in the field and with unstable internet.",
+          "Apps for field operations and mobile tasks, with integrations and connectivity requirements defined with your team.",
         intro:
-          "Apps for teams that work outside the office: visits, deliveries, inspections, field sales. The app is designed to keep working on unstable internet, because that's what the field is usually like.",
+          "Visits, inspections and field sales need information captured as work happens. We assess tasks, devices and connectivity to define an app that can be tested in its real operating context.",
         problems: [
           "The field team still writes things down on paper or spreadsheets.",
           "The current app freezes without a strong signal.",
@@ -435,11 +435,11 @@ export const services: Service[] = [
           "You want one app for Android and iPhone, not two.",
         ],
         deliverables: [
-          "A screen flow built for one hand and tested with real users",
-          "Works on a weak connection or none at all",
-          "One codebase for Android and iPhone, when it fits",
-          "Integration with the systems you already use",
-          "Store publishing and help with updates",
+          "Priority workflows validated with users",
+          "App for the platforms defined in scope",
+          "Synchronization rules and offline tests where required",
+          "Integration with authorized systems",
+          "Distribution plan, documentation and app store requirements",
         ],
         measure: [
           "Data entry time in the current process and a target for the app",
@@ -473,9 +473,9 @@ export const services: Service[] = [
         slug: "aplicaciones-moviles",
         title: "Aplicaciones móviles",
         summary:
-          "Aplicaciones para Android e iPhone que funcionan en el día a día, incluso en campo y con internet inestable.",
+          "Aplicaciones para operaciones de campo y tareas móviles, con integraciones y requisitos de conectividad definidos con tu equipo.",
         intro:
-          "Aplicaciones para equipos que trabajan fuera de la oficina: visitas, entregas, inspecciones, ventas externas. La app se diseña para seguir funcionando con internet inestable, porque así suele ser el campo.",
+          "Las visitas, inspecciones y ventas externas necesitan registrar información durante el trabajo. Evaluamos tareas, dispositivos y conectividad para definir una aplicación que pueda probarse en su contexto real de uso.",
         problems: [
           "El equipo de campo todavía anota en papel u hojas de cálculo.",
           "La aplicación actual se traba sin señal fuerte.",
@@ -483,11 +483,11 @@ export const services: Service[] = [
           "Quieres una sola app para Android e iPhone, no dos.",
         ],
         deliverables: [
-          "Flujo de pantallas pensado para una mano y probado con quienes lo usan",
-          "Funciona con conexión débil o sin internet",
-          "Una base de código para Android e iPhone, cuando conviene",
-          "Integración con los sistemas que ya usas",
-          "Publicación en las tiendas y apoyo en las actualizaciones",
+          "Flujos prioritarios validados con usuarios",
+          "Aplicación para las plataformas definidas en el alcance",
+          "Reglas de sincronización y pruebas sin conexión cuando sean necesarias",
+          "Integración con los sistemas autorizados",
+          "Plan de distribución, documentación y requisitos de las tiendas",
         ],
         measure: [
           "Tiempo de carga de datos del proceso actual y una meta para la app",
@@ -524,7 +524,7 @@ export const services: Service[] = [
     icon: "Network",
     accent: "sage",
     deliverablesLayout: "checklist",
-    stack: ["mcp", "aws"],
+    stack: ["aws"],
     pillar: "software",
     supportPillars: ["ai"],
     technologies: ["Node.js", "NestJS", "Python", "Redis"],
@@ -533,9 +533,9 @@ export const services: Service[] = [
         slug: "integracoes-e-automacao",
         title: "Integrações e automação",
         summary:
-          "Conectamos os sistemas da empresa e tiramos o trabalho repetitivo das planilhas.",
+          "Integrações para reduzir digitação repetida e atrasos entre sistemas. Escopo delimitado, tratamento de falhas e documentação operacional.",
         intro:
-          "A maioria das operações usa mais de um sistema: CRM, pagamento, laboratório, financeiro. Integramos e automatizamos para a informação circular sozinha, com verificações que pegam erros cedo, antes de chegarem ao cliente.",
+          "Quando pedidos, pagamentos ou dados operacionais precisam ser copiados entre ferramentas, cada transferência manual cria espera e risco de erro. Começamos por um fluxo delimitado, com sistemas identificados, regras de conferência e um responsável pelo processo.",
         problems: [
           "Alguém digita a mesma informação em dois ou mais sistemas.",
           "Sistemas de laboratório, pagamento ou login precisam conversar.",
@@ -543,11 +543,11 @@ export const services: Service[] = [
           "A planilha virou a ponte entre ferramentas e não aguenta mais.",
         ],
         deliverables: [
-          "Mapa dos sistemas e dos dados que circulam entre eles",
-          "APIs e conectores para os seus sistemas",
-          "Verificações que pegam erros perto de onde nascem",
-          "Alertas para saber quando uma conexão falha",
-          "Agentes de IA ligados às suas ferramentas, com acesso controlado",
+          "Mapa do fluxo, fontes de dados e regras de negócio",
+          "Integração delimitada com os sistemas acordados",
+          "Tratamento de erros, duplicidades e reprocessamento",
+          "Testes de ponta a ponta e evidências de aceite",
+          "Monitoramento previsto no escopo e instruções de operação",
         ],
         measure: [
           "Retrabalho e erros de digitação, antes e depois",
@@ -561,9 +561,9 @@ export const services: Service[] = [
               "Quantos sistemas entram e a qualidade da documentação deles. Uma API documentada conecta rápido; um sistema antigo sem documentação leva mais tempo. O valor depende do escopo combinado.",
           },
           {
-            question: "Como vocês evitam quebrar o que já funciona?",
+            question: "Como a implantação afeta a operação?",
             answer:
-              "Testamos primeiro em uma cópia dos dados e colocamos em produção por etapas, com os sistemas atuais no ar o tempo todo.",
+              "Testamos em ambiente apropriado, definimos tratamento de falhas e planejamos a implantação por etapas. Dependências, janela de mudança e reversão são acordadas antes de alterar a produção.",
           },
           {
             question: "Que acesso vocês precisam?",
@@ -571,9 +571,9 @@ export const services: Service[] = [
               "Leitura ou credenciais de teste dos sistemas envolvidos e alguém que saiba como cada um é usado hoje.",
           },
           {
-            question: "E se um sistema conectado mudar depois?",
+            question: "Como funciona a continuidade após a entrega?",
             answer:
-              "Monitoramos as integrações para detectar falhas rápido e ajustamos a conexão quando um dos lados muda sua API ou suas regras.",
+              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
           },
         ],
       },
@@ -581,9 +581,9 @@ export const services: Service[] = [
         slug: "integrations-and-automation",
         title: "Integrations and automation",
         summary:
-          "We connect your company's systems and take repetitive work out of spreadsheets.",
+          "Integrations to reduce repeated data entry and delays between systems. Defined scope, failure handling and operating documentation.",
         intro:
-          "Most operations use more than one system: CRM, payments, lab, finance. We integrate and automate so information flows on its own, with checks that catch errors early, before they reach the customer.",
+          "When orders, payments or operational data must be copied between tools, each manual transfer creates delay and a risk of error. We start with one bounded workflow, identified systems, validation rules and a process owner.",
         problems: [
           "Someone types the same information into two or more systems.",
           "Lab, payment or login systems need to talk to each other.",
@@ -591,11 +591,11 @@ export const services: Service[] = [
           "The spreadsheet became the bridge between tools and can't carry it anymore.",
         ],
         deliverables: [
-          "A map of the systems and the data moving between them",
-          "APIs and connectors for your systems",
-          "Checks that catch errors close to where they start",
-          "Alerts so you know when a connection fails",
-          "AI agents connected to your tools, with controlled access",
+          "Workflow map, data sources and business rules",
+          "Bounded integration with the agreed systems",
+          "Error, duplicate and retry handling",
+          "End-to-end tests and acceptance evidence",
+          "Monitoring in scope and operating instructions",
         ],
         measure: [
           "Rework and typing errors, before and after",
@@ -609,9 +609,9 @@ export const services: Service[] = [
               "How many systems are involved and how well they're documented. A documented API connects fast; an old undocumented system takes longer. The figure depends on the agreed scope.",
           },
           {
-            question: "How do you avoid breaking what already works?",
+            question: "How does deployment affect operations?",
             answer:
-              "We test first on a copy of the data and go live in stages, with your current systems running the whole time.",
+              "We test in an appropriate environment, define failure handling and plan a staged rollout. Dependencies, change windows and rollback are agreed before production changes.",
           },
           {
             question: "What access do you need?",
@@ -619,9 +619,9 @@ export const services: Service[] = [
               "Read access or test credentials for the systems involved, and someone who knows how each one is used today.",
           },
           {
-            question: "What if a connected system changes later?",
+            question: "How does continuity work after delivery?",
             answer:
-              "We monitor the integrations to catch failures fast, and we adjust the connection when either side changes its API or rules.",
+              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
           },
         ],
       },
@@ -629,9 +629,9 @@ export const services: Service[] = [
         slug: "integraciones-y-automatizacion",
         title: "Integraciones y automatización",
         summary:
-          "Conectamos los sistemas de la empresa y sacamos el trabajo repetitivo de las hojas de cálculo.",
+          "Integraciones para reducir la carga repetida de datos y las demoras entre sistemas. Alcance delimitado, manejo de fallas y documentación operativa.",
         intro:
-          "La mayoría de las operaciones usa más de un sistema: CRM, pagos, laboratorio, finanzas. Integramos y automatizamos para que la información circule sola, con verificaciones que detectan errores temprano, antes de llegar al cliente.",
+          "Cuando los pedidos, pagos o datos operativos deben copiarse entre herramientas, cada transferencia manual genera espera y riesgo de error. Empezamos por un flujo delimitado, con sistemas identificados, reglas de validación y un responsable del proceso.",
         problems: [
           "Alguien digita la misma información en dos o más sistemas.",
           "Sistemas de laboratorio, pago o acceso necesitan conversar.",
@@ -639,11 +639,11 @@ export const services: Service[] = [
           "La hoja de cálculo se volvió el puente entre herramientas y ya no aguanta.",
         ],
         deliverables: [
-          "Mapa de los sistemas y de los datos que circulan entre ellos",
-          "APIs y conectores para tus sistemas",
-          "Verificaciones que detectan errores cerca de donde nacen",
-          "Alertas para saber cuándo falla una conexión",
-          "Agentes de IA conectados a tus herramientas, con acceso controlado",
+          "Mapa del flujo, fuentes de datos y reglas de negocio",
+          "Integración delimitada con los sistemas acordados",
+          "Tratamiento de errores, duplicados y reprocesamiento",
+          "Pruebas de extremo a extremo y evidencias de aceptación",
+          "Monitoreo previsto en el alcance e instrucciones de operación",
         ],
         measure: [
           "Retrabajo y errores de digitación, antes y después",
@@ -657,9 +657,9 @@ export const services: Service[] = [
               "Cuántos sistemas participan y qué tan bien están documentados. Una API documentada conecta rápido; un sistema antiguo sin documentación lleva más tiempo. El valor depende del alcance acordado.",
           },
           {
-            question: "¿Cómo evitan romper lo que ya funciona?",
+            question: "¿Cómo afecta la implantación a la operación?",
             answer:
-              "Probamos primero en una copia de los datos y pasamos a producción por etapas, con tus sistemas actuales funcionando todo el tiempo.",
+              "Probamos en un entorno adecuado, definimos el tratamiento de fallas y planificamos la implantación por etapas. Las dependencias, ventanas de cambio y reversión se acuerdan antes de modificar producción.",
           },
           {
             question: "¿Qué acceso necesitan?",
@@ -667,9 +667,9 @@ export const services: Service[] = [
               "Lectura o credenciales de prueba de los sistemas involucrados y alguien que sepa cómo se usa cada uno hoy.",
           },
           {
-            question: "¿Y si un sistema conectado cambia después?",
+            question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "Monitoreamos las integraciones para detectar fallas rápido y ajustamos la conexión cuando alguno de los lados cambia su API o sus reglas.",
+              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
           },
         ],
       },
@@ -689,9 +689,9 @@ export const services: Service[] = [
         slug: "modernizacao-de-sistemas",
         title: "Modernização de sistemas",
         summary:
-          "Atualizamos sistemas antigos por etapas, com o menor impacto possível na operação que depende deles.",
+          "Modernização de sistemas legados por etapas, com prioridades de negócio, testes e plano de reversão para cada mudança acordada.",
         intro:
-          "Sistema antigo raramente precisa ser refeito do zero. Modernizamos por etapas, trocando o que trava sua equipe e protegendo a operação a cada passo. Começamos medindo quanto as entregas levam hoje, para a melhora ter base de comparação.",
+          "Quando o legado torna cada mudança lenta ou arriscada, a decisão envolve continuidade da operação e custo de manutenção. Avaliamos dependências e alternativas, priorizamos um componente e planejamos a transição com testes e condições de reversão.",
         problems: [
           "Toda funcionalidade nova demora porque o código resiste à mudança.",
           "O sistema funciona, mas ninguém quer mexer nele.",
@@ -699,11 +699,11 @@ export const services: Service[] = [
           "Relatórios lentos ou com números em que ninguém confia.",
         ],
         deliverables: [
-          "Diagnóstico do sistema e dos pontos mais arriscados",
-          "Plano de migração em etapas, com o sistema no ar",
-          "Serviços refatorados e componentes reutilizáveis",
-          "Testes automatizados nas áreas que mudamos",
-          "Migração para a nuvem (AWS) quando fizer sentido",
+          "Diagnóstico do componente e das dependências",
+          "Plano de evolução priorizado por impacto e risco",
+          "Incremento de modernização com escopo definido",
+          "Testes de regressão e plano de reversão ou recuperação",
+          "Documentação das mudanças e orientação de continuidade",
         ],
         measure: [
           "Tempo de entrega de mudanças, medido antes de começar",
@@ -737,9 +737,9 @@ export const services: Service[] = [
         slug: "system-modernization",
         title: "System modernization",
         summary:
-          "We update old systems in stages, with as little impact as possible on the operation that depends on them.",
+          "Step-by-step legacy modernization with business priorities, tests and a rollback plan for each agreed change.",
         intro:
-          "An old system rarely needs to be rebuilt from scratch. We modernize in stages, replacing what holds your team back while protecting operations at every step. We start by measuring how long deliveries take today, so the improvement has a baseline.",
+          "When legacy systems make every change slow or risky, decisions must account for operational continuity and maintenance cost. We assess dependencies and alternatives, prioritize one component and plan the transition with tests and rollback conditions.",
         problems: [
           "Every new feature takes long because the code resists change.",
           "The system works, but nobody wants to touch it.",
@@ -747,11 +747,11 @@ export const services: Service[] = [
           "Slow reports, or numbers nobody trusts.",
         ],
         deliverables: [
-          "A diagnosis of the system and its riskiest parts",
-          "A staged migration plan that keeps the system live",
-          "Refactored services and reusable components",
-          "Automated tests in the areas we change",
-          "Migration to the cloud (AWS) when it makes sense",
+          "Assessment of the component and its dependencies",
+          "Evolution plan prioritized by impact and risk",
+          "Modernization increment with defined scope",
+          "Regression tests and rollback or recovery plan",
+          "Change documentation and continuity guidance",
         ],
         measure: [
           "Lead time for changes, measured before we start",
@@ -785,9 +785,9 @@ export const services: Service[] = [
         slug: "modernizacion-de-sistemas",
         title: "Modernización de sistemas",
         summary:
-          "Actualizamos sistemas antiguos por etapas, con el menor impacto posible en la operación que depende de ellos.",
+          "Modernización gradual de sistemas legados, con prioridades de negocio, pruebas y plan de reversión para cada cambio acordado.",
         intro:
-          "Un sistema antiguo rara vez necesita rehacerse desde cero. Modernizamos por etapas, cambiando lo que frena a tu equipo y protegiendo la operación en cada paso. Empezamos midiendo cuánto tardan hoy las entregas, para que la mejora tenga una base de comparación.",
+          "Cuando el legado vuelve lento o riesgoso cada cambio, la decisión debe considerar la continuidad operativa y el costo de mantenimiento. Evaluamos dependencias y alternativas, priorizamos un componente y planificamos la transición con pruebas y condiciones de reversión.",
         problems: [
           "Cada función nueva tarda porque el código se resiste al cambio.",
           "El sistema funciona, pero nadie quiere tocarlo.",
@@ -795,11 +795,11 @@ export const services: Service[] = [
           "Informes lentos o con números en los que nadie confía.",
         ],
         deliverables: [
-          "Diagnóstico del sistema y de sus partes más riesgosas",
-          "Plan de migración por etapas, con el sistema en línea",
-          "Servicios refactorizados y componentes reutilizables",
-          "Pruebas automatizadas en las áreas que cambiamos",
-          "Migración a la nube (AWS) cuando tiene sentido",
+          "Diagnóstico del componente y sus dependencias",
+          "Plan de evolución priorizado por impacto y riesgo",
+          "Incremento de modernización con alcance definido",
+          "Pruebas de regresión y plan de reversión o recuperación",
+          "Documentación de cambios e instrucciones de continuidad",
         ],
         measure: [
           "Tiempo de entrega de cambios, medido antes de empezar",
@@ -844,9 +844,9 @@ export const services: Service[] = [
         slug: "inteligencia-artificial",
         title: "Inteligência artificial aplicada",
         summary:
-          "Assistentes e automações com IA ligados ao conhecimento da sua empresa, com revisão humana e custo sob controle.",
+          "Avalie IA em uma tarefa de negócio com protótipo, critérios de qualidade, custo por tarefa e revisão humana antes de ampliar o investimento.",
         intro:
-          "IA é útil quando faz uma tarefa definida, com os dados certos, e alguém confere o resultado. Ligamos a IA aos documentos e sistemas da empresa, com acesso controlado, avaliação de qualidade e custo por tarefa acompanhado. A Iris, assistente deste site, é um exemplo real.",
+          "A decisão de usar IA precisa considerar a tarefa, a qualidade dos dados e o esforço de revisão. Delimitamos um fluxo e comparamos o protótipo com o processo atual. A Iris é uma demonstração interna de atendimento inicial; sua presença neste site não comprova resultados em operações de clientes.",
         problems: [
           "A equipe ou os clientes repetem as mesmas perguntas, e alguém procura a resposta toda vez.",
           "A informação está espalhada em documentos, planilhas e sistemas.",
@@ -854,11 +854,11 @@ export const services: Service[] = [
           "Você quer automatizar uma tarefa com várias etapas, não só responder perguntas.",
         ],
         deliverables: [
-          "Uma tarefa definida, com os dados que ela usa",
-          "Respostas baseadas nos seus documentos (RAG)",
-          "Agentes que agem com regras e acesso definidos",
-          "Avaliação de qualidade com perguntas reais",
-          "Revisão humana onde o risco pede, e custo por tarefa acompanhado",
+          "Tarefa, dados autorizados e ações permitidas documentados",
+          "Protótipo delimitado com fontes de informação identificadas",
+          "Conjunto de avaliação com exemplos reais e situações de erro",
+          "Relatório de qualidade, custo por tarefa e esforço de revisão",
+          "Limites, controles de acesso e recomendação sobre continuidade",
         ],
         measure: [
           "Tarefa, dados e o que conta como resposta correta, definidos antes de construir",
@@ -867,14 +867,14 @@ export const services: Service[] = [
         ],
         faq: [
           {
-            question: "O que define o custo de um projeto de IA?",
+            question: "O que entra no custo de um projeto de IA?",
             answer:
-              "Costuma estar mais em como o conhecimento está organizado e em quanta verificação as respostas pedem do que na IA em si. Um piloto numa tarefa mostra se vale expandir. O valor depende do escopo combinado.",
+              "Organização dos dados, integrações, desenvolvimento, avaliação e revisão humana. O orçamento também considera consumo de modelos, infraestrutura e manutenção. Um protótipo ajuda a medir essas variáveis antes de decidir pela produção.",
           },
           {
             question: "Como começa o primeiro projeto de IA?",
             answer:
-              "Por uma tarefa que já vale a pena resolver sozinha. Construímos um piloto nela e você tem um exemplo funcionando e dados reais de uso antes de investir mais.",
+              "Definimos uma tarefa, exemplos representativos e critérios de qualidade. O protótipo é avaliado quanto a acertos, falhas, custo e esforço de revisão. O resultado pode recomendar avançar, ajustar ou interromper; produção exige avaliação e escopo próprios.",
           },
           {
             question: "O que precisamos ter pronto?",
@@ -882,9 +882,9 @@ export const services: Service[] = [
               "Os documentos ou sistemas que a IA deve usar e alguém que perceba quando uma resposta está errada.",
           },
           {
-            question: "Como as respostas continuam confiáveis com o tempo?",
+            question: "Como funciona a continuidade após a entrega?",
             answer:
-              "Acompanhamos qualidade e custo e ajustamos fontes e verificações quando o conteúdo e o uso mudam.",
+              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
           },
         ],
       },
@@ -892,9 +892,9 @@ export const services: Service[] = [
         slug: "applied-ai",
         title: "Applied AI",
         summary:
-          "AI assistants and automations tied to your company's knowledge, with human review and cost under control.",
+          "Evaluate AI on a business task with a prototype, quality criteria, cost per task and human review before increasing the investment.",
         intro:
-          "AI is useful when it does a defined task, with the right data, and someone checks the result. We connect AI to your documents and systems, with controlled access, quality evaluation and cost per task tracked. Iris, this site's assistant, is a real example.",
+          "An AI decision must consider the task, data quality and review effort. We define one workflow and compare the prototype with the current process. Iris is an internal demonstration of initial enquiries; its presence on this website does not establish results in client operations.",
         problems: [
           "Staff or customers keep asking the same questions, and someone looks up the answer every time.",
           "Information is scattered across documents, spreadsheets and systems.",
@@ -902,11 +902,11 @@ export const services: Service[] = [
           "You want to automate a multi-step task, not just answer questions.",
         ],
         deliverables: [
-          "A defined task, with the data it uses",
-          "Answers based on your documents (RAG)",
-          "Agents that act within defined rules and access",
-          "Quality evaluation with real questions",
-          "Human review where risk calls for it, and cost per task tracked",
+          "Documented task, authorized data and permitted actions",
+          "Bounded prototype with identified information sources",
+          "Evaluation set with real examples and error scenarios",
+          "Report on quality, cost per task and review effort",
+          "Limits, access controls and a recommendation on next steps",
         ],
         measure: [
           "Task, data and what counts as a correct answer, defined before building",
@@ -915,14 +915,14 @@ export const services: Service[] = [
         ],
         faq: [
           {
-            question: "What sets the cost of an AI project?",
+            question: "What goes into the cost of an AI project?",
             answer:
-              "It's usually more about how the knowledge is organized and how much checking answers need than about the AI itself. A pilot on one task shows whether it's worth expanding. The figure depends on the agreed scope.",
+              "Data preparation, integrations, development, evaluation and human review. The budget also considers model usage, infrastructure and maintenance. A prototype helps measure these variables before a production decision.",
           },
           {
             question: "How does a first AI project start?",
             answer:
-              "With a task already worth solving on its own. We build a pilot on it, and you get a working example and real usage data before investing more.",
+              "We define a task, representative examples and quality criteria. The prototype is evaluated for correct outputs, failures, cost and review effort. Results may support proceeding, adjusting or stopping; production requires its own assessment and scope.",
           },
           {
             question: "What do we need to have ready?",
@@ -930,9 +930,9 @@ export const services: Service[] = [
               "The documents or systems the AI should use, and someone who can tell when an answer is wrong.",
           },
           {
-            question: "How do answers stay reliable over time?",
+            question: "How does continuity work after delivery?",
             answer:
-              "We track quality and cost and adjust sources and checks as content and usage change.",
+              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
           },
         ],
       },
@@ -940,9 +940,9 @@ export const services: Service[] = [
         slug: "inteligencia-artificial",
         title: "Inteligencia artificial aplicada",
         summary:
-          "Asistentes y automatizaciones con IA conectados al conocimiento de tu empresa, con revisión humana y costo bajo control.",
+          "Evalúa IA en una tarea de negocio con prototipo, criterios de calidad, costo por tarea y revisión humana antes de ampliar la inversión.",
         intro:
-          "La IA es útil cuando hace una tarea definida, con los datos correctos, y alguien revisa el resultado. Conectamos la IA a los documentos y sistemas de la empresa, con acceso controlado, evaluación de calidad y costo por tarea seguido. Iris, la asistente de este sitio, es un ejemplo real.",
+          "La decisión de usar IA debe considerar la tarea, la calidad de los datos y el esfuerzo de revisión. Delimitamos un flujo y comparamos el prototipo con el proceso actual. Iris es una demostración interna de atención inicial; su presencia en este sitio no demuestra resultados en operaciones de clientes.",
         problems: [
           "El equipo o los clientes repiten las mismas preguntas y alguien busca la respuesta cada vez.",
           "La información está dispersa en documentos, hojas de cálculo y sistemas.",
@@ -950,11 +950,11 @@ export const services: Service[] = [
           "Quieres automatizar una tarea de varios pasos, no solo responder preguntas.",
         ],
         deliverables: [
-          "Una tarea definida, con los datos que usa",
-          "Respuestas basadas en tus documentos (RAG)",
-          "Agentes que actúan con reglas y acceso definidos",
-          "Evaluación de calidad con preguntas reales",
-          "Revisión humana donde el riesgo lo pide, y costo por tarea seguido",
+          "Tarea, datos autorizados y acciones permitidas documentados",
+          "Prototipo delimitado con fuentes de información identificadas",
+          "Conjunto de evaluación con ejemplos reales y situaciones de error",
+          "Informe de calidad, costo por tarea y esfuerzo de revisión",
+          "Límites, controles de acceso y recomendación sobre continuidad",
         ],
         measure: [
           "Tarea, datos y qué cuenta como respuesta correcta, definidos antes de construir",
@@ -963,14 +963,14 @@ export const services: Service[] = [
         ],
         faq: [
           {
-            question: "¿Qué define el costo de un proyecto de IA?",
+            question: "¿Qué incluye el costo de un proyecto de IA?",
             answer:
-              "Suele estar más en cómo se organiza el conocimiento y cuánta verificación piden las respuestas que en la IA en sí. Un piloto en una tarea muestra si vale la pena ampliar. El valor depende del alcance acordado.",
+              "Preparación de datos, integraciones, desarrollo, evaluación y revisión humana. El presupuesto también considera consumo de modelos, infraestructura y mantenimiento. Un prototipo ayuda a medir estas variables antes de decidir sobre producción.",
           },
           {
             question: "¿Cómo empieza el primer proyecto de IA?",
             answer:
-              "Por una tarea que ya vale la pena resolver por sí sola. Construimos un piloto sobre ella y tienes un ejemplo funcionando y datos reales de uso antes de invertir más.",
+              "Definimos una tarea, ejemplos representativos y criterios de calidad. El prototipo se evalúa por aciertos, fallas, costo y esfuerzo de revisión. El resultado puede recomendar avanzar, ajustar o detenerse; producción exige evaluación y alcance propios.",
           },
           {
             question: "¿Qué necesitamos tener listo?",
@@ -978,9 +978,9 @@ export const services: Service[] = [
               "Los documentos o sistemas que la IA debe usar y alguien que note cuándo una respuesta es errónea.",
           },
           {
-            question: "¿Cómo siguen confiables las respuestas con el tiempo?",
+            question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "Seguimos calidad y costo y ajustamos fuentes y verificaciones cuando cambian el contenido y el uso.",
+              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
           },
         ],
       },
@@ -991,7 +991,7 @@ export const services: Service[] = [
     icon: "Database",
     accent: "terracotta",
     deliverablesLayout: "checklist",
-    stack: ["aws", "bedrock"],
+    stack: ["aws"],
     pillar: "software",
     supportPillars: ["cloud", "ai"],
     technologies: ["PostgreSQL", "Python", "Redis", "AWS"],
@@ -1000,9 +1000,9 @@ export const services: Service[] = [
         slug: "dados-e-relatorios",
         title: "Dados e relatórios",
         summary:
-          "Dados organizados e painéis claros para decidir com base no que acontece de verdade.",
+          "Dados e relatórios para decisões operacionais, com fontes rastreáveis, regras de cálculo e critérios de qualidade definidos.",
         intro:
-          "Boa decisão pede dado confiável e um jeito claro de enxergá-lo. Organizamos como os dados são coletados, construímos painéis que as pessoas realmente usam e montamos os fluxos que os mantêm atualizados.",
+          "Números divergentes e relatórios manuais atrasam decisões. Partimos da decisão que precisa ser tomada para identificar fontes, regras e responsáveis. A entrega permite conferir a origem dos indicadores e acompanhar falhas de atualização.",
         problems: [
           "Times diferentes mostram números diferentes para a mesma coisa.",
           "Para ter um relatório, alguém precisa extrair os dados à mão.",
@@ -1010,11 +1010,11 @@ export const services: Service[] = [
           "Você decide no feeling porque o número demora a chegar.",
         ],
         deliverables: [
-          "Modelo de dados que reflete o seu negócio",
-          "Fluxos que mantêm os dados atualizados sozinhos",
-          "Base de dados pensada para as consultas que você faz",
-          "Painéis feitos em torno das decisões que apoiam",
-          "Documentação de onde vem cada número",
+          "Inventário de fontes e definição dos indicadores",
+          "Fluxos de coleta e atualização previstos no escopo",
+          "Regras de qualidade e conciliação dos dados",
+          "Relatórios ou painéis voltados às decisões acordadas",
+          "Dicionário de dados e instruções para tratar falhas",
         ],
         measure: [
           "Números que divergem hoje, com uma fonte única para cada um",
@@ -1038,9 +1038,9 @@ export const services: Service[] = [
               "Acesso às fontes de dados atuais e uma conversa com quem decide com base nesses números hoje.",
           },
           {
-            question: "O que acontece se uma fonte de dados mudar?",
+            question: "Como funciona a continuidade após a entrega?",
             answer:
-              "Monitoramos os fluxos para perceber rápido quando uma fonte quebra e ajustamos conforme seus sistemas evoluem.",
+              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
           },
         ],
       },
@@ -1048,9 +1048,9 @@ export const services: Service[] = [
         slug: "data-and-reporting",
         title: "Data and reporting",
         summary:
-          "Organized data and clear dashboards to decide based on what actually happens.",
+          "Data and reporting for operational decisions, with traceable sources, calculation rules and defined quality criteria.",
         intro:
-          "Good decisions need reliable data and a clear way to see it. We organize how data is collected, build dashboards people actually use and set up the flows that keep them up to date.",
+          "Conflicting figures and manual reports delay decisions. We start with the decision that needs to be made to identify sources, rules and owners. The delivery lets you verify where indicators come from and track update failures.",
         problems: [
           "Different teams show different numbers for the same thing.",
           "Getting a report means someone pulls the data by hand.",
@@ -1058,11 +1058,11 @@ export const services: Service[] = [
           "You decide by gut feeling because numbers arrive too late.",
         ],
         deliverables: [
-          "A data model that reflects your business",
-          "Flows that keep data up to date on their own",
-          "A database built for the queries you actually run",
-          "Dashboards built around the decisions they support",
-          "Documentation of where each number comes from",
+          "Source inventory and indicator definitions",
+          "Data collection and update flows in scope",
+          "Data quality and reconciliation rules",
+          "Reports or dashboards for the agreed decisions",
+          "Data dictionary and failure handling instructions",
         ],
         measure: [
           "Numbers that diverge today, with a single source for each",
@@ -1086,9 +1086,9 @@ export const services: Service[] = [
               "Access to your current data sources and a conversation with whoever decides based on these numbers today.",
           },
           {
-            question: "What happens if a data source changes?",
+            question: "How does continuity work after delivery?",
             answer:
-              "We monitor the flows to notice quickly when a source breaks, and adjust as your systems evolve.",
+              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
           },
         ],
       },
@@ -1096,9 +1096,9 @@ export const services: Service[] = [
         slug: "datos-e-informes",
         title: "Datos e informes",
         summary:
-          "Datos organizados y paneles claros para decidir con base en lo que realmente pasa.",
+          "Datos e informes para decisiones operativas, con fuentes rastreables, reglas de cálculo y criterios de calidad definidos.",
         intro:
-          "Una buena decisión pide datos confiables y una forma clara de verlos. Organizamos cómo se recolectan los datos, construimos paneles que la gente realmente usa y armamos los flujos que los mantienen actualizados.",
+          "Los números divergentes y los informes manuales retrasan decisiones. Partimos de la decisión que debe tomarse para identificar fuentes, reglas y responsables. La entrega permite verificar el origen de los indicadores y seguir las fallas de actualización.",
         problems: [
           "Equipos distintos muestran números distintos para lo mismo.",
           "Para tener un informe, alguien debe extraer los datos a mano.",
@@ -1106,11 +1106,11 @@ export const services: Service[] = [
           "Decides por intuición porque el número tarda en llegar.",
         ],
         deliverables: [
-          "Un modelo de datos que refleja tu negocio",
-          "Flujos que mantienen los datos actualizados solos",
-          "Una base de datos pensada para las consultas que haces",
-          "Paneles construidos en torno a las decisiones que apoyan",
-          "Documentación de dónde sale cada número",
+          "Inventario de fuentes y definición de indicadores",
+          "Flujos de recopilación y actualización previstos en el alcance",
+          "Reglas de calidad y conciliación de datos",
+          "Informes o paneles para las decisiones acordadas",
+          "Diccionario de datos e instrucciones para tratar fallas",
         ],
         measure: [
           "Números que hoy divergen, con una fuente única para cada uno",
@@ -1134,9 +1134,9 @@ export const services: Service[] = [
               "Acceso a las fuentes de datos actuales y una conversación con quien decide con base en esos números hoy.",
           },
           {
-            question: "¿Qué pasa si una fuente de datos cambia?",
+            question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "Monitoreamos los flujos para notar rápido cuándo se rompe una fuente y ajustamos a medida que evolucionan tus sistemas.",
+              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
           },
         ],
       },
@@ -1155,9 +1155,9 @@ export const services: Service[] = [
         slug: "nuvem-e-arquitetura",
         title: "Nuvem e arquitetura",
         summary:
-          "Estrutura na nuvem que aguenta o crescimento, com monitoramento e custo acompanhado.",
+          "Diagnóstico e evolução de ambientes AWS, com análise de custo, confiabilidade e riscos para orientar a próxima mudança da operação.",
         intro:
-          "Infraestrutura deveria ser algo em que você raramente pensa. Fazemos o diagnóstico do ambiente, migramos e desenhamos a arquitetura na AWS, e deixamos tudo observável: confiabilidade, capacidade e custo acompanhados.",
+          "Custos pouco claros, incidentes e limites de capacidade tornam decisões de infraestrutura difíceis. Avaliamos o ambiente e comparamos alternativas considerando custo total e risco. Migração ou modernização recebe escopo próprio, com plano de mudança e recuperação.",
         problems: [
           "O sistema fica lento ou cai nos horários de pico.",
           "Você só sabe que algo quebrou quando um cliente avisa.",
@@ -1165,11 +1165,11 @@ export const services: Service[] = [
           "Você vai crescer e não sabe se a estrutura aguenta.",
         ],
         deliverables: [
-          "Diagnóstico do ambiente: estado atual, riscos e arquitetura-alvo",
-          "Migração ou arquitetura na AWS, dimensionada para o tráfego real",
-          "Monitoramento e alertas para ver o problema antes do cliente",
-          "Plano de recuperação e rotina de backup",
-          "Custo por serviço acompanhado (FinOps) e ambiente documentado",
+          "Inventário do ambiente e registro de custos e riscos",
+          "Arquitetura proposta e comparação das alternativas",
+          "Plano priorizado de mudanças, dependências e estimativas",
+          "Critérios de monitoramento, backup e recuperação",
+          "Quando contratada, mudança delimitada com testes e documentação",
         ],
         measure: [
           "Metas de disponibilidade, desempenho e custo mensal, a partir das medições atuais",
@@ -1183,9 +1183,9 @@ export const services: Service[] = [
               "Os recursos que o seu tráfego realmente pede e como o sistema foi desenhado. Dimensionamos para o uso real e buscamos reduzir custo sem perder desempenho. O valor depende do escopo combinado.",
           },
           {
-            question: "Como melhoram um sistema existente sem parar tudo?",
+            question: "Como planejam mudanças em um ambiente existente?",
             answer:
-              "Medimos primeiro, mudamos a parte da arquitetura com maior impacto, confirmamos a melhora e seguimos. Mudanças que pedem uma janela de manutenção são combinadas antes, no horário de menor uso.",
+              "Partimos do diagnóstico, das dependências e do impacto esperado. A execução requer escopo, ensaio, critérios de aceite, janela de mudança e recuperação definidos. A continuidade da operação é um requisito a avaliar em cada cenário.",
           },
           {
             question: "Que acesso vocês precisam?",
@@ -1203,9 +1203,9 @@ export const services: Service[] = [
         slug: "cloud-and-architecture",
         title: "Cloud and architecture",
         summary:
-          "Cloud infrastructure that holds up as you grow, with monitoring and tracked cost.",
+          "AWS assessment and infrastructure evolution, with cost, reliability and risk analysis to guide the next operational change.",
         intro:
-          "Infrastructure should be something you rarely think about. We assess the environment, migrate and design the architecture on AWS, and make everything observable: reliability, capacity and cost tracked.",
+          "Unclear costs, incidents and capacity limits make infrastructure decisions difficult. We assess the environment and compare alternatives based on total cost and risk. Migration or modernization has its own scope, with change and recovery plans.",
         problems: [
           "The system slows down or goes down at peak times.",
           "You only learn something broke when a customer tells you.",
@@ -1213,11 +1213,11 @@ export const services: Service[] = [
           "You're about to grow and don't know if the setup can take it.",
         ],
         deliverables: [
-          "Environment assessment: current state, risks and target architecture",
-          "Migration or architecture on AWS, sized for real traffic",
-          "Monitoring and alerts to see problems before customers do",
-          "A recovery plan and backup routine",
-          "Cost per service tracked (FinOps) and the environment documented",
+          "Environment inventory and record of costs and risks",
+          "Proposed architecture and comparison of alternatives",
+          "Prioritized change plan, dependencies and estimates",
+          "Monitoring, backup and recovery criteria",
+          "When contracted, a bounded change with tests and documentation",
         ],
         measure: [
           "Availability, performance and monthly cost targets, from current measurements",
@@ -1231,10 +1231,9 @@ export const services: Service[] = [
               "The resources your traffic actually needs and how the system is designed. We size for real usage and look for savings without losing performance. The figure depends on the agreed scope.",
           },
           {
-            question:
-              "How do you improve an existing system without stopping everything?",
+            question: "How do you plan changes to an existing environment?",
             answer:
-              "We measure first, change the part of the architecture with the highest impact, confirm the improvement and move on. Changes that need a maintenance window are agreed in advance, at the lowest-traffic time.",
+              "We start with the assessment, dependencies and expected impact. Execution requires defined scope, rehearsal, acceptance criteria, change window and recovery. Operational continuity must be assessed for each scenario.",
           },
           {
             question: "What access do you need?",
@@ -1252,9 +1251,9 @@ export const services: Service[] = [
         slug: "nube-y-arquitectura",
         title: "Nube y arquitectura",
         summary:
-          "Infraestructura en la nube que aguanta el crecimiento, con monitoreo y costo seguido.",
+          "Diagnóstico y evolución de entornos AWS, con análisis de costo, confiabilidad y riesgos para orientar el próximo cambio operativo.",
         intro:
-          "La infraestructura debería ser algo en lo que rara vez piensas. Hacemos el diagnóstico del entorno, migramos y diseñamos la arquitectura en AWS, y dejamos todo observable: confiabilidad, capacidad y costo seguidos.",
+          "Los costos poco claros, incidentes y límites de capacidad dificultan las decisiones de infraestructura. Evaluamos el entorno y comparamos alternativas considerando costo total y riesgo. La migración o modernización tiene alcance propio, con plan de cambio y recuperación.",
         problems: [
           "El sistema se vuelve lento o se cae en horas pico.",
           "Solo te enteras de que algo falló cuando un cliente avisa.",
@@ -1262,11 +1261,11 @@ export const services: Service[] = [
           "Vas a crecer y no sabes si la estructura aguanta.",
         ],
         deliverables: [
-          "Diagnóstico del entorno: estado actual, riesgos y arquitectura objetivo",
-          "Migración o arquitectura en AWS, dimensionada para el tráfico real",
-          "Monitoreo y alertas para ver el problema antes que el cliente",
-          "Plan de recuperación y rutina de respaldo",
-          "Costo por servicio seguido (FinOps) y entorno documentado",
+          "Inventario del entorno y registro de costos y riesgos",
+          "Arquitectura propuesta y comparación de alternativas",
+          "Plan priorizado de cambios, dependencias y estimaciones",
+          "Criterios de monitoreo, respaldo y recuperación",
+          "Cuando se contrata, cambio delimitado con pruebas y documentación",
         ],
         measure: [
           "Metas de disponibilidad, desempeño y costo mensual, a partir de las mediciones actuales",
@@ -1280,9 +1279,9 @@ export const services: Service[] = [
               "Los recursos que tu tráfico realmente pide y cómo se diseñó el sistema. Dimensionamos para el uso real y buscamos reducir costo sin perder desempeño. El valor depende del alcance acordado.",
           },
           {
-            question: "¿Cómo mejoran un sistema existente sin detener todo?",
+            question: "¿Cómo planifican cambios en un entorno existente?",
             answer:
-              "Medimos primero, cambiamos la parte de la arquitectura con mayor impacto, confirmamos la mejora y seguimos. Los cambios que requieren una ventana de mantenimiento se acuerdan antes, en el horario de menor uso.",
+              "Partimos del diagnóstico, las dependencias y el impacto esperado. La ejecución requiere alcance, ensayo, criterios de aceptación, ventana de cambio y recuperación definidos. La continuidad operativa se evalúa en cada escenario.",
           },
           {
             question: "¿Qué acceso necesitan?",

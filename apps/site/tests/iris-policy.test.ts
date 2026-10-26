@@ -22,10 +22,12 @@ describe("Iris policy", () => {
     expect(companyKnowledge).toContain("Belém · PA · Brazil");
   });
 
-  it("carries no unpublished clients, figures or locations", () => {
-    expect(companyKnowledge).not.toMatch(
-      /LeafLink|Dasa|Perfect ?Pay|São Paulo|\b8 years|4[.,]9/i,
+  it("attributes contractor work personally and carries no unsupported figures or locations", () => {
+    expect(companyKnowledge).toContain("His personal contractor work");
+    expect(companyKnowledge).toContain(
+      "must never be attributed as IRTC clients or case studies",
     );
+    expect(companyKnowledge).not.toMatch(/São Paulo|\b8 years|4[.,]9/i);
   });
 
   it("keeps the answer limit, the escalation to the team and the no-commitment rules", () => {

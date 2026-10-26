@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EngagementOptions } from "@/components/engagement-options";
 import Link from "next/link";
 import { Cloud, Code2, Sparkles } from "lucide-react";
 import { ContactCta } from "@/components/contact-cta";
@@ -75,6 +76,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
       />
       <section className="page-intro services-page-intro section-pad">
         <ServiceBreadcrumb
+          label={copy.breadcrumbLabel}
           items={[
             { label: copy.breadcrumbHome, href: home },
             { label: copy.breadcrumbServices },
@@ -83,6 +85,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
         <h1>{pageCopy.services[locale].heading}</h1>
         <p>{copy.intro}</p>
       </section>
+      <EngagementOptions locale={locale} />
       <section className="service-grid-section section-pad">
         <h2>{copy.gridTitle}</h2>
         {pillars.map((pillar) => {

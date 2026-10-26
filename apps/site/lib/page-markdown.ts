@@ -4,6 +4,7 @@ import { aboutCopy } from "./copy/about";
 import { cultureCopy, missionCopy, visionCopy } from "./copy/culture";
 import { founderCopy, founderSectionCopy } from "./copy/founder";
 import { homeCopy, pageCopy } from "./copy/pages";
+import { engagementCopy } from "./copy/engagement";
 import { servicesPageCopy } from "./copy/services-page";
 import {
   absoluteUrl,
@@ -120,6 +121,24 @@ function document(...blocks: (string | false | undefined)[]) {
   return `${blocks.filter(Boolean).join("\n\n")}\n`;
 }
 
+function engagements(locale: Locale) {
+  const copy = engagementCopy[locale];
+  return [
+    heading(2, copy.title),
+    copy.intro,
+    ...copy.items.flatMap((item) => [
+      heading(3, item.title),
+      item.problem,
+      `${copy.deliveryLabel}: ${item.delivery}`,
+      `${copy.decisionLabel}: ${item.decision}`,
+      serviceItem(
+        locale,
+        services.find((service) => service.id === item.service)!,
+      ),
+    ]),
+  ];
+}
+
 function home(locale: Locale) {
   const copy = content[locale];
   const founder = founderSectionCopy[locale];
@@ -129,6 +148,7 @@ function home(locale: Locale) {
     heading(1, hero.title),
     hero.eyebrow,
     hero.description,
+    ...engagements(locale),
     heading(2, joined(manifesto.title, manifesto.accent)),
     manifesto.foot,
     ...titled(3, manifesto.points),
@@ -167,6 +187,7 @@ function servicesIndex(locale: Locale) {
   return document(
     heading(1, pageCopy.services[locale].heading ?? copy.breadcrumbServices),
     copy.intro,
+    ...engagements(locale),
     heading(2, copy.gridTitle),
     ...pillars.flatMap((pillar) => [
       heading(3, pillarNames[pillar]),
@@ -252,8 +273,6 @@ function about(locale: Locale) {
     heading(2, copy.founderTitle),
     copy.founderText,
     link(copy.founderLink, pagePath(locale, "founder")),
-    heading(2, copy.galleryTitle),
-    copy.galleryIntro,
     stats.length > 0 && heading(2, statsHeading[locale]),
     stats.length > 0 &&
       bullets(
@@ -273,6 +292,7 @@ function founderPage(locale: Locale) {
     copy.intro,
     link(copy.linkedinLabel, company.founder.linkedin),
     ...copy.bio,
+    copy.storyTag,
     heading(2, copy.storyTitle),
     copy.storyLead,
     ...copy.story.flatMap((block, index) => [
@@ -318,6 +338,7 @@ function culture(locale: Locale) {
   return document(
     heading(1, copy.title),
     copy.intro,
+    copy.storyTag,
     heading(2, copy.storyTitle),
     ...copy.story,
     heading(2, copy.practicesTitle),
@@ -356,6 +377,7 @@ function mission(locale: Locale) {
     ...titled(3, copy.verbs),
     heading(2, copy.commitmentsTitle),
     ...titled(3, copy.commitments),
+    copy.storyTag,
     heading(2, copy.storyTitle),
     ...copy.story,
     ...related(locale, "mission", copy.relatedTitle),
@@ -372,6 +394,7 @@ function vision(locale: Locale) {
     `> ${statement.text}`,
     heading(2, copy.partsTitle),
     ...titled(3, copy.parts),
+    copy.storyTag,
     heading(2, copy.storyTitle),
     ...copy.story,
     copy.signature,

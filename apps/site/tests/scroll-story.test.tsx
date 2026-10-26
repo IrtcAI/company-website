@@ -14,7 +14,9 @@ describe("scroll story", () => {
       </Motion>,
     );
     expect(container.firstChild).toHaveAttribute("data-enhanced", "false");
-    expect(screen.getByText("Qualidade desde o início.")).toBeVisible();
+    expect(
+      screen.getByText(content["pt-BR"].manifesto.points[1].title),
+    ).toBeVisible();
   });
 
   it("disables the pinned scene and restores hero access when paused", () => {

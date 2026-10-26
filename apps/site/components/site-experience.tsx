@@ -14,6 +14,7 @@ import { DevelopmentWorld } from "./development-world";
 import { Founder } from "./founder";
 import { HomeHero } from "./home-hero";
 import { HomePillars } from "./home-pillars";
+import { EngagementOptions } from "./engagement-options";
 
 const focusIcons = [
   <Cloud key="aws" aria-hidden="true" />,
@@ -49,6 +50,7 @@ export function SiteExperience({ locale = "pt-BR" }: { locale?: Locale }) {
         contact={contact}
         services={servicesHref}
       />
+      <EngagementOptions locale={locale} />
       <section className="solutions section-pad" id="servicos" tabIndex={-1}>
         <DevelopmentWorld />
         <div className="section-label">

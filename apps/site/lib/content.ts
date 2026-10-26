@@ -61,7 +61,7 @@ export const content = {
     },
     skip: "Pular para o conteúdo",
     home: "IRTC, início",
-    talk: "Vamos conversar",
+    talk: "Converse sobre seu desafio",
     menu: "Menu",
     menuClose: "Fechar menu",
     language: "Idioma",
@@ -71,9 +71,9 @@ export const content = {
       eyebrow: "Da Amazônia para o seu próximo desafio.",
       title: "We engineer what moves your business forward.",
       description:
-        "Removemos gargalos de tecnologia com engenharia de cloud, software e IA. Projetamos, construímos e modernizamos os sistemas que o seu negócio precisa para avançar.",
-      cta: "Traga o problema",
-      secondaryCta: "Conheça os serviços",
+        "Quando sistemas desconectados, trabalho manual ou instabilidade limitam sua operação, a IRTC conecta diagnóstico e execução. Definimos uma mudança viável, entregamos o escopo e avaliamos o resultado com você.",
+      cta: "Converse sobre seu desafio",
+      secondaryCta: "Veja como podemos ajudar",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
       pause: "Pausar animações",
       play: "Ativar animações",
@@ -81,22 +81,22 @@ export const content = {
     },
     manifesto: {
       label: "01 / NOSSO JEITO",
-      aside: "COMUNICAÇÃO CLARA. ENTREGA CONSISTENTE.",
+      aside: "DECISÕES CLARAS. ENTREGAS VERIFICÁVEIS.",
       title: "Engenharia próxima",
       accent: "da sua operação.",
       foot: "Entendemos o que precisa mudar antes de construir.",
       points: [
         {
-          title: "Ciclos curtos, prioridades claras.",
-          text: "Definimos prioridades, entregamos em ciclos curtos e mostramos o que está pronto e o que vem depois.",
+          title: "Decidir com contexto.",
+          text: "Mapeamos o impacto do problema, as restrições e as alternativas. Você recebe prioridades e critérios para decidir onde investir.",
         },
         {
-          title: "Qualidade desde o início.",
-          text: "Arquitetura, testes e monitoramento fazem parte do projeto desde o início.",
+          title: "Acompanhar a entrega.",
+          text: "O escopo define o que será entregue e como será aceito. Demonstrações, testes e registro de riscos permitem acompanhar o trabalho.",
         },
         {
-          title: "Lançamento com continuidade.",
-          text: "O lançamento inclui documentação e condições claras para suporte e evolução.",
+          title: "Manter autonomia para operar.",
+          text: "Código, documentação e orientações de operação integram o escopo acordado. Suporte e evolução têm condições próprias.",
         },
       ],
     },
@@ -120,15 +120,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "Projetamos e evoluímos ambientes de cloud para atender às necessidades de confiabilidade, capacidade e custo da operação. Nosso foco técnico é AWS.",
+          text: "Entenda o custo e o risco do ambiente que sustenta sua operação. Diagnóstico, arquitetura e mudanças planejadas, com foco técnico em AWS.",
         },
         {
           name: "Software Engineering",
-          text: "Construímos produtos e plataformas, integramos sistemas e modernizamos legado para que equipes e usuários consigam trabalhar melhor.",
+          text: "Conecte sistemas e elimine etapas manuais que atrasam o trabalho. Integrações, evolução de produtos e modernização com escopo e aceite definidos.",
         },
         {
           name: "AI Engineering",
-          text: "Aplicamos IA ao conhecimento e aos processos da empresa, com tarefa definida, avaliação de qualidade e controle de acesso e custo.",
+          text: "Avalie onde a IA pode ajudar em uma tarefa concreta. Protótipos com dados autorizados, critérios de qualidade, custo por tarefa e revisão humana.",
         },
       ],
       continuity: {
@@ -139,19 +139,28 @@ export const content = {
       allServices: "Ver todos os serviços",
       techTitle: "Nosso foco: AWS e IA aplicada.",
       techFocus: [
-        { name: "AWS", role: "Onde o sistema roda, escala e é monitorado." },
+        {
+          name: "AWS",
+          role: "Onde o sistema roda, escala e é monitorado.",
+        },
         {
           name: "Amazon Bedrock",
           role: "IA que responde com os documentos da empresa.",
         },
-        { name: "Agentes de IA", role: "Agem com regras e revisão definidas." },
-        { name: "MCP", role: "Conecta agentes às ferramentas da empresa." },
+        {
+          name: "Agentes de IA",
+          role: "Agem com regras e revisão definidas.",
+        },
+        {
+          name: "MCP",
+          role: "Conecta agentes às ferramentas da empresa.",
+        },
       ],
       techProductTitle: "Stack de produto, escolhida por projeto",
       cta: {
         title: "O que precisa avançar no seu negócio?",
-        text: "Conte onde a tecnologia limita sua operação e o que você quer mudar. A equipe da IRTC analisa o contexto e combina o próximo passo.",
-        action: "Traga o problema",
+        text: "Conte qual processo está limitado, quem é afetado e o que precisa mudar. Iago Rodrigues, fundador e responsável técnico, analisa o contexto para definir o próximo passo.",
+        action: "Converse sobre seu desafio",
         iris: "Organize o contexto com a Iris",
       },
     },
@@ -168,20 +177,20 @@ export const content = {
       label: "DE BELÉM, CONECTADOS AO SEU NEGÓCIO.",
       title: "Da Amazônia",
       accent: "para o seu próximo desafio.",
-      body: "A IRTC tem base em Belém, no Pará, na Amazônia, e trabalha com equipes onde elas estiverem. Nossa origem acompanha uma forma próxima de fazer engenharia: comunicação clara, cuidado com a entrega e continuidade definida desde o projeto.",
+      body: "A IRTC tem base em Belém, no Pará, e atendimento remoto. O trabalho é conduzido por Iago Rodrigues, com interlocutores, responsabilidades e disponibilidade definidos para cada projeto.",
       vision:
         "Queremos que empresas de todos os tamanhos tenham acesso a software bem feito, com comunicação clara e uma parceria que continua depois do lançamento.",
-      cta: "Traga o problema",
+      cta: "Converse sobre seu desafio",
       mapTitle: "Belém é o ponto de partida.",
       mapDescription:
         "Belém, no Pará, é a nossa base. Trabalhamos com equipes onde elas estiverem.",
     },
     contact: {
       label: "VAMOS ENTENDER O SEU DESAFIO.",
-      title: "Traga o problema",
+      title: "Vamos entender o impacto",
       accent: "",
       intro:
-        "Conte o que acontece hoje, quem é afetado e o que precisa mudar. A equipe da IRTC analisa o contexto e combina o próximo passo.",
+        "Conte qual processo está limitado, quem é afetado e o que precisa mudar. Iago Rodrigues, fundador e responsável técnico, analisa o contexto para definir o próximo passo.",
       iris: "Organize o contexto com a Iris",
       name: "Seu nome",
       nameHint: "Como podemos te chamar?",
@@ -191,10 +200,10 @@ export const content = {
       companyHint: "Onde o projeto vai acontecer",
       message: "O que acontece hoje e o que precisa mudar?",
       messageHint:
-        "Quem é afetado, onde o problema aparece e o resultado que você espera.",
+        "Descreva o processo, quem é afetado, o impacto e a prioridade. Compartilhe apenas informações que possam ser usadas nesta primeira análise.",
       submit: "Enviar mensagem",
       sending: "Enviando",
-      sent: "Mensagem enviada. A equipe da IRTC vai analisar o contexto e combinar o próximo passo.",
+      sent: "Mensagem enviada. Iago Rodrigues vai analisar o contexto e combinar o próximo passo.",
       error:
         "Não foi possível enviar. Tente novamente ou use o contato no rodapé.",
       privacy: "Usamos seus dados apenas para responder a este contato.",
@@ -203,20 +212,20 @@ export const content = {
       service: "Assunto",
       serviceUnknown: "Ainda não sei, quero conversar",
       channels: "Outros canais",
-      irisTitle: "Prefere conversar agora?",
+      irisTitle: "Ajuda para organizar o contexto",
       irisText:
-        "A Iris, nossa assistente, ajuda a organizar sua ideia em poucos minutos. Depois você pode enviar o rascunho para a nossa equipe.",
+        "A Iris é a assistente de IA deste site. Ela organiza o problema em um rascunho que você revisa antes de enviar para análise de Iago.",
       emailHint: "Use o e-mail da sua empresa.",
       nameError: "Informe seu nome.",
       emailError: "Informe um e-mail no formato nome@empresa.com.",
-      messageError: "Descreva o problema para a equipe analisar.",
+      messageError: "Descreva o problema para Iago analisar.",
       errorSummary: "Revise os campos abaixo:",
       serviceHint: "Escolha a área mais próxima ou deixe a opção inicial.",
       irisAction: "Organize o contexto com a Iris",
     },
     footer: {
-      title: "Seu próximo projeto",
-      accent: "começa com uma conversa.",
+      title: "Uma decisão melhor",
+      accent: "começa pelo problema certo.",
       location: "Belém, Pará — Brasil",
       signature: "Da Amazônia para o seu próximo desafio.",
       top: "Voltar ao início",
@@ -246,7 +255,7 @@ export const content = {
     iris: {
       launcher: "Oi, sou a Iris, assistente de IA.",
       greeting:
-        "Oi, sou a Iris, assistente de IA da IRTC. Me conte o que precisa mudar no seu negócio. Vou ajudar a organizar o contexto para a equipe analisar o próximo passo.",
+        "Oi, sou a Iris, assistente de IA da IRTC. Me conte o que precisa mudar no seu negócio. Vou ajudar a organizar o contexto para Iago analisar o próximo passo.",
       subtitle: "Assistente de IA da IRTC",
       expand: "Abrir em tela cheia",
       shrink: "Reduzir janela",
@@ -260,23 +269,23 @@ export const content = {
       send: "Enviar",
       thinking: "Iris está preparando a resposta…",
       use: "Usar como rascunho",
-      draft: "Rascunho do contexto para a equipe",
+      draft: "Contexto para análise de Iago",
       approve: "Aprovar e enviar por e-mail",
       email: "Seu e-mail para retorno",
-      sent: "Rascunho enviado. A equipe vai analisar e responder pelo e-mail informado.",
+      sent: "Rascunho enviado. Iago vai analisar e responder pelo e-mail informado.",
       error: "Não foi possível enviar. Tente novamente em instantes.",
       limit:
         "Muitas mensagens em pouco tempo. Tente de novo em alguns minutos.",
       disclaimer:
-        "A Iris usa IA e pode errar. O rascunho é analisado pela equipe e não é uma proposta comercial.",
+        "A Iris usa IA e pode errar. Iago analisa o rascunho antes de qualquer proposta comercial.",
       refusal:
         "Posso ajudar a organizar o contexto do seu problema ou explicar a IRTC e seus serviços. O que precisa mudar no seu negócio?",
       fallback:
-        "Para organizar o contexto, me conte: 1. Qual é o problema. 2. Quem ele afeta. 3. Que resultado você espera. A equipe da IRTC analisa o rascunho e define o próximo passo.",
+        "Para organizar o contexto, me conte: 1. Qual é o problema. 2. Quem ele afeta. 3. Que resultado você espera. Iago Rodrigues analisa o rascunho e define o próximo passo.",
       about:
         "A IRTC é uma empresa de Cloud, Software & AI Engineering, com base em Belém (PA). Atuamos em Cloud Engineering, Software Engineering e AI Engineering, com Continuous Engineering para a continuidade dos sistemas.",
       unknown:
-        "Não tenho essa informação confirmada. A equipe responde pelo contato@irtc.com.br ou pela página de contato.",
+        "Não tenho essa informação confirmada. Iago responde pelo contato@irtc.com.br ou pela página de contato.",
     },
   },
   en: {
@@ -315,7 +324,7 @@ export const content = {
     },
     skip: "Skip to content",
     home: "IRTC, home",
-    talk: "Let's talk",
+    talk: "Discuss your business challenge",
     menu: "Menu",
     menuClose: "Close menu",
     language: "Language",
@@ -325,9 +334,9 @@ export const content = {
       eyebrow: "From the Amazon to your next challenge.",
       title: "We engineer what moves your business forward.",
       description:
-        "We remove technology bottlenecks with cloud, software and AI engineering. We design, build and modernize the systems your business needs to move forward.",
-      cta: "Bring the problem",
-      secondaryCta: "Explore our services",
+        "When disconnected systems, manual work or outages hold back your business, IRTC brings assessment and delivery together. We define a feasible change, deliver the agreed scope and evaluate the result with you.",
+      cta: "Discuss your business challenge",
+      secondaryCta: "Explore how we can help",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
       pause: "Pause animation",
       play: "Enable animation",
@@ -335,22 +344,22 @@ export const content = {
     },
     manifesto: {
       label: "01 / OUR APPROACH",
-      aside: "CLEAR COMMUNICATION. RELIABLE DELIVERY.",
+      aside: "CLEAR DECISIONS. VERIFIABLE DELIVERIES.",
       title: "Engineering close",
       accent: "to your operation.",
       foot: "We work out what needs to change before we build.",
       points: [
         {
-          title: "Short cycles, clear priorities.",
-          text: "We set priorities, deliver in short cycles and show what is ready and what comes next.",
+          title: "Decide with context.",
+          text: "We map the business impact, constraints and alternatives. You receive priorities and criteria for deciding where to invest.",
         },
         {
-          title: "Quality from the start.",
-          text: "Architecture, testing and monitoring are part of the project from the start.",
+          title: "Follow the delivery.",
+          text: "The scope defines the deliverables and acceptance criteria. Demos, tests and a risk log make progress visible.",
         },
         {
-          title: "Launch with continuity.",
-          text: "Launch includes documentation and clear terms for support and evolution.",
+          title: "Keep control of operations.",
+          text: "Code, documentation and operating guidance form part of the agreed scope. Support and further development have their own terms.",
         },
       ],
     },
@@ -374,15 +383,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "We design and evolve cloud environments to meet the reliability, capacity and cost needs of the operation. Our technical focus is AWS.",
+          text: "Understand the cost and risk of the infrastructure behind your operation. Assessment, architecture and planned changes, with a technical focus on AWS.",
         },
         {
           name: "Software Engineering",
-          text: "We build products and platforms, integrate systems and modernize legacy software so teams and users can work better.",
+          text: "Connect systems and remove manual steps that delay work. Integrations, product development and modernization with defined scope and acceptance criteria.",
         },
         {
           name: "AI Engineering",
-          text: "We apply AI to a company's knowledge and processes, with a defined task, quality evaluation and control over access and cost.",
+          text: "Evaluate where AI can help with a specific task. Prototypes with authorized data, quality criteria, cost per task and human review.",
         },
       ],
       continuity: {
@@ -401,14 +410,20 @@ export const content = {
           name: "Amazon Bedrock",
           role: "AI that answers from the company's documents.",
         },
-        { name: "AI agents", role: "Act within defined rules and review." },
-        { name: "MCP", role: "Connects agents to the company's tools." },
+        {
+          name: "AI agents",
+          role: "Act within defined rules and review.",
+        },
+        {
+          name: "MCP",
+          role: "Connects agents to the company's tools.",
+        },
       ],
       techProductTitle: "Product stack, chosen per project",
       cta: {
         title: "What needs to move forward in your business?",
-        text: "Tell us where technology limits your operation and what you want to change. The IRTC team reviews the context and agrees on the next step.",
-        action: "Bring the problem",
+        text: "Tell us which process is held back, who is affected and what needs to change. Iago Rodrigues, founder and technical lead, reviews the context to define the next step.",
+        action: "Discuss your business challenge",
         iris: "Organize the context with Iris",
       },
     },
@@ -425,20 +440,20 @@ export const content = {
       label: "BASED IN BELÉM. CONNECTED TO YOUR BUSINESS.",
       title: "From the Amazon",
       accent: "to your next challenge.",
-      body: "IRTC is based in Belém, Pará, in the Amazon, and works with teams wherever they are. Our origin comes with a close way of doing engineering: clear communication, care in delivery and continuity defined from the start of the project.",
+      body: "IRTC is based in Belém, Pará, Brazil, and works remotely. Iago Rodrigues leads the work, with contacts, responsibilities and availability defined for each project.",
       vision:
         "We want businesses of every size to have access to well-built software, clear communication and a partnership that continues beyond launch.",
-      cta: "Bring the problem",
+      cta: "Discuss your business challenge",
       mapTitle: "Belém is the starting point.",
       mapDescription:
         "Belém, in Pará, is our base. We work with teams wherever they are.",
     },
     contact: {
       label: "LET'S UNDERSTAND YOUR CHALLENGE.",
-      title: "Bring us the problem",
+      title: "Let’s understand the impact",
       accent: "",
       intro:
-        "Tell us what is happening today, who it affects and what needs to change. The IRTC team reviews the context and agrees on the next step.",
+        "Tell us which process is held back, who is affected and what needs to change. Iago Rodrigues, founder and technical lead, reviews the context to define the next step.",
       iris: "Organize the context with Iris",
       name: "Your name",
       nameHint: "What should we call you?",
@@ -448,10 +463,10 @@ export const content = {
       companyHint: "Where the project will take shape",
       message: "What is happening today, and what needs to change?",
       messageHint:
-        "Who is affected, where the problem shows up and the result you expect.",
+        "Describe the process, who is affected, the impact and the priority. Share only information suitable for this initial review.",
       submit: "Send message",
       sending: "Sending",
-      sent: "Message sent. The IRTC team will review the context and agree on the next step.",
+      sent: "Message sent. Iago Rodrigues will review the context and agree on the next step.",
       error:
         "We couldn't send your message. Try again or use the contact in the footer.",
       privacy: "We only use your details to respond to this inquiry.",
@@ -460,20 +475,20 @@ export const content = {
       service: "Topic",
       serviceUnknown: "Not sure yet, I'd like to talk",
       channels: "Other ways to reach us",
-      irisTitle: "Rather talk right now?",
+      irisTitle: "Help organizing the context",
       irisText:
-        "Iris, our assistant, helps you shape your idea in a few minutes. You can then send the draft to our team.",
+        "Iris is this website’s AI assistant. It organizes the problem into a draft you review before sending it to Iago.",
       emailHint: "Use your company email.",
       nameError: "Enter your name.",
       emailError: "Enter an email in the format name@company.com.",
-      messageError: "Describe the problem so the team can review it.",
+      messageError: "Describe the problem so Iago can review it.",
       errorSummary: "Review the fields below:",
       serviceHint: "Pick the closest area or keep the first option.",
       irisAction: "Organize the context with Iris",
     },
     footer: {
-      title: "Your next project",
-      accent: "starts with a conversation.",
+      title: "A better decision",
+      accent: "starts with the right problem.",
       location: "Belém, Pará — Brazil",
       signature: "From the Amazon to your next challenge.",
       top: "Back to top",
@@ -503,7 +518,7 @@ export const content = {
     iris: {
       launcher: "Hi, I'm Iris, an AI assistant.",
       greeting:
-        "Hi, I'm Iris, IRTC's AI assistant. Tell me what needs to change in your business. I'll help organize the context so the team can review the next step.",
+        "Hi, I'm Iris, IRTC's AI assistant. Tell me what needs to change in your business. I'll help organize the context so Iago can review the next step.",
       subtitle: "IRTC's AI assistant",
       expand: "Open fullscreen",
       shrink: "Restore window",
@@ -517,23 +532,23 @@ export const content = {
       send: "Send",
       thinking: "Iris is preparing the answer…",
       use: "Use as draft",
-      draft: "Context draft for the team",
+      draft: "Context for Iago to review",
       approve: "Approve and email",
       email: "Your email for a reply",
-      sent: "Draft sent. The team will review it and reply to the email you provided.",
+      sent: "Draft sent. Iago will review it and reply to the email you provided.",
       error: "We couldn't send it. Please try again shortly.",
       limit:
         "Too many messages in a short time. Please try again in a few minutes.",
       disclaimer:
-        "Iris uses AI and can make mistakes. The team reviews the draft, and it is not a commercial proposal.",
+        "Iris uses AI and can make mistakes. Iago reviews the draft before any commercial proposal.",
       refusal:
         "I can help organize the context of your problem or explain IRTC and its services. What needs to change in your business?",
       fallback:
-        "To organize the context, tell me: 1. What the problem is. 2. Who it affects. 3. What result you expect. The IRTC team reviews the draft and decides the next step.",
+        "To organize the context, tell me: 1. What the problem is. 2. Who it affects. 3. What result you expect. Iago Rodrigues reviews the draft and decides the next step.",
       about:
         "IRTC is a Cloud, Software & AI Engineering company based in Belém (PA). We work in Cloud Engineering, Software Engineering and AI Engineering, with Continuous Engineering for the continuity of systems.",
       unknown:
-        "I don't have that information confirmed. The team can answer at contato@irtc.com.br or through the contact page.",
+        "I don't have that information confirmed. Iago can answer at contato@irtc.com.br or through the contact page.",
     },
   },
   es: {
@@ -572,7 +587,7 @@ export const content = {
     },
     skip: "Saltar al contenido",
     home: "IRTC, inicio",
-    talk: "Conversemos",
+    talk: "Hablemos de tu desafío",
     menu: "Menú",
     menuClose: "Cerrar menú",
     language: "Idioma",
@@ -582,9 +597,9 @@ export const content = {
       eyebrow: "Desde la Amazonía hacia tu próximo desafío.",
       title: "We engineer what moves your business forward.",
       description:
-        "Eliminamos cuellos de botella de tecnología con ingeniería de cloud, software e IA. Diseñamos, construimos y modernizamos los sistemas que tu negocio necesita para avanzar.",
-      cta: "Trae el problema",
-      secondaryCta: "Conoce los servicios",
+        "Cuando los sistemas desconectados, el trabajo manual o las fallas limitan tu operación, IRTC une diagnóstico y ejecución. Definimos un cambio viable, entregamos el alcance acordado y evaluamos el resultado contigo.",
+      cta: "Hablemos de tu desafío",
+      secondaryCta: "Descubre cómo podemos ayudar",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
       pause: "Pausar animaciones",
       play: "Activar animaciones",
@@ -592,22 +607,22 @@ export const content = {
     },
     manifesto: {
       label: "01 / CÓMO TRABAJAMOS",
-      aside: "COMUNICACIÓN CLARA. ENTREGAS CONSISTENTES.",
+      aside: "DECISIONES CLARAS. ENTREGAS VERIFICABLES.",
       title: "Ingeniería cercana",
       accent: "a tu operación.",
       foot: "Entendemos qué necesita cambiar antes de construir.",
       points: [
         {
-          title: "Ciclos cortos, prioridades claras.",
-          text: "Definimos prioridades, entregamos en ciclos cortos y mostramos qué está listo y qué viene después.",
+          title: "Decidir con contexto.",
+          text: "Analizamos el impacto del problema, las restricciones y las alternativas. Recibes prioridades y criterios para decidir dónde invertir.",
         },
         {
-          title: "Calidad desde el inicio.",
-          text: "La arquitectura, las pruebas y el monitoreo forman parte del proyecto desde el inicio.",
+          title: "Acompañar la entrega.",
+          text: "El alcance define los entregables y sus criterios de aceptación. Las demostraciones, pruebas y el registro de riesgos permiten seguir el trabajo.",
         },
         {
-          title: "Lanzamiento con continuidad.",
-          text: "El lanzamiento incluye documentación y condiciones claras para soporte y evolución.",
+          title: "Mantener autonomía para operar.",
+          text: "El código, la documentación y las instrucciones de operación forman parte del alcance acordado. El soporte y la evolución tienen condiciones propias.",
         },
       ],
     },
@@ -631,15 +646,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "Diseñamos y evolucionamos entornos de cloud para atender las necesidades de confiabilidad, capacidad y costo de la operación. Nuestro foco técnico es AWS.",
+          text: "Entiende el costo y el riesgo del entorno que sostiene tu operación. Diagnóstico, arquitectura y cambios planificados, con foco técnico en AWS.",
         },
         {
           name: "Software Engineering",
-          text: "Construimos productos y plataformas, integramos sistemas y modernizamos software heredado para que equipos y usuarios trabajen mejor.",
+          text: "Conecta sistemas y elimina pasos manuales que retrasan el trabajo. Integraciones, evolución de productos y modernización con alcance y aceptación definidos.",
         },
         {
           name: "AI Engineering",
-          text: "Aplicamos IA al conocimiento y a los procesos de la empresa, con tarea definida, evaluación de calidad y control de acceso y costo.",
+          text: "Evalúa dónde puede ayudar la IA en una tarea concreta. Prototipos con datos autorizados, criterios de calidad, costo por tarea y revisión humana.",
         },
       ],
       continuity: {
@@ -650,7 +665,10 @@ export const content = {
       allServices: "Ver todos los servicios",
       techTitle: "Nuestro foco: AWS e IA aplicada.",
       techFocus: [
-        { name: "AWS", role: "Donde el sistema corre, escala y se monitorea." },
+        {
+          name: "AWS",
+          role: "Donde el sistema corre, escala y se monitorea.",
+        },
         {
           name: "Amazon Bedrock",
           role: "IA que responde con los documentos de la empresa.",
@@ -667,8 +685,8 @@ export const content = {
       techProductTitle: "Stack de producto, elegido por proyecto",
       cta: {
         title: "¿Qué necesita avanzar en tu negocio?",
-        text: "Cuéntanos dónde la tecnología limita tu operación y qué quieres cambiar. El equipo de IRTC analiza el contexto y acuerda el próximo paso.",
-        action: "Trae el problema",
+        text: "Cuéntanos qué proceso está limitado, a quién afecta y qué necesita cambiar. Iago Rodrigues, fundador y responsable técnico, analiza el contexto para definir el siguiente paso.",
+        action: "Hablemos de tu desafío",
         iris: "Organiza el contexto con Iris",
       },
     },
@@ -685,20 +703,20 @@ export const content = {
       label: "DESDE BELÉM, CONECTADOS A TU NEGOCIO.",
       title: "Desde la Amazonía",
       accent: "hacia tu próximo desafío.",
-      body: "IRTC tiene su base en Belém, Pará, en la Amazonía, y trabaja con equipos donde estén. Nuestro origen acompaña una forma cercana de hacer ingeniería: comunicación clara, cuidado en la entrega y continuidad definida desde el proyecto.",
+      body: "IRTC tiene su base en Belém, Pará, Brasil, y atiende de forma remota. Iago Rodrigues conduce el trabajo, con interlocutores, responsabilidades y disponibilidad definidos para cada proyecto.",
       vision:
         "Queremos que empresas de todos los tamaños accedan a software bien construido, comunicación clara y una colaboración que continúe después del lanzamiento.",
-      cta: "Trae el problema",
+      cta: "Hablemos de tu desafío",
       mapTitle: "Belém es el punto de partida.",
       mapDescription:
         "Belém, en Pará, es nuestra base. Trabajamos con equipos donde estén.",
     },
     contact: {
       label: "ENTENDAMOS TU DESAFÍO.",
-      title: "Trae el problema",
+      title: "Entendamos el impacto",
       accent: "",
       intro:
-        "Cuéntanos qué ocurre hoy, a quién afecta y qué necesita cambiar. El equipo de IRTC analiza el contexto y acuerda el siguiente paso.",
+        "Cuéntanos qué proceso está limitado, a quién afecta y qué necesita cambiar. Iago Rodrigues, fundador y responsable técnico, analiza el contexto para definir el siguiente paso.",
       iris: "Organiza el contexto con Iris",
       name: "Tu nombre",
       nameHint: "¿Cómo te llamas?",
@@ -708,10 +726,10 @@ export const content = {
       companyHint: "Dónde tomará forma el proyecto",
       message: "¿Qué ocurre hoy y qué necesita cambiar?",
       messageHint:
-        "A quién afecta, dónde aparece el problema y el resultado que esperas.",
+        "Describe el proceso, a quién afecta, el impacto y la prioridad. Comparte solo información adecuada para este análisis inicial.",
       submit: "Enviar mensaje",
       sending: "Enviando",
-      sent: "Mensaje enviado. El equipo de IRTC analizará el contexto y acordará el siguiente paso.",
+      sent: "Mensaje enviado. Iago Rodrigues analizará el contexto y acordará el siguiente paso.",
       error:
         "No pudimos enviarlo. Inténtalo de nuevo o usa el contacto del pie de página.",
       privacy: "Solo usamos tus datos para responder a esta consulta.",
@@ -720,20 +738,20 @@ export const content = {
       service: "Asunto",
       serviceUnknown: "Aún no lo sé, quiero conversar",
       channels: "Otros canales",
-      irisTitle: "¿Prefieres conversar ahora?",
+      irisTitle: "Ayuda para organizar el contexto",
       irisText:
-        "Iris, nuestra asistente, te ayuda a ordenar tu idea en pocos minutos. Después puedes enviar el borrador a nuestro equipo.",
+        "Iris es la asistente de IA de este sitio. Organiza el problema en un borrador que revisas antes de enviarlo a Iago.",
       emailHint: "Usa el correo de tu empresa.",
       nameError: "Escribe tu nombre.",
       emailError: "Escribe un correo con el formato nombre@empresa.com.",
-      messageError: "Describe el problema para que el equipo lo analice.",
+      messageError: "Describe el problema para que Iago lo analice.",
       errorSummary: "Revisa los campos siguientes:",
       serviceHint: "Elige el área más cercana o deja la primera opción.",
       irisAction: "Organiza el contexto con Iris",
     },
     footer: {
-      title: "Tu próximo proyecto",
-      accent: "empieza con una conversación.",
+      title: "Una mejor decisión",
+      accent: "empieza por el problema correcto.",
       location: "Belém, Pará — Brasil",
       signature: "De la Amazonia a tu próximo desafío.",
       top: "Volver al inicio",
@@ -763,7 +781,7 @@ export const content = {
     iris: {
       launcher: "Hola, soy Iris, asistente de IA.",
       greeting:
-        "Hola, soy Iris, asistente de IA de IRTC. Cuéntame qué necesita cambiar en tu negocio. Te ayudaré a ordenar el contexto para que el equipo analice el próximo paso.",
+        "Hola, soy Iris, asistente de IA de IRTC. Cuéntame qué necesita cambiar en tu negocio. Te ayudaré a ordenar el contexto para que Iago analice el próximo paso.",
       subtitle: "Asistente de IA de IRTC",
       expand: "Abrir pantalla completa",
       shrink: "Reducir ventana",
@@ -777,23 +795,23 @@ export const content = {
       send: "Enviar",
       thinking: "Iris está preparando la respuesta…",
       use: "Usar como borrador",
-      draft: "Borrador del contexto para el equipo",
+      draft: "Contexto para revisión de Iago",
       approve: "Aprobar y enviar por correo",
       email: "Tu correo para recibir respuesta",
-      sent: "Borrador enviado. El equipo lo analizará y responderá al correo indicado.",
+      sent: "Borrador enviado. Iago lo analizará y responderá al correo indicado.",
       error: "No pudimos enviarlo. Inténtalo de nuevo en un momento.",
       limit:
         "Demasiados mensajes en poco tiempo. Inténtalo de nuevo en unos minutos.",
       disclaimer:
-        "Iris usa IA y puede equivocarse. El equipo analiza el borrador y no es una propuesta comercial.",
+        "Iris usa IA y puede equivocarse. Iago revisa el borrador antes de cualquier propuesta comercial.",
       refusal:
         "Puedo ayudarte a ordenar el contexto de tu problema o explicar IRTC y sus servicios. ¿Qué necesita cambiar en tu negocio?",
       fallback:
-        "Para ordenar el contexto, cuéntame: 1. Cuál es el problema. 2. A quién afecta. 3. Qué resultado esperas. El equipo de IRTC analiza el borrador y define el próximo paso.",
+        "Para ordenar el contexto, cuéntame: 1. Cuál es el problema. 2. A quién afecta. 3. Qué resultado esperas. Iago Rodrigues analiza el borrador y define el próximo paso.",
       about:
         "IRTC es una empresa de Cloud, Software & AI Engineering con sede en Belém (PA). Trabajamos en Cloud Engineering, Software Engineering y AI Engineering, con Continuous Engineering para la continuidad de los sistemas.",
       unknown:
-        "No tengo esa información confirmada. El equipo responde en contato@irtc.com.br o en la página de contacto.",
+        "No tengo esa información confirmada. Iago responde en contato@irtc.com.br o en la página de contacto.",
     },
   },
 };

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { AboutContent } from "@/components/about-content";
-import { AboutGallery } from "@/components/about-gallery";
 import { ContactCta } from "@/components/contact-cta";
 import { SiteShell } from "@/components/site-shell";
 import { Stats } from "@/components/stats";
@@ -61,7 +60,6 @@ export default async function AboutPage({ params }: LocaleParams) {
         dangerouslySetInnerHTML={jsonLd(data)}
       />
       <AboutContent locale={locale} />
-      <AboutGallery locale={locale} />
       <Stats locale={locale} />
       <ContactCta locale={locale} />
     </SiteShell>
