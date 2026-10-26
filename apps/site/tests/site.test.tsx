@@ -16,8 +16,6 @@ import type { Locale } from "@/lib/content";
 import { services } from "@/lib/services";
 import ServicePage from "@/app/[locale]/services/[slug]/page";
 
-const push = vi.hoisted(() => vi.fn());
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 vi.mock("next/image", () => ({
   default: (props: ImgHTMLAttributes<HTMLImageElement>) =>
     createElement("img", props),
@@ -136,10 +134,17 @@ describe("institutional experience", () => {
   });
 
   it("persists language choice and uses the localized route", async () => {
-    renderHome();
-    await userEvent.selectOptions(screen.getByLabelText("Idioma"), "es");
-    expect(document.cookie).toContain("irtc-locale=es");
-    expect(push).toHaveBeenCalledWith("/es", { scroll: false });
+    const originalLocation = location;
+    const assign = vi.fn();
+    vi.stubGlobal("location", { protocol: "https:", assign });
+    try {
+      renderHome();
+      await userEvent.selectOptions(screen.getByLabelText("Idioma"), "es");
+      expect(document.cookie).toContain("irtc-locale=es");
+      expect(assign).toHaveBeenCalledWith("/es");
+    } finally {
+      vi.stubGlobal("location", originalLocation);
+    }
   });
 
   it("renders English content and updates the document language", () => {
@@ -588,20 +593,20 @@ describe("institutional experience", () => {
     expect(link).toHaveAttribute("aria-current", "page");
   });
 
-  it("uses a view transition for the language switch when the browser supports it", async () => {
-    const startViewTransition = vi.fn((callback: () => void) => {
-      callback();
-      return {} as unknown as ViewTransition;
-    });
-    document.startViewTransition =
-      startViewTransition as typeof document.startViewTransition;
-
-    renderHome();
-    await userEvent.selectOptions(screen.getByLabelText("Idioma"), "en");
-
-    expect(startViewTransition).toHaveBeenCalledTimes(1);
-    expect(push).toHaveBeenCalledWith("/en", { scroll: false });
-
-    Reflect.deleteProperty(document, "startViewTransition");
+  it("reloads the translated document even when view transitions are supported", async () => {
+    const originalLocation = location;
+    const assign = vi.fn();
+    const startViewTransition = vi.fn();
+    vi.stubGlobal("location", { protocol: "https:", assign });
+    document.startViewTransition = startViewTransition;
+    try {
+      renderHome();
+      await userEvent.selectOptions(screen.getByLabelText("Idioma"), "en");
+      expect(assign).toHaveBeenCalledWith("/en");
+      expect(startViewTransition).not.toHaveBeenCalled();
+    } finally {
+      vi.stubGlobal("location", originalLocation);
+      Reflect.deleteProperty(document, "startViewTransition");
+    }
   });
 });
