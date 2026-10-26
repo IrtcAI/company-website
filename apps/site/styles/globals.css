@@ -2835,3 +2835,12 @@ main[tabindex="-1"]:focus {
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
+
+#conteudo:not([data-page="home"]) section.section-pad {
+  padding-bottom: 80px;
+}
+
+#conteudo:not([data-page="home"])
+  section.section-pad:not(.page-intro):not(.contact-page) {
+  padding-top: 80px;
+}

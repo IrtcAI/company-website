@@ -178,7 +178,7 @@ function home(locale: Locale) {
 
 function serviceItem(locale: Locale, service: Service) {
   const copy = service.copy[locale];
-  return `${link(copy.title, pagePath(locale, "services", copy.slug))}: ${copy.summary}`;
+  return `${link(copy.title, pagePath(locale, "services", copy.slug))}: ${copy.shortSummary}`;
 }
 
 function servicesIndex(locale: Locale) {

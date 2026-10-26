@@ -36,15 +36,15 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Trilha de navegação",
     breadcrumbServices: "Serviços",
     intro:
-      "Integrações e automação ajudam a enfrentar o trabalho manual entre sistemas. Avaliamos também desafios de cloud, evolução de software e IA. Cada contratação depende do problema, do acesso aos sistemas e da capacidade de entrega.",
+      "Integre sistemas, modernize operações e avalie IA. O ponto de partida depende do problema, dos acessos e da capacidade de entrega.",
     gridTitle: "Áreas de atuação",
     cardCta: "Ver serviço",
     allServicesCta: "Ver todos os serviços",
     techNoteTitle: "Tecnologia com função definida.",
     techNoteText:
-      "AWS é um foco técnico da IRTC. A escolha de ferramentas considera custo total, segurança, integração e capacidade de manutenção. As tecnologias citadas não representam certificações ou parcerias.",
+      "Escolhemos ferramentas por custo, segurança e manutenção, com foco técnico em AWS. Tecnologias citadas não indicam certificações ou parcerias.",
     whenTitle: "Quando você precisa disso",
-    whatTitle: "Entregáveis para definir no escopo",
+    whatTitle: "Entregáveis a definir",
     howTitle: "Como trabalhamos",
     stackTitle: "Tecnologia, com função definida",
     stackNote:
@@ -67,22 +67,22 @@ export const servicesPageCopy: Record<
     relatedTitle: "Serviços relacionados",
     measureTitle: "Como medimos o resultado",
     measureNote:
-      "Definimos a referência atual, a meta e o período de avaliação com você. Os indicadores orientam o aceite e a decisão de continuidade; o resultado depende do contexto da operação.",
+      "Combinamos referência, meta e período de avaliação. Os resultados dependem do contexto e orientam a continuidade.",
     measureFrom: "Hoje",
     measureTo: "Meta combinada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Com apoio de",
     pillarText: {
       cloud:
-        "Entenda o custo e o risco do ambiente que sustenta sua operação. Diagnóstico, arquitetura e mudanças planejadas, com foco técnico em AWS.",
+        "Diagnóstico e evolução de ambientes AWS, com custo, risco e prioridades claros.",
       software:
-        "Conecte sistemas e elimine etapas manuais que atrasam o trabalho. Integrações, evolução de produtos e modernização com escopo e aceite definidos.",
-      ai: "Avalie onde a IA pode ajudar em uma tarefa concreta. Protótipos com dados autorizados, critérios de qualidade, custo por tarefa e revisão humana.",
+        "Integrações e modernização para reduzir trabalho manual, com escopo e aceite definidos.",
+      ai: "Protótipos para avaliar qualidade, custo e revisão humana em uma tarefa concreta.",
     },
     continuity: {
       label: "Continuidade",
       name: "Continuous Engineering",
-      text: "Depois da entrega, os sistemas continuam mudando. Continuous Engineering é o modelo de continuidade dos três pilares: evolução, otimização, confiabilidade e modernização. Escopo, cadência e atendimento são definidos conforme a operação.",
+      text: "Evolução, confiabilidade e modernização após a entrega, com escopo, cadência e atendimento acordados.",
       cta: "Conversar sobre continuidade",
     },
   },
@@ -91,15 +91,15 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Breadcrumb",
     breadcrumbServices: "Services",
     intro:
-      "Integrations and automation address manual work between systems. We also assess cloud, software development and AI challenges. Each engagement depends on the problem, access to systems and delivery capacity.",
+      "Connect systems, modernize operations and assess AI. The starting point depends on the problem, access and delivery capacity.",
     gridTitle: "Areas of work",
     cardCta: "View service",
     allServicesCta: "See all services",
     techNoteTitle: "Technology with a defined role.",
     techNoteText:
-      "AWS is a technical focus for IRTC. Tool choices consider total cost, security, integration and maintenance capacity. Technologies mentioned do not imply certifications or partnerships.",
+      "We select tools for cost, security and maintenance, with a technical focus on AWS. Listed technologies do not imply certifications or partnerships.",
     whenTitle: "When you need this",
-    whatTitle: "Deliverables to define in the scope",
+    whatTitle: "Deliverables to agree",
     howTitle: "How we work",
     stackTitle: "Technology, with a defined role",
     stackNote:
@@ -122,22 +122,22 @@ export const servicesPageCopy: Record<
     relatedTitle: "Related services",
     measureTitle: "How we measure the result",
     measureNote:
-      "We agree on the baseline, target and evaluation period with you. Indicators inform acceptance and continuity decisions; outcomes depend on the operating context.",
+      "We agree on a baseline, target and evaluation period. Outcomes depend on context and guide next steps.",
     measureFrom: "Today",
     measureTo: "Agreed target",
     pillarLabel: "Pillar",
     supportPillarLabel: "Supported by",
     pillarText: {
       cloud:
-        "Understand the cost and risk of the infrastructure behind your operation. Assessment, architecture and planned changes, with a technical focus on AWS.",
+        "Assess and evolve AWS environments with clear costs, risks and priorities.",
       software:
-        "Connect systems and remove manual steps that delay work. Integrations, product development and modernization with defined scope and acceptance criteria.",
-      ai: "Evaluate where AI can help with a specific task. Prototypes with authorized data, quality criteria, cost per task and human review.",
+        "Integrations and modernization to reduce manual work, with agreed scope and acceptance criteria.",
+      ai: "Prototypes to assess quality, cost and human review for a specific task.",
     },
     continuity: {
       label: "Continuity",
       name: "Continuous Engineering",
-      text: "After delivery, systems keep changing. Continuous Engineering is the continuity model for all three pillars: evolution, optimization, reliability and modernization. Scope, cadence and support are set according to the operation.",
+      text: "Evolution, reliability and modernization after delivery, with agreed scope, cadence and support.",
       cta: "Talk about continuity",
     },
   },
@@ -146,15 +146,15 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Ruta de navegación",
     breadcrumbServices: "Servicios",
     intro:
-      "Las integraciones y la automatización permiten abordar el trabajo manual entre sistemas. También evaluamos desafíos de cloud, evolución de software e IA. Cada contratación depende del problema, del acceso a los sistemas y de la capacidad de entrega.",
+      "Integra sistemas, moderniza operaciones y evalúa IA. El punto de partida depende del problema, los accesos y la capacidad de entrega.",
     gridTitle: "Áreas de actuación",
     cardCta: "Ver servicio",
     allServicesCta: "Ver todos los servicios",
     techNoteTitle: "Tecnología con función definida.",
     techNoteText:
-      "AWS es un foco técnico de IRTC. La elección de herramientas considera costo total, seguridad, integración y capacidad de mantenimiento. Las tecnologías citadas no representan certificaciones ni alianzas.",
+      "Elegimos herramientas por costo, seguridad y mantenimiento, con foco técnico en AWS. Las tecnologías citadas no indican certificaciones ni alianzas.",
     whenTitle: "Cuándo necesitas esto",
-    whatTitle: "Entregables para definir en el alcance",
+    whatTitle: "Entregas por definir",
     howTitle: "Cómo trabajamos",
     stackTitle: "Tecnología, con función definida",
     stackNote:
@@ -177,22 +177,22 @@ export const servicesPageCopy: Record<
     relatedTitle: "Servicios relacionados",
     measureTitle: "Cómo medimos el resultado",
     measureNote:
-      "Definimos contigo la referencia actual, la meta y el período de evaluación. Los indicadores orientan la aceptación y la decisión de continuidad; el resultado depende del contexto de la operación.",
+      "Acordamos referencia, meta y período de evaluación. Los resultados dependen del contexto y orientan la continuidad.",
     measureFrom: "Hoy",
     measureTo: "Meta acordada",
     pillarLabel: "Pilar",
     supportPillarLabel: "Con apoyo de",
     pillarText: {
       cloud:
-        "Entiende el costo y el riesgo del entorno que sostiene tu operación. Diagnóstico, arquitectura y cambios planificados, con foco técnico en AWS.",
+        "Diagnóstico y evolución de entornos AWS con costos, riesgos y prioridades claros.",
       software:
-        "Conecta sistemas y elimina pasos manuales que retrasan el trabajo. Integraciones, evolución de productos y modernización con alcance y aceptación definidos.",
-      ai: "Evalúa dónde puede ayudar la IA en una tarea concreta. Prototipos con datos autorizados, criterios de calidad, costo por tarea y revisión humana.",
+        "Integraciones y modernización para reducir tareas manuales, con alcance y aceptación definidos.",
+      ai: "Prototipos para evaluar calidad, costo y revisión humana en una tarea concreta.",
     },
     continuity: {
       label: "Continuidad",
       name: "Continuous Engineering",
-      text: "Después de la entrega, los sistemas siguen cambiando. Continuous Engineering es el modelo de continuidad de los tres pilares: evolución, optimización, confiabilidad y modernización. El alcance, la cadencia y la atención se definen según la operación.",
+      text: "Evolución, confiabilidad y modernización tras la entrega, con alcance, frecuencia y atención acordados.",
       cta: "Conversar sobre continuidad",
     },
   },

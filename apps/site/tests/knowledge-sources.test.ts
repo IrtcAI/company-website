@@ -63,7 +63,7 @@ describe("knowledge chunks", () => {
       else {
         expect(chunk.text).toContain("contractor");
         expect(chunk.text).toMatch(
-          /não são apresentadas como clientes|not presented as IRTC clients|no se presentan como clientes/,
+          /não são cases nem relações comerciais da IRTC|not IRTC case studies or client relationships|no son casos ni relaciones comerciales de IRTC/,
         );
       }
     }

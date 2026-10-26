@@ -50,63 +50,62 @@ export const cultureCopy: Record<Locale, CultureCopy> = {
     breadcrumbHome: "Início",
     breadcrumbCurrent: "Cultura",
     eyebrow: "Cultura da IRTC",
-    title: "Como o cliente acompanha o trabalho",
+    title: "Como você acompanha o trabalho",
     intro:
-      "Escopo legível, decisões registradas e evidências de entrega permitem avaliar o projeto durante sua execução. Iago conduz o trabalho e a comunicação com o cliente.",
+      "Escopo claro, decisões registradas e entregas verificáveis. Iago conduz o trabalho e a comunicação com você.",
     storyTag: "CRITÉRIOS DE TRABALHO",
     storyTitle: "O que deve ficar registrado",
     story: [
-      "Antes da execução, o problema, o responsável do cliente e os critérios de aceite formam a referência do projeto.",
-      "Durante o trabalho, demonstrações e registros de teste mostram o que está pronto. Riscos, dependências e alterações de escopo recebem atualização explícita.",
-      "No encerramento, o cliente recebe a documentação do escopo entregue, as pendências e as condições acordadas para operação e continuidade.",
+      "Antes de começar, registramos o problema, o responsável do cliente e o aceite.",
+      "Durante a execução, mostramos entregas e testes e atualizamos riscos e mudanças.",
+      "No encerramento, entregamos documentação, pendências e condições de continuidade.",
     ],
     practicesTitle: "Cinco práticas do dia a dia",
     practices: [
       {
         title: "Entender antes de construir",
-        text: "Começamos esclarecendo o problema, quem ele afeta, o que precisa mudar e quais são as restrições. Daí saem a prioridade e uma primeira entrega que cabe no contexto do cliente.",
+        text: "Entendemos o impacto e as restrições para definir uma primeira entrega viável.",
         line: "Antes da solução, a pergunta.",
       },
       {
         title: "Entregar em ciclos verificáveis",
-        text: "Planejamos prioridades, demonstramos o que ficou pronto e atualizamos riscos e próximos passos. Frequência e participantes são combinados no início e ajustados à operação.",
+        text: "Mostramos o que está pronto e revisamos riscos e prioridades na cadência combinada.",
         line: "Mostrar o que está pronto.",
       },
       {
         title: "Registrar e assumir as escolhas",
-        text: "Cada escolha de arquitetura registra contexto, premissas, efeitos e responsável. Quando as condições mudam, os compromissos são revistos. Quem chega ao limite de capacidade avisa e pede revisão.",
+        text: "Registramos contexto, efeitos e responsáveis. Mudanças de condições exigem revisão dos compromissos.",
         line: "Toda escolha tem dono.",
       },
       {
         title: "Tratar falhas com franqueza",
-        text: "Uma falha recebe contenção, comunicação e investigação na medida do impacto. A revisão registra causas, correções e acompanhamento. Quem encontra o problema pode avisar cedo, num ambiente respeitoso.",
+        text: "Contemos o impacto, comunicamos a falha e registramos causas, correções e acompanhamento.",
         line: "Avisar cedo, corrigir junto.",
       },
       {
-        title: "Aprender e manter uma rotina sustentável",
-        text: "Cada etapa termina com aprendizados e ações com responsável. A formação técnica acompanha o que a entrega pede. Escopo, atendimento e capacidade são planejados para sustentar qualidade e continuidade.",
+        title: "Manter um ritmo sustentável",
+        text: "Aplicamos os aprendizados e ajustamos escopo e capacidade para sustentar a qualidade.",
         line: "Um ritmo que dura.",
       },
     ],
     valuesTitle: "Os valores por trás das práticas",
-    valuesText:
-      "As práticas colocam os valores da IRTC em movimento. Eles orientam a rotina de pessoas, parceiros e agentes de IA.",
+    valuesText: "Os valores orientam as decisões e a forma de trabalhar.",
     valuesLink: "Ver os valores na página Sobre",
     aiTitle: "IA com responsabilidade definida",
     aiIntro:
-      "Iago executa e revisa as funções da operação. O uso de IA é definido por tarefa, acesso e necessidade de revisão.",
+      "Iago responde pela operação. Cada uso de IA tem tarefa, acesso e revisão definidos.",
     ai: [
       {
         title: "Uso delimitado",
-        text: "Ferramentas de IA podem apoiar análise, desenvolvimento e documentação. Cada uso exige conferência do resultado e cuidado com os dados.",
+        text: "IA apoia análise, código e documentação, com conferência do resultado e cuidado com os dados.",
       },
       {
         title: "Responsável identificado",
-        text: "Iago responde pelos compromissos comerciais e pelas decisões técnicas. Mudanças em produção dependem do escopo e das autorizações do cliente.",
+        text: "Iago assume os compromissos. Mudanças em produção exigem escopo e autorização do cliente.",
       },
       {
         title: "Iris no atendimento inicial",
-        text: "A Iris organiza o contexto do visitante em um rascunho. O visitante revisa antes do envio e Iago analisa o próximo passo.",
+        text: "A Iris organiza o rascunho. Você revisa antes do envio; Iago analisa o próximo passo.",
       },
     ],
     relatedTitle: "Continue conhecendo a IRTC",
@@ -116,63 +115,62 @@ export const cultureCopy: Record<Locale, CultureCopy> = {
     breadcrumbHome: "Home",
     breadcrumbCurrent: "Culture",
     eyebrow: "IRTC culture",
-    title: "How clients follow the work",
+    title: "How you follow the work",
     intro:
-      "Readable scope, recorded decisions and delivery evidence let you assess the project as it progresses. Iago leads the work and communication with the client.",
+      "Clear scope, recorded decisions and verifiable deliverables. Iago leads the work and keeps you informed.",
     storyTag: "WORKING AGREEMENTS",
     storyTitle: "What should be documented",
     story: [
-      "Before delivery begins, the problem, the client’s owner and acceptance criteria establish the project baseline.",
-      "During delivery, demos and test records show what is ready. Risks, dependencies and scope changes receive explicit updates.",
-      "At handover, the client receives documentation for the delivered scope, open issues and agreed terms for operation and continuity.",
+      "Before starting, we record the problem, client owner and acceptance criteria.",
+      "During delivery, we show progress and tests and update risks and changes.",
+      "At handover, we provide documentation, open items and ongoing support terms.",
     ],
     practicesTitle: "Five everyday practices",
     practices: [
       {
         title: "Understand before building",
-        text: "We start by clarifying the problem, who it affects, what has to change and what the constraints are. From that come the priority and a first delivery that fits the client's context.",
+        text: "We understand impact and constraints to define a feasible first delivery.",
         line: "Before the solution, the question.",
       },
       {
         title: "Deliver in verifiable cycles",
-        text: "We plan priorities, demonstrate what is ready and update risks and next steps. Frequency and participants are agreed at the start and adjusted to the operation.",
+        text: "We show completed work and review risks and priorities at an agreed cadence.",
         line: "Show what is ready.",
       },
       {
         title: "Record and own the choices",
-        text: "Each architecture choice records context, assumptions, effects and an owner. When conditions change, commitments are reviewed. Anyone who reaches the limit of their capacity says so and asks for review.",
+        text: "We record context, effects and owners. Changed conditions require reviewing commitments.",
         line: "Every choice has an owner.",
       },
       {
         title: "Handle failures with candor",
-        text: "A failure gets containment, communication and investigation in proportion to its impact. The review records causes, fixes and follow-up. Whoever finds the problem can raise it early, in a respectful environment.",
+        text: "We contain the impact, communicate the failure and record causes, fixes and follow-up.",
         line: "Speak up early, fix it together.",
       },
       {
-        title: "Learn and keep a sustainable routine",
-        text: "Each stage ends with lessons and actions with an owner. Technical training follows what delivery asks for. Scope, support and capacity are planned to sustain quality and continuity.",
+        title: "Keep a sustainable pace",
+        text: "We apply lessons learned and adjust scope and capacity to sustain quality.",
         line: "A pace that lasts.",
       },
     ],
     valuesTitle: "The values behind the practices",
-    valuesText:
-      "The practices put IRTC's values in motion. They guide the routine of people, partners and AI agents.",
+    valuesText: "Our values guide decisions and how we work.",
     valuesLink: "See the values on the About page",
     aiTitle: "AI with clear accountability",
     aiIntro:
-      "Iago carries out and reviews the business’s operational functions. AI use is defined by task, access and review requirements.",
+      "Iago is responsible for operations. Each AI use has a defined task, access and review.",
     ai: [
       {
         title: "Defined use",
-        text: "AI tools can support analysis, development and documentation. Each use requires output review and care with data.",
+        text: "AI supports analysis, code and documentation, with output checks and careful data handling.",
       },
       {
         title: "Named accountability",
-        text: "Iago is accountable for commercial commitments and technical decisions. Production changes depend on scope and client authorization.",
+        text: "Iago owns the commitments. Production changes require agreed scope and client authorization.",
       },
       {
         title: "Iris for initial enquiries",
-        text: "Iris organizes the visitor’s context into a draft. The visitor reviews it before sending, and Iago considers the next step.",
+        text: "Iris organizes the draft. You review it before sending; Iago assesses the next step.",
       },
     ],
     relatedTitle: "Keep getting to know IRTC",
@@ -182,63 +180,62 @@ export const cultureCopy: Record<Locale, CultureCopy> = {
     breadcrumbHome: "Inicio",
     breadcrumbCurrent: "Cultura",
     eyebrow: "Cultura de IRTC",
-    title: "Cómo el cliente sigue el trabajo",
+    title: "Cómo sigues el trabajo",
     intro:
-      "Un alcance claro, decisiones registradas y evidencias de entrega permiten evaluar el proyecto durante su ejecución. Iago conduce el trabajo y la comunicación con el cliente.",
+      "Alcance claro, decisiones registradas y entregas verificables. Iago dirige el trabajo y mantiene la comunicación contigo.",
     storyTag: "CRITERIOS DE TRABAJO",
     storyTitle: "Qué debe quedar registrado",
     story: [
-      "Antes de la ejecución, el problema, el responsable del cliente y los criterios de aceptación establecen la referencia del proyecto.",
-      "Durante el trabajo, las demostraciones y los registros de pruebas muestran qué está listo. Los riesgos, dependencias y cambios de alcance reciben actualizaciones explícitas.",
-      "En el cierre, el cliente recibe la documentación del alcance entregado, los pendientes y las condiciones acordadas de operación y continuidad.",
+      "Antes de empezar, registramos el problema, el responsable del cliente y la aceptación.",
+      "Durante la ejecución, mostramos entregas y pruebas y actualizamos riesgos y cambios.",
+      "Al cierre, entregamos documentación, pendientes y condiciones de continuidad.",
     ],
     practicesTitle: "Cinco prácticas del día a día",
     practices: [
       {
         title: "Entender antes de construir",
-        text: "Empezamos aclarando el problema, a quién afecta, qué tiene que cambiar y cuáles son las restricciones. De ahí salen la prioridad y una primera entrega que cabe en el contexto del cliente.",
+        text: "Entendemos el impacto y las restricciones para definir una primera entrega viable.",
         line: "Antes de la solución, la pregunta.",
       },
       {
         title: "Entregar en ciclos verificables",
-        text: "Planificamos prioridades, mostramos lo que quedó listo y actualizamos riesgos y próximos pasos. La frecuencia y los participantes se acuerdan al inicio y se ajustan a la operación.",
+        text: "Mostramos lo que está listo y revisamos riesgos y prioridades con la frecuencia acordada.",
         line: "Mostrar lo que está listo.",
       },
       {
         title: "Registrar y asumir las decisiones",
-        text: "Cada decisión de arquitectura registra contexto, supuestos, efectos y responsable. Cuando las condiciones cambian, los compromisos se revisan. Quien llega al límite de su capacidad avisa y pide revisión.",
+        text: "Registramos contexto, efectos y responsables. Los cambios de condiciones requieren revisar los compromisos.",
         line: "Toda decisión tiene dueño.",
       },
       {
         title: "Tratar los fallos con franqueza",
-        text: "Un fallo recibe contención, comunicación e investigación en proporción a su impacto. La revisión registra causas, correcciones y seguimiento. Quien encuentra el problema puede avisar temprano, en un ambiente respetuoso.",
+        text: "Contenemos el impacto, comunicamos el fallo y registramos causas, correcciones y seguimiento.",
         line: "Avisar temprano, corregir juntos.",
       },
       {
-        title: "Aprender y mantener una rutina sostenible",
-        text: "Cada etapa termina con aprendizajes y acciones con responsable. La formación técnica acompaña lo que la entrega pide. Alcance, atención y capacidad se planifican para sostener calidad y continuidad.",
+        title: "Mantener un ritmo sostenible",
+        text: "Aplicamos lo aprendido y ajustamos alcance y capacidad para sostener la calidad.",
         line: "Un ritmo que dura.",
       },
     ],
     valuesTitle: "Los valores detrás de las prácticas",
-    valuesText:
-      "Las prácticas ponen en movimiento los valores de IRTC. Orientan la rutina de personas, aliados y agentes de IA.",
+    valuesText: "Los valores orientan las decisiones y la forma de trabajar.",
     valuesLink: "Ver los valores en la página Nosotros",
     aiTitle: "IA con responsabilidad definida",
     aiIntro:
-      "Iago ejecuta y revisa las funciones de la operación. El uso de IA se define por tarea, acceso y necesidad de revisión.",
+      "Iago responde por la operación. Cada uso de IA tiene tarea, acceso y revisión definidos.",
     ai: [
       {
         title: "Uso delimitado",
-        text: "Las herramientas de IA pueden apoyar el análisis, desarrollo y documentación. Cada uso requiere revisión del resultado y cuidado con los datos.",
+        text: "La IA apoya análisis, código y documentación, con revisión del resultado y cuidado de los datos.",
       },
       {
         title: "Responsable identificado",
-        text: "Iago responde por los compromisos comerciales y las decisiones técnicas. Los cambios en producción dependen del alcance y de las autorizaciones del cliente.",
+        text: "Iago asume los compromisos. Los cambios en producción requieren alcance y autorización del cliente.",
       },
       {
         title: "Iris en el contacto inicial",
-        text: "Iris organiza el contexto del visitante en un borrador. El visitante lo revisa antes de enviarlo e Iago analiza el siguiente paso.",
+        text: "Iris organiza el borrador. Lo revisas antes de enviarlo; Iago evalúa el siguiente paso.",
       },
     ],
     relatedTitle: "Sigue conociendo IRTC",
@@ -251,11 +248,11 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     breadcrumbHome: "Início",
     breadcrumbCurrent: "Missão",
     eyebrow: "Missão da IRTC",
-    title: "O que a IRTC existe para fazer",
+    title: "Por que a IRTC existe",
     intro:
-      "Nosso trabalho começa no problema do cliente e termina num sistema que as pessoas conseguem usar e manter.",
+      "Resolver problemas com sistemas que as pessoas conseguem usar e manter.",
     purposeLabel: "Propósito",
-    verbsTitle: "Quatro verbos que a missão assume",
+    verbsTitle: "Como colocamos a missão em prática",
     verbs: [
       {
         title: "Projetar",
@@ -274,7 +271,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
         text: "Acompanhar o sistema em uso, com monitoramento, suporte e evolução combinados.",
       },
     ],
-    commitmentsTitle: "Três compromissos junto com a missão",
+    commitmentsTitle: "Compromissos da entrega",
     commitments: [
       {
         title: "Qualidade técnica",
@@ -291,7 +288,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     ],
     pathTitle: "Do primeiro contato à evolução",
     pathIntro:
-      "É o percurso que descrevemos aos clientes: entender, planejar, construir em ciclos curtos, lançar e evoluir. O escopo de cada projeto define as etapas, os responsáveis e os critérios de aceite.",
+      "O escopo define etapas, responsáveis e aceite. Cada entrega orienta a próxima decisão.",
     steps: [
       {
         title: "Entender",
@@ -315,11 +312,11 @@ export const missionCopy: Record<Locale, MissionCopy> = {
       },
     ],
     storyTag: "AVALIAÇÃO DE RESULTADO",
-    storyTitle: "Como verificar se o trabalho fez diferença",
+    storyTitle: "Como avaliamos o resultado",
     story: [
-      "O projeto começa com uma referência: tempo de execução de uma tarefa, erros, custo do ambiente ou outro indicador relevante para o problema.",
-      "Cliente e IRTC definem a meta, a fonte de dados e o período de avaliação. A entrega técnica é conferida por testes e critérios de aceite.",
-      "O resultado observado é comparado à referência inicial. A avaliação registra também limitações, efeitos externos e custos de operação para orientar a decisão de continuar, ajustar ou encerrar.",
+      "Registramos a referência atual: tempo, erros, custos ou outro indicador do problema.",
+      "Com o cliente, definimos meta, dados e período de avaliação. Testes verificam a entrega técnica.",
+      "Comparamos o resultado à referência, considerando limitações e custos, para decidir se continuamos, ajustamos ou encerramos.",
     ],
     relatedTitle: "Continue conhecendo a IRTC",
   },
@@ -328,11 +325,10 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     breadcrumbHome: "Home",
     breadcrumbCurrent: "Mission",
     eyebrow: "IRTC mission",
-    title: "What IRTC exists to do",
-    intro:
-      "Our work starts with the client's problem and ends with a system people can use and maintain.",
+    title: "Why IRTC exists",
+    intro: "Solve problems with systems people can use and maintain.",
     purposeLabel: "Purpose",
-    verbsTitle: "Four verbs the mission takes on",
+    verbsTitle: "How we put our mission into practice",
     verbs: [
       {
         title: "Design",
@@ -351,7 +347,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
         text: "Follow the system in use, with monitoring, support and evolution agreed in advance.",
       },
     ],
-    commitmentsTitle: "Three commitments that come with the mission",
+    commitmentsTitle: "Delivery commitments",
     commitments: [
       {
         title: "Technical quality",
@@ -368,7 +364,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     ],
     pathTitle: "From first contact to evolution",
     pathIntro:
-      "This is the path we describe to clients: understand, plan, build in short cycles, launch and evolve. Each project's scope defines the stages, the owners and the acceptance criteria.",
+      "The scope defines stages, owners and acceptance criteria. Each delivery informs the next decision.",
     steps: [
       {
         title: "Understand",
@@ -392,11 +388,11 @@ export const missionCopy: Record<Locale, MissionCopy> = {
       },
     ],
     storyTag: "OUTCOME EVALUATION",
-    storyTitle: "How to assess whether the work made a difference",
+    storyTitle: "How we assess outcomes",
     story: [
-      "The project starts with a baseline: task completion time, errors, infrastructure cost or another indicator relevant to the problem.",
-      "The client and IRTC define the target, data source and evaluation period. Tests and acceptance criteria verify the technical delivery.",
-      "Observed results are compared with the baseline. The assessment also records limitations, external factors and operating costs to inform whether to continue, adjust or stop.",
+      "We record a baseline: time, errors, costs or another indicator of the problem.",
+      "With the client, we define targets, data and the evaluation period. Tests verify technical delivery.",
+      "We compare outcomes with the baseline, considering limitations and costs, to decide whether to continue, adjust or stop.",
     ],
     relatedTitle: "Keep getting to know IRTC",
   },
@@ -405,11 +401,11 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     breadcrumbHome: "Inicio",
     breadcrumbCurrent: "Misión",
     eyebrow: "Misión de IRTC",
-    title: "Para qué existe IRTC",
+    title: "Por qué existe IRTC",
     intro:
-      "Nuestro trabajo empieza en el problema del cliente y termina en un sistema que las personas pueden usar y mantener.",
+      "Resolver problemas con sistemas que las personas puedan usar y mantener.",
     purposeLabel: "Propósito",
-    verbsTitle: "Cuatro verbos que asume la misión",
+    verbsTitle: "Cómo ponemos la misión en práctica",
     verbs: [
       {
         title: "Diseñar",
@@ -428,7 +424,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
         text: "Acompañar el sistema en uso, con monitoreo, soporte y evolución acordados.",
       },
     ],
-    commitmentsTitle: "Tres compromisos que acompañan la misión",
+    commitmentsTitle: "Compromisos de entrega",
     commitments: [
       {
         title: "Calidad técnica",
@@ -445,7 +441,7 @@ export const missionCopy: Record<Locale, MissionCopy> = {
     ],
     pathTitle: "Del primer contacto a la evolución",
     pathIntro:
-      "Es el recorrido que describimos a los clientes: entender, planificar, construir en ciclos cortos, lanzar y evolucionar. El alcance de cada proyecto define las etapas, los responsables y los criterios de aceptación.",
+      "El alcance define etapas, responsables y aceptación. Cada entrega orienta la siguiente decisión.",
     steps: [
       {
         title: "Entender",
@@ -469,11 +465,11 @@ export const missionCopy: Record<Locale, MissionCopy> = {
       },
     ],
     storyTag: "EVALUACIÓN DE RESULTADOS",
-    storyTitle: "Cómo evaluar si el trabajo hizo una diferencia",
+    storyTitle: "Cómo evaluamos el resultado",
     story: [
-      "El proyecto empieza con una referencia: tiempo de una tarea, errores, costo del entorno u otro indicador relevante para el problema.",
-      "El cliente e IRTC definen la meta, la fuente de datos y el período de evaluación. Las pruebas y los criterios de aceptación verifican la entrega técnica.",
-      "El resultado observado se compara con la referencia inicial. La evaluación también registra limitaciones, factores externos y costos de operación para decidir si continuar, ajustar o cerrar.",
+      "Registramos la referencia actual: tiempo, errores, costos u otro indicador del problema.",
+      "Con el cliente, definimos metas, datos y período de evaluación. Las pruebas verifican la entrega técnica.",
+      "Comparamos el resultado con la referencia, considerando límites y costos, para decidir si continuar, ajustar o cerrar.",
     ],
     relatedTitle: "Sigue conociendo IRTC",
   },
@@ -487,29 +483,29 @@ export const visionCopy: Record<Locale, VisionCopy> = {
     eyebrow: "Visão da IRTC",
     title: "Aonde a IRTC quer chegar",
     intro:
-      "Uma empresa de engenharia que começou na Amazônia e quer ser lembrada pelo que entrega, pela clareza e pela companhia ao longo do caminho.",
+      "Nascida na Amazônia, a IRTC busca ser reconhecida pela entrega, pela clareza e por relações duradouras.",
     horizonAlt:
       "Ilustração de um rio ao entardecer, com o sol baixo no horizonte e faixas de água em tons de verde e terracota.",
     partsTitle: "Três partes da visão",
     parts: [
       {
         title: "Uma referência nascida na Amazônia",
-        text: "Belém, no Pará, é a base da IRTC. A origem faz parte da identidade e acompanha o trabalho com equipes de diferentes lugares.",
+        text: "Belém é nossa base. A origem amazônica acompanha o trabalho com equipes de diferentes lugares.",
       },
       {
         title: "Acessível a empresas de diferentes portes",
-        text: "Cloud, software e IA não deveriam ser assunto só de empresa grande. Queremos explicar as escolhas em linguagem simples e começar por uma primeira entrega que caiba na realidade de cada cliente.",
+        text: "Explicar escolhas em linguagem simples e propor entregas compatíveis com a realidade de cada cliente.",
       },
       {
         title: "Relações que sustentam o avanço",
-        text: "O crescimento se apoia em capacidade de entrega, conhecimento compartilhado e confiança construída em projetos reais, ao longo do tempo.",
+        text: "Crescer com capacidade de entrega, conhecimento compartilhado e confiança construída no trabalho.",
       },
     ],
     storyTag: "DIREÇÃO DE CRESCIMENTO",
     storyTitle: "Crescer com evidência e capacidade",
     story: [
-      "A visão da IRTC orienta o desenvolvimento da empresa. A capacidade de assumir novos escopos deve acompanhar a experiência demonstrada, a disponibilidade e os requisitos de cada cliente.",
-      "O avanço será avaliado por entregas aceitas, resultados documentados e condições sustentáveis de operação. Cases e credenciais só serão publicados com evidência, atribuição e autorização.",
+      "Novos projetos dependem de experiência demonstrada, disponibilidade e requisitos do cliente.",
+      "Avaliaremos o avanço por entregas aceitas e resultados documentados. Cases e credenciais exigem evidência, atribuição e autorização.",
     ],
     signature: "Da Amazônia para o seu próximo desafio.",
     relatedTitle: "Continue conhecendo a IRTC",
@@ -521,29 +517,29 @@ export const visionCopy: Record<Locale, VisionCopy> = {
     eyebrow: "IRTC vision",
     title: "Where IRTC wants to get to",
     intro:
-      "An engineering company that started in the Amazon and wants to be remembered for what it delivers, for its clarity and for staying close along the way.",
+      "Born in the Amazon, IRTC aims to be recognized for its delivery, clarity and lasting relationships.",
     horizonAlt:
       "Illustration of a river at dusk, with a low sun on the horizon and bands of water in green and terracotta tones.",
     partsTitle: "Three parts of the vision",
     parts: [
       {
         title: "A reference born in the Amazon",
-        text: "Belém, in Pará, is IRTC's base. The origin is part of the identity and goes along with the work with teams from different places.",
+        text: "Belém is our base. Our Amazonian roots travel with our work across locations.",
       },
       {
         title: "Accessible to companies of different sizes",
-        text: "Cloud, software and AI should not be a topic for large companies only. We want to explain choices in plain language and start with a first delivery that fits each client's reality.",
+        text: "Explain choices in plain language and propose deliverables that fit each client’s situation.",
       },
       {
         title: "Relationships that sustain progress",
-        text: "Growth rests on delivery capacity, shared knowledge and trust built in real projects, over time.",
+        text: "Grow through delivery capacity, shared knowledge and trust earned through work.",
       },
     ],
     storyTag: "GROWTH DIRECTION",
     storyTitle: "Grow with evidence and capacity",
     story: [
-      "IRTC’s vision guides the company’s development. Capacity to take on new scopes should follow demonstrated experience, availability and each client’s requirements.",
-      "Progress will be assessed through accepted deliverables, documented results and sustainable operations. Case studies and credentials will be published only with evidence, attribution and authorization.",
+      "New projects depend on demonstrated experience, availability and client requirements.",
+      "We will assess progress through accepted deliverables and documented outcomes. Cases and credentials require evidence, attribution and permission.",
     ],
     signature: "From the Amazon to your next challenge.",
     relatedTitle: "Keep getting to know IRTC",
@@ -555,29 +551,29 @@ export const visionCopy: Record<Locale, VisionCopy> = {
     eyebrow: "Visión de IRTC",
     title: "Adónde quiere llegar IRTC",
     intro:
-      "Una empresa de ingeniería que empezó en la Amazonía y quiere ser recordada por lo que entrega, por su claridad y por la compañía a lo largo del camino.",
+      "Nacida en la Amazonía, IRTC busca ser reconocida por sus entregas, claridad y relaciones duraderas.",
     horizonAlt:
       "Ilustración de un río al atardecer, con el sol bajo en el horizonte y franjas de agua en tonos de verde y terracota.",
     partsTitle: "Tres partes de la visión",
     parts: [
       {
         title: "Una referencia nacida en la Amazonía",
-        text: "Belém, en Pará, es la base de IRTC. El origen es parte de la identidad y acompaña el trabajo con equipos de distintos lugares.",
+        text: "Belém es nuestra base. El origen amazónico acompaña nuestro trabajo con equipos de distintos lugares.",
       },
       {
         title: "Accesible a empresas de distintos tamaños",
-        text: "Cloud, software e IA no deberían ser tema solo de empresas grandes. Queremos explicar las decisiones en lenguaje simple y empezar por una primera entrega que quepa en la realidad de cada cliente.",
+        text: "Explicar decisiones con lenguaje claro y proponer entregas acordes con la realidad de cada cliente.",
       },
       {
         title: "Relaciones que sostienen el avance",
-        text: "El crecimiento se apoya en capacidad de entrega, conocimiento compartido y confianza construida en proyectos reales, a lo largo del tiempo.",
+        text: "Crecer con capacidad de entrega, conocimiento compartido y confianza construida con el trabajo.",
       },
     ],
     storyTag: "DIRECCIÓN DE CRECIMIENTO",
     storyTitle: "Crecer con evidencia y capacidad",
     story: [
-      "La visión de IRTC orienta el desarrollo de la empresa. La capacidad de asumir nuevos alcances debe acompañar la experiencia demostrada, la disponibilidad y los requisitos de cada cliente.",
-      "El avance se evaluará mediante entregas aceptadas, resultados documentados y condiciones sostenibles de operación. Los casos y credenciales solo se publicarán con evidencia, atribución y autorización.",
+      "Los nuevos proyectos dependen de experiencia demostrada, disponibilidad y requisitos del cliente.",
+      "Evaluaremos el avance por entregas aceptadas y resultados documentados. Los casos y credenciales requieren evidencia, atribución y autorización.",
     ],
     signature: "De la Amazonia a tu próximo desafío.",
     relatedTitle: "Sigue conociendo IRTC",
