@@ -1,0 +1,670 @@
+[
+  {
+    "name": "Accenture",
+    "cohort": "global",
+    "requested": "https://www.accenture.com/en/services/ecosystem-partners/aws",
+    "response": "200\nhttps://www.accenture.com/en/services/ecosystem-partners/aws",
+    "error": "",
+    "title": "",
+    "description": "",
+    "canonical": "",
+    "robots": "",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 0,
+      "h2": 0,
+      "h3": 0
+    },
+    "h1": [],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "Deloitte",
+    "cohort": "global",
+    "requested": "https://www.deloitte.com/us/en/alliances/aws.html",
+    "response": "200\nhttps://www.deloitte.com/us/en/alliances/aws.html",
+    "error": "",
+    "title": "Deloitte AWS Relationship | Deloitte US",
+    "description": "Leveraging Deloitte's deep industry experience and the leading-edge capabilities of AWS, we can guide you through your cloud migration process step-by-step.",
+    "canonical": "https://www.deloitte.com/us/en/alliances/aws.html",
+    "robots": "index, follow, max-image-preview:standard",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 4,
+      "h2": 2,
+      "h3": 29
+    },
+    "h1": [
+      "The Deloitte & Amazon Web Services (AWS) alliance"
+    ],
+    "jsonld_blocks": 3
+  },
+  {
+    "name": "IBM",
+    "cohort": "global",
+    "requested": "https://www.ibm.com/consulting/aws",
+    "response": "200\nhttps://www.ibm.com/consulting/aws",
+    "error": "",
+    "title": "AWS Consulting Services | IBM",
+    "description": "Transform your business with AWS consulting expertise. Scale cloud solutions, optimize workloads and drive secure, efficient innovation across your enterprise.",
+    "canonical": "https://www.ibm.com/consulting/aws",
+    "robots": "index, follow, max-image-preview:large",
+    "hreflang": [
+      [
+        "ar-sa",
+        "https://www.ibm.com/sa-ar/consulting/aws"
+      ],
+      [
+        "de-de",
+        "https://www.ibm.com/de-de/consulting/aws"
+      ],
+      [
+        "en-us",
+        "https://www.ibm.com/consulting/aws"
+      ],
+      [
+        "ko-kr",
+        "https://www.ibm.com/kr-ko/consulting/aws"
+      ],
+      [
+        "pt-br",
+        "https://www.ibm.com/br-pt/consulting/aws"
+      ],
+      [
+        "ar-qa",
+        "https://www.ibm.com/qa-ar/consulting/aws"
+      ],
+      [
+        "es-es",
+        "https://www.ibm.com/es-es/consulting/aws"
+      ],
+      [
+        "ar-ae",
+        "https://www.ibm.com/ae-ar/consulting/aws"
+      ],
+      [
+        "zh-cn",
+        "https://www.ibm.com/cn-zh/consulting/aws"
+      ],
+      [
+        "es-mx",
+        "https://www.ibm.com/mx-es/consulting/aws"
+      ],
+      [
+        "it-it",
+        "https://www.ibm.com/it-it/consulting/aws"
+      ],
+      [
+        "x-default",
+        "https://www.ibm.com/consulting/aws"
+      ],
+      [
+        "id-id",
+        "https://www.ibm.com/id-id/consulting/aws"
+      ],
+      [
+        "fr-fr",
+        "https://www.ibm.com/fr-fr/consulting/aws"
+      ],
+      [
+        "ja-jp",
+        "https://www.ibm.com/jp-ja/consulting/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 0
+    },
+    "h1": [
+      "AWS consulting services"
+    ],
+    "jsonld_blocks": 1
+  },
+  {
+    "name": "Capgemini",
+    "cohort": "global",
+    "requested": "https://www.capgemini.com/about-us/technology-partners/amazon-web-services/",
+    "response": "200\nhttps://www.capgemini.com/about-us/technology-partners/amazon-web-services/",
+    "error": "",
+    "title": "AWS Partner | Capgemini",
+    "description": "Together as an AWS partner, Capgemini and AWS blend deep industry knowledge, cloud expertise, and services to help you realize your visions.",
+    "canonical": "https://www.capgemini.com/about-us/technology-partners/amazon-web-services/",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang": [
+      [
+        "x-default",
+        "https://www.capgemini.com/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "en-GB",
+        "https://www.capgemini.com/gb-en/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "en-IN",
+        "https://www.capgemini.com/in-en/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "es-MX",
+        "https://www.capgemini.com/mx-es/sobre-nosotros/partnerships/amazon-web-services/"
+      ],
+      [
+        "en-SE",
+        "https://www.capgemini.com/se-en/about-us/partnerships/amazon-web-services/"
+      ],
+      [
+        "ja-JP",
+        "https://www.capgemini.com/jp-jp/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "en-NZ",
+        "https://www.capgemini.com/nz-en/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "zh-CN",
+        "https://www.capgemini.com/cn-zh/about-us/technology-partners/amazon-web-services/"
+      ],
+      [
+        "pt-BR",
+        "https://www.capgemini.com/br-pt/sobre-nos/parceiros-de-tecnologia/amazon-web-services/"
+      ],
+      [
+        "en",
+        "https://www.capgemini.com/about-us/technology-partners/amazon-web-services/"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 32
+    },
+    "h1": [
+      "Amazon Web Services (AWS)"
+    ],
+    "jsonld_blocks": 2
+  },
+  {
+    "name": "Cognizant",
+    "cohort": "global",
+    "requested": "https://www.cognizant.com/us/en/about-cognizant/partners/aws",
+    "response": "200\nhttps://www.cognizant.com/us/en/about-cognizant/partners/aws",
+    "error": "",
+    "title": "AWS Partner | Cognizant",
+    "description": "Cognizant and AWS have joined forces to make it easy and affordable for organizations to drive digital value through the cloud. See more.",
+    "canonical": "https://www.cognizant.com/us/en/about-cognizant/partners/aws",
+    "robots": "",
+    "hreflang": [
+      [
+        "de-DE",
+        "https://www.cognizant.com/de/de/about-cognizant/partners/aws"
+      ],
+      [
+        "es-ES",
+        "https://www.cognizant.com/es/es/about-cognizant/partners/aws"
+      ],
+      [
+        "ja-JP",
+        "https://www.cognizant.com/jp/ja/about-cognizant/partners/aws"
+      ],
+      [
+        "fr-FR",
+        "https://www.cognizant.com/fr/fr/about-cognizant/partners/aws"
+      ],
+      [
+        "en-US",
+        "https://www.cognizant.com/us/en/about-cognizant/partners/aws"
+      ],
+      [
+        "fr-CH",
+        "https://www.cognizant.com/ch/fr/about-cognizant/partners/aws"
+      ],
+      [
+        "de-CH",
+        "https://www.cognizant.com/ch/de/about-cognizant/partners/aws"
+      ],
+      [
+        "en-CA",
+        "https://www.cognizant.com/ca/en/about-cognizant/partners/aws"
+      ],
+      [
+        "fr-CA",
+        "https://www.cognizant.com/ca/fr/about-cognizant/partners/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 2,
+      "h2": 3,
+      "h3": 9
+    },
+    "h1": [
+      ""
+    ],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "Slalom",
+    "cohort": "global",
+    "requested": "https://www.slalom.com/us/en/who-we-are/partners/aws",
+    "response": "200\nhttps://www.slalom.com/us/en/who-we-are/partners/aws",
+    "error": "",
+    "title": "AWS Partner | Award Winning System Integrator | Slalom",
+    "description": "Slalom is an award winning AWS partner of the year system integrator who adds deep technical and strategic expertise to any AWS project.",
+    "canonical": "https://www.slalom.com/us/en/who-we-are/partners/aws",
+    "robots": "",
+    "hreflang": [
+      [
+        "en-US",
+        "https://www.slalom.com/us/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-AU",
+        "https://www.slalom.com/au/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-CA",
+        "https://www.slalom.com/ca/en/who-we-are/partners/aws"
+      ],
+      [
+        "fr-CA",
+        "https://www.slalom.com/ca/fr/who-we-are/partners/aws"
+      ],
+      [
+        "en-CO",
+        "https://www.slalom.com/co/en/who-we-are/partners/aws"
+      ],
+      [
+        "es-CO",
+        "https://www.slalom.com/co/es/who-we-are/partners/aws"
+      ],
+      [
+        "de-DE",
+        "https://www.slalom.com/de/de/who-we-are/partners/aws"
+      ],
+      [
+        "en-DE",
+        "https://www.slalom.com/de/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-GB",
+        "https://www.slalom.com/gb/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-IE",
+        "https://www.slalom.com/ie/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-JP",
+        "https://www.slalom.com/jp/en/who-we-are/partners/aws"
+      ],
+      [
+        "ja-JP",
+        "https://www.slalom.com/jp/ja/who-we-are/partners/aws"
+      ],
+      [
+        "en-MX",
+        "https://www.slalom.com/mx/en/who-we-are/partners/aws"
+      ],
+      [
+        "es-MX",
+        "https://www.slalom.com/mx/es/who-we-are/partners/aws"
+      ],
+      [
+        "en-NZ",
+        "https://www.slalom.com/nz/en/who-we-are/partners/aws"
+      ],
+      [
+        "en-SG",
+        "https://www.slalom.com/sg/en/who-we-are/partners/aws"
+      ],
+      [
+        "x-default",
+        "https://www.slalom.com/us/en/who-we-are/partners/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 0,
+      "h2": 26,
+      "h3": 23
+    },
+    "h1": [],
+    "jsonld_blocks": 2
+  },
+  {
+    "name": "EPAM",
+    "cohort": "global",
+    "requested": "https://www.epam.com/services/partners/aws",
+    "response": "403\nhttps://www.epam.com/services/partners/aws",
+    "error": "",
+    "title": "Just a moment...",
+    "description": "",
+    "canonical": "",
+    "robots": "noindex,nofollow",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 0,
+      "h2": 0,
+      "h3": 0
+    },
+    "h1": [],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "Rackspace",
+    "cohort": "global",
+    "requested": "https://www.rackspace.com/cloud/aws",
+    "response": "200\nhttps://www.rackspace.com/cloud/aws",
+    "error": "",
+    "title": "AWS for your Cloud, Apps, Data and Security | Rackspace Cloud",
+    "description": "Experience the Full breadth of AWS and its Leading-Edge Cloud Capabilities | Work Smarter, Lower Costs & Innovate with Agility | Learn more with Rackspace",
+    "canonical": "https://www.rackspace.com/cloud/aws",
+    "robots": "",
+    "hreflang": [
+      [
+        "x-default",
+        "https://www.rackspace.com//cloud/aws"
+      ],
+      [
+        "de-AT",
+        "https://www.rackspace.com/de-at/cloud/aws"
+      ],
+      [
+        "de-CH",
+        "https://www.rackspace.com/de-ch/cloud/aws"
+      ],
+      [
+        "de-DE",
+        "https://www.rackspace.com/de-de/cloud/aws"
+      ],
+      [
+        "en-AE",
+        "https://www.rackspace.com/en-ae/cloud/aws"
+      ],
+      [
+        "en-AU",
+        "https://www.rackspace.com/en-au/cloud/aws"
+      ],
+      [
+        "en-CA",
+        "https://www.rackspace.com/en-ca/cloud/aws"
+      ],
+      [
+        "en-HK",
+        "https://www.rackspace.com/en-hk/cloud/aws"
+      ],
+      [
+        "en-IN",
+        "https://www.rackspace.com/en-in/cloud/aws"
+      ],
+      [
+        "en-NL",
+        "https://www.rackspace.com/en-nl/cloud/aws"
+      ],
+      [
+        "en-NZ",
+        "https://www.rackspace.com/en-nz/cloud/aws"
+      ],
+      [
+        "en-PH",
+        "https://www.rackspace.com/en-ph/cloud/aws"
+      ],
+      [
+        "en-SG",
+        "https://www.rackspace.com/en-sg/cloud/aws"
+      ],
+      [
+        "en-gb",
+        "https://www.rackspace.com/en-gb/cloud/aws"
+      ],
+      [
+        "es-AR",
+        "https://www.rackspace.com/es-ar/cloud/aws"
+      ],
+      [
+        "es-CL",
+        "https://www.rackspace.com/es-cl/cloud/aws"
+      ],
+      [
+        "es-CO",
+        "https://www.rackspace.com/es-co/cloud/aws"
+      ],
+      [
+        "es-MX",
+        "https://www.rackspace.com/es-mx/cloud/aws"
+      ],
+      [
+        "es-PE",
+        "https://www.rackspace.com/es-pe/cloud/aws"
+      ],
+      [
+        "es-US",
+        "https://www.rackspace.com/es-us/cloud/aws"
+      ],
+      [
+        "es-VE",
+        "https://www.rackspace.com/es-ve/cloud/aws"
+      ],
+      [
+        "pt-br",
+        "https://www.rackspace.com/pt-br/cloud/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 12,
+      "h3": 24
+    },
+    "h1": [
+      "Amazon Web Services"
+    ],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "HCLTech",
+    "cohort": "global",
+    "requested": "https://www.hcltech.com/aws",
+    "response": "200\nhttps://www.hcltech.com/aws",
+    "error": "",
+    "title": "HCLTech and AWS Partnership for Cloud Innovation | HCLTech",
+    "description": "Power your business with HCLTech's AWS solutions. Get expert AWS cloud consulting, security, and managed services tailored to your goals from strategy to scale. Vist us!",
+    "canonical": "https://www.hcltech.com/aws",
+    "robots": "",
+    "hreflang": [
+      [
+        "x-default",
+        "https://www.hcltech.com/aws"
+      ],
+      [
+        "en",
+        "https://www.hcltech.com/aws"
+      ],
+      [
+        "ja-jp",
+        "https://www.hcltech.com/ja-jp/aws"
+      ],
+      [
+        "de-de",
+        "https://www.hcltech.com/de-de/aws"
+      ],
+      [
+        "fr-ca",
+        "https://www.hcltech.com/fr-ca/aws"
+      ],
+      [
+        "en-us",
+        "https://www.hcltech.com/en-us/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 19
+    },
+    "h1": [
+      "AWS Ecosystem"
+    ],
+    "jsonld_blocks": 4
+  },
+  {
+    "name": "NTT DATA",
+    "cohort": "global",
+    "requested": "https://mar.nttdata.com/alliances/aws",
+    "response": "200\nhttps://mar.nttdata.com/alliances/aws",
+    "error": "",
+    "title": "Our partnership with Amazon Web Service (AWS) | NTT DATA",
+    "description": "",
+    "canonical": "https://mar.nttdata.com/alliances/aws",
+    "robots": "index, follow",
+    "hreflang": [
+      [
+        "x-default",
+        "https://mar.nttdata.com/alliances/aws"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 12
+    },
+    "h1": [
+      "Amazon Web Services (AWS)"
+    ],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "Compass UOL",
+    "cohort": "brasil",
+    "requested": "https://go.compass.uol/devops-aws-capabilities-pt",
+    "response": "200\nhttps://go.compass.uol/devops-aws-capabilities-pt",
+    "error": "",
+    "title": "Compass UOL & AWS | DevOps​  AWS Capabilities",
+    "description": "Impulsione sua operação com práticas modernas de DevOps.​\nCiclos de entrega mais rápidos, confiabilidade elevada e automação de ponta a ponta para elevar sua cultura DevOps, operações e resultados.​",
+    "canonical": "https://go.compass.uol/devops-aws-capabilities-pt",
+    "robots": "",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 16,
+      "h2": 0,
+      "h3": 10
+    },
+    "h1": [
+      "Impulsione sua operação com práticas modernas de DevOps.​"
+    ],
+    "jsonld_blocks": 0
+  },
+  {
+    "name": "Darede",
+    "cohort": "brasil",
+    "requested": "https://darede.com.br/cloud-consulting/",
+    "response": "200\nhttps://darede.com.br/cloud-consulting/",
+    "error": "",
+    "title": "Darede Cloud Consulting - Darede à nuvem",
+    "description": "Darede Cloud Consulting: gestão completa do ambiente AWS com segurança, otimização e suporte 24x7. Especialistas certificados, flexibilidade, SLA rápido e planos sob medida para sua operação cloud.",
+    "canonical": "https://darede.com.br/cloud-consulting/",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang": [
+      [
+        "pt-PT",
+        "https://www.darede.pt/"
+      ],
+      [
+        "en",
+        "https://www.darede.pt/en/"
+      ],
+      [
+        "es-ES",
+        "https://www.darede.es/"
+      ],
+      [
+        "pt-BR",
+        "https://darede.com.br/"
+      ],
+      [
+        "x-default",
+        "https://www.darede.pt/"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 3,
+      "h3": 3
+    },
+    "h1": [
+      "Seu ambiente AWS disponível, seguro e otimizado 24x7"
+    ],
+    "jsonld_blocks": 1
+  },
+  {
+    "name": "A3Data",
+    "cohort": "brasil",
+    "requested": "https://a3data.com.br/",
+    "response": "200\nhttps://a3data.com.br/",
+    "error": "",
+    "title": "Transforme a sua empresa com consultoria de dados | A3Data",
+    "description": "Acelere seus processos, reduza custos e aumente a rentabilidade da sua empresa com uma consultoria de dados especializada em IA e automação com agentes inteligentes.",
+    "canonical": "https://a3data.com.br/",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 0,
+      "h2": 58,
+      "h3": 0
+    },
+    "h1": [],
+    "jsonld_blocks": 1
+  },
+  {
+    "name": "Dedalus",
+    "cohort": "brasil",
+    "requested": "https://dedalusprime.com/br/parcerias/aws/",
+    "response": "200\nhttps://dedalusprime.com/br/aws/",
+    "error": "",
+    "title": "Adote a AWS na sua empresa com a Dedalus",
+    "description": "Descubra como nossa parceria com a AWS pode ajudá-lo a acelerar sua jornada para a nuvem.",
+    "canonical": "https://dedalusprime.com/br/aws/",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang": [
+      [
+        "pt",
+        "https://dedalusprime.com/br/aws/"
+      ],
+      [
+        "es",
+        "https://dedalusprime.com/latam/sociedad/aws/"
+      ],
+      [
+        "en",
+        "https://dedalusprime.com/en-us/partnership/aws/"
+      ]
+    ],
+    "heading_counts": {
+      "h1": 1,
+      "h2": 3,
+      "h3": 28
+    },
+    "h1": [
+      "AWS"
+    ],
+    "jsonld_blocks": 1
+  },
+  {
+    "name": "BRLink",
+    "cohort": "brasil",
+    "requested": "https://www.brlink.com.br/",
+    "response": "200\nhttps://www.brlink.com.br/",
+    "error": "",
+    "title": "Aws Partner | BRLink",
+    "description": "Inicie ou Melhore sua Experiência com os Recursos da Nuvem. Entre em Contato! Vamos bater um papo? Máquinas Virtuais. Melhores Práticas. Especialistas em Cloud. Web apps.",
+    "canonical": "https://www.brlink.com.br/",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang": [],
+    "heading_counts": {
+      "h1": 2,
+      "h2": 6,
+      "h3": 15
+    },
+    "h1": [
+      "AWS PARTNER SOLUÇÕES COMPLETAS para o seu Negócio"
+    ],
+    "jsonld_blocks": 1
+  }
+]
