@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   CSSProperties,
   FocusEvent,
@@ -442,8 +441,6 @@ export function SiteHeader({
   servicesMenu: ServicesMenu;
   labels: HeaderLabels;
 }) {
-  const router = useRouter();
-
   const [stuck, setStuck] = useState(false);
   const [visible, setVisible] = useState(true);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -524,10 +521,9 @@ export function SiteHeader({
 
   function changeLanguage(value: Locale) {
     document.cookie = `irtc-locale=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
-    const go = () => router.push(languages[value], { scroll: false });
-    if (typeof document.startViewTransition === "function")
-      document.startViewTransition(go);
-    else go();
+    // Locale layouts own document initialization (theme and splash lifecycle).
+    // Load the translated document so those scripts run after a locale change.
+    location.assign(languages[value]);
   }
 
   function current(item: NavItem) {
