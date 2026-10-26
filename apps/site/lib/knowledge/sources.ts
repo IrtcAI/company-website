@@ -3,6 +3,7 @@ import { content, type Locale } from "../content";
 import { aboutCopy } from "../copy/about";
 import { cultureCopy, missionCopy, visionCopy } from "../copy/culture";
 import { founderCopy } from "../copy/founder";
+import { serviceDecisionCopy } from "../copy/service-decisions";
 import { servicesPageCopy } from "../copy/services-page";
 import { engagementCopy } from "../copy/engagement";
 import { locales, pagePath } from "../routes";
@@ -367,6 +368,19 @@ function serviceChunks(locale: Locale): KnowledgeChunk[] {
       text: `${copy.title} (IRTC) · ${page.measureTitle}. ${page.measureNote} ${copy.measure.join(" ")}`,
     };
 
+    const decision = serviceDecisionCopy[locale][service.id];
+    const decisionChunks: KnowledgeChunk[] = decision
+      ? [
+          {
+            ...base,
+            id: `service:${service.id}:decision`,
+            source: "lib/copy/service-decisions.ts",
+            title: decision.title,
+            text: `${copy.title} (IRTC). ${decision.title}. ${decision.points.map((point) => `${point.title}: ${point.text}`).join(" ")}`,
+          },
+        ]
+      : [];
+
     const faqChunks: KnowledgeChunk[] = copy.faq.map((item, index) => ({
       ...base,
       id: `service:${service.id}:faq:${index + 1}`,
@@ -379,6 +393,7 @@ function serviceChunks(locale: Locale): KnowledgeChunk[] {
       problemsChunk,
       deliverablesChunk,
       measureChunk,
+      ...decisionChunks,
       ...faqChunks,
     ];
   });

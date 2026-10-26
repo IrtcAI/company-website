@@ -16,6 +16,7 @@ import { ServiceFaq } from "@/components/service-faq";
 import { ServiceVisual } from "@/components/service-visual";
 import { SiteShell } from "@/components/site-shell";
 import { content } from "@/lib/content";
+import { serviceDecisionCopy } from "@/lib/copy/service-decisions";
 import { servicesPageCopy } from "@/lib/copy/services-page";
 import { resolveLocaleParam } from "@/lib/locale-params";
 import { absoluteUrl, pageAlternates, pagePath } from "@/lib/routes";
@@ -76,6 +77,7 @@ export default async function ServicePage({ params }: Params) {
   const servicesHref = pagePath(locale, "services");
   const path = pagePath(locale, "services", copy.slug);
   const related = relatedServices(service);
+  const decision = serviceDecisionCopy[locale][service.id];
 
   const structuredData = graph(
     {
@@ -137,7 +139,7 @@ export default async function ServicePage({ params }: Params) {
                 href={`${pagePath(locale, "contact")}?servico=${service.id}`}
                 className="pill-link"
               >
-                {siteCopy.talk}
+                {decision?.action ?? siteCopy.talk}
                 <span>
                   <MessageCircle aria-hidden="true" />
                 </span>
@@ -167,8 +169,8 @@ export default async function ServicePage({ params }: Params) {
           note={pageCopy.stackNote}
         />
         <ServiceHow
-          title={pageCopy.howTitle}
-          points={siteCopy.manifesto.points}
+          title={decision?.title ?? pageCopy.howTitle}
+          points={decision?.points ?? siteCopy.manifesto.points}
         />
         <ServiceFaq title={pageCopy.faqTitle} items={copy.faq} />
 
@@ -187,7 +189,11 @@ export default async function ServicePage({ params }: Params) {
         </section>
       </div>
 
-      <ContactCta locale={locale} service={service.id} />
+      <ContactCta
+        locale={locale}
+        service={service.id}
+        action={decision?.action}
+      />
     </SiteShell>
   );
 }
