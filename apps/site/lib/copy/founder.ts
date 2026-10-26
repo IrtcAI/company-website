@@ -38,22 +38,22 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Fundador da IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues é o fundador e responsável técnico da IRTC. Participa da análise do problema, das decisões de engenharia e da revisão das entregas, mantendo o contexto entre a conversa comercial e a execução.",
+      "Iago Rodrigues, fundador e responsável técnico, conduz a análise do problema, as decisões de engenharia e a revisão das entregas.",
     bio: [
-      "Iago é formado em Sistemas de Informação e vive em Belém, no Pará. Sua experiência pessoal inclui atuação como contractor em projetos de LeafLink, Dasa e Perfect Pay.",
-      "Esses trabalhos pertencem à trajetória profissional de Iago. As organizações citadas não são apresentadas como clientes da IRTC, e seus projetos e resultados não compõem o portfólio comercial da empresa.",
-      "Na IRTC, cada oportunidade é avaliada pelo problema, pelo risco e pela capacidade de entrega. O escopo define responsabilidades, condições de implantação e continuidade.",
+      "Formado em Sistemas de Informação, Iago vive em Belém. Atuou como contractor em projetos de LeafLink, Dasa e Perfect Pay.",
+      "Esses projetos são experiência pessoal de Iago; não são cases nem relações comerciais da IRTC.",
+      "Na IRTC, cada projeto depende de aderência, risco e capacidade. Responsabilidades, implantação e continuidade são definidas no escopo.",
     ],
     linkedinLabel: "Iago no LinkedIn",
     linkedinNewTab: "abre em uma nova aba",
-    storyTitle: "Responsabilidade que você pode acompanhar",
+    storyTitle: "Decisões e entregas que você acompanha",
     storyTag: "NA CONDUÇÃO DO PROJETO",
     storyLead:
-      "O papel do fundador se traduz em decisões e entregáveis que ficam disponíveis para o cliente.",
+      "O cliente acompanha as decisões e recebe os entregáveis acordados.",
     story: [
       {
         kicker: "Contexto e prioridade",
-        text: "Relacionar o problema à operação, registrar restrições e definir o que precisa ser validado antes de investir.",
+        text: "Registrar impacto, restrições e o que precisa ser validado antes do investimento.",
       },
       {
         kicker: "Decisões de engenharia",
@@ -69,7 +69,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     storyClosing:
-      "A primeira conversa serve para avaliar a aderência do problema e definir o próximo passo.",
+      "A primeira conversa avalia o problema e define o próximo passo.",
     outsideTitle: "Fora do código",
     outsideIntro:
       "O que enche a semana do Iago quando o notebook está fechado.",
@@ -106,22 +106,21 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Founder of IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues is IRTC’s founder and technical lead. He takes part in assessing the problem, making engineering decisions and reviewing deliveries, keeping context from the business conversation through execution.",
+      "Iago Rodrigues, founder and technical lead, leads problem analysis, engineering decisions and delivery reviews.",
     bio: [
-      "Iago holds a degree in Information Systems and lives in Belém, Pará, Brazil. His personal experience includes contractor work on projects for LeafLink, Dasa and Perfect Pay.",
-      "That work belongs to Iago’s professional background. These organizations are not presented as IRTC clients, and their projects and results are not part of the company’s commercial portfolio.",
-      "At IRTC, each opportunity is assessed against the problem, risk and delivery capacity. The scope defines responsibilities, deployment conditions and continuity.",
+      "Iago holds a degree in Information Systems and lives in Belém. He worked as a contractor on LeafLink, Dasa and Perfect Pay projects.",
+      "These projects are Iago’s personal experience; they are not IRTC case studies or client relationships.",
+      "Each IRTC project depends on fit, risk and capacity. Responsibilities, deployment and ongoing support are defined in the scope.",
     ],
     linkedinLabel: "Iago on LinkedIn",
     linkedinNewTab: "opens in a new tab",
-    storyTitle: "Accountability you can follow",
+    storyTitle: "Decisions and deliverables you can follow",
     storyTag: "LEADING THE PROJECT",
-    storyLead:
-      "The founder’s role translates into decisions and deliverables available to the client.",
+    storyLead: "Clients follow decisions and receive the agreed deliverables.",
     story: [
       {
         kicker: "Context and priority",
-        text: "Connect the problem to the operation, record constraints and define what needs validation before investing.",
+        text: "Record impact, constraints and what needs validation before investing.",
       },
       {
         kicker: "Engineering decisions",
@@ -137,7 +136,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     storyClosing:
-      "The first conversation assesses whether the problem is a fit and defines the next step.",
+      "The first conversation assesses the problem and defines the next step.",
     outsideTitle: "Outside the code",
     outsideIntro: "What fills Iago's week when the laptop is closed.",
     outside: [
@@ -172,22 +171,22 @@ export const founderCopy: Record<Locale, FounderCopy> = {
     eyebrow: "Fundador de IRTC",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues es el fundador y responsable técnico de IRTC. Participa en el análisis del problema, las decisiones de ingeniería y la revisión de las entregas, manteniendo el contexto entre la conversación comercial y la ejecución.",
+      "Iago Rodrigues, fundador y responsable técnico, dirige el análisis del problema, las decisiones de ingeniería y la revisión de entregas.",
     bio: [
-      "Iago es graduado en Sistemas de Información y vive en Belém, Pará, Brasil. Su experiencia personal incluye trabajo como contractor en proyectos de LeafLink, Dasa y Perfect Pay.",
-      "Esos trabajos forman parte de la trayectoria profesional de Iago. Las organizaciones citadas no se presentan como clientes de IRTC, y sus proyectos y resultados no integran el portafolio comercial de la empresa.",
-      "En IRTC, cada oportunidad se evalúa según el problema, el riesgo y la capacidad de entrega. El alcance define responsabilidades, condiciones de implantación y continuidad.",
+      "Iago es graduado en Sistemas de Información y vive en Belém. Trabajó como contractor en proyectos de LeafLink, Dasa y Perfect Pay.",
+      "Estos proyectos son experiencia personal de Iago; no son casos ni relaciones comerciales de IRTC.",
+      "Cada proyecto de IRTC depende de su encaje, riesgo y capacidad. El alcance define responsabilidades, implementación y continuidad.",
     ],
     linkedinLabel: "Iago en LinkedIn",
     linkedinNewTab: "se abre en una pestaña nueva",
-    storyTitle: "Responsabilidad que puedes seguir",
+    storyTitle: "Decisiones y entregas que puedes seguir",
     storyTag: "AL FRENTE DEL PROYECTO",
     storyLead:
-      "El papel del fundador se traduce en decisiones y entregables disponibles para el cliente.",
+      "El cliente sigue las decisiones y recibe las entregas acordadas.",
     story: [
       {
         kicker: "Contexto y prioridad",
-        text: "Relacionar el problema con la operación, registrar restricciones y definir qué validar antes de invertir.",
+        text: "Registrar impacto, restricciones y lo que debe validarse antes de invertir.",
       },
       {
         kicker: "Decisiones de ingeniería",
@@ -203,7 +202,7 @@ export const founderCopy: Record<Locale, FounderCopy> = {
       },
     ],
     storyClosing:
-      "La primera conversación sirve para evaluar el encaje del problema y definir el siguiente paso.",
+      "La primera conversación evalúa el problema y define el siguiente paso.",
     outsideTitle: "Fuera del código",
     outsideIntro:
       "Lo que llena la semana de Iago cuando el portátil está cerrado.",
@@ -258,8 +257,8 @@ export const founderSectionCopy: Record<
     accent: "com quem decide e entrega.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues é o fundador e responsável técnico da IRTC. Participa da análise do problema, das decisões de engenharia e da revisão das entregas, mantendo o contexto entre a conversa comercial e a execução.",
-    body: "Conheça sua experiência profissional e como ela orienta a condução dos projetos da IRTC.",
+      "Iago Rodrigues, fundador e responsável técnico, conduz a análise do problema, as decisões de engenharia e a revisão das entregas.",
+    body: "Conheça a experiência pessoal que orienta os projetos da IRTC.",
     location: "Em Belém, Pará, com atendimento remoto.",
     alt: "Retrato de Iago Rodrigues, fundador da IRTC",
     link: "Conheça a trajetória do Iago",
@@ -272,8 +271,8 @@ export const founderSectionCopy: Record<
     accent: "to the person leading delivery.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues is IRTC’s founder and technical lead. He takes part in assessing the problem, making engineering decisions and reviewing deliveries, keeping context from the business conversation through execution.",
-    body: "Explore his professional background and how it informs the way IRTC projects are led.",
+      "Iago Rodrigues, founder and technical lead, leads problem analysis, engineering decisions and delivery reviews.",
+    body: "Explore the personal experience behind IRTC’s projects.",
     location: "Based in Belém, Pará, serving clients remotely.",
     alt: "Portrait of Iago Rodrigues, founder of IRTC",
     link: "Read Iago's story",
@@ -286,8 +285,8 @@ export const founderSectionCopy: Record<
     accent: "con quien decide y entrega.",
     role: "Founder & Principal Engineer",
     intro:
-      "Iago Rodrigues es el fundador y responsable técnico de IRTC. Participa en el análisis del problema, las decisiones de ingeniería y la revisión de las entregas, manteniendo el contexto entre la conversación comercial y la ejecución.",
-    body: "Conoce su trayectoria profesional y cómo orienta la conducción de los proyectos de IRTC.",
+      "Iago Rodrigues, fundador y responsable técnico, dirige el análisis del problema, las decisiones de ingeniería y la revisión de entregas.",
+    body: "Conoce la experiencia personal que orienta los proyectos de IRTC.",
     location: "En Belém, Pará, con atención remota.",
     alt: "Retrato de Iago Rodrigues, fundador de IRTC",
     link: "Conoce la trayectoria de Iago",

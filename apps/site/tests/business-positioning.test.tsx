@@ -30,7 +30,7 @@ describe("business positioning", () => {
       for (const company of ["LeafLink", "Dasa", "Perfect Pay"])
         expect(bio).toContain(company);
       expect(bio).toMatch(
-        /não são apresentadas como clientes|not presented as IRTC clients|no se presentan como clientes/,
+        /não são cases nem relações comerciais da IRTC|not IRTC case studies or client relationships|no son casos ni relaciones comerciales de IRTC/,
       );
       const profile = knowledgeChunks(locale).find(
         (chunk) => chunk.id === "founder:profile",

@@ -267,8 +267,8 @@ describe("llms.txt", () => {
         "AI Engineering",
       ])
         expect(text).toContain(pillar);
-      expect(text).toContain("personal experience includes contractor work");
-      expect(text).toContain("not presented as IRTC clients");
+      expect(text).toContain("worked as a contractor");
+      expect(text).toContain("not IRTC case studies or client relationships");
       expect(text).not.toMatch(/software factory|testimonial|São Paulo/i);
     }
   });

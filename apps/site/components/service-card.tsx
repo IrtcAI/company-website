@@ -29,7 +29,7 @@ export function ServiceCard({
         </span>
       </span>
       <h3>{copy.title}</h3>
-      <p>{copy.summary}</p>
+      <p>{copy.shortSummary}</p>
       <span className="service-card-link">
         {cta}
         <ArrowUpRight aria-hidden="true" />

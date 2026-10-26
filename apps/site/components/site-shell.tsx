@@ -31,7 +31,7 @@ export function SiteShell({
   const hours = openingHours(locale);
   const serviceLinks = services.map((service) => ({
     title: service.copy[locale].title,
-    summary: service.copy[locale].summary,
+    summary: service.copy[locale].shortSummary,
     icon: service.icon,
     href: pagePath(locale, "services", service.copy[locale].slug),
   }));
@@ -92,7 +92,7 @@ export function SiteShell({
           talk: copy.talk,
         }}
       />
-      <main id="conteudo" tabIndex={-1}>
+      <main id="conteudo" data-page={page} tabIndex={-1}>
         {children}
       </main>
       <footer className="site-footer">

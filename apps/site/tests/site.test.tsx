@@ -322,7 +322,7 @@ describe("institutional experience", () => {
     renderContact();
     expect(screen.getByLabelText(/Assunto/)).toHaveValue("mobile-apps");
     expect(
-      screen.getByRole("button", { name: /Organize o contexto com a Iris/ }),
+      screen.getByRole("button", { name: /Comece com a Iris/ }),
     ).toBeVisible();
     window.history.replaceState(null, "", "/");
   });

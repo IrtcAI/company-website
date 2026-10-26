@@ -33,6 +33,7 @@ export type ServiceCopy = {
   slug: string;
   title: string;
   summary: string;
+  shortSummary: string;
   intro: string;
   problems: string[];
   deliverables: string[];
@@ -68,7 +69,7 @@ export const services: Service[] = [
         summary:
           "Software sob medida para processos que limitam a operação, com prioridades, entregas verificáveis e documentação para sua equipe.",
         intro:
-          "Quando as ferramentas atuais não atendem a um processo importante, avaliamos o custo de adaptar, integrar ou construir. O primeiro escopo cobre um fluxo prioritário, com usuários, regras e critérios de aceite definidos.",
+          "Avaliamos se vale adaptar, integrar ou construir. Começamos por um fluxo prioritário, com regras e aceite definidos.",
         problems: [
           "A ferramenta pronta quase serve, mas sempre trava num detalhe.",
           "O processo vive em planilhas, mensagens e na memória de alguém.",
@@ -91,24 +92,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de um software sob medida?",
             answer:
-              "Principalmente o tamanho da primeira versão: fluxos, integrações e perfis de usuário. Definimos isso juntos antes de escrever código. O valor depende do escopo combinado.",
+              "Fluxos, integrações e perfis de usuário definem o custo. O valor é acordado com o escopo.",
           },
           {
             question: "Como o projeto sai da ideia até um sistema funcionando?",
             answer:
-              "Em etapas curtas, com demonstrações frequentes. Você vê software funcionando cedo, e as prioridades mudam conforme aprendemos com os usuários.",
+              "Em etapas curtas, com demonstrações e prioridades ajustadas ao aprendizado com usuários.",
           },
           {
             question: "O que preciso ter pronto antes de começarmos?",
             answer:
-              "Uma descrição do problema e, se possível, acesso a quem lida com ele todo dia. Não precisa de especificação fechada: ela nasce na descoberta.",
+              "Uma descrição do problema e acesso a quem vive o processo. A especificação nasce na descoberta.",
           },
           {
             question: "Como vocês decidem qual tecnologia usar?",
             answer:
-              "Depois de entender o problema, não antes. A escolha considera sua equipe, seu orçamento e como o sistema precisa crescer.",
+              "A escolha considera o problema, sua equipe, o orçamento e a evolução esperada.",
           },
         ],
+        shortSummary:
+          "Software para processos que as ferramentas atuais não atendem.",
       },
       en: {
         slug: "custom-software",
@@ -116,7 +119,7 @@ export const services: Service[] = [
         summary:
           "Custom software for processes that hold back operations, with clear priorities, verifiable deliverables and documentation for your team.",
         intro:
-          "When current tools do not support an important process, we assess the cost of adapting, integrating or building. The first scope covers a priority workflow with defined users, rules and acceptance criteria.",
+          "We assess whether to adapt, integrate or build. We start with one priority workflow and agreed rules and acceptance criteria.",
         problems: [
           "The ready-made tool almost fits, but it always breaks on one detail.",
           "The process lives in spreadsheets, messages and someone's memory.",
@@ -139,24 +142,26 @@ export const services: Service[] = [
           {
             question: "What affects the cost of custom software?",
             answer:
-              "Mostly the size of the first version: flows, integrations and user roles. We define it together before writing code. The figure depends on the agreed scope.",
+              "Workflows, integrations and user roles determine cost. Pricing is agreed with the scope.",
           },
           {
             question: "How does the project go from idea to a working system?",
             answer:
-              "In short stages with regular demos. You see working software early, and priorities shift as we learn from users.",
+              "In short stages, with demos and priorities adjusted as we learn from users.",
           },
           {
             question: "What do I need to have ready before we start?",
             answer:
-              "A description of the problem and, if possible, access to the people who deal with it daily. You don't need a closed spec: it takes shape during discovery.",
+              "A problem description and access to people who use the process. Discovery shapes the specification.",
           },
           {
             question: "How do you decide which technology to use?",
             answer:
-              "After understanding the problem, not before. The choice considers your team, your budget and how the system needs to grow.",
+              "The choice considers the problem, your team, budget and expected growth.",
           },
         ],
+        shortSummary:
+          "Software for processes your current tools cannot handle.",
       },
       es: {
         slug: "software-a-medida",
@@ -164,7 +169,7 @@ export const services: Service[] = [
         summary:
           "Software a medida para procesos que limitan la operación, con prioridades, entregas verificables y documentación para tu equipo.",
         intro:
-          "Cuando las herramientas actuales no resuelven un proceso importante, evaluamos el costo de adaptar, integrar o construir. El primer alcance cubre un flujo prioritario, con usuarios, reglas y criterios de aceptación definidos.",
+          "Evaluamos si conviene adaptar, integrar o construir. Empezamos por un flujo prioritario, con reglas y aceptación definidas.",
         problems: [
           "La herramienta lista casi sirve, pero siempre falla en un detalle.",
           "El proceso vive en hojas de cálculo, mensajes y en la memoria de alguien.",
@@ -187,25 +192,27 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de un software a medida?",
             answer:
-              "Sobre todo el tamaño de la primera versión: flujos, integraciones y perfiles de usuario. Lo definimos juntos antes de escribir código. El valor depende del alcance acordado.",
+              "Los flujos, integraciones y perfiles de usuario definen el costo. El precio se acuerda con el alcance.",
           },
           {
             question:
               "¿Cómo pasa el proyecto de la idea a un sistema funcionando?",
             answer:
-              "En etapas cortas, con demostraciones frecuentes. Ves software funcionando temprano, y las prioridades cambian a medida que aprendemos de los usuarios.",
+              "En etapas cortas, con demostraciones y prioridades ajustadas al aprendizaje con usuarios.",
           },
           {
             question: "¿Qué necesito tener listo antes de empezar?",
             answer:
-              "Una descripción del problema y, si es posible, acceso a quienes lidian con él a diario. No hace falta una especificación cerrada: se forma en el descubrimiento.",
+              "Una descripción del problema y acceso a quienes usan el proceso. La especificación se define durante el diagnóstico.",
           },
           {
             question: "¿Cómo deciden qué tecnología usar?",
             answer:
-              "Después de entender el problema, no antes. La elección considera tu equipo, tu presupuesto y cómo necesita crecer el sistema.",
+              "La elección considera el problema, tu equipo, el presupuesto y la evolución esperada.",
           },
         ],
+        shortSummary:
+          "Software para procesos que tus herramientas actuales no resuelven.",
       },
     },
   },
@@ -224,7 +231,7 @@ export const services: Service[] = [
         summary:
           "Portais e plataformas web para facilitar atendimento, acesso à informação e tarefas de clientes ou equipes, com indicadores de uso definidos.",
         intro:
-          "Um portal pode concentrar solicitações, documentos e tarefas que hoje dependem de atendimento manual. Definimos o público e o fluxo prioritário, incluindo acessibilidade, desempenho e integração no escopo. Sites institucionais são avaliados conforme o objetivo comercial.",
+          "Organize solicitações, documentos e tarefas em um portal. O escopo define público, integrações, acessibilidade e desempenho.",
         problems: [
           "O site é lento, difícil de atualizar ou ruim no celular.",
           "Você precisa de um portal para clientes ou parceiros, não só de uma página pública.",
@@ -247,24 +254,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de um site ou plataforma web?",
             answer:
-              "Quantidade de páginas e fluxos, área logada ou painel e integrações com outros sistemas. Um site institucional pede menos que um portal com contas e permissões. O valor depende do escopo combinado.",
+              "Páginas, fluxos, permissões e integrações definem o custo, conforme o escopo acordado.",
           },
           {
             question: "Como funciona o lançamento?",
             answer:
-              "Por etapas. Uma primeira versão vai ao ar com as páginas essenciais, e o resto entra conforme o que os visitantes realmente usam.",
+              "Lançamos as páginas essenciais e evoluímos com base no uso observado.",
           },
           {
             question: "O que levar para a primeira conversa?",
             answer:
-              "Exemplos de sites que você gosta, o conteúdo atual, se existir, e uma ideia de quem visita e do que essa pessoa deve fazer.",
+              "Público, tarefas prioritárias, conteúdo disponível e referências que ajudem a explicar o objetivo.",
           },
           {
             question: "O que acontece depois que o site entra no ar?",
             answer:
-              "Acompanhamos desempenho e disponibilidade e apoiamos novas páginas ou funcionalidades. Isso é combinado como Continuous Engineering, com escopo, cadência e atendimento definidos conforme a operação.",
+              "Desempenho, disponibilidade e evolução podem compor Continuous Engineering, com escopo e atendimento acordados.",
           },
         ],
+        shortSummary:
+          "Portais e plataformas para clientes e equipes concluírem tarefas.",
       },
       en: {
         slug: "web-platforms",
@@ -272,7 +281,7 @@ export const services: Service[] = [
         summary:
           "Web portals and platforms for customer service, access to information and everyday tasks, with defined usage indicators.",
         intro:
-          "A portal can bring together requests, documents and tasks that currently need manual support. We define the audience and priority workflow, including accessibility, performance and integrations in the scope. Company websites are assessed against their business purpose.",
+          "Organize requests, documents and tasks in a portal. The scope defines users, integrations, accessibility and performance.",
         problems: [
           "The site is slow, hard to update or poor on mobile.",
           "You need a portal for clients or partners, not just a public page.",
@@ -295,24 +304,26 @@ export const services: Service[] = [
           {
             question: "What affects the cost of a website or web platform?",
             answer:
-              "Number of pages and flows, a logged-in area or dashboard, and integrations with other systems. A company site takes less than a portal with accounts and permissions. The figure depends on the agreed scope.",
+              "Pages, workflows, permissions and integrations determine cost within the agreed scope.",
           },
           {
             question: "How does the launch work?",
             answer:
-              "In stages. A first version goes live with the essential pages, and the rest follows what visitors actually use.",
+              "We launch essential pages and evolve based on observed usage.",
           },
           {
             question: "What should I bring to the first conversation?",
             answer:
-              "Examples of sites you like, your current content if you have it, and an idea of who visits and what they should do.",
+              "Audience, priority tasks, available content and references that clarify the goal.",
           },
           {
             question: "What happens after the site goes live?",
             answer:
-              "We track performance and availability and support new pages or features. This is agreed as Continuous Engineering, with scope, cadence and support set according to the operation.",
+              "Performance, availability and improvements can be covered by Continuous Engineering, with agreed scope and support.",
           },
         ],
+        shortSummary:
+          "Portals and platforms that help customers and teams complete tasks.",
       },
       es: {
         slug: "sitios-y-plataformas-web",
@@ -320,7 +331,7 @@ export const services: Service[] = [
         summary:
           "Portales y plataformas web para atención, acceso a información y tareas de clientes o equipos, con indicadores de uso definidos.",
         intro:
-          "Un portal puede reunir solicitudes, documentos y tareas que hoy requieren atención manual. Definimos el público y el flujo prioritario, incluyendo accesibilidad, rendimiento e integración en el alcance. Los sitios institucionales se evalúan según su objetivo comercial.",
+          "Organiza solicitudes, documentos y tareas en un portal. El alcance define público, integraciones, accesibilidad y rendimiento.",
         problems: [
           "El sitio es lento, difícil de actualizar o malo en el celular.",
           "Necesitas un portal para clientes o socios, no solo una página pública.",
@@ -343,24 +354,26 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de un sitio o plataforma web?",
             answer:
-              "Cantidad de páginas y flujos, área con sesión o panel e integraciones con otros sistemas. Un sitio institucional pide menos que un portal con cuentas y permisos. El valor depende del alcance acordado.",
+              "Las páginas, flujos, permisos e integraciones definen el costo según el alcance acordado.",
           },
           {
             question: "¿Cómo funciona el lanzamiento?",
             answer:
-              "Por etapas. Una primera versión sale con las páginas esenciales, y lo demás entra según lo que los visitantes realmente usan.",
+              "Publicamos las páginas esenciales y evolucionamos según el uso observado.",
           },
           {
             question: "¿Qué llevar a la primera conversación?",
             answer:
-              "Ejemplos de sitios que te gustan, el contenido actual si existe y una idea de quién visita y qué debe hacer esa persona.",
+              "Público, tareas prioritarias, contenido disponible y referencias que aclaren el objetivo.",
           },
           {
             question: "¿Qué pasa después de que el sitio sale en línea?",
             answer:
-              "Seguimos el desempeño y la disponibilidad y apoyamos nuevas páginas o funciones. Se acuerda como Continuous Engineering, con alcance, cadencia y atención definidos según la operación.",
+              "El rendimiento, la disponibilidad y las mejoras pueden incluirse en Continuous Engineering, con alcance y atención acordados.",
           },
         ],
+        shortSummary:
+          "Portales y plataformas para que clientes y equipos completen tareas.",
       },
     },
   },
@@ -379,7 +392,7 @@ export const services: Service[] = [
         summary:
           "Aplicativos para operações de campo e tarefas pelo celular, com integrações e requisitos de conectividade definidos com sua equipe.",
         intro:
-          "Visitas, vistorias e vendas externas precisam registrar informação no momento do trabalho. Avaliamos as tarefas, os dispositivos e a conectividade para definir um aplicativo que possa ser testado no contexto real de uso.",
+          "Registre visitas, vistorias e vendas no momento do trabalho. Definimos tarefas, dispositivos e conectividade para testar em uso real.",
         problems: [
           "A equipe de campo ainda anota em papel ou planilha.",
           "O aplicativo atual trava sem sinal forte.",
@@ -402,24 +415,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de um aplicativo?",
             answer:
-              "Quantidade de telas, se precisa funcionar offline e quantos sistemas conecta. Offline pede mais cuidado, mas compensa em campo. O valor depende do escopo combinado.",
+              "Telas, integrações e requisitos offline definem o esforço e o valor do escopo.",
           },
           {
             question: "Como vocês conduzem o desenvolvimento?",
             answer:
-              "Começamos pela tarefa que o app precisa resolver bem, lançamos essa versão e testamos com quem vai usar antes de adicionar mais.",
+              "Validamos a tarefa principal com usuários antes de ampliar o aplicativo.",
           },
           {
             question: "O que vocês precisam da nossa equipe?",
             answer:
-              "Acesso a quem usa o app no dia a dia e aos sistemas com os quais ele precisa conversar, como CRM ou estoque.",
+              "Acesso aos usuários e aos sistemas que o aplicativo precisa integrar.",
           },
           {
             question: "Um app para as duas plataformas ou dois apps nativos?",
             answer:
-              "Um app só costuma simplificar a manutenção. Quando o projeto exige desempenho nativo em uma plataforma, avisamos desde o início.",
+              "Uma base comum costuma simplificar a manutenção. Requisitos nativos são avaliados antes da decisão.",
           },
         ],
+        shortSummary:
+          "Aplicativos para operações de campo e tarefas pelo celular.",
       },
       en: {
         slug: "mobile-apps",
@@ -427,7 +442,7 @@ export const services: Service[] = [
         summary:
           "Apps for field operations and mobile tasks, with integrations and connectivity requirements defined with your team.",
         intro:
-          "Visits, inspections and field sales need information captured as work happens. We assess tasks, devices and connectivity to define an app that can be tested in its real operating context.",
+          "Record visits, inspections and sales as work happens. We define tasks, devices and connectivity for testing in real use.",
         problems: [
           "The field team still writes things down on paper or spreadsheets.",
           "The current app freezes without a strong signal.",
@@ -450,24 +465,25 @@ export const services: Service[] = [
           {
             question: "What affects the cost of a mobile app?",
             answer:
-              "Number of screens, whether it needs to work offline and how many systems it connects. Offline takes more care but pays off in the field. The figure depends on the agreed scope.",
+              "Screens, integrations and offline requirements determine the effort and scoped cost.",
           },
           {
             question: "How do you run the development?",
             answer:
-              "We start with the task the app must do well, release that version and test it with the people who will use it before adding more.",
+              "We validate the main task with users before expanding the app.",
           },
           {
             question: "What do you need from our team?",
             answer:
-              "Access to people who use the app daily and to the systems it must talk to, such as a CRM or inventory.",
+              "Access to users and the systems the app needs to integrate with.",
           },
           {
             question: "One app for both platforms or two native apps?",
             answer:
-              "One app usually keeps maintenance simpler. When a project needs native performance on one platform, we say so from the start.",
+              "A shared codebase often simplifies maintenance. Native requirements are assessed before deciding.",
           },
         ],
+        shortSummary: "Apps for field operations and mobile tasks.",
       },
       es: {
         slug: "aplicaciones-moviles",
@@ -475,7 +491,7 @@ export const services: Service[] = [
         summary:
           "Aplicaciones para operaciones de campo y tareas móviles, con integraciones y requisitos de conectividad definidos con tu equipo.",
         intro:
-          "Las visitas, inspecciones y ventas externas necesitan registrar información durante el trabajo. Evaluamos tareas, dispositivos y conectividad para definir una aplicación que pueda probarse en su contexto real de uso.",
+          "Registra visitas, inspecciones y ventas durante el trabajo. Definimos tareas, dispositivos y conectividad para probar en uso real.",
         problems: [
           "El equipo de campo todavía anota en papel u hojas de cálculo.",
           "La aplicación actual se traba sin señal fuerte.",
@@ -498,24 +514,26 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de una aplicación móvil?",
             answer:
-              "Cantidad de pantallas, si debe funcionar sin conexión y cuántos sistemas conecta. Sin conexión pide más cuidado, pero vale la pena en campo. El valor depende del alcance acordado.",
+              "Las pantallas, integraciones y requisitos offline definen el esfuerzo y el costo del alcance.",
           },
           {
             question: "¿Cómo conducen el desarrollo?",
             answer:
-              "Empezamos por la tarea que la app debe resolver bien, lanzamos esa versión y la probamos con quienes la van a usar antes de agregar más.",
+              "Validamos la tarea principal con usuarios antes de ampliar la aplicación.",
           },
           {
             question: "¿Qué necesitan de nuestro equipo?",
             answer:
-              "Acceso a quienes usan la app a diario y a los sistemas con los que debe conversar, como un CRM o el inventario.",
+              "Acceso a los usuarios y a los sistemas que la aplicación debe integrar.",
           },
           {
             question: "¿Una app para las dos plataformas o dos apps nativas?",
             answer:
-              "Una sola app suele simplificar el mantenimiento. Cuando el proyecto exige rendimiento nativo en una plataforma, lo avisamos desde el inicio.",
+              "Una base común suele simplificar el mantenimiento. Evaluamos los requisitos nativos antes de decidir.",
           },
         ],
+        shortSummary:
+          "Aplicaciones para operaciones de campo y tareas desde el celular.",
       },
     },
   },
@@ -535,7 +553,7 @@ export const services: Service[] = [
         summary:
           "Integrações para reduzir digitação repetida e atrasos entre sistemas. Escopo delimitado, tratamento de falhas e documentação operacional.",
         intro:
-          "Quando pedidos, pagamentos ou dados operacionais precisam ser copiados entre ferramentas, cada transferência manual cria espera e risco de erro. Começamos por um fluxo delimitado, com sistemas identificados, regras de conferência e um responsável pelo processo.",
+          "Reduza transferências manuais entre ferramentas. Começamos por um fluxo, com regras de conferência e responsável definidos.",
         problems: [
           "Alguém digita a mesma informação em dois ou mais sistemas.",
           "Sistemas de laboratório, pagamento ou login precisam conversar.",
@@ -558,24 +576,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de uma integração?",
             answer:
-              "Quantos sistemas entram e a qualidade da documentação deles. Uma API documentada conecta rápido; um sistema antigo sem documentação leva mais tempo. O valor depende do escopo combinado.",
+              "Quantidade de sistemas, documentação e limitações de acesso definem o esforço e o valor.",
           },
           {
             question: "Como a implantação afeta a operação?",
             answer:
-              "Testamos em ambiente apropriado, definimos tratamento de falhas e planejamos a implantação por etapas. Dependências, janela de mudança e reversão são acordadas antes de alterar a produção.",
+              "Testamos antes da implantação e acordamos falhas, janela de mudança e reversão antes de alterar produção.",
           },
           {
             question: "Que acesso vocês precisam?",
             answer:
-              "Leitura ou credenciais de teste dos sistemas envolvidos e alguém que saiba como cada um é usado hoje.",
+              "Acessos de leitura ou teste e alguém que conheça o uso dos sistemas.",
           },
           {
             question: "Como funciona a continuidade após a entrega?",
             answer:
-              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
+              "Documentação integra a entrega. Suporte, monitoramento e evolução dependem de capacidade e contrato, com escopo e atendimento definidos.",
           },
         ],
+        shortSummary:
+          "Conecte sistemas para reduzir digitação repetida e atrasos.",
       },
       en: {
         slug: "integrations-and-automation",
@@ -583,7 +603,7 @@ export const services: Service[] = [
         summary:
           "Integrations to reduce repeated data entry and delays between systems. Defined scope, failure handling and operating documentation.",
         intro:
-          "When orders, payments or operational data must be copied between tools, each manual transfer creates delay and a risk of error. We start with one bounded workflow, identified systems, validation rules and a process owner.",
+          "Reduce manual transfers between tools. We start with one workflow, with defined checks and ownership.",
         problems: [
           "Someone types the same information into two or more systems.",
           "Lab, payment or login systems need to talk to each other.",
@@ -606,24 +626,26 @@ export const services: Service[] = [
           {
             question: "What affects the cost of an integration?",
             answer:
-              "How many systems are involved and how well they're documented. A documented API connects fast; an old undocumented system takes longer. The figure depends on the agreed scope.",
+              "System count, documentation and access constraints determine effort and cost.",
           },
           {
             question: "How does deployment affect operations?",
             answer:
-              "We test in an appropriate environment, define failure handling and plan a staged rollout. Dependencies, change windows and rollback are agreed before production changes.",
+              "We test before deployment and agree on failure handling, change windows and rollback before changing production.",
           },
           {
             question: "What access do you need?",
             answer:
-              "Read access or test credentials for the systems involved, and someone who knows how each one is used today.",
+              "Read or test access and someone familiar with how the systems are used.",
           },
           {
             question: "How does continuity work after delivery?",
             answer:
-              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
+              "Documentation is included in delivery. Support, monitoring and improvements depend on capacity and a contract with defined scope and service terms.",
           },
         ],
+        shortSummary:
+          "Connect systems to reduce repeated data entry and delays.",
       },
       es: {
         slug: "integraciones-y-automatizacion",
@@ -631,7 +653,7 @@ export const services: Service[] = [
         summary:
           "Integraciones para reducir la carga repetida de datos y las demoras entre sistemas. Alcance delimitado, manejo de fallas y documentación operativa.",
         intro:
-          "Cuando los pedidos, pagos o datos operativos deben copiarse entre herramientas, cada transferencia manual genera espera y riesgo de error. Empezamos por un flujo delimitado, con sistemas identificados, reglas de validación y un responsable del proceso.",
+          "Reduce las transferencias manuales entre herramientas. Empezamos por un flujo, con reglas de verificación y responsable definidos.",
         problems: [
           "Alguien digita la misma información en dos o más sistemas.",
           "Sistemas de laboratorio, pago o acceso necesitan conversar.",
@@ -654,24 +676,26 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de una integración?",
             answer:
-              "Cuántos sistemas participan y qué tan bien están documentados. Una API documentada conecta rápido; un sistema antiguo sin documentación lleva más tiempo. El valor depende del alcance acordado.",
+              "La cantidad de sistemas, documentación y límites de acceso definen el esfuerzo y el costo.",
           },
           {
             question: "¿Cómo afecta la implantación a la operación?",
             answer:
-              "Probamos en un entorno adecuado, definimos el tratamiento de fallas y planificamos la implantación por etapas. Las dependencias, ventanas de cambio y reversión se acuerdan antes de modificar producción.",
+              "Probamos antes de implementar y acordamos gestión de fallos, ventana de cambio y reversión antes de modificar producción.",
           },
           {
             question: "¿Qué acceso necesitan?",
             answer:
-              "Lectura o credenciales de prueba de los sistemas involucrados y alguien que sepa cómo se usa cada uno hoy.",
+              "Accesos de lectura o prueba y alguien que conozca el uso de los sistemas.",
           },
           {
             question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
+              "La documentación forma parte de la entrega. Soporte, monitoreo y mejoras dependen de capacidad y contrato, con alcance y atención definidos.",
           },
         ],
+        shortSummary:
+          "Conecta sistemas para reducir la digitación repetida y los retrasos.",
       },
     },
   },
@@ -691,7 +715,7 @@ export const services: Service[] = [
         summary:
           "Modernização de sistemas legados por etapas, com prioridades de negócio, testes e plano de reversão para cada mudança acordada.",
         intro:
-          "Quando o legado torna cada mudança lenta ou arriscada, a decisão envolve continuidade da operação e custo de manutenção. Avaliamos dependências e alternativas, priorizamos um componente e planejamos a transição com testes e condições de reversão.",
+          "Mudanças lentas ou arriscadas pedem prioridades claras. Avaliamos dependências e modernizamos um componente por vez, com testes e reversão planejados.",
         problems: [
           "Toda funcionalidade nova demora porque o código resiste à mudança.",
           "O sistema funciona, mas ninguém quer mexer nele.",
@@ -714,24 +738,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de uma modernização?",
             answer:
-              "Tamanho do código, cobertura de testes existente e quantas partes mudam juntas. Começamos por um diagnóstico para o plano partir do seu sistema real. O valor depende do escopo combinado.",
+              "Código, dependências e testes existentes definem o esforço. O diagnóstico orienta o escopo e o valor.",
           },
           {
             question: "Como modernizam sem parar a empresa?",
             answer:
-              "Por etapas. Começamos pelas mudanças de maior impacto e menor risco e confirmamos que nada quebrou antes de seguir. Cada etapa tem plano de reversão, e se alguma exigir uma pausa, combinamos antes o horário de menor uso.",
+              "Por etapas testadas, com reversão planejada. Eventuais pausas são acordadas antes da mudança.",
           },
           {
             question: "O que vocês precisam da nossa equipe?",
             answer:
-              "Acesso ao código e à infraestrutura e algum tempo de quem conhece a história do sistema, mesmo que informalmente.",
+              "Acesso ao código, à infraestrutura e a quem conhece o histórico do sistema.",
           },
           {
             question: "Vocês trocam toda a nossa stack?",
             answer:
-              "Raramente. Mantemos o que funciona e trocamos o que causa dor. As escolhas vêm do diagnóstico, não da preferência pela ferramenta mais nova.",
+              "Mantemos o que funciona. O diagnóstico define quais componentes precisam mudar.",
           },
         ],
+        shortSummary:
+          "Evolua sistemas legados por etapas, com testes e reversão.",
       },
       en: {
         slug: "system-modernization",
@@ -739,7 +765,7 @@ export const services: Service[] = [
         summary:
           "Step-by-step legacy modernization with business priorities, tests and a rollback plan for each agreed change.",
         intro:
-          "When legacy systems make every change slow or risky, decisions must account for operational continuity and maintenance cost. We assess dependencies and alternatives, prioritize one component and plan the transition with tests and rollback conditions.",
+          "Slow or risky changes need clear priorities. We assess dependencies and modernize one component at a time, with planned tests and rollback.",
         problems: [
           "Every new feature takes long because the code resists change.",
           "The system works, but nobody wants to touch it.",
@@ -762,24 +788,26 @@ export const services: Service[] = [
           {
             question: "What affects the cost of a modernization?",
             answer:
-              "Code size, existing test coverage and how many parts change together. We start with a diagnosis so the plan comes from your real system. The figure depends on the agreed scope.",
+              "Code, dependencies and existing tests determine effort. The assessment informs scope and pricing.",
           },
           {
             question: "How do you modernize without stopping the company?",
             answer:
-              "In stages. We start with the highest-impact, lowest-risk changes and confirm nothing broke before moving on. Every stage has a rollback plan, and if one needs a pause, we agree on a low-traffic window beforehand.",
+              "In tested stages, with planned rollback. Any downtime is agreed before the change.",
           },
           {
             question: "What do you need from our team?",
             answer:
-              "Access to the code and infrastructure, and some time from someone who knows the system's history, even informally.",
+              "Access to code, infrastructure and people familiar with the system’s history.",
           },
           {
             question: "Do you replace our whole stack?",
             answer:
-              "Rarely. We keep what works and replace what hurts. Choices come from the diagnosis, not from a preference for the newest tool.",
+              "We keep what works. The assessment identifies which components need to change.",
           },
         ],
+        shortSummary:
+          "Evolve legacy systems in stages, with tests and rollback plans.",
       },
       es: {
         slug: "modernizacion-de-sistemas",
@@ -787,7 +815,7 @@ export const services: Service[] = [
         summary:
           "Modernización gradual de sistemas legados, con prioridades de negocio, pruebas y plan de reversión para cada cambio acordado.",
         intro:
-          "Cuando el legado vuelve lento o riesgoso cada cambio, la decisión debe considerar la continuidad operativa y el costo de mantenimiento. Evaluamos dependencias y alternativas, priorizamos un componente y planificamos la transición con pruebas y condiciones de reversión.",
+          "Los cambios lentos o riesgosos requieren prioridades claras. Evaluamos dependencias y modernizamos un componente por vez, con pruebas y reversión planificadas.",
         problems: [
           "Cada función nueva tarda porque el código se resiste al cambio.",
           "El sistema funciona, pero nadie quiere tocarlo.",
@@ -810,24 +838,26 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de una modernización?",
             answer:
-              "Tamaño del código, cobertura de pruebas existente y cuántas partes cambian juntas. Empezamos con un diagnóstico para que el plan parta de tu sistema real. El valor depende del alcance acordado.",
+              "El código, las dependencias y las pruebas existentes definen el esfuerzo. El diagnóstico orienta el alcance y el precio.",
           },
           {
             question: "¿Cómo modernizan sin detener la empresa?",
             answer:
-              "Por etapas. Empezamos por los cambios de mayor impacto y menor riesgo y confirmamos que nada se rompió antes de seguir. Cada etapa tiene plan de reversión, y si alguna requiere una pausa, acordamos antes el horario de menor uso.",
+              "Por etapas probadas, con reversión planificada. Las posibles pausas se acuerdan antes del cambio.",
           },
           {
             question: "¿Qué necesitan de nuestro equipo?",
             answer:
-              "Acceso al código y a la infraestructura, y algo de tiempo de quien conozca la historia del sistema, aunque sea de manera informal.",
+              "Acceso al código, a la infraestructura y a quienes conocen la historia del sistema.",
           },
           {
             question: "¿Cambian todo nuestro stack?",
             answer:
-              "Rara vez. Mantenemos lo que funciona y cambiamos lo que duele. Las decisiones salen del diagnóstico, no de la preferencia por la herramienta más nueva.",
+              "Mantenemos lo que funciona. El diagnóstico define qué componentes deben cambiar.",
           },
         ],
+        shortSummary:
+          "Moderniza sistemas heredados por etapas, con pruebas y reversión.",
       },
     },
   },
@@ -846,7 +876,7 @@ export const services: Service[] = [
         summary:
           "Avalie IA em uma tarefa de negócio com protótipo, critérios de qualidade, custo por tarefa e revisão humana antes de ampliar o investimento.",
         intro:
-          "A decisão de usar IA precisa considerar a tarefa, a qualidade dos dados e o esforço de revisão. Delimitamos um fluxo e comparamos o protótipo com o processo atual. A Iris é uma demonstração interna de atendimento inicial; sua presença neste site não comprova resultados em operações de clientes.",
+          "Compare um protótipo ao processo atual, avaliando qualidade, custo e revisão humana. A Iris demonstra atendimento inicial interno, sem comprovar resultados de clientes.",
         problems: [
           "A equipe ou os clientes repetem as mesmas perguntas, e alguém procura a resposta toda vez.",
           "A informação está espalhada em documentos, planilhas e sistemas.",
@@ -869,24 +899,25 @@ export const services: Service[] = [
           {
             question: "O que entra no custo de um projeto de IA?",
             answer:
-              "Organização dos dados, integrações, desenvolvimento, avaliação e revisão humana. O orçamento também considera consumo de modelos, infraestrutura e manutenção. Um protótipo ajuda a medir essas variáveis antes de decidir pela produção.",
+              "Dados, integrações, desenvolvimento e avaliação, além de modelos, infraestrutura e revisão humana. O protótipo ajuda a estimar esses custos.",
           },
           {
             question: "Como começa o primeiro projeto de IA?",
             answer:
-              "Definimos uma tarefa, exemplos representativos e critérios de qualidade. O protótipo é avaliado quanto a acertos, falhas, custo e esforço de revisão. O resultado pode recomendar avançar, ajustar ou interromper; produção exige avaliação e escopo próprios.",
+              "Definimos uma tarefa e avaliamos acertos, falhas, custo e revisão. Os resultados orientam continuar, ajustar ou encerrar. Produção exige escopo próprio.",
           },
           {
             question: "O que precisamos ter pronto?",
             answer:
-              "Os documentos ou sistemas que a IA deve usar e alguém que perceba quando uma resposta está errada.",
+              "Dados autorizados e alguém capaz de avaliar a qualidade das respostas.",
           },
           {
             question: "Como funciona a continuidade após a entrega?",
             answer:
-              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
+              "Documentação integra a entrega. Suporte, monitoramento e evolução dependem de capacidade e contrato, com escopo e atendimento definidos.",
           },
         ],
+        shortSummary: "Teste IA em uma tarefa antes de ampliar o investimento.",
       },
       en: {
         slug: "applied-ai",
@@ -894,7 +925,7 @@ export const services: Service[] = [
         summary:
           "Evaluate AI on a business task with a prototype, quality criteria, cost per task and human review before increasing the investment.",
         intro:
-          "An AI decision must consider the task, data quality and review effort. We define one workflow and compare the prototype with the current process. Iris is an internal demonstration of initial enquiries; its presence on this website does not establish results in client operations.",
+          "Compare a prototype with the current process, assessing quality, cost and human review. Iris demonstrates internal initial intake, without proving client outcomes.",
         problems: [
           "Staff or customers keep asking the same questions, and someone looks up the answer every time.",
           "Information is scattered across documents, spreadsheets and systems.",
@@ -917,24 +948,25 @@ export const services: Service[] = [
           {
             question: "What goes into the cost of an AI project?",
             answer:
-              "Data preparation, integrations, development, evaluation and human review. The budget also considers model usage, infrastructure and maintenance. A prototype helps measure these variables before a production decision.",
+              "Data, integrations, development and evaluation, plus models, infrastructure and human review. The prototype helps estimate these costs.",
           },
           {
             question: "How does a first AI project start?",
             answer:
-              "We define a task, representative examples and quality criteria. The prototype is evaluated for correct outputs, failures, cost and review effort. Results may support proceeding, adjusting or stopping; production requires its own assessment and scope.",
+              "We define a task and assess accuracy, failures, cost and review. Results guide whether to proceed, adjust or stop. Production needs its own scope.",
           },
           {
             question: "What do we need to have ready?",
             answer:
-              "The documents or systems the AI should use, and someone who can tell when an answer is wrong.",
+              "Authorized data and someone who can assess response quality.",
           },
           {
             question: "How does continuity work after delivery?",
             answer:
-              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
+              "Documentation is included in delivery. Support, monitoring and improvements depend on capacity and a contract with defined scope and service terms.",
           },
         ],
+        shortSummary: "Test AI on one task before expanding your investment.",
       },
       es: {
         slug: "inteligencia-artificial",
@@ -942,7 +974,7 @@ export const services: Service[] = [
         summary:
           "Evalúa IA en una tarea de negocio con prototipo, criterios de calidad, costo por tarea y revisión humana antes de ampliar la inversión.",
         intro:
-          "La decisión de usar IA debe considerar la tarea, la calidad de los datos y el esfuerzo de revisión. Delimitamos un flujo y comparamos el prototipo con el proceso actual. Iris es una demostración interna de atención inicial; su presencia en este sitio no demuestra resultados en operaciones de clientes.",
+          "Compara un prototipo con el proceso actual, evaluando calidad, costo y revisión humana. Iris demuestra atención inicial interna, sin acreditar resultados de clientes.",
         problems: [
           "El equipo o los clientes repiten las mismas preguntas y alguien busca la respuesta cada vez.",
           "La información está dispersa en documentos, hojas de cálculo y sistemas.",
@@ -965,24 +997,25 @@ export const services: Service[] = [
           {
             question: "¿Qué incluye el costo de un proyecto de IA?",
             answer:
-              "Preparación de datos, integraciones, desarrollo, evaluación y revisión humana. El presupuesto también considera consumo de modelos, infraestructura y mantenimiento. Un prototipo ayuda a medir estas variables antes de decidir sobre producción.",
+              "Datos, integraciones, desarrollo y evaluación, además de modelos, infraestructura y revisión humana. El prototipo ayuda a estimar estos costos.",
           },
           {
             question: "¿Cómo empieza el primer proyecto de IA?",
             answer:
-              "Definimos una tarea, ejemplos representativos y criterios de calidad. El prototipo se evalúa por aciertos, fallas, costo y esfuerzo de revisión. El resultado puede recomendar avanzar, ajustar o detenerse; producción exige evaluación y alcance propios.",
+              "Definimos una tarea y evaluamos aciertos, fallos, costo y revisión. Los resultados orientan continuar, ajustar o cerrar. Producción requiere alcance propio.",
           },
           {
             question: "¿Qué necesitamos tener listo?",
             answer:
-              "Los documentos o sistemas que la IA debe usar y alguien que note cuándo una respuesta es errónea.",
+              "Datos autorizados y alguien capaz de evaluar la calidad de las respuestas.",
           },
           {
             question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
+              "La documentación forma parte de la entrega. Soporte, monitoreo y mejoras dependen de capacidad y contrato, con alcance y atención definidos.",
           },
         ],
+        shortSummary: "Prueba IA en una tarea antes de ampliar la inversión.",
       },
     },
   },
@@ -1002,7 +1035,7 @@ export const services: Service[] = [
         summary:
           "Dados e relatórios para decisões operacionais, com fontes rastreáveis, regras de cálculo e critérios de qualidade definidos.",
         intro:
-          "Números divergentes e relatórios manuais atrasam decisões. Partimos da decisão que precisa ser tomada para identificar fontes, regras e responsáveis. A entrega permite conferir a origem dos indicadores e acompanhar falhas de atualização.",
+          "Partimos da decisão para definir fontes, cálculos e responsáveis. Você acompanha a origem dos indicadores e as falhas de atualização.",
         problems: [
           "Times diferentes mostram números diferentes para a mesma coisa.",
           "Para ter um relatório, alguém precisa extrair os dados à mão.",
@@ -1025,24 +1058,26 @@ export const services: Service[] = [
           {
             question: "O que influencia o custo de um projeto de dados?",
             answer:
-              "Quantas fontes entram e o quão bagunçadas estão. Organizar anos de dados inconsistentes costuma levar mais tempo que montar o painel. O valor depende do escopo combinado.",
+              "Quantidade e qualidade das fontes definem o esforço. O valor depende do escopo acordado.",
           },
           {
             question: "Como vocês constroem painéis e fluxos de dados?",
             answer:
-              "Começamos pela decisão que o painel precisa apoiar, voltamos até os dados necessários e construímos o fluxo que os mantém corretos.",
+              "Partimos da decisão e construímos o fluxo de dados necessário para apoiá-la.",
           },
           {
             question: "Que acesso vocês precisam?",
             answer:
-              "Acesso às fontes de dados atuais e uma conversa com quem decide com base nesses números hoje.",
+              "Acesso às fontes e a quem usa os indicadores para decidir.",
           },
           {
             question: "Como funciona a continuidade após a entrega?",
             answer:
-              "A entrega inclui a documentação acordada. Monitoramento, suporte e evolução podem compor Continuous Engineering, conforme capacidade, escopo, cadência e condições de atendimento definidos em contrato.",
+              "Documentação integra a entrega. Suporte, monitoramento e evolução dependem de capacidade e contrato, com escopo e atendimento definidos.",
           },
         ],
+        shortSummary:
+          "Relatórios com fontes rastreáveis e critérios de qualidade.",
       },
       en: {
         slug: "data-and-reporting",
@@ -1050,7 +1085,7 @@ export const services: Service[] = [
         summary:
           "Data and reporting for operational decisions, with traceable sources, calculation rules and defined quality criteria.",
         intro:
-          "Conflicting figures and manual reports delay decisions. We start with the decision that needs to be made to identify sources, rules and owners. The delivery lets you verify where indicators come from and track update failures.",
+          "We start with the decision to define sources, calculations and owners. You can trace indicators and track update failures.",
         problems: [
           "Different teams show different numbers for the same thing.",
           "Getting a report means someone pulls the data by hand.",
@@ -1073,24 +1108,25 @@ export const services: Service[] = [
           {
             question: "What affects the cost of a data project?",
             answer:
-              "How many sources are involved and how messy they are. Cleaning up years of inconsistent data often takes longer than building the dashboard. The figure depends on the agreed scope.",
+              "The number and quality of sources determine effort. Pricing depends on the agreed scope.",
           },
           {
             question: "How do you build dashboards and data flows?",
             answer:
-              "We start with the decision the dashboard must support, work back to the data it needs and build the flow that keeps it correct.",
+              "We start with the decision and build the data flow needed to support it.",
           },
           {
             question: "What access do you need?",
             answer:
-              "Access to your current data sources and a conversation with whoever decides based on these numbers today.",
+              "Access to sources and people who use the indicators to make decisions.",
           },
           {
             question: "How does continuity work after delivery?",
             answer:
-              "Delivery includes the agreed documentation. Monitoring, support and further development may form part of Continuous Engineering, subject to capacity, scope, cadence and support terms defined in the contract.",
+              "Documentation is included in delivery. Support, monitoring and improvements depend on capacity and a contract with defined scope and service terms.",
           },
         ],
+        shortSummary: "Reports with traceable sources and quality criteria.",
       },
       es: {
         slug: "datos-e-informes",
@@ -1098,7 +1134,7 @@ export const services: Service[] = [
         summary:
           "Datos e informes para decisiones operativas, con fuentes rastreables, reglas de cálculo y criterios de calidad definidos.",
         intro:
-          "Los números divergentes y los informes manuales retrasan decisiones. Partimos de la decisión que debe tomarse para identificar fuentes, reglas y responsables. La entrega permite verificar el origen de los indicadores y seguir las fallas de actualización.",
+          "Partimos de la decisión para definir fuentes, cálculos y responsables. Puedes rastrear los indicadores y seguir los fallos de actualización.",
         problems: [
           "Equipos distintos muestran números distintos para lo mismo.",
           "Para tener un informe, alguien debe extraer los datos a mano.",
@@ -1121,24 +1157,26 @@ export const services: Service[] = [
           {
             question: "¿Qué influye en el costo de un proyecto de datos?",
             answer:
-              "Cuántas fuentes participan y qué tan desordenadas están. Ordenar años de datos inconsistentes suele llevar más tiempo que armar el panel. El valor depende del alcance acordado.",
+              "La cantidad y calidad de las fuentes definen el esfuerzo. El precio depende del alcance acordado.",
           },
           {
             question: "¿Cómo construyen paneles y flujos de datos?",
             answer:
-              "Empezamos por la decisión que el panel debe apoyar, volvemos a los datos necesarios y construimos el flujo que los mantiene correctos.",
+              "Partimos de la decisión y construimos el flujo de datos necesario para apoyarla.",
           },
           {
             question: "¿Qué acceso necesitan?",
             answer:
-              "Acceso a las fuentes de datos actuales y una conversación con quien decide con base en esos números hoy.",
+              "Acceso a las fuentes y a quienes usan los indicadores para decidir.",
           },
           {
             question: "¿Cómo funciona la continuidad después de la entrega?",
             answer:
-              "La entrega incluye la documentación acordada. El monitoreo, soporte y evolución pueden formar parte de Continuous Engineering, según la capacidad, el alcance, la cadencia y las condiciones de atención definidas en contrato.",
+              "La documentación forma parte de la entrega. Soporte, monitoreo y mejoras dependen de capacidad y contrato, con alcance y atención definidos.",
           },
         ],
+        shortSummary:
+          "Informes con fuentes rastreables y criterios de calidad.",
       },
     },
   },
@@ -1157,7 +1195,7 @@ export const services: Service[] = [
         summary:
           "Diagnóstico e evolução de ambientes AWS, com análise de custo, confiabilidade e riscos para orientar a próxima mudança da operação.",
         intro:
-          "Custos pouco claros, incidentes e limites de capacidade tornam decisões de infraestrutura difíceis. Avaliamos o ambiente e comparamos alternativas considerando custo total e risco. Migração ou modernização recebe escopo próprio, com plano de mudança e recuperação.",
+          "Compare alternativas para custos, incidentes e capacidade. Migração e modernização exigem escopo próprio, com plano de mudança e recuperação.",
         problems: [
           "O sistema fica lento ou cai nos horários de pico.",
           "Você só sabe que algo quebrou quando um cliente avisa.",
@@ -1180,24 +1218,26 @@ export const services: Service[] = [
           {
             question: "O que define o custo de nuvem e infraestrutura?",
             answer:
-              "Os recursos que o seu tráfego realmente pede e como o sistema foi desenhado. Dimensionamos para o uso real e buscamos reduzir custo sem perder desempenho. O valor depende do escopo combinado.",
+              "Uso real, arquitetura e recursos necessários definem o custo. Avaliamos alternativas conforme desempenho e escopo.",
           },
           {
             question: "Como planejam mudanças em um ambiente existente?",
             answer:
-              "Partimos do diagnóstico, das dependências e do impacto esperado. A execução requer escopo, ensaio, critérios de aceite, janela de mudança e recuperação definidos. A continuidade da operação é um requisito a avaliar em cada cenário.",
+              "O diagnóstico orienta escopo, ensaio, aceite, janela de mudança e recuperação. Avaliamos o impacto na operação antes da execução.",
           },
           {
             question: "Que acesso vocês precisam?",
             answer:
-              "Acesso à infraestrutura e ao monitoramento e informações sobre horários de pico e incidentes anteriores.",
+              "Acesso à infraestrutura e ao monitoramento, com histórico de incidentes e horários de pico.",
           },
           {
             question: "Vocês continuam cuidando depois do projeto?",
             answer:
-              "Podemos, como Continuous Engineering, com escopo, cadência e atendimento definidos conforme a operação. Ou deixamos monitoramento e documentação prontos para sua equipe operar.",
+              "Continuous Engineering pode cobrir a continuidade, conforme contrato. Também podemos preparar documentação e monitoramento para sua equipe operar.",
           },
         ],
+        shortSummary:
+          "Avalie custo, confiabilidade e riscos do seu ambiente AWS.",
       },
       en: {
         slug: "cloud-and-architecture",
@@ -1205,7 +1245,7 @@ export const services: Service[] = [
         summary:
           "AWS assessment and infrastructure evolution, with cost, reliability and risk analysis to guide the next operational change.",
         intro:
-          "Unclear costs, incidents and capacity limits make infrastructure decisions difficult. We assess the environment and compare alternatives based on total cost and risk. Migration or modernization has its own scope, with change and recovery plans.",
+          "Compare options for costs, incidents and capacity. Migration and modernization require their own scope, with change and recovery plans.",
         problems: [
           "The system slows down or goes down at peak times.",
           "You only learn something broke when a customer tells you.",
@@ -1228,24 +1268,26 @@ export const services: Service[] = [
           {
             question: "What sets the cost of cloud and infrastructure?",
             answer:
-              "The resources your traffic actually needs and how the system is designed. We size for real usage and look for savings without losing performance. The figure depends on the agreed scope.",
+              "Actual usage, architecture and required resources determine cost. We assess options against performance and scope.",
           },
           {
             question: "How do you plan changes to an existing environment?",
             answer:
-              "We start with the assessment, dependencies and expected impact. Execution requires defined scope, rehearsal, acceptance criteria, change window and recovery. Operational continuity must be assessed for each scenario.",
+              "The assessment informs scope, rehearsal, acceptance, change windows and recovery. We assess operational impact before execution.",
           },
           {
             question: "What access do you need?",
             answer:
-              "Access to your infrastructure and monitoring, plus information about peak hours and past incidents.",
+              "Access to infrastructure and monitoring, with incident history and peak usage times.",
           },
           {
             question: "Do you keep looking after it once the project ends?",
             answer:
-              "We can, as Continuous Engineering, with scope, cadence and support set according to the operation. Otherwise we leave monitoring and documentation ready for your team to run.",
+              "Continuous Engineering can cover ongoing support under agreed terms. We can also prepare documentation and monitoring for your team.",
           },
         ],
+        shortSummary:
+          "Assess cost, reliability and risks in your AWS environment.",
       },
       es: {
         slug: "nube-y-arquitectura",
@@ -1253,7 +1295,7 @@ export const services: Service[] = [
         summary:
           "Diagnóstico y evolución de entornos AWS, con análisis de costo, confiabilidad y riesgos para orientar el próximo cambio operativo.",
         intro:
-          "Los costos poco claros, incidentes y límites de capacidad dificultan las decisiones de infraestructura. Evaluamos el entorno y comparamos alternativas considerando costo total y riesgo. La migración o modernización tiene alcance propio, con plan de cambio y recuperación.",
+          "Compara alternativas de costos, incidentes y capacidad. La migración y modernización requieren alcance propio, con planes de cambio y recuperación.",
         problems: [
           "El sistema se vuelve lento o se cae en horas pico.",
           "Solo te enteras de que algo falló cuando un cliente avisa.",
@@ -1276,24 +1318,26 @@ export const services: Service[] = [
           {
             question: "¿Qué define el costo de nube e infraestructura?",
             answer:
-              "Los recursos que tu tráfico realmente pide y cómo se diseñó el sistema. Dimensionamos para el uso real y buscamos reducir costo sin perder desempeño. El valor depende del alcance acordado.",
+              "El uso real, la arquitectura y los recursos necesarios definen el costo. Evaluamos alternativas según rendimiento y alcance.",
           },
           {
             question: "¿Cómo planifican cambios en un entorno existente?",
             answer:
-              "Partimos del diagnóstico, las dependencias y el impacto esperado. La ejecución requiere alcance, ensayo, criterios de aceptación, ventana de cambio y recuperación definidos. La continuidad operativa se evalúa en cada escenario.",
+              "El diagnóstico orienta alcance, ensayo, aceptación, ventana de cambio y recuperación. Evaluamos el impacto operativo antes de ejecutar.",
           },
           {
             question: "¿Qué acceso necesitan?",
             answer:
-              "Acceso a la infraestructura y al monitoreo, e información sobre horas pico e incidentes anteriores.",
+              "Acceso a infraestructura y monitoreo, con historial de incidentes y horarios de mayor uso.",
           },
           {
             question: "¿Siguen cuidándolo después del proyecto?",
             answer:
-              "Podemos, como Continuous Engineering, con alcance, cadencia y atención definidos según la operación. O dejamos monitoreo y documentación listos para que tu equipo opere.",
+              "Continuous Engineering puede cubrir la continuidad según contrato. También podemos preparar documentación y monitoreo para tu equipo.",
           },
         ],
+        shortSummary:
+          "Evalúa costos, confiabilidad y riesgos de tu entorno AWS.",
       },
     },
   },

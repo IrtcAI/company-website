@@ -61,7 +61,7 @@ describe("founder page", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: "Responsabilidade que você pode acompanhar",
+        name: "Decisões e entregas que você acompanha",
       }),
     ).toBeVisible();
     expect(

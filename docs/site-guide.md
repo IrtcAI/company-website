@@ -27,7 +27,7 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 
 ## Fatos e limites
 
-- **Identidade.** Marca IRTC, descritor "Cloud, Software & AI Engineering", slogan "We engineer what moves your business forward." e assinatura "Da Amazônia para o seu próximo desafio." seguem o Brand Book 1.2; descritor, slogan e nomes dos pilares ficam em inglês nos três idiomas.
+- **Identidade.** Marca IRTC, descritor "Cloud, Software & AI Engineering", slogan "We engineer what moves your business forward." e assinatura "Da Amazônia para o seu próximo desafio." seguem o Brand Book 1.2; descritor e nomes dos pilares ficam em inglês. O slogan visível é localizado: "Engenharia que faz seu negócio avançar." (PT-BR), "We engineer what moves your business forward." (EN) e "Ingeniería que impulsa tu negocio." (ES).
 - **Evidências.** Cases, clientes, logos, números, depoimentos, certificações e parcerias só entram com evidência, atribuição e autorização registradas (decisão D10 do Company Blueprint). Os componentes `Stats`, `ProjectShowcase` e `Testimonials` não renderizam nada enquanto as listas estiverem vazias.
 - **Serviços.** Os oito serviços pertencem a um pilar (Cloud Engineering, Software Engineering ou AI Engineering) e podem ter pilares de apoio. Critérios de resultado são objetivos do projeto, não resultado garantido. As ofertas do Service Catalog em validação não aparecem como produtos, nem com preço ou prazo.
 - **Fundador.** Fatos autorizados por Iago: Founder & Principal Engineer, formado em Sistemas de Informação, vive em Belém; hobbies: videogame, filmes e séries com a família e as gatas Juliette e Luna. A página descreve responsabilidades de projeto e mantém os hobbies confirmados; Experiência em LeafLink, Dasa e Perfect Pay é trabalho pessoal de Iago como contractor, autorizado por ele em 26/10/2026, e aparece apenas com essa atribuição. Essas empresas não são clientes nem cases da IRTC. Não acrescente outros fatos sem evidência. O LinkedIn pessoal aparece só no bloco e na página do fundador; o resto do site usa o LinkedIn da empresa.
@@ -66,3 +66,7 @@ As opções de escopo aparecem em HTML, Markdown e na base da Iris a partir da m
 3. Rode `pnpm page-dates` para atualizar a data de modificação das páginas que mudaram (sitemap, feeds e IndexNow usam essa data).
 4. Se criou uma página ou uma seção nova, inclua o texto no construtor da página em `apps/site/lib/page-markdown.ts` e confira `/llms.txt`, o `sitemap.xml` e a cópia `.md` da página no build local.
 5. Se mudou um dado da empresa (endereço, e-mail, horário), confira rodapé, página de contato e respostas da Iris.
+
+### Concisão e espaçamento
+
+Textos visíveis priorizam frases curtas e uma ideia por bloco. As descriptions publicadas permanecem separadas da redação visível: serviços usam `shortSummary` nos cards e na navegação, enquanto `summary` continua nos metadados e dados estruturados. As seções internas têm 80 px de padding vertical; introduções de serviços e contato mantêm a compensação superior do cabeçalho fixo. A home mantém seu espaçamento.
