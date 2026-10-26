@@ -5,6 +5,7 @@ import { cultureCopy, missionCopy, visionCopy } from "./copy/culture";
 import { founderCopy, founderSectionCopy } from "./copy/founder";
 import { homeCopy, pageCopy } from "./copy/pages";
 import { engagementCopy } from "./copy/engagement";
+import { serviceDecisionCopy } from "./copy/service-decisions";
 import { servicesPageCopy } from "./copy/services-page";
 import {
   absoluteUrl,
@@ -210,6 +211,7 @@ function servicesIndex(locale: Locale) {
 }
 
 function servicePage(locale: Locale, service: Service) {
+  const decision = serviceDecisionCopy[locale][service.id];
   const copy = service.copy[locale];
   const page = servicesPageCopy[locale];
   const support = service.supportPillars
@@ -240,8 +242,8 @@ function servicePage(locale: Locale, service: Service) {
       page.stack[id].role,
     ]),
     page.stackNote,
-    heading(2, page.howTitle),
-    ...titled(3, content[locale].manifesto.points),
+    heading(2, decision?.title ?? page.howTitle),
+    ...titled(3, decision?.points ?? content[locale].manifesto.points),
     heading(2, page.faqTitle),
     ...copy.faq.flatMap((item) => [heading(3, item.question), item.answer]),
     heading(2, page.relatedTitle),

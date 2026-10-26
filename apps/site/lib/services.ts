@@ -711,7 +711,7 @@ export const services: Service[] = [
     copy: {
       "pt-BR": {
         slug: "modernizacao-de-sistemas",
-        title: "Modernização de sistemas",
+        title: "Modernização de sistemas legados",
         summary:
           "Modernização de sistemas legados por etapas, com prioridades de negócio, testes e plano de reversão para cada mudança acordada.",
         intro:
@@ -761,7 +761,7 @@ export const services: Service[] = [
       },
       en: {
         slug: "system-modernization",
-        title: "System modernization",
+        title: "Legacy application modernization",
         summary:
           "Step-by-step legacy modernization with business priorities, tests and a rollback plan for each agreed change.",
         intro:
@@ -811,7 +811,7 @@ export const services: Service[] = [
       },
       es: {
         slug: "modernizacion-de-sistemas",
-        title: "Modernización de sistemas",
+        title: "Modernización de sistemas heredados",
         summary:
           "Modernización gradual de sistemas legados, con prioridades de negocio, pruebas y plan de reversión para cada cambio acordado.",
         intro:
@@ -1191,11 +1191,11 @@ export const services: Service[] = [
     copy: {
       "pt-BR": {
         slug: "nuvem-e-arquitetura",
-        title: "Nuvem e arquitetura",
+        title: "Consultoria AWS e arquitetura cloud",
         summary:
-          "Diagnóstico e evolução de ambientes AWS, com análise de custo, confiabilidade e riscos para orientar a próxima mudança da operação.",
+          "Consultoria AWS para avaliar custos, arquitetura e riscos. Diagnóstico e plano priorizado para otimização, migração e evolução do ambiente.",
         intro:
-          "Compare alternativas para custos, incidentes e capacidade. Migração e modernização exigem escopo próprio, com plano de mudança e recuperação.",
+          "Avalie custos, riscos e arquitetura do seu ambiente AWS. O diagnóstico define prioridades e premissas de investimento; a execução tem escopo próprio.",
         problems: [
           "O sistema fica lento ou cai nos horários de pico.",
           "Você só sabe que algo quebrou quando um cliente avisa.",
@@ -1215,6 +1215,11 @@ export const services: Service[] = [
           "Custo da nuvem por serviço, para ver o que mudou a cada ajuste",
         ],
         faq: [
+          {
+            question: "Como vocês avaliam a redução de custos na AWS?",
+            answer:
+              "Comparamos custo e uso, considerando volume de trabalho, compromissos existentes e risco. A estimativa inclui o custo da mudança e precisa ser validada na operação. Não garantimos um percentual de economia.",
+          },
           {
             question: "O que define o custo de nuvem e infraestrutura?",
             answer:
@@ -1241,11 +1246,11 @@ export const services: Service[] = [
       },
       en: {
         slug: "cloud-and-architecture",
-        title: "Cloud and architecture",
+        title: "AWS consulting and architecture",
         summary:
-          "AWS assessment and infrastructure evolution, with cost, reliability and risk analysis to guide the next operational change.",
+          "AWS consulting to assess costs, architecture and risks. Get an assessment and prioritized plan for optimization, migration and infrastructure evolution.",
         intro:
-          "Compare options for costs, incidents and capacity. Migration and modernization require their own scope, with change and recovery plans.",
+          "Assess the costs, risks and architecture of your AWS environment. The assessment sets priorities and investment assumptions; execution has its own scope.",
         problems: [
           "The system slows down or goes down at peak times.",
           "You only learn something broke when a customer tells you.",
@@ -1265,6 +1270,11 @@ export const services: Service[] = [
           "Cloud cost per service, to see what changed after each adjustment",
         ],
         faq: [
+          {
+            question: "How do you assess AWS cost reduction?",
+            answer:
+              "We compare costs and usage, considering workload volume, existing commitments and risk. Estimates include the cost of change and must be validated in operation. We do not guarantee a savings percentage.",
+          },
           {
             question: "What sets the cost of cloud and infrastructure?",
             answer:
@@ -1291,11 +1301,11 @@ export const services: Service[] = [
       },
       es: {
         slug: "nube-y-arquitectura",
-        title: "Nube y arquitectura",
+        title: "Consultoría AWS y arquitectura cloud",
         summary:
-          "Diagnóstico y evolución de entornos AWS, con análisis de costo, confiabilidad y riesgos para orientar el próximo cambio operativo.",
+          "Consultoría AWS para evaluar costos, arquitectura y riesgos. Diagnóstico y plan priorizado para optimización, migración y evolución del entorno.",
         intro:
-          "Compara alternativas de costos, incidentes y capacidad. La migración y modernización requieren alcance propio, con planes de cambio y recuperación.",
+          "Evalúa costos, riesgos y arquitectura de tu entorno AWS. El diagnóstico define prioridades y supuestos de inversión; la ejecución tiene alcance propio.",
         problems: [
           "El sistema se vuelve lento o se cae en horas pico.",
           "Solo te enteras de que algo falló cuando un cliente avisa.",
@@ -1315,6 +1325,11 @@ export const services: Service[] = [
           "Costo de la nube por servicio, para ver qué cambió con cada ajuste",
         ],
         faq: [
+          {
+            question: "¿Cómo evalúan la reducción de costos en AWS?",
+            answer:
+              "Comparamos costo y uso, considerando volumen de trabajo, compromisos existentes y riesgo. La estimación incluye el costo del cambio y debe validarse en operación. No garantizamos un porcentaje de ahorro.",
+          },
           {
             question: "¿Qué define el costo de nube e infraestructura?",
             answer:
@@ -1355,15 +1370,24 @@ export function serviceSlugs(service: Service) {
   };
 }
 
+const relatedServiceIds: Record<ServiceId, ServiceId[]> = {
+  "custom-software": ["integrations", "modernization", "web-platforms"],
+  "web-platforms": ["custom-software", "integrations", "cloud"],
+  "mobile-apps": ["custom-software", "integrations", "cloud"],
+  integrations: ["custom-software", "data", "applied-ai"],
+  modernization: ["cloud", "custom-software", "integrations"],
+  "applied-ai": ["data", "integrations", "cloud"],
+  data: ["integrations", "cloud", "applied-ai"],
+  cloud: ["modernization", "data", "applied-ai"],
+};
+
 export function relatedServices(service: Service, count = 3) {
-  const index = services.findIndex((item) => item.id === service.id);
-  const related: Service[] = [];
-  for (
-    let offset = 1;
-    related.length < count && offset < services.length;
-    offset++
-  ) {
-    related.push(services[(index + offset) % services.length]);
-  }
-  return related;
+  const ids = [
+    ...relatedServiceIds[service.id],
+    ...services.map((item) => item.id),
+  ];
+  return [...new Set(ids)]
+    .filter((id) => id !== service.id)
+    .slice(0, Math.max(0, count))
+    .map((id) => services.find((item) => item.id === id)!);
 }

@@ -70,3 +70,11 @@ As opções de escopo aparecem em HTML, Markdown e na base da Iris a partir da m
 ### Concisão e espaçamento
 
 Textos visíveis priorizam frases curtas e uma ideia por bloco. As descriptions publicadas permanecem separadas da redação visível: serviços usam `shortSummary` nos cards e na navegação, enquanto `summary` continua nos metadados e dados estruturados. As seções internas têm 80 px de padding vertical; introduções de serviços e contato mantêm a compensação superior do cabeçalho fixo. A home mantém seu espaçamento.
+
+## Clareza da oferta e descoberta orgânica
+
+A página de cloud usa “Consultoria AWS e arquitetura cloud”, preservando o slug `nuvem-e-arquitetura` e suas traduções. AWS identifica a tecnologia do serviço; não declara tier, certificação nem parceria da IRTC.
+
+`lib/copy/service-decisions.ts` detalha a primeira decisão em cloud, modernização e IA nos três idiomas. Esse conteúdo substitui o bloco genérico de processo nessas páginas e alimenta HTML, Markdown e Iris. Os CTAs mantêm o serviço selecionado no contato. Diagnóstico, execução e continuidade têm escopos próprios; não publicar prazos, preços, descontos ou cobertura de atendimento sem validação comercial.
+
+Os serviços relacionados seguem as dependências do problema: cloud aponta para modernização, dados e IA; IA aponta para dados, integrações e cloud. A ordem fica em `relatedServiceIds`, em `lib/services.ts`, e é compartilhada com o Markdown. Novos títulos ou palavras-chave não justificam duplicar páginas com a mesma intenção de busca.
