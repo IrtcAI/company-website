@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CircleAlert, X } from "lucide-react";
-import { TOAST_EVENT, toastMessage, type ToastLabels } from "@/lib/toast";
+import { CircleAlert, CircleCheck, X } from "lucide-react";
+import {
+  TOAST_EVENT,
+  toastMessage,
+  type ToastDetail,
+  type ToastLabels,
+} from "@/lib/toast";
 
 const TOAST_DURATION = 7000;
 
-type Toast = { id: number; message: string };
+type Toast = { id: number; message: string; success: boolean };
 
 export function Toaster({ labels }: { labels: ToastLabels }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -14,12 +19,16 @@ export function Toaster({ labels }: { labels: ToastLabels }) {
   const nextId = useRef(0);
 
   useEffect(() => {
-    function onError(event: Event) {
-      const message = toastMessage(labels, (event as CustomEvent).detail);
+    function onToast(event: Event) {
+      const detail = (event as CustomEvent<ToastDetail>).detail;
+      const success = "success" in detail;
+      const message = success
+        ? detail.success
+        : toastMessage(labels, detail.status);
       const id = ++nextId.current;
       setToasts((current) => [
         ...current.filter((toast) => toast.message !== message),
-        { id, message },
+        { id, message, success },
       ]);
       setTimeout(
         () =>
@@ -28,8 +37,8 @@ export function Toaster({ labels }: { labels: ToastLabels }) {
       );
     }
 
-    window.addEventListener(TOAST_EVENT, onError);
-    return () => window.removeEventListener(TOAST_EVENT, onError);
+    window.addEventListener(TOAST_EVENT, onToast);
+    return () => window.removeEventListener(TOAST_EVENT, onToast);
   }, [labels]);
 
   useEffect(() => {
@@ -45,8 +54,15 @@ export function Toaster({ labels }: { labels: ToastLabels }) {
   return (
     <div ref={region} className="toaster" popover="manual" role="status">
       {toasts.map((toast) => (
-        <div key={toast.id} className="toast">
-          <CircleAlert aria-hidden="true" />
+        <div
+          key={toast.id}
+          className={`toast${toast.success ? " is-success" : ""}`}
+        >
+          {toast.success ? (
+            <CircleCheck aria-hidden="true" />
+          ) : (
+            <CircleAlert aria-hidden="true" />
+          )}
           <p>{toast.message}</p>
           <button
             type="button"

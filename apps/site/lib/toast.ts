@@ -1,4 +1,4 @@
-export const TOAST_EVENT = "irtc:http-error";
+export const TOAST_EVENT = "irtc:toast";
 
 export type ToastLabels = {
   network: string;
@@ -8,8 +8,18 @@ export type ToastLabels = {
   dismiss: string;
 };
 
+export type ToastDetail = { status: number | null } | { success: string };
+
+function dispatchToast(detail: ToastDetail) {
+  window.dispatchEvent(new CustomEvent(TOAST_EVENT, { detail }));
+}
+
 export function reportHttpError(status: number | null) {
-  window.dispatchEvent(new CustomEvent(TOAST_EVENT, { detail: status }));
+  dispatchToast({ status });
+}
+
+export function reportSuccess(message: string) {
+  dispatchToast({ success: message });
 }
 
 export function toastMessage(labels: ToastLabels, status: number | null) {

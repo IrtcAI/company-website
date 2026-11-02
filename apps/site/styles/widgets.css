@@ -203,6 +203,15 @@
   color: light-dark(#b3402c, #ff9b86);
 }
 
+.toast.is-success {
+  border-color: light-dark(#a9cfc1, #2f5a4c);
+  background: light-dark(#eef7f3, #16271f);
+}
+
+.toast.is-success > svg {
+  color: light-dark(#2d6b55, #8fd1b7);
+}
+
 .toast p {
   flex: 1;
   margin: 0;

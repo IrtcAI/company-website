@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Send } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { reportHttpError } from "@/lib/toast";
+import { reportHttpError, reportSuccess } from "@/lib/toast";
 import { undecidedTopic } from "@/lib/validation";
 import type { content } from "@/lib/content";
 
@@ -123,6 +123,7 @@ export function ContactForm({
     }
 
     setState("sent");
+    reportSuccess(copy.sent);
     trackEvent("contact_submit", { topic: topic.current?.value || "none" });
     form.reset();
   }
@@ -295,11 +296,7 @@ export function ContactForm({
         className={`form-status${state === "failed" ? " is-error" : ""}`}
         role={state === "failed" ? "alert" : "status"}
       >
-        {state === "sent"
-          ? copy.sent
-          : state === "failed"
-            ? copy.error
-            : copy.privacy}
+        {state === "failed" ? copy.error : copy.privacy}
       </p>
     </form>
   );
