@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { ShellProvider } from "@/components/shell-provider";
 import { content } from "@/lib/content";
 import { Toaster } from "@/components/toaster";
-import { reportHttpError } from "@/lib/toast";
+import { reportHttpError, reportSuccess } from "@/lib/toast";
 
 vi.mock("next/dynamic", () => ({ default: () => () => null }));
 
@@ -96,5 +96,13 @@ describe("HTTP error toasts", () => {
     act(() => reportHttpError(400));
     act(() => reportHttpError(422));
     expect(screen.getAllByText("Check the fields")).toHaveLength(1);
+  });
+
+  it("shows success messages with their own style", () => {
+    render(<Toaster labels={labels} />);
+    act(() => reportSuccess("Message sent"));
+    expect(screen.getByText("Message sent").closest(".toast")).toHaveClass(
+      "is-success",
+    );
   });
 });

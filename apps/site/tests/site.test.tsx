@@ -352,7 +352,9 @@ describe("institutional experience", () => {
     fillContact();
     submitContact();
 
-    expect(await screen.findByText(/Mensagem enviada\./)).toBeVisible();
+    expect(
+      (await screen.findByText(/Mensagem enviada\./)).closest(".toast"),
+    ).toHaveClass("is-success");
     expect(screen.getByLabelText("Seu nome")).toHaveValue("");
   });
 
