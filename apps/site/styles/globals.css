@@ -925,9 +925,6 @@ summary::-webkit-details-marker {
   align-self: start;
   margin-top: 0;
 }
-.form-submit > span {
-  background: var(--sage-tint);
-}
 .form-status {
   min-height: 18px;
   margin: -12px 0 0;
