@@ -1595,6 +1595,20 @@ main[tabindex="-1"]:focus {
   color: var(--text);
   background: var(--surface);
 }
+.language-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 24px;
+  padding-inline: 2px;
+  font-size: 12px;
+  text-underline-offset: 4px;
+}
+.language-links a[aria-current="page"],
+.language-links a:hover {
+  text-decoration: underline;
+}
 .header-cta {
   margin-left: 0;
 }
@@ -2820,6 +2834,19 @@ main[tabindex="-1"]:focus {
 }
 .site-header[data-stuck="true"] {
   --brand-size: 44px;
+}
+@media (max-width: 390px) {
+  .site-header,
+  .site-header[data-stuck="true"] {
+    --brand-size: 40px;
+  }
+}
+@media (max-width: 350px) {
+  .site-header,
+  .site-header[data-stuck="true"] {
+    --brand-size: 32px;
+    gap: 6px;
+  }
 }
 .site-header nav a[aria-current="location"]::after {
   transform: scaleX(1);

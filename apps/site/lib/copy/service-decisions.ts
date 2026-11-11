@@ -25,8 +25,8 @@ export const serviceDecisionCopy: Record<
           text: "Você recebe inventário, riscos e opções de arquitetura, com premissas de custo e esforço para decidir onde investir.",
         },
         {
-          title: "Escolher a próxima mudança",
-          text: "Decidimos o que manter, otimizar ou migrar. Execução e continuidade têm escopos próprios, sujeitos à capacidade e contratação.",
+          title: "Decidir o que migrar primeiro",
+          text: "Se a migração fizer sentido, priorizamos a primeira aplicação pelo impacto, pelas dependências e pela possibilidade de testar e recuperar. O plano de migração orienta o escopo da execução.",
         },
       ],
     },
@@ -81,8 +81,8 @@ export const serviceDecisionCopy: Record<
           text: "You receive an inventory, risks and architecture options, with cost and effort assumptions to guide investment.",
         },
         {
-          title: "Choose the next change",
-          text: "We decide what to keep, optimize or migrate. Execution and ongoing support have their own scopes, subject to capacity and contracting.",
+          title: "Decide what to migrate first",
+          text: "If migration makes sense, we prioritize the first application by business impact, dependencies and the ability to test and recover. The migration plan informs the scope of implementation.",
         },
       ],
     },
@@ -137,8 +137,8 @@ export const serviceDecisionCopy: Record<
           text: "Recibes inventario, riesgos y opciones de arquitectura, con supuestos de costo y esfuerzo para orientar la inversión.",
         },
         {
-          title: "Elegir el próximo cambio",
-          text: "Decidimos qué mantener, optimizar o migrar. La ejecución y la continuidad tienen alcances propios, sujetos a capacidad y contratación.",
+          title: "Decidir qué migrar primero",
+          text: "Si conviene migrar, priorizamos la primera aplicación según su impacto, dependencias y posibilidad de probar y recuperar. El plan de migración orienta el alcance de la ejecución.",
         },
       ],
     },
