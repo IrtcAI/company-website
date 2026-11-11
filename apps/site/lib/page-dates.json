@@ -1,27 +1,27 @@
 {
   "/": {
-    "hash": "3a5ea351e1a64ace",
-    "lastModified": "2026-10-26"
+    "hash": "ff46423fa664bf4b",
+    "lastModified": "2026-11-11"
   },
   "/en": {
-    "hash": "40a21ba6fed36fd3",
-    "lastModified": "2026-10-26"
+    "hash": "de25ce5d5e4b25f0",
+    "lastModified": "2026-11-11"
   },
   "/es": {
-    "hash": "f35d5cead75c47df",
-    "lastModified": "2026-10-26"
+    "hash": "4a035e9c6b4afab7",
+    "lastModified": "2026-11-11"
   },
   "/servicos": {
-    "hash": "7e21995ed29f1fb4",
-    "lastModified": "2026-10-26"
+    "hash": "af3d3b7c8b57d664",
+    "lastModified": "2026-11-11"
   },
   "/en/services": {
-    "hash": "c9383e671777f0a5",
-    "lastModified": "2026-10-26"
+    "hash": "2e8e1bd6f5403215",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios": {
-    "hash": "626bed0bda6500fb",
-    "lastModified": "2026-10-26"
+    "hash": "2a0129a546672f13",
+    "lastModified": "2026-11-11"
   },
   "/servicos/software-sob-medida": {
     "hash": "d844e6f9734a2afb",
@@ -36,28 +36,28 @@
     "lastModified": "2026-10-26"
   },
   "/servicos/sites-e-plataformas-web": {
-    "hash": "b18e8e40070aa26f",
-    "lastModified": "2026-10-26"
+    "hash": "3282e6d77136cf46",
+    "lastModified": "2026-11-11"
   },
   "/en/services/web-platforms": {
-    "hash": "8b897b39fee130e8",
-    "lastModified": "2026-10-26"
+    "hash": "d7796797cf3bd61d",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/sitios-y-plataformas-web": {
-    "hash": "cccf75735a73586c",
-    "lastModified": "2026-10-26"
+    "hash": "0e5f642a51c85045",
+    "lastModified": "2026-11-11"
   },
   "/servicos/aplicativos": {
-    "hash": "2ba754d5a5d5d567",
-    "lastModified": "2026-10-26"
+    "hash": "551af48f157e68a3",
+    "lastModified": "2026-11-11"
   },
   "/en/services/mobile-apps": {
-    "hash": "c49a1d1e6928418c",
-    "lastModified": "2026-10-26"
+    "hash": "50b1389d426c5d4c",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/aplicaciones-moviles": {
-    "hash": "bebb86c4ae8a2a25",
-    "lastModified": "2026-10-26"
+    "hash": "e8f1c51be5742854",
+    "lastModified": "2026-11-11"
   },
   "/servicos/integracoes-e-automacao": {
     "hash": "51aa84472c91fd7a",
@@ -72,52 +72,52 @@
     "lastModified": "2026-10-26"
   },
   "/servicos/modernizacao-de-sistemas": {
-    "hash": "4061d87423b7be1c",
-    "lastModified": "2026-10-26"
+    "hash": "6020eb5396781076",
+    "lastModified": "2026-11-11"
   },
   "/en/services/system-modernization": {
-    "hash": "34e79d9f5491bed8",
-    "lastModified": "2026-10-26"
+    "hash": "fab87dfc4b8a9b51",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/modernizacion-de-sistemas": {
-    "hash": "f062c388866a9078",
-    "lastModified": "2026-10-26"
+    "hash": "119dd1a1db3346f6",
+    "lastModified": "2026-11-11"
   },
   "/servicos/inteligencia-artificial": {
-    "hash": "eb8b05579a92b114",
-    "lastModified": "2026-10-26"
+    "hash": "27c2985d1b373505",
+    "lastModified": "2026-11-11"
   },
   "/en/services/applied-ai": {
-    "hash": "e020686a84aee242",
-    "lastModified": "2026-10-26"
+    "hash": "aabafdd09c6ad7ee",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/inteligencia-artificial": {
-    "hash": "4876891ae19e76e8",
-    "lastModified": "2026-10-26"
+    "hash": "d8e17f77fe4fd954",
+    "lastModified": "2026-11-11"
   },
   "/servicos/dados-e-relatorios": {
-    "hash": "94f8477bc320837f",
-    "lastModified": "2026-10-26"
+    "hash": "4ccd3517e21a5d92",
+    "lastModified": "2026-11-11"
   },
   "/en/services/data-and-reporting": {
-    "hash": "fe52ce948ce1912e",
-    "lastModified": "2026-10-26"
+    "hash": "f1f6a118289387d0",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/datos-e-informes": {
-    "hash": "201864f43302ba87",
-    "lastModified": "2026-10-26"
+    "hash": "015dfa8a6076c37c",
+    "lastModified": "2026-11-11"
   },
   "/servicos/nuvem-e-arquitetura": {
-    "hash": "2ab6018b02664780",
-    "lastModified": "2026-10-26"
+    "hash": "4b6a0a34566cf7b3",
+    "lastModified": "2026-11-11"
   },
   "/en/services/cloud-and-architecture": {
-    "hash": "9130dd2c389e2cc4",
-    "lastModified": "2026-10-26"
+    "hash": "c0658ff62d12f79d",
+    "lastModified": "2026-11-11"
   },
   "/es/servicios/nube-y-arquitectura": {
-    "hash": "6371c429c4d9abab",
-    "lastModified": "2026-10-26"
+    "hash": "7f4791af97777dcb",
+    "lastModified": "2026-11-11"
   },
   "/sobre": {
     "hash": "c36074e75e2f9c11",

@@ -32,7 +32,7 @@ pt-BR é o idioma base, na raiz. en e es ficam em `/en` e `/es`. As páginas int
 
 O layout raiz é `app/[locale]/layout.tsx`, que põe o idioma da rota no `<html lang>` do HTML do servidor. Robôs que não executam JavaScript, como o Bingbot, leem esse atributo. URLs sem rota caem em `app/global-not-found.tsx`, que não passa pelo layout e por isso importa o próprio CSS.
 
-`proxy.ts` só atua na raiz: escolhe o idioma pela preferência salva em cookie, pelo país (cabeçalho da Vercel) ou pelo `Accept-Language`. Não há consulta de IP a terceiros. Robôs de busca (identificados pelo `User-Agent`) sempre recebem a home em pt-BR: o Googlebot rastreia dos EUA e, redirecionado, nunca indexaria `/`.
+Cada URL pública serve seu idioma para visitantes e robôs. O cabeçalho usa links HTML para a versão equivalente da página. Links voltados ao público de língua inglesa podem apontar direto para `/en` ou para a página traduzida.
 
 Todas as páginas têm `canonical`, `hreflang` e Open Graph por idioma, com a imagem de `app/opengraph-image.tsx`, gerados por `lib/seo.ts`.
 

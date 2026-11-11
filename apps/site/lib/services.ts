@@ -741,9 +741,9 @@ export const services: Service[] = [
               "Código, dependências e testes existentes definem o esforço. O diagnóstico orienta o escopo e o valor.",
           },
           {
-            question: "Como modernizam sem parar a empresa?",
+            question: "Como reduzem o risco de interrupção na modernização?",
             answer:
-              "Por etapas testadas, com reversão planejada. Eventuais pausas são acordadas antes da mudança.",
+              "Começamos por um componente e testamos os fluxos que dependem dele. Antes de implantar, combinamos a janela de mudança, os sinais que exigem reversão e como restaurar o serviço.",
           },
           {
             question: "O que vocês precisam da nossa equipe?",
@@ -791,9 +791,10 @@ export const services: Service[] = [
               "Code, dependencies and existing tests determine effort. The assessment informs scope and pricing.",
           },
           {
-            question: "How do you modernize without stopping the company?",
+            question:
+              "How do you reduce the risk of downtime during modernization?",
             answer:
-              "In tested stages, with planned rollback. Any downtime is agreed before the change.",
+              "We start with one component and test the workflows that rely on it. Before deployment, we agree on the change window, the signals that trigger rollback and how to restore service.",
           },
           {
             question: "What do you need from our team?",
@@ -841,9 +842,10 @@ export const services: Service[] = [
               "El código, las dependencias y las pruebas existentes definen el esfuerzo. El diagnóstico orienta el alcance y el precio.",
           },
           {
-            question: "¿Cómo modernizan sin detener la empresa?",
+            question:
+              "¿Cómo reducen el riesgo de interrupción durante la modernización?",
             answer:
-              "Por etapas probadas, con reversión planificada. Las posibles pausas se acuerdan antes del cambio.",
+              "Empezamos por un componente y probamos los flujos que dependen de él. Antes del despliegue acordamos la ventana de cambio, los criterios para revertir y cómo restaurar el servicio.",
           },
           {
             question: "¿Qué necesitan de nuestro equipo?",
@@ -1191,11 +1193,11 @@ export const services: Service[] = [
     copy: {
       "pt-BR": {
         slug: "nuvem-e-arquitetura",
-        title: "Consultoria AWS e arquitetura cloud",
+        title: "Consultoria AWS para avaliar custos e riscos",
         summary:
-          "Consultoria AWS para avaliar custos, arquitetura e riscos. Diagnóstico e plano priorizado para otimização, migração e evolução do ambiente.",
+          "Entenda a conta AWS e compare opções de otimização, arquitetura ou migração. Receba um diagnóstico com custos, riscos e um plano priorizado.",
         intro:
-          "Avalie custos, riscos e arquitetura do seu ambiente AWS. O diagnóstico define prioridades e premissas de investimento; a execução tem escopo próprio.",
+          "Quando a conta AWS sobe ou a aplicação fica lenta nos picos, o diagnóstico mostra onde investigar. Comparamos custo, uso e risco para decidir o que manter, otimizar ou migrar.",
         problems: [
           "O sistema fica lento ou cai nos horários de pico.",
           "Você só sabe que algo quebrou quando um cliente avisa.",
@@ -1203,8 +1205,8 @@ export const services: Service[] = [
           "Você vai crescer e não sabe se a estrutura aguenta.",
         ],
         deliverables: [
-          "Inventário do ambiente e registro de custos e riscos",
-          "Arquitetura proposta e comparação das alternativas",
+          "Inventário da aplicação, dependências e custos atuais por serviço",
+          "Opções de arquitetura com estimativas de custo e riscos priorizados",
           "Plano priorizado de mudanças, dependências e estimativas",
           "Critérios de monitoramento, backup e recuperação",
           "Quando contratada, mudança delimitada com testes e documentação",
@@ -1221,14 +1223,19 @@ export const services: Service[] = [
               "Comparamos custo e uso, considerando volume de trabalho, compromissos existentes e risco. A estimativa inclui o custo da mudança e precisa ser validada na operação. Não garantimos um percentual de economia.",
           },
           {
+            question: "Como seria um diagnóstico de custos AWS?",
+            answer:
+              "Exemplo fictício. Uma aplicação de pedidos fica lenta no pico e a fatura cresce. O diagnóstico cruza custos por serviço, uso de recursos e tempo de resposta. O plano compara ajustar a capacidade ou mudar a arquitetura, com custo mensal estimado, esforço e critérios para validar a opção escolhida.",
+          },
+          {
             question: "O que define o custo de nuvem e infraestrutura?",
             answer:
               "Uso real, arquitetura e recursos necessários definem o custo. Avaliamos alternativas conforme desempenho e escopo.",
           },
           {
-            question: "Como planejam mudanças em um ambiente existente?",
+            question: "O que entra em uma avaliação de migração para AWS?",
             answer:
-              "O diagnóstico orienta escopo, ensaio, aceite, janela de mudança e recuperação. Avaliamos o impacto na operação antes da execução.",
+              "Mapeamos dependências, dados e requisitos de recuperação. Comparamos o custo de manter o ambiente atual com o da transição e da operação na AWS, incluindo o período em que os dois ambientes precisam rodar.",
           },
           {
             question: "Que acesso vocês precisam?",
@@ -1246,11 +1253,11 @@ export const services: Service[] = [
       },
       en: {
         slug: "cloud-and-architecture",
-        title: "AWS consulting and architecture",
+        title: "AWS consulting for cost and architecture assessments",
         summary:
-          "AWS consulting to assess costs, architecture and risks. Get an assessment and prioritized plan for optimization, migration and infrastructure evolution.",
+          "Understand your AWS bill and compare options for cost optimization, architecture or migration. Get an assessment with costs, risks and a prioritized plan.",
         intro:
-          "Assess the costs, risks and architecture of your AWS environment. The assessment sets priorities and investment assumptions; execution has its own scope.",
+          "When your AWS bill grows or an application slows down at peak hours, we identify where to look. We compare cost, usage and risk to decide what to keep, optimize or migrate.",
         problems: [
           "The system slows down or goes down at peak times.",
           "You only learn something broke when a customer tells you.",
@@ -1258,8 +1265,8 @@ export const services: Service[] = [
           "You're about to grow and don't know if the setup can take it.",
         ],
         deliverables: [
-          "Environment inventory and record of costs and risks",
-          "Proposed architecture and comparison of alternatives",
+          "Application inventory, dependencies and current costs by service",
+          "Architecture options with cost estimates and prioritized risks",
           "Prioritized change plan, dependencies and estimates",
           "Monitoring, backup and recovery criteria",
           "When contracted, a bounded change with tests and documentation",
@@ -1276,14 +1283,19 @@ export const services: Service[] = [
               "We compare costs and usage, considering workload volume, existing commitments and risk. Estimates include the cost of change and must be validated in operation. We do not guarantee a savings percentage.",
           },
           {
+            question: "What does an AWS cost assessment look like?",
+            answer:
+              "Illustrative example. An order processing application slows down at peak hours as the AWS bill grows. The assessment compares cost by service with resource usage and response times. The plan weighs resizing resources against an architecture change, with estimated monthly costs, implementation effort and validation criteria.",
+          },
+          {
             question: "What sets the cost of cloud and infrastructure?",
             answer:
               "Actual usage, architecture and required resources determine cost. We assess options against performance and scope.",
           },
           {
-            question: "How do you plan changes to an existing environment?",
+            question: "What does an AWS migration assessment cover?",
             answer:
-              "The assessment informs scope, rehearsal, acceptance, change windows and recovery. We assess operational impact before execution.",
+              "We map dependencies, data and recovery requirements. We compare the cost of keeping the current environment with transition and operating costs on AWS, including any period of running both environments.",
           },
           {
             question: "What access do you need?",
@@ -1301,11 +1313,11 @@ export const services: Service[] = [
       },
       es: {
         slug: "nube-y-arquitectura",
-        title: "Consultoría AWS y arquitectura cloud",
+        title: "Consultoría AWS para evaluar costos y riesgos",
         summary:
-          "Consultoría AWS para evaluar costos, arquitectura y riesgos. Diagnóstico y plan priorizado para optimización, migración y evolución del entorno.",
+          "Entiende tu factura de AWS y compara opciones de optimización, arquitectura o migración. Recibe un diagnóstico con costos, riesgos y un plan priorizado.",
         intro:
-          "Evalúa costos, riesgos y arquitectura de tu entorno AWS. El diagnóstico define prioridades y supuestos de inversión; la ejecución tiene alcance propio.",
+          "Si sube la factura de AWS o una aplicación pierde rendimiento en horas pico, el diagnóstico indica dónde investigar. Comparamos costo, uso y riesgo para decidir qué mantener, optimizar o migrar.",
         problems: [
           "El sistema se vuelve lento o se cae en horas pico.",
           "Solo te enteras de que algo falló cuando un cliente avisa.",
@@ -1313,8 +1325,8 @@ export const services: Service[] = [
           "Vas a crecer y no sabes si la estructura aguanta.",
         ],
         deliverables: [
-          "Inventario del entorno y registro de costos y riesgos",
-          "Arquitectura propuesta y comparación de alternativas",
+          "Inventario de la aplicación, dependencias y costos actuales por servicio",
+          "Opciones de arquitectura con costos estimados y riesgos priorizados",
           "Plan priorizado de cambios, dependencias y estimaciones",
           "Criterios de monitoreo, respaldo y recuperación",
           "Cuando se contrata, cambio delimitado con pruebas y documentación",
@@ -1331,14 +1343,19 @@ export const services: Service[] = [
               "Comparamos costo y uso, considerando volumen de trabajo, compromisos existentes y riesgo. La estimación incluye el costo del cambio y debe validarse en operación. No garantizamos un porcentaje de ahorro.",
           },
           {
+            question: "¿Cómo sería un diagnóstico de costos en AWS?",
+            answer:
+              "Ejemplo ficticio. Una aplicación de pedidos se vuelve lenta en horas pico y la factura sube. El diagnóstico cruza costos por servicio, uso de recursos y tiempos de respuesta. El plan compara ajustar la capacidad o cambiar la arquitectura, con costo mensual estimado, esfuerzo y criterios de validación.",
+          },
+          {
             question: "¿Qué define el costo de nube e infraestructura?",
             answer:
               "El uso real, la arquitectura y los recursos necesarios definen el costo. Evaluamos alternativas según rendimiento y alcance.",
           },
           {
-            question: "¿Cómo planifican cambios en un entorno existente?",
+            question: "¿Qué incluye una evaluación de migración a AWS?",
             answer:
-              "El diagnóstico orienta alcance, ensayo, aceptación, ventana de cambio y recuperación. Evaluamos el impacto operativo antes de ejecutar.",
+              "Identificamos dependencias, datos y requisitos de recuperación. Comparamos el costo de mantener el entorno actual con el de la transición y la operación en AWS, incluido el período en que ambos entornos funcionen en paralelo.",
           },
           {
             question: "¿Qué acceso necesitan?",

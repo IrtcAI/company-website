@@ -72,7 +72,7 @@ As URLs públicas são traduzidas e reescritas para `app/[locale]/<página>` (ve
 | Fundador | `/fundador`        | `/en/founder`         | `/es/fundador`         |
 | Contato  | `/contato`         | `/en/contact`         | `/es/contacto`         |
 
-`proxy.ts` redireciona a raiz `/` para `/en` ou `/es` conforme cookie, país (na Vercel) ou idioma do navegador. Robôs de busca não são redirecionados.
+A raiz `/` sempre abre em português. Os links de idioma no cabeçalho levam à página correspondente em português, inglês ou espanhol.
 
 ## Onde editar
 

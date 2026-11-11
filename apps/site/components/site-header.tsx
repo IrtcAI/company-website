@@ -22,6 +22,12 @@ const useIsomorphicLayoutEffect =
 
 const HOVER_CLOSE_DELAY = 200;
 
+const languageLinks = [
+  { locale: "pt-BR", label: "PT", name: "PT (Português)" },
+  { locale: "en", label: "English", name: "English" },
+  { locale: "es", label: "ES", name: "ES (Español)" },
+] as const;
+
 export type NavItem = {
   label: string;
   href: string;
@@ -519,13 +525,6 @@ export function SiteHeader({
     } catch {}
   }
 
-  function changeLanguage(value: Locale) {
-    document.cookie = `irtc-locale=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
-    // Locale layouts own document initialization (theme and splash lifecycle).
-    // Load the translated document so those scripts run after a locale change.
-    location.assign(languages[value]);
-  }
-
   function current(item: NavItem) {
     if (item.page === page) return "page";
     if (page !== "home") return undefined;
@@ -598,18 +597,25 @@ export function SiteHeader({
         {restNav.map(navLink)}
       </nav>
       <div className="site-preferences">
-        <label className="preference">
+        <div
+          className="preference language-links"
+          role="group"
+          aria-label={labels.language}
+        >
           <Globe2 aria-hidden="true" />
-          <span className="sr-only">{labels.language}</span>
-          <select
-            value={locale}
-            onChange={(event) => changeLanguage(event.target.value as Locale)}
-          >
-            <option value="pt-BR">PT-BR</option>
-            <option value="en">EN</option>
-            <option value="es">ES</option>
-          </select>
-        </label>
+          {languageLinks.map(({ locale: language, label, name }) => (
+            <a
+              key={language}
+              href={languages[language]}
+              hrefLang={language}
+              lang={language}
+              aria-label={name}
+              aria-current={locale === language ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
         <label className="preference">
           <SunMoon aria-hidden="true" />
           <span className="sr-only">{labels.theme}</span>

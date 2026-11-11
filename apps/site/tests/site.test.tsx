@@ -133,18 +133,38 @@ describe("institutional experience", () => {
     expect(document.documentElement.dataset.theme).toBe("system");
   });
 
-  it("persists language choice and uses the localized route", async () => {
-    const originalLocation = location;
-    const assign = vi.fn();
-    vi.stubGlobal("location", { protocol: "https:", assign });
-    try {
-      renderHome();
-      await userEvent.selectOptions(screen.getByLabelText("Idioma"), "es");
-      expect(document.cookie).toContain("irtc-locale=es");
-      expect(assign).toHaveBeenCalledWith("/es");
-    } finally {
-      vi.stubGlobal("location", originalLocation);
-    }
+  it("exposes direct links to the home in each language", () => {
+    renderHome();
+    const languages = within(screen.getByRole("group", { name: "Idioma" }));
+    expect(
+      languages.getByRole("link", { name: "PT (Português)" }),
+    ).toHaveAttribute("aria-current", "page");
+    expect(languages.getByRole("link", { name: "English" })).toHaveAttribute(
+      "href",
+      "/en",
+    );
+    expect(
+      languages.getByRole("link", { name: "ES (Español)" }),
+    ).toHaveAttribute("href", "/es");
+  });
+
+  it("links to the same service in the selected language", async () => {
+    render(
+      await ServicePage({
+        params: Promise.resolve({
+          locale: "pt-BR",
+          slug: "nuvem-e-arquitetura",
+        }),
+      }),
+    );
+    const languages = within(screen.getByRole("group", { name: "Idioma" }));
+    expect(languages.getByRole("link", { name: "English" })).toHaveAttribute(
+      "href",
+      "/en/services/cloud-and-architecture",
+    );
+    expect(
+      languages.getByRole("link", { name: "ES (Español)" }),
+    ).toHaveAttribute("href", "/es/servicios/nube-y-arquitectura");
   });
 
   it("renders English content and updates the document language", () => {
@@ -599,22 +619,5 @@ describe("institutional experience", () => {
     })[0];
     expect(link).toHaveAttribute("href", "/#servicos");
     expect(link).toHaveAttribute("aria-current", "page");
-  });
-
-  it("reloads the translated document even when view transitions are supported", async () => {
-    const originalLocation = location;
-    const assign = vi.fn();
-    const startViewTransition = vi.fn();
-    vi.stubGlobal("location", { protocol: "https:", assign });
-    document.startViewTransition = startViewTransition;
-    try {
-      renderHome();
-      await userEvent.selectOptions(screen.getByLabelText("Idioma"), "en");
-      expect(assign).toHaveBeenCalledWith("/en");
-      expect(startViewTransition).not.toHaveBeenCalled();
-    } finally {
-      vi.stubGlobal("location", originalLocation);
-      Reflect.deleteProperty(document, "startViewTransition");
-    }
   });
 });

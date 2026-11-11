@@ -73,7 +73,7 @@ Textos visíveis priorizam frases curtas e uma ideia por bloco. As descriptions 
 
 ## Clareza da oferta e descoberta orgânica
 
-A página de cloud usa “Consultoria AWS e arquitetura cloud”, preservando o slug `nuvem-e-arquitetura` e suas traduções. AWS identifica a tecnologia do serviço; não declara tier, certificação nem parceria da IRTC.
+A página de cloud apresenta a consultoria AWS a partir do diagnóstico de custos, arquitetura e riscos. O slug é `nuvem-e-arquitetura`, com os equivalentes em inglês e espanhol. AWS identifica a tecnologia do serviço; não declara tier, certificação nem parceria da IRTC.
 
 `lib/copy/service-decisions.ts` detalha a primeira decisão em cloud, modernização e IA nos três idiomas. Esse conteúdo substitui o bloco genérico de processo nessas páginas e alimenta HTML, Markdown e Iris. Os CTAs mantêm o serviço selecionado no contato. Diagnóstico, execução e continuidade têm escopos próprios; não publicar prazos, preços, descontos ou cobertura de atendimento sem validação comercial.
 
