@@ -7,21 +7,21 @@ export const homeCopy: Record<
   { title: string; description: string; organization: string }
 > = {
   "pt-BR": {
-    title: "IRTC | Consultoria de cloud e IA na AWS em Belém",
+    title: "IRTC | Cloud, Software & AI Engineering",
     description:
       "Consultoria de cloud e IA na AWS, em Belém (PA). Integramos os sistemas que sua equipe já usa para reduzir retrabalho em vendas, operações e faturamento.",
     organization:
       "A IRTC é uma empresa de Cloud, Software & AI Engineering que presta consultoria de cloud e IA na AWS, com base em Belém (PA) e atendimento remoto. Integramos os sistemas que a empresa já usa para reduzir retrabalho operacional, com escopo, entregáveis e critérios de resultado definidos.",
   },
   en: {
-    title: "IRTC | AWS cloud and AI consulting in Belém, Brazil",
+    title: "IRTC | Cloud, Software & AI Engineering",
     description:
       "Cloud and AI consulting on AWS from Belém, Brazil. We connect the systems your team already uses to cut rework in sales, operations and billing.",
     organization:
       "IRTC is a Cloud, Software & AI Engineering company providing cloud and AI consulting on AWS, based in Belém, Pará, Brazil, and working remotely. We connect the systems a company already uses to cut operational rework, with defined scope, deliverables and outcome criteria.",
   },
   es: {
-    title: "IRTC | Consultoría de cloud e IA en AWS desde Belém",
+    title: "IRTC | Cloud, Software & AI Engineering",
     description:
       "Consultoría de cloud e IA en AWS desde Belém, Brasil. Conectamos los sistemas que tu equipo ya usa para reducir retrabajo en ventas, operaciones y facturación.",
     organization:
