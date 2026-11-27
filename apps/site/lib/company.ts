@@ -29,9 +29,18 @@ const countryName: Record<Locale, string> = {
   es: "Brasil",
 };
 
+const serviceArea: Record<Locale, string> = {
+  "pt-BR": "Atendimento remoto no Brasil e no exterior",
+  en: "Remote service in Brazil and abroad",
+  es: "Atención remota en Brasil y en el exterior",
+};
+
 export function addressLines(locale: Locale) {
   const { locality, region } = company.address;
-  return [`${locality} · ${region} · ${countryName[locale]}`];
+  return [
+    `${locality} · ${region} · ${countryName[locale]}`,
+    serviceArea[locale],
+  ];
 }
 
 const hours: Record<Locale, { weekdays: string; weekend: string }> = {

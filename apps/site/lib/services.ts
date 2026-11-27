@@ -1395,7 +1395,7 @@ const relatedServiceIds: Record<ServiceId, ServiceId[]> = {
   modernization: ["cloud", "integrations", "data"],
   "applied-ai": ["data", "integrations", "cloud"],
   data: ["integrations", "cloud", "applied-ai"],
-  cloud: ["modernization", "data", "applied-ai"],
+  cloud: ["integrations", "applied-ai", "modernization"],
 };
 
 export function relatedServices(service: Service, count = 3) {

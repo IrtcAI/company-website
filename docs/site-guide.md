@@ -32,7 +32,7 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 - **Serviços.** Os oito serviços pertencem a um pilar (Cloud Engineering, Software Engineering ou AI Engineering) e podem ter pilares de apoio. Critérios de resultado são objetivos do projeto, não resultado garantido. As ofertas do Service Catalog em validação não aparecem como produtos, nem com preço ou prazo.
 - **Fundador.** Fatos autorizados por Iago: Founder & Principal Engineer, formado em Sistemas de Informação, vive em Belém; hobbies: videogame, filmes e séries com a família e as gatas Juliette e Luna. A página descreve responsabilidades de projeto e mantém os hobbies confirmados; Experiência em LeafLink, Dasa e Perfect Pay é trabalho pessoal de Iago como contractor, autorizado por ele em 26/10/2026, e aparece apenas com essa atribuição. Essas empresas não são clientes nem cases da IRTC. Não acrescente outros fatos sem evidência. O LinkedIn pessoal aparece só no bloco e na página do fundador; o resto do site usa o LinkedIn da empresa.
 - **Cultura, Missão e Visão.** As páginas usam as definições oficiais do Brand Book. Os textos explicam práticas, avaliação de resultado e direção de crescimento. Não usar cenas fictícias como evidência.
-- **Endereço.** O site mostra só Belém · PA · Brasil e atendimento remoto. Não publique rua nem o endereço fiscal.
+- **Endereço.** O site mostra só Belém · PA · Brasil e "Atendimento remoto no Brasil e no exterior", que sustenta o `areaServed: "Worldwide"` do JSON-LD. Não publique rua nem o endereço fiscal.
 - **Iris.** Não promete preço, prazo, disponibilidade nem contrato. O rascunho que ela gera é ponto de partida, não proposta comercial.
 
 ## Conteúdo provisório
@@ -81,4 +81,4 @@ A página AWS lista os escopos de DevOps, CloudOps e FinOps em `lib/copy/service
 
 `lib/copy/service-decisions.ts` detalha a primeira decisão em cloud, modernização e IA nos três idiomas. Esse conteúdo substitui o bloco genérico de processo nessas páginas e alimenta HTML, Markdown e Iris. Os CTAs mantêm o serviço selecionado no contato. Diagnóstico, execução e continuidade têm escopos próprios; não publicar prazos, preços, descontos ou cobertura de atendimento sem validação comercial.
 
-Os serviços relacionados seguem as dependências do problema: cloud aponta para modernização, dados e IA; IA aponta para dados, integrações e cloud. A ordem fica em `relatedServiceIds`, em `lib/services.ts`, e é compartilhada com o Markdown. Novos títulos ou palavras-chave não justificam duplicar páginas com a mesma intenção de busca.
+Os serviços relacionados seguem as dependências do problema: cloud aponta para integrações, IA e modernização; IA aponta para dados, integrações e cloud. A ordem fica em `relatedServiceIds`, em `lib/services.ts`, e é compartilhada com o Markdown. Novos títulos ou palavras-chave não justificam duplicar páginas com a mesma intenção de busca.

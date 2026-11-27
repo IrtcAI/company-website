@@ -46,10 +46,14 @@ for (const locale of locales) {
   });
 }
 
-it("connects AWS assessment to modernization and AI to its data prerequisites", () => {
+it("connects the AWS page to integrations and AI to its data prerequisites", () => {
   const cloud = services.find((service) => service.id === "cloud")!;
   const ai = services.find((service) => service.id === "applied-ai")!;
-  expect(relatedServices(cloud)[0].id).toBe("modernization");
+  expect(relatedServices(cloud).map((service) => service.id)).toEqual([
+    "integrations",
+    "applied-ai",
+    "modernization",
+  ]);
   expect(relatedServices(ai).map((service) => service.id)).toEqual([
     "data",
     "integrations",

@@ -352,6 +352,9 @@ describe("institutional experience", () => {
     const footer = container.querySelector(".site-footer") as HTMLElement;
 
     expect(within(footer).getByText("Belém · PA · Brasil")).toBeVisible();
+    expect(
+      within(footer).getByText("Atendimento remoto no Brasil e no exterior"),
+    ).toBeVisible();
     expect(within(footer).getByText("Sáb e dom: fechado")).toBeVisible();
     expect(
       within(footer).getByRole("link", { name: "Aplicativos para celular" }),
