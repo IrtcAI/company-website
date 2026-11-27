@@ -4,7 +4,7 @@ import type { content } from "@/lib/content";
 
 type Solutions = (typeof content)["pt-BR"]["solutions"];
 
-const icons = [Cloud, Code2, Sparkles];
+const icons = [Cloud, Sparkles, Code2];
 
 export function HomePillars({ copy, href }: { copy: Solutions; href: string }) {
   return (

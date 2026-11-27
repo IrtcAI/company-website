@@ -9,6 +9,7 @@ import {
   ServiceDeliverables,
   ServiceHow,
   ServiceMeasure,
+  ServiceScopeList,
   ServiceStack,
   ServiceSymptoms,
 } from "@/components/service-blocks";
@@ -17,6 +18,7 @@ import { ServiceVisual } from "@/components/service-visual";
 import { SiteShell } from "@/components/site-shell";
 import { content } from "@/lib/content";
 import { serviceDecisionCopy } from "@/lib/copy/service-decisions";
+import { serviceScopeCopy } from "@/lib/copy/service-scopes";
 import { servicesPageCopy } from "@/lib/copy/services-page";
 import { resolveLocaleParam } from "@/lib/locale-params";
 import { absoluteUrl, pageAlternates, pagePath } from "@/lib/routes";
@@ -78,6 +80,7 @@ export default async function ServicePage({ params }: Params) {
   const path = pagePath(locale, "services", copy.slug);
   const related = relatedServices(service);
   const decision = serviceDecisionCopy[locale][service.id];
+  const scopes = serviceScopeCopy[locale][service.id];
 
   const structuredData = graph(
     {
@@ -150,6 +153,7 @@ export default async function ServicePage({ params }: Params) {
         </section>
 
         <ServiceSymptoms title={pageCopy.whenTitle} items={copy.problems} />
+        {scopes ? <ServiceScopeList scopes={scopes} /> : null}
         <ServiceDeliverables
           title={pageCopy.whatTitle}
           items={copy.deliverables}

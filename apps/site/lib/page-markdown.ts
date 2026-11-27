@@ -6,7 +6,9 @@ import { founderCopy, founderSectionCopy } from "./copy/founder";
 import { homeCopy, pageCopy } from "./copy/pages";
 import { engagementCopy } from "./copy/engagement";
 import { serviceDecisionCopy } from "./copy/service-decisions";
+import { serviceScopeCopy } from "./copy/service-scopes";
 import { servicesPageCopy } from "./copy/services-page";
+import { useCaseCopy } from "./copy/use-case";
 import {
   absoluteUrl,
   locales,
@@ -140,6 +142,37 @@ function engagements(locale: Locale) {
   ];
 }
 
+function featuredCase(locale: Locale) {
+  const copy = useCaseCopy[locale];
+  const service = services.find((service) => service.id === copy.service)!;
+  return [
+    heading(2, copy.title),
+    `${copy.label}. ${copy.intro}`,
+    numbered(copy.steps.map((step) => `${step.title}: ${step.text}`)),
+    copy.measure,
+    copy.note,
+    link(copy.link, pagePath(locale, "services", service.copy[locale].slug)),
+  ];
+}
+
+function scopes(locale: Locale, service: Service) {
+  const copy = serviceScopeCopy[locale][service.id];
+  if (!copy) return [];
+  return [
+    heading(2, copy.title),
+    copy.intro,
+    ...copy.items.flatMap((scope) => [
+      heading(3, `${scope.name}: ${scope.title}`),
+      scope.text,
+      `${copy.receivesLabel}:`,
+      bullets(scope.receives),
+      `${copy.excludesLabel}:`,
+      bullets(scope.excludes),
+      `${copy.measureLabel}: ${scope.measure}`,
+    ]),
+  ];
+}
+
 function home(locale: Locale) {
   const copy = content[locale];
   const founder = founderSectionCopy[locale];
@@ -150,6 +183,7 @@ function home(locale: Locale) {
     hero.eyebrow,
     hero.description,
     ...engagements(locale),
+    ...featuredCase(locale),
     heading(2, joined(manifesto.title, manifesto.accent)),
     manifesto.foot,
     ...titled(3, manifesto.points),
@@ -229,6 +263,7 @@ function servicePage(locale: Locale, service: Service) {
     copy.intro,
     heading(2, page.whenTitle),
     bullets(copy.problems),
+    ...scopes(locale, service),
     heading(2, page.whatTitle),
     service.deliverablesLayout === "timeline"
       ? numbered(copy.deliverables)

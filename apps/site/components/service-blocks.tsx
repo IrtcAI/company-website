@@ -5,10 +5,12 @@ import {
   ClipboardCheck,
   Cloud,
   Gauge,
+  Minus,
   Sparkles,
   Target,
   type LucideIcon,
 } from "lucide-react";
+import type { ServiceScopes } from "@/lib/copy/service-scopes";
 import type { StackId } from "@/lib/services";
 import "@/styles/service-visuals.css";
 import "@/styles/service-page.css";
@@ -160,6 +162,44 @@ export function ServiceStack({
         ))}
       </ul>
       <p className="sp-stack-note">{note}</p>
+    </section>
+  );
+}
+
+export function ServiceScopeList({ scopes }: { scopes: ServiceScopes }) {
+  return (
+    <section className="sp-section section-pad" data-reveal>
+      <h2>{scopes.title}</h2>
+      <p className="sp-scopes-intro">{scopes.intro}</p>
+      <ul className="sp-scopes">
+        {scopes.items.map((scope) => (
+          <li key={scope.name} className="sp-scope">
+            <p className="sp-scope-name">{scope.name}</p>
+            <h3>{scope.title}</h3>
+            <p>{scope.text}</p>
+            <h4>{scopes.receivesLabel}</h4>
+            <ul className="sp-scope-list">
+              {scope.receives.map((item) => (
+                <li key={item}>
+                  <Check aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <h4>{scopes.excludesLabel}</h4>
+            <ul className="sp-scope-list sp-scope-out">
+              {scope.excludes.map((item) => (
+                <li key={item}>
+                  <Minus aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <h4>{scopes.measureLabel}</h4>
+            <p>{scope.measure}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

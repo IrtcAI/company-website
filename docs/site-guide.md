@@ -32,7 +32,7 @@ Todo texto existe em pt-BR, en e es, com o mesmo sentido nas três versões. pt-
 - **Serviços.** Os oito serviços pertencem a um pilar (Cloud Engineering, Software Engineering ou AI Engineering) e podem ter pilares de apoio. Critérios de resultado são objetivos do projeto, não resultado garantido. As ofertas do Service Catalog em validação não aparecem como produtos, nem com preço ou prazo.
 - **Fundador.** Fatos autorizados por Iago: Founder & Principal Engineer, formado em Sistemas de Informação, vive em Belém; hobbies: videogame, filmes e séries com a família e as gatas Juliette e Luna. A página descreve responsabilidades de projeto e mantém os hobbies confirmados; Experiência em LeafLink, Dasa e Perfect Pay é trabalho pessoal de Iago como contractor, autorizado por ele em 26/10/2026, e aparece apenas com essa atribuição. Essas empresas não são clientes nem cases da IRTC. Não acrescente outros fatos sem evidência. O LinkedIn pessoal aparece só no bloco e na página do fundador; o resto do site usa o LinkedIn da empresa.
 - **Cultura, Missão e Visão.** As páginas usam as definições oficiais do Brand Book. Os textos explicam práticas, avaliação de resultado e direção de crescimento. Não usar cenas fictícias como evidência.
-- **Endereço.** O site mostra só Belém · PA · Brasil e atendimento remoto. Não publique rua nem o endereço fiscal.
+- **Endereço.** O site mostra só Belém · PA · Brasil e "Atendimento remoto no Brasil e no exterior", que sustenta o `areaServed: "Worldwide"` do JSON-LD. Não publique rua nem o endereço fiscal.
 - **Iris.** Não promete preço, prazo, disponibilidade nem contrato. O rascunho que ela gera é ponto de partida, não proposta comercial.
 
 ## Conteúdo provisório
@@ -57,6 +57,8 @@ A comunicação parte do problema de operação, descreve o escopo e informa com
 
 A operação atual é conduzida por Iago Rodrigues. Ferramentas de IA e a Iris não constituem uma equipe contratada. Tracejandos é um pequeno projeto de site; não publicar alegações de tração, receita ou resultado comercial.
 
+A home apresenta a IRTC como consultoria de cloud e IA na AWS, com base em Belém, para integrar os sistemas que o cliente já usa e reduzir retrabalho operacional. A ordem de `services` e de `pillars` em `lib/services.ts` coloca AWS, IA aplicada e integrações à frente; apps, plataformas web e software sob medida continuam publicados no fim da lista. O exemplo do pedido aprovado que chega ao financeiro (`lib/copy/use-case.ts`) aparece na página como exemplo ilustrativo e não deve ser apresentado como case de cliente. Os textos do site seguem o tom do Brand Book e evitam listas de três por reflexo, títulos numerados ("Três escopos") e a construção "do X ao Y".
+
 As opções de escopo aparecem em HTML, Markdown e na base da Iris a partir da mesma fonte. A experiência pessoal do fundador permanece na página dele, com contexto completo e sem logos de empresas.
 
 ## Antes de publicar uma mudança de conteúdo
@@ -75,6 +77,8 @@ Textos visíveis priorizam frases curtas e uma ideia por bloco. As descriptions 
 
 A página de cloud apresenta a consultoria AWS a partir do diagnóstico de custos, arquitetura e riscos. O slug é `nuvem-e-arquitetura`, com os equivalentes em inglês e espanhol. AWS identifica a tecnologia do serviço; não declara tier, certificação nem parceria da IRTC.
 
+A página AWS lista os escopos de DevOps, CloudOps e FinOps em `lib/copy/service-scopes.ts`, cada um com o que o cliente recebe, o que fica fora e como medir. Não publicar economia garantida, plantão 24×7, incentivos AWS, selo ou nível de parceria, nem fornecimento ao governo ou contratos públicos.
+
 `lib/copy/service-decisions.ts` detalha a primeira decisão em cloud, modernização e IA nos três idiomas. Esse conteúdo substitui o bloco genérico de processo nessas páginas e alimenta HTML, Markdown e Iris. Os CTAs mantêm o serviço selecionado no contato. Diagnóstico, execução e continuidade têm escopos próprios; não publicar prazos, preços, descontos ou cobertura de atendimento sem validação comercial.
 
-Os serviços relacionados seguem as dependências do problema: cloud aponta para modernização, dados e IA; IA aponta para dados, integrações e cloud. A ordem fica em `relatedServiceIds`, em `lib/services.ts`, e é compartilhada com o Markdown. Novos títulos ou palavras-chave não justificam duplicar páginas com a mesma intenção de busca.
+Os serviços relacionados seguem as dependências do problema: cloud aponta para integrações, IA e modernização; IA aponta para dados, integrações e cloud. A ordem fica em `relatedServiceIds`, em `lib/services.ts`, e é compartilhada com o Markdown. Novos títulos ou palavras-chave não justificam duplicar páginas com a mesma intenção de busca.

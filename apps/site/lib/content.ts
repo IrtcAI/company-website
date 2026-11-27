@@ -71,7 +71,7 @@ export const content = {
       eyebrow: "Da Amazônia para o seu próximo desafio.",
       title: "Engenharia que faz seu negócio avançar.",
       description:
-        "Integramos sistemas, modernizamos operações e aplicamos IA aos desafios do seu negócio.",
+        "Consultoria de cloud e IA na AWS, em Belém. Conectamos os sistemas que sua equipe já usa para reduzir retrabalho em vendas, operações e faturamento.",
       cta: "Vamos conversar",
       secondaryCta: "Conheça os serviços",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
@@ -120,15 +120,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "Diagnóstico e evolução de ambientes AWS, com custo, risco e prioridades claros.",
-        },
-        {
-          name: "Software Engineering",
-          text: "Integrações e modernização para reduzir trabalho manual, com escopo e aceite definidos.",
+          text: "Ambientes AWS com deploy automatizado e uma conta que dá para explicar.",
         },
         {
           name: "AI Engineering",
-          text: "Protótipos para avaliar qualidade, custo e revisão humana em uma tarefa concreta.",
+          text: "Testamos a IA numa tarefa real antes de você investir na implantação.",
+        },
+        {
+          name: "Software Engineering",
+          text: "Integrações entre os sistemas que você já usa e modernização para reduzir retrabalho.",
         },
       ],
       continuity: {
@@ -333,7 +333,7 @@ export const content = {
       eyebrow: "From the Amazon to your next challenge.",
       title: "We engineer what moves your business forward.",
       description:
-        "We connect systems, modernize operations and apply AI to your business challenges.",
+        "Cloud and AI consulting on AWS, from Belém, Brazil. We connect the systems your team already uses to cut rework in sales, operations and billing.",
       cta: "Let’s talk",
       secondaryCta: "Explore services",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
@@ -382,15 +382,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "Assess and evolve AWS environments with clear costs, risks and priorities.",
-        },
-        {
-          name: "Software Engineering",
-          text: "Integrations and modernization to reduce manual work, with agreed scope and acceptance criteria.",
+          text: "AWS environments with automated deployments and a bill you can explain.",
         },
         {
           name: "AI Engineering",
-          text: "Prototypes to assess quality, cost and human review for a specific task.",
+          text: "We test AI on a real task before you invest in rolling it out.",
+        },
+        {
+          name: "Software Engineering",
+          text: "Integrations between the systems you already use and modernization to cut rework.",
         },
       ],
       continuity: {
@@ -595,7 +595,7 @@ export const content = {
       eyebrow: "Desde la Amazonía hacia tu próximo desafío.",
       title: "Ingeniería que impulsa tu negocio.",
       description:
-        "Integramos sistemas, modernizamos operaciones y aplicamos IA a los desafíos de tu negocio.",
+        "Consultoría de cloud e IA en AWS, desde Belém, Brasil. Conectamos los sistemas que tu equipo ya usa para reducir el retrabajo en ventas, operaciones y facturación.",
       cta: "Hablemos",
       secondaryCta: "Conoce los servicios",
       label: "CLOUD, SOFTWARE & AI ENGINEERING",
@@ -644,15 +644,15 @@ export const content = {
       pillars: [
         {
           name: "Cloud Engineering",
-          text: "Diagnóstico y evolución de entornos AWS con costos, riesgos y prioridades claros.",
-        },
-        {
-          name: "Software Engineering",
-          text: "Integraciones y modernización para reducir tareas manuales, con alcance y aceptación definidos.",
+          text: "Entornos AWS con despliegue automatizado y una factura que se puede explicar.",
         },
         {
           name: "AI Engineering",
-          text: "Prototipos para evaluar calidad, costo y revisión humana en una tarea concreta.",
+          text: "Probamos la IA en una tarea real antes de que inviertas en implementarla.",
+        },
+        {
+          name: "Software Engineering",
+          text: "Integraciones entre los sistemas que ya usas y modernización para reducir el retrabajo.",
         },
       ],
       continuity: {

@@ -1,9 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { EngagementOptions } from "@/components/engagement-options";
+import { ServiceScopeList } from "@/components/service-blocks";
+import { UseCase } from "@/components/use-case";
 import { content, projectBrands, recommendationAuthors } from "@/lib/content";
 import { founderCopy } from "@/lib/copy/founder";
 import { engagementCopy } from "@/lib/copy/engagement";
+import { serviceScopeCopy } from "@/lib/copy/service-scopes";
+import { useCaseCopy } from "@/lib/copy/use-case";
 import { knowledgeChunks } from "@/lib/knowledge/sources";
 import { markdownPage } from "@/lib/page-markdown";
 import { locales, pagePath } from "@/lib/routes";
@@ -71,4 +75,83 @@ describe("business positioning", () => {
       }
     },
   );
+});
+
+describe("featured use case and AWS scopes", () => {
+  it.each(locales)(
+    "publishes the order-to-billing example as illustrative in %s",
+    (locale) => {
+      const copy = useCaseCopy[locale];
+      render(<UseCase locale={locale} />);
+      const home = markdownPage(pagePath(locale, "home"))!.markdown;
+      const chunk = knowledgeChunks(locale).find(
+        (chunk) => chunk.id === "use-case:order-to-billing",
+      )!;
+
+      expect(
+        screen.getByRole("heading", { level: 2, name: copy.title }),
+      ).toBeVisible();
+      expect(screen.getByText(copy.label)).toBeVisible();
+      expect(screen.getAllByRole("listitem")).toHaveLength(copy.steps.length);
+      expect(screen.getByRole("link", { name: copy.link })).toHaveAttribute(
+        "href",
+        pagePath(
+          locale,
+          "services",
+          services.find((service) => service.id === "integrations")!.copy[
+            locale
+          ].slug,
+        ),
+      );
+      for (const text of [home, chunk.text]) {
+        expect(text).toContain(copy.title);
+        expect(text).toContain(copy.intro);
+        expect(text).toContain(copy.note);
+        expect(text).toContain(copy.measure);
+        for (const step of copy.steps) expect(text).toContain(step.text);
+      }
+    },
+  );
+
+  it.each(locales)(
+    "lists DevOps, CloudOps and FinOps with exclusions on the AWS page in %s",
+    (locale) => {
+      const scopes = serviceScopeCopy[locale].cloud!;
+      const cloud = services.find((service) => service.id === "cloud")!;
+      render(<ServiceScopeList scopes={scopes} />);
+      const markdown = markdownPage(
+        pagePath(locale, "services", cloud.copy[locale].slug),
+      )!.markdown;
+
+      expect(scopes.items.map((scope) => scope.name)).toEqual([
+        "DevOps",
+        "CloudOps",
+        "FinOps",
+      ]);
+      for (const scope of scopes.items) {
+        expect(
+          screen.getByRole("heading", { level: 3, name: scope.title }),
+        ).toBeVisible();
+        const chunk = knowledgeChunks(locale).find(
+          (chunk) =>
+            chunk.id === `service:cloud:scope:${scope.name.toLowerCase()}`,
+        )!;
+        for (const item of [...scope.receives, ...scope.excludes]) {
+          expect(screen.getByText(item)).toBeVisible();
+          expect(markdown).toContain(item);
+          expect(chunk.text).toContain(item);
+        }
+      }
+      for (const other of services.filter((service) => service.id !== "cloud"))
+        expect(serviceScopeCopy[locale][other.id]).toBeUndefined();
+    },
+  );
+
+  it("lists AWS, applied AI and integrations before other services", () => {
+    expect(services.slice(0, 3).map((service) => service.id)).toEqual([
+      "cloud",
+      "applied-ai",
+      "integrations",
+    ]);
+  });
 });

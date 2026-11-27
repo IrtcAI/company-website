@@ -216,8 +216,8 @@ describe("institutional experience", () => {
         .slice(0, 4),
     ).toEqual([
       "Cloud Engineering",
-      "Software Engineering",
       "AI Engineering",
+      "Software Engineering",
       "Continuous Engineering",
     ]);
     expect(
@@ -326,7 +326,7 @@ describe("institutional experience", () => {
 
     expect(
       [...select.querySelectorAll("optgroup")].map((group) => group.label),
-    ).toEqual(["Cloud Engineering", "Software Engineering", "AI Engineering"]);
+    ).toEqual(["Cloud Engineering", "AI Engineering", "Software Engineering"]);
     expect(select).toHaveValue("undecided");
 
     fillContact();
@@ -352,6 +352,9 @@ describe("institutional experience", () => {
     const footer = container.querySelector(".site-footer") as HTMLElement;
 
     expect(within(footer).getByText("Belém · PA · Brasil")).toBeVisible();
+    expect(
+      within(footer).getByText("Atendimento remoto no Brasil e no exterior"),
+    ).toBeVisible();
     expect(within(footer).getByText("Sáb e dom: fechado")).toBeVisible();
     expect(
       within(footer).getByRole("link", { name: "Aplicativos para celular" }),

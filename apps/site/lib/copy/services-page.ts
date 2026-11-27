@@ -36,7 +36,7 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Trilha de navegação",
     breadcrumbServices: "Serviços",
     intro:
-      "Integre sistemas, modernize operações e avalie IA. O ponto de partida depende do problema, dos acessos e da capacidade de entrega.",
+      "Consultoria AWS, IA aplicada e integração dos sistemas que sua equipe já usa. Começamos pelo problema que mais pesa na operação hoje.",
     gridTitle: "Áreas de atuação",
     cardCta: "Ver serviço",
     allServicesCta: "Ver todos os serviços",
@@ -74,10 +74,10 @@ export const servicesPageCopy: Record<
     supportPillarLabel: "Com apoio de",
     pillarText: {
       cloud:
-        "Diagnóstico e evolução de ambientes AWS, com custo, risco e prioridades claros.",
+        "Ambientes AWS com deploy automatizado e uma conta que dá para explicar.",
       software:
-        "Integrações e modernização para reduzir trabalho manual, com escopo e aceite definidos.",
-      ai: "Protótipos para avaliar qualidade, custo e revisão humana em uma tarefa concreta.",
+        "Integrações entre os sistemas que você já usa e modernização para reduzir retrabalho.",
+      ai: "Testamos a IA numa tarefa real antes de você investir na implantação.",
     },
     continuity: {
       label: "Continuidade",
@@ -91,7 +91,7 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Breadcrumb",
     breadcrumbServices: "Services",
     intro:
-      "Connect systems, modernize operations and assess AI. The starting point depends on the problem, access and delivery capacity.",
+      "AWS consulting, applied AI and integration of the systems your team already uses. We start with the problem that weighs most on operations today.",
     gridTitle: "Areas of work",
     cardCta: "View service",
     allServicesCta: "See all services",
@@ -129,10 +129,10 @@ export const servicesPageCopy: Record<
     supportPillarLabel: "Supported by",
     pillarText: {
       cloud:
-        "Assess and evolve AWS environments with clear costs, risks and priorities.",
+        "AWS environments with automated deployments and a bill you can explain.",
       software:
-        "Integrations and modernization to reduce manual work, with agreed scope and acceptance criteria.",
-      ai: "Prototypes to assess quality, cost and human review for a specific task.",
+        "Integrations between the systems you already use and modernization to cut rework.",
+      ai: "We test AI on a real task before you invest in rolling it out.",
     },
     continuity: {
       label: "Continuity",
@@ -146,7 +146,7 @@ export const servicesPageCopy: Record<
     breadcrumbLabel: "Ruta de navegación",
     breadcrumbServices: "Servicios",
     intro:
-      "Integra sistemas, moderniza operaciones y evalúa IA. El punto de partida depende del problema, los accesos y la capacidad de entrega.",
+      "Consultoría AWS, IA aplicada e integración de los sistemas que tu equipo ya usa. Empezamos por el problema que más pesa hoy en la operación.",
     gridTitle: "Áreas de actuación",
     cardCta: "Ver servicio",
     allServicesCta: "Ver todos los servicios",
@@ -184,10 +184,10 @@ export const servicesPageCopy: Record<
     supportPillarLabel: "Con apoyo de",
     pillarText: {
       cloud:
-        "Diagnóstico y evolución de entornos AWS con costos, riesgos y prioridades claros.",
+        "Entornos AWS con despliegue automatizado y una factura que se puede explicar.",
       software:
-        "Integraciones y modernización para reducir tareas manuales, con alcance y aceptación definidos.",
-      ai: "Prototipos para evaluar calidad, costo y revisión humana en una tarea concreta.",
+        "Integraciones entre los sistemas que ya usas y modernización para reducir el retrabajo.",
+      ai: "Probamos la IA en una tarea real antes de que inviertas en implementarla.",
     },
     continuity: {
       label: "Continuidad",
