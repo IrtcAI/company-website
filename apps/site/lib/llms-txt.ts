@@ -3,6 +3,8 @@ import { content, type Locale } from "./content";
 import { aboutCopy } from "./copy/about";
 import { founderCopy } from "./copy/founder";
 import { engagementCopy } from "./copy/engagement";
+import { serviceScopeCopy } from "./copy/service-scopes";
+import { useCaseCopy } from "./copy/use-case";
 import { founderJobTitle, homeCopy, pageCopy } from "./copy/pages";
 import {
   absoluteUrl,
@@ -55,6 +57,9 @@ const capabilities = [
   "ETL/ELT data pipelines",
   "analytics",
   "cloud infrastructure",
+  "DevOps (CI/CD, automated tests, rollback)",
+  "CloudOps (logs, metrics, alerts, recovery runbooks)",
+  "FinOps (AWS cost assessment with read-only access)",
   "ERP and CRM systems",
   "APIs",
   "integrations",
@@ -262,6 +267,19 @@ function engagementSection(): string {
   ].join("\n\n");
 }
 
+function featuredCaseSection(): string {
+  const copy = useCaseCopy.en;
+  return [
+    `## ${copy.title}`,
+    `${copy.label}. ${copy.intro}`,
+    copy.steps
+      .map((step, index) => `${index + 1}. ${step.title}: ${step.text}`)
+      .join("\n"),
+    copy.measure,
+    copy.note,
+  ].join("\n\n");
+}
+
 function optionalSection(): string {
   return [
     "## Founder experience",
@@ -289,6 +307,8 @@ export function buildLlmsTxt(): string {
     pillarsSection(),
     "",
     engagementSection(),
+    "",
+    featuredCaseSection(),
     "",
     howWeWorkSection(),
     "",
@@ -325,6 +345,15 @@ function serviceDetailSection(service: Service): string {
     lines.push(...copy.deliverables.map((item) => `- ${item}`));
   }
 
+  const scopes = serviceScopeCopy.en[service.id];
+  if (scopes) {
+    lines.push("", `${scopes.title}. ${scopes.intro}`);
+    for (const scope of scopes.items)
+      lines.push(
+        `- ${scope.name}: ${scope.title}. ${scope.text} ${scopes.receivesLabel}: ${scope.receives.join("; ")}. ${scopes.excludesLabel}: ${scope.excludes.join("; ")}.`,
+      );
+  }
+
   if (copy.faq?.length) {
     lines.push("", "FAQ:");
     copy.faq.forEach((item) => lines.push(`- ${item.question} ${item.answer}`));
@@ -339,7 +368,7 @@ export function buildLlmsFullTxt(): string {
   return [
     "# IRTC",
     "",
-    `> IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil. ${SLOGAN} Full reference version of /llms.txt, with expanded detail for every service.`,
+    `> IRTC is a Cloud, Software & AI Engineering company based in Belém, Pará, Brazil, providing cloud and AI consulting on AWS focused on connecting existing systems and cutting operational rework. ${SLOGAN} Full reference version of /llms.txt, with expanded detail for every service.`,
     "",
     introSection(),
     "",
@@ -351,6 +380,8 @@ export function buildLlmsFullTxt(): string {
     pillarsSection(),
     "",
     engagementSection(),
+    "",
+    featuredCaseSection(),
     "",
     howWeWorkSection(),
     "",

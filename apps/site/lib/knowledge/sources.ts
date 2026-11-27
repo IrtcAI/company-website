@@ -4,6 +4,8 @@ import { aboutCopy } from "../copy/about";
 import { cultureCopy, missionCopy, visionCopy } from "../copy/culture";
 import { founderCopy } from "../copy/founder";
 import { serviceDecisionCopy } from "../copy/service-decisions";
+import { serviceScopeCopy } from "../copy/service-scopes";
+import { useCaseCopy } from "../copy/use-case";
 import { servicesPageCopy } from "../copy/services-page";
 import { engagementCopy } from "../copy/engagement";
 import { locales, pagePath } from "../routes";
@@ -381,6 +383,17 @@ function serviceChunks(locale: Locale): KnowledgeChunk[] {
         ]
       : [];
 
+    const scopes = serviceScopeCopy[locale][service.id];
+    const scopeChunks: KnowledgeChunk[] = scopes
+      ? scopes.items.map((scope) => ({
+          ...base,
+          id: `service:${service.id}:scope:${scope.name.toLowerCase()}`,
+          source: "lib/copy/service-scopes.ts",
+          title: `${scope.name}: ${scope.title}`,
+          text: `${copy.title} (IRTC) · ${scope.name}: ${scope.title}. ${scope.text} ${scopes.intro} ${scopes.receivesLabel}: ${scope.receives.join("; ")}. ${scopes.excludesLabel}: ${scope.excludes.join("; ")}. ${scopes.measureLabel}: ${scope.measure}`,
+        }))
+      : [];
+
     const faqChunks: KnowledgeChunk[] = copy.faq.map((item, index) => ({
       ...base,
       id: `service:${service.id}:faq:${index + 1}`,
@@ -394,9 +407,23 @@ function serviceChunks(locale: Locale): KnowledgeChunk[] {
       deliverablesChunk,
       measureChunk,
       ...decisionChunks,
+      ...scopeChunks,
       ...faqChunks,
     ];
   });
+}
+
+function featuredCaseChunk(locale: Locale): KnowledgeChunk {
+  const copy = useCaseCopy[locale];
+  return {
+    id: "use-case:order-to-billing",
+    locale,
+    source: "lib/copy/use-case.ts",
+    href: pagePath(locale, "home"),
+    serviceId: copy.service,
+    title: copy.title,
+    text: `IRTC · ${copy.label}: ${copy.title}. ${copy.intro} ${copy.steps.map((step) => `${step.title}: ${step.text}`).join(" ")} ${copy.measure} ${copy.note}`,
+  };
 }
 
 export function knowledgeChunks(locale: Locale): KnowledgeChunk[] {
@@ -411,6 +438,7 @@ export function knowledgeChunks(locale: Locale): KnowledgeChunk[] {
       title: item.title,
       text: `${engagementCopy[locale].intro} ${item.problem} ${engagementCopy[locale].deliveryLabel}: ${item.delivery} ${engagementCopy[locale].decisionLabel}: ${item.decision}`,
     })),
+    featuredCaseChunk(locale),
     ...aboutChunks(locale),
     ...founderChunks(locale),
     ...brandPageChunks(locale),

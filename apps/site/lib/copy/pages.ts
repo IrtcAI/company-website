@@ -7,25 +7,25 @@ export const homeCopy: Record<
   { title: string; description: string; organization: string }
 > = {
   "pt-BR": {
-    title: "IRTC | Cloud, Software & AI Engineering",
+    title: "IRTC | Consultoria de cloud e IA na AWS em Belém",
     description:
-      "Parceiro B2B em cloud, software e IA para integrar sistemas, modernizar operações e avaliar automação, com escopo e critérios de resultado definidos.",
+      "Consultoria de cloud e IA na AWS, em Belém (PA). Integramos os sistemas que sua equipe já usa para reduzir retrabalho em vendas, operações e faturamento.",
     organization:
-      "A IRTC é uma empresa B2B de Cloud, Software & AI Engineering. Trabalhamos com lideranças de negócio e tecnologia para transformar gargalos operacionais em escopos executáveis, com entregáveis e critérios de resultado definidos.",
+      "A IRTC é uma empresa de Cloud, Software & AI Engineering que presta consultoria de cloud e IA na AWS, com base em Belém (PA) e atendimento remoto. Integramos os sistemas que a empresa já usa para reduzir retrabalho operacional, com escopo, entregáveis e critérios de resultado definidos.",
   },
   en: {
-    title: "IRTC | Cloud, Software & AI Engineering",
+    title: "IRTC | AWS cloud and AI consulting in Belém, Brazil",
     description:
-      "A B2B partner in cloud, software and AI for system integration, modernization and automation, with defined scope and outcome criteria.",
+      "Cloud and AI consulting on AWS from Belém, Brazil. We connect the systems your team already uses to cut rework in sales, operations and billing.",
     organization:
-      "IRTC is a B2B Cloud, Software & AI Engineering company. We work with business and technology leaders to turn operational bottlenecks into executable scopes, with defined deliverables and outcome criteria.",
+      "IRTC is a Cloud, Software & AI Engineering company providing cloud and AI consulting on AWS, based in Belém, Pará, Brazil, and working remotely. We connect the systems a company already uses to cut operational rework, with defined scope, deliverables and outcome criteria.",
   },
   es: {
-    title: "IRTC | Cloud, Software & AI Engineering",
+    title: "IRTC | Consultoría de cloud e IA en AWS desde Belém",
     description:
-      "Socio B2B en cloud, software e IA para integrar sistemas, modernizar operaciones y evaluar automatización, con alcance y criterios de resultado definidos.",
+      "Consultoría de cloud e IA en AWS desde Belém, Brasil. Conectamos los sistemas que tu equipo ya usa para reducir retrabajo en ventas, operaciones y facturación.",
     organization:
-      "IRTC es una empresa B2B de Cloud, Software & AI Engineering. Trabajamos con líderes de negocio y tecnología para convertir limitaciones operativas en alcances ejecutables, con entregables y criterios de resultado definidos.",
+      "IRTC es una empresa de Cloud, Software & AI Engineering que ofrece consultoría de cloud e IA en AWS, con base en Belém, Pará, Brasil, y atención remota. Conectamos los sistemas que la empresa ya usa para reducir el retrabajo operativo, con alcance, entregables y criterios de resultado definidos.",
   },
 };
 
@@ -43,22 +43,22 @@ export const pageCopy: Record<
 > = {
   services: {
     "pt-BR": {
-      title: "Soluções B2B em cloud, software e IA | IRTC",
-      heading: "Engenharia para o próximo passo da operação",
+      title: "Consultoria AWS, IA aplicada e integrações | IRTC",
+      heading: "Consultoria AWS e IA para integrar o que sua empresa já usa",
       description:
-        "Integrações, modernização e IA aplicadas a problemas de operação. Conheça entregáveis, critérios de avaliação e como definir o primeiro escopo.",
+        "Consultoria AWS, IA aplicada e integração dos sistemas que sua empresa já usa para reduzir retrabalho. Veja o que cada serviço entrega e o que fica fora.",
     },
     en: {
-      title: "B2B cloud, software and AI services | IRTC",
-      heading: "Engineering for your next operational priority",
+      title: "AWS consulting, applied AI and integrations | IRTC",
+      heading: "AWS and AI consulting to connect the systems you already use",
       description:
-        "Integration, modernization and AI for operational problems. Explore deliverables, evaluation criteria and how to define the first scope.",
+        "AWS consulting, applied AI and integration of the systems your company already uses to cut rework. See what each service delivers and what it leaves out.",
     },
     es: {
-      title: "Soluciones B2B en cloud, software e IA | IRTC",
-      heading: "Ingeniería para el próximo paso de tu operación",
+      title: "Consultoría AWS, IA aplicada e integraciones | IRTC",
+      heading: "Consultoría AWS e IA para integrar lo que tu empresa ya usa",
       description:
-        "Integraciones, modernización e IA para problemas operativos. Conoce los entregables, criterios de evaluación y cómo definir el primer alcance.",
+        "Consultoría AWS, IA aplicada e integración de los sistemas que tu empresa ya usa para reducir el retrabajo. Mira qué entrega cada servicio y qué queda fuera.",
     },
   },
   about: {
@@ -126,7 +126,7 @@ export const pageCopy: Record<
     es: {
       title: "Misión | IRTC",
       description:
-        "Resolver problemas de negocio diseñando, construyendo, modernizando y operando sistemas de cloud, software e IA. Mira el recorrido desde el primer contacto hasta la evolución.",
+        "Resolver problemas de negocio diseñando, construyendo, modernizando y operando sistemas de cloud, software e IA. Conoce el recorrido de cada proyecto.",
     },
   },
   vision: {

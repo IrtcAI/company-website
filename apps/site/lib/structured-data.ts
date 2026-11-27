@@ -25,7 +25,14 @@ export function organization(locale: Locale, description: string) {
     email: company.email,
     description,
     slogan: SLOGAN,
-    knowsAbout: pillars.map((id) => pillarNames[id]),
+    knowsAbout: [
+      ...pillars.map((id) => pillarNames[id]),
+      "Amazon Web Services (AWS)",
+      "Systems integration",
+      "DevOps",
+      "CloudOps",
+      "FinOps",
+    ],
     inLanguage: locale,
     founder: { "@id": FOUNDER_ID },
     address: {

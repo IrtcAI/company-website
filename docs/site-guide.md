@@ -57,6 +57,8 @@ A comunicação parte do problema de operação, descreve o escopo e informa com
 
 A operação atual é conduzida por Iago Rodrigues. Ferramentas de IA e a Iris não constituem uma equipe contratada. Tracejandos é um pequeno projeto de site; não publicar alegações de tração, receita ou resultado comercial.
 
+A home apresenta a IRTC como consultoria de cloud e IA na AWS, com base em Belém, para integrar os sistemas que o cliente já usa e reduzir retrabalho operacional. A ordem de `services` e de `pillars` em `lib/services.ts` coloca AWS, IA aplicada e integrações à frente; apps, plataformas web e software sob medida continuam publicados no fim da lista. O exemplo do pedido aprovado que chega ao financeiro (`lib/copy/use-case.ts`) aparece na página como exemplo ilustrativo e não deve ser apresentado como case de cliente. Os textos do site seguem o tom do Brand Book e evitam listas de três por reflexo, títulos numerados ("Três escopos") e a construção "do X ao Y".
+
 As opções de escopo aparecem em HTML, Markdown e na base da Iris a partir da mesma fonte. A experiência pessoal do fundador permanece na página dele, com contexto completo e sem logos de empresas.
 
 ## Antes de publicar uma mudança de conteúdo
@@ -74,6 +76,8 @@ Textos visíveis priorizam frases curtas e uma ideia por bloco. As descriptions 
 ## Clareza da oferta e descoberta orgânica
 
 A página de cloud apresenta a consultoria AWS a partir do diagnóstico de custos, arquitetura e riscos. O slug é `nuvem-e-arquitetura`, com os equivalentes em inglês e espanhol. AWS identifica a tecnologia do serviço; não declara tier, certificação nem parceria da IRTC.
+
+A página AWS lista os escopos de DevOps, CloudOps e FinOps em `lib/copy/service-scopes.ts`, cada um com o que o cliente recebe, o que fica fora e como medir. Não publicar economia garantida, plantão 24×7, incentivos AWS, selo ou nível de parceria, nem fornecimento ao governo ou contratos públicos.
 
 `lib/copy/service-decisions.ts` detalha a primeira decisão em cloud, modernização e IA nos três idiomas. Esse conteúdo substitui o bloco genérico de processo nessas páginas e alimenta HTML, Markdown e Iris. Os CTAs mantêm o serviço selecionado no contato. Diagnóstico, execução e continuidade têm escopos próprios; não publicar prazos, preços, descontos ou cobertura de atendimento sem validação comercial.
 

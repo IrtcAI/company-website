@@ -216,8 +216,8 @@ describe("institutional experience", () => {
         .slice(0, 4),
     ).toEqual([
       "Cloud Engineering",
-      "Software Engineering",
       "AI Engineering",
+      "Software Engineering",
       "Continuous Engineering",
     ]);
     expect(
@@ -326,7 +326,7 @@ describe("institutional experience", () => {
 
     expect(
       [...select.querySelectorAll("optgroup")].map((group) => group.label),
-    ).toEqual(["Cloud Engineering", "Software Engineering", "AI Engineering"]);
+    ).toEqual(["Cloud Engineering", "AI Engineering", "Software Engineering"]);
     expect(select).toHaveValue("undecided");
 
     fillContact();

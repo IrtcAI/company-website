@@ -26,25 +26,13 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
     link: "Conheça o escopo",
     items: [
       {
-        title: "Integrar um processo",
-        problem: "Informações são copiadas entre sistemas.",
-        delivery: "Integração delimitada, tratamento de falhas e testes.",
-        decision: "Verificar a redução de etapas manuais e retrabalho.",
-        service: "integrations",
-      },
-      {
-        title: "Avaliar cloud e modernização",
-        problem: "Custos e incidentes dificultam decisões sobre o ambiente.",
-        delivery: "Diagnóstico e plano priorizado, com riscos e estimativas.",
+        title: "Organizar o ambiente AWS",
+        problem:
+          "A conta da AWS cresce e cada deploy depende de alguém fazer à mão.",
+        delivery:
+          "Um diagnóstico do ambiente ou um escopo fechado de DevOps, CloudOps ou FinOps.",
         decision: "Escolher o que mudar primeiro.",
         service: "cloud",
-      },
-      {
-        title: "Modernizar um componente",
-        problem: "Um componente limita mudanças ou exige manutenção frequente.",
-        delivery: "Incremento testado, plano de reversão e documentação.",
-        decision: "Avaliar a primeira etapa antes de ampliar o escopo.",
-        service: "modernization",
       },
       {
         title: "Validar IA em uma tarefa",
@@ -52,6 +40,20 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
         delivery: "Protótipo e avaliação de qualidade, custo e revisão humana.",
         decision: "Avançar, ajustar ou encerrar com base nos resultados.",
         service: "applied-ai",
+      },
+      {
+        title: "Integrar um processo",
+        problem: "Informações são copiadas entre sistemas.",
+        delivery: "Integração delimitada, tratamento de falhas e testes.",
+        decision: "Verificar a redução de etapas manuais e retrabalho.",
+        service: "integrations",
+      },
+      {
+        title: "Modernizar um componente",
+        problem: "Um componente limita mudanças ou exige manutenção frequente.",
+        delivery: "Incremento testado, plano de reversão e documentação.",
+        decision: "Avaliar a primeira etapa antes de ampliar o escopo.",
+        service: "modernization",
       },
     ],
   },
@@ -64,25 +66,13 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
     link: "Explore the scope",
     items: [
       {
-        title: "Integrate a process",
-        problem: "Information is copied between systems.",
-        delivery: "Scoped integration, error handling and tests.",
-        decision: "Check whether manual steps and rework decrease.",
-        service: "integrations",
-      },
-      {
-        title: "Assess cloud and modernization",
-        problem: "Costs and incidents complicate infrastructure decisions.",
-        delivery: "Assessment and prioritized plan, with risks and estimates.",
+        title: "Get your AWS environment in order",
+        problem:
+          "The AWS bill keeps growing and every deployment depends on someone doing it by hand.",
+        delivery:
+          "An assessment of the environment or a fixed DevOps, CloudOps or FinOps scope.",
         decision: "Choose what to change first.",
         service: "cloud",
-      },
-      {
-        title: "Modernize a component",
-        problem: "A component limits changes or needs frequent maintenance.",
-        delivery: "Tested increment, rollback plan and documentation.",
-        decision: "Assess the first stage before expanding the scope.",
-        service: "modernization",
       },
       {
         title: "Validate AI on a task",
@@ -90,6 +80,20 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
         delivery: "Prototype and assessment of quality, cost and human review.",
         decision: "Proceed, adjust or stop based on results.",
         service: "applied-ai",
+      },
+      {
+        title: "Integrate a process",
+        problem: "Information is copied between systems.",
+        delivery: "Scoped integration, error handling and tests.",
+        decision: "Check whether manual steps and rework decrease.",
+        service: "integrations",
+      },
+      {
+        title: "Modernize a component",
+        problem: "A component limits changes or needs frequent maintenance.",
+        delivery: "Tested increment, rollback plan and documentation.",
+        decision: "Assess the first stage before expanding the scope.",
+        service: "modernization",
       },
     ],
   },
@@ -102,19 +106,27 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
     link: "Conoce el alcance",
     items: [
       {
+        title: "Ordenar el entorno AWS",
+        problem:
+          "La factura de AWS crece y cada despliegue depende de que alguien lo haga a mano.",
+        delivery:
+          "Un diagnóstico del entorno o un alcance cerrado de DevOps, CloudOps o FinOps.",
+        decision: "Elegir qué cambiar primero.",
+        service: "cloud",
+      },
+      {
+        title: "Validar IA en una tarea",
+        problem: "Falta evidencia sobre la calidad y el costo de la IA.",
+        delivery: "Prototipo y evaluación de calidad, costo y revisión humana.",
+        decision: "Avanzar, ajustar o cerrar según los resultados.",
+        service: "applied-ai",
+      },
+      {
         title: "Integrar un proceso",
         problem: "Se copia información entre sistemas.",
         delivery: "Integración delimitada, gestión de fallos y pruebas.",
         decision: "Verificar la reducción de tareas manuales y retrabajo.",
         service: "integrations",
-      },
-      {
-        title: "Evaluar cloud y modernización",
-        problem:
-          "Los costos e incidentes dificultan las decisiones de infraestructura.",
-        delivery: "Diagnóstico y plan priorizado, con riesgos y estimaciones.",
-        decision: "Elegir qué cambiar primero.",
-        service: "cloud",
       },
       {
         title: "Modernizar un componente",
@@ -123,13 +135,6 @@ export const engagementCopy: Record<Locale, EngagementCopy> = {
         delivery: "Incremento probado, plan de reversión y documentación.",
         decision: "Evaluar la primera etapa antes de ampliar el alcance.",
         service: "modernization",
-      },
-      {
-        title: "Validar IA en una tarea",
-        problem: "Falta evidencia sobre la calidad y el costo de la IA.",
-        delivery: "Prototipo y evaluación de calidad, costo y revisión humana.",
-        decision: "Avanzar, ajustar o cerrar según los resultados.",
-        service: "applied-ai",
       },
     ],
   },
